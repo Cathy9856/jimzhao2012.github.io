@@ -488,8 +488,6 @@ e. Javascript,为qunit框架对JS Lib中每个函数进行单元测试的测试�
  </ul>
 </nav></p>
 
-<p><code>需加入的功能部分:公共API＋Ctrip API</code></p>
-
 <p>2.app主动回调H5页面</p>
 
 <table>
@@ -525,5 +523,130 @@ e. Javascript,为qunit框架对JS Lib中每个函数进行单元测试的测试�
  <li><a href="urlschema.html">URL shcema－－手册</a></li>
  </ul>
 </nav></p>
+
+<h1>TODO List</h1>
+
+<p><code>1.现在版本的问题</code></p>
+
+<p>1.定位/会员登录参数整理；</p>
+
+<p><code>2.开发框架原则确定</code></p>
+
+<p>1.业务无关，通用功能，JS API实现；比如文件读写<br/>
+2.ctrip业务相关，H5调用之后，必须返回数据给H5页面的，JS API实现；比如登录／支付<br/>
+3.ctrip业务相关，H5调用之后，无需返回数据给H5页面的，URL Schema实现；比如酒店详情页 <br/></p>
+
+<p><code>3.JS API的整理和完善:公共API＋Ctrip业务API</code></p>
+
+<p>基础框架(公共API)<br/>
+参考appcan，整理出基础模块API</p>
+
+<table>
+<thead>
+<tr>
+<th>定义              </th>
+<th>   描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ct_CONSTANT     </td>
+<td>   定义一组常量</td>
+</tr>
+<tr>
+<td>ct_ErrorCode    </td>
+<td>   定义一组错误代码</td>
+</tr>
+<tr>
+<td>ct_Call         </td>
+<td>   电话相关API</td>
+</tr>
+<tr>
+<td>ct_Camera       </td>
+<td>   相机调用</td>
+</tr>
+<tr>
+<td>ct_ImagePicker  </td>
+<td>   读写图片</td>
+</tr>
+<tr>
+<td>ct_Clipboard    </td>
+<td>   粘贴板读写</td>
+</tr>
+<tr>
+<td>ct_Contact      </td>
+<td>   联系人选取/新增</td>
+</tr>
+<tr>
+<td>ct_DataBaseMgr  </td>
+<td>   KV数据库读写</td>
+</tr>
+<tr>
+<td>ct_Device       </td>
+<td>   设备硬件相关信息</td>
+</tr>
+<tr>
+<td>ct_DownloaderMgr</td>
+<td>   下载控件</td>
+</tr>
+<tr>
+<td>ct_Email        </td>
+<td>   email控件调用</td>
+</tr>
+<tr>
+<td>ct_FileMgr      </td>
+<td>   文件管理</td>
+</tr>
+<tr>
+<td>ct_Location     </td>
+<td>   定位管理</td>
+</tr>
+<tr>
+<td>ct_Log          </td>
+<td>   log读写</td>
+</tr>
+<tr>
+<td>ct_Share        </td>
+<td>   分享控件</td>
+</tr>
+<tr>
+<td>ct_SMS          </td>
+<td>   短信调用</td>
+</tr>
+<tr>
+<td>Ct_Application  </td>
+<td>   应用相关信息，沙盒目录信息</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>ctrip业务框架(Ctrip业务API)<br/>
+整理出那些业务模块是需要包装给H5使用的，然后抽象并提供接口；</p>
+
+<table>
+<thead>
+<tr>
+<th>定义              </th>
+<th>   描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ct_User         </td>
+<td>   用户登录注册</td>
+</tr>
+<tr>
+<td>ct_Pay          </td>
+<td>   支付控件</td>
+</tr>
+</tbody>
+</table>
+
+
+<p><code>4.测试支持</code></p>
+
+<p>1.测试工具进一步完善；<br/>
+2.搭建线上开发者站点；<br/></p>
 </body>
 </html>
