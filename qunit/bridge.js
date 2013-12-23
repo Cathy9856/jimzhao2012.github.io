@@ -729,11 +729,18 @@ var CtripUtil = {
      //调用该函数后，native会返回H5内容
      var json_obj = {
         tagname:"download_data",
-        savedPath:"../wb_cache/pkg_name/md5_url_hash",
+        error_code:"xxxxx",//param_error,download_faild
+        param:{downloadUrl:"http://www.baidu.com/bdlogo.gif", savedPath:"../wb_cache/pkg_name/md5_url_hash"}
      };
      app.callback(json_obj);
      */
     app_download_data:function(download_url) {
+        var startVersion = "5.3";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
         var baseUrl = window.location.href;
         var pkgName = null;
         if (baseUrl.indexOf("http") == 0) {

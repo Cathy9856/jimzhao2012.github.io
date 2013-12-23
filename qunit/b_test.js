@@ -414,6 +414,7 @@ asyncTest("测试下载内容:app_download_data", function() {
 		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "download_data") {
 			ok(true, "测试下载内容成功");
 		}
+		cb_ret.download_data = null;
 	}, async_time_interval);
 });
 
