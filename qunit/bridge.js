@@ -692,7 +692,7 @@ var CtripUtil = {
 
     /**
      * @description 调用系统的分享
-     * @param {String} image_relative_path, 将要分享的图片相对路径，相对webapp的路径
+     * @param {String} image_relative_path 将要分享的图片相对路径，相对webapp的路径
      * @param {String} text 需要分享的文字
      * @since v5.3
      * @author jimzhao
