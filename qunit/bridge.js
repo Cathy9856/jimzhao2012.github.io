@@ -741,29 +741,6 @@ var CtripUtil = {
             return;
         }
 
-        var baseUrl = window.location.href;
-        var pkgName = null;
-        if (baseUrl.indexOf("http") == 0) {
-            pkgName = window.location.host;
-        } 
-        else if (baseUrl.indexOf("file") == 0) {
-            var wFlag = "webapp/";
-
-            var location = baseUrl.indexOf(wFlag);
-            if (location >= 0) {
-                var tmpStr = baseUrl.substr(location+wFlag.length, baseUrl.length);
-                var endLocation = tmpStr.substring("/");
-                if (endLocation > 0) {
-                    pkgName = tmpStr.substr(0,endLocation);
-                }
-            };
-        }
-
-        if (!pkgName  || pkgName.length == 0) {
-            Internal.paramErrorCallback("函数 CtripUtil.app_download_data: url有错误，需要为http开头，或者file开头，内部含有webapp/:"+download_url);
-            return;
-        }
-
         var params = {};
         params.downloadUrl = download_url;
         params.pageUrl = window.location.href;
