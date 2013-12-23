@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>QUnit basic example</title>
+  <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.12.0.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
+  <script>
+    test( "a basic test example", function() {
+      var value = "hello";
+      equal( value, "hello", "We expect value to be hello" );
+    });
+
+    test('assertions', function() {  
+       QUnit.equal( 2, 1, 'one equals one');  
+    }); 
+
+    test('asynchronous test', function() {
+      // Pause the test first
+      stop();
+   
+      setTimeout(function() {
+          ok(true);
+   
+          // After the assertion has been called,
+          // continue the test
+          start();
+      }, 100);
+    });
+
+    asyncTest('asynchronous test', function() {  
+    // The test is automatically paused  
+  
+    setTimeout(function() {  
+        ok(true);  
+  
+        // After the assertion has been called,  
+        // continue the test  
+        start();  
+      }, 100)  
+    });
+    
+  </script>
+</body>
+</html>
