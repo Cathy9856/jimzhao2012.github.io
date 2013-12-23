@@ -69,6 +69,9 @@ var app = {
 	    else if (tagname == "log") {
 	    	cb_ret.log = jsonObj;
 	    }
+	    else if (tagname == "download_data") {
+	    	cb_ret.download_data = jsonObj;
+	    }
     }
 };
 
@@ -399,6 +402,19 @@ asyncTest("写日志到App: app_log", function(){
 		};
 		cb_ret.log = null;
 	}, sync_time_interval);
+});
+
+asyncTest("测试下载内容:app_download_data", function() {
+	expect(1);
+	CtripUtil.app_download_data("http://www.baidu.com/bdlogo.gif");
+
+	setTimeout(function(){
+		start();
+		var jsonObj = cb_ret.download_data;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "download_data") {
+			ok(true, "测试下载内容成功");
+		}
+	}, async_time_interval);
 });
 
 asyncTest("检查版本更新:app_check_update", function() {
