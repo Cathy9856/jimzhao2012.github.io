@@ -4,6 +4,7 @@ var __CTRIP_URL_PLUGIN = "ctrip://h5/plugin" + __CTRIP_JS_PARAM;
 
 var kCallbackReturnName = 100;
 
+
 /**
 * @class Internal
 * @description bridge.js内部使用的工具类
