@@ -1,0 +1,2 @@
+_site    #ignore site dir
+*DS_Store* #ignore tmp file

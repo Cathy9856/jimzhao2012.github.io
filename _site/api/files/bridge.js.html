@@ -1,6 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>bridge.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
 
-var __CTRIP_JS_PARAM = "?jsparam="
-var __CTRIP_URL_PLUGIN = "ctrip://h5/plugin" + __CTRIP_JS_PARAM;
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/CtripTool.html">CtripTool</a></li>
+            
+                <li><a href="../classes/CtripUser.html">CtripUser</a></li>
+            
+                <li><a href="../classes/CtripUtil.html">CtripUtil</a></li>
+            
+                <li><a href="../classes/Internal.html">Internal</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: bridge.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+
+var __CTRIP_JS_PARAM = &quot;?jsparam=&quot;
+var __CTRIP_URL_PLUGIN = &quot;ctrip://h5/plugin&quot; + __CTRIP_JS_PARAM;
 
 var kCallbackReturnName = 100;
 
@@ -29,7 +123,7 @@ var Internal = {
      * @type String
      * @property appVersion
      */     
-    appVersion:"",
+    appVersion:&quot;&quot;,
 
     /**
      * @description 判断当前版本号是否大于传入的版本号
@@ -38,14 +132,14 @@ var Internal = {
      * @return {Bool} 是否大于该版本号
      * @since v5.2
      * @example
-     * var isLarger = isAppVersionGreatThan(5.2); <br />
+     * var isLarger = isAppVersionGreatThan(5.2); &lt;br /&gt;
      * alert(isLarger); // depends
      */
     isAppVersionGreatThan:function(verStr) {
-        if ((typeof verStr == "string") && (verStr.length > 0)) {
+        if ((typeof verStr == &quot;string&quot;) &amp;&amp; (verStr.length &gt; 0)) {
             var inVer = parseFloat(verStr);
             var nowVer = parseFloat(Internal.appVersion);
-            if (nowVer - inVer >= 0) {
+            if (nowVer - inVer &gt;= 0) {
                 return true;
             }
         }
@@ -61,7 +155,7 @@ var Internal = {
      * @author jimzhao
      */
     appVersionNotSupportCallback:function(supportVer) {
-        var jsonObj = {"tagname":"app_version_too_low","start_version":supportVer,"app_version":Internal.appVersion};
+        var jsonObj = {&quot;tagname&quot;:&quot;app_version_too_low&quot;,&quot;start_version&quot;:supportVer,&quot;app_version&quot;:Internal.appVersion};
         CtripTool.app_log(JSON.stringify(jsonObj));
         window.app.callback(jsonObj);
     },
@@ -74,7 +168,7 @@ var Internal = {
      * @author jimzhao
      */
     paramErrorCallback:function(description) {
-        var jsonObj = {"tagname":"app_param_error","description":description};
+        var jsonObj = {&quot;tagname&quot;:&quot;app_param_error&quot;,&quot;description&quot;:description};
         CtripTool.app_log(JSON.stringify(jsonObj));
         window.app.callback(jsonObj);
     },
@@ -86,7 +180,7 @@ var Internal = {
      * @since v5.2
      */
     isNotEmptyString:function(str) {
-        if ((typeof str == "string") && (str.length > 0)) {
+        if ((typeof str == &quot;string&quot;) &amp;&amp; (str.length &gt; 0)) {
             return true;
         }
 
@@ -101,11 +195,11 @@ var Internal = {
      * @since v5.2
      */
     loadURL:function(url) {
-        var iframe = document.createElement("iframe");
+        var iframe = document.createElement(&quot;iframe&quot;);
         var cont = document.body || document.documentElement;
 
-        iframe.style.display = "none";
-        iframe.setAttribute('src', url);
+        iframe.style.display = &quot;none&quot;;
+        iframe.setAttribute(&#x27;src&#x27;, url);
         cont.appendChild(iframe);
 
         setTimeout(function(){
@@ -127,7 +221,7 @@ var Internal = {
     makeParamString:function(service, action, param, callbackTag) {
 
         if (!Internal.isNotEmptyString(service) || !Internal.isNotEmptyString(action)) {
-            return "";
+            return &quot;&quot;;
         }
 
         if (!param) {
@@ -150,7 +244,7 @@ var Internal = {
      */
     makeURLWithParam:function(paramString) {
         if (paramString == null) {
-            paramString = "";
+            paramString = &quot;&quot;;
         }
 
         paramString = encodeURIComponent(paramString);
@@ -171,7 +265,7 @@ function __bridge_callback(param) {
     var jsonObj = JSON.parse(param);
 
     if (jsonObj != null) {
-        if (jsonObj.param != null && jsonObj.param.hasOwnProperty("platform")) {
+        if (jsonObj.param != null &amp;&amp; jsonObj.param.hasOwnProperty(&quot;platform&quot;)) {
             platform = jsonObj.param.platform;
             Internal.isIOS = (platform == 1);
             Internal.isAndroid = (platform == 2);
@@ -180,7 +274,7 @@ function __bridge_callback(param) {
 
         var retValue = window.app.callback(jsonObj);
         if (retValue) {
-            // alert("window.app.callback > 0"+retValue);
+            // alert(&quot;window.app.callback &gt; 0&quot;+retValue);
             return retValue;
         };
 
@@ -217,19 +311,19 @@ var CtripTool = {
      * @param {String} result 上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间
      * @since v5.2
      * @author jimzhao
-     * @example CtripTool.app_log("execute script xxxxx", "result for script is oooooo");
+     * @example CtripTool.app_log(&quot;execute script xxxxx&quot;, &quot;result for script is oooooo&quot;);
      */
     app_log:function(log, result) {
         if (!Internal.isNotEmptyString(log)) {
             return;
         }
         if (!Internal.isNotEmptyString(result)) {
-            result = "";
+            result = &quot;&quot;;
         }
         var params = {};
         params.log = log;
         params.result = result;
-        paramString = Internal.makeParamString("Util", "h5Log", params, "log");
+        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;h5Log&quot;, params, &quot;log&quot;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -253,13 +347,13 @@ var CtripUtil = {
      * @param {String} event_name 需要纪录的事件名
      * @since v5.2
      * @author jimzhao
-     * @example Util.app_log_event('GoodDay')
+     * @example Util.app_log_event(&#x27;GoodDay&#x27;)
      */
     app_log_event:function(event_name) {
         if (Internal.isNotEmptyString(event_name)) {
             var params = {};
             params.event = event_name;
-            paramString =  Internal.makeParamString("Util", "logEvent", params, "log_event");
+            paramString =  Internal.makeParamString(&quot;Util&quot;, &quot;logEvent&quot;, params, &quot;log_event&quot;);
 
             if (Internal.isIOS) {
                 url = Internal.makeURLWithParam(paramString);
@@ -278,25 +372,25 @@ var CtripUtil = {
      * @method app_init_member_H5_info
      * @since version 5.2
      * @author jimzhao
-     * @callback tagname="init_member_H5_info"
+     * @callback tagname=&quot;init_member_H5_info&quot;
      * @example
      CtripUtil.app_init_member_H5_info();
      //调用完成，H5页面会收到如下返回数据
      var json_obj =
      {
-        tagname:"init_member_H5_info",
+        tagname:&quot;init_member_H5_info&quot;,
         timestamp:135333222,
-        version:"5.2",
-        device:"iPhone4S",
-        appId:"com.ctrip.wrieless",
-        serverVersion:"5.3",
+        version:&quot;5.2&quot;,
+        device:&quot;iPhone4S&quot;,
+        appId:&quot;com.ctrip.wrieless&quot;,
+        serverVersion:&quot;5.3&quot;,
         platform:1, //区分平台，iPhone为1, Android为2
         userInfo={USERINFO},//USERINFO内部结构参考CtripUser.app_member_login();    
      }
      app.callback(json_obj);
      */
     app_init_member_H5_info:function() {
-        paramString = Internal.makeParamString("User", "initMemberH5Info", null, "init_member_H5_info");
+        paramString = Internal.makeParamString(&quot;User&quot;, &quot;initMemberH5Info&quot;, null, &quot;init_member_H5_info&quot;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -312,7 +406,7 @@ var CtripUtil = {
      * @method app_call_phone
      * @since v5.2
      * @author jimzhao
-     * @example CtripUtil.app_call_phone("13800138000");
+     * @example CtripUtil.app_call_phone(&quot;13800138000&quot;);
      //或者直接拨打呼叫中心
      CtripUtil.app_call_phone();
      */
@@ -320,7 +414,7 @@ var CtripUtil = {
         var params = {};
         params.phone = phone;
 
-        paramString = Internal.makeParamString("Util", "callPhone", params, "call_phone")
+        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;callPhone&quot;, params, &quot;call_phone&quot;)
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -338,7 +432,7 @@ var CtripUtil = {
      * @example CtripUtil.app_back_to_home();
      */
     app_back_to_home:function() {
-        paramString = Internal.makeParamString("Util", "backToHome", null, "back_to_home");
+        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;backToHome&quot;, null, &quot;back_to_home&quot;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -354,13 +448,13 @@ var CtripUtil = {
      * @param {String} callbackString 离开H5页面，需要传递给上一个H5页面的数据，上一个H5页面在web_view_did_appear回调里面将会收到该数据
      * @since v5.2
      * @author jimzhao
-     * @example CtripUtil.app_back_to_last_page("This is a json string for my previous H5 page");
+     * @example CtripUtil.app_back_to_last_page(&quot;This is a json string for my previous H5 page&quot;);
      */
     app_back_to_last_page:function(callbackString) {
         var params = {};
         params.callbackString = callbackString;
 
-        paramString = Internal.makeParamString("Util", "backToLast", params, "back_to_last_page");
+        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;backToLast&quot;, params, &quot;back_to_last_page&quot;);
 
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
@@ -375,22 +469,22 @@ var CtripUtil = {
      * @description 定位
      * @param {Bool} is_async, true标识是异步定位，false标识为同步定位
      * @method app_locate
-     * @callback tagname="locate"
+     * @callback tagname=&quot;locate&quot;
      * @example
         CtripUtil.app_locate(true);
         //定位完成后H5页面会收到回调数据
         var json_obj =
         {
-            tagname:'locate',
+            tagname:&#x27;locate&#x27;,
             param:{
-                "value":{
-                    ctyName: '上海',
-                    addrs:'上海市浦东南路22号',
-                    lat:'121.487899',
-                    lng:'31.249162'
+                &quot;value&quot;:{
+                    ctyName: &#x27;上海&#x27;,
+                    addrs:&#x27;上海市浦东南路22号&#x27;,
+                    lat:&#x27;121.487899&#x27;,
+                    lng:&#x27;31.249162&#x27;
                 },
-                'timeout': '2013/09/12 12:32:36',
-                'locateStatus':0,//iOS新增字段:-1网络不通，当前无法定位,-2定位没有开启
+                &#x27;timeout&#x27;: &#x27;2013/09/12 12:32:36&#x27;,
+                &#x27;locateStatus&#x27;:0,//iOS新增字段:-1网络不通，当前无法定位,-2定位没有开启
             }
         }
         app.callback(json_obj);
@@ -400,7 +494,7 @@ var CtripUtil = {
         var params = {};
         params.is_async = is_async;
 
-        paramString = Internal.makeParamString("Locate", "locate", params, 'locate')
+        paramString = Internal.makeParamString(&quot;Locate&quot;, &quot;locate&quot;, params, &#x27;locate&#x27;)
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -417,16 +511,16 @@ var CtripUtil = {
      * @author jimzhao
      * @since v5.2
      * @example
-        //导航栏总共分为3部分，1.左侧，返回按钮，不能修改; 2. 中间title，可以任意设置; 3.右侧按钮，定义格式为{tagname:"xxxx",value:"btn_title"}
+        //导航栏总共分为3部分，1.左侧，返回按钮，不能修改; 2. 中间title，可以任意设置; 3.右侧按钮，定义格式为{tagname:&quot;xxxx&quot;,value:&quot;btn_title&quot;}
         var nav_json = {
-            "center": [{"tagname": "title", "value":"携程" }],
-            "right": [{"tagname": "click_tag_name", "value":"Click"}]
+            &quot;center&quot;: [{&quot;tagname&quot;: &quot;title&quot;, &quot;value&quot;:&quot;携程&quot; }],
+            &quot;right&quot;: [{&quot;tagname&quot;: &quot;click_tag_name&quot;, &quot;value&quot;:&quot;Click&quot;}]
         }
         var json_str = JSON.stringify(nav_json);
         CtripUtil.app_refresh_nav_bar(json_str);
 
         //调用完成，顶部条title为携程，右侧有一个按钮，按钮文字为Click，用户点击按钮后，H5页面会收到如下回调
-        var cb_json = {tagname:"click_tag_name"};
+        var cb_json = {tagname:&quot;click_tag_name&quot;};
         app.callback(cb_json);
         //H5页面需要处理tagname为click_tag_name的事件
      */
@@ -434,9 +528,9 @@ var CtripUtil = {
         if (Internal.isNotEmptyString(nav_bar_config_json)) {
             jsonObj = JSON.parse(nav_bar_config_json);
 
-            jsonObj.service = "NavBar";
-            jsonObj.action = "refresh";
-            jsonObj.callback_tagname = "refresh_nav_bar";
+            jsonObj.service = &quot;NavBar&quot;;
+            jsonObj.action = &quot;refresh&quot;;
+            jsonObj.callback_tagname = &quot;refresh_nav_bar&quot;;
 
             paramString = JSON.stringify(jsonObj);
             if (Internal.isIOS) {
@@ -459,11 +553,11 @@ var CtripUtil = {
      * @author jimzhao
      * @example 
      //当前H5页面打开ctrip.com
-     CtripUtil.app_open_url("http://www.ctrip.com", 0);
+     CtripUtil.app_open_url(&quot;http://www.ctrip.com&quot;, 0);
      //进入App的酒店详情页
-     CtripUtil.app_open_url("ctrip://wireless/hotel?id=1234", 1);
+     CtripUtil.app_open_url(&quot;ctrip://wireless/hotel?id=1234&quot;, 1);
      //开启新的H5页面，进入m.ctrip.com
-     CtripUtil.app_open_url("http://m.ctrip.com", 2, "Ctrip H5首页");
+     CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&quot;);
      */
     app_open_url:function(openUrl, targetMode, title) {
         var params = {};
@@ -471,7 +565,7 @@ var CtripUtil = {
         params.title = title;
         params.targetMode = targetMode;
 
-        paramString = Internal.makeParamString("Util", "openUrl", params, "open_url");
+        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;openUrl&quot;, params, &quot;open_url&quot;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -489,7 +583,7 @@ var CtripUtil = {
      * @example CtripUtil.app_check_update();
      */
     app_check_update:function() {
-        paramString = Internal.makeParamString("Util", "checkUpdate", null, "check_update");
+        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;checkUpdate&quot;, null, &quot;check_update&quot;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -507,7 +601,7 @@ var CtripUtil = {
      * @example CtripUtil.app_recommend_app_to_friends();
      */
     app_recommend_app_to_friends:function() {
-        paramString = Internal.makeParamString("Util", "recommendAppToFriends", null, "recommend_app_to_friends");
+        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;recommendAppToFriends&quot;, null, &quot;recommend_app_to_friends&quot;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -525,7 +619,7 @@ var CtripUtil = {
      * @example CtripUtil.app_add_weixin_friend();
      */
     app_add_weixin_friend:function() {
-        paramString = Internal.makeParamString("Util", "addWeixinFriend", null, "add_weixin_friend");
+        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;addWeixinFriend&quot;, null, &quot;add_weixin_friend&quot;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -544,14 +638,14 @@ var CtripUtil = {
      * @author jimzhao
      * @example
       //跳转到我的携程首页
-      CtripUtil.app_cross_package_href("myctrip", "index.html?ver=5.2"); 
+      CtripUtil.app_cross_package_href(&quot;myctrip&quot;, &quot;index.html?ver=5.2&quot;); 
      */
     app_cross_package_href:function(path, param) {
         var params = {};
         params.path = path;
         params.param = param;
 
-        paramString = Internal.makeParamString("Util", "crossPackageJumpUrl", params, "cross_package_href");
+        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;crossPackageJumpUrl&quot;, params, &quot;cross_package_href&quot;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -569,7 +663,7 @@ var CtripUtil = {
      * @example CtripUtil.app_show_newest_introduction();
      */
     app_show_newest_introduction:function() {
-        paramString = Internal.makeParamString("Util", "showNewestIntroduction", null, "show_newest_introduction");
+        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;showNewestIntroduction&quot;, null, &quot;show_newest_introduction&quot;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -589,13 +683,13 @@ var CtripUtil = {
      //调用完成后，H5页面会收到如下回调数据
      var json_obj = 
      {
-        tagname:"check_network_status",
+        tagname:&quot;check_network_status&quot;,
         hasNetwork:true,//布尔值返回是否有网络
      }
      app.callback(json_obj);
      */
     app_check_network_status:function() {
-        paramString = Internal.makeParamString("Util", "checkNetworkStatus", null, "check_network_status");
+        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;checkNetworkStatus&quot;, null, &quot;check_network_status&quot;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -613,11 +707,11 @@ var CtripUtil = {
      * @since v5.2
      * @author jimzhao
      * @example 
-     CtripUtil.app_check_app_install_status("ctrip://wireless", "com.ctrip.view");
+     CtripUtil.app_check_app_install_status(&quot;ctrip://wireless&quot;, &quot;com.ctrip.view&quot;);
      //调用完成后，H5页面会收到如下回调数据
      var json_obj = 
      {
-        tagname:"check_app_install_status",
+        tagname:&quot;check_app_install_status&quot;,
         isInstalledApp:true,//布尔值返回是否有安装
      }
      app.callback(json_obj);
@@ -627,7 +721,7 @@ var CtripUtil = {
         params.openUrl = openUrl;
         params.packageName = packageName;
 
-        paramString = Internal.makeParamString("Util", "checkAppInstallStatus", params, "check_app_install_status");
+        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;checkAppInstallStatus&quot;, params, &quot;check_app_install_status&quot;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -644,14 +738,14 @@ var CtripUtil = {
      * @method app_refresh_native_page
      * @since v5.2
      * @author jimzhao
-     * @example CtripUtil.app_refresh_native_page("xxxxPageName", "xxxx_json_string");
+     * @example CtripUtil.app_refresh_native_page(&quot;xxxxPageName&quot;, &quot;xxxx_json_string&quot;);
      */
     app_refresh_native_page:function(pageName, jsonStr) {
         var params = {};
         params.pageName = pageName;
         params.jsonStr = jsonStr;
 
-        paramString = Internal.makeParamString("Util", "refreshNativePage", params, "refresh_native_page");
+        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;refreshNativePage&quot;, params, &quot;refresh_native_page&quot;);
         if(Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -667,10 +761,10 @@ var CtripUtil = {
      * @method app_copy_string_to_clipboard
      * @since v5.3
      * @author jimzhao
-     * @example CtripUtil.app_copy_string_to_clipboard("words_to_be_copy_xxxxxx");
+     * @example CtripUtil.app_copy_string_to_clipboard(&quot;words_to_be_copy_xxxxxx&quot;);
      */
     app_copy_string_to_clipboard:function(toCopyStr) {
-        var startVersion = "5.3";
+        var startVersion = &quot;5.3&quot;;
         if (!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
             return;
@@ -678,7 +772,7 @@ var CtripUtil = {
         var params = {};
         params.copyString = toCopyStr;
 
-        paramString = Internal.makeParamString("Util", "copyToClipboard", params, "copy_string_to_clipboard");
+        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;copyToClipboard&quot;, params, &quot;copy_string_to_clipboard&quot;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -690,7 +784,7 @@ var CtripUtil = {
 
     /**
      * @description 从粘贴板读取复制的文字
-     * @callback tagname="read_copied_string_from_clipboard";//返回当前粘贴板中的文字key=copiedString
+     * @callback tagname=&quot;read_copied_string_from_clipboard&quot;;//返回当前粘贴板中的文字key=copiedString
      * @method app_read_copied_string_from_clipboard
      * @since v5.3
      * @author jimzhao
@@ -699,19 +793,19 @@ var CtripUtil = {
         //调用该函数之后，H5会收到如下回调
         var json_obj = 
         {
-            tagname:"read_copied_string_from_clipboard",
-            copiedString:"words_copied_xxxxxx";
+            tagname:&quot;read_copied_string_from_clipboard&quot;,
+            copiedString:&quot;words_copied_xxxxxx&quot;;
         }
         app.callback(json_obj);
      */
     app_read_copied_string_from_clipboard:function() {
-        var startVersion = "5.3";
+        var startVersion = &quot;5.3&quot;;
         if (!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
             return;
         }
 
-        paramString = Internal.makeParamString("Util", "readCopiedStringFromClipboard", null, "read_copied_string_from_clipboard");
+        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;readCopiedStringFromClipboard&quot;, null, &quot;read_copied_string_from_clipboard&quot;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -728,10 +822,10 @@ var CtripUtil = {
      * @method app_call_system_share
      * @since v5.3
      * @author jimzhao
-     * @example CtripUtil.app_call_system_share("../wb_cache/pkg_name/md5_url_hash", "share to sina weibo");
+     * @example CtripUtil.app_call_system_share(&quot;../wb_cache/pkg_name/md5_url_hash&quot;, &quot;share to sina weibo&quot;);
      */
     app_call_system_share:function(image_relative_path, text) {
-        var startVersion = "5.3";
+        var startVersion = &quot;5.3&quot;;
         if (!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
             return;
@@ -740,7 +834,7 @@ var CtripUtil = {
         params.imageRelativePath = image_relative_path;
         params.text = text;
 
-        paramString = Internal.makeParamString("Util", "callSystemShare", params, "call_system_share");
+        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;callSystemShare&quot;, params, &quot;call_system_share&quot;);
 
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
@@ -758,17 +852,17 @@ var CtripUtil = {
      * @since v5.3
      * @author jimzhao
      * @example
-     CtripUtil.app_download_data("http://www.baidu.com/img/bdlogo.gif");
+     CtripUtil.app_download_data(&quot;http://www.baidu.com/img/bdlogo.gif&quot;);
      //调用该函数后，native会返回H5内容
      var json_obj = {
-        tagname:"download_data",
-        error_code:"xxxxx",//param_error,download_faild
-        param:{downloadUrl:"http://www.baidu.com/bdlogo.gif", savedPath:"../wb_cache/pkg_name/md5_url_hash"}
+        tagname:&quot;download_data&quot;,
+        error_code:&quot;xxxxx&quot;,//param_error,download_faild
+        param:{downloadUrl:&quot;http://www.baidu.com/bdlogo.gif&quot;, savedPath:&quot;../wb_cache/pkg_name/md5_url_hash&quot;}
      };
      app.callback(json_obj);
      */
     app_download_data:function(download_url) {
-        var startVersion = "5.3";
+        var startVersion = &quot;5.3&quot;;
         if (!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
             return;
@@ -778,7 +872,7 @@ var CtripUtil = {
         params.downloadUrl = download_url;
         params.pageUrl = window.location.href;
 
-        var paramString = Internal.makeParamString("Util", "downloadData",params,"download_data");
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;downloadData&quot;,params,&quot;download_data&quot;);
         if (Internal.isIOS) {
             var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -804,42 +898,42 @@ var CtripUser = {
      CtripUser.app_member_login();
      //调用完成后，H5会收到如下数据
      var userInfo = {
-        "timeout":"2013/09/12",
-        "data":
+        &quot;timeout&quot;:&quot;2013/09/12&quot;,
+        &quot;data&quot;:
         {
-          "LoginName":"wwwwww",
-          "UserID":"21634352BAC43044380A7807B0699491",
-          "IsNonUser":false,
-          "UserName":"测试",
-          "Mobile":"13845612110",
-          "LoginToken":"",
-          "LoginCode":0,
-          "LoginErrMsg":"登录成功！",
-          "Address":"",
-          "Birthday":"19841010",
-          "Experience":1453333973000,//微妙timestamp
-          "Gender":1,
-          "PostCode":"111111",
-          "VipGrade":30,
-          "VipGradeRemark":"钻石贵宾",
-          "Email":"wang_peng@163.com",
-          "ExpiredTime":"2013-09-12",
-          "Auth":"079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219",
-          "IsRemember":0,
-          "BindMobile":18688888888
+          &quot;LoginName&quot;:&quot;wwwwww&quot;,
+          &quot;UserID&quot;:&quot;21634352BAC43044380A7807B0699491&quot;,
+          &quot;IsNonUser&quot;:false,
+          &quot;UserName&quot;:&quot;测试&quot;,
+          &quot;Mobile&quot;:&quot;13845612110&quot;,
+          &quot;LoginToken&quot;:&quot;&quot;,
+          &quot;LoginCode&quot;:0,
+          &quot;LoginErrMsg&quot;:&quot;登录成功！&quot;,
+          &quot;Address&quot;:&quot;&quot;,
+          &quot;Birthday&quot;:&quot;19841010&quot;,
+          &quot;Experience&quot;:1453333973000,//微妙timestamp
+          &quot;Gender&quot;:1,
+          &quot;PostCode&quot;:&quot;111111&quot;,
+          &quot;VipGrade&quot;:30,
+          &quot;VipGradeRemark&quot;:&quot;钻石贵宾&quot;,
+          &quot;Email&quot;:&quot;wang_peng@163.com&quot;,
+          &quot;ExpiredTime&quot;:&quot;2013-09-12&quot;,
+          &quot;Auth&quot;:&quot;079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219&quot;,
+          &quot;IsRemember&quot;:0,
+          &quot;BindMobile&quot;:18688888888
         },  
-        "timeby":1
+        &quot;timeby&quot;:1
     }
 
     var json_obj =
     {
-        tagname:"member_login",
+        tagname:&quot;member_login&quot;,
         param:userInfo,
     }
     app.callback(json_obj);
      */
     app_member_login:function() {
-        paramString =  Internal.makeParamString("User", "memberLogin", null, 'member_login');
+        paramString =  Internal.makeParamString(&quot;User&quot;, &quot;memberLogin&quot;, null, &#x27;member_login&#x27;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -860,42 +954,42 @@ var CtripUser = {
       //调用后，H5会收到native回调的数据
       //回调的数据格式参考app_member_login()
      var userInfo = {
-        "timeout":"2013/09/12",
-        "data":
+        &quot;timeout&quot;:&quot;2013/09/12&quot;,
+        &quot;data&quot;:
         {
-          "LoginName":"wwwwww",
-          "UserID":"21634352BAC43044380A7807B0699491",
-          "IsNonUser":false,
-          "UserName":"测试",
-          "Mobile":"13845612110",
-          "LoginToken":"",
-          "LoginCode":0,
-          "LoginErrMsg":"登录成功！",
-          "Address":"",
-          "Birthday":"19841010",
-          "Experience":1453333973000,//微妙timestamp
-          "Gender":1,
-          "PostCode":"111111",
-          "VipGrade":30,
-          "VipGradeRemark":"钻石贵宾",
-          "Email":"wang_peng@163.com",
-          "ExpiredTime":"2013-09-12",
-          "Auth":"079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219",
-          "IsRemember":0,
-          "BindMobile":18688888888
+          &quot;LoginName&quot;:&quot;wwwwww&quot;,
+          &quot;UserID&quot;:&quot;21634352BAC43044380A7807B0699491&quot;,
+          &quot;IsNonUser&quot;:false,
+          &quot;UserName&quot;:&quot;测试&quot;,
+          &quot;Mobile&quot;:&quot;13845612110&quot;,
+          &quot;LoginToken&quot;:&quot;&quot;,
+          &quot;LoginCode&quot;:0,
+          &quot;LoginErrMsg&quot;:&quot;登录成功！&quot;,
+          &quot;Address&quot;:&quot;&quot;,
+          &quot;Birthday&quot;:&quot;19841010&quot;,
+          &quot;Experience&quot;:1453333973000,//微妙timestamp
+          &quot;Gender&quot;:1,
+          &quot;PostCode&quot;:&quot;111111&quot;,
+          &quot;VipGrade&quot;:30,
+          &quot;VipGradeRemark&quot;:&quot;钻石贵宾&quot;,
+          &quot;Email&quot;:&quot;wang_peng@163.com&quot;,
+          &quot;ExpiredTime&quot;:&quot;2013-09-12&quot;,
+          &quot;Auth&quot;:&quot;079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219&quot;,
+          &quot;IsRemember&quot;:0,
+          &quot;BindMobile&quot;:18688888888
         },  
-        "timeby":1
+        &quot;timeby&quot;:1
     }
 
     var json_obj =
     {
-        tagname:"member_login",
+        tagname:&quot;member_login&quot;,
         param:userInfo,
     }
     app.callback(json_obj);
       */
     app_non_member_login:function() {
-        paramString =  Internal.makeParamString("User", "nonMemberLogin", null, 'non_member_login');
+        paramString =  Internal.makeParamString(&quot;User&quot;, &quot;nonMemberLogin&quot;, null, &#x27;non_member_login&#x27;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -917,42 +1011,42 @@ var CtripUser = {
       //调用后，H5会收到native回调的数据
       //回调的数据格式参考app_member_login()
      var userInfo = {
-        "timeout":"2013/09/12",
-        "data":
+        &quot;timeout&quot;:&quot;2013/09/12&quot;,
+        &quot;data&quot;:
         {
-          "LoginName":"wwwwww",
-          "UserID":"21634352BAC43044380A7807B0699491",
-          "IsNonUser":false,
-          "UserName":"测试",
-          "Mobile":"13845612110",
-          "LoginToken":"",
-          "LoginCode":0,
-          "LoginErrMsg":"登录成功！",
-          "Address":"",
-          "Birthday":"19841010",
-          "Experience":1453333973000,//微妙timestamp
-          "Gender":1,
-          "PostCode":"111111",
-          "VipGrade":30,
-          "VipGradeRemark":"钻石贵宾",
-          "Email":"wang_peng@163.com",
-          "ExpiredTime":"2013-09-12",
-          "Auth":"079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219",
-          "IsRemember":0,
-          "BindMobile":18688888888
+          &quot;LoginName&quot;:&quot;wwwwww&quot;,
+          &quot;UserID&quot;:&quot;21634352BAC43044380A7807B0699491&quot;,
+          &quot;IsNonUser&quot;:false,
+          &quot;UserName&quot;:&quot;测试&quot;,
+          &quot;Mobile&quot;:&quot;13845612110&quot;,
+          &quot;LoginToken&quot;:&quot;&quot;,
+          &quot;LoginCode&quot;:0,
+          &quot;LoginErrMsg&quot;:&quot;登录成功！&quot;,
+          &quot;Address&quot;:&quot;&quot;,
+          &quot;Birthday&quot;:&quot;19841010&quot;,
+          &quot;Experience&quot;:1453333973000,//微妙timestamp
+          &quot;Gender&quot;:1,
+          &quot;PostCode&quot;:&quot;111111&quot;,
+          &quot;VipGrade&quot;:30,
+          &quot;VipGradeRemark&quot;:&quot;钻石贵宾&quot;,
+          &quot;Email&quot;:&quot;wang_peng@163.com&quot;,
+          &quot;ExpiredTime&quot;:&quot;2013-09-12&quot;,
+          &quot;Auth&quot;:&quot;079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219&quot;,
+          &quot;IsRemember&quot;:0,
+          &quot;BindMobile&quot;:18688888888
         },  
-        "timeby":1
+        &quot;timeby&quot;:1
     }
 
     var json_obj =
     {
-        tagname:"member_login",
+        tagname:&quot;member_login&quot;,
         param:userInfo,
     }
     app.callback(json_obj);
       */
     app_member_auto_login:function() {
-        paramString =  Internal.makeParamString("User", "memberAutoLogin", null, 'member_auto_login');
+        paramString =  Internal.makeParamString(&quot;User&quot;, &quot;memberAutoLogin&quot;, null, &#x27;member_auto_login&#x27;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -974,42 +1068,42 @@ var CtripUser = {
       //调用后，H5会收到native回调的数据
       //回调的数据格式参考app_member_login()
      var userInfo = {
-        "timeout":"2013/09/12",
-        "data":
+        &quot;timeout&quot;:&quot;2013/09/12&quot;,
+        &quot;data&quot;:
         {
-          "LoginName":"wwwwww",
-          "UserID":"21634352BAC43044380A7807B0699491",
-          "IsNonUser":false,
-          "UserName":"测试",
-          "Mobile":"13845612110",
-          "LoginToken":"",
-          "LoginCode":0,
-          "LoginErrMsg":"登录成功！",
-          "Address":"",
-          "Birthday":"19841010",
-          "Experience":1453333973000,//微妙timestamp
-          "Gender":1,
-          "PostCode":"111111",
-          "VipGrade":30,
-          "VipGradeRemark":"钻石贵宾",
-          "Email":"wang_peng@163.com",
-          "ExpiredTime":"2013-09-12",
-          "Auth":"079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219",
-          "IsRemember":0,
-          "BindMobile":18688888888
+          &quot;LoginName&quot;:&quot;wwwwww&quot;,
+          &quot;UserID&quot;:&quot;21634352BAC43044380A7807B0699491&quot;,
+          &quot;IsNonUser&quot;:false,
+          &quot;UserName&quot;:&quot;测试&quot;,
+          &quot;Mobile&quot;:&quot;13845612110&quot;,
+          &quot;LoginToken&quot;:&quot;&quot;,
+          &quot;LoginCode&quot;:0,
+          &quot;LoginErrMsg&quot;:&quot;登录成功！&quot;,
+          &quot;Address&quot;:&quot;&quot;,
+          &quot;Birthday&quot;:&quot;19841010&quot;,
+          &quot;Experience&quot;:1453333973000,//微妙timestamp
+          &quot;Gender&quot;:1,
+          &quot;PostCode&quot;:&quot;111111&quot;,
+          &quot;VipGrade&quot;:30,
+          &quot;VipGradeRemark&quot;:&quot;钻石贵宾&quot;,
+          &quot;Email&quot;:&quot;wang_peng@163.com&quot;,
+          &quot;ExpiredTime&quot;:&quot;2013-09-12&quot;,
+          &quot;Auth&quot;:&quot;079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219&quot;,
+          &quot;IsRemember&quot;:0,
+          &quot;BindMobile&quot;:18688888888
         },  
-        "timeby":1
+        &quot;timeby&quot;:1
     }
 
     var json_obj =
     {
-        tagname:"member_login",
+        tagname:&quot;member_login&quot;,
         param:userInfo,
     }
     app.callback(json_obj);
       */
     app_member_register:function() {
-        paramString = Internal.makeParamString("User", "memberRegister", null, 'member_register');
+        paramString = Internal.makeParamString(&quot;User&quot;, &quot;memberRegister&quot;, null, &#x27;member_register&#x27;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -1020,3 +1114,22 @@ var CtripUser = {
     }
 
 };
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
