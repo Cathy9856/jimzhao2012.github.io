@@ -38,6 +38,9 @@
                 //处理登录事件
                 alert("用户登录完成:"+JSON.stringify(json_obj));
               }
+              else if (tagname == "init_member_H5_info") {
+                alert("received data=="+JSON.stringify(json_obj));
+              }
             }
         };
 
