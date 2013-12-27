@@ -4,7 +4,7 @@
    <title>jimzhao.com</title>
    <link href="http://jimzhao.com/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="http://jimzhao.com" rel="alternate" type="text/html" />
-   <updated>2013-12-27T17:42:55+08:00</updated>
+   <updated>2013-12-27T20:07:24+08:00</updated>
    <id>http://jimzhao.com</id>
    <author>
      <name></name>
@@ -246,11 +246,12 @@ jsonParam为JSON对象类型,其内部参数格式如下:&lt;/p&gt;
 &lt;li&gt;1.将html文件存储为home.html. 然后将home.html, bridge.js放入文件夹demo,使用zip压缩demo文件夹，得到demo.zip；&lt;/li&gt;
 &lt;li&gt;2.iOS通过&lt;a targe=&quot;_blank&quot; href=&quot;http://support.apple.com/kb/HT4094?viewlocale=zh_CN&amp;locale=zh_CN&quot;&gt;iTunes文件共享&lt;/a&gt;将demo.zip文件copy到携程旅行的文稿目录;&lt;/li&gt;
 &lt;img src=&quot;/images/file_sharing.jpg&quot; width=&quot;620&quot;&gt;&lt;/img&gt;
-&lt;li&gt;3.在下图的页面中，输入新增模块的相对路径，如zip包解压之后为demo，首页地址为demo/home.index.html&lt;/li&gt;
+&lt;li&gt;3.进入H5开发设置页面。步骤：进入用车－》点击底部H5设置按钮即可&lt;/li&gt;
+&lt;li&gt;4.在下图的页面中，输入新增模块的相对路径，如zip包解压之后为demo，首页地址为demo/home.index.html&lt;/li&gt;
 &lt;img src=&quot;/images/input.jpg&quot;&gt;&lt;/img&gt;
-&lt;li&gt;4.点击新加入的测试入口进入测试；&lt;/li&gt;
+&lt;li&gt;5.点击新加入的测试入口进入测试；&lt;/li&gt;
 &lt;img src=&quot;/images/input_done.jpg&quot;&gt;&lt;/img&gt;
-&lt;li&gt;5.测试页面内容显示如下；&lt;/li&gt;
+&lt;li&gt;6.测试页面内容显示如下；&lt;/li&gt;
 &lt;img src=&quot;/images/demo.png&quot;&gt; &lt;/img&gt;
 &lt;/ul&gt;
 
