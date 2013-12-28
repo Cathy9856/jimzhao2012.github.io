@@ -5,7 +5,7 @@
     * Author:         jimzhao
     -->
     <meta charset="utf-8" />
-    <title>Welcome | jimzhao.com</title>
+    <title>Hybrid framework | jimzhao.com</title>
     <meta name="author" content="jimzhao" />
     <meta name="description" content="jimzhao's doc" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
@@ -187,21 +187,108 @@ $("a#api").click(function(){
     @media screen and (max-width: 1020px){
         body { background:#fff; }
     }
+
+    #content {width:1060px;margin:90px auto 60px; margin-left:40px;margin-top:40px; min-height:400px;height:auto !important;height:400px; }
+    .active { background:#ccc;}
 </style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    var href = window.location.href;
+    $("li#doc-description").attr("class","");
+    $("li#doc-learning").attr("class","");
+    $("li#doc-entry").attr("class","");
+    $("li#doc-debug").attr("class","");
+    $("li#doc-faq").attr("class","");
+    $("li#doc-api").attr("class","");
+
+    var val = "active";
+    if (href.endWith("/doc-description/")) {
+        $("li#doc-description").attr("class",val);
+    }
+    else if (href.endWith("/doc-entry/")) {
+        $("li#doc-entry").attr("class",val);
+    } 
+    else if (href.endWith("/doc-learning/")) {
+        $("li#doc-learning").attr("class",val);
+    } 
+    else if (href.endWith("/doc-debug/")) {
+        $("li#doc-debug").attr("class",val);
+    } 
+    else if (href.endWith("/doc-faq/")) {
+        $("li#doc-faq").attr("class",val);
+    }
+     else if (href.endWith("/doc-api/")) {
+        $("li#doc-api").attr("class",val);
+    }
+});
+</script>
+<div class="container" style="width:120px; height:100%; position:fixed;">
+     <div class="row"> 
+       <div class="span3">
+          <div class="well" style="padding:10px 0;margin-top:0px;">
+             <ul class="nav nav-list">
+<!--                 <li class="nav-header">&nbsp;&nbsp;&nbsp;&nbsp;开发教程</li>
+ -->                <li class="divider"></li>
+                <li id="doc-description" class="active"><a href="/doc-description/"><i class="icon-white icon-home"></i>1.平台描述</a></li>
+                <li id="doc-entry" ><a href="/doc-entry/"><i class="icon-flag"></i>2.快速入门</a></li>
+                <li id="doc-learning"><a href="/doc-learning/"><i class="icon-flag"></i>3.数据交互</a></li>
+                <li id="doc-debug"><a href="/doc-debug/"><i class="icon-folder-open"></i>4.打包&更新</a></li>
+                <li id="doc-faq"><a href="/doc-faq/"><i class="icon-file"></i>5.常见问题</a></li>
+                <li id="doc-api"><a href="/doc-api/"><i class="icon-user"></i>6.API文档</a></li>
+              <!--   <li><a href="idea.html"><i class="icon-fire"></i>想法</a></li>
+                <li><a href="#"><i class="icon-warning-sign"></i>Bug</a></li>
+                <li><a href="#"><i class="icon-cog"></i>项目设置</a></li> -->
+             </ul>
+          </div>
+       </div>
+     </div>
+</div>
+
 
 <div id="content">
     <div class="entry">
-        <h1 class="entry-title"><a href="/welcome" title="Welcome">Welcome</a></h1>
-        <p class="entry-date">2013-12-25</p>
+<!--         <h1 class="entry-title"><a href="/doc-debug" title="Hybrid framework">Hybrid framework</a></h1>
+        <p class="entry-date">2013-12-28</p> -->
 
 
-        <p>欢迎使用Ctrip Hybrid 开发框架。</p>
+        <p><img src="/images/Mou_128.png" alt="Mou icon"></p>
 
-<p>该文档的主要阅读者为：H5开发人员，广告网页设计人员。</p>
+<h2 id="toc_0">4.    打包&amp;更新</h2>
 
-<p>通过该文档的阅读，开发者能开发出内嵌在携程无线客户端的独立功能的 webapp， 或者是和app有密切交互的广告页面。</p>
+<p>该部分的内容都是将webapp包下载到app 本地，然后打开的方式。<br/>
+对于所有的在线HTTP站点页面，保持URL地址不变，站点随时动态更新即可；<br/></p>
 
-<p>如有任何问题，请<a href="mailto:xgzhao@ctrip.com">Email</a>我。</p>
+<h3 id="toc_1">4.1  目录结构</h3>
+
+<p>app内部有一个指定的webapp目录，所有的hybrid app都是在这个目录下面，具体参考下图。</p>
+
+<p><img src="/images/wb_struct.png" alt="icon webapp struct"></p>
+
+<p>开发者开发的app最终都会被下载保存到该目录，因此不能与已经存在打目录重复。在开发者站点有入口可供查询。</p>
+
+<h3 id="toc_2">4.2  更新机制</h3>
+
+<p>1.app启动时候，会做增量更新，服务器端告诉app，是否有H5包需要更新；<br/>
+2.如果有H5包需要更新，app会去获取所有需要更新的H5包相关信息；<br/></p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">H5包即为开发好的webapp的zip包，从服务器获取的主要信息有：
+1.下载地址;
+2.包名,包名为解压到webapp之后的名字;
+3.包的md5 hash值，32位，大写;
+4.包的优先级，优先级从0开始，数字越小，优先级越高
+</code></pre></div>
+<p>3.app根据包的优先级下载这些需要更新或者安装的H5包；</p>
+
+<h3 id="toc_3">4.3  提交方案</h3>
+
+<p>1.准备开发好的webapp的zip包，提供以下信息给服务器端；</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">1.下载地址;
+2.包名,包名为解压到webapp之后的名字;
+3.包的md5 hash值，32位，大写;
+4.包的优先级，优先级从0开始，数字越小，优先级越高
+</code></pre></div>
+<p>2.联系App team，在App里面添加该webapp的入口；<br/>
+3.或者直接通过其它H5 webapp/广告跳转到该webapp；</p>
 
 
      <!--    <div id="disqus_container">

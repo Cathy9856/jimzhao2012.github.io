@@ -35,25 +35,48 @@ String.prototype.endWith = function(oString){
 
 $(document).ready(function(){
     var href = window.location.href;
-     $("a#doc").parent().attr("class","");
-     $("a#home").parent().attr("class","");
-     $("a#mtest").parent().attr("class","");
+    $("a#doc").parent().attr("class","");
+    $("li#test").attr("class","");
 
-    if (href.endWith("whf-doc/")) {
-        $("a#doc").parent().attr("class","active");
-    }
-    else if (href.endWith("welcome/")) {
+    if (href.endWith("index.html")) {
         $("a#home").parent().attr("class","active");
     }
-    else if (href.endWith("manual-test/")) {
-        $("a#mtest").parent().attr("class","active");
+    else if (href.endWith("/test-manual/")) {
+        $("li#test").attr("class","active");
+    } 
+    else if (href.endWith("/doc-schema/")) {
+        $("li#api").attr("class","active");
+    }
+    else {
+       var isWHFDoc = false;
+       if (href.endWith("/doc-description/")) {
+            isWHFDoc = true;
+        }
+        else if (href.endWith("/doc-entry/")) {
+            isWHFDoc = true;
+        } 
+        else if (href.endWith("/doc-learning/")) {
+            isWHFDoc = true;
+        } 
+        else if (href.endWith("/doc-debug/")) {
+            isWHFDoc = true;
+        } 
+        else if (href.endWith("/doc-faq/")) {
+            isWHFDoc = true;
+        }
+        else if (href.endWith("/doc-api/")) {
+            isWHFDoc = true;
+        }
+        if (isWHFDoc) {
+            $("a#doc").parent().attr("class","active");
+        }
     }
 });
 
 function dismissTabActive() {
      $("a#doc").parent().attr("class","");
-     $("a#home").parent().attr("class","");
-     $("a#mtest").parent().attr("class","");
+     $("li#test").attr("class","");
+     $("li#api").attr("class","");
 };
 
 $("a#atest").click(function(){
@@ -89,7 +112,6 @@ $("a#api").click(function(){
 </style>
 <body>
 
-
   <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -99,33 +121,47 @@ $("a#api").click(function(){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Ctrip Hybrid开发框架</a>
+          <a class="navbar-brand" href="/">Ctrip Hybrid Doc</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a class="ttaa" id="home" href="/welcome/">主页</a></li>
-            <li><a class="ttaa"  id="doc" href="/whf-doc/">开发文档</a></li>
-            <li><a id="mtest" href="/manual-test/">手动测试</a></li>
+            <li><a class="ttaa"  id="doc" href="/doc-description/">开发文档</a></li>
+            
+            <li id="test" class="dropdown">
+              <a onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">测试<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                  <li><a href="/test-manual/">手动测试</a></li>
+                  <li><a target="_blank" href="/qunit/a.html">Qunit自动化测试</a></li>
+              </ul>
+            </li>
+
+            <li id="api" class="dropdown">
+              <a onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">Api文档<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                  <li><a href="/doc-schema/">URL Schema Doc</a></li>
+                  <li><a href="/api/" target="_blank" >JS API Doc</a></li>    
+              </ul>
+            </li>
+
             <li class="dropdown">
-              <a id="download" onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">下载<b class="caret"></b></a>
+              <a id="download" onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">源码下载<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="/code/demo.zip">Demo下载</a></li>
                 <li><a href="/code/bridge.js.zip">JSLib下载</a></li>
                 <li><a href="/code/bridge.min.zip">JSLib 压缩版下载</a></li>
-                <li><a href="itms-services://?action=download-manifest&url=http://210.13.100.191:7001/qunit/cw_install.plist">安装Ctrip Dev App</a></li>
-              <!--   <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li> -->
               </ul>
             </li>
+
+            <li id="install" class="dropdown">
+              <a onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">App安装<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                  <li><a href="itms-services://?action=download-manifest&url=http://210.13.100.191:7001/qunit/cw_install.plist">iOS App安装</a></li>
+                  <li><a onClick="alert('Android App安装将在稍后支持。');" target="_blank" >Android App安装</a></li>    
+              </ul>
+            </li>
+
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a id="atest" onClick="tabClicked()" href="/qunit/a.html">Qunit自动化测试</a></li>
-            <li><a id="urlschema" onClick="tabClicked()" href="/urlschema.html">URL Scheme入口</a></li>
-            <li><a id="api" onClick="tabClicked()" href="/api/">API文档入口</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </div>
 
@@ -151,15 +187,72 @@ $("a#api").click(function(){
     @media screen and (max-width: 1020px){
         body { background:#fff; }
     }
+
+    #content {width:1060px;margin:90px auto 60px; margin-left:40px;margin-top:40px; min-height:400px;height:auto !important;height:400px; }
+    .active { background:#ccc;}
 </style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    var href = window.location.href;
+    $("li#doc-description").attr("class","");
+    $("li#doc-learning").attr("class","");
+    $("li#doc-entry").attr("class","");
+    $("li#doc-debug").attr("class","");
+    $("li#doc-faq").attr("class","");
+    $("li#doc-api").attr("class","");
+
+    var val = "active";
+    if (href.endWith("/doc-description/")) {
+        $("li#doc-description").attr("class",val);
+    }
+    else if (href.endWith("/doc-entry/")) {
+        $("li#doc-entry").attr("class",val);
+    } 
+    else if (href.endWith("/doc-learning/")) {
+        $("li#doc-learning").attr("class",val);
+    } 
+    else if (href.endWith("/doc-debug/")) {
+        $("li#doc-debug").attr("class",val);
+    } 
+    else if (href.endWith("/doc-faq/")) {
+        $("li#doc-faq").attr("class",val);
+    }
+     else if (href.endWith("/doc-api/")) {
+        $("li#doc-api").attr("class",val);
+    }
+});
+</script>
+<div class="container" style="width:120px; height:100%; position:fixed;">
+     <div class="row"> 
+       <div class="span3">
+          <div class="well" style="padding:10px 0;margin-top:0px;">
+             <ul class="nav nav-list">
+<!--                 <li class="nav-header">&nbsp;&nbsp;&nbsp;&nbsp;开发教程</li>
+ -->                <li class="divider"></li>
+                <li id="doc-description" class="active"><a href="/doc-description/"><i class="icon-white icon-home"></i>1.平台描述</a></li>
+                <li id="doc-entry" ><a href="/doc-entry/"><i class="icon-flag"></i>2.快速入门</a></li>
+                <li id="doc-learning"><a href="/doc-learning/"><i class="icon-flag"></i>3.数据交互</a></li>
+                <li id="doc-debug"><a href="/doc-debug/"><i class="icon-folder-open"></i>4.打包&更新</a></li>
+                <li id="doc-faq"><a href="/doc-faq/"><i class="icon-file"></i>5.常见问题</a></li>
+                <li id="doc-api"><a href="/doc-api/"><i class="icon-user"></i>6.API文档</a></li>
+              <!--   <li><a href="idea.html"><i class="icon-fire"></i>想法</a></li>
+                <li><a href="#"><i class="icon-warning-sign"></i>Bug</a></li>
+                <li><a href="#"><i class="icon-cog"></i>项目设置</a></li> -->
+             </ul>
+          </div>
+       </div>
+     </div>
+</div>
+
 
 <div id="content">
     <div class="entry">
-        <h1 class="entry-title"><a href="/manual-test" title="手动测试">手动测试</a></h1>
-        <p class="entry-date">2013-12-25</p>
+<!--         <h1 class="entry-title"><a href="/test-manual" title="手动测试">手动测试</a></h1>
+        <p class="entry-date">2013-12-25</p> -->
 
 
-        <p> <style type="text/css">
+        <p><style type="text/css">
     p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Helvetica; min-height: 16.0px}
     p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Helvetica}
     li.li2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Helvetica; color: #2567e8}
@@ -168,32 +261,30 @@ $("a#api").click(function(){
     ul.ul1 {list-style-type: disc}
   </style></p>
 
-<p> <script type="text/javascript" src="/code/bridge.js"></script></p>
+<p><script type="text/javascript" src="/code/bridge.js"></script></p>
 
-<p>  <script type="text/javascript">
+<p><script type="text/javascript">
   function testJs() {
-    alert('Js alert, invoke js function from OC');
-    return "alert result NULL";
+    alert(&#39;Js alert, invoke js function from OC&#39;);
+    return &quot;alert result NULL&quot;;
   }</p>
 
-<p>  var app = {
+<p>var app = {
         callback: function(jsonobj) {
           var tagname = jsonobj.tagname;</p>
-
-<pre><code>      if ( tagname == 'back') {
+<div class="highlight"><pre><code class="text language-text" data-lang="text">      if ( tagname == &#39;back&#39;) {
         History.back();
       }
-      else if (tagname == "member_login") {
-        alert("手动登录:"+JSON.stringify(jsonobj));
+      else if (tagname == &quot;member_login&quot;) {
+        alert(&quot;手动登录:&quot;+JSON.stringify(jsonobj));
       }
-      else if (tagname == "member_register") {
-        alert("用户注册:"+JSON.stringify(jsonobj));
+      else if (tagname == &quot;member_register&quot;) {
+        alert(&quot;用户注册:&quot;+JSON.stringify(jsonobj));
       }
     }
 };
-</code></pre>
-
-<p>  </script></p>
+</code></pre></div>
+<p></script></p>
 
 <p><ul class="ul1">
    <li class="li2"><a href="ctrip://mainpage?id=132&title=xmxxx">WinPhone link ctrip://mainpage?id=132&amp;title=xmxxx</a></li>
@@ -205,11 +296,11 @@ $("a#api").click(function(){
   <li class="li2"><a onclick="javscript:CtripUtil.app_cross_package_href('myctrip', 'index.html#common/about?newVer=1')">3. 跨包跳转</a></li>
   <br/>
   <li class="li2"><a onclick="javscript:CtripUtil.app_show_newest_introduction()">4. 新版本欢迎页</a></li>
-  <br/>
+  <br/> 
    <li class="li2"><a onclick="javscript:CtripUtil.app_open_url('http://www.baidu.com', 2, 'Baidu')">5. 打开Baidu</a></li>
-  <br/>
+  <br/> 
    <li class="li2"><a onclick="javscript:CtripUtil.app_recommend_app_to_friends()">6. 推荐携程旅行给好友</a></li>
-  <br/>
+  <br/> 
   <li class="li2"><a onclick="javscript:CtripUtil.app_add_weixin_friend()">7. 添加微信好友</a></li>
   <br/>
   <li class="li2"><a onclick="javascript:CtripUtil.app_call_phone('13800000000')">8. 拨打电话</a></li>

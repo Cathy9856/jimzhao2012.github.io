@@ -5,7 +5,7 @@
     * Author:         jimzhao
     -->
     <meta charset="utf-8" />
-    <title>Welcome | jimzhao.com</title>
+    <title>Hybrid framework | jimzhao.com</title>
     <meta name="author" content="jimzhao" />
     <meta name="description" content="jimzhao's doc" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
@@ -187,21 +187,105 @@ $("a#api").click(function(){
     @media screen and (max-width: 1020px){
         body { background:#fff; }
     }
+
+    #content {width:1060px;margin:90px auto 60px; margin-left:40px;margin-top:40px; min-height:400px;height:auto !important;height:400px; }
+    .active { background:#ccc;}
 </style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    var href = window.location.href;
+    $("li#doc-description").attr("class","");
+    $("li#doc-learning").attr("class","");
+    $("li#doc-entry").attr("class","");
+    $("li#doc-debug").attr("class","");
+    $("li#doc-faq").attr("class","");
+    $("li#doc-api").attr("class","");
+
+    var val = "active";
+    if (href.endWith("/doc-description/")) {
+        $("li#doc-description").attr("class",val);
+    }
+    else if (href.endWith("/doc-entry/")) {
+        $("li#doc-entry").attr("class",val);
+    } 
+    else if (href.endWith("/doc-learning/")) {
+        $("li#doc-learning").attr("class",val);
+    } 
+    else if (href.endWith("/doc-debug/")) {
+        $("li#doc-debug").attr("class",val);
+    } 
+    else if (href.endWith("/doc-faq/")) {
+        $("li#doc-faq").attr("class",val);
+    }
+     else if (href.endWith("/doc-api/")) {
+        $("li#doc-api").attr("class",val);
+    }
+});
+</script>
+<div class="container" style="width:120px; height:100%; position:fixed;">
+     <div class="row"> 
+       <div class="span3">
+          <div class="well" style="padding:10px 0;margin-top:0px;">
+             <ul class="nav nav-list">
+<!--                 <li class="nav-header">&nbsp;&nbsp;&nbsp;&nbsp;开发教程</li>
+ -->                <li class="divider"></li>
+                <li id="doc-description" class="active"><a href="/doc-description/"><i class="icon-white icon-home"></i>1.平台描述</a></li>
+                <li id="doc-entry" ><a href="/doc-entry/"><i class="icon-flag"></i>2.快速入门</a></li>
+                <li id="doc-learning"><a href="/doc-learning/"><i class="icon-flag"></i>3.数据交互</a></li>
+                <li id="doc-debug"><a href="/doc-debug/"><i class="icon-folder-open"></i>4.打包&更新</a></li>
+                <li id="doc-faq"><a href="/doc-faq/"><i class="icon-file"></i>5.常见问题</a></li>
+                <li id="doc-api"><a href="/doc-api/"><i class="icon-user"></i>6.API文档</a></li>
+              <!--   <li><a href="idea.html"><i class="icon-fire"></i>想法</a></li>
+                <li><a href="#"><i class="icon-warning-sign"></i>Bug</a></li>
+                <li><a href="#"><i class="icon-cog"></i>项目设置</a></li> -->
+             </ul>
+          </div>
+       </div>
+     </div>
+</div>
+
 
 <div id="content">
     <div class="entry">
-        <h1 class="entry-title"><a href="/welcome" title="Welcome">Welcome</a></h1>
-        <p class="entry-date">2013-12-25</p>
+<!--         <h1 class="entry-title"><a href="/doc-api" title="Hybrid framework">Hybrid framework</a></h1>
+        <p class="entry-date">2013-12-28</p> -->
 
 
-        <p>欢迎使用Ctrip Hybrid 开发框架。</p>
+        <p><img src="/images/Mou_128.png" alt="Mou icon"></p>
 
-<p>该文档的主要阅读者为：H5开发人员，广告网页设计人员。</p>
+<h2 id="toc_0">6.    API手册</h2>
 
-<p>通过该文档的阅读，开发者能开发出内嵌在携程无线客户端的独立功能的 webapp， 或者是和app有密切交互的广告页面。</p>
+<p><nav>
+ <li><a target="_blank" href="/api/index.html">JS API Doc</a></li>
+ <li><a href="/doc-schema/">URL shcema Doc</a></li>
+</nav></p>
 
-<p>如有任何问题，请<a href="mailto:xgzhao@ctrip.com">Email</a>我。</p>
+<p>app主动回调H5页面</p>
+
+<table><thead>
+<tr>
+<th>回调tagname</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>web_view_finished_load</td>
+<td>H5页面加载完成</td>
+</tr>
+<tr>
+<td>web_view_did_appear</td>
+<td>H5页面加载完成后，切换到其它页面之后，回退回来，再次显示时候，通知H5。可能会带有上个H5页面的参数</td>
+</tr>
+<tr>
+<td>web_view_did_active</td>
+<td>H5页面激活，从后台切入前台，通知H5</td>
+</tr>
+<tr>
+<td>back</td>
+<td>用户点击导航栏左上角的返回按钮，H5页面对该tagname要有返回值，返回true，表示H5页面已经处理返回事件，否则会调用native的返回事件</td>
+</tr>
+</tbody></table>
 
 
      <!--    <div id="disqus_container">

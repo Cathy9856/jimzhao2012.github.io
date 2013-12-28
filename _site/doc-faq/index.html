@@ -5,7 +5,7 @@
     * Author:         jimzhao
     -->
     <meta charset="utf-8" />
-    <title>Welcome | jimzhao.com</title>
+    <title>Hybrid framework | jimzhao.com</title>
     <meta name="author" content="jimzhao" />
     <meta name="description" content="jimzhao's doc" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
@@ -187,22 +187,96 @@ $("a#api").click(function(){
     @media screen and (max-width: 1020px){
         body { background:#fff; }
     }
+
+    #content {width:1060px;margin:90px auto 60px; margin-left:40px;margin-top:40px; min-height:400px;height:auto !important;height:400px; }
+    .active { background:#ccc;}
 </style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    var href = window.location.href;
+    $("li#doc-description").attr("class","");
+    $("li#doc-learning").attr("class","");
+    $("li#doc-entry").attr("class","");
+    $("li#doc-debug").attr("class","");
+    $("li#doc-faq").attr("class","");
+    $("li#doc-api").attr("class","");
+
+    var val = "active";
+    if (href.endWith("/doc-description/")) {
+        $("li#doc-description").attr("class",val);
+    }
+    else if (href.endWith("/doc-entry/")) {
+        $("li#doc-entry").attr("class",val);
+    } 
+    else if (href.endWith("/doc-learning/")) {
+        $("li#doc-learning").attr("class",val);
+    } 
+    else if (href.endWith("/doc-debug/")) {
+        $("li#doc-debug").attr("class",val);
+    } 
+    else if (href.endWith("/doc-faq/")) {
+        $("li#doc-faq").attr("class",val);
+    }
+     else if (href.endWith("/doc-api/")) {
+        $("li#doc-api").attr("class",val);
+    }
+});
+</script>
+<div class="container" style="width:120px; height:100%; position:fixed;">
+     <div class="row"> 
+       <div class="span3">
+          <div class="well" style="padding:10px 0;margin-top:0px;">
+             <ul class="nav nav-list">
+<!--                 <li class="nav-header">&nbsp;&nbsp;&nbsp;&nbsp;开发教程</li>
+ -->                <li class="divider"></li>
+                <li id="doc-description" class="active"><a href="/doc-description/"><i class="icon-white icon-home"></i>1.平台描述</a></li>
+                <li id="doc-entry" ><a href="/doc-entry/"><i class="icon-flag"></i>2.快速入门</a></li>
+                <li id="doc-learning"><a href="/doc-learning/"><i class="icon-flag"></i>3.数据交互</a></li>
+                <li id="doc-debug"><a href="/doc-debug/"><i class="icon-folder-open"></i>4.打包&更新</a></li>
+                <li id="doc-faq"><a href="/doc-faq/"><i class="icon-file"></i>5.常见问题</a></li>
+                <li id="doc-api"><a href="/doc-api/"><i class="icon-user"></i>6.API文档</a></li>
+              <!--   <li><a href="idea.html"><i class="icon-fire"></i>想法</a></li>
+                <li><a href="#"><i class="icon-warning-sign"></i>Bug</a></li>
+                <li><a href="#"><i class="icon-cog"></i>项目设置</a></li> -->
+             </ul>
+          </div>
+       </div>
+     </div>
+</div>
+
 
 <div id="content">
     <div class="entry">
-        <h1 class="entry-title"><a href="/welcome" title="Welcome">Welcome</a></h1>
-        <p class="entry-date">2013-12-25</p>
+<!--         <h1 class="entry-title"><a href="/doc-faq" title="Hybrid framework">Hybrid framework</a></h1>
+        <p class="entry-date">2013-12-28</p> -->
 
 
-        <p>欢迎使用Ctrip Hybrid 开发框架。</p>
+        <p><img src="/images/Mou_128.png" alt="Mou icon"></p>
 
-<p>该文档的主要阅读者为：H5开发人员，广告网页设计人员。</p>
+<h2 id="toc_0">5.    常见问题FAQ</h2>
 
-<p>通过该文档的阅读，开发者能开发出内嵌在携程无线客户端的独立功能的 webapp， 或者是和app有密切交互的广告页面。</p>
+<p>1.何时可以调用JS Lib里面的API?</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">答：收到app回调给H5页面web_view_finished_load的回调之后可以调用；
+</code></pre></div>
+<p>2.Webview缓存为何无法清空？</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">答：为解决该问题，请点击H5页面左下角的刷新按钮，手动强制刷新。
+</code></pre></div>
+<p>3.为什么会出现白屏的情况？</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">答：出现白屏的情况有很多，归纳下来
 
-<p>如有任何问题，请<a href="mailto:xgzhao@ctrip.com">Email</a>我。</p>
 
+a.程序bug，比如页面有网络请求，请求完成之后，页面才渲染，这个时候，如果网络状况不好，就会出现白屏,解决方面，H5页面不要用阻塞加载，不要去等待网络请求数据返回；
+
+
+b.app的webview有bug，这个是系统控件的不稳定性导致的，测试过程中出现比例很小；
+
+
+c.android上面，某些URL(比如URL带＃)无法调整，出现页面无法打开的错误白屏页面，这个是由于在某些2.3固件ROM上出现的问题，对特殊URL解析失败；
+</code></pre></div>
+<p>4.增量更新包无法更新成功？</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">答：因为更新逻辑比较复杂，请查看H5设置页面里面的更新日志，有详细的纪录，所有的更新步骤都有
+</code></pre></div>
 
      <!--    <div id="disqus_container">
             <a href="#" class="comment" onclick="return false;">点击查看评论</a>

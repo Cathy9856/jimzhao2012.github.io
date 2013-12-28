@@ -35,25 +35,48 @@ String.prototype.endWith = function(oString){
 
 $(document).ready(function(){
     var href = window.location.href;
-     $("a#doc").parent().attr("class","");
-     $("a#home").parent().attr("class","");
-     $("a#mtest").parent().attr("class","");
+    $("a#doc").parent().attr("class","");
+    $("li#test").attr("class","");
 
-    if (href.endWith("whf-doc/")) {
-        $("a#doc").parent().attr("class","active");
-    }
-    else if (href.endWith("welcome/")) {
+    if (href.endWith("index.html")) {
         $("a#home").parent().attr("class","active");
     }
-    else if (href.endWith("manual-test/")) {
-        $("a#mtest").parent().attr("class","active");
+    else if (href.endWith("/test-manual/")) {
+        $("li#test").attr("class","active");
+    } 
+    else if (href.endWith("/doc-schema/")) {
+        $("li#api").attr("class","active");
+    }
+    else {
+       var isWHFDoc = false;
+       if (href.endWith("/doc-description/")) {
+            isWHFDoc = true;
+        }
+        else if (href.endWith("/doc-entry/")) {
+            isWHFDoc = true;
+        } 
+        else if (href.endWith("/doc-learning/")) {
+            isWHFDoc = true;
+        } 
+        else if (href.endWith("/doc-debug/")) {
+            isWHFDoc = true;
+        } 
+        else if (href.endWith("/doc-faq/")) {
+            isWHFDoc = true;
+        }
+        else if (href.endWith("/doc-api/")) {
+            isWHFDoc = true;
+        }
+        if (isWHFDoc) {
+            $("a#doc").parent().attr("class","active");
+        }
     }
 });
 
 function dismissTabActive() {
      $("a#doc").parent().attr("class","");
-     $("a#home").parent().attr("class","");
-     $("a#mtest").parent().attr("class","");
+     $("li#test").attr("class","");
+     $("li#api").attr("class","");
 };
 
 $("a#atest").click(function(){
@@ -89,7 +112,6 @@ $("a#api").click(function(){
 </style>
 <body>
 
-
   <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -99,33 +121,47 @@ $("a#api").click(function(){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Ctrip Hybrid开发框架</a>
+          <a class="navbar-brand" href="/">Ctrip Hybrid Doc</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a class="ttaa" id="home" href="/welcome/">主页</a></li>
-            <li><a class="ttaa"  id="doc" href="/whf-doc/">开发文档</a></li>
-            <li><a id="mtest" href="/manual-test/">手动测试</a></li>
+            <li><a class="ttaa"  id="doc" href="/doc-description/">开发文档</a></li>
+            
+            <li id="test" class="dropdown">
+              <a onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">测试<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                  <li><a href="/test-manual/">手动测试</a></li>
+                  <li><a target="_blank" href="/qunit/a.html">Qunit自动化测试</a></li>
+              </ul>
+            </li>
+
+            <li id="api" class="dropdown">
+              <a onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">Api文档<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                  <li><a href="/doc-schema/">URL Schema Doc</a></li>
+                  <li><a href="/api/" target="_blank" >JS API Doc</a></li>    
+              </ul>
+            </li>
+
             <li class="dropdown">
-              <a id="download" onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">下载<b class="caret"></b></a>
+              <a id="download" onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">源码下载<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="/code/demo.zip">Demo下载</a></li>
                 <li><a href="/code/bridge.js.zip">JSLib下载</a></li>
                 <li><a href="/code/bridge.min.zip">JSLib 压缩版下载</a></li>
-                <li><a href="itms-services://?action=download-manifest&url=http://210.13.100.191:7001/qunit/cw_install.plist">安装Ctrip Dev App</a></li>
-              <!--   <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li> -->
               </ul>
             </li>
+
+            <li id="install" class="dropdown">
+              <a onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">App安装<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                  <li><a href="itms-services://?action=download-manifest&url=http://210.13.100.191:7001/qunit/cw_install.plist">iOS App安装</a></li>
+                  <li><a onClick="alert('Android App安装将在稍后支持。');" target="_blank" >Android App安装</a></li>    
+              </ul>
+            </li>
+
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a id="atest" onClick="tabClicked()" href="/qunit/a.html">Qunit自动化测试</a></li>
-            <li><a id="urlschema" onClick="tabClicked()" href="/urlschema.html">URL Scheme入口</a></li>
-            <li><a id="api" onClick="tabClicked()" href="/api/">API文档入口</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </div>
 

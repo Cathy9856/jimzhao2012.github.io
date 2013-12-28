@@ -1,6 +1,6 @@
 ---
 
-layout: post
+layout: doc
 
 title: 手动测试
 

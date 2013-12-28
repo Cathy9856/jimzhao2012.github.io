@@ -12,11 +12,22 @@ input,select,textarea{font-size:100%;}
 /*table{border-collapse:collapse;border-spacing:0;}
 th{text-align:inherit;}
 */
- table, th, td
+/* table, th, td
   {
   border: 1px solid gray;
   border-collapse:collapse;
-  }
+  }*/
+table {
+    margin: 10px 0 15px 0;
+    border-collapse: collapse;
+}
+td,th { 
+    border: 1px solid #ddd;
+    padding: 3px 10px;
+}
+th {
+    padding: 5px 10px;  
+}
 fieldset,img,a img{border:0;}
 iframe{display:block;}
 abbr,acronym{border:0;font-variant:normal;}

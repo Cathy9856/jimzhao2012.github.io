@@ -5,7 +5,7 @@
     * Author:         jimzhao
     -->
     <meta charset="utf-8" />
-    <title>Welcome | jimzhao.com</title>
+    <title>Hybrid framework | jimzhao.com</title>
     <meta name="author" content="jimzhao" />
     <meta name="description" content="jimzhao's doc" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
@@ -187,21 +187,105 @@ $("a#api").click(function(){
     @media screen and (max-width: 1020px){
         body { background:#fff; }
     }
+
+    #content {width:1060px;margin:90px auto 60px; margin-left:40px;margin-top:40px; min-height:400px;height:auto !important;height:400px; }
+    .active { background:#ccc;}
 </style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    var href = window.location.href;
+    $("li#doc-description").attr("class","");
+    $("li#doc-learning").attr("class","");
+    $("li#doc-entry").attr("class","");
+    $("li#doc-debug").attr("class","");
+    $("li#doc-faq").attr("class","");
+    $("li#doc-api").attr("class","");
+
+    var val = "active";
+    if (href.endWith("/doc-description/")) {
+        $("li#doc-description").attr("class",val);
+    }
+    else if (href.endWith("/doc-entry/")) {
+        $("li#doc-entry").attr("class",val);
+    } 
+    else if (href.endWith("/doc-learning/")) {
+        $("li#doc-learning").attr("class",val);
+    } 
+    else if (href.endWith("/doc-debug/")) {
+        $("li#doc-debug").attr("class",val);
+    } 
+    else if (href.endWith("/doc-faq/")) {
+        $("li#doc-faq").attr("class",val);
+    }
+     else if (href.endWith("/doc-api/")) {
+        $("li#doc-api").attr("class",val);
+    }
+});
+</script>
+<div class="container" style="width:120px; height:100%; position:fixed;">
+     <div class="row"> 
+       <div class="span3">
+          <div class="well" style="padding:10px 0;margin-top:0px;">
+             <ul class="nav nav-list">
+<!--                 <li class="nav-header">&nbsp;&nbsp;&nbsp;&nbsp;开发教程</li>
+ -->                <li class="divider"></li>
+                <li id="doc-description" class="active"><a href="/doc-description/"><i class="icon-white icon-home"></i>1.平台描述</a></li>
+                <li id="doc-entry" ><a href="/doc-entry/"><i class="icon-flag"></i>2.快速入门</a></li>
+                <li id="doc-learning"><a href="/doc-learning/"><i class="icon-flag"></i>3.数据交互</a></li>
+                <li id="doc-debug"><a href="/doc-debug/"><i class="icon-folder-open"></i>4.打包&更新</a></li>
+                <li id="doc-faq"><a href="/doc-faq/"><i class="icon-file"></i>5.常见问题</a></li>
+                <li id="doc-api"><a href="/doc-api/"><i class="icon-user"></i>6.API文档</a></li>
+              <!--   <li><a href="idea.html"><i class="icon-fire"></i>想法</a></li>
+                <li><a href="#"><i class="icon-warning-sign"></i>Bug</a></li>
+                <li><a href="#"><i class="icon-cog"></i>项目设置</a></li> -->
+             </ul>
+          </div>
+       </div>
+     </div>
+</div>
+
 
 <div id="content">
     <div class="entry">
-        <h1 class="entry-title"><a href="/welcome" title="Welcome">Welcome</a></h1>
-        <p class="entry-date">2013-12-25</p>
+<!--         <h1 class="entry-title"><a href="/doc-description" title="Hybrid framework">Hybrid framework</a></h1>
+        <p class="entry-date">2013-12-28</p> -->
 
 
-        <p>欢迎使用Ctrip Hybrid 开发框架。</p>
+        <p><img src="/images/Mou_128.png" alt="Mou icon"></p>
 
-<p>该文档的主要阅读者为：H5开发人员，广告网页设计人员。</p>
+<h2 id="toc_0">1.平台概述</h2>
 
-<p>通过该文档的阅读，开发者能开发出内嵌在携程无线客户端的独立功能的 webapp， 或者是和app有密切交互的广告页面。</p>
+<h3 id="toc_1">1.1. 介绍</h3>
 
-<p>如有任何问题，请<a href="mailto:xgzhao@ctrip.com">Email</a>我。</p>
+<p>WHF移动开发平台是基于HTML5技术的跨平台快速开发解决方案。开发者利用HTML5+CSS3+JavaScript技术可以快速的开发与本地应用相媲美的应用，并可以和ctrip现有账号/业务系统完美结合。 </p>
+
+<h3 id="toc_2">1.2. 组成部分</h3>
+
+<p><code>1. WHF基础库中间件；</code><br/>
+提供平台接口库，对一些常用的基础功能进行包装，并提供JS库给开发者使用；<br/></p>
+
+<p><code>2.  WHF-Ctrip业务相关中间件；</code><br/>
+提供接口，对Ctrip业务相关功能(例如用户相关)进行包装，并提供JS库给开发者使用；<br/></p>
+
+<p><code>3. URL Scheme；</code><br/>
+提供文档，开发者按照文档拼装ctrip格式URL schema，可以跳转到ctrip app的各个页面；<br/></p>
+
+<p><code>4. UI方案支持(TODO)</code><br/>
+基于现有UI方案(比如JQuery Mobile UI)，封装符合ctrip UI风格的控件库，方便开发者使用；<br/></p>
+
+<h3 id="toc_3">1.3. 平台特色</h3>
+
+<ul>
+<li>支持Webapp包自动/手动在线更新</li>
+<li>支持多窗口webapp</li>
+<li>支持本地web页面和站点页面无缝跳转</li>
+<li>无缝整合ctrip账号体系+业务体系</li>
+<li>iOS&android跨平台支持，且体验一致</li>
+<li>支持打包到本地和HTTP站点两种模式的webapp</li>
+
+</ul>
+    
 
 
      <!--    <div id="disqus_container">
