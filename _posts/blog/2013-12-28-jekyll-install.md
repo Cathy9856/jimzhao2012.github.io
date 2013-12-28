@@ -1,6 +1,6 @@
 ---
 
-layout: blog
+layout: post
 
 title: 手动测试
 
