@@ -2,7 +2,7 @@
 
 layout: post
 
-title: 手动测试
+title: 安装jekyll
 
 description: 安装jekyll的命令
 
@@ -10,16 +10,16 @@ category: blog
 
 ---
 
-###然后用Gem安装jekyll
+#### 1. Gem安装jekyll
 	
 	sudo gem install jekyll
 	
-	gem install jekyll rdiscount
+	sudo gem install jekyll rdiscount
 	
 	jekyll --server
 	
 
-###jekyll支持table的方案
+#### 2. jekyll支持table的方案
 
 _config.yml中加入下面代码
 
