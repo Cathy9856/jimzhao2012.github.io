@@ -27,6 +27,7 @@
             "file": "bridge.js",
             "line": 7,
             "description": "bridge.js内部使用的工具类",
+            "brief": "内部使用工具类",
             "access": "private",
             "tagname": ""
         },
@@ -39,7 +40,8 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 207,
+            "line": 220,
+            "brief": "工具类",
             "description": "工具类"
         },
         "CtripUtil": {
@@ -51,8 +53,9 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 243,
-            "description": "常用Util"
+            "line": 258,
+            "description": "常用Util",
+            "brief": "常用Util"
         },
         "CtripUser": {
             "name": "CtripUser",
@@ -63,14 +66,16 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 792,
-            "description": "用户相关类"
+            "line": 828,
+            "description": "用户相关类",
+            "brief": "用户相关类"
         }
     },
     "classitems": [
         {
             "file": "bridge.js",
-            "line": 13,
+            "line": 14,
+            "brief": "是否是iOS设备",
             "description": "bridge.js内部使用，判断是否是iOS",
             "type": "Bool",
             "itemtype": "property",
@@ -79,7 +84,8 @@
         },
         {
             "file": "bridge.js",
-            "line": 20,
+            "line": 22,
+            "brief": "是否是Android设备",
             "description": "bridge.js内部使用，判断是否是Android设备",
             "type": "Bool",
             "itemtype": "property",
@@ -88,7 +94,8 @@
         },
         {
             "file": "bridge.js",
-            "line": 27,
+            "line": 30,
+            "brief": "当前携程旅行App版本",
             "description": "bridge.js内部使用，存储当前携程旅行App版本",
             "type": "String",
             "itemtype": "property",
@@ -97,7 +104,8 @@
         },
         {
             "file": "bridge.js",
-            "line": 34,
+            "line": 38,
+            "brief": "判断版本大小",
             "description": "判断当前版本号是否大于传入的版本号",
             "params": [
                 {
@@ -120,7 +128,8 @@
         },
         {
             "file": "bridge.js",
-            "line": 56,
+            "line": 61,
+            "brief": "app版本过低回调",
             "description": "回调H5页面，告知API开始支持的版本号及当前App的版本",
             "params": [
                 {
@@ -137,7 +146,8 @@
         },
         {
             "file": "bridge.js",
-            "line": 69,
+            "line": 75,
+            "brief": "参数错误回调",
             "description": "回调H5页面，所调用的JS 参数有错误",
             "params": [
                 {
@@ -154,7 +164,8 @@
         },
         {
             "file": "bridge.js",
-            "line": 82,
+            "line": 89,
+            "brief": "判断字符串是否为空",
             "description": "判断字符串是否为空",
             "itemtype": "method",
             "name": "isNotEmptyString",
@@ -170,7 +181,8 @@
         },
         {
             "file": "bridge.js",
-            "line": 97,
+            "line": 105,
+            "brief": "内部URL跳转",
             "description": "内部隐藏iframe，做URL跳转",
             "itemtype": "method",
             "name": "loadURL",
@@ -186,7 +198,8 @@
         },
         {
             "file": "bridge.js",
-            "line": 117,
+            "line": 126,
+            "brief": "内部组装URL参数",
             "description": "内部使用，组装URL参数",
             "return": {
                 "description": "返回序列化之后的字符串"
@@ -220,7 +233,8 @@
         },
         {
             "file": "bridge.js",
-            "line": 144,
+            "line": 154,
+            "brief": "内部组装URL",
             "description": "内部使用，组装URL",
             "return": {
                 "description": "encode之后的URL",
@@ -240,7 +254,8 @@
         },
         {
             "file": "bridge.js",
-            "line": 162,
+            "line": 173,
+            "brief": "app回调bridge.js",
             "description": "将native的callback数据转换给H5页面的app.callback(JSON)",
             "itemtype": "method",
             "name": "__bridge_callback",
@@ -257,7 +272,8 @@
         },
         {
             "file": "bridge.js",
-            "line": 193,
+            "line": 205,
+            "brief": "app写localstorage",
             "description": "写key/value数据到H5页面的local storage",
             "itemtype": "method",
             "name": "__writeLocalStorage",
@@ -279,8 +295,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 213,
+            "line": 227,
             "description": "将log写入到native的日志界面",
+            "brief": "H5写日志到app",
             "itemtype": "method",
             "name": "app_log",
             "params": [
@@ -304,8 +321,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 249,
+            "line": 265,
             "description": "Native收集用户行为,该日志会被上传\nH5页面调用该函数，需要将增加的event_name告知native，native需要整理纪录",
+            "brief": "收集ActionLog",
             "itemtype": "method",
             "name": "app_log_event",
             "params": [
@@ -324,8 +342,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 275,
+            "line": 292,
             "description": "进入H5模块，初始化数据\nH5接收到web_view_did_finished_load的回调之后，调用该函数，初始化数据会通过callback传递给H5",
+            "brief": "初始化H5模块数据",
             "itemtype": "method",
             "name": "app_init_member_H5_info",
             "since": "version 5.2",
@@ -338,8 +357,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 309,
+            "line": 327,
             "description": "拨打电话",
+            "brief": "拨打电话",
             "params": [
                 {
                     "name": "phone",
@@ -358,8 +378,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 333,
+            "line": 352,
             "description": "退回到首页，离开H5",
+            "brief": "回到首页",
             "since": "v5.2",
             "itemtype": "method",
             "name": "app_back_to_home",
@@ -371,8 +392,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 351,
+            "line": 371,
             "description": "退回到H5页面的上一个页面，离开H5. v5.3开始支持带参数给上一个H5页面",
+            "brief": "离开H5回上一个页面",
             "itemtype": "method",
             "name": "app_back_to_last_page",
             "params": [
@@ -391,8 +413,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 374,
+            "line": 395,
             "description": "定位",
+            "brief": "定位",
             "params": [
                 {
                     "name": "is_async,",
@@ -410,8 +433,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 413,
+            "line": 435,
             "description": "刷新顶部条按钮和文字",
+            "brief": "刷新顶部条按钮和文字",
             "params": [
                 {
                     "name": "(String)",
@@ -429,8 +453,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 452,
+            "line": 475,
             "description": "打开链接URL地址",
+            "brief": "打开链接URL地址",
             "params": [
                 {
                     "name": "openUrl",
@@ -459,8 +484,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 484,
+            "line": 508,
             "description": "检查App的版本更新",
+            "brief": "检查App的版本更新",
             "since": "v5.2",
             "itemtype": "method",
             "name": "app_check_update",
@@ -472,8 +498,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 502,
+            "line": 527,
             "description": "推荐携程旅行给好友",
+            "brief": "推荐携程旅行给好友",
             "since": "v5.2",
             "itemtype": "method",
             "name": "app_recommend_app_to_friends",
@@ -485,8 +512,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 520,
+            "line": 546,
             "description": "添加微信好友",
+            "brief": "添加微信好友",
             "since": "v5.2",
             "itemtype": "method",
             "name": "app_add_weixin_friend",
@@ -498,8 +526,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 538,
+            "line": 565,
             "description": "H5跨模块/站点跳转",
+            "brief": "H5跨模块/站点跳转",
             "params": [
                 {
                     "name": "path",
@@ -523,8 +552,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 564,
+            "line": 592,
             "description": "查看最新版本功能介绍",
+            "brief": "查看最新版本功能介绍",
             "since": "v5.2",
             "itemtype": "method",
             "name": "app_show_newest_introduction",
@@ -536,8 +566,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 582,
+            "line": 611,
             "description": "检查当前App网络状况",
+            "brief": "检查当前App网络状况",
             "since": "v5.2",
             "itemtype": "method",
             "name": "app_check_network_status",
@@ -549,8 +580,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 608,
+            "line": 638,
             "description": "检查是否安装App",
+            "brief": "检查是否安装App",
             "params": [
                 {
                     "name": "openUrl",
@@ -574,8 +606,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 640,
+            "line": 671,
             "description": "H5通知Native刷新",
+            "brief": "H5通知Native刷新",
             "params": [
                 {
                     "name": "pageName",
@@ -599,8 +632,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 664,
+            "line": 696,
             "description": "复制文字到粘贴板",
+            "brief": "复制文字到粘贴板",
             "params": [
                 {
                     "name": "toCopyStr,",
@@ -619,8 +653,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 691,
+            "line": 724,
             "description": "从粘贴板读取复制的文字",
+            "brief": "从粘贴板读取复制的文字",
             "callback": "tagname=\"read_copied_string_from_clipboard\";//返回当前粘贴板中的文字key=copiedString",
             "itemtype": "method",
             "name": "app_read_copied_string_from_clipboard",
@@ -633,8 +668,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 724,
+            "line": 758,
             "description": "调用系统的分享",
+            "brief": "调用系统的分享",
             "params": [
                 {
                     "name": "image_relative_path",
@@ -658,8 +694,9 @@
         },
         {
             "file": "bridge.js",
-            "line": 754,
+            "line": 789,
             "description": "根据URL下载数据",
+            "brief": "根据URL下载数据",
             "params": [
                 {
                     "name": "download_url",
@@ -678,21 +715,23 @@
         },
         {
             "file": "bridge.js",
-            "line": 798,
+            "line": 835,
             "description": "会员登录,native未登录时候，会显示会员登录界面，native会员已登录，直接完成，返回登录的用户信息",
+            "brief": "会员登录",
             "since": "5.2",
             "itemtype": "method",
             "name": "app_member_login",
             "author": "jimzhao",
             "example": [
-                " \n    CtripUser.app_member_login();\n    //调用完成后，H5会收到如下数据\n    var userInfo = {\n       \"timeout\":\"2013/09/12\",\n       \"data\":\n       {\n         \"LoginName\":\"wwwwww\",\n         \"UserID\":\"21634352BAC43044380A7807B0699491\",\n         \"IsNonUser\":false,\n         \"UserName\":\"测试\",\n         \"Mobile\":\"13845612110\",\n         \"LoginToken\":\"\",\n         \"LoginCode\":0,\n         \"LoginErrMsg\":\"登录成功！\",\n         \"Address\":\"\",\n         \"Birthday\":\"19841010\",\n         \"Experience\":1453333973000,//微妙timestamp\n         \"Gender\":1,\n         \"PostCode\":\"111111\",\n         \"VipGrade\":30,\n         \"VipGradeRemark\":\"钻石贵宾\",\n         \"Email\":\"wang_peng@163.com\",\n         \"ExpiredTime\":\"2013-09-12\",\n         \"Auth\":\"079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219\",\n         \"IsRemember\":0,\n         \"BindMobile\":18688888888\n       },  \n       \"timeby\":1\n   }\n\n   var json_obj =\n   {\n       tagname:\"member_login\",\n       param:userInfo,\n   }\n   app.callback(json_obj);"
+                " \n    CtripUser.app_member_login();\n    //调用完成后，H5会收到如下数据\n    var userInfo = {\n       \"timeout\":\"2013/09/12\",\n       \"data\":\n       {\n         \"LoginName\":\"wwwwww\",\n         \"UserID\":\"21634352BAC43044380A7807B0699491\",\n         \"IsNonUser\":false,\n         \"UserName\":\"测试\",\n         \"Mobile\":\"13845612110\",\n         \"LoginToken\":\"\",\n         \"LoginCode\":0,\n         \"LoginErrMsg\":\"登录成功！\",\n         \"Address\":\"\",\n         \"Birthday\":\"19841010\",\n         \"Experience\":1453333973000,//微妙timestamp\n         \"Gender\":1,\n         \"PostCode\":\"111111\",\n         \"VipGrade\":30,\n         \"VipGradeRemark\":\"钻石贵宾\",\n         \"Email\":\"wang_peng@163.com\",\n         \"ExpiredTime\":\"2013-09-12\",\n         \"Auth\":\"079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219\",\n         \"IsRemember\":0,\n         \"BindMobile\":18688888888\n       },  \n       \"timeby\":1\n   }\n\n   var json_obj =\n   {\n       tagname:\"member_login\",\n       param:userInfo,\n   }\n   app.callback(json_obj);\n    "
             ],
             "class": "CtripUser"
         },
         {
             "file": "bridge.js",
-            "line": 852,
+            "line": 891,
             "description": "非会员登录",
+            "brief": "非会员登录",
             "since": "5.2",
             "itemtype": "method",
             "name": "app_non_member_login",
@@ -701,14 +740,15 @@
                 "app_member_login"
             ],
             "example": [
-                " \n     CtripUser.app_non_member_login();\n     //调用后，H5会收到native回调的数据\n     //回调的数据格式参考app_member_login()\n    var userInfo = {\n       \"timeout\":\"2013/09/12\",\n       \"data\":\n       {\n         \"LoginName\":\"wwwwww\",\n         \"UserID\":\"21634352BAC43044380A7807B0699491\",\n         \"IsNonUser\":false,\n         \"UserName\":\"测试\",\n         \"Mobile\":\"13845612110\",\n         \"LoginToken\":\"\",\n         \"LoginCode\":0,\n         \"LoginErrMsg\":\"登录成功！\",\n         \"Address\":\"\",\n         \"Birthday\":\"19841010\",\n         \"Experience\":1453333973000,//微妙timestamp\n         \"Gender\":1,\n         \"PostCode\":\"111111\",\n         \"VipGrade\":30,\n         \"VipGradeRemark\":\"钻石贵宾\",\n         \"Email\":\"wang_peng@163.com\",\n         \"ExpiredTime\":\"2013-09-12\",\n         \"Auth\":\"079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219\",\n         \"IsRemember\":0,\n         \"BindMobile\":18688888888\n       },  \n       \"timeby\":1\n   }\n\n   var json_obj =\n   {\n       tagname:\"member_login\",\n       param:userInfo,\n   }\n   app.callback(json_obj);"
+                " \n     CtripUser.app_non_member_login();\n     //调用后，H5会收到native回调的数据\n     //回调的数据格式参考app_member_login()\n    var userInfo = {\n       \"timeout\":\"2013/09/12\",\n       \"data\":\n       {\n         \"LoginName\":\"wwwwww\",\n         \"UserID\":\"21634352BAC43044380A7807B0699491\",\n         \"IsNonUser\":false,\n         \"UserName\":\"测试\",\n         \"Mobile\":\"13845612110\",\n         \"LoginToken\":\"\",\n         \"LoginCode\":0,\n         \"LoginErrMsg\":\"登录成功！\",\n         \"Address\":\"\",\n         \"Birthday\":\"19841010\",\n         \"Experience\":1453333973000,//微妙timestamp\n         \"Gender\":1,\n         \"PostCode\":\"111111\",\n         \"VipGrade\":30,\n         \"VipGradeRemark\":\"钻石贵宾\",\n         \"Email\":\"wang_peng@163.com\",\n         \"ExpiredTime\":\"2013-09-12\",\n         \"Auth\":\"079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219\",\n         \"IsRemember\":0,\n         \"BindMobile\":18688888888\n       },  \n       \"timeby\":1\n       }\n\n       var json_obj =\n       {\n           tagname:\"member_login\",\n           param:userInfo,\n       }\n       app.callback(json_obj);\n     "
             ],
             "class": "CtripUser"
         },
         {
             "file": "bridge.js",
-            "line": 909,
+            "line": 950,
             "description": "会员自动登录,对于已经在native登陆的用户，app会通过调用callback回传登录数据，H5页面需要处理用户信息， 不显示输入用户名密码界面",
+            "brief": "会员自动登录",
             "since": "5.2",
             "itemtype": "method",
             "name": "app_member_auto_login",
@@ -717,14 +757,15 @@
                 "app_member_login"
             ],
             "example": [
-                " \n     CtripUser.app_member_auto_login();\n     //调用后，H5会收到native回调的数据\n     //回调的数据格式参考app_member_login()\n    var userInfo = {\n       \"timeout\":\"2013/09/12\",\n       \"data\":\n       {\n         \"LoginName\":\"wwwwww\",\n         \"UserID\":\"21634352BAC43044380A7807B0699491\",\n         \"IsNonUser\":false,\n         \"UserName\":\"测试\",\n         \"Mobile\":\"13845612110\",\n         \"LoginToken\":\"\",\n         \"LoginCode\":0,\n         \"LoginErrMsg\":\"登录成功！\",\n         \"Address\":\"\",\n         \"Birthday\":\"19841010\",\n         \"Experience\":1453333973000,//微妙timestamp\n         \"Gender\":1,\n         \"PostCode\":\"111111\",\n         \"VipGrade\":30,\n         \"VipGradeRemark\":\"钻石贵宾\",\n         \"Email\":\"wang_peng@163.com\",\n         \"ExpiredTime\":\"2013-09-12\",\n         \"Auth\":\"079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219\",\n         \"IsRemember\":0,\n         \"BindMobile\":18688888888\n       },  \n       \"timeby\":1\n   }\n\n   var json_obj =\n   {\n       tagname:\"member_login\",\n       param:userInfo,\n   }\n   app.callback(json_obj);"
+                " \n     CtripUser.app_member_auto_login();\n     //调用后，H5会收到native回调的数据\n     //回调的数据格式参考app_member_login()\n    var userInfo = {\n       \"timeout\":\"2013/09/12\",\n       \"data\":\n       {\n         \"LoginName\":\"wwwwww\",\n         \"UserID\":\"21634352BAC43044380A7807B0699491\",\n         \"IsNonUser\":false,\n         \"UserName\":\"测试\",\n         \"Mobile\":\"13845612110\",\n         \"LoginToken\":\"\",\n         \"LoginCode\":0,\n         \"LoginErrMsg\":\"登录成功！\",\n         \"Address\":\"\",\n         \"Birthday\":\"19841010\",\n         \"Experience\":1453333973000,//微妙timestamp\n         \"Gender\":1,\n         \"PostCode\":\"111111\",\n         \"VipGrade\":30,\n         \"VipGradeRemark\":\"钻石贵宾\",\n         \"Email\":\"wang_peng@163.com\",\n         \"ExpiredTime\":\"2013-09-12\",\n         \"Auth\":\"079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219\",\n         \"IsRemember\":0,\n         \"BindMobile\":18688888888\n       },  \n       \"timeby\":1\n       }\n\n       var json_obj =\n       {\n           tagname:\"member_login\",\n           param:userInfo,\n       }\n       app.callback(json_obj);\n     "
             ],
             "class": "CtripUser"
         },
         {
             "file": "bridge.js",
-            "line": 966,
+            "line": 1009,
             "description": "用户注册",
+            "brief": "用户注册",
             "since": "5.2",
             "itemtype": "method",
             "name": "app_member_register",
@@ -733,23 +774,187 @@
                 "app_member_login"
             ],
             "example": [
-                " \n     CtripUser.app_member_register();\n     //调用后，H5会收到native回调的数据\n     //回调的数据格式参考app_member_login()\n    var userInfo = {\n       \"timeout\":\"2013/09/12\",\n       \"data\":\n       {\n         \"LoginName\":\"wwwwww\",\n         \"UserID\":\"21634352BAC43044380A7807B0699491\",\n         \"IsNonUser\":false,\n         \"UserName\":\"测试\",\n         \"Mobile\":\"13845612110\",\n         \"LoginToken\":\"\",\n         \"LoginCode\":0,\n         \"LoginErrMsg\":\"登录成功！\",\n         \"Address\":\"\",\n         \"Birthday\":\"19841010\",\n         \"Experience\":1453333973000,//微妙timestamp\n         \"Gender\":1,\n         \"PostCode\":\"111111\",\n         \"VipGrade\":30,\n         \"VipGradeRemark\":\"钻石贵宾\",\n         \"Email\":\"wang_peng@163.com\",\n         \"ExpiredTime\":\"2013-09-12\",\n         \"Auth\":\"079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219\",\n         \"IsRemember\":0,\n         \"BindMobile\":18688888888\n       },  \n       \"timeby\":1\n   }\n\n   var json_obj =\n   {\n       tagname:\"member_login\",\n       param:userInfo,\n   }\n   app.callback(json_obj);"
+                " \n     CtripUser.app_member_register();\n     //调用后，H5会收到native回调的数据\n     //回调的数据格式参考app_member_login()\n    var userInfo = {\n       \"timeout\":\"2013/09/12\",\n       \"data\":\n       {\n         \"LoginName\":\"wwwwww\",\n         \"UserID\":\"21634352BAC43044380A7807B0699491\",\n         \"IsNonUser\":false,\n         \"UserName\":\"测试\",\n         \"Mobile\":\"13845612110\",\n         \"LoginToken\":\"\",\n         \"LoginCode\":0,\n         \"LoginErrMsg\":\"登录成功！\",\n         \"Address\":\"\",\n         \"Birthday\":\"19841010\",\n         \"Experience\":1453333973000,//微妙timestamp\n         \"Gender\":1,\n         \"PostCode\":\"111111\",\n         \"VipGrade\":30,\n         \"VipGradeRemark\":\"钻石贵宾\",\n         \"Email\":\"wang_peng@163.com\",\n         \"ExpiredTime\":\"2013-09-12\",\n         \"Auth\":\"079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219\",\n         \"IsRemember\":0,\n         \"BindMobile\":18688888888\n       },  \n       \"timeby\":1\n       }\n\n       var json_obj =\n       {\n           tagname:\"member_login\",\n           param:userInfo,\n       }\n       app.callback(json_obj);\n         "
             ],
             "class": "CtripUser"
         }
     ],
     "warnings": [
         {
-            "message": "unknown tag: callback",
-            "line": " bridge.js:275"
+            "message": "unknown tag: brief",
+            "line": " bridge.js:7"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:14"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:22"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:30"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:38"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:61"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:75"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:89"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:105"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:126"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:154"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:173"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:205"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:220"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:227"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:258"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:265"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:292"
         },
         {
             "message": "unknown tag: callback",
-            "line": " bridge.js:374"
+            "line": " bridge.js:292"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:327"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:352"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:371"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:395"
         },
         {
             "message": "unknown tag: callback",
-            "line": " bridge.js:691"
+            "line": " bridge.js:395"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:435"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:475"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:508"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:527"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:546"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:565"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:592"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:611"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:638"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:671"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:696"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:724"
+        },
+        {
+            "message": "unknown tag: callback",
+            "line": " bridge.js:724"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:758"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:789"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:828"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:835"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:891"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:950"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1009"
         }
     ]
 }

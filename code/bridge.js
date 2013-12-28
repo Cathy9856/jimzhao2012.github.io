@@ -7,10 +7,12 @@ var kCallbackReturnName = 100;
 /**
 * @class Internal
 * @description bridge.js内部使用的工具类
+* @brief 内部使用工具类
 * @private
 */ 
 var Internal = {
     /**
+     * @brief 是否是iOS设备
      * @description  bridge.js内部使用，判断是否是iOS
      * @type Bool
      * @property isIOS
@@ -18,6 +20,7 @@ var Internal = {
     isIOS:true,
 
     /**
+     * @brief 是否是Android设备
      * @description  bridge.js内部使用，判断是否是Android设备
      * @type Bool
      * @property isAndroid
@@ -25,6 +28,7 @@ var Internal = {
     isAndroid:true,
 
     /**
+     * @brief 当前携程旅行App版本
      * @description bridge.js内部使用，存储当前携程旅行App版本
      * @type String
      * @property appVersion
@@ -32,6 +36,7 @@ var Internal = {
     appVersion:"",
 
     /**
+     * @brief 判断版本大小
      * @description 判断当前版本号是否大于传入的版本号
      * @param {String} verStr 版本号
      * @method isAppVersionGreatThan
@@ -54,6 +59,7 @@ var Internal = {
     },
 
    /**
+     * @brief app版本过低回调
      * @description 回调H5页面，告知API开始支持的版本号及当前App的版本
      * @param {String} supportVer API支持的版本号
      * @method appVersionNotSupportCallback
@@ -67,6 +73,7 @@ var Internal = {
     },
 
     /**
+     * @brief 参数错误回调
      * @description 回调H5页面，所调用的JS 参数有错误
      * @param {String} description 错误原因描述
      * @method paramErrorCallback
@@ -80,6 +87,7 @@ var Internal = {
     },
 
    /**
+     * @brief 判断字符串是否为空
      * @description 判断字符串是否为空
      * @method isNotEmptyString
      * @param {String} str 需要判断的字符串
@@ -95,6 +103,7 @@ var Internal = {
 
 
    /**
+     * @brief 内部URL跳转
      * @description 内部隐藏iframe，做URL跳转
      * @method loadURL
      * @param {String} url 需要跳转的链接
@@ -115,6 +124,7 @@ var Internal = {
     },
 
    /**
+     * @brief 内部组装URL参数
      * @description  内部使用，组装URL参数
      * @return 返回序列化之后的字符串
      * @method makeParamString
@@ -141,7 +151,8 @@ var Internal = {
         return JSON.stringify(param);
     },
 
-    /** 
+    /**
+     * @brief 内部组装URL
      * @description  内部使用，组装URL
      * @return {String} encode之后的URL
      * @method makeURLWithParam
@@ -160,6 +171,7 @@ var Internal = {
 };
 
 /**
+ * @brief app回调bridge.js
  * @description 将native的callback数据转换给H5页面的app.callback(JSON)
  * @method __bridge_callback
  * @param {Number} param native传给H5的字符串,该字符串在app组装的时候做过URLEncode
@@ -191,6 +203,7 @@ function __bridge_callback(param) {
 };
 
 /**
+ * @brief app写localstorage
  * @description 写key/value数据到H5页面的local storage
  * @method __writeLocalStorage
  * @param {String} key 需要写入数据库的key
@@ -206,12 +219,14 @@ function __writeLocalStorage(key, jsonValue) {
 
 /**
  * @class CtripTool
+ * @brief 工具类
  * @description 工具类
  */
 var CtripTool = {
 
     /**
      * @description 将log写入到native的日志界面
+     * @brief H5写日志到app
      * @method app_log
      * @param {String} log 需要打印打log
      * @param {String} result 上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间
@@ -243,12 +258,14 @@ var CtripTool = {
 /**
  * @class CtripUtil
  * @description 常用Util
+ * @brief 常用Util
  */
 var CtripUtil = {
 
     /**
      * @description Native收集用户行为,该日志会被上传
      * H5页面调用该函数，需要将增加的event_name告知native，native需要整理纪录
+     * @brief 收集ActionLog
      * @method app_log_event
      * @param {String} event_name 需要纪录的事件名
      * @since v5.2
@@ -275,6 +292,7 @@ var CtripUtil = {
     /**
      * @description 进入H5模块，初始化数据
      * H5接收到web_view_did_finished_load的回调之后，调用该函数，初始化数据会通过callback传递给H5
+     * @brief 初始化H5模块数据
      * @method app_init_member_H5_info
      * @since version 5.2
      * @author jimzhao
@@ -308,6 +326,7 @@ var CtripUtil = {
 
     /**
      * @description 拨打电话
+     * @brief 拨打电话
      * @param {String} phone 需要拨打的电话号码，为空时候，会拨打ctrip呼叫中心号码
      * @method app_call_phone
      * @since v5.2
@@ -332,6 +351,7 @@ var CtripUtil = {
 
     /**
      * @description 退回到首页，离开H5
+     * @brief 回到首页
      * @since v5.2
      * @method app_back_to_home
      * @author jimzhao
@@ -350,6 +370,7 @@ var CtripUtil = {
 
     /**
      * @description 退回到H5页面的上一个页面，离开H5. v5.3开始支持带参数给上一个H5页面
+     * @brief 离开H5回上一个页面
      * @method app_back_to_last_page
      * @param {String} callbackString 离开H5页面，需要传递给上一个H5页面的数据，上一个H5页面在web_view_did_appear回调里面将会收到该数据
      * @since v5.2
@@ -373,6 +394,7 @@ var CtripUtil = {
 
     /**
      * @description 定位
+     * @brief 定位
      * @param {Bool} is_async, true标识是异步定位，false标识为同步定位
      * @method app_locate
      * @callback tagname="locate"
@@ -412,6 +434,7 @@ var CtripUtil = {
 
     /**
      * @description 刷新顶部条按钮和文字
+     * @brief 刷新顶部条按钮和文字
      * @param (String) nav_bar_config_json 顶部条配置json串
      * @method app_refresh_nav_bar
      * @author jimzhao
@@ -451,6 +474,7 @@ var CtripUtil = {
 
     /**
      * @description 打开链接URL地址
+     * @brief 打开链接URL地址
      * @param {String} openUrl 需要打开的URL，可以为ctrip://,http(s)://,file://等协议的URL
      * @param {int} targetMode 0,当前页面刷新url;1,系统浏览器打开,ctrip://协议需使用该mode;2,开启新的H5页面，title生效;
      * @param {String} title 当targetMode＝2时候，新打开的H5页面的title
@@ -483,6 +507,7 @@ var CtripUtil = {
 
     /**
      * @description 检查App的版本更新
+     * @brief 检查App的版本更新
      * @since v5.2
      * @method app_check_update
      * @author jimzhao
@@ -501,6 +526,7 @@ var CtripUtil = {
 
     /**
      * @description 推荐携程旅行给好友
+     * @brief 推荐携程旅行给好友
      * @since v5.2
      * @method app_recommend_app_to_friends
      * @author jimzhao
@@ -519,6 +545,7 @@ var CtripUtil = {
 
     /**
      * @description 添加微信好友
+     * @brief 添加微信好友
      * @since v5.2
      * @method app_add_weixin_friend
      * @author jimzhao
@@ -537,6 +564,7 @@ var CtripUtil = {
 
     /**
      * @description H5跨模块/站点跳转
+     * @brief H5跨模块/站点跳转
      * @param {String} path 模块名称，如hotel, car, myctrip,
      * @param {String} param 作为URL，拼接在path后面的页面和其它参数 index.html#cashcouponindex?cash=xxxx
      * @method app_cross_package_href
@@ -563,6 +591,7 @@ var CtripUtil = {
 
     /**
      * @description 查看最新版本功能介绍
+     * @brief 查看最新版本功能介绍
      * @since v5.2
      * @method app_show_newest_introduction
      * @author jimzhao
@@ -581,6 +610,7 @@ var CtripUtil = {
 
     /**
      * @description 检查当前App网络状况
+     * @brief 检查当前App网络状况
      * @since v5.2
      * @method app_check_network_status
      * @author jimzhao
@@ -607,6 +637,7 @@ var CtripUtil = {
 
     /**
      * @description 检查是否安装App
+     * @brief 检查是否安装App
      * @param {String} openUrl 尝试打开的URL，iOS使用
      * @param {String} packageName app的包名，android使用
      * @method app_check_app_install_status
@@ -639,6 +670,7 @@ var CtripUtil = {
 
     /**
      * @description H5通知Native刷新
+     * @brief H5通知Native刷新
      * @param {String} pageName 要刷新的页面名字,该字段需要H5和native共同约定，H5调用之后，native需要捕获该名字的boardcast/notification
      * @param {String} jsonStr 刷新该页面需要的参数
      * @method app_refresh_native_page
@@ -663,6 +695,7 @@ var CtripUtil = {
 
     /**
      * @description 复制文字到粘贴板
+     * @brief 复制文字到粘贴板
      * @param {String} toCopyStr, 需要复制的文字
      * @method app_copy_string_to_clipboard
      * @since v5.3
@@ -690,6 +723,7 @@ var CtripUtil = {
 
     /**
      * @description 从粘贴板读取复制的文字
+     * @brief 从粘贴板读取复制的文字
      * @callback tagname="read_copied_string_from_clipboard";//返回当前粘贴板中的文字key=copiedString
      * @method app_read_copied_string_from_clipboard
      * @since v5.3
@@ -723,6 +757,7 @@ var CtripUtil = {
 
     /**
      * @description 调用系统的分享
+     * @brief 调用系统的分享
      * @param {String} image_relative_path 将要分享的图片相对路径，相对webapp的路径
      * @param {String} text 需要分享的文字
      * @method app_call_system_share
@@ -753,6 +788,7 @@ var CtripUtil = {
 
     /**
      * @description 根据URL下载数据
+     * @brief 根据URL下载数据
      * @param {String} download_url 需要下载内容的URL
      * @method app_download_data
      * @since v5.3
@@ -792,11 +828,13 @@ var CtripUtil = {
 /**
  * @class CtripUser
  * @description 用户相关类
+ * @brief 用户相关类
  */
 var CtripUser = {
 
     /**
      * @description 会员登录,native未登录时候，会显示会员登录界面，native会员已登录，直接完成，返回登录的用户信息
+     * @brief 会员登录
      * @since 5.2
      * @method app_member_login
      * @author jimzhao
@@ -837,6 +875,7 @@ var CtripUser = {
         param:userInfo,
     }
     app.callback(json_obj);
+     
      */
     app_member_login:function() {
         paramString =  Internal.makeParamString("User", "memberLogin", null, 'member_login');
@@ -851,6 +890,7 @@ var CtripUser = {
 
      /**
       * @description 非会员登录
+      * @brief 非会员登录
       * @since 5.2
       * @method app_non_member_login
       * @author jimzhao
@@ -885,14 +925,15 @@ var CtripUser = {
           "BindMobile":18688888888
         },  
         "timeby":1
-    }
+        }
 
-    var json_obj =
-    {
-        tagname:"member_login",
-        param:userInfo,
-    }
-    app.callback(json_obj);
+        var json_obj =
+        {
+            tagname:"member_login",
+            param:userInfo,
+        }
+        app.callback(json_obj);
+      
       */
     app_non_member_login:function() {
         paramString =  Internal.makeParamString("User", "nonMemberLogin", null, 'non_member_login');
@@ -908,6 +949,7 @@ var CtripUser = {
  
      /**
       * @description 会员自动登录,对于已经在native登陆的用户，app会通过调用callback回传登录数据，H5页面需要处理用户信息， 不显示输入用户名密码界面
+      * @brief 会员自动登录
       * @since 5.2
       * @method app_member_auto_login
       * @author jimzhao
@@ -942,14 +984,15 @@ var CtripUser = {
           "BindMobile":18688888888
         },  
         "timeby":1
-    }
+        }
 
-    var json_obj =
-    {
-        tagname:"member_login",
-        param:userInfo,
-    }
-    app.callback(json_obj);
+        var json_obj =
+        {
+            tagname:"member_login",
+            param:userInfo,
+        }
+        app.callback(json_obj);
+      
       */
     app_member_auto_login:function() {
         paramString =  Internal.makeParamString("User", "memberAutoLogin", null, 'member_auto_login');
@@ -965,6 +1008,7 @@ var CtripUser = {
 
      /**
       * @description 用户注册
+      * @brief 用户注册
       * @since 5.2
       * @method app_member_register
       * @author jimzhao
@@ -999,14 +1043,15 @@ var CtripUser = {
           "BindMobile":18688888888
         },  
         "timeby":1
-    }
+        }
 
-    var json_obj =
-    {
-        tagname:"member_login",
-        param:userInfo,
-    }
-    app.callback(json_obj);
+        var json_obj =
+        {
+            tagname:"member_login",
+            param:userInfo,
+        }
+        app.callback(json_obj);
+          
       */
     app_member_register:function() {
         paramString = Internal.makeParamString("User", "memberRegister", null, 'member_register');

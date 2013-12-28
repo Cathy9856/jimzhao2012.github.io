@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: </em>
+            <em>API Docs for: Ctrip Hybrid Javascript Lib</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -27,11 +27,11 @@
         <div class="yui3-u-1-4">
             <div id="docs-sidebar" class="sidebar apidocs">
                 <div id="api-list">
-    <h2 class="off-left">APIs</h2>
+    <h2 class="off-left">API定义</h2>
     <div id="api-tabview" class="tabview">
         <ul class="tabs">
-            <li><a href="#api-classes">Classes</a></li>
-            <li><a href="#api-modules">Modules</a></li>
+            <li><a href="#api-classes">类</a></li>
+            <li><a href="#api-modules">模块</a></li>
         </ul>
 
         <div id="api-tabview-filter">
@@ -96,7 +96,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/bridge.js.html#l7"><code>bridge.js:7</code></a>
+            定义在: <a href="../files/bridge.js.html#l7"><code>bridge.js:7</code></a>
         </div>
     
 
@@ -116,13 +116,13 @@
 
 <div id="classdocs" class="tabview">
     <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
+        <li class="api-class-tab index"><a href="#index">索引</a></li>
 
         
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+            <li class="api-class-tab methods"><a href="#methods">方法</a></li>
         
         
-            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
+            <li class="api-class-tab properties"><a href="#properties">成员</a></li>
         
         
         
@@ -130,72 +130,88 @@
 
     <div>
         <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
+            <h2 class="off-left">条目索引</h2>
 
             
                 <div class="index-section methods">
-                    <h3>Methods</h3>
+                    <h3>方法</h3>
+                    <br/>
+
+                    <table>
+                    <tr><th>描述</th><th>函数</th></tr>
+                    
+                    <tr><td>app回调bridge.js</td><td><a href="#method___bridge_callback">__bridge_callback</a></td></tr>
+                    
+                    <tr><td>app写localstorage</td><td><a href="#method___writeLocalStorage">__writeLocalStorage</a></td></tr>
+                    
+                    <tr><td>app版本过低回调</td><td><a href="#method_appVersionNotSupportCallback">appVersionNotSupportCallback</a></td></tr>
+                    
+                    <tr><td>判断版本大小</td><td><a href="#method_isAppVersionGreatThan">isAppVersionGreatThan</a></td></tr>
+                    
+                    <tr><td>判断字符串是否为空</td><td><a href="#method_isNotEmptyString">isNotEmptyString</a></td></tr>
+                    
+                    <tr><td>内部URL跳转</td><td><a href="#method_loadURL">loadURL</a></td></tr>
+                    
+                    <tr><td>内部组装URL参数</td><td><a href="#method_makeParamString">makeParamString</a></td></tr>
+                    
+                    <tr><td>内部组装URL</td><td><a href="#method_makeURLWithParam">makeURLWithParam</a></td></tr>
+                    
+                    <tr><td>参数错误回调</td><td><a href="#method_paramErrorCallback">paramErrorCallback</a></td></tr>
+                                  
+                    </table>
+
 
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method___bridge_callback">__bridge_callback</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method___writeLocalStorage">__writeLocalStorage</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_appVersionNotSupportCallback">appVersionNotSupportCallback</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_isAppVersionGreatThan">isAppVersionGreatThan</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_isNotEmptyString">isNotEmptyString</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_loadURL">loadURL</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_makeParamString">makeParamString</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_makeURLWithParam">makeURLWithParam</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_paramErrorCallback">paramErrorCallback</a>
 
                                 
                                 
@@ -207,27 +223,37 @@
 
             
                 <div class="index-section properties">
-                    <h3>Properties</h3>
+                    <h3>成员</h3>
+                    <br/>
+
+                    <table>
+                    <tr><th>描述</th><th>成员</th></tr>
+                    
+                    <tr><td>当前携程旅行App版本</td><td><a href="#property_appVersion">appVersion</a></td></tr>
+                    
+                    <tr><td>是否是Android设备</td><td><a href="#property_isAndroid">isAndroid</a></td></tr>
+                    
+                    <tr><td>是否是iOS设备</td><td><a href="#property_isIOS">isIOS</a></td></tr>
+                                  
+                    </table>
+
 
                     <ul class="index-list properties">
                         
                             <li class="index-item property">
-                                <a href="#property_appVersion">appVersion</a>
-
+                               
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_isAndroid">isAndroid</a>
-
+                               
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_isIOS">isIOS</a>
-
+                               
                                 
                                 
                             </li>
@@ -243,7 +269,7 @@
 
         
             <div id="methods" class="api-class-tabpanel">
-                <h2 class="off-left">Methods</h2>
+                <h2 class="off-left">方法</h2>
 
                 
                     <div id="method___bridge_callback" class="method item">
@@ -283,12 +309,12 @@
                 
                 <p>
                 
-                Defined in
+                定义在
                 
             
         
         
-        <a href="../files/bridge.js.html#l162"><code>bridge.js:162</code></a>
+        <a href="../files/bridge.js.html#l173"><code>bridge.js:173</code></a>
         
         </p>
 
@@ -296,7 +322,7 @@
         
 
         
-            <p>Available since v5.2</p>
+            <p>可用版本 v5.2</p>
         
     </div>
 
@@ -307,7 +333,7 @@
 
     
         <div class="params">
-            <h4>Parameters:</h4>
+            <h4>参数:</h4>
 
             <ul class="params-list">
             
@@ -380,12 +406,12 @@
                 
                 <p>
                 
-                Defined in
+                定义在
                 
             
         
         
-        <a href="../files/bridge.js.html#l193"><code>bridge.js:193</code></a>
+        <a href="../files/bridge.js.html#l205"><code>bridge.js:205</code></a>
         
         </p>
 
@@ -393,7 +419,7 @@
         
 
         
-            <p>Available since v5.2</p>
+            <p>可用版本 v5.2</p>
         
     </div>
 
@@ -404,7 +430,7 @@
 
     
         <div class="params">
-            <h4>Parameters:</h4>
+            <h4>参数:</h4>
 
             <ul class="params-list">
             
@@ -487,12 +513,12 @@
                 
                 <p>
                 
-                Defined in
+                定义在
                 
             
         
         
-        <a href="../files/bridge.js.html#l56"><code>bridge.js:56</code></a>
+        <a href="../files/bridge.js.html#l61"><code>bridge.js:61</code></a>
         
         </p>
 
@@ -500,7 +526,7 @@
         
 
         
-            <p>Available since v5.2</p>
+            <p>可用版本 v5.2</p>
         
     </div>
 
@@ -511,7 +537,7 @@
 
     
         <div class="params">
-            <h4>Parameters:</h4>
+            <h4>参数:</h4>
 
             <ul class="params-list">
             
@@ -582,12 +608,12 @@
                 
                 <p>
                 
-                Defined in
+                定义在
                 
             
         
         
-        <a href="../files/bridge.js.html#l34"><code>bridge.js:34</code></a>
+        <a href="../files/bridge.js.html#l38"><code>bridge.js:38</code></a>
         
         </p>
 
@@ -595,7 +621,7 @@
         
 
         
-            <p>Available since v5.2</p>
+            <p>可用版本 v5.2</p>
         
     </div>
 
@@ -606,7 +632,7 @@
 
     
         <div class="params">
-            <h4>Parameters:</h4>
+            <h4>参数:</h4>
 
             <ul class="params-list">
             
@@ -632,7 +658,7 @@
 
     
         <div class="returns">
-            <h4>Returns:</h4>
+            <h4>返回:</h4>
 
             <div class="returns-description">
                 
@@ -648,7 +674,7 @@
 
     
         <div class="example">
-            <h4>Example:</h4>
+            <h4>举例:</h4>
 
             <div class="example-content">
                 <p>var isLarger = isAppVersionGreatThan(5.2); <br />
@@ -697,12 +723,12 @@ alert(isLarger); // depends</p>
                 
                 <p>
                 
-                Defined in
+                定义在
                 
             
         
         
-        <a href="../files/bridge.js.html#l82"><code>bridge.js:82</code></a>
+        <a href="../files/bridge.js.html#l89"><code>bridge.js:89</code></a>
         
         </p>
 
@@ -710,7 +736,7 @@ alert(isLarger); // depends</p>
         
 
         
-            <p>Available since v5.2</p>
+            <p>可用版本 v5.2</p>
         
     </div>
 
@@ -721,7 +747,7 @@ alert(isLarger); // depends</p>
 
     
         <div class="params">
-            <h4>Parameters:</h4>
+            <h4>参数:</h4>
 
             <ul class="params-list">
             
@@ -788,12 +814,12 @@ alert(isLarger); // depends</p>
                 
                 <p>
                 
-                Defined in
+                定义在
                 
             
         
         
-        <a href="../files/bridge.js.html#l97"><code>bridge.js:97</code></a>
+        <a href="../files/bridge.js.html#l105"><code>bridge.js:105</code></a>
         
         </p>
 
@@ -801,7 +827,7 @@ alert(isLarger); // depends</p>
         
 
         
-            <p>Available since v5.2</p>
+            <p>可用版本 v5.2</p>
         
     </div>
 
@@ -812,7 +838,7 @@ alert(isLarger); // depends</p>
 
     
         <div class="params">
-            <h4>Parameters:</h4>
+            <h4>参数:</h4>
 
             <ul class="params-list">
             
@@ -901,12 +927,12 @@ alert(isLarger); // depends</p>
                 
                 <p>
                 
-                Defined in
+                定义在
                 
             
         
         
-        <a href="../files/bridge.js.html#l117"><code>bridge.js:117</code></a>
+        <a href="../files/bridge.js.html#l126"><code>bridge.js:126</code></a>
         
         </p>
 
@@ -914,7 +940,7 @@ alert(isLarger); // depends</p>
         
 
         
-            <p>Available since v5.2</p>
+            <p>可用版本 v5.2</p>
         
     </div>
 
@@ -925,7 +951,7 @@ alert(isLarger); // depends</p>
 
     
         <div class="params">
-            <h4>Parameters:</h4>
+            <h4>参数:</h4>
 
             <ul class="params-list">
             
@@ -999,7 +1025,7 @@ alert(isLarger); // depends</p>
 
     
         <div class="returns">
-            <h4>Returns:</h4>
+            <h4>返回:</h4>
 
             <div class="returns-description">
                 
@@ -1056,12 +1082,12 @@ alert(isLarger); // depends</p>
                 
                 <p>
                 
-                Defined in
+                定义在
                 
             
         
         
-        <a href="../files/bridge.js.html#l144"><code>bridge.js:144</code></a>
+        <a href="../files/bridge.js.html#l154"><code>bridge.js:154</code></a>
         
         </p>
 
@@ -1069,7 +1095,7 @@ alert(isLarger); // depends</p>
         
 
         
-            <p>Available since v5.2</p>
+            <p>可用版本 v5.2</p>
         
     </div>
 
@@ -1080,7 +1106,7 @@ alert(isLarger); // depends</p>
 
     
         <div class="params">
-            <h4>Parameters:</h4>
+            <h4>参数:</h4>
 
             <ul class="params-list">
             
@@ -1106,7 +1132,7 @@ alert(isLarger); // depends</p>
 
     
         <div class="returns">
-            <h4>Returns:</h4>
+            <h4>返回:</h4>
 
             <div class="returns-description">
                 
@@ -1161,12 +1187,12 @@ alert(isLarger); // depends</p>
                 
                 <p>
                 
-                Defined in
+                定义在
                 
             
         
         
-        <a href="../files/bridge.js.html#l69"><code>bridge.js:69</code></a>
+        <a href="../files/bridge.js.html#l75"><code>bridge.js:75</code></a>
         
         </p>
 
@@ -1174,7 +1200,7 @@ alert(isLarger); // depends</p>
         
 
         
-            <p>Available since v5.2</p>
+            <p>可用版本 v5.2</p>
         
     </div>
 
@@ -1185,7 +1211,7 @@ alert(isLarger); // depends</p>
 
     
         <div class="params">
-            <h4>Parameters:</h4>
+            <h4>参数:</h4>
 
             <ul class="params-list">
             
@@ -1220,7 +1246,7 @@ alert(isLarger); // depends</p>
 
         
             <div id="properties" class="api-class-tabpanel">
-                <h2 class="off-left">Properties</h2>
+                <h2 class="off-left">成员变量</h2>
 
                 
                     <div id="property_appVersion" class="property item">
@@ -1246,7 +1272,7 @@ alert(isLarger); // depends</p>
             
         
         
-        <a href="../files/bridge.js.html#l27"><code>bridge.js:27</code></a>
+        <a href="../files/bridge.js.html#l30"><code>bridge.js:30</code></a>
         
         </p>
 
@@ -1291,7 +1317,7 @@ alert(isLarger); // depends</p>
             
         
         
-        <a href="../files/bridge.js.html#l20"><code>bridge.js:20</code></a>
+        <a href="../files/bridge.js.html#l22"><code>bridge.js:22</code></a>
         
         </p>
 
@@ -1336,7 +1362,7 @@ alert(isLarger); // depends</p>
             
         
         
-        <a href="../files/bridge.js.html#l13"><code>bridge.js:13</code></a>
+        <a href="../files/bridge.js.html#l14"><code>bridge.js:14</code></a>
         
         </p>
 
