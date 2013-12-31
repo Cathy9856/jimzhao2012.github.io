@@ -509,20 +509,26 @@ var CtripUtil = {
     },
 
     app_open_url_v52_fixed:function(openUrl, targetMode, title) {
-        var params = {};
-        params.openUrl = openUrl;
-        params.title = title;
-        params.targetMode = targetMode;
-        var ua = navigator.userAgent;
-        var isAndroidDevice = ua.indexOf("Android")>0;
+        var params = {};
+        params.openUrl = openUrl;
+        params.title = title;
+        params.targetMode = targetMode;
+        var ua = navigator.userAgent;
+        var isAndroidDevice = ua.indexOf("Android")>0;
 
-        paramString = Internal.makeParamString("Util", "openUrl", params, "open_url");
-        if (isAndroidDevice) {
-            window.Util_a.openUrl(paramString);
+        paramString = Internal.makeParamString("Util", "openUrl", params, "open_url");
+        if (isAndroidDevice) {
+            try{
+                window.Util_a.openUrl(paramString);
+            } 
+            catch(e){
+                window.location.href = openUrl;
+            }
+        } else {
+            window.location.href = openUrl;
         }
+    },
 
-        window.location.href = openUrl;
-    },
 
     /**
      * @description 检查App的版本更新
