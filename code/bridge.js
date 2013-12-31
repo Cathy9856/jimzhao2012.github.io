@@ -17,7 +17,7 @@ var Internal = {
      * @type Bool
      * @property isIOS
      */
-    isIOS:true,
+    isIOS:false,
 
     /**
      * @brief 是否是Android设备
@@ -25,7 +25,7 @@ var Internal = {
      * @type Bool
      * @property isAndroid
      */
-    isAndroid:true,
+    isAndroid:false,
 
     /**
      * @brief 当前携程旅行App版本
@@ -502,6 +502,9 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.openUrl(paramString);
+        } 
+        else {
+            window.location.href = openUrl;
         }
     },
 
