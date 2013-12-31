@@ -508,6 +508,22 @@ var CtripUtil = {
         }
     },
 
+    app_open_url_v52_fixed:function(openUrl, targetMode, title) {
+        var params = {};
+        params.openUrl = openUrl;
+        params.title = title;
+        params.targetMode = targetMode;
+        var ua = navigator.userAgent;
+        var isAndroidDevice = ua.indexOf("Android")>0;
+
+        paramString = Internal.makeParamString("Util", "openUrl", params, "open_url");
+        if (isAndroidDevice) {
+            window.Util_a.openUrl(paramString);
+        }
+
+        window.location.href = openUrl;
+    },
+
     /**
      * @description 检查App的版本更新
      * @brief 检查App的版本更新
