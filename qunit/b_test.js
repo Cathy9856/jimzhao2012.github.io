@@ -406,7 +406,7 @@ asyncTest("写日志到App: app_log", function(){
 
 asyncTest("测试下载内容:app_download_data", function() {
 	expect(1);
-	CtripUtil.app_download_data("http://www.baidu.com/bdlogo.gif");
+	CtripUtil.app_download_data("http://www.baidu.com/bdlogo.gif", "jpg");
 
 	setTimeout(function(){
 		start();
