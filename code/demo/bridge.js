@@ -31,7 +31,7 @@ var Internal = {
      * @type Bool
      * @property isWinOS
      */
-    isWinOS:false;
+    isWinOS:false,
 
     /**
      * @brief 当前携程旅行App版本
