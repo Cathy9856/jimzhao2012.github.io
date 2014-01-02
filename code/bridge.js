@@ -2,8 +2,6 @@
 var __CTRIP_JS_PARAM = "?jsparam="
 var __CTRIP_URL_PLUGIN = "ctrip://h5/plugin" + __CTRIP_JS_PARAM;
 
-var kCallbackReturnName = 100;
-
 /**
 * @class Internal
 * @description bridge.js内部使用的工具类
@@ -26,6 +24,14 @@ var Internal = {
      * @property isAndroid
      */
     isAndroid:false,
+
+     /**
+     * @brief 是否是WinPhone设备
+     * @description  bridge.js内部使用，判断是否是Windows Phone设备
+     * @type Bool
+     * @property isWinOS
+     */
+    isWinOS:false;
 
     /**
      * @brief 当前携程旅行App版本
@@ -167,6 +173,17 @@ var Internal = {
         paramString = encodeURIComponent(paramString);
 
         return  __CTRIP_URL_PLUGIN + paramString;
+    },
+
+     /**
+     * @brief JS调用Win8 native
+     * @description  内部使用，用于js调用win8
+     * @param {String} 传递给win8的参数
+     * @method callWin8App
+     * @since v5.3
+     */
+    callWin8App:function(paramString) {
+        window.external.notify(paramString);
     }
 };
 
@@ -187,16 +204,11 @@ function __bridge_callback(param) {
             platform = jsonObj.param.platform;
             Internal.isIOS = (platform == 1);
             Internal.isAndroid = (platform == 2);
+            Internal.isWinOS = (platform == 3);
             Internal.appVersion = jsonObj.param.version;
         }
 
-        var retValue = window.app.callback(jsonObj);
-        if (retValue) {
-            // alert("window.app.callback > 0"+retValue);
-            return retValue;
-        };
-
-        return kCallbackReturnName;
+        return window.app.callback(jsonObj);
     }
 
     return -1;
@@ -249,8 +261,12 @@ var CtripTool = {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
-        else {
+        else if (Internal.isAndroid)
+        {
             window.Util_a.h5Log(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     }
 };
@@ -284,6 +300,9 @@ var CtripUtil = {
             }
             else if (Internal.isAndroid) {
                 window.Util_a.logEvent(paramString);
+            }
+            else if (Internal.isWinOS) {
+                Internal.callWin8App(paramString);
             }
         }
     },
@@ -322,6 +341,9 @@ var CtripUtil = {
         else if(Internal.isAndroid) {
             window.User_a.initMemberH5Info(paramString);
         }
+        else if (Internal.isWinOS) {
+                Internal.callWin8App(paramString);
+        }
     },
 
     /**
@@ -347,6 +369,9 @@ var CtripUtil = {
         else if (Internal.isAndroid){
             window.Util_a.callPhone(paramString);
         }
+        else if (Internal.isWinOS) {
+                Internal.callWin8App(paramString);
+        }
     },
 
     /**
@@ -365,6 +390,9 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.backToHome(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -389,6 +417,9 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.backToLast(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -430,6 +461,9 @@ var CtripUtil = {
         else if (Internal.isAndroid) {
             window.Locate_a.locate(paramString);
         }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     },
 
     /**
@@ -469,6 +503,9 @@ var CtripUtil = {
             else if (Internal.isAndroid) {
                 window.NavBar_a.refresh(paramString);
             }
+            else if (Internal.isWinOS) {
+                Internal.callWin8App(paramString);
+            }
         }
     },
 
@@ -489,46 +526,42 @@ var CtripUtil = {
      //开启新的H5页面，进入m.ctrip.com
      CtripUtil.app_open_url("http://m.ctrip.com", 2, "Ctrip H5首页");
      */
-    app_open_url:function(openUrl, targetMode, title) {
+     app_open_url():function(openUrl, targetMode, title) {
         var params = {};
-        params.openUrl = openUrl;
-        params.title = title;
-        params.targetMode = targetMode;
-
-        paramString = Internal.makeParamString("Util", "openUrl", params, "open_url");
-        if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
-        }
-        else if (Internal.isAndroid) {
-            window.Util_a.openUrl(paramString);
-        } 
-        else {
-            window.location.href = openUrl;
-        }
-    },
-
-    app_open_url_v52_fixed:function(openUrl, targetMode, title) {
-        var params = {};
         params.openUrl = openUrl;
         params.title = title;
         params.targetMode = targetMode;
-        var ua = navigator.userAgent;
-        var isAndroidDevice = ua.indexOf("Android")>0;
-
-        paramString = Internal.makeParamString("Util", "openUrl", params, "open_url");
-        if (isAndroidDevice) {
-            try{
-                window.Util_a.openUrl(paramString);
+        paramString = Internal.makeParamString("Util", "openUrl", params, "open_url");
+       
+        if (appVersion) { //有AppVersion，为5.3及之后版本，或者5.2本地H5页面
+            if (Internal.isIOS) {
+                url = Internal.makeURLWithParam(paramString);
+                Internal.loadURL(url);
+            }
+            else if (Internal.isAndroid) {
+                window.Util_a.openUrl(paramString);
+            }
+            else if (Internal.isWinOS) {
+                Internal.callWin8App(paramString);
+            }
+        } 
+        else
+        {
+            var ua = navigator.userAgent;
+            var isAndroid52Version = (ua.indexOf("Android")>0) && (ua.indexOf("CtripWireless")>0);
+            if(isAndroid52Version) {
+                try {
+                    window.Util_a.openUrl(paramString);
+                } 
+                catch(e){
+                    window.location.href = openUrl;
+                }
             } 
-            catch(e){
+            else {
                 window.location.href = openUrl;
             }
-        } else {
-            window.location.href = openUrl;
         }
-    },
-
+    },
 
     /**
      * @description 检查App的版本更新
@@ -546,6 +579,9 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.checkUpdate(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -566,6 +602,9 @@ var CtripUtil = {
         else if (Internal.isAndroid) {
             window.Util_a.recommendAppToFriends(paramString);
         }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     },
 
     /**
@@ -584,6 +623,9 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.addWeixinFriend(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -612,6 +654,9 @@ var CtripUtil = {
         else if (Internal.isAndroid) {
             window.Util_a.crossPackageJumpUrl(paramString);
         }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     },
 
     /**
@@ -630,6 +675,9 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.showNewestIntroduction(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -657,6 +705,9 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.checkNetworkStatus(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -691,6 +742,9 @@ var CtripUtil = {
         else if (Internal.isAndroid) {
             window.Util_a.checkAppInstallStatus(paramString);
         }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     },
 
     /**
@@ -715,6 +769,9 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.refreshNativePage(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -743,6 +800,9 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.copyToClipboard(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -778,6 +838,9 @@ var CtripUtil = {
         else if (Internal.isAndroid) {
             window.Util_a.readCopiedStringFromClipboard(paramString);
         }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     },
 
     /**
@@ -808,6 +871,9 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.callSystemShare(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -848,6 +914,9 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.downloadData(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     }
 };
@@ -913,6 +982,9 @@ var CtripUser = {
         else if (Internal.isAndroid) {
             window.User_a.memberLogin(paramString);
         }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     },
 
      /**
@@ -970,6 +1042,9 @@ var CtripUser = {
         }
         else if (Internal.isAndroid) {
             window.User_a.nonMemberLogin(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -1030,6 +1105,9 @@ var CtripUser = {
         else if (Internal.isAndroid) {
             window.User_a.memberAutoLogin(paramString);
         }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     },
 
 
@@ -1088,6 +1166,9 @@ var CtripUser = {
         }
         else if (Internal.isAndroid) {
             window.User_a.memberRegister(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     }
 
