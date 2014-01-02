@@ -184,7 +184,7 @@ var Internal = {
      */
     callWin8App:function(paramString) {
         window.external.notify(paramString);
-    }
+    },
 };
 
 /**
