@@ -98,7 +98,7 @@ code, kbd, pre, samp {
     line-height: 1.35;
 }
 
-p code, p kbd, p samp, li code {
+p code, p kbd, p samp {
     background: #FCFBFA;
     border: 1px solid #EFEEED;
     padding: 0 3px;
@@ -523,7 +523,7 @@ kbd .cmd { font-family: Monaco, Helvetica; }
     list-style: none;
     margin: 0;
     padding: 0;
-/*    -moz-column-count: 4;
+    -moz-column-count: 4;
     -moz-column-gap: 10px;
     -moz-column-width: 170px;
     -ms-column-count: 4;
@@ -537,7 +537,7 @@ kbd .cmd { font-family: Monaco, Helvetica; }
     -webkit-column-width: 170px;
     column-count: 4;
     column-gap: 10px;
-    column-width: 170px;*/
+    column-width: 170px;
 }
 
 .apidocs .no-columns .index-list {

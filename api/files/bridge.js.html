@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: Ctrip Hybrid Javascript Lib</em>
+            <em>API Docs for: </em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -27,11 +27,11 @@
         <div class="yui3-u-1-4">
             <div id="docs-sidebar" class="sidebar apidocs">
                 <div id="api-list">
-    <h2 class="off-left">API定义</h2>
+    <h2 class="off-left">APIs</h2>
     <div id="api-tabview" class="tabview">
         <ul class="tabs">
-            <li><a href="#api-classes">类</a></li>
-            <li><a href="#api-modules">模块</a></li>
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
         </ul>
 
         <div id="api-tabview-filter">
@@ -111,7 +111,7 @@ var Internal = {
      * @type Bool
      * @property isIOS
      */
-    isIOS:true,
+    isIOS:false,
 
     /**
      * @brief 是否是Android设备
@@ -119,7 +119,7 @@ var Internal = {
      * @type Bool
      * @property isAndroid
      */
-    isAndroid:true,
+    isAndroid:false,
 
     /**
      * @brief 当前携程旅行App版本
@@ -596,8 +596,33 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.openUrl(paramString);
+        } 
+        else {
+            window.location.href = openUrl;
         }
     },
+
+    app_open_url_v52_fixed:function(openUrl, targetMode, title) {
+        var params = {};
+        params.openUrl = openUrl;
+        params.title = title;
+        params.targetMode = targetMode;
+        var ua = navigator.userAgent;
+        var isAndroidDevice = ua.indexOf(&quot;Android&quot;)&gt;0;
+
+        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;openUrl&quot;, params, &quot;open_url&quot;);
+        if (isAndroidDevice) {
+            try{
+                window.Util_a.openUrl(paramString);
+            } 
+            catch(e){
+                window.location.href = openUrl;
+            }
+        } else {
+            window.location.href = openUrl;
+        }
+    },
+
 
     /**
      * @description 检查App的版本更新
@@ -884,11 +909,12 @@ var CtripUtil = {
      * @description 根据URL下载数据
      * @brief 根据URL下载数据
      * @param {String} download_url 需要下载内容的URL
+     * @param {String} suffix 保存的文件后缀
      * @method app_download_data
      * @since v5.3
      * @author jimzhao
      * @example
-     CtripUtil.app_download_data(&quot;http://www.baidu.com/img/bdlogo.gif&quot;);
+     CtripUtil.app_download_data(&quot;http://www.baidu.com/img/bdlogo.gif&quot;, &quot;gif&quot;);
      //调用该函数后，native会返回H5内容
      var json_obj = {
         tagname:&quot;download_data&quot;,
@@ -897,7 +923,7 @@ var CtripUtil = {
      };
      app.callback(json_obj);
      */
-    app_download_data:function(download_url) {
+    app_download_data:function(download_url, suffix) {
         var startVersion = &quot;5.3&quot;;
         if (!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
@@ -906,6 +932,7 @@ var CtripUtil = {
 
         var params = {};
         params.downloadUrl = download_url;
+        params.suffix = suffix;
         params.pageUrl = window.location.href;
 
         var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;downloadData&quot;,params,&quot;download_data&quot;);
@@ -913,7 +940,7 @@ var CtripUtil = {
             var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
-         else if (Internal.isAndroid) {
+        else if (Internal.isAndroid) {
             window.Util_a.downloadData(paramString);
         }
     }
