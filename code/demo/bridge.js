@@ -536,8 +536,7 @@ var CtripUtil = {
         params.title = title;
         params.targetMode = targetMode;
         paramString = Internal.makeParamString("Util", "openUrl", params, "open_url");
-       
-        if (appVersion) { //有AppVersion，为5.3及之后版本，或者5.2本地H5页面
+        if (Internal.appVersion) { //有AppVersion，为5.3及之后版本，或者5.2本地H5页面
             if (Internal.isIOS) {
                 url = Internal.makeURLWithParam(paramString);
                 Internal.loadURL(url);
