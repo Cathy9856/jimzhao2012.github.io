@@ -13,7 +13,7 @@ mkdir tb;
 cp bridge.js tb;
 cd tb;
 rm -rf ../../api;
-yuidoc . -o ../../api;
+yuidoc --themedir ../yui_theme -o ../../api .;
 cd ..;
 rm -rf tb;
 cd ..;
