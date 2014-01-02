@@ -510,8 +510,8 @@ var CtripUtil = {
     },
 
     /**
-     * @description 打开链接URL地址
-     * @brief 打开链接URL地址
+     * @description Hybrid页面，打开链接URL地址，兼容App和浏览器
+     * @brief Hybrid页面打开链接URL
      * @param {String} openUrl 需要打开的URL，可以为ctrip://,http(s)://,file://等协议的URL
      * @param {String} title 当targetMode＝2时候，新打开的H5页面的title
      * @param {int} targetMode 

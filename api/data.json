@@ -481,8 +481,8 @@
         {
             "file": "bridge.js",
             "line": 512,
-            "description": "打开链接URL地址",
-            "brief": "打开链接URL地址",
+            "description": "Hybrid页面，打开链接URL地址，兼容App和浏览器",
+            "brief": "Hybrid页面打开链接URL",
             "params": [
                 {
                     "name": "openUrl",
