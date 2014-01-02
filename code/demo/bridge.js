@@ -513,8 +513,12 @@ var CtripUtil = {
      * @description 打开链接URL地址
      * @brief 打开链接URL地址
      * @param {String} openUrl 需要打开的URL，可以为ctrip://,http(s)://,file://等协议的URL
-     * @param {int} targetMode 0,当前页面刷新url;1,系统浏览器打开,ctrip://协议需使用该mode;2,开启新的H5页面，title生效;
      * @param {String} title 当targetMode＝2时候，新打开的H5页面的title
+     * @param {int} targetMode 
+     0,当前页面刷新url;
+     1,处理ctrip://协议;
+     2,开启新的H5页面,title生效;
+     3.使用系统浏览器打开;
      * @method app_open_url
      * @since v5.2
      * @author jimzhao
