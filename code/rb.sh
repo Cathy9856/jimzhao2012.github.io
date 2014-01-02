@@ -4,6 +4,7 @@
 rm bridge.js.zip; 
 zip bridge.js.zip bridge.js; 
 minjs bridge.js bridge.min.js; 
+rm bridge.min.zip;
 zip bridge.min.zip  bridge.min.js;
 cp bridge.js demo/bridge.js;
 rm demo.zip;
