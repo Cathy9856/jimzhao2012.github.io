@@ -620,7 +620,7 @@ var CtripUtil = {
      //开启新的H5页面，进入m.ctrip.com
      CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&quot;);
      */
-     app_open_url():function(openUrl, targetMode, title) {
+     app_open_url:function(openUrl, targetMode, title) {
         var params = {};
         params.openUrl = openUrl;
         params.title = title;
@@ -656,6 +656,7 @@ var CtripUtil = {
             }
         }
     },
+
 
     /**
      * @description 检查App的版本更新
