@@ -1,6 +1,8 @@
 
 var cb_ret = {};
 
+alert(window.navigator.userAgent);
+
 var async_time_interval = 3000;
 var sync_time_interval = 1000;
 var test_copy_string = "*****测试字符串clipboard******";
