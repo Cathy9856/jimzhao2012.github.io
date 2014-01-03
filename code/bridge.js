@@ -335,6 +335,7 @@ var CtripUtil = {
         version:"5.2",
         device:"iPhone4S",
         appId:"com.ctrip.wrieless",
+        osVersion:"iOS_6.0",
         serverVersion:"5.3",
         platform:1, //区分平台，iPhone为1, Android为2
         userInfo={USERINFO},//USERINFO内部结构参考CtripUser.app_member_login();    
@@ -942,6 +943,47 @@ var CtripUtil = {
             window.Util_a.downloadData(paramString);
         }
         else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /**
+     * @description 打开其它App，android可以根据包名和URL跳转，iOS只支持URL跳转
+     * @brief 打开其它App
+     * @param {String} packageId 需要打开的app的包名，android使用
+     * @param {String} jsonParam 打开指定包名的app，所带的参数，json字符串
+     * @param {String} url 需要打开的app支持的URL协议，如ctrip://xxx
+     * @method app_download_data
+     * @since v5.3
+     * @author jimzhao
+     * @example
+     CtripUtil.app_open_other_app("com.tencent.mm", null, "weixin://xxxxx");
+     //优先级说明：
+     //1. android有packageId的时候，使用packageId＋jsonParam做跳转;
+     //2. 无包名时候，android使用URL协议跳转;
+     //3. iOS， winPhone OS都使用URL协议跳转;
+     */
+    app_open_other_app:function(packageId, jsonParam, url) {
+       var startVersion = "5.3";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        var params = {};
+        params.packageId = packageId;
+        params.jsonParam = jsonParam;
+        params.url = url;
+        var paramString = Internal.makeParamString("Util", "openOtherApp", params, "open_other_app");
+
+        if (Internal.isIOS) {
+            var url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } 
+        else if (Internal.isAndroid) {
+            window.Util_a.openOtherApp(paramString);
+        } 
+        else if (int.isWinOS) {
             Internal.callWin8App(paramString);
         }
     }

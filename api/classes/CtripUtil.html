@@ -158,6 +158,8 @@
                     
                     <tr><td>H5跨模块/站点跳转</td><td><a href="#method_app_cross_package_href">app_cross_package_href</a></td></tr>
                     
+                    <tr><td>打开其它App</td><td><a href="#method_app_download_data">app_download_data</a></td></tr>
+                    
                     <tr><td>根据URL下载数据</td><td><a href="#method_app_download_data">app_download_data</a></td></tr>
                     
                     <tr><td>初始化H5模块数据</td><td><a href="#method_app_init_member_H5_info">app_init_member_H5_info</a></td></tr>
@@ -182,6 +184,12 @@
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -351,7 +359,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l636"><code>bridge.js:636</code></a>
+        <a href="../files/bridge.js.html#l637"><code>bridge.js:637</code></a>
         
         </p>
 
@@ -417,7 +425,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l398"><code>bridge.js:398</code></a>
+        <a href="../files/bridge.js.html#l399"><code>bridge.js:399</code></a>
         
         </p>
 
@@ -493,7 +501,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l420"><code>bridge.js:420</code></a>
+        <a href="../files/bridge.js.html#l421"><code>bridge.js:421</code></a>
         
         </p>
 
@@ -593,7 +601,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l358"><code>bridge.js:358</code></a>
+        <a href="../files/bridge.js.html#l359"><code>bridge.js:359</code></a>
         
         </p>
 
@@ -701,7 +709,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l872"><code>bridge.js:872</code></a>
+        <a href="../files/bridge.js.html#l873"><code>bridge.js:873</code></a>
         
         </p>
 
@@ -823,7 +831,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l740"><code>bridge.js:740</code></a>
+        <a href="../files/bridge.js.html#l741"><code>bridge.js:741</code></a>
         
         </p>
 
@@ -936,7 +944,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l710"><code>bridge.js:710</code></a>
+        <a href="../files/bridge.js.html#l711"><code>bridge.js:711</code></a>
         
         </p>
 
@@ -1009,7 +1017,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l592"><code>bridge.js:592</code></a>
+        <a href="../files/bridge.js.html#l593"><code>bridge.js:593</code></a>
         
         </p>
 
@@ -1085,7 +1093,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l804"><code>bridge.js:804</code></a>
+        <a href="../files/bridge.js.html#l805"><code>bridge.js:805</code></a>
         
         </p>
 
@@ -1191,7 +1199,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l658"><code>bridge.js:658</code></a>
+        <a href="../files/bridge.js.html#l659"><code>bridge.js:659</code></a>
         
         </p>
 
@@ -1275,6 +1283,154 @@ app.callback(json_obj);</code></pre>
             
                 <li class="arg">
                     
+                        <code>packageId</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>jsonParam</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>url</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l950"><code>bridge.js:950</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.3</p>
+        
+    </div>
+
+    <div class="description">
+        <p>打开其它App，android可以根据包名和URL跳转，iOS只支持URL跳转</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">packageId</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要打开的app的包名，android使用</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">jsonParam</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>打开指定包名的app，所带的参数，json字符串</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">url</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要打开的app支持的URL协议，如ctrip://xxx</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>CtripUtil.app_open_other_app(&quot;com.tencent.mm&quot;, null, &quot;weixin://xxxxx&quot;);
+//优先级说明：
+//1. android有packageId的时候，使用packageId＋jsonParam做跳转;
+//2. 无包名时候，android使用URL协议跳转;
+//3. iOS， winPhone OS都使用URL协议跳转;</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_download_data" class="method item">
+    <h3 class="name"><code>app_download_data</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
                         <code>download_url</code>
                     
                 </li>
@@ -1314,7 +1470,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l906"><code>bridge.js:906</code></a>
+        <a href="../files/bridge.js.html#l907"><code>bridge.js:907</code></a>
         
         </p>
 
@@ -1463,6 +1619,7 @@ var json_obj =
    version:&quot;5.2&quot;,
    device:&quot;iPhone4S&quot;,
    appId:&quot;com.ctrip.wrieless&quot;,
+   osVersion:&quot;iOS_6.0&quot;,
    serverVersion:&quot;5.3&quot;,
    platform:1, //区分平台，iPhone为1, Android为2
    userInfo={USERINFO},//USERINFO内部结构参考CtripUser.app_member_login();    
@@ -1517,7 +1674,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l447"><code>bridge.js:447</code></a>
+        <a href="../files/bridge.js.html#l448"><code>bridge.js:448</code></a>
         
         </p>
 
@@ -1744,7 +1901,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l533"><code>bridge.js:533</code></a>
+        <a href="../files/bridge.js.html#l534"><code>bridge.js:534</code></a>
         
         </p>
 
@@ -1874,7 +2031,7 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             
         
         
-        <a href="../files/bridge.js.html#l835"><code>bridge.js:835</code></a>
+        <a href="../files/bridge.js.html#l836"><code>bridge.js:836</code></a>
         
         </p>
 
@@ -1947,7 +2104,7 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             
         
         
-        <a href="../files/bridge.js.html#l614"><code>bridge.js:614</code></a>
+        <a href="../files/bridge.js.html#l615"><code>bridge.js:615</code></a>
         
         </p>
 
@@ -2029,7 +2186,7 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             
         
         
-        <a href="../files/bridge.js.html#l776"><code>bridge.js:776</code></a>
+        <a href="../files/bridge.js.html#l777"><code>bridge.js:777</code></a>
         
         </p>
 
@@ -2145,7 +2302,7 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             
         
         
-        <a href="../files/bridge.js.html#l490"><code>bridge.js:490</code></a>
+        <a href="../files/bridge.js.html#l491"><code>bridge.js:491</code></a>
         
         </p>
 
@@ -2246,7 +2403,7 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             
         
         
-        <a href="../files/bridge.js.html#l688"><code>bridge.js:688</code></a>
+        <a href="../files/bridge.js.html#l689"><code>bridge.js:689</code></a>
         
         </p>
 
