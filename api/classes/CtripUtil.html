@@ -158,8 +158,6 @@
                     
                     <tr><td>H5跨模块/站点跳转</td><td><a href="#method_app_cross_package_href">app_cross_package_href</a></td></tr>
                     
-                    <tr><td>打开其它App</td><td><a href="#method_app_download_data">app_download_data</a></td></tr>
-                    
                     <tr><td>根据URL下载数据</td><td><a href="#method_app_download_data">app_download_data</a></td></tr>
                     
                     <tr><td>初始化H5模块数据</td><td><a href="#method_app_init_member_H5_info">app_init_member_H5_info</a></td></tr>
@@ -167,6 +165,8 @@
                     <tr><td>定位</td><td><a href="#method_app_locate">app_locate</a></td></tr>
                     
                     <tr><td>收集ActionLog</td><td><a href="#method_app_log_event">app_log_event</a></td></tr>
+                    
+                    <tr><td>打开其它App</td><td><a href="#method_app_open_other_app">app_open_other_app</a></td></tr>
                     
                     <tr><td>Hybrid页面打开链接URL</td><td><a href="#method_app_open_url">app_open_url</a></td></tr>
                     
@@ -1283,154 +1283,6 @@ app.callback(json_obj);</code></pre>
             
                 <li class="arg">
                     
-                        <code>packageId</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>jsonParam</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>url</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                定义在
-                
-            
-        
-        
-        <a href="../files/bridge.js.html#l950"><code>bridge.js:950</code></a>
-        
-        </p>
-
-
-        
-
-        
-            <p>可用版本 v5.3</p>
-        
-    </div>
-
-    <div class="description">
-        <p>打开其它App，android可以根据包名和URL跳转，iOS只支持URL跳转</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>参数:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">packageId</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>需要打开的app的包名，android使用</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">jsonParam</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>打开指定包名的app，所带的参数，json字符串</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">url</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>需要打开的app支持的URL协议，如ctrip://xxx</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>举例:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>CtripUtil.app_open_other_app(&quot;com.tencent.mm&quot;, null, &quot;weixin://xxxxx&quot;);
-//优先级说明：
-//1. android有packageId的时候，使用packageId＋jsonParam做跳转;
-//2. 无包名时候，android使用URL协议跳转;
-//3. iOS， winPhone OS都使用URL协议跳转;</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_app_download_data" class="method item">
-    <h3 class="name"><code>app_download_data</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
                         <code>download_url</code>
                     
                 </li>
@@ -1840,6 +1692,154 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
 
             <div class="example-content">
                 <p> Util.app_log_event(&#39;GoodDay&#39;)</p>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_open_other_app" class="method item">
+    <h3 class="name"><code>app_open_other_app</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>packageId</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>jsonParam</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>url</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l950"><code>bridge.js:950</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.3</p>
+        
+    </div>
+
+    <div class="description">
+        <p>打开其它App，android可以根据包名和URL跳转，iOS只支持URL跳转</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">packageId</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要打开的app的包名，android使用</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">jsonParam</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>打开指定包名的app，所带的参数，json字符串</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">url</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要打开的app支持的URL协议，如ctrip://xxx</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>CtripUtil.app_open_other_app(&quot;com.tencent.mm&quot;, null, &quot;weixin://xxxxx&quot;);
+//优先级说明：
+//1. android有packageId的时候，使用packageId＋jsonParam做跳转;
+//2. 无包名时候，android使用URL协议跳转;
+//3. iOS， winPhone OS都使用URL协议跳转;</code></pre>
 
             </div>
         </div>
