@@ -983,10 +983,11 @@ var CtripUtil = {
         else if (Internal.isAndroid) {
             window.Util_a.openOtherApp(paramString);
         } 
-        else if (int.isWinOS) {
+        else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
-    }
+    },
+    
 };
 
 /**

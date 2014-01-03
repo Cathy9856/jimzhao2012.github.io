@@ -66,7 +66,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 992,
+            "line": 993,
             "description": "用户相关类",
             "brief": "用户相关类"
         }
@@ -788,7 +788,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 999,
+            "line": 1000,
             "description": "会员登录,native未登录时候，会显示会员登录界面，native会员已登录，直接完成，返回登录的用户信息",
             "brief": "会员登录",
             "since": "5.2",
@@ -802,7 +802,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1058,
+            "line": 1059,
             "description": "非会员登录",
             "brief": "非会员登录",
             "since": "5.2",
@@ -819,7 +819,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1120,
+            "line": 1121,
             "description": "会员自动登录,对于已经在native登陆的用户，app会通过调用callback回传登录数据，H5页面需要处理用户信息， 不显示输入用户名密码界面",
             "brief": "会员自动登录",
             "since": "5.2",
@@ -836,7 +836,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1182,
+            "line": 1183,
             "description": "用户注册",
             "brief": "用户注册",
             "since": "5.2",
@@ -1027,23 +1027,23 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:992"
+            "line": " bridge.js:993"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:999"
+            "line": " bridge.js:1000"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1058"
+            "line": " bridge.js:1059"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1120"
+            "line": " bridge.js:1121"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1182"
+            "line": " bridge.js:1183"
         }
     ]
 }
