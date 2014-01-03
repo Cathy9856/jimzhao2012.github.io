@@ -42,6 +42,14 @@ var Internal = {
     appVersion:"",
 
     /**
+     * @brief 当前操作系统版本
+     * @description bridge.js内部使用，存储当前操作系统版本
+     * @type String
+     * @property osVersion
+     */ 
+    osVersion:"",
+    
+    /**
      * @brief 判断版本大小
      * @description 判断当前版本号是否大于传入的版本号
      * @param {String} verStr 版本号
@@ -206,6 +214,7 @@ function __bridge_callback(param) {
             Internal.isAndroid = (platform == 2);
             Internal.isWinOS = (platform == 3);
             Internal.appVersion = jsonObj.param.version;
+            Internal.osVersion = jsonObj.param.osVersion;
         }
 
         return window.app.callback(jsonObj);
@@ -363,14 +372,26 @@ var CtripUtil = {
 
         paramString = Internal.makeParamString("Util", "callPhone", params, "call_phone")
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
+            var fixedFlag = false;
+
+            if (Internal.isNotEmptyString(phone)) {
+                if (!Internal.appVersion || (Internal.appVersion == "5.2")) {
+                    fixedFlag = true;
+                    url = "tel://"+phone;
+                    window.location.href = url;
+                }
+            } 
+
+            if (!fixedFlag) {
+                url = Internal.makeURLWithParam(paramString);
+                Internal.loadURL(url);
+            }
         }
         else if (Internal.isAndroid){
             window.Util_a.callPhone(paramString);
         }
         else if (Internal.isWinOS) {
-                Internal.callWin8App(paramString);
+            Internal.callWin8App(paramString);
         }
     },
 
