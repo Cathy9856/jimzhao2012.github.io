@@ -423,14 +423,15 @@ var CtripUtil = {
      * @brief 离开H5回上一个页面
      * @method app_back_to_last_page
      * @param {String} callbackString 离开H5页面，需要传递给上一个H5页面的数据，上一个H5页面在web_view_did_appear回调里面将会收到该数据
+     * @param {Bool} isDeleteH5Page 是否是直接删除该H5页面。直接删除H5页面时候，页面切换会没有动画效果
      * @since v5.2
      * @author jimzhao
-     * @example CtripUtil.app_back_to_last_page("This is a json string for my previous H5 page");
+     * @example CtripUtil.app_back_to_last_page("This is a json string for my previous H5 page", false);
      */
-    app_back_to_last_page:function(callbackString) {
+    app_back_to_last_page:function(callbackString, isDeleteH5Page) {
         var params = {};
         params.callbackString = callbackString;
-
+        params.isDeleteH5Page = isDeleteH5Page;
         paramString = Internal.makeParamString("Util", "backToLast", params, "back_to_last_page");
 
         if (Internal.isIOS) {
