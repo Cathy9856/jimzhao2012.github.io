@@ -927,8 +927,8 @@ var CtripUtil = {
             return;
         }
         var params = {};
-        if(!imageRelativePath) {
-            imageRelativePath = "";
+        if(!image_relative_path) {
+            image_relative_path = "";
         }
         if (!text) {
             text = "";
