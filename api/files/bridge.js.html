@@ -461,8 +461,14 @@ var CtripUtil = {
      //或者直接拨打呼叫中心
      CtripUtil.app_call_phone();
      */
-    app_call_phone:function(phone) {
+    app_call_phone:function(phone) {  
+
+        if(!phone) {
+            phone = &quot;&quot;;
+        }
+        
         var params = {};
+        
         params.phone = phone;
 
         paramString = Internal.makeParamString(&quot;Util&quot;, &quot;callPhone&quot;, params, &quot;call_phone&quot;)
@@ -524,6 +530,10 @@ var CtripUtil = {
      */
     app_back_to_last_page:function(callbackString, isDeleteH5Page) {
         var params = {};
+        if(!callbackString) {
+            callbackString = &quot;&quot;;
+        }
+
         params.callbackString = callbackString;
         params.isDeleteH5Page = isDeleteH5Page;
         paramString = Internal.makeParamString(&quot;Util&quot;, &quot;backToLast&quot;, params, &quot;back_to_last_page&quot;);
@@ -649,6 +659,12 @@ var CtripUtil = {
      */
      app_open_url:function(openUrl, targetMode, title) {
         var params = {};
+        if(!openUrl) {
+            openUrl = &quot;&quot;;
+        }
+        if (!title) {
+            title = &quot;&quot;;
+        }
         params.openUrl = openUrl;
         params.title = title;
         params.targetMode = targetMode;
@@ -765,6 +781,13 @@ var CtripUtil = {
      */
     app_cross_package_href:function(path, param) {
         var params = {};
+        if (!path) {
+            path = &quot;&quot;;
+        }
+        if (!param) {
+            param = &quot;&quot;;
+        }
+
         params.path = path;
         params.param = param;
 
@@ -853,6 +876,12 @@ var CtripUtil = {
      */
     app_check_app_install_status:function(openUrl, packageName) {
         var params = {};
+        if (!openUrl) {
+            openUrl = &quot;&quot;;
+        }
+        if (!packageName) {
+            packageName = &quot;&quot;;
+        }
         params.openUrl = openUrl;
         params.packageName = packageName;
 
@@ -881,6 +910,13 @@ var CtripUtil = {
      */
     app_refresh_native_page:function(pageName, jsonStr) {
         var params = {};
+        if (!pageName) {
+            pageName = &quot;&quot;;
+        }
+        if (!jsonStr) {
+            jsonStr = &quot;&quot;;
+        }
+
         params.pageName = pageName;
         params.jsonStr = jsonStr;
 
@@ -913,6 +949,9 @@ var CtripUtil = {
             return;
         }
         var params = {};
+        if (!toCopyStr) {
+            toCopyStr = &quot;&quot;;
+        }
         params.copyString = toCopyStr;
 
         paramString = Internal.makeParamString(&quot;Util&quot;, &quot;copyToClipboard&quot;, params, &quot;copy_string_to_clipboard&quot;);
@@ -982,6 +1021,12 @@ var CtripUtil = {
             return;
         }
         var params = {};
+        if(!imageRelativePath) {
+            imageRelativePath = &quot;&quot;;
+        }
+        if (!text) {
+            text = &quot;&quot;;
+        }
         params.imageRelativePath = image_relative_path;
         params.text = text;
 
@@ -1025,6 +1070,12 @@ var CtripUtil = {
         }
 
         var params = {};
+        if (!downloadUrl) {
+            downloadUrl = &quot;&quot;;
+        }
+        if (!suffix) {
+            suffix = &quot;&quot;;
+        }
         params.downloadUrl = download_url;
         params.suffix = suffix;
         params.pageUrl = window.location.href;
@@ -1066,6 +1117,15 @@ var CtripUtil = {
         }
 
         var params = {};
+        if (!packageId) {
+            packageId = &quot;&quot;;
+        }
+        if (!jsonParam) {
+            jsonParam = &quot;&quot;;
+        }
+        if (!url) {
+            url = &quot;&quot;;
+        }
         params.packageId = packageId;
         params.jsonParam = jsonParam;
         params.url = url;

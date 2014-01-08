@@ -367,8 +367,14 @@ var CtripUtil = {
      //或者直接拨打呼叫中心
      CtripUtil.app_call_phone();
      */
-    app_call_phone:function(phone) {
+    app_call_phone:function(phone) {  
+
+        if(!phone) {
+            phone = "";
+        }
+        
         var params = {};
+        
         params.phone = phone;
 
         paramString = Internal.makeParamString("Util", "callPhone", params, "call_phone")
@@ -430,6 +436,10 @@ var CtripUtil = {
      */
     app_back_to_last_page:function(callbackString, isDeleteH5Page) {
         var params = {};
+        if(!callbackString) {
+            callbackString = "";
+        }
+
         params.callbackString = callbackString;
         params.isDeleteH5Page = isDeleteH5Page;
         paramString = Internal.makeParamString("Util", "backToLast", params, "back_to_last_page");
@@ -555,6 +565,12 @@ var CtripUtil = {
      */
      app_open_url:function(openUrl, targetMode, title) {
         var params = {};
+        if(!openUrl) {
+            openUrl = "";
+        }
+        if (!title) {
+            title = "";
+        }
         params.openUrl = openUrl;
         params.title = title;
         params.targetMode = targetMode;
@@ -671,6 +687,13 @@ var CtripUtil = {
      */
     app_cross_package_href:function(path, param) {
         var params = {};
+        if (!path) {
+            path = "";
+        }
+        if (!param) {
+            param = "";
+        }
+
         params.path = path;
         params.param = param;
 
@@ -759,6 +782,12 @@ var CtripUtil = {
      */
     app_check_app_install_status:function(openUrl, packageName) {
         var params = {};
+        if (!openUrl) {
+            openUrl = "";
+        }
+        if (!packageName) {
+            packageName = "";
+        }
         params.openUrl = openUrl;
         params.packageName = packageName;
 
@@ -787,6 +816,13 @@ var CtripUtil = {
      */
     app_refresh_native_page:function(pageName, jsonStr) {
         var params = {};
+        if (!pageName) {
+            pageName = "";
+        }
+        if (!jsonStr) {
+            jsonStr = "";
+        }
+
         params.pageName = pageName;
         params.jsonStr = jsonStr;
 
@@ -819,6 +855,9 @@ var CtripUtil = {
             return;
         }
         var params = {};
+        if (!toCopyStr) {
+            toCopyStr = "";
+        }
         params.copyString = toCopyStr;
 
         paramString = Internal.makeParamString("Util", "copyToClipboard", params, "copy_string_to_clipboard");
@@ -888,6 +927,12 @@ var CtripUtil = {
             return;
         }
         var params = {};
+        if(!imageRelativePath) {
+            imageRelativePath = "";
+        }
+        if (!text) {
+            text = "";
+        }
         params.imageRelativePath = image_relative_path;
         params.text = text;
 
@@ -931,6 +976,12 @@ var CtripUtil = {
         }
 
         var params = {};
+        if (!downloadUrl) {
+            downloadUrl = "";
+        }
+        if (!suffix) {
+            suffix = "";
+        }
         params.downloadUrl = download_url;
         params.suffix = suffix;
         params.pageUrl = window.location.href;
@@ -972,6 +1023,15 @@ var CtripUtil = {
         }
 
         var params = {};
+        if (!packageId) {
+            packageId = "";
+        }
+        if (!jsonParam) {
+            jsonParam = "";
+        }
+        if (!url) {
+            url = "";
+        }
         params.packageId = packageId;
         params.jsonParam = jsonParam;
         params.url = url;
