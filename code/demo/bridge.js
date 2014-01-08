@@ -976,8 +976,8 @@ var CtripUtil = {
         }
 
         var params = {};
-        if (!downloadUrl) {
-            downloadUrl = "";
+        if (!download_url) {
+            download_url = "";
         }
         if (!suffix) {
             suffix = "";
