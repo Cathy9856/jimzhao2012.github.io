@@ -42,10 +42,12 @@
     };
 
     function doubleAction() {
-      CtripUtil.app_open_url('http://www.jimzhao.com/qunit/m.html', 2, 'Baidu');
+      CtripUtil.app_open_url('http://www.jimzhao.com/qunit/m.html', 2, 'Baiduxx');
+    }
+    function tripleAction() {
+      CtripUtil.app_open_url('http://www.baidu.com/', 2, 'Baidu');
       CtripUtil.app_back_to_last_page("xxxx", true);
     }
-
   </script>
 </head>
 <body>
@@ -56,6 +58,8 @@
 <p class="p1"><br></p>
 <ul class="ul1">
    <li class="li2"><a onclick="javscript:doubleAction()">Double click LA</a></li>
+  <br/>
+    <li class="li2"><a onclick="javscript:tripleAction()">Triple click LA</a></li>
   <br/>
    <li class="li2"><a onclick="javscript:CtripUser.app_member_login()">1. 登录</a></li>
   <br/>
