@@ -8,40 +8,40 @@
 					 <key>assets</key>
 					 <array>
 							 <dict>
-									 <key>kind</key>
-									 <string>software-package</string>
-									 <key>url</key>
-									 <string>http://www.jimzhao.com/code/cw_dev.ipa</string>
+								<key>kind</key>
+								<string>software-package</string>
+								<key>url</key>
+								<string>http://www.jimzhao.com/code/cw_dev.ipa</string>
 							 </dict>
 							 <dict>
-									 <key>kind</key>
-									 <string>display-image</string>
-									 <key>needs-shine</key>
-									 <true/>
-									 <key>url</key>
-									 <string>http://172.16.150.138/iphone/sit1/CTRIP_WIRELESS_logo.png</string>
+								<key>kind</key>
+								<string>display-image</string>
+								<key>needs-shine</key>
+								<true/>
+								<key>url</key>
+								<string>http://172.16.150.138/iphone/sit1/CTRIP_WIRELESS_logo.png</string>
 							 </dict>
-				 <dict>
-									 <key>kind</key>
-									 <string>full-size-image</string>
-									 <key>needs-shine</key>
-									 <true/>
-									 <key>url</key>
-									 <string>http://172.16.150.138/iphone/sit1/CTRIP_WIRELESS_logo.png</string>
+				 			 <dict>
+								<key>kind</key>
+								<string>full-size-image</string>
+								<key>needs-shine</key>
+								<true/>
+								<key>url</key>
+								<string>http://172.16.150.138/iphone/sit1/CTRIP_WIRELESS_logo.png</string>
 							 </dict>
 					 </array><key>metadata</key>
-					 <dict>
-							 <key>bundle-identifier</key>
-							 <string>com.ctrip.ctripwireless</string>
-							 <key>bundle-version</key>
-							 <string>5.3</string>
-							 <key>kind</key>
-							 <string>software</string>
-							 <key>subtitle</key>
-							 <string>Ctrip_Dev</string>
-							 <key>title</key>
-							 <string>Ctrip_Dev</string>
-					 </dict>
+							 <dict>
+								<key>bundle-identifier</key>
+								<string>com.ctrip.ctripwireless</string>
+								<key>bundle-version</key>
+								<string>5.3</string>
+								<key>kind</key>
+								<string>software</string>
+								<key>subtitle</key>
+								<string>Ctrip_Dev</string>
+								<key>title</key>
+								<string>Ctrip_Dev</string>
+							 </dict>
 			 </dict>
 	 </array>
 </dict>
