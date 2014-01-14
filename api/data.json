@@ -8,7 +8,8 @@
                 "Internal": 1,
                 "CtripTool": 1,
                 "CtripUtil": 1,
-                "CtripUser": 1
+                "CtripUser": 1,
+                "CtripEncrypt": 1
             },
             "fors": {},
             "namespaces": {}
@@ -69,6 +70,19 @@
             "line": 1054,
             "description": "用户相关类",
             "brief": "用户相关类"
+        },
+        "CtripEncrypt": {
+            "name": "CtripEncrypt",
+            "shortname": "CtripEncrypt",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bridge.js",
+            "line": 1309,
+            "description": "加解密/HASH/编码相关类",
+            "brief": "提供给H5试用，通用加解密/HASH/编码相关类"
         }
     },
     "classitems": [
@@ -855,6 +869,20 @@
                 " \n     CtripUser.app_member_register();\n     //调用后，H5会收到native回调的数据\n     //回调的数据格式参考app_member_login()\n    var userInfo = {\n       \"timeout\":\"2013/09/12\",\n       \"data\":\n       {\n         \"LoginName\":\"wwwwww\",\n         \"UserID\":\"21634352BAC43044380A7807B0699491\",\n         \"IsNonUser\":false,\n         \"UserName\":\"测试\",\n         \"Mobile\":\"13845612110\",\n         \"LoginToken\":\"\",\n         \"LoginCode\":0,\n         \"LoginErrMsg\":\"登录成功！\",\n         \"Address\":\"\",\n         \"Birthday\":\"19841010\",\n         \"Experience\":1453333973000,//微妙timestamp\n         \"Gender\":1,\n         \"PostCode\":\"111111\",\n         \"VipGrade\":30,\n         \"VipGradeRemark\":\"钻石贵宾\",\n         \"Email\":\"wang_peng@163.com\",\n         \"ExpiredTime\":\"2013-09-12\",\n         \"Auth\":\"079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219\",\n         \"IsRemember\":0,\n         \"BindMobile\":18688888888\n       },  \n       \"timeby\":1\n       }\n\n       var json_obj =\n       {\n           tagname:\"member_login\",\n           param:userInfo,\n       }\n       app.callback(json_obj);\n         "
             ],
             "class": "CtripUser"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1316,
+            "description": "base64 UTF8编码",
+            "brief": "base64 UTF8编码",
+            "since": "5.4",
+            "itemtype": "method",
+            "name": "app_base64_encode",
+            "author": "jimzhao",
+            "example": [
+                " \n     CtripEncrypt.app_base64_encode(\"xxxxxx\");\n     //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"base64_encode\",\n           param:\n           {\n               encodedString:\"eHh4eHh4\",\n           },\n       }\n       app.callback(json_obj);\n         "
+            ],
+            "class": "CtripEncrypt"
         }
     ],
     "warnings": [
@@ -1049,6 +1077,14 @@
         {
             "message": "unknown tag: brief",
             "line": " bridge.js:1244"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1309"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1316"
         }
     ]
 }

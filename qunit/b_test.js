@@ -74,6 +74,9 @@ var app = {
 	    else if (tagname == "download_data") {
 	    	cb_ret.download_data = jsonObj;
 	    }
+	    else if (tagname == "base64_encode") {
+	    	cb_ret.base64_encode = jsonObj;
+	    }
     }
 };
 
@@ -434,6 +437,27 @@ asyncTest("检查版本更新:app_check_update", function() {
 		cb_ret.check_update = null;
 
 	}, async_time_interval);
+});
+
+asyncTest("base64 UTF8编码", function() {
+	expect(1);
+	CtripUtil.app_base64_encode("xxxxxx");
+	setTimeout(function() {
+		start();
+		var jsonObj = cb_ret.base64_encode;
+		var isSuccess = false;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "base64_encode") {
+			if (jsonObj.param && jsonObj.param.encodedString == "eHh4eHh4") {
+				isSuccess = true;
+				ok(true, "base64 UTF8编码成功xxxxxx＝＝》eHh4eHh4");
+			}
+		}
+
+		if (!isSuccess) {
+			ok(false,"Base64 UTF8编码失败"+JSON.stringify(jsonObj));
+		}
+
+	});
 });
 
 // asyncTest("推荐携程旅行给好友:app_recommend_app_to_friends", function() {

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>CtripTool</title>
+    <title>CtripEncrypt</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -90,7 +90,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>CtripTool Class</h1>
+                        <h1>CtripEncrypt Class</h1>
 <div class="box meta">
     
 
@@ -98,7 +98,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l241"><code>bridge.js:241</code></a>
+            定义在: <a href="../files/bridge.js.html#l1309"><code>bridge.js:1309</code></a>
         </div>
     
 
@@ -110,7 +110,7 @@
 
 
 <div class="box intro">
-    <p>工具类</p>
+    <p>加解密/HASH/编码相关类</p>
 
 </div>
 
@@ -140,7 +140,7 @@
                     <table>
                     <tr><th>描述</th><th>函数</th></tr>
                     
-                    <tr><td>H5写日志到app</td><td><a href="#method_app_log">app_log</a></td></tr>
+                    <tr><td>base64 UTF8编码</td><td><a href="#method_app_base64_encode">app_base64_encode</a></td></tr>
                                   
                     </table>
 
@@ -169,27 +169,11 @@
                 <h2 class="off-left">方法</h2>
 
                 
-                    <div id="method_app_log" class="method item">
-    <h3 class="name"><code>app_log</code></h3>
+                    <div id="method_app_base64_encode" class="method item">
+    <h3 class="name"><code>app_base64_encode</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>log</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>result</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
@@ -217,7 +201,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l248"><code>bridge.js:248</code></a>
+        <a href="../files/bridge.js.html#l1316"><code>bridge.js:1316</code></a>
         
         </p>
 
@@ -225,55 +209,15 @@
         
 
         
-            <p>可用版本 v5.2</p>
+            <p>可用版本 5.4</p>
         
     </div>
 
     <div class="description">
-        <p>将log写入到native的日志界面</p>
+        <p>base64 UTF8编码</p>
 
     </div>
 
-    
-        <div class="params">
-            <h4>参数:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">log</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>需要打印打log</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">result</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
 
     
@@ -283,7 +227,17 @@
             <h4>举例:</h4>
 
             <div class="example-content">
-                <p> CtripTool.app_log(&quot;execute script xxxxx&quot;, &quot;result for script is oooooo&quot;);</p>
+                <pre class="code prettyprint"><code> CtripEncrypt.app_base64_encode(&quot;xxxxxx&quot;);
+ //调用后，H5会收到native回调的数据
+   var json_obj =
+   {
+       tagname:&quot;base64_encode&quot;,
+       param:
+       {
+           encodedString:&quot;eHh4eHh4&quot;,
+       },
+   }
+   app.callback(json_obj);</code></pre>
 
             </div>
         </div>

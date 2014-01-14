@@ -41,6 +41,8 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
+                <li><a href="../classes/CtripEncrypt.html">CtripEncrypt</a></li>
+            
                 <li><a href="../classes/CtripTool.html">CtripTool</a></li>
             
                 <li><a href="../classes/CtripUser.html">CtripUser</a></li>
@@ -1397,6 +1399,63 @@ var CtripUser = {
     }
 
 };
+
+
+
+/**
+ * @class CtripEncrypt
+ * @description 加解密/HASH/编码相关类
+ * @brief 提供给H5试用，通用加解密/HASH/编码相关类
+ */
+
+ var CtripEncrypt = {
+    /**
+      * @description  base64 UTF8编码
+      * @brief base64 UTF8编码
+      * @since 5.4
+      * @method app_base64_encode
+      * @author jimzhao
+      * @example 
+      CtripEncrypt.app_base64_encode(&quot;xxxxxx&quot;);
+      //调用后，H5会收到native回调的数据
+        var json_obj =
+        {
+            tagname:&quot;base64_encode&quot;,
+            param:
+            {
+                encodedString:&quot;eHh4eHh4&quot;,
+            },
+        }
+        app.callback(json_obj);
+          
+      */
+    app_base64_encode:function(inStr) {
+        var startVersion = &quot;5.3&quot;;
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!inStr) {
+            inStr = &quot;&quot;;
+        }
+
+        paramString = Internal.makeParamString(&quot;Encrypt&quot;, &quot;base64Encode&quot;, null, &#x27;base64_encode&#x27;);
+
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.User_a.base64Encode(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    }
+
+ };
+
     </pre>
 </div>
 

@@ -1303,3 +1303,59 @@ var CtripUser = {
     }
 
 };
+
+
+
+/**
+ * @class CtripEncrypt
+ * @description 加解密/HASH/编码相关类
+ * @brief 提供给H5试用，通用加解密/HASH/编码相关类
+ */
+
+ var CtripEncrypt = {
+    /**
+      * @description  base64 UTF8编码
+      * @brief base64 UTF8编码
+      * @since 5.4
+      * @method app_base64_encode
+      * @author jimzhao
+      * @example 
+      CtripEncrypt.app_base64_encode("xxxxxx");
+      //调用后，H5会收到native回调的数据
+        var json_obj =
+        {
+            tagname:"base64_encode",
+            param:
+            {
+                encodedString:"eHh4eHh4",
+            },
+        }
+        app.callback(json_obj);
+          
+      */
+    app_base64_encode:function(inStr) {
+        var startVersion = "5.3";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!inStr) {
+            inStr = "";
+        }
+
+        paramString = Internal.makeParamString("Encrypt", "base64Encode", null, 'base64_encode');
+
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.User_a.base64Encode(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    }
+
+ };
