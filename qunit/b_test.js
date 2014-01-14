@@ -77,6 +77,9 @@ var app = {
 	    else if (tagname == "base64_encode") {
 	    	cb_ret.base64_encode = jsonObj;
 	    }
+	    else if (tagname == "set_toolbar_hidden") {
+	    	cb_ret.set_toolbar_hidden = jsonObj;
+	    }
     }
 };
 
@@ -458,6 +461,21 @@ asyncTest("base64 UTF8编码", function() {
 		}
 
 	});
+});
+
+asyncTest("显示底部导航栏", function(){
+	expect(1);
+	CtripUtil.app_set_toolbar_hidden(false);
+	setTimeout(function(){
+		start();
+		var jsonObj = cb_ret.set_toolbar_hidden;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "set_toolbar_hidden") {
+			ok(true, "显示底部导航栏成功！")
+		} else {
+			ok(false,"显示底部导航栏失败！")
+		}
+	});
+
 });
 
 // asyncTest("推荐携程旅行给好友:app_recommend_app_to_friends", function() {

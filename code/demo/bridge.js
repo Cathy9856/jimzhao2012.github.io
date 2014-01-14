@@ -1048,7 +1048,37 @@ var CtripUtil = {
             Internal.callWin8App(paramString);
         }
     },
-    
+
+    /**
+     * @description 设置底部工具栏隐藏／显示
+     * @brief 底部工具栏隐藏／显示
+     * @since 5.4
+     * @method app_set_toolbar_hidden
+     * @author jimzhao
+     * @example 
+     CtripUtil.app_set_toolbar_hidden(false);
+     */
+    app_set_toolbar_hidden:function(isHidden) {
+        var startVersion = "5.4";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }    
+        var params = {};
+        params.isHidden = isHidden;
+        paramString = Internal.makeParamString("Util","setToolBarHidden",params,"set_toolbar_hidden");
+        
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Util_a.setToolBarHidden(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }   
+    }
 };
 
 /**

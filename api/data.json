@@ -67,7 +67,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1054,
+            "line": 1084,
             "description": "用户相关类",
             "brief": "用户相关类"
         },
@@ -80,7 +80,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1309,
+            "line": 1339,
             "description": "加解密/HASH/编码相关类",
             "brief": "提供给H5试用，通用加解密/HASH/编码相关类"
         }
@@ -807,7 +807,21 @@
         },
         {
             "file": "bridge.js",
-            "line": 1061,
+            "line": 1052,
+            "description": "设置底部工具栏隐藏／显示",
+            "brief": "底部工具栏隐藏／显示",
+            "since": "5.4",
+            "itemtype": "method",
+            "name": "app_set_toolbar_hidden",
+            "author": "jimzhao",
+            "example": [
+                " \n    CtripUtil.app_set_toolbar_hidden(false);"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1091,
             "description": "会员登录,native未登录时候，会显示会员登录界面，native会员已登录，直接完成，返回登录的用户信息",
             "brief": "会员登录",
             "since": "5.2",
@@ -821,7 +835,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1120,
+            "line": 1150,
             "description": "非会员登录",
             "brief": "非会员登录",
             "since": "5.2",
@@ -838,7 +852,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1182,
+            "line": 1212,
             "description": "会员自动登录,对于已经在native登陆的用户，app会通过调用callback回传登录数据，H5页面需要处理用户信息， 不显示输入用户名密码界面",
             "brief": "会员自动登录",
             "since": "5.2",
@@ -855,7 +869,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1244,
+            "line": 1274,
             "description": "用户注册",
             "brief": "用户注册",
             "since": "5.2",
@@ -872,7 +886,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1316,
+            "line": 1346,
             "description": "base64 UTF8编码",
             "brief": "base64 UTF8编码",
             "since": "5.4",
@@ -1060,31 +1074,35 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1054"
+            "line": " bridge.js:1052"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1061"
+            "line": " bridge.js:1084"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1120"
+            "line": " bridge.js:1091"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1182"
+            "line": " bridge.js:1150"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1244"
+            "line": " bridge.js:1212"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1309"
+            "line": " bridge.js:1274"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1316"
+            "line": " bridge.js:1339"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1346"
         }
     ]
 }
