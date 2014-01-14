@@ -1343,7 +1343,7 @@ var CtripUser = {
         if (!toIncodeString) {
             toIncodeString = "";
         }
-        
+
         params = {};
         params.toIncodeString = toIncodeString;
 
@@ -1353,7 +1353,7 @@ var CtripUser = {
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
-            window.User_a.base64Encode(paramString);
+            window.Encrypt_a.base64Encode(paramString);
         }
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
