@@ -1429,19 +1429,21 @@ var CtripUser = {
         app.callback(json_obj);
           
       */
-    app_base64_encode:function(inStr) {
+    app_base64_encode:function(toIncodeString) {
         var startVersion = &quot;5.3&quot;;
         if (!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
             return;
         }
 
-        if (!inStr) {
-            inStr = &quot;&quot;;
+        if (!toIncodeString) {
+            toIncodeString = &quot;&quot;;
         }
+        
+        params = {};
+        params.toIncodeString = toIncodeString;
 
-        paramString = Internal.makeParamString(&quot;Encrypt&quot;, &quot;base64Encode&quot;, null, &#x27;base64_encode&#x27;);
-
+        paramString = Internal.makeParamString(&quot;Encrypt&quot;, &quot;base64Encode&quot;, params, &#x27;base64_encode&#x27;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
