@@ -441,7 +441,7 @@ asyncTest("检查版本更新:app_check_update", function() {
 
 asyncTest("base64 UTF8编码", function() {
 	expect(1);
-	CtripUtil.app_base64_encode("xxxxxx");
+	CtripEncrypt.app_base64_encode("xxxxxx");
 	setTimeout(function() {
 		start();
 		var jsonObj = cb_ret.base64_encode;
