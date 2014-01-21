@@ -417,7 +417,8 @@ var CtripUtil = {
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
-            window.Util_a.backToHome(paramString);
+            CtripUtil.app_open_url("ctrip://wireless/", 1, "  ");
+            // window.Util_a.backToHome(paramString);
         }
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
