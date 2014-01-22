@@ -270,11 +270,13 @@ var CtripTool = {
 
          var ua = navigator.userAgent;
          if (ua.indexOf("CtripWireless")>0) {
+            Internal.isAndroid = true;
             isInCtripApp = true;
          }
          else if (( ua.indexOf("iPhone") > 0 || ua.indexOf("iPad") > 0 || ua.indexOf("iPhone")) && 
             ua.indexOf("Safari") < 0) {
             isInCtripApp = true;
+            Internal.isIOS = true;
          }
         
         return isInCtripApp;
@@ -1385,7 +1387,6 @@ var CtripUser = {
 };
 
 
-
 /**
  * @class CtripEncrypt
  * @description 加解密/HASH/编码相关类
@@ -1441,3 +1442,7 @@ var CtripUser = {
     }
 
  };
+
+//获取当前app环境
+ CtripTool.app_is_in_ctrip_app();
+
