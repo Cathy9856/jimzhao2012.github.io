@@ -247,53 +247,6 @@ function __writeLocalStorage(key, jsonValue) {
     }
 };
 
-/**
- * @class CtripTool
- * @brief 工具类
- * @description 工具类,和App无交互，纯JS处理
- */
-var CtripTool = {
-
-    /**
-     * @brief 判断当前是否是在App内
-     * @description  判断当前H5页面是否是在App内
-     * @since 5.2
-     * @method app_is_in_ctrip_app
-     * author jimzhao
-     */
-    app_is_in_ctrip_app:function() {
-        if (Internal.isInApp) {
-            return true;
-        }
-
-        var isInCtripApp = false;
-
-         var ua = navigator.userAgent;
-         if ((ua.indexOf("CtripWireless")>0) {
-            isInCtripApp = true;
-         }
-         else if ((ua.indexOf("iPhone") > 0 || ua.indexOf("iPad") > 0 || ua.indexOf("iPhone")) && 
-            (ua.indexOf("Safari") < 0) {
-            isInCtripApp = true;
-         }
-        
-        return isInCtripApp;
-    },
-
-    /**
-     * @description 将log写入到native的日志界面，该函数已移动到CtripUtil类，此处只做兼容。具体参考CtripUtil.app_log()函数
-     * @brief H5写日志到app
-     * @method app_log
-     * @param {String} log 需要打印打log
-     * @param {String} result 上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间
-     * @since v5.2
-     * @author jimzhao
-     * @example CtripUtil.app_log("execute script xxxxx", "result for script is oooooo");
-     */
-    app_log:function(log, result) {
-        CtripUtil.app_log(log, result);
-    }
-};
 
 /**
  * @class CtripUtil
@@ -1441,3 +1394,52 @@ var CtripUser = {
     }
 
  };
+
+ /**
+ * @class CtripTool
+ * @brief 工具类
+ * @description 工具类,和App无交互，纯JS处理
+ */
+var CtripTool = {
+
+    /**
+     * @brief 判断当前是否是在App内
+     * @description  判断当前H5页面是否是在App内
+     * @since 5.2
+     * @method app_is_in_ctrip_app
+     * author jimzhao
+     */
+    app_is_in_ctrip_app:function() {
+        if (Internal.isInApp) {
+            return true;
+        }
+
+        var isInCtripApp = false;
+
+         var ua = navigator.userAgent;
+         if ((ua.indexOf("CtripWireless")>0) {
+            isInCtripApp = true;
+         }
+         else if ((ua.indexOf("iPhone") > 0 || ua.indexOf("iPad") > 0 || ua.indexOf("iPhone")) && 
+            (ua.indexOf("Safari") < 0) {
+            isInCtripApp = true;
+         }
+        
+        return isInCtripApp;
+    },
+
+    /**
+     * @description 将log写入到native的日志界面，该函数已移动到CtripUtil类，此处只做兼容。具体参考CtripUtil.app_log()函数
+     * @brief H5写日志到app
+     * @method app_log
+     * @param {String} log 需要打印打log
+     * @param {String} result 上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间
+     * @since v5.2
+     * @author jimzhao
+     * @example CtripUtil.app_log("execute script xxxxx", "result for script is oooooo");
+     */
+    app_log:function(log, result) {
+        CtripUtil.app_log(log, result);
+    }
+};
+
