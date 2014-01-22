@@ -478,6 +478,16 @@ asyncTest("显示底部导航栏", function(){
 
 });
 
+asyncTest("测试App环境", function(){
+	expect(1);
+	var isInApp = CtripTool.app_is_in_ctrip_app();
+	if (isInApp) {
+		ok(true, "是App环境，测试成功");
+	} else{
+		ok(false, "不是App环境，测试失败");
+	}
+});
+
 // asyncTest("推荐携程旅行给好友:app_recommend_app_to_friends", function() {
 // 	expect(1);
 // 	CtripUtil.app_recommend_app_to_friends();
