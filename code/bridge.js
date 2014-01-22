@@ -259,7 +259,11 @@ var CtripTool = {
      * @description  判断当前H5页面是否是在App内
      * @since 5.2
      * @method app_is_in_ctrip_app
-     * author jimzhao
+     * @author jimzhao
+     * @return bool, true代表在app环境，false表示不在app环境
+     * @example 
+     * var ret = CtripTool.app_is_in_ctrip_app();
+     * alert("isInApp=="+ret);
      */
     app_is_in_ctrip_app:function() {
         if (Internal.isInApp) {
@@ -284,7 +288,7 @@ var CtripTool = {
 
     /**
      * @description 将log写入到native的日志界面，该函数已移动到CtripUtil类，此处只做兼容。具体参考CtripUtil.app_log()函数
-     * @brief H5写日志到app
+     * @brief H5写日志到app(兼容)
      * @method app_log
      * @param {String} log 需要打印打log
      * @param {String} result 上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间
