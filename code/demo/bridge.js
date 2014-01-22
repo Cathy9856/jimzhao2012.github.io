@@ -1445,5 +1445,3 @@ var CtripUser = {
 
 //获取当前app环境
  CtripTool.app_is_in_ctrip_app();
- alert("isIOS=="+ Internal.isIOS);
- alert("isAndroid=="+ Internal.isAndroid);
