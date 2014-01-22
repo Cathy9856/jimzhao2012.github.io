@@ -1,8 +1,6 @@
 
 var cb_ret = {};
 
-alert(window.navigator.userAgent);
-
 var async_time_interval = 3000;
 var sync_time_interval = 1000;
 var test_copy_string = "*****测试字符串clipboard******";
@@ -481,11 +479,14 @@ asyncTest("显示底部导航栏", function(){
 asyncTest("测试App环境", function(){
 	expect(1);
 	var isInApp = CtripTool.app_is_in_ctrip_app();
-	if (isInApp) {
-		ok(true, "是App环境，测试成功");
-	} else{
-		ok(false, "不是App环境，测试失败");
-	}
+	setTimeout(function(){
+		start();
+		if (isInApp) {
+			ok(true, "是App环境，测试成功 isIOS=["+Internal.isIOS+ "]isAndroid=["+ Internal.isAndroid + "]");
+		} else{
+			ok(false, "不是App环境，测试失败");
+		}
+	});
 });
 
 // asyncTest("推荐携程旅行给好友:app_recommend_app_to_friends", function() {
