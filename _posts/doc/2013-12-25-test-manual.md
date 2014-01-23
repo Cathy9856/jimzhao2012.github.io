@@ -75,3 +75,5 @@ category: doc
   <li class="li2"><a onclick='javascript:CtripUtil.app_call_system_share("http://tongqu.me/upload/photos/acts/normal/norm_2013-12-16-18-56373487fcfe4cb0ecd21c129e1164cc976ab3bf78.jpg", null, "text here")'>12. 调用系统分享_5.3</a>
    </li>
   <br/>
+  
+  <a onclick="javscript:CtripUtil.app_open_url('http://www.jimzhao.com/qunit/a.html', 2, 'Qunit')">进入自动化测试页面</a>
