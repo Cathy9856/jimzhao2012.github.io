@@ -2,8 +2,6 @@
 var __CTRIP_JS_PARAM = "?jsparam="
 var __CTRIP_URL_PLUGIN = "ctrip://h5/plugin" + __CTRIP_JS_PARAM;
 
-var kCallbackReturnName = 100;
-
 /**
 * @class Internal
 * @description bridge.js内部使用的工具类
@@ -17,7 +15,7 @@ var Internal = {
      * @type Bool
      * @property isIOS
      */
-    isIOS:true,
+    isIOS:false,
 
     /**
      * @brief 是否是Android设备
@@ -25,8 +23,24 @@ var Internal = {
      * @type Bool
      * @property isAndroid
      */
-    isAndroid:true,
+    isAndroid:false,
 
+     /**
+     * @brief 是否是WinPhone设备
+     * @description  bridge.js内部使用，判断是否是Windows Phone设备
+     * @type Bool
+     * @property isWinOS
+     */
+    isWinOS:false,
+
+    /**
+     * @brief 当前是否是App环境
+     * @description  bridge.js内部使用，判断当前是否是App环境
+     * @type Bool
+     * @property isInApp
+     */
+    isInApp:false,
+    
     /**
      * @brief 当前携程旅行App版本
      * @description bridge.js内部使用，存储当前携程旅行App版本
@@ -35,6 +49,14 @@ var Internal = {
      */     
     appVersion:"",
 
+    /**
+     * @brief 当前操作系统版本
+     * @description bridge.js内部使用，存储当前操作系统版本
+     * @type String
+     * @property osVersion
+     */ 
+    osVersion:"",
+    
     /**
      * @brief 判断版本大小
      * @description 判断当前版本号是否大于传入的版本号
@@ -167,7 +189,18 @@ var Internal = {
         paramString = encodeURIComponent(paramString);
 
         return  __CTRIP_URL_PLUGIN + paramString;
-    }
+    },
+
+     /**
+     * @brief JS调用Win8 native
+     * @description  内部使用，用于js调用win8
+     * @param {String} 传递给win8的参数
+     * @method callWin8App
+     * @since v5.3
+     */
+    callWin8App:function(paramString) {
+        window.external.notify(paramString);
+    },
 };
 
 /**
@@ -185,18 +218,15 @@ function __bridge_callback(param) {
     if (jsonObj != null) {
         if (jsonObj.param != null && jsonObj.param.hasOwnProperty("platform")) {
             platform = jsonObj.param.platform;
+            Internal.isInApp = true;
             Internal.isIOS = (platform == 1);
             Internal.isAndroid = (platform == 2);
+            Internal.isWinOS = (platform == 3);
             Internal.appVersion = jsonObj.param.version;
+            Internal.osVersion = jsonObj.param.osVersion;
         }
 
-        var retValue = window.app.callback(jsonObj);
-        if (retValue) {
-            // alert("window.app.callback > 0"+retValue);
-            return retValue;
-        };
-
-        return kCallbackReturnName;
+        return window.app.callback(jsonObj);
     }
 
     return -1;
@@ -220,38 +250,54 @@ function __writeLocalStorage(key, jsonValue) {
 /**
  * @class CtripTool
  * @brief 工具类
- * @description 工具类
+ * @description 工具类,和App无交互，纯JS处理
  */
 var CtripTool = {
 
     /**
-     * @description 将log写入到native的日志界面
-     * @brief H5写日志到app
+     * @brief 判断当前是否是在App内
+     * @description  判断当前H5页面是否是在App内
+     * @since 5.2
+     * @method app_is_in_ctrip_app
+     * @author jimzhao
+     * @return bool, true代表在app环境，false表示不在app环境
+     * @example 
+     * var ret = CtripTool.app_is_in_ctrip_app();
+     * alert("isInApp=="+ret);
+     */
+    app_is_in_ctrip_app:function() {
+        if (Internal.isInApp) {
+            return true;
+        }
+
+        var isInCtripApp = false;
+
+         var ua = navigator.userAgent;
+         if (ua.indexOf("CtripWireless")>0) {
+            Internal.isAndroid = true;
+            isInCtripApp = true;
+         }
+         else if (( ua.indexOf("iPhone") > 0 || ua.indexOf("iPad") > 0 || ua.indexOf("iPhone")) && 
+            ua.indexOf("Safari") < 0) {
+            isInCtripApp = true;
+            Internal.isIOS = true;
+         }
+        
+        return isInCtripApp;
+    },
+
+    /**
+     * @description 将log写入到native的日志界面，该函数已移动到CtripUtil类，此处只做兼容。具体参考CtripUtil.app_log()函数
+     * @brief H5写日志到app(兼容)
      * @method app_log
      * @param {String} log 需要打印打log
      * @param {String} result 上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间
      * @since v5.2
      * @author jimzhao
-     * @example CtripTool.app_log("execute script xxxxx", "result for script is oooooo");
+     * @example CtripUtil.app_log("execute script xxxxx", "result for script is oooooo");
      */
     app_log:function(log, result) {
-        if (!Internal.isNotEmptyString(log)) {
-            return;
-        }
-        if (!Internal.isNotEmptyString(result)) {
-            result = "";
-        }
-        var params = {};
-        params.log = log;
-        params.result = result;
-        paramString = Internal.makeParamString("Util", "h5Log", params, "log");
-        if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
-        }
-        else {
-            window.Util_a.h5Log(paramString);
-        }
+        CtripUtil.app_log(log, result);
     }
 };
 
@@ -285,6 +331,9 @@ var CtripUtil = {
             else if (Internal.isAndroid) {
                 window.Util_a.logEvent(paramString);
             }
+            else if (Internal.isWinOS) {
+                Internal.callWin8App(paramString);
+            }
         }
     },
 
@@ -307,6 +356,7 @@ var CtripUtil = {
         version:"5.2",
         device:"iPhone4S",
         appId:"com.ctrip.wrieless",
+        osVersion:"iOS_6.0",
         serverVersion:"5.3",
         platform:1, //区分平台，iPhone为1, Android为2
         userInfo={USERINFO},//USERINFO内部结构参考CtripUser.app_member_login();    
@@ -322,6 +372,9 @@ var CtripUtil = {
         else if(Internal.isAndroid) {
             window.User_a.initMemberH5Info(paramString);
         }
+        else if (Internal.isWinOS) {
+                Internal.callWin8App(paramString);
+        }
     },
 
     /**
@@ -335,17 +388,38 @@ var CtripUtil = {
      //或者直接拨打呼叫中心
      CtripUtil.app_call_phone();
      */
-    app_call_phone:function(phone) {
+    app_call_phone:function(phone) {  
+
+        if(!phone) {
+            phone = "";
+        }
+        
         var params = {};
+        
         params.phone = phone;
 
         paramString = Internal.makeParamString("Util", "callPhone", params, "call_phone")
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
+            var fixedFlag = false;
+
+            if (Internal.isNotEmptyString(phone)) {
+                if (!Internal.appVersion || (Internal.appVersion == "5.2")) {
+                    fixedFlag = true;
+                    url = "tel://"+phone;
+                    window.location.href = url;
+                }
+            } 
+
+            if (!fixedFlag) {
+                url = Internal.makeURLWithParam(paramString);
+                Internal.loadURL(url);
+            }
         }
         else if (Internal.isAndroid){
             window.Util_a.callPhone(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -364,7 +438,11 @@ var CtripUtil = {
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
-            window.Util_a.backToHome(paramString);
+            CtripUtil.app_open_url("ctrip://wireless/", 1, "  ");
+            // window.Util_a.backToHome(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -373,14 +451,19 @@ var CtripUtil = {
      * @brief 离开H5回上一个页面
      * @method app_back_to_last_page
      * @param {String} callbackString 离开H5页面，需要传递给上一个H5页面的数据，上一个H5页面在web_view_did_appear回调里面将会收到该数据
+     * @param {Bool} isDeleteH5Page 是否是直接删除该H5页面。直接删除H5页面时候，页面切换会没有动画效果
      * @since v5.2
      * @author jimzhao
-     * @example CtripUtil.app_back_to_last_page("This is a json string for my previous H5 page");
+     * @example CtripUtil.app_back_to_last_page("This is a json string for my previous H5 page", false);
      */
-    app_back_to_last_page:function(callbackString) {
+    app_back_to_last_page:function(callbackString, isDeleteH5Page) {
         var params = {};
-        params.callbackString = callbackString;
+        if(!callbackString) {
+            callbackString = "";
+        }
 
+        params.callbackString = callbackString;
+        params.isDeleteH5Page = isDeleteH5Page;
         paramString = Internal.makeParamString("Util", "backToLast", params, "back_to_last_page");
 
         if (Internal.isIOS) {
@@ -389,6 +472,9 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.backToLast(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -430,6 +516,9 @@ var CtripUtil = {
         else if (Internal.isAndroid) {
             window.Locate_a.locate(paramString);
         }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     },
 
     /**
@@ -469,15 +558,22 @@ var CtripUtil = {
             else if (Internal.isAndroid) {
                 window.NavBar_a.refresh(paramString);
             }
+            else if (Internal.isWinOS) {
+                Internal.callWin8App(paramString);
+            }
         }
     },
 
     /**
-     * @description 打开链接URL地址
-     * @brief 打开链接URL地址
+     * @description Hybrid页面，打开链接URL地址，兼容App和浏览器
+     * @brief Hybrid页面打开链接URL
      * @param {String} openUrl 需要打开的URL，可以为ctrip://,http(s)://,file://等协议的URL
-     * @param {int} targetMode 0,当前页面刷新url;1,系统浏览器打开,ctrip://协议需使用该mode;2,开启新的H5页面，title生效;
      * @param {String} title 当targetMode＝2时候，新打开的H5页面的title
+     * @param {int} targetMode 
+     0,当前页面刷新url;
+     1,处理ctrip://协议;
+     2,开启新的H5页面,title生效;
+     3.使用系统浏览器打开;
      * @method app_open_url
      * @since v5.2
      * @author jimzhao
@@ -489,21 +585,49 @@ var CtripUtil = {
      //开启新的H5页面，进入m.ctrip.com
      CtripUtil.app_open_url("http://m.ctrip.com", 2, "Ctrip H5首页");
      */
-    app_open_url:function(openUrl, targetMode, title) {
+     app_open_url:function(openUrl, targetMode, title) {
         var params = {};
-        params.openUrl = openUrl;
-        params.title = title;
-        params.targetMode = targetMode;
-
-        paramString = Internal.makeParamString("Util", "openUrl", params, "open_url");
-        if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
+        if(!openUrl) {
+            openUrl = "";
         }
-        else if (Internal.isAndroid) {
-            window.Util_a.openUrl(paramString);
+        if (!title) {
+            title = "";
+        }
+        params.openUrl = openUrl;
+        params.title = title;
+        params.targetMode = targetMode;
+        paramString = Internal.makeParamString("Util", "openUrl", params, "open_url");
+        
+        if (Internal.appVersion) { //有AppVersion，为5.3及之后版本，或者5.2本地H5页面
+            if (Internal.isIOS) {
+                url = Internal.makeURLWithParam(paramString);
+                Internal.loadURL(url);
+            }
+            else if (Internal.isAndroid) {
+                window.Util_a.openUrl(paramString);
+            }
+            else if (Internal.isWinOS) {
+                Internal.callWin8App(paramString);
+            }
+        } 
+        else
+        {
+            var ua = navigator.userAgent;
+            var isAndroid52Version = (ua.indexOf("Android")>0) && (ua.indexOf("CtripWireless")>0);
+            if(isAndroid52Version) {
+                try {
+                    window.Util_a.openUrl(paramString);
+                } 
+                catch(e){
+                    window.location.href = openUrl;
+                }
+            } 
+            else {
+                window.location.href = openUrl;
+            }
         }
     },
+
 
     /**
      * @description 检查App的版本更新
@@ -521,6 +645,9 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.checkUpdate(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -541,6 +668,9 @@ var CtripUtil = {
         else if (Internal.isAndroid) {
             window.Util_a.recommendAppToFriends(paramString);
         }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     },
 
     /**
@@ -560,6 +690,9 @@ var CtripUtil = {
         else if (Internal.isAndroid) {
             window.Util_a.addWeixinFriend(paramString);
         }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     },
 
     /**
@@ -576,6 +709,13 @@ var CtripUtil = {
      */
     app_cross_package_href:function(path, param) {
         var params = {};
+        if (!path) {
+            path = "";
+        }
+        if (!param) {
+            param = "";
+        }
+
         params.path = path;
         params.param = param;
 
@@ -586,6 +726,9 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.crossPackageJumpUrl(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -605,6 +748,9 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.showNewestIntroduction(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -633,6 +779,9 @@ var CtripUtil = {
         else if (Internal.isAndroid) {
             window.Util_a.checkNetworkStatus(paramString);
         }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     },
 
     /**
@@ -655,6 +804,12 @@ var CtripUtil = {
      */
     app_check_app_install_status:function(openUrl, packageName) {
         var params = {};
+        if (!openUrl) {
+            openUrl = "";
+        }
+        if (!packageName) {
+            packageName = "";
+        }
         params.openUrl = openUrl;
         params.packageName = packageName;
 
@@ -665,6 +820,9 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.checkAppInstallStatus(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -680,6 +838,13 @@ var CtripUtil = {
      */
     app_refresh_native_page:function(pageName, jsonStr) {
         var params = {};
+        if (!pageName) {
+            pageName = "";
+        }
+        if (!jsonStr) {
+            jsonStr = "";
+        }
+
         params.pageName = pageName;
         params.jsonStr = jsonStr;
 
@@ -690,6 +855,9 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.refreshNativePage(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -709,6 +877,9 @@ var CtripUtil = {
             return;
         }
         var params = {};
+        if (!toCopyStr) {
+            toCopyStr = "";
+        }
         params.copyString = toCopyStr;
 
         paramString = Internal.makeParamString("Util", "copyToClipboard", params, "copy_string_to_clipboard");
@@ -718,6 +889,9 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.copyToClipboard(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -753,6 +927,9 @@ var CtripUtil = {
         else if (Internal.isAndroid) {
             window.Util_a.readCopiedStringFromClipboard(paramString);
         }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     },
 
     /**
@@ -772,6 +949,12 @@ var CtripUtil = {
             return;
         }
         var params = {};
+        if(!image_relative_path) {
+            image_relative_path = "";
+        }
+        if (!text) {
+            text = "";
+        }
         params.imageRelativePath = image_relative_path;
         params.text = text;
 
@@ -784,17 +967,21 @@ var CtripUtil = {
         else if (Internal.isAndroid) {
             window.Util_a.callSystemShare(paramString);
         }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     },
 
     /**
      * @description 根据URL下载数据
      * @brief 根据URL下载数据
      * @param {String} download_url 需要下载内容的URL
+     * @param {String} suffix 保存的文件后缀
      * @method app_download_data
      * @since v5.3
      * @author jimzhao
      * @example
-     CtripUtil.app_download_data("http://www.baidu.com/img/bdlogo.gif");
+     CtripUtil.app_download_data("http://www.baidu.com/img/bdlogo.gif", "gif");
      //调用该函数后，native会返回H5内容
      var json_obj = {
         tagname:"download_data",
@@ -803,7 +990,7 @@ var CtripUtil = {
      };
      app.callback(json_obj);
      */
-    app_download_data:function(download_url) {
+    app_download_data:function(download_url, suffix) {
         var startVersion = "5.3";
         if (!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
@@ -811,7 +998,14 @@ var CtripUtil = {
         }
 
         var params = {};
+        if (!download_url) {
+            download_url = "";
+        }
+        if (!suffix) {
+            suffix = "";
+        }
         params.downloadUrl = download_url;
+        params.suffix = suffix;
         params.pageUrl = window.location.href;
 
         var paramString = Internal.makeParamString("Util", "downloadData",params,"download_data");
@@ -819,8 +1013,126 @@ var CtripUtil = {
             var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
-         else if (Internal.isAndroid) {
+        else if (Internal.isAndroid) {
             window.Util_a.downloadData(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /**
+     * @description 打开其它App，android可以根据包名和URL跳转，iOS只支持URL跳转
+     * @brief 打开其它App
+     * @param {String} packageId 需要打开的app的包名，android使用
+     * @param {String} jsonParam 打开指定包名的app，所带的参数，json字符串
+     * @param {String} url 需要打开的app支持的URL协议，如ctrip://xxx
+     * @method app_open_other_app
+     * @since v5.3
+     * @author jimzhao
+     * @example
+     CtripUtil.app_open_other_app("com.tencent.mm", null, "weixin://xxxxx");
+     //优先级说明：
+     //1. android有packageId的时候，使用packageId＋jsonParam做跳转;
+     //2. 无包名时候，android使用URL协议跳转;
+     //3. iOS， winPhone OS都使用URL协议跳转;
+     */
+    app_open_other_app:function(packageId, jsonParam, url) {
+       var startVersion = "5.3";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        var params = {};
+        if (!packageId) {
+            packageId = "";
+        }
+        if (!jsonParam) {
+            jsonParam = "";
+        }
+        if (!url) {
+            url = "";
+        }
+        params.packageId = packageId;
+        params.jsonParam = jsonParam;
+        params.url = url;
+        var paramString = Internal.makeParamString("Util", "openOtherApp", params, "open_other_app");
+
+        if (Internal.isIOS) {
+            var url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } 
+        else if (Internal.isAndroid) {
+            window.Util_a.openOtherApp(paramString);
+        } 
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /**
+     * @description 设置底部工具栏隐藏／显示
+     * @brief 底部工具栏隐藏／显示
+     * @since 5.4
+     * @method app_set_toolbar_hidden
+     * @author jimzhao
+     * @example 
+     CtripUtil.app_set_toolbar_hidden(false);
+     */
+    app_set_toolbar_hidden:function(isHidden) {
+        var startVersion = "5.4";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }    
+        var params = {};
+        params.isHidden = isHidden;
+        paramString = Internal.makeParamString("Util","setToolBarHidden",params,"set_toolbar_hidden");
+        
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Util_a.setToolBarHidden(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }   
+    },
+
+     /**
+     * @description 将log写入到native的日志界面
+     * @brief H5写日志到app
+     * @method app_log
+     * @param {String} log 需要打印打log
+     * @param {String} result 上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间
+     * @since v5.2
+     * @author jimzhao
+     * @example CtripTool.app_log("execute script xxxxx", "result for script is oooooo");
+     */
+    app_log:function(log, result) {
+        if (!Internal.isNotEmptyString(log)) {
+            return;
+        }
+        if (!Internal.isNotEmptyString(result)) {
+            result = "";
+        }
+        var params = {};
+        params.log = log;
+        params.result = result;
+        paramString = Internal.makeParamString("Util", "h5Log", params, "log");
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid)
+        {
+            window.Util_a.h5Log(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     }
 };
@@ -886,6 +1198,9 @@ var CtripUser = {
         else if (Internal.isAndroid) {
             window.User_a.memberLogin(paramString);
         }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     },
 
      /**
@@ -943,6 +1258,9 @@ var CtripUser = {
         }
         else if (Internal.isAndroid) {
             window.User_a.nonMemberLogin(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     },
 
@@ -1003,6 +1321,9 @@ var CtripUser = {
         else if (Internal.isAndroid) {
             window.User_a.memberAutoLogin(paramString);
         }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     },
 
 
@@ -1062,6 +1383,69 @@ var CtripUser = {
         else if (Internal.isAndroid) {
             window.User_a.memberRegister(paramString);
         }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     }
 
 };
+
+
+/**
+ * @class CtripEncrypt
+ * @description 加解密/HASH/编码相关类
+ * @brief 提供给H5试用，通用加解密/HASH/编码相关类
+ */
+
+ var CtripEncrypt = {
+    /**
+      * @description  base64 UTF8编码
+      * @brief base64 UTF8编码
+      * @since 5.4
+      * @method app_base64_encode
+      * @author jimzhao
+      * @example 
+      CtripEncrypt.app_base64_encode("xxxxxx");
+      //调用后，H5会收到native回调的数据
+        var json_obj =
+        {
+            tagname:"base64_encode",
+            param:
+            {
+                encodedString:"eHh4eHh4",
+            },
+        }
+        app.callback(json_obj);
+          
+      */
+    app_base64_encode:function(toIncodeString) {
+        var startVersion = "5.3";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!toIncodeString) {
+            toIncodeString = "";
+        }
+
+        params = {};
+        params.toIncodeString = toIncodeString;
+
+        paramString = Internal.makeParamString("Encrypt", "base64Encode", params, 'base64_encode');
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Encrypt_a.base64Encode(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    }
+
+ };
+
+//获取当前app环境
+ CtripTool.app_is_in_ctrip_app();

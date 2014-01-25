@@ -72,6 +72,12 @@ var app = {
 	    else if (tagname == "download_data") {
 	    	cb_ret.download_data = jsonObj;
 	    }
+	    else if (tagname == "base64_encode") {
+	    	cb_ret.base64_encode = jsonObj;
+	    }
+	    else if (tagname == "set_toolbar_hidden") {
+	    	cb_ret.set_toolbar_hidden = jsonObj;
+	    }
     }
 };
 
@@ -406,7 +412,7 @@ asyncTest("写日志到App: app_log", function(){
 
 asyncTest("测试下载内容:app_download_data", function() {
 	expect(1);
-	CtripUtil.app_download_data("http://www.baidu.com/bdlogo.gif");
+	CtripUtil.app_download_data("http://www.baidu.com/img/bdlogo.gif", "jpg");
 
 	setTimeout(function(){
 		start();
@@ -432,6 +438,55 @@ asyncTest("检查版本更新:app_check_update", function() {
 		cb_ret.check_update = null;
 
 	}, async_time_interval);
+});
+
+asyncTest("base64 UTF8编码", function() {
+	expect(1);
+	CtripEncrypt.app_base64_encode("xxxxxx");
+	setTimeout(function() {
+		start();
+		var jsonObj = cb_ret.base64_encode;
+		var isSuccess = false;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "base64_encode") {
+			if (jsonObj.param && jsonObj.param.encodedString == "eHh4eHh4") {
+				isSuccess = true;
+				ok(true, "base64 UTF8编码成功xxxxxx＝＝》eHh4eHh4");
+			}
+		}
+
+		if (!isSuccess) {
+			ok(false,"Base64 UTF8编码失败"+JSON.stringify(jsonObj));
+		}
+
+	});
+});
+
+asyncTest("显示底部导航栏", function(){
+	expect(1);
+	CtripUtil.app_set_toolbar_hidden(false);
+	setTimeout(function(){
+		start();
+		var jsonObj = cb_ret.set_toolbar_hidden;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "set_toolbar_hidden") {
+			ok(true, "显示底部导航栏成功！")
+		} else {
+			ok(false,"显示底部导航栏失败！")
+		}
+	});
+
+});
+
+asyncTest("测试App环境", function(){
+	expect(1);
+	var isInApp = CtripTool.app_is_in_ctrip_app();
+	setTimeout(function(){
+		start();
+		if (isInApp) {
+			ok(true, "是App环境，测试成功 isIOS=["+Internal.isIOS+ "]isAndroid=["+ Internal.isAndroid + "]");
+		} else{
+			ok(false, "不是App环境，测试失败");
+		}
+	});
 });
 
 // asyncTest("推荐携程旅行给好友:app_recommend_app_to_friends", function() {

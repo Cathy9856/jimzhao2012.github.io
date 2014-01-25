@@ -41,6 +41,8 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
+                <li><a href="../classes/CtripEncrypt.html">CtripEncrypt</a></li>
+            
                 <li><a href="../classes/CtripTool.html">CtripTool</a></li>
             
                 <li><a href="../classes/CtripUser.html">CtripUser</a></li>
@@ -96,7 +98,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l7"><code>bridge.js:7</code></a>
+            定义在: <a href="../files/bridge.js.html#l5"><code>bridge.js:5</code></a>
         </div>
     
 
@@ -145,6 +147,8 @@
                     <tr><td>app写localstorage</td><td><a href="#method___writeLocalStorage">__writeLocalStorage</a></td></tr>
                     
                     <tr><td>app版本过低回调</td><td><a href="#method_appVersionNotSupportCallback">appVersionNotSupportCallback</a></td></tr>
+                    
+                    <tr><td>JS调用Win8 native</td><td><a href="#method_callWin8App">callWin8App</a></td></tr>
                     
                     <tr><td>判断版本大小</td><td><a href="#method_isAppVersionGreatThan">isAppVersionGreatThan</a></td></tr>
                     
@@ -217,6 +221,12 @@
                                 
                             </li>
                         
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
                     </ul>
                 </div>
             
@@ -233,12 +243,36 @@
                     
                     <tr><td>是否是Android设备</td><td><a href="#property_isAndroid">isAndroid</a></td></tr>
                     
+                    <tr><td>当前是否是App环境</td><td><a href="#property_isInApp">isInApp</a></td></tr>
+                    
                     <tr><td>是否是iOS设备</td><td><a href="#property_isIOS">isIOS</a></td></tr>
+                    
+                    <tr><td>是否是WinPhone设备</td><td><a href="#property_isWinOS">isWinOS</a></td></tr>
+                    
+                    <tr><td>当前操作系统版本</td><td><a href="#property_osVersion">osVersion</a></td></tr>
                                   
                     </table>
 
 
                     <ul class="index-list properties">
+                        
+                            <li class="index-item property">
+                               
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                               
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                               
+                                
+                                
+                            </li>
                         
                             <li class="index-item property">
                                
@@ -314,7 +348,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l173"><code>bridge.js:173</code></a>
+        <a href="../files/bridge.js.html#l206"><code>bridge.js:206</code></a>
         
         </p>
 
@@ -411,7 +445,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l205"><code>bridge.js:205</code></a>
+        <a href="../files/bridge.js.html#l235"><code>bridge.js:235</code></a>
         
         </p>
 
@@ -518,7 +552,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l61"><code>bridge.js:61</code></a>
+        <a href="../files/bridge.js.html#l83"><code>bridge.js:83</code></a>
         
         </p>
 
@@ -552,6 +586,96 @@
                     <div class="param-description">
                         <p>API支持的版本号</p>
 
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_callWin8App" class="method item">
+    <h3 class="name"><code>callWin8App</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>传递给win8的参数</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l194"><code>bridge.js:194</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.3</p>
+        
+    </div>
+
+    <div class="description">
+        <p>内部使用，用于js调用win8</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">传递给win8的参数</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
                     </div>
 
                     
@@ -613,7 +737,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l38"><code>bridge.js:38</code></a>
+        <a href="../files/bridge.js.html#l60"><code>bridge.js:60</code></a>
         
         </p>
 
@@ -728,7 +852,7 @@ alert(isLarger); // depends</p>
             
         
         
-        <a href="../files/bridge.js.html#l89"><code>bridge.js:89</code></a>
+        <a href="../files/bridge.js.html#l111"><code>bridge.js:111</code></a>
         
         </p>
 
@@ -819,7 +943,7 @@ alert(isLarger); // depends</p>
             
         
         
-        <a href="../files/bridge.js.html#l105"><code>bridge.js:105</code></a>
+        <a href="../files/bridge.js.html#l127"><code>bridge.js:127</code></a>
         
         </p>
 
@@ -932,7 +1056,7 @@ alert(isLarger); // depends</p>
             
         
         
-        <a href="../files/bridge.js.html#l126"><code>bridge.js:126</code></a>
+        <a href="../files/bridge.js.html#l148"><code>bridge.js:148</code></a>
         
         </p>
 
@@ -1087,7 +1211,7 @@ alert(isLarger); // depends</p>
             
         
         
-        <a href="../files/bridge.js.html#l154"><code>bridge.js:154</code></a>
+        <a href="../files/bridge.js.html#l176"><code>bridge.js:176</code></a>
         
         </p>
 
@@ -1192,7 +1316,7 @@ alert(isLarger); // depends</p>
             
         
         
-        <a href="../files/bridge.js.html#l75"><code>bridge.js:75</code></a>
+        <a href="../files/bridge.js.html#l97"><code>bridge.js:97</code></a>
         
         </p>
 
@@ -1272,7 +1396,7 @@ alert(isLarger); // depends</p>
             
         
         
-        <a href="../files/bridge.js.html#l30"><code>bridge.js:30</code></a>
+        <a href="../files/bridge.js.html#l44"><code>bridge.js:44</code></a>
         
         </p>
 
@@ -1317,7 +1441,7 @@ alert(isLarger); // depends</p>
             
         
         
-        <a href="../files/bridge.js.html#l22"><code>bridge.js:22</code></a>
+        <a href="../files/bridge.js.html#l20"><code>bridge.js:20</code></a>
         
         </p>
 
@@ -1328,6 +1452,51 @@ alert(isLarger); // depends</p>
 
     <div class="description">
         <p>bridge.js内部使用，判断是否是Android设备</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_isInApp" class="property item">
+    <h3 class="name"><code>isInApp</code></h3>
+    <span class="type">Bool</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l36"><code>bridge.js:36</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>bridge.js内部使用，判断当前是否是App环境</p>
 
     </div>
 
@@ -1362,7 +1531,7 @@ alert(isLarger); // depends</p>
             
         
         
-        <a href="../files/bridge.js.html#l14"><code>bridge.js:14</code></a>
+        <a href="../files/bridge.js.html#l12"><code>bridge.js:12</code></a>
         
         </p>
 
@@ -1373,6 +1542,96 @@ alert(isLarger); // depends</p>
 
     <div class="description">
         <p>bridge.js内部使用，判断是否是iOS</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_isWinOS" class="property item">
+    <h3 class="name"><code>isWinOS</code></h3>
+    <span class="type">Bool</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l28"><code>bridge.js:28</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>bridge.js内部使用，判断是否是Windows Phone设备</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_osVersion" class="property item">
+    <h3 class="name"><code>osVersion</code></h3>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l52"><code>bridge.js:52</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>bridge.js内部使用，存储当前操作系统版本</p>
 
     </div>
 

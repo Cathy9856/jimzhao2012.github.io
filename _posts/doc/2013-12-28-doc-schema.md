@@ -12,12 +12,14 @@ category: doc
 ![Mou icon](/images/Mou_128.png)
 
 
+```Time:2013-12-25 version:1.0```
+
+
 ####1.1	酒店模块1.1.1	国内酒店查询页(5.3新增)
 页面名 hotel_ inquire
 
 
 参数名				| 	参数含义---------- 			| 	---------c1(checkInDate)		|	入住时间（必需，格式YYYYMMDD）c2(checkOutDate)	|	离店时间（必需，格式YYYYMMDD）c3(cityId)			|	酒店城市ID (必需)c4(districtId)		|	景区ID (可选)c5(brandId)			|	品牌ID (可选)c6(brandName)		|	品牌名称 (可选)c7(brandType)		|	品牌类型(可选，0：全部品牌，1：经济型连锁品牌，默认0)URL					|	ctrip://wireless/hotel_inquire?c1=20131217&c2=20131218&c3=2&c4=0&c5=25&c6=君悦&c7=0
-
 
 
 1.1.2 国内酒店列表页(5.3新增)

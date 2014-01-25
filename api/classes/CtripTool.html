@@ -41,6 +41,8 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
+                <li><a href="../classes/CtripEncrypt.html">CtripEncrypt</a></li>
+            
                 <li><a href="../classes/CtripTool.html">CtripTool</a></li>
             
                 <li><a href="../classes/CtripUser.html">CtripUser</a></li>
@@ -96,7 +98,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l220"><code>bridge.js:220</code></a>
+            定义在: <a href="../files/bridge.js.html#l250"><code>bridge.js:250</code></a>
         </div>
     
 
@@ -108,7 +110,7 @@
 
 
 <div class="box intro">
-    <p>工具类</p>
+    <p>工具类,和App无交互，纯JS处理</p>
 
 </div>
 
@@ -138,12 +140,20 @@
                     <table>
                     <tr><th>描述</th><th>函数</th></tr>
                     
-                    <tr><td>H5写日志到app</td><td><a href="#method_app_log">app_log</a></td></tr>
+                    <tr><td>判断当前是否是在App内</td><td><a href="#method_app_is_in_ctrip_app">app_is_in_ctrip_app</a></td></tr>
+                    
+                    <tr><td>H5写日志到app(兼容)</td><td><a href="#method_app_log">app_log</a></td></tr>
                                   
                     </table>
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -165,6 +175,89 @@
         
             <div id="methods" class="api-class-tabpanel">
                 <h2 class="off-left">方法</h2>
+
+                
+                    <div id="method_app_is_in_ctrip_app" class="method item">
+    <h3 class="name"><code>app_is_in_ctrip_app</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l257"><code>bridge.js:257</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>判断当前H5页面是否是在App内</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>返回:</h4>
+
+            <div class="returns-description">
+                
+                    
+                    <p>bool, true代表在app环境，false表示不在app环境</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p>var ret = CtripTool.app_is_in_ctrip_app();
+alert(&quot;isInApp==&quot;+ret);</p>
+
+            </div>
+        </div>
+    
+</div>
 
                 
                     <div id="method_app_log" class="method item">
@@ -215,7 +308,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l227"><code>bridge.js:227</code></a>
+        <a href="../files/bridge.js.html#l289"><code>bridge.js:289</code></a>
         
         </p>
 
@@ -228,7 +321,7 @@
     </div>
 
     <div class="description">
-        <p>将log写入到native的日志界面</p>
+        <p>将log写入到native的日志界面，该函数已移动到CtripUtil类，此处只做兼容。具体参考CtripUtil.app_log()函数</p>
 
     </div>
 
@@ -281,7 +374,7 @@
             <h4>举例:</h4>
 
             <div class="example-content">
-                <p> CtripTool.app_log(&quot;execute script xxxxx&quot;, &quot;result for script is oooooo&quot;);</p>
+                <p> CtripUtil.app_log(&quot;execute script xxxxx&quot;, &quot;result for script is oooooo&quot;);</p>
 
             </div>
         </div>

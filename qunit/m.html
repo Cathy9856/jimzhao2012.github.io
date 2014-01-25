@@ -41,14 +41,25 @@
         }
     };
 
-
+    function doubleAction() {
+      CtripUtil.app_open_url('http://www.jimzhao.com/qunit/m.html', 2, 'Baiduxx');
+    }
+    function tripleAction() {
+      CtripUtil.app_open_url('http://www.baidu.com/', 2, 'Baidu');
+      CtripUtil.app_back_to_last_page("xxxx", true);
+    }
   </script>
 </head>
 <body>
+
+<p class="p1"><br></p>
+<p class="p1"><br></p>
 <p class="p1"><br></p>
 <p class="p1"><br></p>
 <ul class="ul1">
-   <li class="li2"><a href="ctrip://mainpage?id=132&title=xmxxx">WinPhone link ctrip://mainpage?id=132&title=xmxxx</a></li>
+   <li class="li2"><a onclick="javscript:doubleAction()">Double click LA</a></li>
+  <br/>
+    <li class="li2"><a onclick="javscript:tripleAction()">Triple click LA</a></li>
   <br/>
    <li class="li2"><a onclick="javscript:CtripUser.app_member_login()">1. 登录</a></li>
   <br/>
@@ -58,21 +69,28 @@
   <br/>
   <li class="li2"><a onclick="javscript:CtripUtil.app_show_newest_introduction()">4. 新版本欢迎页</a></li>
   <br/> 
-   <li class="li2"><a onclick="javscript:CtripUtil.app_open_url('http://www.baidu.com', 2, 'Baidu')">5. 打开Baidu</a></li>
+   <li class="li2"><a onclick="javscript:CtripUtil.app_open_url('http://www.baidu.com', 2, 'Baidu')">5. 打开Baidu3</a></li>
+  <br/> 
+  <li class="li2"><a onclick="javscript:CtripUtil.app_open_url('ctrip://wireless/destination/toTicketBook?id=1644501&name=厦门世界名人馆门票', 1, 'Baidu')">5. 打开ctrip</a></li>
   <br/> 
    <li class="li2"><a onclick="javscript:CtripUtil.app_recommend_app_to_friends()">6. 推荐携程旅行给好友</a></li>
   <br/> 
   <li class="li2"><a onclick="javscript:CtripUtil.app_add_weixin_friend()">7. 添加微信好友</a></li>
   <br/>
-  <li class="li2"><a onclick="javascript:CtripUtil.app_call_phone('13800000000')">8. 拨打电话</a></li>
+  <li class="li2"><a onclick="javascript:CtripUtil.app_call_phone('13800000000')">8. 拨打电话13800000000</a></li>
+  <br/>
+  <li class="li2"><a onclick="javascript:CtripUtil.app_call_phone('138-0000-0000')">8. 拨打电话138-0000-0000</a></li>
+  <br/>
+  <li class="li2"><a onclick="javascript:CtripUtil.app_call_phone('')">8. 拨打电话Empty</a></li>
   <br/>
   <li class="li2"><a onclick="javascript:CtripUtil.app_back_to_home()">9. 返回首页</a></li>
   <br/>
   <li class="li2"><a onclick="javascript:CtripUtil.app_back_to_last_page('xxxxxxx')">10. 返回上一页面</a></li>
   <br/>
-  <li class="li2"><a onclick="javascript:CtripUtil.app_call_phone('13800138000')">11. 拨打电话</a></li>
-  <br/>
   <li class="li2"><a onclick='javascript:CtripUtil.app_call_system_share("http://tongqu.me/upload/photos/acts/normal/norm_2013-12-16-18-56373487fcfe4cb0ecd21c129e1164cc976ab3bf78.jpg", null, "text here")'>12. 调用系统分享_5.3</a>
    </li>
   <br/>
+  <li class="li2"><a onclick="javascript:CtripUtil.app_open_other_app('com.tencent.mm', null, 'weixin://xxxx')">11. 打开其它应用_weixin</a></li>
+  <br/>
+
 </body></html>
