@@ -1,0 +1,2694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CtripUtil</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: Ctrip Hybrid Javascript Lib</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">API定义</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">类</a></li>
+            <li><a href="#api-modules">模块</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/CtripEncrypt.html">CtripEncrypt</a></li>
+            
+                <li><a href="../classes/CtripTool.html">CtripTool</a></li>
+            
+                <li><a href="../classes/CtripUser.html">CtripUser</a></li>
+            
+                <li><a href="../classes/CtripUtil.html">CtripUtil</a></li>
+            
+                <li><a href="../classes/Internal.html">Internal</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1>CtripUtil Class</h1>
+<div class="box meta">
+    
+
+    
+
+    
+        <div class="foundat">
+            定义在: <a href="../files/bridge.js.html#l304"><code>bridge.js:304</code></a>
+        </div>
+    
+
+    
+
+    
+</div>
+
+
+
+<div class="box intro">
+    <p>常用Util</p>
+
+</div>
+
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">索引</a></li>
+
+        
+            <li class="api-class-tab methods"><a href="#methods">方法</a></li>
+        
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">条目索引</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>方法</h3>
+                    <br/>
+
+                    <table>
+                    <tr><th>描述</th><th>函数</th></tr>
+                    
+                    <tr><td>添加微信好友</td><td><a href="#method_app_add_weixin_friend">app_add_weixin_friend</a></td></tr>
+                    
+                    <tr><td>回到首页</td><td><a href="#method_app_back_to_home">app_back_to_home</a></td></tr>
+                    
+                    <tr><td>离开H5回上一个页面</td><td><a href="#method_app_back_to_last_page">app_back_to_last_page</a></td></tr>
+                    
+                    <tr><td>拨打电话</td><td><a href="#method_app_call_phone">app_call_phone</a></td></tr>
+                    
+                    <tr><td>调用系统的分享</td><td><a href="#method_app_call_system_share">app_call_system_share</a></td></tr>
+                    
+                    <tr><td>检查是否安装App</td><td><a href="#method_app_check_app_install_status">app_check_app_install_status</a></td></tr>
+                    
+                    <tr><td>检查当前App网络状况</td><td><a href="#method_app_check_network_status">app_check_network_status</a></td></tr>
+                    
+                    <tr><td>检查App的版本更新</td><td><a href="#method_app_check_update">app_check_update</a></td></tr>
+                    
+                    <tr><td>复制文字到粘贴板</td><td><a href="#method_app_copy_string_to_clipboard">app_copy_string_to_clipboard</a></td></tr>
+                    
+                    <tr><td>H5跨模块/站点跳转</td><td><a href="#method_app_cross_package_href">app_cross_package_href</a></td></tr>
+                    
+                    <tr><td>根据URL下载数据</td><td><a href="#method_app_download_data">app_download_data</a></td></tr>
+                    
+                    <tr><td>初始化H5模块数据</td><td><a href="#method_app_init_member_H5_info">app_init_member_H5_info</a></td></tr>
+                    
+                    <tr><td>定位</td><td><a href="#method_app_locate">app_locate</a></td></tr>
+                    
+                    <tr><td>H5写日志到app</td><td><a href="#method_app_log">app_log</a></td></tr>
+                    
+                    <tr><td>收集ActionLog</td><td><a href="#method_app_log_event">app_log_event</a></td></tr>
+                    
+                    <tr><td>打开其它App</td><td><a href="#method_app_open_other_app">app_open_other_app</a></td></tr>
+                    
+                    <tr><td>Hybrid页面打开链接URL</td><td><a href="#method_app_open_url">app_open_url</a></td></tr>
+                    
+                    <tr><td>从粘贴板读取复制的文字</td><td><a href="#method_app_read_copied_string_from_clipboard">app_read_copied_string_from_clipboard</a></td></tr>
+                    
+                    <tr><td>推荐携程旅行给好友</td><td><a href="#method_app_recommend_app_to_friends">app_recommend_app_to_friends</a></td></tr>
+                    
+                    <tr><td>H5通知Native刷新</td><td><a href="#method_app_refresh_native_page">app_refresh_native_page</a></td></tr>
+                    
+                    <tr><td>刷新顶部条按钮和文字</td><td><a href="#method_app_refresh_nav_bar">app_refresh_nav_bar</a></td></tr>
+                    
+                    <tr><td>底部工具栏隐藏／显示</td><td><a href="#method_app_set_toolbar_hidden">app_set_toolbar_hidden</a></td></tr>
+                    
+                    <tr><td>查看最新版本功能介绍</td><td><a href="#method_app_show_newest_introduction">app_show_newest_introduction</a></td></tr>
+                                  
+                    </table>
+
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">方法</h2>
+
+                
+                    <div id="method_app_add_weixin_friend" class="method item">
+    <h3 class="name"><code>app_add_weixin_friend</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l676"><code>bridge.js:676</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>添加微信好友</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p> CtripUtil.app_add_weixin_friend();</p>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_back_to_home" class="method item">
+    <h3 class="name"><code>app_back_to_home</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l426"><code>bridge.js:426</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>退回到首页，离开H5</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p> CtripUtil.app_back_to_home();</p>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_back_to_last_page" class="method item">
+    <h3 class="name"><code>app_back_to_last_page</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>callbackString</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>isDeleteH5Page</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l449"><code>bridge.js:449</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>退回到H5页面的上一个页面，离开H5. v5.3开始支持带参数给上一个H5页面</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">callbackString</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>离开H5页面，需要传递给上一个H5页面的数据，上一个H5页面在web_view_did_appear回调里面将会收到该数据</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">isDeleteH5Page</code>
+                        <span class="type">Bool</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>是否是直接删除该H5页面。直接删除H5页面时候，页面切换会没有动画效果</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p> CtripUtil.app_back_to_last_page(&quot;This is a json string for my previous H5 page&quot;, false);</p>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_call_phone" class="method item">
+    <h3 class="name"><code>app_call_phone</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>phone</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l380"><code>bridge.js:380</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>拨打电话</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">phone</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要拨打的电话号码，为空时候，会拨打ctrip呼叫中心号码</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p> CtripUtil.app_call_phone(&quot;13800138000&quot;);
+    //或者直接拨打呼叫中心
+    CtripUtil.app_call_phone();</p>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_call_system_share" class="method item">
+    <h3 class="name"><code>app_call_system_share</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>image_relative_path</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>text</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l935"><code>bridge.js:935</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.3</p>
+        
+    </div>
+
+    <div class="description">
+        <p>调用系统的分享</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">image_relative_path</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>将要分享的图片相对路径，相对webapp的路径</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">text</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要分享的文字</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p> CtripUtil.app_call_system_share(&quot;../wb_cache/pkg_name/md5_url_hash&quot;, &quot;share to sina weibo&quot;);</p>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_check_app_install_status" class="method item">
+    <h3 class="name"><code>app_check_app_install_status</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>openUrl</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>packageName</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l787"><code>bridge.js:787</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>检查是否安装App</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">openUrl</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>尝试打开的URL，iOS使用</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">packageName</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>app的包名，android使用</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>CtripUtil.app_check_app_install_status(&quot;ctrip://wireless&quot;, &quot;com.ctrip.view&quot;);
+//调用完成后，H5页面会收到如下回调数据
+var json_obj = 
+{
+   tagname:&quot;check_app_install_status&quot;,
+   isInstalledApp:true,//布尔值返回是否有安装
+}
+app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_check_network_status" class="method item">
+    <h3 class="name"><code>app_check_network_status</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l757"><code>bridge.js:757</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>检查当前App网络状况</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>CtripUtil.app_check_network_status();
+//调用完成后，H5页面会收到如下回调数据
+var json_obj = 
+{
+   tagname:&quot;check_network_status&quot;,
+   hasNetwork:true,//布尔值返回是否有网络
+}
+app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_check_update" class="method item">
+    <h3 class="name"><code>app_check_update</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l632"><code>bridge.js:632</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>检查App的版本更新</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p> CtripUtil.app_check_update();</p>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_copy_string_to_clipboard" class="method item">
+    <h3 class="name"><code>app_copy_string_to_clipboard</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>toCopyStr,</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l864"><code>bridge.js:864</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.3</p>
+        
+    </div>
+
+    <div class="description">
+        <p>复制文字到粘贴板</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">toCopyStr,</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要复制的文字</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p> CtripUtil.app_copy_string_to_clipboard(&quot;words_to_be_copy_xxxxxx&quot;);</p>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_cross_package_href" class="method item">
+    <h3 class="name"><code>app_cross_package_href</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>path</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>param</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l698"><code>bridge.js:698</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>H5跨模块/站点跳转</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">path</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>模块名称，如hotel, car, myctrip,</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">param</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>作为URL，拼接在path后面的页面和其它参数 index.html#cashcouponindex?cash=xxxx</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code> //跳转到我的携程首页
+ CtripUtil.app_cross_package_href(&quot;myctrip&quot;, &quot;index.html?ver=5.2&quot;); </code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_download_data" class="method item">
+    <h3 class="name"><code>app_download_data</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>download_url</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>suffix</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l975"><code>bridge.js:975</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.3</p>
+        
+    </div>
+
+    <div class="description">
+        <p>根据URL下载数据</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">download_url</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要下载内容的URL</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">suffix</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>保存的文件后缀</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>CtripUtil.app_download_data(&quot;http://www.baidu.com/img/bdlogo.gif&quot;, &quot;gif&quot;);
+//调用该函数后，native会返回H5内容
+var json_obj = {
+   tagname:&quot;download_data&quot;,
+   error_code:&quot;xxxxx&quot;,//param_error,download_faild
+   param:{downloadUrl:&quot;http://www.baidu.com/bdlogo.gif&quot;, savedPath:&quot;../wb_cache/pkg_name/md5_url_hash&quot;}
+};
+app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_init_member_H5_info" class="method item">
+    <h3 class="name"><code>app_init_member_H5_info</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l341"><code>bridge.js:341</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 version 5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>进入H5模块，初始化数据
+H5接收到web_view_did_finished_load的回调之后，调用该函数，初始化数据会通过callback传递给H5</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>CtripUtil.app_init_member_H5_info();
+//调用完成，H5页面会收到如下返回数据
+var json_obj =
+{
+   tagname:&quot;init_member_H5_info&quot;,
+   timestamp:135333222,
+   version:&quot;5.2&quot;,
+   device:&quot;iPhone4S&quot;,
+   appId:&quot;com.ctrip.wrieless&quot;,
+   osVersion:&quot;iOS_6.0&quot;,
+   serverVersion:&quot;5.3&quot;,
+   platform:1, //区分平台，iPhone为1, Android为2
+   userInfo={USERINFO},//USERINFO内部结构参考CtripUser.app_member_login();    
+}
+app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_locate" class="method item">
+    <h3 class="name"><code>app_locate</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>is_async,</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l481"><code>bridge.js:481</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>定位</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">is_async,</code>
+                        <span class="type">Bool</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>true标识是异步定位，false标识为同步定位</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   CtripUtil.app_locate(true);
+   //定位完成后H5页面会收到回调数据
+   var json_obj =
+   {
+       tagname:&#39;locate&#39;,
+       param:{
+           &quot;value&quot;:{
+               ctyName: &#39;上海&#39;,
+               addrs:&#39;上海市浦东南路22号&#39;,
+               lat:&#39;121.487899&#39;,
+               lng:&#39;31.249162&#39;
+           },
+           &#39;timeout&#39;: &#39;2013/09/12 12:32:36&#39;,
+           &#39;locateStatus&#39;:0,//iOS新增字段:-1网络不通，当前无法定位,-2定位没有开启
+       }
+   }
+   app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_log" class="method item">
+    <h3 class="name"><code>app_log</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>log</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>result</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l1105"><code>bridge.js:1105</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>将log写入到native的日志界面</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">log</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要打印打log</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">result</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p> CtripTool.app_log(&quot;execute script xxxxx&quot;, &quot;result for script is oooooo&quot;);</p>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_log_event" class="method item">
+    <h3 class="name"><code>app_log_event</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>event_name</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l311"><code>bridge.js:311</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>Native收集用户行为,该日志会被上传
+H5页面调用该函数，需要将增加的event_name告知native，native需要整理纪录</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">event_name</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要纪录的事件名</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p> Util.app_log_event(&#39;GoodDay&#39;)</p>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_open_other_app" class="method item">
+    <h3 class="name"><code>app_open_other_app</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>packageId</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>jsonParam</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>url</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l1024"><code>bridge.js:1024</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.3</p>
+        
+    </div>
+
+    <div class="description">
+        <p>打开其它App，android可以根据包名和URL跳转，iOS只支持URL跳转</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">packageId</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要打开的app的包名，android使用</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">jsonParam</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>打开指定包名的app，所带的参数，json字符串</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">url</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要打开的app支持的URL协议，如ctrip://xxx</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>CtripUtil.app_open_other_app(&quot;com.tencent.mm&quot;, null, &quot;weixin://xxxxx&quot;);
+//优先级说明：
+//1. android有packageId的时候，使用packageId＋jsonParam做跳转;
+//2. 无包名时候，android使用URL协议跳转;
+//3. iOS， winPhone OS都使用URL协议跳转;</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_open_url" class="method item">
+    <h3 class="name"><code>app_open_url</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>openUrl</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>title</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>targetMode</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l567"><code>bridge.js:567</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>Hybrid页面，打开链接URL地址，兼容App和浏览器</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">openUrl</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要打开的URL，可以为ctrip://,http(s)://,file://等协议的URL</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">title</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>当targetMode＝2时候，新打开的H5页面的title</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">targetMode</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <pre><code>0,当前页面刷新url;
+1,处理ctrip://协议;
+2,开启新的H5页面,title生效;
+3.使用系统浏览器打开;</code></pre>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>//当前H5页面打开ctrip.com
+CtripUtil.app_open_url(&quot;http://www.ctrip.com&quot;, 0);
+//进入App的酒店详情页
+CtripUtil.app_open_url(&quot;ctrip://wireless/hotel?id=1234&quot;, 1);
+//开启新的H5页面，进入m.ctrip.com
+CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&quot;);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_read_copied_string_from_clipboard" class="method item">
+    <h3 class="name"><code>app_read_copied_string_from_clipboard</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l898"><code>bridge.js:898</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.3</p>
+        
+    </div>
+
+    <div class="description">
+        <p>从粘贴板读取复制的文字</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   Ctrip.app_read_copied_string_from_clipboard();
+   //调用该函数之后，H5会收到如下回调
+   var json_obj = 
+   {
+       tagname:&quot;read_copied_string_from_clipboard&quot;,
+       copiedString:&quot;words_copied_xxxxxx&quot;;
+   }
+   app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_recommend_app_to_friends" class="method item">
+    <h3 class="name"><code>app_recommend_app_to_friends</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l654"><code>bridge.js:654</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>推荐携程旅行给好友</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p> CtripUtil.app_recommend_app_to_friends();</p>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_refresh_native_page" class="method item">
+    <h3 class="name"><code>app_refresh_native_page</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>pageName</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>jsonStr</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l829"><code>bridge.js:829</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>H5通知Native刷新</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">pageName</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>要刷新的页面名字,该字段需要H5和native共同约定，H5调用之后，native需要捕获该名字的boardcast/notification</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">jsonStr</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>刷新该页面需要的参数</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p> CtripUtil.app_refresh_native_page(&quot;xxxxPageName&quot;, &quot;xxxx_json_string&quot;);</p>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_refresh_nav_bar" class="method item">
+    <h3 class="name"><code>app_refresh_nav_bar</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>(String)</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l524"><code>bridge.js:524</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>刷新顶部条按钮和文字</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">(String)</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>nav_bar_config_json 顶部条配置json串</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   //导航栏总共分为3部分，1.左侧，返回按钮，不能修改; 2. 中间title，可以任意设置; 3.右侧按钮，定义格式为{tagname:&quot;xxxx&quot;,value:&quot;btn_title&quot;}
+   var nav_json = {
+       &quot;center&quot;: [{&quot;tagname&quot;: &quot;title&quot;, &quot;value&quot;:&quot;携程&quot; }],
+       &quot;right&quot;: [{&quot;tagname&quot;: &quot;click_tag_name&quot;, &quot;value&quot;:&quot;Click&quot;}]
+   }
+   var json_str = JSON.stringify(nav_json);
+   CtripUtil.app_refresh_nav_bar(json_str);
+
+   //调用完成，顶部条title为携程，右侧有一个按钮，按钮文字为Click，用户点击按钮后，H5页面会收到如下回调
+   var cb_json = {tagname:&quot;click_tag_name&quot;};
+   app.callback(cb_json);
+   //H5页面需要处理tagname为click_tag_name的事件</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_set_toolbar_hidden" class="method item">
+    <h3 class="name"><code>app_set_toolbar_hidden</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l1074"><code>bridge.js:1074</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 5.4</p>
+        
+    </div>
+
+    <div class="description">
+        <p>设置底部工具栏隐藏／显示</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>CtripUtil.app_set_toolbar_hidden(false);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_show_newest_introduction" class="method item">
+    <h3 class="name"><code>app_show_newest_introduction</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l735"><code>bridge.js:735</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>查看最新版本功能介绍</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p> CtripUtil.app_show_newest_introduction();</p>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
