@@ -1,0 +1,1670 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+   <title>jimzhao.com</title>
+   <link href="http://jimzhao.com/atom.xml" rel="self" type="application/atom+xml"/>
+   <link href="http://jimzhao.com" rel="alternate" type="text/html" />
+   <updated>2014-01-27T16:21:22+08:00</updated>
+   <id>http://jimzhao.com</id>
+   <author>
+     <name></name>
+     <email></email>
+   </author>
+
+   
+   <entry>
+     <title>lua</title>
+     <link href="http://jimzhao.com/doc-lua"/>
+     <updated>2014-01-13T00:00:00+08:00</updated>
+     <id>http://jimzhao.com/doc-lua</id>
+     <content type="html">&lt;h3 id=&quot;toc_0&quot;&gt;1. lua 简介&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Lua是一种脚本编程语言,于1994年,由巴西里约热内卢天主教大学的研究人员设计开发, “Lua”这个名字是葡萄牙语单词 “月亮”。
+
+• 与一般脚本语言如PHP、Perl、JavaScript等不同,Lua被称为是一种嵌入式脚本语言;
+• Lua最引人注目的特点:
+  – 以极小的体积和简单的语法提供相对全面的功能。 
+  – 以简洁的API实现与宿主语言最方便的接口。
+  - 体积小:200~300K
+  - 最快的脚本语言(非 JIT) 
+  - 动态语言
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;toc_1&quot;&gt;2 lua 的嵌入式&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;• Lua语言可以独立进行编程,但这不是其主要的使用方式。Lua虽然有动态、灵活的语法提供强大的功能,但并不像 Java、Python 等一样有一个完善的库(但仍存在一定数量的第三方库), 这不是缺陷,而是和其定位有关。
+• Lua最典型的用法,是作为一个库,嵌入到其他大型语言(称之为宿主语言)的应用程序之中,为应用程序提供参数配置或逻辑描述等功能。
+• Lua常见的宿主语言有:C/C++,Java,.NET, 甚至脚本语言如PHP,Ruby等。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;toc_2&quot;&gt;3. lua和动态语言OC/Java&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;• 宿主语言为Objective-C/Java(JIT桥接);
+• 宿主语言中编译进去lua解释器;
+• 将实现的Lua扩展,如函数等, 注册到Lua解释器中,这样lua代码中可以使用这些扩展函数。
+• 读入Lua源程序或预先编译后的Lua程序;
+• 执行读入的Lua程序;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;toc_3&quot;&gt;4. wax 介绍&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Wax是一个框架，让你可以用Lua开发原生的iPhone应用。Wax把Lua和Objetive-C的类库桥接起来，也就是说，你可以用Lua使用任何的Objective-C类及框架。
+
+为什么使用Wax?
+• Wax是免费的、开源的。你总是可以改动源代码，以满足自己的需要;
+• 用Lua这种高效脚本语言编写代码可以大大节省时间;
+• 可以使用所有现有的Objective-C库;
+• 可以让你的App在线更新一些功能，不再需要经过苹果App Store的审核;
+• 可以通过lua脚本，动态替换一些Objective-C函数;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;toc_4&quot;&gt;5. 使用场景&amp;amp;能做什么－－扩展&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;• 线上版本新增功能，wax支持IterfaceBuilder，方面开发UI界面；
+• 在线bug fix，替换有bug的函数；
+• (由于其调试比较麻烦，不能debug，只能log，因此正常版本迭代不建议使用)；
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;toc_5&quot;&gt;7. wax还需要研究&amp;amp;改进的点－－问题&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;• 1.对C方法的不支持，可能需要对wax框架改进，注册一些常用c方法到lua，已经测试ok，需要整体设计处理;
+• 2.对block没有支持，要想办法解决，正在测试中;
+• 3.对OC类新增成员变量，相对容易;
+• 4.lua脚本编译&amp;amp;加密；
+• 5.lua解析器的引入对app整体性能的影响；
+• 6.wax框架的稳定性测试；
+• 7.跨平台，lua脚本也可以编译到android工程中，让java做为其宿主语言，这样也就可以在android中实现类似wax功能；
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;toc_6&quot;&gt;8. 风险&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;wax for iPhone框架已经不再维护了
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+   </entry>
+   
+   <entry>
+     <title>安装jekyll</title>
+     <link href="http://jimzhao.com/jekyll-install"/>
+     <updated>2013-12-28T00:00:00+08:00</updated>
+     <id>http://jimzhao.com/jekyll-install</id>
+     <content type="html">&lt;h4 id=&quot;toc_0&quot;&gt;1. Gem安装jekyll&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;sudo gem install jekyll
+
+sudo gem install jekyll rdiscount
+
+jekyll --server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&quot;toc_1&quot;&gt;2. jekyll支持table的方案&lt;/h4&gt;
+
+&lt;p&gt;_config.yml中加入下面代码&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;redcarpet:
+extensions: [&amp;quot;no_intra_emphasis&amp;quot;, &amp;quot;fenced_code_blocks&amp;quot;, &amp;quot;autolink&amp;quot;, &amp;quot;tables&amp;quot;, &amp;quot;with_toc_data&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+   </entry>
+   
+   <entry>
+     <title>Hybrid framework</title>
+     <link href="http://jimzhao.com/doc-schema"/>
+     <updated>2013-12-28T00:00:00+08:00</updated>
+     <id>http://jimzhao.com/doc-schema</id>
+     <content type="html">&lt;p&gt;&lt;img src=&quot;/images/Mou_128.png&quot; alt=&quot;Mou icon&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Time:2013-12-25 version:1.0&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;toc_0&quot;&gt;1.1 酒店模块&lt;/h4&gt;
+
+&lt;p&gt;1.1.1   国内酒店查询页(5.3新增)&lt;/p&gt;
+
+&lt;p&gt;页面名 hotel_ inquire&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;c1(checkInDate)&lt;/td&gt;
+&lt;td&gt;入住时间（必需，格式YYYYMMDD）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c2(checkOutDate)&lt;/td&gt;
+&lt;td&gt;离店时间（必需，格式YYYYMMDD）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c3(cityId)&lt;/td&gt;
+&lt;td&gt;酒店城市ID (必需)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c4(districtId)&lt;/td&gt;
+&lt;td&gt;景区ID (可选)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c5(brandId)&lt;/td&gt;
+&lt;td&gt;品牌ID (可选)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c6(brandName)&lt;/td&gt;
+&lt;td&gt;品牌名称 (可选)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c7(brandType)&lt;/td&gt;
+&lt;td&gt;品牌类型(可选，0：全部品牌，1：经济型连锁品牌，默认0)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;URL&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/hotel_inquire?c1=20131217&amp;amp;c2=20131218&amp;amp;c3=2&amp;amp;c4=0&amp;amp;c5=25&amp;amp;c6=君悦&amp;amp;c7=0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;1.1.2 国内酒店列表页(5.3新增)&lt;/p&gt;
+
+&lt;p&gt;页面入口名称：hotel_inland_list&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;c1(checkInDate)&lt;/td&gt;
+&lt;td&gt;入住时间（必需，格式YYYYMMDD）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c2(checkOutDate)&lt;/td&gt;
+&lt;td&gt;离店时间（必需，格式YYYYMMDD）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c3(cityId)&lt;/td&gt;
+&lt;td&gt;酒店城市ID (必需)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c4(districtId)&lt;/td&gt;
+&lt;td&gt;景区城市ID (可选)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c5(hotelType)&lt;/td&gt;
+&lt;td&gt;酒店类型(0：国内，1：海外) (预留，目前没有海外)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c6(brandId)&lt;/td&gt;
+&lt;td&gt;品牌ID (可选)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c7(brandName)&lt;/td&gt;
+&lt;td&gt;品牌名称 (可选)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c8(brandType)&lt;/td&gt;
+&lt;td&gt;品牌类型(可选，0：全部品牌，1：经济型连锁品牌，默认0)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;URL&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/hotel_inland_list?c1=20131217&amp;amp;c2=20131218&amp;amp;c3=2&amp;amp;c4=0&amp;amp;c5=0&amp;amp; c6=25&amp;amp;c7=君悦&amp;amp;c8=0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;1.1.3 团购酒店列表页(5.3新增)&lt;/p&gt;
+
+&lt;p&gt;页面入口名称：hotel_groupon_list&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;c1(cityId)&lt;/td&gt;
+&lt;td&gt;酒店城市ID (必需)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;URL&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/hotel_groupon_list?c1=2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;1.1.4   国际酒店详情页&lt;/p&gt;
+
+&lt;p&gt;页面入口名称：OverseaHotel&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;checkInDate&lt;/td&gt;
+&lt;td&gt;入住时间（必需，格式YYYYMMDD）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;checkOutDate&lt;/td&gt;
+&lt;td&gt;退房时间（必需，格式YYYYMMDD）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;hotelId&lt;/td&gt;
+&lt;td&gt;酒店ID (必需)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;cityId&lt;/td&gt;
+&lt;td&gt;酒店城市ID (必需)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;URL&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/OverseaHotel?hotelId=123&amp;amp;cityId=2&amp;amp;checkinDate=20131108&amp;amp;checkoutDate=20131118&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;1.1.5 国内酒店详情页(5.3更新)&lt;/p&gt;
+
+&lt;p&gt;页面入口名称：InlandHotel&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;(checkInDate)&lt;/td&gt;
+&lt;td&gt;入住时间（必需，格式YYYYMMDD）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;(checkOutDate)&lt;/td&gt;
+&lt;td&gt;退房时间（必需，格式YYYYMMDD）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;(hotelId)&lt;/td&gt;
+&lt;td&gt;酒店ID&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;(cityId)&lt;/td&gt;
+&lt;td&gt;城市ID&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;URL&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/InlandHotel?checkInDate =20131217&amp;amp;checkOutDate=20131218&amp;amp;hotelId =422809&amp;amp;cityId=2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;1.1.6   团购酒店详情页(5.3新增)&lt;/p&gt;
+
+&lt;p&gt;页面入口名称：hotel_groupon_detail&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;c1(productID)&lt;/td&gt;
+&lt;td&gt;产品ID（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;URL&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/hotel_groupon_detail?c1=123456&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;1.1.7   常规酒店订单详情页&lt;/p&gt;
+
+&lt;p&gt;页面入口名称：NormalHotelOrder&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;orderId&lt;/td&gt;
+&lt;td&gt;订单ID（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;hotelType&lt;/td&gt;
+&lt;td&gt;酒店类型（必需，酒店类型： 0 = 普通酒店;  1 = 惠选酒店）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;URL&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/NormalHotelOrder?&amp;amp;orderId=123&amp;amp;hotelType=2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;1.1.8   海外酒店订单详情页&lt;/p&gt;
+
+&lt;p&gt;页面入口名称：OverseaHotelOrder&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;orderId&lt;/td&gt;
+&lt;td&gt;订单ID（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;举例：&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/OverseaHotelOrder?&amp;amp;orderId=123&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;1.1.9   团购酒店订单详情页&lt;/p&gt;
+
+&lt;p&gt;页面入口名称：GrouponHotelOrder&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;orderId&lt;/td&gt;
+&lt;td&gt;团购订单ID（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;举例：&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/GrouponHotelOrder?orderId =123&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;1.1.10  酒店点评提交页&lt;/p&gt;
+
+&lt;p&gt;页面入口名称：HotelCommentSubmit&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;hotelId&lt;/td&gt;
+&lt;td&gt;酒店ID（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;orderId&lt;/td&gt;
+&lt;td&gt;订单ID（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;hotelName&lt;/td&gt;
+&lt;td&gt;酒店名称（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;举例：&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/HotelCommentSubmit?orderId=123&amp;amp;orderId=456&amp;amp;hotelName=&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h4 id=&quot;toc_1&quot;&gt;1.2 机票模块&lt;/h4&gt;
+
+&lt;p&gt;1.2.1   国内机票订单详情页&lt;/p&gt;
+
+&lt;p&gt;页面入口名称：InlandFlightOrder&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;orderId&lt;/td&gt;
+&lt;td&gt;订单ID（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;举例：&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/InlandFlightOrder?orderId=123&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;1.2.2   国际机票订单详情页&lt;/p&gt;
+
+&lt;p&gt;页面入口名称：InternationalFlightOrder&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;orderId&lt;/td&gt;
+&lt;td&gt;订单ID（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;orderType&lt;/td&gt;
+&lt;td&gt;机票类型（必需，0：单程，1：单往返，2：多程）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;举例：&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/InternationalFlightOrder?&amp;amp;orderId=123&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;1.2.3   值机(国际机票订单详情跳值机页面) ( 5.3不转H5)&lt;/p&gt;
+
+&lt;p&gt;页面入口名称：flight_seat_list&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;举例：&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/flight_seat_list&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;注：&lt;/td&gt;
+&lt;td&gt;无需参数，但是需要userID，app能获取到&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;1.2.4   国内/国际机票查询页(5.3新增)&lt;/p&gt;
+
+&lt;p&gt;页面入口名称： flight_ inquire&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;c1(SearchType)&lt;/td&gt;
+&lt;td&gt;查询类型（1国内；2国际）（可选）     删除&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c1(tripType)&lt;/td&gt;
+&lt;td&gt;单程/往返( 1/2 )（可选）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c2(departCityId)&lt;/td&gt;
+&lt;td&gt;出发城市id （可选）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c3(arriveCityId)&lt;/td&gt;
+&lt;td&gt;到达城市id（可选）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c4(departDate)&lt;/td&gt;
+&lt;td&gt;出发时间（yyyymmdd）（可选）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c5(returnDate)&lt;/td&gt;
+&lt;td&gt;返程出发时间（yyyymmdd）（可选）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c6(intlPassengerType)&lt;/td&gt;
+&lt;td&gt;国际乘客类型，成人/儿童（1/2）（预留）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c7(classType)&lt;/td&gt;
+&lt;td&gt;仓位（可选）1：经济舱  2：超级经济舱3：公务舱4：头等舱 5：公务/头等舱&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;举例单程：&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/flight_ inquire?c1=1&amp;amp;c2=1&amp;amp;c3=2&amp;amp;c4=20131125&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;举例往返：&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/flight_ inquire?c1=2&amp;amp;c2=1&amp;amp;c3=2&amp;amp;c4=20131125&amp;amp;c5=20131225&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;1.2.5   国内 单程/往返去程 机票列表页(5.3新增)&lt;/p&gt;
+
+&lt;p&gt;页面入口名称：flight_inland_singlelist / flight_inland_tolist&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;c1(tripType)&lt;/td&gt;
+&lt;td&gt;单程/往返(1/2)（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c2(departCityId)&lt;/td&gt;
+&lt;td&gt;出发城市id （必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c3(arriveCityId)&lt;/td&gt;
+&lt;td&gt;到达城市id（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c4(departDate)&lt;/td&gt;
+&lt;td&gt;出发时间（yyyymmdd）（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c5(returnDate)&lt;/td&gt;
+&lt;td&gt;返程出发时间（yyyymmdd）（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c6(classType)&lt;/td&gt;
+&lt;td&gt;筛选舱位（可选）1：经济舱  5：公务/头等舱&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c7(sortType)&lt;/td&gt;
+&lt;td&gt;排序类型（预留）1:起飞时间升序 2:起飞时间降序 3:价格升序 4：价格降序&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c8(airportCode)&lt;/td&gt;
+&lt;td&gt;筛选出发/到达（预留）格式：departFilterAirportCode&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c9(timeInterval)&lt;/td&gt;
+&lt;td&gt;筛选起飞时间（预留）格式：0600&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c10(craftType)&lt;/td&gt;
+&lt;td&gt;筛选机型（预留）1大型机 2 中型机 3 小型机&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c11(airline)&lt;/td&gt;
+&lt;td&gt;筛选航司（预留）航空公司二字码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;举例单程：&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/ flight_inland_singlelist?c1=1&amp;amp;c2=1&amp;amp;c3=2&amp;amp;c4=20131125&amp;amp;c5=1&amp;amp;c6=1&amp;amp;c 7=&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;举例往返：&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/flight_inland_singlelist?c1=2&amp;amp;c2=1&amp;amp; c3=2&amp;amp;c4=20131125&amp;amp;c5=20131225&amp;amp;c6=1&amp;amp;c7=1&amp;amp;c8=&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;1.2.6   国际 单程/往返去程 机票列表页(5.3新增)&lt;/p&gt;
+
+&lt;p&gt;页面入口名称：flight_int_singlelist / flight_int_tolist&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;c1(tripType)&lt;/td&gt;
+&lt;td&gt;单程/往返( 1/2 )（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c2(departCityId)&lt;/td&gt;
+&lt;td&gt;出发城市id （必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c3(arriveCityId)&lt;/td&gt;
+&lt;td&gt;到达城市id（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c4(departDate)&lt;/td&gt;
+&lt;td&gt;出发时间（yyyymmdd）（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c5(returnDate)&lt;/td&gt;
+&lt;td&gt;返程出发时间（yyyymmdd）（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c6(intlPassengerType)&lt;/td&gt;
+&lt;td&gt;国际乘客类型，成人/儿童（1/2）（预留，默认成人）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c7(classType)&lt;/td&gt;
+&lt;td&gt;仓位（可选）1：经济舱  2：超级经济舱3：公务舱4：头等舱&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c8(sortType)&lt;/td&gt;
+&lt;td&gt;排序类型（预留）1:起飞时间升序 2:起飞时间降序 3:价格升序 4：价格降序 5:耗时升序6:耗时降序&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c9(airline)&lt;/td&gt;
+&lt;td&gt;筛选航司（预留）航空公司二字码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;举例单程：&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/flight_int_singlelist?c1=1&amp;amp;c2=1&amp;amp;c3=58&amp;amp;c4=20131125&amp;amp;c5=1&amp;amp;c6=MU&lt;br/&gt;ctrip://wireless/flight_int_tolist?c1=1&amp;amp;c2=1&amp;amp;c3=58&amp;amp;c4=20131125&amp;amp;c5=1&amp;amp;c6=MU&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;举例往返：&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/flight_int_singlelist?c1=2&amp;amp;c2=1&amp;amp; c3=58&amp;amp;c4=20131125&amp;amp;c5=20131225&amp;amp;c6=2&amp;amp;c7=MU&lt;br/&gt;ctrip://wireless/flight_int_tolist?c1=2&amp;amp;c2=1&amp;amp; c3=58&amp;amp;c4=20131125&amp;amp;c5=20131225&amp;amp;c6=2&amp;amp;c7=MU&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h4 id=&quot;toc_2&quot;&gt;1.3 火车模块&lt;/h4&gt;
+
+&lt;p&gt;1.3.1   火车订单详情页&lt;/p&gt;
+
+&lt;p&gt;页面入口名称：TrainOrder&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;orderId&lt;/td&gt;
+&lt;td&gt;订单ID（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;举例：&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/TrainOrder?orderId=123&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;1.3.2   继续支付(火车订单详情页) ( 5.3不转H5)&lt;/p&gt;
+
+&lt;p&gt;页面入口名称：widget_pay_main&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;c1(orderId)&lt;/td&gt;
+&lt;td&gt;订单ID（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;c2(orderType)&lt;/td&gt;
+&lt;td&gt;订单类型（必需，0：火车票，目前只有火车票）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;举例：&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/widget_pay_main?c1=123456&amp;amp;c2=0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h4 id=&quot;toc_3&quot;&gt;1.4 旅游模块&lt;/h4&gt;
+
+&lt;p&gt;1.4.1   自由行订单详情页&lt;/p&gt;
+
+&lt;p&gt;页面入口名称：VacationOrder&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;orderId&lt;/td&gt;
+&lt;td&gt;订单ID（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;举例：&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/VacationOrder?orderId=123&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;1.4.2   查看地图( 5.3不转H5)&lt;/p&gt;
+
+&lt;p&gt;页面入口名称：vacation_tour_orderdetailmap&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;C1(hotelName)&lt;/td&gt;
+&lt;td&gt;酒店名称（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;C2(latitude)&lt;/td&gt;
+&lt;td&gt;纬度（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;C3(longitude)&lt;/td&gt;
+&lt;td&gt;经度（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;举例：&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/vacation_tour_orderdetailmap?c1=上海锦江之星&amp;amp;c2=31.256565&amp;amp;c3=121.565789&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h4 id=&quot;toc_4&quot;&gt;1.5 门票模块&lt;/h4&gt;
+
+&lt;p&gt;1.5.1   门票订单详情页&lt;/p&gt;
+
+&lt;p&gt;页面入口名称：TicketOrder&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;orderId&lt;/td&gt;
+&lt;td&gt;订单ID（必需）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;举例：&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/TicketOrder?&amp;amp;orderId=123&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h4 id=&quot;toc_5&quot;&gt;1.6 全局模块&lt;/h4&gt;
+
+&lt;p&gt;1.6.1   营销渠道统计&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;参数名&lt;/th&gt;
+&lt;th&gt;参数含义&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;extendSourceID&lt;/td&gt;
+&lt;td&gt;营销渠道的渠道号，String类型&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;举例：&lt;/td&gt;
+&lt;td&gt;ctrip://wireless/TicketOrder?&amp;amp; extendSourceID=8892&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;说明：&lt;/td&gt;
+&lt;td&gt;该参数是业务无关的，&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>Hybrid framework</title>
+     <link href="http://jimzhao.com/doc-learning"/>
+     <updated>2013-12-28T00:00:00+08:00</updated>
+     <id>http://jimzhao.com/doc-learning</id>
+     <content type="html">&lt;p&gt;&lt;img src=&quot;/images/Mou_128.png&quot; alt=&quot;Mou icon&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;toc_0&quot;&gt;3.开发文档&lt;/h2&gt;
+
+&lt;h3 id=&quot;toc_1&quot;&gt;3.1 使用流程&lt;/h3&gt;
+
+&lt;p&gt;下图是H5和Native调用的流程图&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/process.png&quot; alt=&quot;调用流出&quot;&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;1. App进入H5模块页面，LoadWebView;
+2. Webview加载完成(WebViewDidFinishedLoad)，通过app.callback()回调tagname=web_view_finish_load给H5页面;
+3. H5页面可以调用JS Lib中的所有API，例如app_login();
+4. JS Lib会通过plugin方式调用native的login函数;
+5. native的login函数执行完成，回调给JS Lib;
+6. JS Lib将用户登录的数据回调给H5;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;说明：由于JS Lib函数调用的时候，H5页面可能尚未加载完成，因此必须等收到web_view_finish_load的回调之后;&lt;/p&gt;
+
+&lt;h3 id=&quot;toc_2&quot;&gt;3.2 全局数据结构&lt;/h3&gt;
+
+&lt;p&gt;app.callback(jsonParam)函数&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;app 主动调用和回调H5页面，都是通过该函数完成。因此，&lt;code&gt;所有的H5页面，都需要实现该函数&lt;/code&gt;。&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;jsonParam为JSON对象类型,其内部参数格式如下:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;{
+    tagname:&amp;quot;xxxxx&amp;quot;,
+
+
+    param:{key1:&amp;quot;xxx&amp;quot;,key2:&amp;quot;xxxa&amp;quot;}
+
+}
+
+//tagname:参数类型为字符串, 回调的事件名,不能为空;
+//param: 参数类型为JSON对象, 调用/回调给H5的数据,该字段允许为空;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;toc_3&quot;&gt;3.3.    数据交互&lt;/h3&gt;
+
+&lt;p&gt;总共分2部分，app调用H5，H5调用App&lt;/p&gt;
+
+&lt;h4 id=&quot;toc_4&quot;&gt;3.3.1. App调用H5&lt;/h4&gt;
+
+&lt;p&gt;App调用H5分为两种，App主动调用H5，App回调H5.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;App主动调用H5&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;A.标识H5页面状态的固定回调&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;1. H5页面加载完成，通知H5;
+2. H5页面激活，从后台切入前台，通知H5;
+3. H5页面加载完成后，切换到其它页面之后，回退回来，再次显示时候，通知H5;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;B.H5页面顶部导航栏上的按钮事件&lt;/p&gt;
+
+&lt;p&gt;H5页码的顶部导航栏是由native实现，导航栏上面的按钮，文字，均由H5控制(有JS函数可以设置顶部导航栏内容)，因此顶部导航栏的按钮也算是H5页面的一部分，顶部按钮事件也应由H5控制； &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;1.左侧返回按钮
+用户点击返回，app会调用H5的app.callback({tagname:&amp;#39;back&amp;#39;}), H5返回true，则使用H5的返回，否则app会处理该返回事件；
+2.右侧内容
+右侧按钮点击，app会调用H5的app.callback({tagname:&amp;#39;xxxx&amp;#39;}),tagname为H5设置的该按钮的属性;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;App回调H5&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;H5调用JS Lib的函数之后，如果有数据需要返回给H5的，app会通过调用H5的app.callback({tagname:&amp;#39;xxxx&amp;#39;, param:{key1:&amp;quot;xxxx&amp;quot;, key2:&amp;quot;xxxxx&amp;quot;}}),将数据返回给H5
+
+具体的各个API回调的参数格式，请参考后文[API文档];
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&quot;toc_5&quot;&gt;3.3.2.  H5调用App&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;1.H5调用JS Lib中的API
+    a.通用功能，H5页面调用JS库中的相关JS API. 具体API定义参考后面的API手册;
+    b.业务相关, JS Lib中对部分有返回值的业务模块的API进行封装，例如会员登录/注册，支付业务;
+
+
+
+2.H5拼装ctrip:协议的URL Schema做跳转
+   通过URL schema方式调用,拼装完成后，调用JS Lib里面的CtripUtil.app_open_url()函数,跳转到各个app页面。
+   具体的URL Schema定义列表参考后面的URL Schema手册；
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;toc_6&quot;&gt;3.4.    调试&lt;/h3&gt;
+
+&lt;p&gt;下文以上面demo中为例，描述了怎样将该webapp放入到app中调试&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1.点击安装&lt;a href=&quot;itms-services://?action=download-manifest&amp;url=http://210.13.100.191:7001/qunit/cw_install.plist&quot;&gt;携程旅游App开发版&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2.将html文件存储为home.html. 然后将home.html, bridge.js放入文件夹demo,使用zip压缩demo文件夹，得到demo.zip；&lt;/li&gt;
+&lt;li&gt;3.iOS通过&lt;a targe=&quot;_blank&quot; href=&quot;http://support.apple.com/kb/HT4094?viewlocale=zh_CN&amp;locale=zh_CN&quot;&gt;iTunes文件共享&lt;/a&gt;将demo.zip文件copy到携程旅行的文稿目录;&lt;/li&gt;
+&lt;img src=&quot;/images/file_sharing.jpg&quot; width=&quot;620&quot;&gt;&lt;/img&gt;
+&lt;li&gt;4.进入H5开发设置页面。步骤：进入用车－》点击底部H5设置按钮即可&lt;/li&gt;
+&lt;li&gt;5.在下图的页面中，输入新增模块的相对路径，如zip包解压之后为demo，首页地址为demo/home.index.html&lt;/li&gt;
+&lt;img src=&quot;/images/input.jpg&quot;&gt;&lt;/img&gt;
+&lt;li&gt;6.点击新加入的测试入口进入测试；&lt;/li&gt;
+&lt;img src=&quot;/images/input_done.jpg&quot;&gt;&lt;/img&gt;
+&lt;li&gt;7.测试页面内容显示如下；&lt;/li&gt;
+&lt;img src=&quot;/images/demo.png&quot;&gt; &lt;/img&gt;
+&lt;/ul&gt;   
+
+&lt;p&gt;在H5开发设置页面里面，还有2个按钮。&lt;br/&gt;
+1.更新日志，点击可以查看webapp自动更新的每一个步骤；&lt;br/&gt;
+2.开发首页，即该开发站点的链接，内部有JS Lib自动化测试入口和手动测试入口；&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/debug_2.jpg&quot; alt=&quot;debug_log&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;上图显示了日志查看功能；&lt;/p&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>Hybrid framework</title>
+     <link href="http://jimzhao.com/doc-faq"/>
+     <updated>2013-12-28T00:00:00+08:00</updated>
+     <id>http://jimzhao.com/doc-faq</id>
+     <content type="html">&lt;p&gt;&lt;img src=&quot;/images/Mou_128.png&quot; alt=&quot;Mou icon&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;toc_0&quot;&gt;5.    常见问题FAQ&lt;/h2&gt;
+
+&lt;p&gt;1.何时可以调用JS Lib里面的API?&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;答：收到app回调给H5页面web_view_finished_load的回调之后可以调用；
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;2.Webview缓存为何无法清空？&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;答：为解决该问题，请点击H5页面左下角的刷新按钮，手动强制刷新。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;3.为什么会出现白屏的情况？&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;答：出现白屏的情况有很多，归纳下来
+
+
+a.程序bug，比如页面有网络请求，请求完成之后，页面才渲染，这个时候，如果网络状况不好，就会出现白屏,解决方面，H5页面不要用阻塞加载，不要去等待网络请求数据返回；
+
+
+b.app的webview有bug，这个是系统控件的不稳定性导致的，测试过程中出现比例很小；
+
+
+c.android上面，某些URL(比如URL带＃)无法调整，出现页面无法打开的错误白屏页面，这个是由于在某些2.3固件ROM上出现的问题，对特殊URL解析失败；
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;4.增量更新包无法更新成功？&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;答：因为更新逻辑比较复杂，请查看H5设置页面里面的更新日志，有详细的纪录，所有的更新步骤都有
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;5.5.2版本HTTP站点兼容&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;5.2版本Hybrid设计的时候，没有对线上站点做支持(没有将页面加载完成webview_finished_load回调给H5页面)，可以按照以下步骤，进行兼容。
+
+1. import bridge.js,阻断方式加载
+&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;http://www.jimzhao.com/code/bridge.js&amp;quot; &amp;gt;&amp;lt;/script&amp;gt;
+
+2.延时调用bridge.js里面的函数
+    setTimeout(function () {
+            CtripUtil.app_init_member_H5_info();
+        }, 500);
+
+3.接收App回调函数的处理
+
+  var app = {
+    refreshNavigatorBar:function() {
+        var nav_bar_config_json = {&amp;quot;center&amp;quot;: [{ &amp;quot;tagname&amp;quot;: &amp;quot;title&amp;quot;, &amp;quot;value&amp;quot;: &amp;quot;接送机专场&amp;quot;}]};
+        var json_str = JSON.stringify(nav_bar_config_json);
+        CtripUtil.app_refresh_nav_bar(json_str);
+    },
+
+    callback: function (json_obj) {
+        var tagname = json_obj.tagname;
+
+        if (tagname == &amp;#39;web_view_finished_load&amp;#39;) { //5.3及后续版本会收到该回调
+            app.refreshNavigatorBar();
+            CtripUtil.app_init_member_H5_info();
+            //增加业务相关代码
+        } 
+        else if (tagname == &amp;#39;init_member_H5_info&amp;#39;) {
+            app.refreshNavigatorBar();
+            //增加业务相关代码
+        }
+    }
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+   </entry>
+   
+   <entry>
+     <title>Hybrid framework</title>
+     <link href="http://jimzhao.com/doc-entry"/>
+     <updated>2013-12-28T00:00:00+08:00</updated>
+     <id>http://jimzhao.com/doc-entry</id>
+     <content type="html">&lt;p&gt;&lt;img src=&quot;/images/Mou_128.png&quot; alt=&quot;Mou icon&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;toc_0&quot;&gt;2.快速入门&lt;/h2&gt;
+
+&lt;p&gt;下面以一个简单的Hello world页面介绍框架的使用。&lt;br/&gt;
+1.创建文件夹 hello;&lt;br/&gt;
+2.将bridge.js复制到该文件夹;&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/hello.png&quot; alt=&quot;folder_png&quot;&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;3.创建index.html,并import bridge.js;&lt;br/&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;bridge.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;4.在页面加入2个测试链接&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;ul class=&amp;quot;ul1&amp;quot;&amp;gt;
+&amp;lt;li class=&amp;quot;li2&amp;quot;&amp;gt;&amp;lt;aonclick=&amp;quot;javscript:CtripUser.app_member_login()&amp;quot;&amp;gt;登录&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt; 
+&amp;lt;li class=&amp;quot;li2&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;ctrip://wireless/InlandHotel?hotelId=87120&amp;amp;cityId=2&amp;amp;checkInDate=201301220&amp;amp;checkOutDate=20131221&amp;quot;&amp;gt;进入酒店详情页&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;4.在index.html页面添加函数 app.callback();&lt;br/&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+var app = {
+    callback: function(json_obj) 
+    {
+        var tagname = json_obj.tagname;
+
+        if (tagname == &amp;#39;web_view_finished_load&amp;#39;) 
+        {
+            //webview载入完成，刷新顶部条
+            var nav_bar_config_json = {&amp;quot;center&amp;quot;:[{&amp;quot;tagname&amp;quot;:&amp;quot;title&amp;quot;,&amp;quot;value&amp;quot;:&amp;quot;Hello, H5&amp;quot;}], &amp;quot;right&amp;quot;:[{&amp;quot;tagname&amp;quot;:&amp;quot;navbar_login&amp;quot;,&amp;quot;value&amp;quot;:&amp;quot;登录&amp;quot;}]};
+            var json_str = JSON.stringify(nav_bar_config_json);
+            //调用刷新顶部条API
+            CtripUtil.app_refresh_nav_bar(json_str);
+        }
+        else if (tagname == &amp;quot;back&amp;quot;)
+        {
+            //处理顶部栏的返回按钮
+            History.back();
+            return true;
+        }
+        else if (tagname == &amp;quot;member_login&amp;quot;) 
+        {
+            alert(&amp;quot;用户登录完成:&amp;quot;+JSON.stringify(json_obj));
+        }
+        else if (tagname == &amp;quot;navbar_login&amp;quot;) {
+             alert(&amp;quot;Event:用户点击导航栏邮册登录按钮:&amp;quot;+JSON.stringify(json_obj));
+        }
+    }
+};
+
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;5.将Hello文件夹zip，然后build到客户端测试，界面显示如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/demo.png&quot; alt=&quot;demo.png&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;6.下面是整个页面文件的代码&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;!DOCTYPE html PUBLIC &amp;quot;-//W3C//DTD HTML 4.01//EN&amp;quot; &amp;quot;http://www.w3.org/TR/html4/strict.dtd&amp;quot;&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+  &amp;lt;meta http-equiv=&amp;quot;Content-Type&amp;quot; content=&amp;quot;text/html; charset=utf-8&amp;quot;&amp;gt;
+  &amp;lt;meta http-equiv=&amp;quot;Content-Style-Type&amp;quot; content=&amp;quot;text/css&amp;quot;&amp;gt;
+  &amp;lt;title&amp;gt;Hello, world&amp;lt;/title&amp;gt;
+   &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;initial-scale = 1.0,maximum-scale = 1.0&amp;quot; /&amp;gt;
+  &amp;lt;meta name=&amp;quot;CocoaVersion&amp;quot; content=&amp;quot;1138.23&amp;quot;&amp;gt;
+  &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Helvetica; min-height: 16.0px}
+    li.li2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Helvetica; color: #2567e8}
+    li.li3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Helvetica}
+    ul.ul1 {list-style-type: disc}
+  &amp;lt;/style&amp;gt;
+
+  &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;bridge.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+
+  &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+
+  var app = {
+        callback: function(json_obj) {
+          var tagname = json_obj.tagname;
+          if (tagname == &amp;#39;web_view_finished_load&amp;#39;) { 
+              //webview载入完成，刷新顶部条
+              var nav_bar_config_json = {&amp;quot;center&amp;quot;:[{&amp;quot;tagname&amp;quot;:&amp;quot;title&amp;quot;,&amp;quot;value&amp;quot;:&amp;quot;Hello, World&amp;quot;}], &amp;quot;right&amp;quot;:[{&amp;quot;tagname&amp;quot;:&amp;quot;login&amp;quot;,&amp;quot;value&amp;quot;:&amp;quot;登录&amp;quot;}]};
+              var json_str = JSON.stringify(nav_bar_config_json);
+              CtripUtil.app_refresh_nav_bar(json_str);
+          } 
+          else if (tagname == &amp;quot;back&amp;quot;) {
+            History.back();
+            return true;
+          }
+          else if (tagname == &amp;quot;member_login&amp;quot;) {
+            alert(&amp;quot;用户登录完成:&amp;quot;+JSON.stringify(json_obj));
+          }
+         else if (tagname == &amp;quot;navbar_login&amp;quot;) {
+             alert(&amp;quot;Event:用户点击导航栏邮册登录按钮:&amp;quot;+JSON.stringify(json_obj));
+          }
+        }
+    };
+
+  &amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;p class=&amp;quot;p1&amp;quot;&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;ul class=&amp;quot;ul1&amp;quot;&amp;gt;
+  &amp;lt;li class=&amp;quot;li2&amp;quot;&amp;gt;&amp;lt;a onclick=&amp;quot;javscript:CtripUser.app_member_login()&amp;quot;&amp;gt;登录&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+  &amp;lt;br/&amp;gt;
+  &amp;lt;br/&amp;gt; 
+  &amp;lt;li class=&amp;quot;li2&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;ctrip://wireless/InlandHotel?hotelId=87120&amp;amp;cityId=2&amp;amp;checkInDate=201301220&amp;amp;checkOutDate=20131221&amp;quot;&amp;gt;进入酒店详情页&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+  &amp;lt;br/&amp;gt;
+  &amp;lt;br/&amp;gt;
+&amp;lt;/ul&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content>
+   </entry>
+   
+   <entry>
+     <title>Hybrid framework</title>
+     <link href="http://jimzhao.com/doc-description"/>
+     <updated>2013-12-28T00:00:00+08:00</updated>
+     <id>http://jimzhao.com/doc-description</id>
+     <content type="html">&lt;p&gt;&lt;img src=&quot;/images/Mou_128.png&quot; alt=&quot;Mou icon&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;toc_0&quot;&gt;1.平台概述&lt;/h2&gt;
+
+&lt;h3 id=&quot;toc_1&quot;&gt;1.1. 介绍&lt;/h3&gt;
+
+&lt;p&gt;WHF移动开发平台是基于HTML5技术的跨平台快速开发解决方案。开发者利用HTML5+CSS3+JavaScript技术可以快速的开发与本地应用相媲美的应用，并可以和ctrip现有账号/业务系统完美结合。 &lt;/p&gt;
+
+&lt;h3 id=&quot;toc_2&quot;&gt;1.2. 组成部分&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;1. WHF基础库中间件；&lt;/code&gt;&lt;br/&gt;
+提供平台接口库，对一些常用的基础功能进行包装，并提供JS库给开发者使用；&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;2.  WHF-Ctrip业务相关中间件；&lt;/code&gt;&lt;br/&gt;
+提供接口，对Ctrip业务相关功能(例如用户相关)进行包装，并提供JS库给开发者使用；&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;3. URL Scheme；&lt;/code&gt;&lt;br/&gt;
+提供文档，开发者按照文档拼装ctrip格式URL schema，可以跳转到ctrip app的各个页面；&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;4. UI方案支持(TODO)&lt;/code&gt;&lt;br/&gt;
+基于现有UI方案(比如JQuery Mobile UI)，封装符合ctrip UI风格的控件库，方便开发者使用；&lt;br/&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;toc_3&quot;&gt;1.3. 平台特色&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;支持Webapp包自动/手动在线更新&lt;/li&gt;
+&lt;li&gt;支持多窗口webapp&lt;/li&gt;
+&lt;li&gt;支持本地web页面和站点页面无缝跳转&lt;/li&gt;
+&lt;li&gt;无缝整合ctrip账号体系+业务体系&lt;/li&gt;
+&lt;li&gt;iOS&amp;android跨平台支持，且体验一致&lt;/li&gt;
+&lt;li&gt;支持打包到本地和HTTP站点两种模式的webapp&lt;/li&gt;
+
+&lt;/ul&gt;
+    
+</content>
+   </entry>
+   
+   <entry>
+     <title>Hybrid framework</title>
+     <link href="http://jimzhao.com/doc-debug"/>
+     <updated>2013-12-28T00:00:00+08:00</updated>
+     <id>http://jimzhao.com/doc-debug</id>
+     <content type="html">&lt;p&gt;&lt;img src=&quot;/images/Mou_128.png&quot; alt=&quot;Mou icon&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;toc_0&quot;&gt;4.    打包&amp;amp;更新&lt;/h2&gt;
+
+&lt;p&gt;该部分的内容都是将webapp包下载到app 本地，然后打开的方式。&lt;br/&gt;
+对于所有的在线HTTP站点页面，保持URL地址不变，站点随时动态更新即可；&lt;br/&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;toc_1&quot;&gt;4.1  目录结构&lt;/h3&gt;
+
+&lt;p&gt;app内部有一个指定的webapp目录，所有的hybrid app都是在这个目录下面，具体参考下图。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wb_struct.png&quot; alt=&quot;icon webapp struct&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;开发者开发的app最终都会被下载保存到该目录，因此不能与已经存在打目录重复。在开发者站点有入口可供查询。&lt;/p&gt;
+
+&lt;h3 id=&quot;toc_2&quot;&gt;4.2  更新机制&lt;/h3&gt;
+
+&lt;p&gt;1.app启动时候，会做增量更新，服务器端告诉app，是否有H5包需要更新；&lt;br/&gt;
+2.如果有H5包需要更新，app会去获取所有需要更新的H5包相关信息；&lt;br/&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;H5包即为开发好的webapp的zip包，从服务器获取的主要信息有：
+1.下载地址;
+2.包名,包名为解压到webapp之后的名字;
+3.包的md5 hash值，32位，大写;
+4.包的优先级，优先级从0开始，数字越小，优先级越高
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;3.app根据包的优先级下载这些需要更新或者安装的H5包；&lt;/p&gt;
+
+&lt;h3 id=&quot;toc_3&quot;&gt;4.3  提交方案&lt;/h3&gt;
+
+&lt;p&gt;1.准备开发好的webapp的zip包，提供以下信息给服务器端；&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;1.下载地址;
+2.包名,包名为解压到webapp之后的名字;
+3.包的md5 hash值，32位，大写;
+4.包的优先级，优先级从0开始，数字越小，优先级越高
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;2.联系App team，在App里面添加该webapp的入口；&lt;br/&gt;
+3.或者直接通过其它H5 webapp/广告跳转到该webapp；&lt;/p&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>Hybrid framework</title>
+     <link href="http://jimzhao.com/doc-api"/>
+     <updated>2013-12-28T00:00:00+08:00</updated>
+     <id>http://jimzhao.com/doc-api</id>
+     <content type="html">&lt;p&gt;&lt;img src=&quot;/images/Mou_128.png&quot; alt=&quot;Mou icon&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;toc_0&quot;&gt;6.    API手册&lt;/h2&gt;
+
+&lt;p&gt;&lt;nav&gt;
+ &lt;li&gt;&lt;a target=&quot;_blank&quot; href=&quot;/api/index.html&quot;&gt;JS API Doc&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&quot;/doc-schema/&quot;&gt;URL shcema Doc&lt;/a&gt;&lt;/li&gt;
+ &lt;br/&gt;
+ &lt;li&gt;&lt;font style=&quot;color:black;font-weight:bold&quot;&gt;app主动回调H5页面&lt;/font&gt;&lt;/li&gt;
+&lt;/nav&gt;&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;回调tagname&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;web_view_finished_load&lt;/td&gt;
+&lt;td&gt;H5页面加载完成&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;web_view_did_appear&lt;/td&gt;
+&lt;td&gt;H5页面加载完成后，切换到其它页面之后，回退回来，再次显示时候，通知H5。可能会带有上个H5页面的参数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;web_view_did_active&lt;/td&gt;
+&lt;td&gt;H5页面激活，从后台切入前台，通知H5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;back&lt;/td&gt;
+&lt;td&gt;用户点击导航栏左上角的返回按钮，H5页面对该tagname要有返回值，返回true，表示H5页面已经处理返回事件，否则会调用native的返回事件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;NOTE:对于线上HTTP站点，除tagname＝back之外，其它3个tagname=web_view_***都是在5.3版本才回调给H5页面的。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;App的Hybrid在设计的时候，没有考虑到5.2版本对线上HTTP站点的支持。&lt;/p&gt;
+
+&lt;p&gt;因此对5.2版本，遇到HTTP站点，没有将也页面加载完成等信息(比如web_view_finished_load)回调给H5。&lt;/p&gt;
+
+&lt;p&gt;对于此种情况，需要兼容5.2的，请查看FAQ中，&lt;a href=&quot;/doc-faq/&quot;&gt;5.2版本HTTP站点兼容&lt;/a&gt;&lt;/p&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>Hybrid framework</title>
+     <link href="http://jimzhao.com/whf-doc"/>
+     <updated>2013-12-25T00:00:00+08:00</updated>
+     <id>http://jimzhao.com/whf-doc</id>
+     <content type="html">&lt;p&gt;&lt;img src=&quot;/images/Mou_128.png&quot; alt=&quot;Mou icon&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;toc_0&quot;&gt;1.平台概述&lt;/h2&gt;
+
+&lt;h3 id=&quot;toc_1&quot;&gt;1.1. 介绍&lt;/h3&gt;
+
+&lt;p&gt;WHF移动开发平台是基于HTML5技术的跨平台快速开发解决方案。开发者利用HTML5+CSS3+JavaScript技术可以快速的开发与本地应用相媲美的应用，并可以和ctrip现有账号/业务系统完美结合。 &lt;/p&gt;
+
+&lt;h3 id=&quot;toc_2&quot;&gt;1.2. 组成部分&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;1. WHF基础库中间件；&lt;/code&gt;&lt;br/&gt;
+提供平台接口库，对一些常用的基础功能进行包装，并提供JS库给开发者使用；&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;2.  WHF-Ctrip业务相关中间件；&lt;/code&gt;&lt;br/&gt;
+提供接口，对Ctrip业务相关功能(例如用户相关)进行包装，并提供JS库给开发者使用；&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;3. URL Scheme；&lt;/code&gt;&lt;br/&gt;
+提供文档，开发者按照文档拼装ctrip格式URL schema，可以跳转到ctrip app的各个页面；&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;4. UI方案支持(TODO)&lt;/code&gt;&lt;br/&gt;
+基于现有UI方案(比如JQuery Mobile UI)，封装符合ctrip UI风格的控件库，方便开发者使用；&lt;br/&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;toc_3&quot;&gt;1.3. 平台特色&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;支持Webapp包自动/手动在线更新&lt;/li&gt;
+&lt;li&gt;支持多窗口webapp&lt;/li&gt;
+&lt;li&gt;支持本地web页面和站点页面无缝跳转&lt;/li&gt;
+&lt;li&gt;无缝整合ctrip账号体系+业务体系&lt;/li&gt;
+&lt;li&gt;iOS&amp;android跨平台支持，且体验一致&lt;/li&gt;
+&lt;li&gt;支持打包到本地和HTTP站点两种模式的webapp&lt;/li&gt;
+
+&lt;/ul&gt;
+    
+
+&lt;h2 id=&quot;toc_4&quot;&gt;2.快速入门&lt;/h2&gt;
+
+&lt;p&gt;下面以一个简单的Hello world页面介绍框架的使用。&lt;br/&gt;
+1.创建文件夹 hello;&lt;br/&gt;
+2.将bridge.js复制到该文件夹;&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/hello.png&quot; alt=&quot;folder_png&quot;&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;3.创建index.html,并import bridge.js;&lt;br/&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;bridge.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;4.在页面加入2个测试链接&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;ul class=&amp;quot;ul1&amp;quot;&amp;gt;
+&amp;lt;li class=&amp;quot;li2&amp;quot;&amp;gt;&amp;lt;aonclick=&amp;quot;javscript:CtripUser.app_member_login()&amp;quot;&amp;gt;登录&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt; 
+&amp;lt;li class=&amp;quot;li2&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;ctrip://wireless/InlandHotel?hotelId=87120&amp;amp;cityId=2&amp;amp;checkInDate=201301220&amp;amp;checkOutDate=20131221&amp;quot;&amp;gt;进入酒店详情页&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;br/&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;4.在index.html页面添加函数 app.callback();&lt;br/&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+var app = {
+    callback: function(json_obj) 
+    {
+        var tagname = json_obj.tagname;
+
+        if (tagname == &amp;#39;web_view_finished_load&amp;#39;) 
+        {
+            //webview载入完成，刷新顶部条
+            var nav_bar_config_json = {&amp;quot;left&amp;quot;:[{&amp;quot;tagname&amp;quot;:&amp;quot;back&amp;quot;}], &amp;quot;center&amp;quot;:[{&amp;quot;tagname&amp;quot;:&amp;quot;title&amp;quot;,&amp;quot;value&amp;quot;:&amp;quot;Hello, H5&amp;quot;}], &amp;quot;right&amp;quot;:[{&amp;quot;tagname&amp;quot;:&amp;quot;login&amp;quot;,&amp;quot;value&amp;quot;:&amp;quot;登录&amp;quot;}]};
+            var json_str = JSON.stringify(nav_bar_config_json);
+            //调用刷新顶部条API
+            CtripUtil.app_refresh_nav_bar(json_str);
+        }
+        else if (tagname == &amp;quot;back&amp;quot;)
+        {
+            //处理顶部栏的返回按钮
+            History.back();
+            return true;
+        }
+        else if (tagname == &amp;quot;login&amp;quot;) 
+        {
+            //处理登录事件
+            alert(&amp;quot;用户登录完成:&amp;quot;+JSON.stringify(json_obj));
+        }
+    }
+};
+
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;5.将Hello文件夹zip，然后build到客户端测试，界面显示如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/demo.png&quot; alt=&quot;demo.png&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;6.下面是整个页面文件的代码&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;!DOCTYPE html PUBLIC &amp;quot;-//W3C//DTD HTML 4.01//EN&amp;quot; &amp;quot;http://www.w3.org/TR/html4/strict.dtd&amp;quot;&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+  &amp;lt;meta http-equiv=&amp;quot;Content-Type&amp;quot; content=&amp;quot;text/html; charset=utf-8&amp;quot;&amp;gt;
+  &amp;lt;meta http-equiv=&amp;quot;Content-Style-Type&amp;quot; content=&amp;quot;text/css&amp;quot;&amp;gt;
+  &amp;lt;title&amp;gt;Hello, world&amp;lt;/title&amp;gt;
+   &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;initial-scale = 1.0,maximum-scale = 1.0&amp;quot; /&amp;gt;
+  &amp;lt;meta name=&amp;quot;CocoaVersion&amp;quot; content=&amp;quot;1138.23&amp;quot;&amp;gt;
+  &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Helvetica; min-height: 16.0px}
+    li.li2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Helvetica; color: #2567e8}
+    li.li3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Helvetica}
+    ul.ul1 {list-style-type: disc}
+  &amp;lt;/style&amp;gt;
+
+  &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;bridge.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+
+  &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+
+  var app = {
+        callback: function(json_obj) {
+          var tagname = json_obj.tagname;
+          if (tagname == &amp;#39;web_view_finished_load&amp;#39;) { 
+              //webview载入完成，刷新顶部条
+              var nav_bar_config_json = {&amp;quot;left&amp;quot;:[{&amp;quot;tagname&amp;quot;:&amp;quot;back&amp;quot;}], &amp;quot;center&amp;quot;:[{&amp;quot;tagname&amp;quot;:&amp;quot;title&amp;quot;,&amp;quot;value&amp;quot;:&amp;quot;Hello, World&amp;quot;}], &amp;quot;right&amp;quot;:[{&amp;quot;tagname&amp;quot;:&amp;quot;login&amp;quot;,&amp;quot;value&amp;quot;:&amp;quot;登录&amp;quot;}]};
+              var json_str = JSON.stringify(nav_bar_config_json);
+              CtripUtil.app_refresh_nav_bar(json_str);
+          } 
+          else if (tagname == &amp;quot;back&amp;quot;) {
+            if (history.length == 0) {
+              CtripUtil.app_back_to_last_page();
+            } else {
+              History.back();
+            }
+            return true;
+          }
+          else if (tagname == &amp;quot;login&amp;quot;) {
+            //处理登录事件
+            alert(&amp;quot;用户登录完成:&amp;quot;+JSON.stringify(json_obj));
+          }
+        }
+    };
+
+  &amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;p class=&amp;quot;p1&amp;quot;&amp;gt;&amp;lt;br&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;ul class=&amp;quot;ul1&amp;quot;&amp;gt;
+  &amp;lt;li class=&amp;quot;li2&amp;quot;&amp;gt;&amp;lt;a onclick=&amp;quot;javscript:CtripUser.app_member_login()&amp;quot;&amp;gt;登录&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+  &amp;lt;br/&amp;gt;
+  &amp;lt;br/&amp;gt; 
+  &amp;lt;li class=&amp;quot;li2&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;ctrip://wireless/InlandHotel?hotelId=87120&amp;amp;cityId=2&amp;amp;checkInDate=201301220&amp;amp;checkOutDate=20131221&amp;quot;&amp;gt;进入酒店详情页&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+  &amp;lt;br/&amp;gt;
+  &amp;lt;br/&amp;gt;
+&amp;lt;/ul&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;toc_5&quot;&gt;3.开发文档&lt;/h2&gt;
+
+&lt;h3 id=&quot;toc_6&quot;&gt;3.1 使用流程&lt;/h3&gt;
+
+&lt;p&gt;下图是H5和Native调用的流程图&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/process.png&quot; alt=&quot;调用流出&quot;&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;1. App进入H5模块页面，LoadWebView;
+2. Webview加载完成(WebViewDidFinishedLoad)，通过app.callback()回调tagname=web_view_finish_load给H5页面;
+3. H5页面可以调用JS Lib中的所有API，例如app_login();
+4. JS Lib会通过plugin方式调用native的login函数;
+5. native的login函数执行完成，回调给JS Lib;
+6. JS Lib将用户登录的数据回调给H5;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;说明：由于JS Lib函数调用的时候，H5页面可能尚未加载完成，因此必须等收到web_view_finish_load的回调之后;&lt;/p&gt;
+
+&lt;h3 id=&quot;toc_7&quot;&gt;3.2 全局数据结构&lt;/h3&gt;
+
+&lt;p&gt;app.callback(jsonParam)函数&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;app 主动调用和回调H5页面，都是通过该函数完成。因此，&lt;code&gt;所有的H5页面，都需要实现该函数&lt;/code&gt;。&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;jsonParam为JSON对象类型,其内部参数格式如下:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;{
+    tagname:&amp;quot;xxxxx&amp;quot;,
+
+
+    param:{key1:&amp;quot;xxx&amp;quot;,key2:&amp;quot;xxxa&amp;quot;}
+
+}
+
+//tagname:参数类型为字符串, 回调的事件名,不能为空;
+//param: 参数类型为JSON对象, 调用/回调给H5的数据,该字段允许为空;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;toc_8&quot;&gt;3.3.    数据交互&lt;/h3&gt;
+
+&lt;p&gt;总共分2部分，app调用H5，H5调用App&lt;/p&gt;
+
+&lt;h4 id=&quot;toc_9&quot;&gt;3.3.1. App调用H5&lt;/h4&gt;
+
+&lt;p&gt;App调用H5分为两种，App主动调用H5，App回调H5.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;App主动调用H5&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;A.标识H5页面状态的固定回调&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;1. H5页面加载完成，通知H5;
+2. H5页面激活，从后台切入前台，通知H5;
+3. H5页面加载完成后，切换到其它页面之后，回退回来，再次显示时候，通知H5;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;B.H5页面顶部导航栏上的按钮事件&lt;/p&gt;
+
+&lt;p&gt;H5页码的顶部导航栏是由native实现，导航栏上面的按钮，文字，均由H5控制(有JS函数可以设置顶部导航栏内容)，因此顶部导航栏的按钮也算是H5页面的一部分，顶部按钮事件也应由H5控制； &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;1.左侧返回按钮
+用户点击返回，app会调用H5的app.callback({tagname:&amp;#39;back&amp;#39;}), H5返回true，则使用H5的返回，否则app会处理该返回事件；
+2.右侧内容
+右侧按钮点击，app会调用H5的app.callback({tagname:&amp;#39;xxxx&amp;#39;}),tagname为H5设置的该按钮的属性;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;App回调H5&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;H5调用JS Lib的函数之后，如果有数据需要返回给H5的，app会通过调用H5的app.callback({tagname:&amp;#39;xxxx&amp;#39;, param:{key1:&amp;quot;xxxx&amp;quot;, key2:&amp;quot;xxxxx&amp;quot;}}),将数据返回给H5
+
+具体的各个API回调的参数格式，请参考后文[API文档];
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&quot;toc_10&quot;&gt;3.3.2.  H5调用App&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;1.H5调用JS Lib中的API
+    a.通用功能，H5页面调用JS库中的相关JS API. 具体API定义参考后面的API手册;
+    b.业务相关, JS Lib中对部分有返回值的业务模块的API进行封装，例如会员登录/注册，支付业务;
+
+
+
+2.H5拼装ctrip:协议的URL Schema做跳转
+   通过URL schema方式调用,拼装完成后，调用JS Lib里面的CtripUtil.app_open_url()函数,跳转到各个app页面。
+   具体的URL Schema定义列表参考后面的URL Schema手册；
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;toc_11&quot;&gt;3.4.    调试&lt;/h3&gt;
+
+&lt;p&gt;下文以上面demo中为例，描述了怎样将该webapp放入到app中调试&lt;br/&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1.点击安装&lt;a href=&quot;itms-services://?action=download-manifest&amp;url=http://210.13.100.191:7001/qunit/cw_install.plist&quot;&gt;携程旅游App开发版&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2.将html文件存储为home.html. 然后将home.html, bridge.js放入文件夹demo,使用zip压缩demo文件夹，得到demo.zip；&lt;/li&gt;
+&lt;li&gt;3.iOS通过&lt;a targe=&quot;_blank&quot; href=&quot;http://support.apple.com/kb/HT4094?viewlocale=zh_CN&amp;locale=zh_CN&quot;&gt;iTunes文件共享&lt;/a&gt;将demo.zip文件copy到携程旅行的文稿目录;&lt;/li&gt;
+&lt;img src=&quot;/images/file_sharing.jpg&quot; width=&quot;620&quot;&gt;&lt;/img&gt;
+&lt;li&gt;4.进入H5开发设置页面。步骤：进入用车－》点击底部H5设置按钮即可&lt;/li&gt;
+&lt;li&gt;5.在下图的页面中，输入新增模块的相对路径，如zip包解压之后为demo，首页地址为demo/home.index.html&lt;/li&gt;
+&lt;img src=&quot;/images/input.jpg&quot;&gt;&lt;/img&gt;
+&lt;li&gt;6.点击新加入的测试入口进入测试；&lt;/li&gt;
+&lt;img src=&quot;/images/input_done.jpg&quot;&gt;&lt;/img&gt;
+&lt;li&gt;7.测试页面内容显示如下；&lt;/li&gt;
+&lt;img src=&quot;/images/demo.png&quot;&gt; &lt;/img&gt;
+&lt;/ul&gt;   
+
+&lt;p&gt;在H5开发设置页面里面，还有2个按钮。&lt;br/&gt;
+1.更新日志，点击可以查看webapp自动更新的每一个步骤；&lt;br/&gt;
+2.开发首页，即该开发站点的链接，内部有JS Lib自动化测试入口和手动测试入口；&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/debug_2.jpg&quot; alt=&quot;debug_log&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;上图显示了日志查看功能；&lt;/p&gt;
+
+&lt;h2 id=&quot;toc_12&quot;&gt;4.    打包&amp;amp;更新&lt;/h2&gt;
+
+&lt;p&gt;该部分的内容都是将webapp包下载到app 本地，然后打开的方式。&lt;br/&gt;
+对于所有的在线HTTP站点页面，保持URL地址不变，站点随时动态更新即可；&lt;br/&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;toc_13&quot;&gt;4.1  目录结构&lt;/h3&gt;
+
+&lt;p&gt;app内部有一个指定的webapp目录，所有的hybrid app都是在这个目录下面，具体参考下图。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/wb_struct.png&quot; alt=&quot;icon webapp struct&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;开发者开发的app最终都会被下载保存到该目录，因此不能与已经存在打目录重复。在开发者站点有入口可供查询。&lt;/p&gt;
+
+&lt;h3 id=&quot;toc_14&quot;&gt;4.2  更新机制&lt;/h3&gt;
+
+&lt;p&gt;1.app启动时候，会做增量更新，服务器端告诉app，是否有H5包需要更新；&lt;br/&gt;
+2.如果有H5包需要更新，app会去获取所有需要更新的H5包相关信息；&lt;br/&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;H5包即为开发好的webapp的zip包，从服务器获取的主要信息有：
+1.下载地址;
+2.包名,包名为解压到webapp之后的名字;
+3.包的md5 hash值，32位，大写;
+4.包的优先级，优先级从0开始，数字越小，优先级越高
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;3.app根据包的优先级下载这些需要更新或者安装的H5包；&lt;/p&gt;
+
+&lt;h3 id=&quot;toc_15&quot;&gt;4.3  提交方案&lt;/h3&gt;
+
+&lt;p&gt;1.准备开发好的webapp的zip包，提供以下信息给服务器端；&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;1.下载地址;
+2.包名,包名为解压到webapp之后的名字;
+3.包的md5 hash值，32位，大写;
+4.包的优先级，优先级从0开始，数字越小，优先级越高
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;2.联系App team，在App里面添加该webapp的入口；&lt;br/&gt;
+3.或者直接通过其它H5 webapp/广告跳转到该webapp；&lt;/p&gt;
+
+&lt;h2 id=&quot;toc_16&quot;&gt;5.    常见问题FAQ&lt;/h2&gt;
+
+&lt;p&gt;1.何时可以调用JS Lib里面的API？&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;答：收到app回调给H5页面web_view_finished_load的回调之后可以调用；&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;2.Webview缓存为何无法清空？&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;答：为解决该问题，请点击H5页面左下角的刷新按钮，手动强制刷新。&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;3.为什么会出现白屏的情况？&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;答：出现白屏的情况有很多，归纳下来&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;a.程序bug，比如页面有网络请求，请求完成之后，页面才渲染，这个时候，如果网络状况不好，就会出现白屏,解决方面，H5页面不要用阻塞加载，不要去等待网络请求数据返回；&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;b.app的webview有bug，这个是系统控件的不稳定性导致的，测试过程中出现比例很小；&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;c.android上面，某些URL(比如URL带＃)无法调整，出现页面无法打开的错误白屏页面，这个是由于在某些2.3固件ROM上出现的问题，对特殊URL解析失败；&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;4.增量更新包无法更新成功？&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;答：因为更新逻辑比较复杂，请查看H5设置页面里面的更新日志，有详细的纪录，所有的更新步骤都有&lt;br/&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;toc_17&quot;&gt;6.    API手册&lt;/h2&gt;
+
+&lt;p&gt;&lt;nav&gt;
+ &lt;li&gt;&lt;a href=&quot;out/index.html&quot;&gt;JS API Doc&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&quot;urlschema.html&quot;&gt;URL shcema Doc&lt;/a&gt;&lt;/li&gt;
+&lt;/nav&gt;&lt;/p&gt;
+
+&lt;p&gt;app主动回调H5页面&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;回调tagname&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;web_view_finished_load&lt;/td&gt;
+&lt;td&gt;H5页面加载完成&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;web_view_did_appear&lt;/td&gt;
+&lt;td&gt;H5页面加载完成后，切换到其它页面之后，回退回来，再次显示时候，通知H5。可能会带有上个H5页面的参数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;web_view_did_active&lt;/td&gt;
+&lt;td&gt;H5页面激活，从后台切入前台，通知H5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;back&lt;/td&gt;
+&lt;td&gt;用户点击导航栏左上角的返回按钮，H5页面对该tagname要有返回值，返回true，表示H5页面已经处理返回事件，否则会调用native的返回事件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h2 id=&quot;toc_18&quot;&gt;7.TODO List&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;1.UI框架&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;基于JQuery Mobile 开发UI框架&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;2.开发框架原则确定&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;1.业务无关，通用功能，JS API实现；比如文件读写&lt;br/&gt;
+2.ctrip业务相关，H5调用之后，必须返回数据给H5页面的，JS API实现；比如登录／支付&lt;br/&gt;
+3.ctrip业务相关，H5调用之后，无需返回数据给H5页面的，URL Schema实现；比如酒店详情页 &lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;3.JS API的整理和完善:公共API＋Ctrip业务API&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;基础框架(公共API)&lt;br/&gt;
+参考appcan，整理出基础模块API&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ct_CONSTANT&lt;/td&gt;
+&lt;td&gt;定义一组常量&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ct_ErrorCode&lt;/td&gt;
+&lt;td&gt;定义一组错误代码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ct_Call&lt;/td&gt;
+&lt;td&gt;电话相关API&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ct_Camera&lt;/td&gt;
+&lt;td&gt;相机调用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ct_ImagePicker&lt;/td&gt;
+&lt;td&gt;读写图片&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ct_Clipboard&lt;/td&gt;
+&lt;td&gt;粘贴板读写&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ct_Contact&lt;/td&gt;
+&lt;td&gt;联系人选取/新增&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ct_DataBaseMgr&lt;/td&gt;
+&lt;td&gt;KV数据库读写&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ct_Device&lt;/td&gt;
+&lt;td&gt;设备硬件相关信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ct_DownloaderMgr&lt;/td&gt;
+&lt;td&gt;下载控件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ct_Email&lt;/td&gt;
+&lt;td&gt;email控件调用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ct_FileMgr&lt;/td&gt;
+&lt;td&gt;文件管理&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ct_Location&lt;/td&gt;
+&lt;td&gt;定位管理&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ct_Log&lt;/td&gt;
+&lt;td&gt;log读写&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ct_Share&lt;/td&gt;
+&lt;td&gt;分享控件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ct_SMS&lt;/td&gt;
+&lt;td&gt;短信调用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ct_Application&lt;/td&gt;
+&lt;td&gt;应用相关信息，沙盒目录信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;ctrip业务框架(Ctrip业务API)&lt;br/&gt;
+整理出那些业务模块是需要包装给H5使用的，然后抽象并提供接口；&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;定义&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ct_User&lt;/td&gt;
+&lt;td&gt;用户登录注册&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ct_Pay&lt;/td&gt;
+&lt;td&gt;支付控件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+</content>
+   </entry>
+   
+ 
+</feed>

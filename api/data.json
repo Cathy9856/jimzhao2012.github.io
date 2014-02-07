@@ -9,7 +9,8 @@
                 "CtripTool": 1,
                 "CtripUtil": 1,
                 "CtripUser": 1,
-                "CtripEncrypt": 1
+                "CtripEncrypt": 1,
+                "CtripPay": 1
             },
             "fors": {},
             "namespaces": {}
@@ -67,7 +68,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1140,
+            "line": 1195,
             "description": "用户相关类",
             "brief": "用户相关类"
         },
@@ -80,9 +81,22 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1394,
+            "line": 1449,
             "description": "加解密/HASH/编码相关类",
             "brief": "提供给H5试用，通用加解密/HASH/编码相关类"
+        },
+        "CtripPay": {
+            "name": "CtripPay",
+            "shortname": "CtripPay",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bridge.js",
+            "line": 1506,
+            "description": "Ctrip相关支付控件",
+            "brief": "提供Ctrip业务相关的支付功能"
         }
     },
     "classitems": [
@@ -868,13 +882,44 @@
             "since": "v5.2",
             "author": "jimzhao",
             "example": [
-                " CtripTool.app_log(\"execute script xxxxx\", \"result for script is oooooo\");"
+                " CtripUtil.app_log(\"execute script xxxxx\", \"result for script is oooooo\");"
             ],
             "class": "CtripUtil"
         },
         {
             "file": "bridge.js",
-            "line": 1147,
+            "line": 1139,
+            "description": "H5通过App发送服务",
+            "brief": "H5通过App发送服务",
+            "itemtype": "method",
+            "name": "app_send_pipe_request",
+            "params": [
+                {
+                    "name": "serviceCode",
+                    "description": "需要发送服务的服务号",
+                    "type": "String"
+                },
+                {
+                    "name": "header",
+                    "description": "服务的header",
+                    "type": "String"
+                },
+                {
+                    "name": "data",
+                    "description": "服务所需要的数据部分，各个服务都不同",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.4",
+            "author": "jimzhao",
+            "example": [
+                " CtripUtil.app_send_pipe_request(\"9500001\", \"H5Agent\",\"{}\");\n    //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"send_pipe_request\",\n           param:\n           {\n               pipeResponse:\"eHh4eHh4\",\n           },\n       }\n       app.callback(json_obj);"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1202,
             "description": "会员登录,native未登录时候，会显示会员登录界面，native会员已登录，直接完成，返回登录的用户信息",
             "brief": "会员登录",
             "since": "5.2",
@@ -888,7 +933,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1206,
+            "line": 1261,
             "description": "非会员登录",
             "brief": "非会员登录",
             "since": "5.2",
@@ -905,7 +950,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1268,
+            "line": 1323,
             "description": "会员自动登录,对于已经在native登陆的用户，app会通过调用callback回传登录数据，H5页面需要处理用户信息， 不显示输入用户名密码界面",
             "brief": "会员自动登录",
             "since": "5.2",
@@ -922,7 +967,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1330,
+            "line": 1385,
             "description": "用户注册",
             "brief": "用户注册",
             "since": "5.2",
@@ -939,7 +984,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1401,
+            "line": 1456,
             "description": "base64 UTF8编码",
             "brief": "base64 UTF8编码",
             "since": "5.4",
@@ -950,6 +995,20 @@
                 " \n     CtripEncrypt.app_base64_encode(\"xxxxxx\");\n     //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"base64_encode\",\n           param:\n           {\n               encodedString:\"eHh4eHh4\",\n           },\n       }\n       app.callback(json_obj);\n         "
             ],
             "class": "CtripEncrypt"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1513,
+            "description": "使用支付宝支付",
+            "brief": "使用支付宝支付",
+            "since": "5.4",
+            "itemtype": "method",
+            "name": "app_pay_by_alipay",
+            "author": "jimzhao",
+            "example": [
+                " \n     CtripPay.app_pay_by_alipay(\"965199999\");\n     //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"pay_by_alipay\",\n           param:\n           {\n               payResult:\"eHh4eHh4\",\n           },\n       }\n       app.callback(json_obj);\n         "
+            ],
+            "class": "CtripPay"
         }
     ],
     "warnings": [
@@ -1143,31 +1202,43 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1140"
+            "line": " bridge.js:1139"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1147"
+            "line": " bridge.js:1195"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1206"
+            "line": " bridge.js:1202"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1268"
+            "line": " bridge.js:1261"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1330"
+            "line": " bridge.js:1323"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1394"
+            "line": " bridge.js:1385"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1401"
+            "line": " bridge.js:1449"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1456"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1506"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1513"
         }
     ]
 }

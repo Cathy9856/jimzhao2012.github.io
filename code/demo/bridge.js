@@ -1110,7 +1110,7 @@ var CtripUtil = {
      * @param {String} result 上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间
      * @since v5.2
      * @author jimzhao
-     * @example CtripTool.app_log("execute script xxxxx", "result for script is oooooo");
+     * @example CtripUtil.app_log("execute script xxxxx", "result for script is oooooo");
      */
     app_log:function(log, result) {
         if (!Internal.isNotEmptyString(log)) {
@@ -1130,6 +1130,61 @@ var CtripUtil = {
         else if (Internal.isAndroid)
         {
             window.Util_a.h5Log(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /**
+     * @description H5通过App发送服务
+     * @brief H5通过App发送服务
+     * @method app_send_pipe_request
+     * @param {String} serviceCode 需要发送服务的服务号
+     * @param {String} header 服务的header
+     * @param {String} data 服务所需要的数据部分，各个服务都不同
+     * @since v5.4
+     * @author jimzhao
+     * @example CtripUtil.app_send_pipe_request("9500001", "H5Agent","{}");
+     //调用后，H5会收到native回调的数据
+        var json_obj =
+        {
+            tagname:"send_pipe_request",
+            param:
+            {
+                pipeResponse:"eHh4eHh4",
+            },
+        }
+        app.callback(json_obj);
+     */
+    app_send_pipe_request:function(serviceCode,header,data) {
+        var startVersion = "5.4";
+        if(!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!serviceCode) {
+            serviceCode = "";
+        }
+        if (!header) {
+            header = "";
+        }
+        if (!data) {
+            data = "";
+        }
+        var params = {};
+        params.serviceCode = serviceCode;
+        params.header = header;
+        params.data = data;
+
+        paramString = Internal.makeParamString("Util", "sendPipeRequest", params, 'send_pipe_request');
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Pay_a.sendPipeRequest(paramString);
         }
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
@@ -1439,6 +1494,63 @@ var CtripUser = {
         }
         else if (Internal.isAndroid) {
             window.Encrypt_a.base64Encode(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    }
+
+ };
+
+
+/**
+ * @class CtripPay
+ * @description Ctrip相关支付控件
+ * @brief 提供Ctrip业务相关的支付功能
+ */
+
+ var CtripPay = {
+    /**
+      * @description  使用支付宝支付
+      * @brief 使用支付宝支付
+      * @since 5.4
+      * @method app_pay_by_alipay
+      * @author jimzhao
+      * @example 
+      CtripPay.app_pay_by_alipay("965199999");
+      //调用后，H5会收到native回调的数据
+        var json_obj =
+        {
+            tagname:"pay_by_alipay",
+            param:
+            {
+                payResult:"eHh4eHh4",
+            },
+        }
+        app.callback(json_obj);
+          
+      */
+    app_pay_by_alipay:function(orderId) {
+
+        var startVersion = "5.4";
+        if(!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+        if (!Internal.isNotEmptyString(orderId)) {
+            Internal.paramErrorCallback("支付宝订单ID不能为空");
+        };
+
+        var params = {};
+        params.orderId = orderId;
+        var paramString = Internal.makeParamString("Pay","payByAliPay",params,'pay_by_alipay');
+
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Pay_a.payByAliPay(paramString);
         }
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);

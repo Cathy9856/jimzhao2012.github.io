@@ -43,6 +43,8 @@
             
                 <li><a href="../classes/CtripEncrypt.html">CtripEncrypt</a></li>
             
+                <li><a href="../classes/CtripPay.html">CtripPay</a></li>
+            
                 <li><a href="../classes/CtripTool.html">CtripTool</a></li>
             
                 <li><a href="../classes/CtripUser.html">CtripUser</a></li>
@@ -182,6 +184,8 @@
                     
                     <tr><td>刷新顶部条按钮和文字</td><td><a href="#method_app_refresh_nav_bar">app_refresh_nav_bar</a></td></tr>
                     
+                    <tr><td>H5通过App发送服务</td><td><a href="#method_app_send_pipe_request">app_send_pipe_request</a></td></tr>
+                    
                     <tr><td>底部工具栏隐藏／显示</td><td><a href="#method_app_set_toolbar_hidden">app_set_toolbar_hidden</a></td></tr>
                     
                     <tr><td>查看最新版本功能介绍</td><td><a href="#method_app_show_newest_introduction">app_show_newest_introduction</a></td></tr>
@@ -190,6 +194,12 @@
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -1752,7 +1762,7 @@ app.callback(json_obj);</code></pre>
             <h4>举例:</h4>
 
             <div class="example-content">
-                <p> CtripTool.app_log(&quot;execute script xxxxx&quot;, &quot;result for script is oooooo&quot;);</p>
+                <p> CtripUtil.app_log(&quot;execute script xxxxx&quot;, &quot;result for script is oooooo&quot;);</p>
 
             </div>
         </div>
@@ -2526,6 +2536,160 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
    var cb_json = {tagname:&quot;click_tag_name&quot;};
    app.callback(cb_json);
    //H5页面需要处理tagname为click_tag_name的事件</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_send_pipe_request" class="method item">
+    <h3 class="name"><code>app_send_pipe_request</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>serviceCode</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>header</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>data</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l1139"><code>bridge.js:1139</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.4</p>
+        
+    </div>
+
+    <div class="description">
+        <p>H5通过App发送服务</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">serviceCode</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要发送服务的服务号</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">header</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>服务的header</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">data</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>服务所需要的数据部分，各个服务都不同</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p> CtripUtil.app_send_pipe_request(&quot;9500001&quot;, &quot;H5Agent&quot;,&quot;{}&quot;);
+    //调用后，H5会收到native回调的数据
+       var json_obj =
+       {
+           tagname:&quot;send_pipe_request&quot;,
+           param:
+           {
+               pipeResponse:&quot;eHh4eHh4&quot;,
+           },
+       }
+       app.callback(json_obj);</p>
 
             </div>
         </div>

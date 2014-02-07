@@ -489,6 +489,24 @@ asyncTest("测试App环境", function(){
 	});
 });
 
+asyncTest("测试通过APP管道发送服务",function(){
+	expect(1);
+	CtripUtil.app_send_pipe_request("serviceCode","header","data");
+	setTimeout(function(){
+		start();
+		ok(false,"TO DO");
+	}, async_time_interval); 
+});
+
+asyncTest("测试支付宝",function() {
+	expect(1);
+	CtripPay.app_pay_by_alipay("99900000");
+	setTimeout(function(){
+		start();
+		ok(false,"TODO");
+	});
+});
+
 // asyncTest("推荐携程旅行给好友:app_recommend_app_to_friends", function() {
 // 	expect(1);
 // 	CtripUtil.app_recommend_app_to_friends();
