@@ -1145,7 +1145,9 @@ var CtripUtil = {
      * @param {String} data 服务所需要的数据部分，各个服务都不同
      * @since v5.4
      * @author jimzhao
-     * @example CtripUtil.app_send_pipe_request("9500001", "H5Agent","{}");
+     * @example 
+     
+      CtripUtil.app_send_pipe_request("9500001", "H5Agent","{}");
      //调用后，H5会收到native回调的数据
         var json_obj =
         {
@@ -1156,6 +1158,7 @@ var CtripUtil = {
             },
         }
         app.callback(json_obj);
+        
      */
     app_send_pipe_request:function(serviceCode,header,data) {
         var startVersion = "5.4";

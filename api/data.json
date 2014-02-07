@@ -68,7 +68,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1195,
+            "line": 1198,
             "description": "用户相关类",
             "brief": "用户相关类"
         },
@@ -81,7 +81,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1449,
+            "line": 1452,
             "description": "加解密/HASH/编码相关类",
             "brief": "提供给H5试用，通用加解密/HASH/编码相关类"
         },
@@ -94,7 +94,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1507,
+            "line": 1510,
             "description": "Ctrip相关支付控件",
             "brief": "提供Ctrip业务相关的支付功能"
         }
@@ -913,13 +913,13 @@
             "since": "v5.4",
             "author": "jimzhao",
             "example": [
-                " CtripUtil.app_send_pipe_request(\"9500001\", \"H5Agent\",\"{}\");\n    //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"send_pipe_request\",\n           param:\n           {\n               pipeResponse:\"eHh4eHh4\",\n           },\n       }\n       app.callback(json_obj);"
+                " \n    \n     CtripUtil.app_send_pipe_request(\"9500001\", \"H5Agent\",\"{}\");\n    //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"send_pipe_request\",\n           param:\n           {\n               pipeResponse:\"eHh4eHh4\",\n           },\n       }\n       app.callback(json_obj);\n       "
             ],
             "class": "CtripUtil"
         },
         {
             "file": "bridge.js",
-            "line": 1202,
+            "line": 1205,
             "description": "会员登录,native未登录时候，会显示会员登录界面，native会员已登录，直接完成，返回登录的用户信息",
             "brief": "会员登录",
             "since": "5.2",
@@ -933,7 +933,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1261,
+            "line": 1264,
             "description": "非会员登录",
             "brief": "非会员登录",
             "since": "5.2",
@@ -950,7 +950,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1323,
+            "line": 1326,
             "description": "会员自动登录,对于已经在native登陆的用户，app会通过调用callback回传登录数据，H5页面需要处理用户信息， 不显示输入用户名密码界面",
             "brief": "会员自动登录",
             "since": "5.2",
@@ -967,7 +967,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1385,
+            "line": 1388,
             "description": "用户注册",
             "brief": "用户注册",
             "since": "5.2",
@@ -984,7 +984,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1456,
+            "line": 1459,
             "description": "base64 UTF8编码",
             "brief": "base64 UTF8编码",
             "since": "5.4",
@@ -1005,7 +1005,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1514,
+            "line": 1517,
             "description": "使用支付宝支付",
             "brief": "使用支付宝支付",
             "since": "5.4",
@@ -1220,39 +1220,39 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1195"
+            "line": " bridge.js:1198"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1202"
+            "line": " bridge.js:1205"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1261"
+            "line": " bridge.js:1264"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1323"
+            "line": " bridge.js:1326"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1385"
+            "line": " bridge.js:1388"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1449"
+            "line": " bridge.js:1452"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1456"
+            "line": " bridge.js:1459"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1507"
+            "line": " bridge.js:1510"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1514"
+            "line": " bridge.js:1517"
         }
     ]
 }

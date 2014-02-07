@@ -2679,17 +2679,17 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             <h4>举例:</h4>
 
             <div class="example-content">
-                <p> CtripUtil.app_send_pipe_request(&quot;9500001&quot;, &quot;H5Agent&quot;,&quot;{}&quot;);
-    //调用后，H5会收到native回调的数据
-       var json_obj =
+                <pre class="code prettyprint"><code> CtripUtil.app_send_pipe_request(&quot;9500001&quot;, &quot;H5Agent&quot;,&quot;{}&quot;);
+//调用后，H5会收到native回调的数据
+   var json_obj =
+   {
+       tagname:&quot;send_pipe_request&quot;,
+       param:
        {
-           tagname:&quot;send_pipe_request&quot;,
-           param:
-           {
-               pipeResponse:&quot;eHh4eHh4&quot;,
-           },
-       }
-       app.callback(json_obj);</p>
+           pipeResponse:&quot;eHh4eHh4&quot;,
+       },
+   }
+   app.callback(json_obj);</code></pre>
 
             </div>
         </div>
