@@ -94,7 +94,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1506,
+            "line": 1507,
             "description": "Ctrip相关支付控件",
             "brief": "提供Ctrip业务相关的支付功能"
         }
@@ -990,6 +990,13 @@
             "since": "5.4",
             "itemtype": "method",
             "name": "app_base64_encode",
+            "params": [
+                {
+                    "name": "toIncodeString",
+                    "description": "需要做base64 encode的字符串",
+                    "type": "String"
+                }
+            ],
             "author": "jimzhao",
             "example": [
                 " \n     CtripEncrypt.app_base64_encode(\"xxxxxx\");\n     //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"base64_encode\",\n           param:\n           {\n               encodedString:\"eHh4eHh4\",\n           },\n       }\n       app.callback(json_obj);\n         "
@@ -998,12 +1005,19 @@
         },
         {
             "file": "bridge.js",
-            "line": 1513,
+            "line": 1514,
             "description": "使用支付宝支付",
             "brief": "使用支付宝支付",
             "since": "5.4",
             "itemtype": "method",
             "name": "app_pay_by_alipay",
+            "params": [
+                {
+                    "name": "orderId",
+                    "description": "需要支付的订单号",
+                    "type": "String"
+                }
+            ],
             "author": "jimzhao",
             "example": [
                 " \n     CtripPay.app_pay_by_alipay(\"965199999\");\n     //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"pay_by_alipay\",\n           param:\n           {\n               payResult:\"eHh4eHh4\",\n           },\n       }\n       app.callback(json_obj);\n         "
@@ -1234,11 +1248,11 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1506"
+            "line": " bridge.js:1507"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1513"
+            "line": " bridge.js:1514"
         }
     ]
 }

@@ -1458,6 +1458,7 @@ var CtripUser = {
       * @brief base64 UTF8编码
       * @since 5.4
       * @method app_base64_encode
+      * @param {String} toIncodeString 需要做base64 encode的字符串
       * @author jimzhao
       * @example 
       CtripEncrypt.app_base64_encode("xxxxxx");
@@ -1515,6 +1516,7 @@ var CtripUser = {
       * @brief 使用支付宝支付
       * @since 5.4
       * @method app_pay_by_alipay
+      * @param {String} orderId 需要支付的订单号
       * @author jimzhao
       * @example 
       CtripPay.app_pay_by_alipay("965199999");
