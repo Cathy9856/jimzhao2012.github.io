@@ -578,12 +578,14 @@ var CtripUtil = {
      * @since v5.2
      * @author jimzhao
      * @example 
+
      //当前H5页面打开ctrip.com
      CtripUtil.app_open_url("http://www.ctrip.com", 0);
      //进入App的酒店详情页
      CtripUtil.app_open_url("ctrip://wireless/hotel?id=1234", 1);
      //开启新的H5页面，进入m.ctrip.com
      CtripUtil.app_open_url("http://m.ctrip.com", 2, "Ctrip H5首页");
+
      */
      app_open_url:function(openUrl, targetMode, title) {
         var params = {};
@@ -636,6 +638,7 @@ var CtripUtil = {
      * @method app_check_update
      * @author jimzhao
      * @example CtripUtil.app_check_update();
+     *
      */
     app_check_update:function() {
         paramString = Internal.makeParamString("Util", "checkUpdate", null, "check_update");
@@ -658,6 +661,7 @@ var CtripUtil = {
      * @method app_recommend_app_to_friends
      * @author jimzhao
      * @example CtripUtil.app_recommend_app_to_friends();
+     *
      */
     app_recommend_app_to_friends:function() {
         paramString = Internal.makeParamString("Util", "recommendAppToFriends", null, "recommend_app_to_friends");
@@ -704,8 +708,10 @@ var CtripUtil = {
      * @since v5.2
      * @author jimzhao
      * @example
+     *
       //跳转到我的携程首页
       CtripUtil.app_cross_package_href("myctrip", "index.html?ver=5.2"); 
+
      */
     app_cross_package_href:function(path, param) {
         var params = {};
@@ -761,6 +767,7 @@ var CtripUtil = {
      * @method app_check_network_status
      * @author jimzhao
      * @example 
+
      CtripUtil.app_check_network_status();
      //调用完成后，H5页面会收到如下回调数据
      var json_obj = 
@@ -769,6 +776,7 @@ var CtripUtil = {
         hasNetwork:true,//布尔值返回是否有网络
      }
      app.callback(json_obj);
+     
      */
     app_check_network_status:function() {
         paramString = Internal.makeParamString("Util", "checkNetworkStatus", null, "check_network_status");
@@ -793,6 +801,7 @@ var CtripUtil = {
      * @since v5.2
      * @author jimzhao
      * @example 
+
      CtripUtil.app_check_app_install_status("ctrip://wireless", "com.ctrip.view");
      //调用完成后，H5页面会收到如下回调数据
      var json_obj = 
@@ -835,6 +844,7 @@ var CtripUtil = {
      * @since v5.2
      * @author jimzhao
      * @example CtripUtil.app_refresh_native_page("xxxxPageName", "xxxx_json_string");
+
      */
     app_refresh_native_page:function(pageName, jsonStr) {
         var params = {};
@@ -869,6 +879,7 @@ var CtripUtil = {
      * @since v5.3
      * @author jimzhao
      * @example CtripUtil.app_copy_string_to_clipboard("words_to_be_copy_xxxxxx");
+
      */
     app_copy_string_to_clipboard:function(toCopyStr) {
         var startVersion = "5.3";
@@ -903,6 +914,7 @@ var CtripUtil = {
      * @since v5.3
      * @author jimzhao
      * @example 
+
         Ctrip.app_read_copied_string_from_clipboard();
         //调用该函数之后，H5会收到如下回调
         var json_obj = 
@@ -940,7 +952,8 @@ var CtripUtil = {
      * @method app_call_system_share
      * @since v5.3
      * @author jimzhao
-     * @example CtripUtil.app_call_system_share("../wb_cache/pkg_name/md5_url_hash", "share to sina weibo");
+     * @example
+      CtripUtil.app_call_system_share("../wb_cache/pkg_name/md5_url_hash", "share to sina weibo");
      */
     app_call_system_share:function(image_relative_path, text) {
         var startVersion = "5.3";
@@ -981,6 +994,7 @@ var CtripUtil = {
      * @since v5.3
      * @author jimzhao
      * @example
+
      CtripUtil.app_download_data("http://www.baidu.com/img/bdlogo.gif", "gif");
      //调用该函数后，native会返回H5内容
      var json_obj = {
@@ -1031,6 +1045,7 @@ var CtripUtil = {
      * @since v5.3
      * @author jimzhao
      * @example
+
      CtripUtil.app_open_other_app("com.tencent.mm", null, "weixin://xxxxx");
      //优先级说明：
      //1. android有packageId的时候，使用packageId＋jsonParam做跳转;
@@ -1078,6 +1093,7 @@ var CtripUtil = {
      * @method app_set_toolbar_hidden
      * @author jimzhao
      * @example 
+
      CtripUtil.app_set_toolbar_hidden(false);
      */
     app_set_toolbar_hidden:function(isHidden) {
@@ -1110,7 +1126,9 @@ var CtripUtil = {
      * @param {String} result 上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间
      * @since v5.2
      * @author jimzhao
-     * @example CtripUtil.app_log("execute script xxxxx", "result for script is oooooo");
+     * @example
+
+      CtripUtil.app_log("execute script xxxxx", "result for script is oooooo");
      */
     app_log:function(log, result) {
         if (!Internal.isNotEmptyString(log)) {
@@ -1158,7 +1176,7 @@ var CtripUtil = {
             },
         }
         app.callback(json_obj);
-        
+
      */
     app_send_pipe_request:function(serviceCode,header,data) {
         var startVersion = "5.4";
@@ -1209,6 +1227,7 @@ var CtripUser = {
      * @method app_member_login
      * @author jimzhao
      * @example 
+
      CtripUser.app_member_login();
      //调用完成后，H5会收到如下数据
      var userInfo = {
@@ -1269,6 +1288,7 @@ var CtripUser = {
       * @author jimzhao
       * @see app_member_login
       * @example 
+
       CtripUser.app_non_member_login();
       //调用后，H5会收到native回调的数据
       //回调的数据格式参考app_member_login()
@@ -1331,6 +1351,7 @@ var CtripUser = {
       * @author jimzhao
       * @see app_member_login
       * @example 
+
       CtripUser.app_member_auto_login();
       //调用后，H5会收到native回调的数据
       //回调的数据格式参考app_member_login()
@@ -1393,6 +1414,7 @@ var CtripUser = {
       * @author jimzhao
       * @see app_member_login
       * @example 
+
       CtripUser.app_member_register();
       //调用后，H5会收到native回调的数据
       //回调的数据格式参考app_member_login()
@@ -1464,6 +1486,7 @@ var CtripUser = {
       * @param {String} toIncodeString 需要做base64 encode的字符串
       * @author jimzhao
       * @example 
+
       CtripEncrypt.app_base64_encode("xxxxxx");
       //调用后，H5会收到native回调的数据
         var json_obj =
@@ -1522,6 +1545,7 @@ var CtripUser = {
       * @param {String} orderId 需要支付的订单号
       * @author jimzhao
       * @example 
+      
       CtripPay.app_pay_by_alipay("965199999");
       //调用后，H5会收到native回调的数据
         var json_obj =
