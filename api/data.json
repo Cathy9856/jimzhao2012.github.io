@@ -108,7 +108,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1599,
+            "line": 1607,
             "description": "App给H5提供的通讯管道",
             "brief": "提供标准HTTP和H5管道服务"
         }
@@ -1005,18 +1005,40 @@
             "line": 1547,
             "description": "根据URL打开支付App",
             "brief": "根据URL打开支付App",
+            "params": [
+                {
+                    "name": "payAppName",
+                    "description": "支付App的URL，暂固定为以下4个， aliWalet/aliQuickPay/wapAliPay/weixinPay(微信支付暂未支持)",
+                    "type": "String"
+                },
+                {
+                    "name": "payURL",
+                    "description": "服务器返回的支付URL",
+                    "type": "String"
+                },
+                {
+                    "name": "successRelativeURL",
+                    "description": "支付成功跳转的URL",
+                    "type": "String"
+                },
+                {
+                    "name": "detailRelativeURL",
+                    "description": "支付失败或者支付",
+                    "type": "String"
+                }
+            ],
             "since": "5.4",
             "itemtype": "method",
             "name": "app_open_pay_app_by_url",
             "author": "jimzhao",
             "example": [
-                " \n\n     CtripPay.app_open_pay_app_by_url(\"alipay://orderId=123\");\n     //调用后，H5会收到native回调的数据\n   \n       var json_obj =\n       {\n           tagname:\"open_pay_app_by_url\",\n           param:\n           {\n               payResult:true,\n               errorReason:\"some reason\",\n           },\n       }\n\n       app.callback(json_obj);\n"
+                " \n\n     CtripPay.app_open_pay_app_by_url(\"aliWalet\",\"alipay://orderId=123\",\"car/paySuccess.html\", \"car/payDetail.html\");\n     //调用后，App会做相应的页面跳转\n"
             ],
             "class": "CtripPay"
         },
         {
             "file": "bridge.js",
-            "line": 1606,
+            "line": 1614,
             "description": "H5通过App发送服务",
             "brief": "H5通过App发送服务",
             "itemtype": "method",
@@ -1057,7 +1079,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1638,
+            "line": 1646,
             "description": "H5通过App发送服务",
             "brief": "H5通过App发送服务",
             "itemtype": "method",
@@ -1323,15 +1345,15 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1599"
+            "line": " bridge.js:1607"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1606"
+            "line": " bridge.js:1614"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1638"
+            "line": " bridge.js:1646"
         }
     ]
 }

@@ -1547,28 +1547,21 @@ var CtripUser = {
     /**
       * @description  根据URL打开支付App
       * @brief  根据URL打开支付App
+      * @param {String} payAppName 支付App的URL，暂固定为以下4个， aliWalet/aliQuickPay/wapAliPay/weixinPay(微信支付暂未支持)
+      * @param {String} payURL 服务器返回的支付URL
+      * @param {String} successRelativeURL 支付成功跳转的URL
+      * @param {String} detailRelativeURL  支付失败或者支付
       * @since 5.4
       * @method app_open_pay_app_by_url
       * @author jimzhao
       * @example 
 
-      CtripPay.app_open_pay_app_by_url("alipay://orderId=123");
-      //调用后，H5会收到native回调的数据
-    
-        var json_obj =
-        {
-            tagname:"open_pay_app_by_url",
-            param:
-            {
-                payResult:true,
-                errorReason:"some reason",
-            },
-        }
-
-        app.callback(json_obj);
+      CtripPay.app_open_pay_app_by_url("aliWalet","alipay://orderId=123","car/paySuccess.html", "car/payDetail.html");
+      //调用后，App会做相应的页面跳转
 
       */
-    app_open_pay_app_by_url:function(payURL) {
+    app_open_pay_app_by_url:function(payAppName, payURL, successRelativeURL, detailRelativeURL) {
+
         var startVersion = "5.4";
         if(!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
@@ -1577,9 +1570,24 @@ var CtripUser = {
         if (!payURL) {
             payURL = "";
         }
+        
+        if (!payAppName) {
+            payAppName = "";
+        }
+
+        if (!successRelativeURL) {
+            successRelativeURL = "";
+        }
+
+        if (!detailRelativeURL) {
+            detailRelativeURL = "";
+        }
 
         var params = {};
         params.payURL = payURL;
+        params.payAppName = payAppName;
+        params.successRelativeURL = successRelativeURL;
+        params.detailRelativeURL = detailRelativeURL;
 
         var paramString = Internal.makeParamString("Pay","openPayAppByURL",params,'open_pay_app_by_url');
 
