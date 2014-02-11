@@ -1610,13 +1610,14 @@ var CtripPipe = {
      * @param {String} target HTTP请求发送的URL地址
      * @param {String} method HTTP请求方式GET/POST
      * @param {String} header HTTP头，JSON格式，cookie作为一个key存储再HEADER内部
-     * @param {String} queryData GET请求时候，会将该字符串append到URL之后，POST请求，会将queryData UTF8编码后，作为HTTPBODY post
+     * @param {String} queryData GET请求时候，会将该字符串append到URL之后，POST请求，会将queryData UTF8编码后，作为HTTP BODY post
      * @param {String} retryInfo 重试相关信息，JSON格式，以下3个key：timeout, retry, retryInterval
      * @since v5.4
      * @author jimzhao
      * @example 
-     
-      CtripUtil.app_send_H5_pipe_request("9500001", "H5Agent","{}");
+
+     //TODO:
+      CtripUtil.app_send_HTTP_pipe_request("9500001", "H5Agent","{}",);
      //调用后，H5会收到native回调的数据
         var json_obj =
         {
@@ -1646,7 +1647,7 @@ var CtripPipe = {
      * @author jimzhao
      * @example 
      
-      CtripUtil.app_send_H5_pipe_request("9500001", "H5Agent","{}");
+      CtripUtil.app_send_H5_pipe_request("9500001", "H5Agent","{}","13523333333");
      //调用后，H5会收到native回调的数据
         var json_obj =
         {

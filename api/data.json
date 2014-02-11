@@ -1039,7 +1039,7 @@
                 },
                 {
                     "name": "queryData",
-                    "description": "GET请求时候，会将该字符串append到URL之后，POST请求，会将queryData UTF8编码后，作为HTTPBODY post",
+                    "description": "GET请求时候，会将该字符串append到URL之后，POST请求，会将queryData UTF8编码后，作为HTTP BODY post",
                     "type": "String"
                 },
                 {
@@ -1051,13 +1051,13 @@
             "since": "v5.4",
             "author": "jimzhao",
             "example": [
-                " \n    \n     CtripUtil.app_send_H5_pipe_request(\"9500001\", \"H5Agent\",\"{}\");\n    //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"send_h5_pipe_request\",\n           param:\n           {\n               pipeResponse:\"eHh4eHh4\",\n           },\n       }\n       app.callback(json_obj);\n"
+                " \n\n    //TODO:\n     CtripUtil.app_send_HTTP_pipe_request(\"9500001\", \"H5Agent\",\"{}\",);\n    //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"send_h5_pipe_request\",\n           param:\n           {\n               pipeResponse:\"eHh4eHh4\",\n           },\n       }\n       app.callback(json_obj);\n"
             ],
             "class": "CtripPipe"
         },
         {
             "file": "bridge.js",
-            "line": 1637,
+            "line": 1638,
             "description": "H5通过App发送服务",
             "brief": "H5通过App发送服务",
             "itemtype": "method",
@@ -1087,7 +1087,7 @@
             "since": "v5.4",
             "author": "jimzhao",
             "example": [
-                " \n    \n     CtripUtil.app_send_H5_pipe_request(\"9500001\", \"H5Agent\",\"{}\");\n    //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"send_h5_pipe_request\",\n           param:\n           {\n               sequenceId:\"13523333333\",\n               pipeResponse:\"eHh4eHh4\",\n           },\n       }\n       app.callback(json_obj);\n"
+                " \n    \n     CtripUtil.app_send_H5_pipe_request(\"9500001\", \"H5Agent\",\"{}\",\"13523333333\");\n    //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"send_h5_pipe_request\",\n           param:\n           {\n               sequenceId:\"13523333333\",\n               pipeResponse:\"eHh4eHh4\",\n           },\n       }\n       app.callback(json_obj);\n"
             ],
             "class": "CtripPipe"
         }
@@ -1331,7 +1331,7 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1637"
+            "line": " bridge.js:1638"
         }
     ]
 }
