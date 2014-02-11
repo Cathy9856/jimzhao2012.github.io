@@ -65,6 +65,7 @@ var Internal = {
      * @return {Bool} 是否大于该版本号
      * @since v5.2
      * @example
+     
      * var isLarger = isAppVersionGreatThan(5.2); <br />
      * alert(isLarger); // depends
      */
@@ -262,6 +263,7 @@ var CtripTool = {
      * @author jimzhao
      * @return bool, true代表在app环境，false表示不在app环境
      * @example 
+
      * var ret = CtripTool.app_is_in_ctrip_app();
      * alert("isInApp=="+ret);
      */
@@ -294,7 +296,9 @@ var CtripTool = {
      * @param {String} result 上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间
      * @since v5.2
      * @author jimzhao
-     * @example CtripUtil.app_log("execute script xxxxx", "result for script is oooooo");
+     * @example 
+
+     CtripUtil.app_log("execute script xxxxx", "result for script is oooooo");
      */
     app_log:function(log, result) {
         CtripUtil.app_log(log, result);
@@ -316,7 +320,9 @@ var CtripUtil = {
      * @param {String} event_name 需要纪录的事件名
      * @since v5.2
      * @author jimzhao
-     * @example Util.app_log_event('GoodDay')
+     * @example 
+
+     Util.app_log_event('GoodDay')
      */
     app_log_event:function(event_name) {
         if (Internal.isNotEmptyString(event_name)) {
@@ -347,6 +353,7 @@ var CtripUtil = {
      * @author jimzhao
      * @callback tagname="init_member_H5_info"
      * @example
+
      CtripUtil.app_init_member_H5_info();
      //调用完成，H5页面会收到如下返回数据
      var json_obj =
@@ -384,7 +391,9 @@ var CtripUtil = {
      * @method app_call_phone
      * @since v5.2
      * @author jimzhao
-     * @example CtripUtil.app_call_phone("13800138000");
+     * @example 
+
+     CtripUtil.app_call_phone("13800138000");
      //或者直接拨打呼叫中心
      CtripUtil.app_call_phone();
      */
@@ -429,7 +438,9 @@ var CtripUtil = {
      * @since v5.2
      * @method app_back_to_home
      * @author jimzhao
-     * @example CtripUtil.app_back_to_home();
+     * @example 
+
+     CtripUtil.app_back_to_home();
      */
     app_back_to_home:function() {
         paramString = Internal.makeParamString("Util", "backToHome", null, "back_to_home");
@@ -454,7 +465,9 @@ var CtripUtil = {
      * @param {Bool} isDeleteH5Page 是否是直接删除该H5页面。直接删除H5页面时候，页面切换会没有动画效果
      * @since v5.2
      * @author jimzhao
-     * @example CtripUtil.app_back_to_last_page("This is a json string for my previous H5 page", false);
+     * @example 
+
+     CtripUtil.app_back_to_last_page("This is a json string for my previous H5 page", false);
      */
     app_back_to_last_page:function(callbackString, isDeleteH5Page) {
         var params = {};
@@ -485,6 +498,7 @@ var CtripUtil = {
      * @method app_locate
      * @callback tagname="locate"
      * @example
+
         CtripUtil.app_locate(true);
         //定位完成后H5页面会收到回调数据
         var json_obj =
@@ -529,6 +543,7 @@ var CtripUtil = {
      * @author jimzhao
      * @since v5.2
      * @example
+
         //导航栏总共分为3部分，1.左侧，返回按钮，不能修改; 2. 中间title，可以任意设置; 3.右侧按钮，定义格式为{tagname:"xxxx",value:"btn_title"}
         var nav_json = {
             "center": [{"tagname": "title", "value":"携程" }],
@@ -637,7 +652,9 @@ var CtripUtil = {
      * @since v5.2
      * @method app_check_update
      * @author jimzhao
-     * @example CtripUtil.app_check_update();
+     * @example 
+
+     CtripUtil.app_check_update();
      *
      */
     app_check_update:function() {
@@ -683,7 +700,9 @@ var CtripUtil = {
      * @since v5.2
      * @method app_add_weixin_friend
      * @author jimzhao
-     * @example CtripUtil.app_add_weixin_friend();
+     * @example 
+
+     CtripUtil.app_add_weixin_friend();
      */
     app_add_weixin_friend:function() {
         paramString = Internal.makeParamString("Util", "addWeixinFriend", null, "add_weixin_friend");
@@ -744,7 +763,9 @@ var CtripUtil = {
      * @since v5.2
      * @method app_show_newest_introduction
      * @author jimzhao
-     * @example CtripUtil.app_show_newest_introduction();
+     * @example 
+
+     CtripUtil.app_show_newest_introduction();
      */
     app_show_newest_introduction:function() {
         paramString = Internal.makeParamString("Util", "showNewestIntroduction", null, "show_newest_introduction");
@@ -1152,64 +1173,6 @@ var CtripUtil = {
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
-    },
-
-    /**
-     * @description H5通过App发送服务
-     * @brief H5通过App发送服务
-     * @method app_send_pipe_request
-     * @param {String} serviceCode 需要发送服务的服务号
-     * @param {String} header 服务的header
-     * @param {String} data 服务所需要的数据部分，各个服务都不同
-     * @since v5.4
-     * @author jimzhao
-     * @example 
-     
-      CtripUtil.app_send_pipe_request("9500001", "H5Agent","{}");
-     //调用后，H5会收到native回调的数据
-        var json_obj =
-        {
-            tagname:"send_pipe_request",
-            param:
-            {
-                pipeResponse:"eHh4eHh4",
-            },
-        }
-        app.callback(json_obj);
-
-     */
-    app_send_pipe_request:function(serviceCode,header,data) {
-        var startVersion = "5.4";
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
-            return;
-        }
-
-        if (!serviceCode) {
-            serviceCode = "";
-        }
-        if (!header) {
-            header = "";
-        }
-        if (!data) {
-            data = "";
-        }
-        var params = {};
-        params.serviceCode = serviceCode;
-        params.header = header;
-        params.data = data;
-
-        paramString = Internal.makeParamString("Util", "sendPipeRequest", params, 'send_pipe_request');
-        if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
-        }
-        else if (Internal.isAndroid) {
-            window.Pay_a.sendPipeRequest(paramString);
-        }
-        else if (Internal.isWinOS) {
-            Internal.callWin8App(paramString);
-        }
     }
 };
 
@@ -1535,58 +1498,207 @@ var CtripUser = {
  * @description Ctrip相关支付控件
  * @brief 提供Ctrip业务相关的支付功能
  */
-
  var CtripPay = {
-    /**
-      * @description  使用支付宝支付
-      * @brief 使用支付宝支付
+
+     /**
+      * @description  检查支付相关App安装情况
+      * @brief  检查支付相关App安装情况
       * @since 5.4
-      * @method app_pay_by_alipay
-      * @param {String} orderId 需要支付的订单号
+      * @method app_check_pay_app_install_status
       * @author jimzhao
       * @example 
-      
-      CtripPay.app_pay_by_alipay("965199999");
+
+      CtripPay.app_check_pay_app_install_status();
       //调用后，H5会收到native回调的数据
         var json_obj =
         {
-            tagname:"pay_by_alipay",
+            tagname:"check_pay_app_install_status",
             param:
             {
-                payResult:"eHh4eHh4",
+                platform:"iOS", //Android
+                weixinPay:true,
+                aliWalet:true,
+                aliQuickPay:true,
             },
         }
-        app.callback(json_obj);
-          
-      */
-    app_pay_by_alipay:function(orderId) {
 
+        app.callback(json_obj);
+      */
+    app_check_pay_app_install_status:function() {
         var startVersion = "5.4";
         if(!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
             return;
         }
-        if (!Internal.isNotEmptyString(orderId)) {
-            Internal.paramErrorCallback("支付宝订单ID不能为空");
-        };
+
+        var paramString = Internal.makeParamString("Pay","checkPayAppInstallStatus",null,'check_pay_app_install_status');
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Pay_a.checkAliAppInstallStatus(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /**
+      * @description  根据URL打开支付App
+      * @brief  根据URL打开支付App
+      * @since 5.4
+      * @method app_open_pay_app_by_url
+      * @author jimzhao
+      * @example 
+
+      CtripPay.app_open_pay_app_by_url("alipay://orderId=123");
+      //调用后，H5会收到native回调的数据
+    
+        var json_obj =
+        {
+            tagname:"open_pay_app_by_url",
+            param:
+            {
+                payResult:true,
+                errorReason:"some reason",
+            },
+        }
+
+        app.callback(json_obj);
+
+      */
+    app_open_pay_app_by_url:function(payURL) {
+        var startVersion = "5.4";
+        if(!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+        if (!payURL) {
+            payURL = "";
+        }
 
         var params = {};
-        params.orderId = orderId;
-        var paramString = Internal.makeParamString("Pay","payByAliPay",params,'pay_by_alipay');
+        params.payURL = payURL;
+
+        var paramString = Internal.makeParamString("Pay","openPayAppByURL",params,'open_pay_app_by_url');
 
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
-            window.Pay_a.payByAliPay(paramString);
+            window.Pay_a.openPayAppByURL(paramString);
         }
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
     }
-
  };
+
+/**
+ * @class CtripPipe
+ * @description App给H5提供的通讯管道
+ * @brief 提供标准HTTP和H5管道服务
+ */
+var CtripPipe = {
+
+    /**
+     * @description H5通过App发送服务
+     * @brief H5通过App发送服务
+     * @method app_send_HTTP_pipe_request
+     * @param {String} target HTTP请求发送的URL地址
+     * @param {String} method HTTP请求方式GET/POST
+     * @param {String} header HTTP头，JSON格式，cookie作为一个key存储再HEADER内部
+     * @param {String} queryData GET请求时候，会将该字符串append到URL之后，POST请求，会将queryData UTF8编码后，作为HTTPBODY post
+     * @param {String} retryInfo 重试相关信息，JSON格式，以下3个key：timeout, retry, retryInterval
+     * @since v5.4
+     * @author jimzhao
+     * @example 
+     
+      CtripUtil.app_send_H5_pipe_request("9500001", "H5Agent","{}");
+     //调用后，H5会收到native回调的数据
+        var json_obj =
+        {
+            tagname:"send_h5_pipe_request",
+            param:
+            {
+                pipeResponse:"eHh4eHh4",
+            },
+        }
+        app.callback(json_obj);
+
+     */
+    app_send_HTTP_pipe_request:function(target, method, header, queryData, retryInfo) {
+        //TODO:
+
+    },
+
+     /**
+     * @description H5通过App发送服务
+     * @brief H5通过App发送服务
+     * @method app_send_H5_pipe_request
+     * @param {String} serviceCode 需要发送服务的服务号
+     * @param {String} header 服务的header
+     * @param {String} data 服务所需要的数据部分，各个服务都不同
+     * @param {String} sequenceId 发送服务的序列号，随机生存即可
+     * @since v5.4
+     * @author jimzhao
+     * @example 
+     
+      CtripUtil.app_send_H5_pipe_request("9500001", "H5Agent","{}");
+     //调用后，H5会收到native回调的数据
+        var json_obj =
+        {
+            tagname:"send_h5_pipe_request",
+            param:
+            {
+                sequenceId:"13523333333",
+                pipeResponse:"eHh4eHh4",
+            },
+        }
+        app.callback(json_obj);
+
+     */
+    app_send_H5_pipe_request:function(serviceCode,header,data, sequenceId) {
+        var startVersion = "5.4";
+        if(!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!serviceCode) {
+            serviceCode = "";
+        }
+        if (!header) {
+            header = "";
+        }
+        if (!data) {
+            data = "";
+        }
+        if (!sequenceId) {
+            sequenceId = "";
+        }
+
+        var params = {};
+        params.serviceCode = serviceCode;
+        params.header = header;
+        params.data = data;
+        params.sequenceId = sequenceId;
+
+        paramString = Internal.makeParamString("Util", "sendH5PipeRequest", params, 'send_h5_pipe_request');
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Pay_a.sendPipeRequest(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    }
+};
 
 //获取当前app环境
  CtripTool.app_is_in_ctrip_app();

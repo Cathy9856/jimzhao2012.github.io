@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+    * Author:         jimzhao
+    -->
+    <meta charset="utf-8" />
+    <title>Hybrid framework | jimzhao.com</title>
+    <meta name="author" content="jimzhao" />
+    <meta name="description" content="jimzhao's doc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/css/default.css" type="text/css" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+    <script src="/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+
+      <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/assets/js/html5shiv.js"></script>
+      <script src="/assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<script type="text/javascript">
+
+String.prototype.endWith = function(oString){  
+    var reg = new RegExp(oString+"$");  
+    return reg.test(this);     
+};
+
+$(document).ready(function(){
+    var href = window.location.href;
+    $("a#doc").parent().attr("class","");
+    $("li#test").attr("class","");
+
+    if (href.endWith("index.html")) {
+        $("a#home").parent().attr("class","active");
+    }
+    else if (href.endWith("/test-manual/")) {
+        $("li#test").attr("class","active");
+    } 
+    else if (href.endWith("/doc-schema/")) {
+        $("li#api").attr("class","active");
+    }
+    else {
+       var isWHFDoc = false;
+       if (href.endWith("/doc-description/")) {
+            isWHFDoc = true;
+        }
+        else if (href.endWith("/doc-entry/")) {
+            isWHFDoc = true;
+        } 
+        else if (href.endWith("/doc-learning/")) {
+            isWHFDoc = true;
+        } 
+        else if (href.endWith("/doc-debug/")) {
+            isWHFDoc = true;
+        } 
+        else if (href.endWith("/doc-faq/")) {
+            isWHFDoc = true;
+        }
+        else if (href.endWith("/doc-api/")) {
+            isWHFDoc = true;
+        }
+        if (isWHFDoc) {
+            $("a#doc").parent().attr("class","active");
+        }
+    }
+});
+
+function dismissTabActive() {
+     $("a#doc").parent().attr("class","");
+     $("li#test").attr("class","");
+     $("li#api").attr("class","");
+};
+
+$("a#atest").click(function(){
+    $("a#atest").parent().attr("class","active");
+});
+
+$("a#urlschema").click(function(){
+    $("a#urlschema").parent().attr("class","active");
+});
+
+$("a#api").click(function(){
+    $("a#api").parent().attr("class","active");
+});
+
+</script>
+
+<style type="text/css">
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: blue;
+  font-size: 16px;
+/*  font-weight: bold;
+*/  background-color: #e7e7e7;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #777777;
+  font-size: 16px;
+/*  font-weight: bold;
+*/}
+
+</style>
+<body>
+
+  <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Ctrip Hybrid Doc</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a class="ttaa"  id="doc" href="/doc-description/">开发文档</a></li>
+            
+            <li id="test" class="dropdown">
+              <a onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">测试<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                  <li><a href="/test-manual/">手动测试</a></li>
+                  <li><a target="_blank" href="/qunit/a.html">Qunit自动化测试</a></li>
+              </ul>
+            </li>
+
+            <li id="api" class="dropdown">
+              <a onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">Api文档<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                  <li><a href="/doc-schema/">URL Schema Doc</a></li>
+                  <li><a href="/api/" target="_blank" >JS API Doc</a></li>    
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a id="download" onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">源码下载<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/code/demo.zip">Demo下载</a></li>
+                <li><a href="/code/bridge.js.zip">JSLib下载</a></li>
+                <li><a href="/code/bridge.min.zip">JSLib 压缩版下载</a></li>
+              </ul>
+            </li>
+
+            <li id="install" class="dropdown">
+              <a onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">App安装<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+<!--                   <li><a href="itms-services://?action=download-manifest&url=http://www.jimzhao.com/code/cw_dev_install.plist">iOS App安装</a></li>
+ -->                  <li><a href="http://www.jimzhao.com/code/cw_dev.ipa">iOS ipa下载</a></li>
+                  <li><a onClick="alert('Android App安装将在稍后支持。');" target="_blank" >Android App安装</a></li>    
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+   <!--  <div class="home-menu">
+        <div class="home-icon-con">
+            <a class="home-menu-icon" href="/">BeiYuu</a>
+            <a class="home-follow" href="#" title="Contact Me">+</a>
+        </div>
+        <div class="home-contact">
+            <a href="http://weibo.com/beiyuu/" target="_blank" style="margin-left:-5px;"><img src="http://www.weibo.com/favicon.ico" alt="" width="25"/></a>
+            <a href="http://www.douban.com/people/beiyuu/" target="_blank" style="text-align:center;"><img src="http://www.douban.com/favicon.ico" alt="" width="22"/></a>
+            <a href="http://instagram.com/beiyuu/" target="_blank" style="text-align:right"><img src="http://d36xtkk24g8jdx.cloudfront.net/bluebar/00c6602/images/ico/favicon.ico" alt="" width="22"/></a>
+        </div>
+    </div> -->
+
+
+    <link rel="stylesheet" href="/js/prettify/prettify.css" />
+<style type="text/css">
+    body { background:#e8e8e8; }
+    @media screen and (max-width: 750px){
+        body { background:#fff; }
+    }
+    @media screen and (max-width: 1020px){
+        body { background:#fff; }
+    }
+
+    #content {width:1060px;margin:90px auto 60px; margin-left:40px;margin-top:40px; min-height:400px;height:auto !important;height:400px; }
+    .active { background:#ccc;}
+</style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    var href = window.location.href;
+    $("li#doc-description").attr("class","");
+    $("li#doc-learning").attr("class","");
+    $("li#doc-entry").attr("class","");
+    $("li#doc-debug").attr("class","");
+    $("li#doc-faq").attr("class","");
+    $("li#doc-api").attr("class","");
+
+    var val = "active";
+    if (href.endWith("/doc-description/")) {
+        $("li#doc-description").attr("class",val);
+    }
+    else if (href.endWith("/doc-entry/")) {
+        $("li#doc-entry").attr("class",val);
+    } 
+    else if (href.endWith("/doc-learning/")) {
+        $("li#doc-learning").attr("class",val);
+    } 
+    else if (href.endWith("/doc-debug/")) {
+        $("li#doc-debug").attr("class",val);
+    } 
+    else if (href.endWith("/doc-faq/")) {
+        $("li#doc-faq").attr("class",val);
+    }
+     else if (href.endWith("/doc-api/")) {
+        $("li#doc-api").attr("class",val);
+    }
+});
+</script>
+<div class="container" style="width:120px; height:100%; position:fixed;">
+     <div class="row"> 
+       <div class="span3">
+          <div class="well" style="padding:10px 0;margin-top:0px;">
+             <ul class="nav nav-list">
+                <li class="divider"></li>
+                <li id="doc-description" class="active"><a href="/doc-description/"><i class="icon-white icon-home"></i>1.平台描述</a></li>
+                <li id="doc-entry" ><a href="/doc-entry/"><i class="icon-flag"></i>2.快速入门</a></li>
+                <li id="doc-learning"><a href="/doc-learning/"><i class="icon-flag"></i>3.数据交互</a></li>
+                <li id="doc-debug"><a href="/doc-debug/"><i class="icon-folder-open"></i>4.打包&更新</a></li>
+                <li id="doc-faq"><a href="/doc-faq/"><i class="icon-file"></i>5.常见问题</a></li>
+                <li id="doc-api"><a href="/doc-api/"><i class="icon-user"></i>6.API文档</a></li>
+             </ul>
+          </div>
+       </div>
+     </div>
+</div>
+
+
+<div id="content">
+    <div class="entry">
+<!--         <h1 class="entry-title"><a href="/doc-api" title="Hybrid framework">Hybrid framework</a></h1>
+        <p class="entry-date">2013-12-28</p> -->
+
+
+        <p><img src="/images/Mou_128.png" alt="Mou icon"></p>
+
+<h2 id="toc_0">6.    API手册</h2>
+
+<p><nav>
+ <li><a target="_blank" href="/api/index.html">JS API Doc</a></li>
+ <li><a href="/doc-schema/">URL shcema Doc</a></li>
+ <br/>
+ <li><font style="color:black;font-weight:bold">app主动回调H5页面</font></li>
+</nav></p>
+
+<table><thead>
+<tr>
+<th>回调tagname</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>web_view_finished_load</td>
+<td>H5页面加载完成</td>
+</tr>
+<tr>
+<td>web_view_did_appear</td>
+<td>H5页面加载完成后，切换到其它页面之后，回退回来，再次显示时候，通知H5。可能会带有上个H5页面的参数</td>
+</tr>
+<tr>
+<td>web_view_did_active</td>
+<td>H5页面激活，从后台切入前台，通知H5</td>
+</tr>
+<tr>
+<td>back</td>
+<td>用户点击导航栏左上角的返回按钮，H5页面对该tagname要有返回值，返回true，表示H5页面已经处理返回事件，否则会调用native的返回事件</td>
+</tr>
+</tbody></table>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">NOTE:对于线上HTTP站点，除tagname＝back之外，其它3个tagname=web_view_***都是在5.3版本才回调给H5页面的。
+</code></pre></div>
+<p>App的Hybrid在设计的时候，没有考虑到5.2版本对线上HTTP站点的支持。</p>
+
+<p>因此对5.2版本，遇到HTTP站点，没有将也页面加载完成等信息(比如web_view_finished_load)回调给H5。</p>
+
+<p>对于此种情况，需要兼容5.2的，请查看FAQ中，<a href="/doc-faq/">5.2版本HTTP站点兼容</a></p>
+
+
+     <!--    <div id="disqus_container">
+            <a href="#" class="comment" onclick="return false;">点击查看评论</a>
+            <div id="disqus_thread"></div>
+        </div> -->
+    </div>
+
+   <!--  <div class="sidenav">
+        <iframe width="100%" height="75" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=75&fansRow=2&ptype=1&speed=0&skin=5&isTitle=0&noborder=0&isWeibo=0&isFans=0&uid=1855270953&verifier=375b89d6&dpc=1"></iframe>
+    </div> -->
+<!-- 
+    <div class="sidenav">
+        <h2>Blog</h2>
+        <ul class="artical-list">
+        
+            <li><a href="/jekyll-install">安装jekyll</a></li>
+        
+        </ul>
+
+        <h2>Opinion</h2>
+        <ul class="artical-list">
+        
+        </ul>
+
+        <h2>Project</h2>
+        <ul class="artical-list">
+        
+        </ul>
+    </div>
+</div> -->
+
+<script src="/js/post.js" type="text/javascript"></script>
+
+
+    <!--*********************************************************-->
+    <!--****** 宝贝儿，看见这个时候，删掉下面的统计代码哦~ ******-->
+    <!--************* 再推荐下我的第一篇博客哦~~ ****************-->
+    <!--*********************************************************-->
+
+    <script src="/js/bootstrap.min.js"></script>
+  <!--   <div class="hide">
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2727758/tongji.js"></script>
+        <noscript><a href="http://www.linezing.com"><img src="http://img.tongji.linezing.com/2727758/tongji.gif"/></a></noscript>
+    </div> -->
+
+</body>
+</html>

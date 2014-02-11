@@ -3,6 +3,7 @@ YUI.add("yuidoc-meta", function(Y) {
     "classes": [
         "CtripEncrypt",
         "CtripPay",
+        "CtripPipe",
         "CtripTool",
         "CtripUser",
         "CtripUtil",

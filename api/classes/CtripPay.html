@@ -45,6 +45,8 @@
             
                 <li><a href="../classes/CtripPay.html">CtripPay</a></li>
             
+                <li><a href="../classes/CtripPipe.html">CtripPipe</a></li>
+            
                 <li><a href="../classes/CtripTool.html">CtripTool</a></li>
             
                 <li><a href="../classes/CtripUser.html">CtripUser</a></li>
@@ -100,7 +102,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l1533"><code>bridge.js:1533</code></a>
+            定义在: <a href="../files/bridge.js.html#l1496"><code>bridge.js:1496</code></a>
         </div>
     
 
@@ -142,12 +144,20 @@
                     <table>
                     <tr><th>描述</th><th>函数</th></tr>
                     
-                    <tr><td>使用支付宝支付</td><td><a href="#method_app_pay_by_alipay">app_pay_by_alipay</a></td></tr>
+                    <tr><td>检查支付相关App安装情况</td><td><a href="#method_app_check_pay_app_install_status">app_check_pay_app_install_status</a></td></tr>
+                    
+                    <tr><td>根据URL打开支付App</td><td><a href="#method_app_open_pay_app_by_url">app_open_pay_app_by_url</a></td></tr>
                                   
                     </table>
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -171,21 +181,11 @@
                 <h2 class="off-left">方法</h2>
 
                 
-                    <div id="method_app_pay_by_alipay" class="method item">
-    <h3 class="name"><code>app_pay_by_alipay</code></h3>
+                    <div id="method_app_check_pay_app_install_status" class="method item">
+    <h3 class="name"><code>app_check_pay_app_install_status</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>orderId</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
@@ -213,7 +213,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l1540"><code>bridge.js:1540</code></a>
+        <a href="../files/bridge.js.html#l1503"><code>bridge.js:1503</code></a>
         
         </p>
 
@@ -226,34 +226,10 @@
     </div>
 
     <div class="description">
-        <p>使用支付宝支付</p>
+        <p>检查支付相关App安装情况</p>
 
     </div>
 
-    
-        <div class="params">
-            <h4>参数:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">orderId</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>需要支付的订单号</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
     
 
     
@@ -263,16 +239,99 @@
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> CtripPay.app_pay_by_alipay(&quot;965199999&quot;);
+                <pre class="code prettyprint"><code> CtripPay.app_check_pay_app_install_status();
  //调用后，H5会收到native回调的数据
    var json_obj =
    {
-       tagname:&quot;pay_by_alipay&quot;,
+       tagname:&quot;check_pay_app_install_status&quot;,
        param:
        {
-           payResult:&quot;eHh4eHh4&quot;,
+           platform:&quot;iOS&quot;, //Android
+           weixinPay:true,
+           aliWalet:true,
+           aliQuickPay:true,
        },
    }
+
+   app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_open_pay_app_by_url" class="method item">
+    <h3 class="name"><code>app_open_pay_app_by_url</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l1547"><code>bridge.js:1547</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 5.4</p>
+        
+    </div>
+
+    <div class="description">
+        <p>根据URL打开支付App</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code> CtripPay.app_open_pay_app_by_url(&quot;alipay://orderId=123&quot;);
+ //调用后，H5会收到native回调的数据
+
+   var json_obj =
+   {
+       tagname:&quot;open_pay_app_by_url&quot;,
+       param:
+       {
+           payResult:true,
+           errorReason:&quot;some reason&quot;,
+       },
+   }
+
    app.callback(json_obj);</code></pre>
 
             </div>
