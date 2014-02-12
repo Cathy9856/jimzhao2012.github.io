@@ -80,6 +80,9 @@ var app = {
 	    }
 	    else if (tagname == "check_pay_app_install_status") {
 	    	cb_ret.check_pay_app_install_status = jsonObj;
+	    } 
+	    else if (tagname == "open_pay_app_by_url") {
+	    	cb_ret.open_pay_app_by_url = jsonObj;
 	    }
     }
 };
@@ -492,14 +495,14 @@ asyncTest("测试App环境", function(){
 	});
 });
 
-asyncTest("测试通过APP管道发送服务",function(){
-	expect(1);
-	CtripUtil.app_send_H5_pipe_request("serviceCode","header","data","12345");
-	setTimeout(function(){
-		start();
-		ok(false,"TO DO");
-	}, async_time_interval); 
-});
+// asyncTest("测试通过APP管道发送服务",function(){
+// 	expect(1);
+// 	CtripUtil.app_send_H5_pipe_request("serviceCode","header","data","12345");
+// 	setTimeout(function(){
+// 		start();
+// 		ok(false,"TO DO");
+// 	}, async_time_interval); 
+// });
 
 asyncTest("测试支付App安装",function() {
 	expect(1);
