@@ -520,7 +520,7 @@ asyncTest("测试支付App安装",function() {
 
 asyncTest("测试跳转支付App", function(){
 	expect(1);
-	CtripPay.app_open_pay_app_by_url("aliWalet", "alipay://alipayclient/xxx", "car/index.html" "car/index.html");
+	CtripPay.app_open_pay_app_by_url("aliWalet", "alipay://alipayclient/xxx", "car/index.html" ,"car/index.html");
 	setTimeout(function(){
 		start();
 		var jsonObj = cb_ret.open_pay_app_by_url;
