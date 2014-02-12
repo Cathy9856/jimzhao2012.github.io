@@ -527,7 +527,7 @@ asyncTest("测试跳转支付App", function(){
 		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "open_pay_app_by_url") {
 			ok(true,"跳转支付App成功:"+JSON.stringify(jsonObj));
 		}else {
-			ok(true,"跳转支付App失败:"+JSON.stringify(jsonObj));
+			ok(false,"跳转支付App失败:"+JSON.stringify(jsonObj));
 		}
 	});
 
