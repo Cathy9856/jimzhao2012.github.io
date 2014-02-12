@@ -78,6 +78,9 @@ var app = {
 	    else if (tagname == "set_toolbar_hidden") {
 	    	cb_ret.set_toolbar_hidden = jsonObj;
 	    }
+	    else if (tagname == "check_pay_app_install_status") {
+	    	cb_ret.check_pay_app_install_status = jsonObj;
+	    }
     }
 };
 
@@ -491,20 +494,40 @@ asyncTest("测试App环境", function(){
 
 asyncTest("测试通过APP管道发送服务",function(){
 	expect(1);
-	CtripUtil.app_send_pipe_request("serviceCode","header","data");
+	CtripUtil.app_send_H5_pipe_request("serviceCode","header","data","12345");
 	setTimeout(function(){
 		start();
 		ok(false,"TO DO");
 	}, async_time_interval); 
 });
 
-asyncTest("测试支付宝",function() {
+asyncTest("测试支付App安装",function() {
 	expect(1);
-	CtripPay.app_pay_by_alipay("99900000");
+	CtripPay.app_check_pay_app_install_status();
 	setTimeout(function(){
 		start();
-		ok(false,"TODO");
+		var jsonObj = cb_ret.check_pay_app_install_status;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "check_pay_app_install_status") {
+			ok(true,"检测支付工具安装状态成功:"+JSON.stringify(jsonObj));
+		} else {
+			ok(false,"检测支付工具安装状态失败");
+		}
 	});
+});
+
+asyncTest("测试跳转支付App", function(){
+	expect(1);
+	CtripPay.app_open_pay_app_by_url("aliWalet", "alipay://alipayclient/xxx", "car/index.html" "car/index.html");
+	setTimeout(function(){
+		start();
+		var jsonObj = cb_ret.open_pay_app_by_url;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "open_pay_app_by_url") {
+			ok(true,"跳转支付App成功:"+JSON.stringify(jsonObj));
+		}else {
+			ok(true,"跳转支付App失败:"+JSON.stringify(jsonObj));
+		}
+	});
+
 });
 
 // asyncTest("推荐携程旅行给好友:app_recommend_app_to_friends", function() {

@@ -1757,13 +1757,30 @@ var CtripPipe = {
      
       CtripUtil.app_send_H5_pipe_request(&quot;9500001&quot;, &quot;H5Agent&quot;,&quot;{}&quot;,&quot;13523333333&quot;);
      //调用后，H5会收到native回调的数据
+
+        //成功 
         var json_obj =
         {
             tagname:&quot;send_h5_pipe_request&quot;,
             param:
             {
                 sequenceId:&quot;13523333333&quot;,
-                pipeResponse:&quot;eHh4eHh4&quot;,
+                resultMessage:&quot;eHh4eHh4&quot;,
+                resultHead:&quot;eHh4eHh4&quot;,
+                resultBody:&quot;eHh4eHh4&quot;,
+                result:1,
+            },
+        }
+
+        //失败
+        var json_obj =
+        {
+            tagname:&quot;send_h5_pipe_request&quot;,
+            param:
+            {
+                sequenceId:&quot;13523333333&quot;,
+                errorInformation:&quot;eHh4eHh4&quot;,
+                serverErrorCode:&quot;eHh4eHh4&quot;,
             },
         }
         app.callback(json_obj);

@@ -1109,7 +1109,7 @@
             "since": "v5.4",
             "author": "jimzhao",
             "example": [
-                " \n    \n     CtripUtil.app_send_H5_pipe_request(\"9500001\", \"H5Agent\",\"{}\",\"13523333333\");\n    //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"send_h5_pipe_request\",\n           param:\n           {\n               sequenceId:\"13523333333\",\n               pipeResponse:\"eHh4eHh4\",\n           },\n       }\n       app.callback(json_obj);\n"
+                " \n    \n     CtripUtil.app_send_H5_pipe_request(\"9500001\", \"H5Agent\",\"{}\",\"13523333333\");\n    //调用后，H5会收到native回调的数据\n\n       //成功 \n       var json_obj =\n       {\n           tagname:\"send_h5_pipe_request\",\n           param:\n           {\n               sequenceId:\"13523333333\",\n               resultMessage:\"eHh4eHh4\",\n               resultHead:\"eHh4eHh4\",\n               resultBody:\"eHh4eHh4\",\n               result:1,\n           },\n       }\n\n       //失败\n       var json_obj =\n       {\n           tagname:\"send_h5_pipe_request\",\n           param:\n           {\n               sequenceId:\"13523333333\",\n               errorInformation:\"eHh4eHh4\",\n               serverErrorCode:\"eHh4eHh4\",\n           },\n       }\n       app.callback(json_obj);\n"
             ],
             "class": "CtripPipe"
         }
