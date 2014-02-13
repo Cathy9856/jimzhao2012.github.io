@@ -535,7 +535,7 @@ asyncTest("测试通过APP管道发送服务",function(){
          "syscode":"32"
       };
 
-    serviceCode = "0";
+    serviceCode = "90101102";
 
 	CtripPipe.app_send_H5_pipe_request(serviceCode,header,data,"12345");
 	setTimeout(function(){
