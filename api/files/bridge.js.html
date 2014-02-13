@@ -1812,7 +1812,7 @@ var CtripPipe = {
         params.data = data;
         params.sequenceId = sequenceId;
 
-        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;sendH5PipeRequest&quot;, params, &#x27;send_h5_pipe_request&#x27;);
+        paramString = Internal.makeParamString(&quot;H5Pipe&quot;, &quot;sendH5PipeRequest&quot;, params, &#x27;send_h5_pipe_request&#x27;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
