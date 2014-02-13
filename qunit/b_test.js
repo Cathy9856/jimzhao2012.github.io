@@ -495,14 +495,59 @@ asyncTest("测试App环境", function(){
 	});
 });
 
-// asyncTest("测试通过APP管道发送服务",function(){
-// 	expect(1);
-// 	CtripUtil.app_send_H5_pipe_request("serviceCode","header","data","12345");
-// 	setTimeout(function(){
-// 		start();
-// 		ok(false,"TO DO");
-// 	}, async_time_interval); 
-// });
+asyncTest("测试通过APP管道发送服务",function(){
+	expect(1);
+
+	data = {
+             "biztype":4,
+      "creditCardInfo":{
+               			"add":{
+                                "cvv2":"123",
+                                "expiryDate":"2022/10/01 17:01:21",
+                                "holder":"wwwwww",
+                                "idCardNo":"310562566255662456854",
+                                "idCardType":1,
+                                "isLast4Pay":true,
+                                "no":"5200820000000008",
+                                "typeId":4
+                       		},
+                       	"amt": 573.0,
+                    "oprType":1, //1：添加或支付
+                   "payWayId":"EB_ABC"
+             },
+             "oprType":1, //1：支付
+           "orderInfo":{
+                       "amt":573.0,
+                  "currency":"CNY",
+                       	"id":351020348
+             },
+             "payType":2, //2：信用卡
+             "useType":1 // 1支付； 2担保
+    };
+
+    header = {
+         "auth":"9B9CC8C9C31A48E16602F31C54B8464817ACB9F16D6C90191C839572908384EA",
+         "cid":"32012676700000095228",
+         "ctok":"359614041107439",
+         "cver":"5.0",
+         "lang":"01",
+         "sid":"8892",  
+         "syscode":"32"
+      };
+
+    serviceCode = "0";
+
+	CtripUtil.app_send_H5_pipe_request( serviceCode,header,data,"12345");
+	setTimeout(function(){
+		start();
+		var jsonObj = cb_ret.send_H5_pipe_request;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "send_H5_pipe_request") {
+			ok(true,"管道请求成功:"+JSON.stringify(jsonObj));
+		} else {
+			ok(true,"管道请求失败:"+JSON.stringify(jsonObj));
+		}
+	}, async_time_interval); 
+});
 
 asyncTest("测试支付App安装",function() {
 	expect(1);
