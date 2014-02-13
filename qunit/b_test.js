@@ -537,7 +537,7 @@ asyncTest("测试通过APP管道发送服务",function(){
 
     serviceCode = "0";
 
-	CtripUtil.app_send_H5_pipe_request( serviceCode,header,data,"12345");
+	CtripPipe.app_send_H5_pipe_request( serviceCode,header,data,"12345");
 	setTimeout(function(){
 		start();
 		var jsonObj = cb_ret.send_H5_pipe_request;
