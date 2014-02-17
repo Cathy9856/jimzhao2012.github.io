@@ -498,43 +498,46 @@ asyncTest("测试App环境", function(){
 asyncTest("测试通过APP管道发送服务",function(){
 	expect(1);
 
-	data = {
-             "biztype":4,
-      "creditCardInfo":{
-               			"add":{
-                                "cvv2":"123",
-                                "expiryDate":"2022/10/01 17:01:21",
-                                "holder":"wwwwww",
-                                "idCardNo":"310562566255662456854",
-                                "idCardType":1,
-                                "isLast4Pay":true,
-                                "no":"5200820000000008",
-                                "typeId":4
-                       		},
-                       	"amt": 573.0,
-                    "oprType":1, //1：添加或支付
-                   "payWayId":"EB_ABC"
-             },
-             "oprType":1, //1：支付
-           "orderInfo":{
-                       "amt":573.0,
-                  "currency":"CNY",
-                       	"id":351020348
-             },
-             "payType":2, //2：信用卡
-             "useType":1 // 1支付； 2担保
-    };
+	// data = {
+ //             "biztype":4,
+ //      "creditCardInfo":{
+ //               			"add":{
+ //                                "cvv2":"123",
+ //                                "expiryDate":"2022/10/01 17:01:21",
+ //                                "holder":"wwwwww",
+ //                                "idCardNo":"310562566255662456854",
+ //                                "idCardType":1,
+ //                                "isLast4Pay":true,
+ //                                "no":"5200820000000008",
+ //                                "typeId":4
+ //                       		},
+ //                       	"amt": 573.0,
+ //                    "oprType":1, //1：添加或支付
+ //                   "payWayId":"EB_ABC"
+ //             },
+ //             "oprType":1, //1：支付
+ //           "orderInfo":{
+ //                       "amt":573.0,
+ //                  "currency":"CNY",
+ //                       	"id":351020348
+ //             },
+ //             "payType":2, //2：信用卡
+ //             "useType":1 // 1支付； 2担保
+ //    };
 
-    header = {
-         "auth":"9B9CC8C9C31A48E16602F31C54B8464817ACB9F16D6C90191C839572908384EA",
-         "cid":"32012676700000095228",
-         "ctok":"359614041107439",
-         "cver":"5.0",
-         "lang":"01",
-         "sid":"8892",  
-         "syscode":"32"
-      };
+ //    header = {
+ //         "auth":"9B9CC8C9C31A48E16602F31C54B8464817ACB9F16D6C90191C839572908384EA",
+ //         "cid":"32012676700000095228",
+ //         "ctok":"359614041107439",
+ //         "cver":"5.0",
+ //         "lang":"01",
+ //         "sid":"8892",  
+ //         "syscode":"32"
+ //      };
 
+	header = "{\"auth\":\"8C79BBE9FE489C622F5FB99FBD4FB3CE3B6F70C3F00028184C6E346A5864FFC2\", \"cid\":1,\"ctok\":1,\"cver\":5.4,\"lang\":01,\"sid\":111,\"syscode\":32}";
+
+	data = "{\"ver\":1,\"opttype\":1,\"bustype\":11,\"usetype\":1,\"paytype\":2,\"oinfo\":{\"oid\":18407,\"currency\":CNY,\"oamount\":200.0,\"extno\":group18407-1114021715000000508,\"recall\":\"\"},\"tktinfo\":null,\"cardinfo\":{\"paymentwayid\":CC_ABC,\"opttype\":1,\"cardamount\":200.0,\"addinfo\":{\"typeid\":17,\"cardno\":4033910000000086,\"cvv2\":123,\"expire\":2024/02/15 00:00:00,\"holder\":wwwwww,\"idcardtype\":1,\"idcardno\":310104198403163630,\"islast4\":false,\"category\":1,\"mobphone\":\"\",\"refid\":\"\",\"vcode\":\"\"},\"checkinfo\":null,\"updateinfo\":null},\"thirdpartyinfo\":null}";
     serviceCode = "31000301";
 
 	CtripPipe.app_send_H5_pipe_request(serviceCode,header,data,"12345");
