@@ -535,10 +535,10 @@ asyncTest("测试通过APP管道发送服务",function(){
  //         "syscode":"32"
  //      };
 
-	header = "{\"auth\":\"8C79BBE9FE489C622F5FB99FBD4FB3CE3B6F70C3F00028184C6E346A5864FFC2\", \"cid\":1,\"ctok\":1,\"cver\":5.4,\"lang\":01,\"sid\":111,\"syscode\":32}";
+	header = "{\"auth\":\"A04AC1F9E7C2275CFA10640392B77045F044A53C173E7CFE34586FDBA9E7A65B\", \"cid\":1,\"ctok\":1,\"cver\":5.4,\"lang\":01,\"sid\":111,\"syscode\":32}";
 
-	data = "{\"ver\":1,\"opttype\":1,\"bustype\":11,\"usetype\":1,\"paytype\":2,\"oinfo\":{\"oid\":18407,\"currency\":CNY,\"oamount\":200.0,\"extno\":group18407-1114021715000000508,\"recall\":\"\"},\"tktinfo\":null,\"cardinfo\":{\"paymentwayid\":CC_ABC,\"opttype\":1,\"cardamount\":200.0,\"addinfo\":{\"typeid\":17,\"cardno\":4033910000000086,\"cvv2\":123,\"expire\":2024/02/15 00:00:00,\"holder\":wwwwww,\"idcardtype\":1,\"idcardno\":310104198403163630,\"islast4\":false,\"category\":1,\"mobphone\":\"\",\"refid\":\"\",\"vcode\":\"\"},\"checkinfo\":null,\"updateinfo\":null},\"thirdpartyinfo\":null}";
-    serviceCode = "31000301";
+	data = "{\"ver\":1,\"oid\":351015106,\"amount\":1,\"mobphone\":13764471455,\"isnewcard\":false,\"cardno\":5194120000000001,\"typid\":4,\"category\":3}";
+	serviceCode = "31000401";
 
 	CtripPipe.app_send_H5_pipe_request(serviceCode,header,data,"12345");
 	setTimeout(function(){
