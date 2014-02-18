@@ -1617,9 +1617,10 @@ var CtripPipe = {
      * @method app_send_HTTP_pipe_request
      * @param {String} target HTTP请求发送的URL地址
      * @param {String} method HTTP请求方式GET/POST
-     * @param {String} header HTTP头，JSON格式，cookie作为一个key存储再HEADER内部
+     * @param {String} header HTTP头，JSON字符串格式key/value，cookie作为一个key存储再HEADER内部
      * @param {String} queryData GET请求时候，会将该字符串append到URL之后，POST请求，会将queryData UTF8编码后，作为HTTP BODY post
-     * @param {String} retryInfo 重试相关信息，JSON格式，以下3个key：timeout, retry, retryInterval
+     * @param {String} retryMeta 重试相关信息，JSON格式，以下4个key：timeout, retry, retryCount, retryInterval
+     * @param {String} sequenceId 发送服务的序列号，随机生存即可
      * @since v5.4
      * @author jimzhao
      * @example 
@@ -1638,8 +1639,50 @@ var CtripPipe = {
         app.callback(json_obj);
 
      */
-    app_send_HTTP_pipe_request:function(target, method, header, queryData, retryInfo) {
-        //TODO:
+    app_send_HTTP_pipe_request:function(target, method, header, queryData, retryMeta, sequenceId) {
+        var startVersion = "5.4";
+        if(!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!target) {
+            target = "";
+        }
+        if (!method) {
+            method = "";
+        }
+        if (!header) {
+            header = "";
+        }
+        if (!queryData) {
+            queryData = "";
+        }
+        if (!retryMeta) {
+            retryMeta = "";
+        }
+        if (!sequenceId) {
+            sequenceId = "";
+        }
+        var params = {};
+        params.target = target;
+        params.method = method;
+        params.header = header;
+        params.queryData = queryData;
+        params.retryMeta = retryMeta;
+        params.sequenceId = sequenceId;
+
+        paramString = Internal.makeParamString("Pipe", "sendHTTPPipeRequest", params, 'send_http_pipe_request');
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Pay_a.sendHTTPPipeRequest(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
 
     },
 
@@ -1718,7 +1761,7 @@ var CtripPipe = {
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
-            window.Pay_a.sendPipeRequest(paramString);
+            window.Pay_a.sendH5PipeRequest(paramString);
         }
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);

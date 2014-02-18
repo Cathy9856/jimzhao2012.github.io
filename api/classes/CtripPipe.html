@@ -241,7 +241,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l1646"><code>bridge.js:1646</code></a>
+        <a href="../files/bridge.js.html#l1689"><code>bridge.js:1689</code></a>
         
         </p>
 
@@ -408,7 +408,13 @@
             
                 <li class="arg">
                     
-                        <code>retryInfo</code>
+                        <code>retryMeta</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>sequenceId</code>
                     
                 </li>
             
@@ -505,7 +511,7 @@
                     
 
                     <div class="param-description">
-                        <p>HTTP头，JSON格式，cookie作为一个key存储再HEADER内部</p>
+                        <p>HTTP头，JSON字符串格式key/value，cookie作为一个key存储再HEADER内部</p>
 
                     </div>
 
@@ -530,14 +536,30 @@
             
                 <li class="param">
                     
-                        <code class="param-name">retryInfo</code>
+                        <code class="param-name">retryMeta</code>
                         <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>重试相关信息，JSON格式，以下3个key：timeout, retry, retryInterval</p>
+                        <p>重试相关信息，JSON格式，以下4个key：timeout, retry, retryCount, retryInterval</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">sequenceId</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>发送服务的序列号，随机生存即可</p>
 
                     </div>
 

@@ -1056,7 +1056,7 @@
                 },
                 {
                     "name": "header",
-                    "description": "HTTP头，JSON格式，cookie作为一个key存储再HEADER内部",
+                    "description": "HTTP头，JSON字符串格式key/value，cookie作为一个key存储再HEADER内部",
                     "type": "String"
                 },
                 {
@@ -1065,8 +1065,13 @@
                     "type": "String"
                 },
                 {
-                    "name": "retryInfo",
-                    "description": "重试相关信息，JSON格式，以下3个key：timeout, retry, retryInterval",
+                    "name": "retryMeta",
+                    "description": "重试相关信息，JSON格式，以下4个key：timeout, retry, retryCount, retryInterval",
+                    "type": "String"
+                },
+                {
+                    "name": "sequenceId",
+                    "description": "发送服务的序列号，随机生存即可",
                     "type": "String"
                 }
             ],
@@ -1079,7 +1084,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1646,
+            "line": 1689,
             "description": "H5通过App发送服务",
             "brief": "H5通过App发送服务",
             "itemtype": "method",
@@ -1353,7 +1358,7 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1646"
+            "line": " bridge.js:1689"
         }
     ]
 }
