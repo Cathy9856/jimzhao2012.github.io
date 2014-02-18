@@ -1537,7 +1537,7 @@ var CtripUser = {
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
-            window.Pay_a.checkAliAppInstallStatus(paramString);
+            window.Pay_a.checkPayAppInstallStatus(paramString);
         }
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
@@ -1615,7 +1615,8 @@ var CtripPipe = {
      * @description H5通过App发送服务
      * @brief H5通过App发送服务
      * @method app_send_HTTP_pipe_request
-     * @param {String} baseURL HTTP请求发送的URL地址
+     * @param {String} baseURL HTTP请求发送的URL地址     
+     * @param {String} path HTTP请求发送的URL的路径
      * @param {String} method HTTP请求方式GET/POST
      * @param {String} header HTTP头，JSON字符串格式key/value，cookie作为一个key存储再HEADER内部
      * @param {String} parameters key/value形式的参数，类似于网页form请求参数
@@ -1639,7 +1640,7 @@ var CtripPipe = {
         app.callback(json_obj);
 
      */
-    app_send_HTTP_pipe_request:function(baseURL, method, header, parameters, retryMeta, sequenceId) {
+    app_send_HTTP_pipe_request:function(baseURL, path, method, header, parameters, retryMeta, sequenceId) {
         var startVersion = "5.4";
         if(!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
@@ -1648,6 +1649,9 @@ var CtripPipe = {
 
         if (!baseURL) {
             baseURL = "";
+        }
+        if (!path) {
+            path = "";
         }
         if (!method) {
             method = "";
@@ -1666,6 +1670,7 @@ var CtripPipe = {
         }
         var params = {};
         params.baseURL = baseURL;
+        params.path = path;
         params.method = method;
         params.header = header;
         params.parameters = parameters;
@@ -1761,7 +1766,7 @@ var CtripPipe = {
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
-            window.Pay_a.sendH5PipeRequest(paramString);
+            window.Pipe_a.sendH5PipeRequest(paramString);
         }
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);

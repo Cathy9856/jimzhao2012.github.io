@@ -1050,6 +1050,11 @@
                     "type": "String"
                 },
                 {
+                    "name": "path",
+                    "description": "HTTP请求发送的URL的路径",
+                    "type": "String"
+                },
+                {
                     "name": "method",
                     "description": "HTTP请求方式GET/POST",
                     "type": "String"
@@ -1084,7 +1089,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1689,
+            "line": 1694,
             "description": "H5通过App发送服务",
             "brief": "H5通过App发送服务",
             "itemtype": "method",
@@ -1358,7 +1363,7 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1689"
+            "line": " bridge.js:1694"
         }
     ]
 }
