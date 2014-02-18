@@ -1045,7 +1045,7 @@
             "name": "app_send_HTTP_pipe_request",
             "params": [
                 {
-                    "name": "target",
+                    "name": "baseURL",
                     "description": "HTTP请求发送的URL地址",
                     "type": "String"
                 },
@@ -1060,8 +1060,8 @@
                     "type": "String"
                 },
                 {
-                    "name": "queryData",
-                    "description": "GET请求时候，会将该字符串append到URL之后，POST请求，会将queryData UTF8编码后，作为HTTP BODY post",
+                    "name": "parameters",
+                    "description": "key/value形式的参数，类似于网页form请求参数",
                     "type": "String"
                 },
                 {

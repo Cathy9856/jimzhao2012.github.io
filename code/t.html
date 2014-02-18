@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>H5&navtive test</title>
+  <meta name="Generator" content="Cocoa HTML Writer"> 
+
+ <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+  <meta name="CocoaVersion" content="1138.23">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Helvetica; min-height: 16.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Helvetica}
+    li.li2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Helvetica; color: #2567e8}
+    li.li3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Helvetica}
+    span.s1 {text-decoration: underline}
+    ul.ul1 {list-style-type: disc}
+  </style>
+
+  <script type="text/javascript" src="bridge.js"></script>
+
+  <script type="text/javascript">
+  function testJs() {
+    alert('Js alert, invoke js function from OC');
+    return "alert result NULL";
+  }
+
+  var app =
+    {
+        callback: function(jsonobj) {
+          if (jsonobj.tagname == 'web_view_finished_load') {
+              CtripUtil.app_check_network_status();
+              // CtripUtil.app_check_app_install_status("ctripd://wireless/xxx", "xxxx");
+              // CtripUser.app_non_member_login();
+              // CtripUser.app_member_register();
+          }
+          // tagName =decodeURI(tagName);
+          // var jsonobj=eval('('+tagName+')'); 
+          // if (jsonobj.tagname == "back") {
+          //   app_back_to_home();
+          // } else {
+          //   //alert(jsonobj.tagname);
+          // }
+          //  alert("callback value=" + decodeURI(tagName));
+        }
+    };
+
+
+  </script>
+</head>
+<body>
+<p class="p1"><br></p>
+<p class="p1"><br></p>
+<ul class="ul1">
+   <li class="li2"><a onclick="javscript:CtripUser.app_member_login()"><span class="s1">登录DD<br/>CtripUser.app_member_login()</span></a></li>
+  <br/>
+  <br/> 
+  <li class="li2"><a onclick="javscript:CtripUser.app_member_register()"><span class="s1">用户注册_5.2<br/>CtripUser.app_member_register()</span></a></li>
+  <br/>
+  <br/>
+  <li class="li2"><a onclick="javscript:CtripUtil.app_cross_package_href('myctrip', 'index.html#common/about?newVer=1')"><span class="s1">跨包跳转_5.2<br/>CtripUtil.app_cross_package_href('myctrip', 'index.html#common/about?newVer=1')</span></a></li>
+  <br/>
+  <br/>
+  <li class="li2"><a onclick="javscript:CtripUtil.app_show_newest_introduction()"><span class="s1">新版本欢迎页_5.2<br/>CtripUtil.app_show_newest_introduction()</span></a></li>
+  <br/>
+  <br/> 
+   <li class="li2"><a onclick="javscript:CtripUtil.app_open_url('file:///Users/jimzhao/Library/Application Support/iPhone Simulator/7.0/Applications/8279D0A3-BA4A-458E-A7C4-3F566638A0C3/Library/webapp/car/index.html#car', 2, '标题')"><span class="s1">打开#BB_5.2<br/>CtripUtil.app_open_url('http://www.baidu.com', 2, '标题')</span></a></li>
+  <br/>
+  <br/> 
+   <li class="li2"><a onclick="javscript:CtripUtil.app_recommend_app_to_friends()"><span class="s1">推荐携程旅行给好友_5.2<br/>CtripUtil.app_recommend_app_to_friends()</span></a></li>
+  <br/>
+  <br/> 
+  <li class="li2"><a onclick="javscript:CtripUtil.app_add_weixin_friend()"><span class="s1">添加微信好友_5.2<br/>CtripUtil.app_add_weixin_friend()</span></a></li>
+  <br/>
+  <br/>
+  <li class="li2"><a onclick="javascript:CtripUtil.app_call_phone('13800000000')"><span class="s1">拨打电话_5.2<br/>javascript:CtripUtil.app_call_phone('13800000000')</span></a></li>
+  <br/>
+  <br/>
+  <li class="li2"><a onclick="javascript:CtripUtil.app_back_to_home()"><span class="s1">返回首页<br/>CtripUtil.app_back_to_home()</span></a></li>
+  <br/>
+  <br/>
+  <li class="li2"><a onclick="javascript:CtripUtil.app_back_to_last_page('xxxxxxx')"><span class="s1">返回上一页面<br/>CtripUtil.app_back_to_last_page()</span></a></li>
+  <br/>
+  <br/>
+  <li class="li2"><a onclick='javascript:CtripUtil.app_share_to_third_party_platform("http://tongqu.me/upload/photos/acts/normal/norm_2013-12-16-18-56373487fcfe4cb0ecd21c129e1164cc976ab3bf78.jpg", null, "title","text here", "http://www.baidu.com",0)'><span class="s1">分享到第三方平台<br/>CtripUtil.app_share_to_third_party_platform(xxxx)</span></a>
+   </li>
+  <br/>
+    <br/>
+    <img src=""></img>
+</body></html>

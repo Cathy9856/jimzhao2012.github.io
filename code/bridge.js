@@ -1615,10 +1615,10 @@ var CtripPipe = {
      * @description H5通过App发送服务
      * @brief H5通过App发送服务
      * @method app_send_HTTP_pipe_request
-     * @param {String} target HTTP请求发送的URL地址
+     * @param {String} baseURL HTTP请求发送的URL地址
      * @param {String} method HTTP请求方式GET/POST
      * @param {String} header HTTP头，JSON字符串格式key/value，cookie作为一个key存储再HEADER内部
-     * @param {String} queryData GET请求时候，会将该字符串append到URL之后，POST请求，会将queryData UTF8编码后，作为HTTP BODY post
+     * @param {String} parameters key/value形式的参数，类似于网页form请求参数
      * @param {String} retryMeta 重试相关信息，JSON格式，以下4个key：timeout, retry, retryCount, retryInterval
      * @param {String} sequenceId 发送服务的序列号，随机生存即可
      * @since v5.4
@@ -1639,15 +1639,15 @@ var CtripPipe = {
         app.callback(json_obj);
 
      */
-    app_send_HTTP_pipe_request:function(target, method, header, queryData, retryMeta, sequenceId) {
+    app_send_HTTP_pipe_request:function(baseURL, method, header, parameters, retryMeta, sequenceId) {
         var startVersion = "5.4";
         if(!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
             return;
         }
 
-        if (!target) {
-            target = "";
+        if (!baseURL) {
+            baseURL = "";
         }
         if (!method) {
             method = "";
@@ -1655,8 +1655,8 @@ var CtripPipe = {
         if (!header) {
             header = "";
         }
-        if (!queryData) {
-            queryData = "";
+        if (!parameters) {
+            parameters = "";
         }
         if (!retryMeta) {
             retryMeta = "";
@@ -1665,10 +1665,10 @@ var CtripPipe = {
             sequenceId = "";
         }
         var params = {};
-        params.target = target;
+        params.baseURL = baseURL;
         params.method = method;
         params.header = header;
-        params.queryData = queryData;
+        params.parameters = parameters;
         params.retryMeta = retryMeta;
         params.sequenceId = sequenceId;
 
