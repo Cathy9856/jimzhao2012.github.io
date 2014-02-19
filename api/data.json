@@ -1012,8 +1012,8 @@
                     "type": "String"
                 },
                 {
-                    "name": "payURL",
-                    "description": "服务器返回的支付URL",
+                    "name": "payMeta",
+                    "description": "服务器返回的支付配置信息，ali相关为URL，微信支付为xml",
                     "type": "String"
                 },
                 {

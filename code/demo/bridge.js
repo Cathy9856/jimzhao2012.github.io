@@ -1548,7 +1548,7 @@ var CtripUser = {
       * @description  根据URL打开支付App
       * @brief  根据URL打开支付App
       * @param {String} payAppName 支付App的URL，暂固定为以下4个， aliWalet/aliQuickPay/wapAliPay/weixinPay(微信支付暂未支持)
-      * @param {String} payURL 服务器返回的支付URL
+      * @param {String} payMeta 服务器返回的支付配置信息，ali相关为URL，微信支付为xml
       * @param {String} successRelativeURL 支付成功跳转的URL
       * @param {String} detailRelativeURL  支付失败或者支付
       * @since 5.4
@@ -1560,15 +1560,15 @@ var CtripUser = {
       //调用后，App会做相应的页面跳转
 
       */
-    app_open_pay_app_by_url:function(payAppName, payURL, successRelativeURL, detailRelativeURL) {
+    app_open_pay_app_by_url:function(payAppName, payMeta, successRelativeURL, detailRelativeURL) {
 
         var startVersion = "5.4";
         if(!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
             return;
         }
-        if (!payURL) {
-            payURL = "";
+        if (!payMeta) {
+            payMeta = "";
         }
         
         if (!payAppName) {
@@ -1584,7 +1584,7 @@ var CtripUser = {
         }
 
         var params = {};
-        params.payURL = payURL;
+        params.payMeta = payMeta;
         params.payAppName = payAppName;
         params.successRelativeURL = successRelativeURL;
         params.detailRelativeURL = detailRelativeURL;
