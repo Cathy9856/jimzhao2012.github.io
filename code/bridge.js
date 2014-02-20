@@ -73,7 +73,7 @@ var Internal = {
         if ((typeof verStr == "string") && (verStr.length > 0)) {
             var inVer = parseFloat(verStr);
             var nowVer = parseFloat(Internal.appVersion);
-            if (nowVer - inVer >= 0) {
+            if (isNaN(nowVer) || nowVer - inVer >= 0) {
                 return true;
             }
         }

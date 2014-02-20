@@ -84,6 +84,9 @@ var app = {
 	    else if (tagname == "open_pay_app_by_url") {
 	    	cb_ret.open_pay_app_by_url = jsonObj;
 	    }
+	    else if (tagname == "send_h5_pipe_request") {
+	    	cb_ret.send_H5_pipe_request = jsonObj;
+	    }
     }
 };
 
@@ -534,6 +537,7 @@ asyncTest("测试通过APP管道发送服务",function(){
  //         "sid":"8892",  
  //         "syscode":"32"
  //      };
+
 
 	header = "{\"auth\":\"A04AC1F9E7C2275CFA10640392B77045F044A53C173E7CFE34586FDBA9E7A65B\", \"cid\":1,\"ctok\":1,\"cver\":5.4,\"lang\":01,\"sid\":111,\"syscode\":32}";
 
