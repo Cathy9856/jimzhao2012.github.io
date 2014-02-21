@@ -1173,6 +1173,40 @@ var CtripUtil = {
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
+    },
+
+   /**
+     * @description 打开Hybrid广告页面，会自动显示底部栏，且右上角有分享安妮
+     * @brief 打开Hybrid广告页面
+     * @method app_open_adv_page
+     * @param {String} advUrl 广告URL， URL参数带title=xxx,设置xxx为标题
+     * @since v5.4
+     * @author jimzhao
+     * @example
+
+      CtripUtil.app_open_adv_page("http://pages.ctrip.com/adv.html?title=标题xxx");
+     */
+    app_open_adv_page(advUrl) {
+        var startVersion = "5.4";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }   
+
+        var params = {};
+        params.advUrl = advUrl;
+        paramString = Internal.makeParamString("Util", "openAdvPage", params, "open_adv_page");
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) 
+        {
+            window.Util_a.openAdvPage(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     }
 };
 
