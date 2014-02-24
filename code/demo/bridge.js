@@ -1846,7 +1846,7 @@ var CtripSumSungWallet = {
         var param = {};
         param.ticketID = ticketID;
 
-        paramString = Internal.makeParamString("SamSungWallet", "checkTicketInSamSungWallet", params, 'check_ticket_in_samsung_wallet');
+        paramString = Internal.makeParamString("SamSungWallet", "checkTicketInSamSungWallet", param, 'check_ticket_in_samsung_wallet');
         if (Internal.isAndroid) {
             window.SamSungWallet_a.checkTicketInSamSungWallet(paramString);
         }
@@ -1882,7 +1882,7 @@ var CtripSumSungWallet = {
         var param = {};
         param.ticketID = ticketID;
 
-        paramString = Internal.makeParamString("SamSungWallet", "downloadTicketInSamSungWallet", params, 'download_ticket_in_samsung_wallet');
+        paramString = Internal.makeParamString("SamSungWallet", "downloadTicketInSamSungWallet", param, 'download_ticket_in_samsung_wallet');
         if (Internal.isAndroid) {
             window.SamSungWallet_a.downloadTicketInSamSungWallet(paramString);
         }
@@ -1917,7 +1917,7 @@ var CtripSumSungWallet = {
         var param = {};
         param.ticketID = ticketID;
 
-        paramString = Internal.makeParamString("SamSungWallet", "showTicketInSamSungWallet", params, 'show_ticket_in_samsung_wallet');
+        paramString = Internal.makeParamString("SamSungWallet", "showTicketInSamSungWallet", param, 'show_ticket_in_samsung_wallet');
         if (Internal.isAndroid) {
             window.SamSungWallet_a.showTicketInSamSungWallet(paramString);
         }
