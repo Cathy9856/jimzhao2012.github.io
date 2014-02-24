@@ -592,7 +592,7 @@ asyncTest("测试Ticket是否在三星钱包", function(){
 		else {
 			ok(false,"测试Ticket是否在三星钱包失败:"+JSON.stringify(jsonObj));
 		}
-	});
+	},sync_time_interval*2);
 
 });
 
@@ -608,7 +608,7 @@ asyncTest("测试在三星钱包中下载Ticket", function(){
 		}else {
 			ok(false,"测试在三星钱包中下载Ticket失败:"+JSON.stringify(jsonObj));
 		}
-	});
+	},sync_time_interval*2);
 
 });
 
@@ -623,7 +623,7 @@ asyncTest("测试在三星钱包中查看Ticket", function(){
 		} else {
 			ok(false,"测试在三星钱包中查看Ticket失败:"+JSON.stringify(jsonObj));
 		}
-	});
+	},sync_time_interval*2);
 
 });
 
