@@ -1143,6 +1143,69 @@
                 " \n    \n     CtripUtil.app_send_H5_pipe_request(\"9500001\", \"H5Agent\",\"{}\",\"13523333333\");\n    //调用后，H5会收到native回调的数据\n\n       //成功 \n       var json_obj =\n       {\n           tagname:\"send_h5_pipe_request\",\n           param:\n           {\n               sequenceId:\"13523333333\",\n               resultMessage:\"eHh4eHh4\",\n               resultHead:\"eHh4eHh4\",\n               resultBody:\"eHh4eHh4\",\n               result:1,\n           },\n       }\n\n       //失败\n       var json_obj =\n       {\n           tagname:\"send_h5_pipe_request\",\n           param:\n           {\n               sequenceId:\"13523333333\",\n               errorInformation:\"eHh4eHh4\",\n               serverErrorCode:\"eHh4eHh4\",\n           },\n       }\n       app.callback(json_obj);\n"
             ],
             "class": "CtripPipe"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1813,
+            "description": "检查ticket是否在三星钱包app中",
+            "brief": "检查ticket是否在三星钱包app中",
+            "itemtype": "method",
+            "name": "app_check_ticket_in_samsung_wallet",
+            "params": [
+                {
+                    "name": "ticketID",
+                    "description": "ticket的ID，服务器返回",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.3.2",
+            "author": "jimzhao",
+            "example": [
+                " \n\nCtripSumSungWallet.app_check_ticket_in_samsung_wallet(\"ID123333\");\n\n      //调用之后会收到\n       var json_obj = {\n           tagname : \"check_ticket_in_samsung_wallet\",\n           param : {\n               insInSamSungWallet: false, //true\n           }\n       }\n       \n       app.callback(json_obj);"
+            ],
+            "class": "CtripPipe"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1848,
+            "description": "到三星钱包中下载ticket",
+            "brief": "到三星钱包中下载ticket",
+            "itemtype": "method",
+            "name": "app_download_ticket_in_samsung_wallet",
+            "params": [
+                {
+                    "name": "ticketID",
+                    "description": "ticket的ID，服务器返回",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.32",
+            "author": "jimzhao",
+            "example": [
+                " \n\nCtripSumSungWallet.app_download_ticket_in_samsung_wallet(\"ID123333\");\n   \n       //调用之后会收到\n       var json_obj = {\n           tagname : \"download_ticket_in_samsung_wallet\",\n           param : {\n               isDownloadSuccess: false, //true，下载成功的时候没有errorInfo\n               errorInfo: \"网络故障\", \n           }\n       }\n\n       app.callback(json_obj);"
+            ],
+            "class": "CtripPipe"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1884,
+            "description": "在三星钱包app中查看Ticket",
+            "brief": "在三星钱包app中查看Ticket",
+            "itemtype": "method",
+            "name": "app_show_ticket_in_samsung_wallet",
+            "params": [
+                {
+                    "name": "ticketID",
+                    "description": "ticket的ID，服务器返回",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.32",
+            "author": "jimzhao",
+            "example": [
+                " \n\nCtripSumSungWallet.app_show_ticket_in_samsung_wallet(\"ID123333\");\n"
+            ],
+            "class": "CtripPipe"
         }
     ],
     "warnings": [
@@ -1389,6 +1452,18 @@
         {
             "message": "unknown tag: brief",
             "line": " bridge.js:1728"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1813"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1848"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1884"
         }
     ]
 }

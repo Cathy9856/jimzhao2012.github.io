@@ -87,6 +87,15 @@ var app = {
 	    else if (tagname == "send_h5_pipe_request") {
 	    	cb_ret.send_H5_pipe_request = jsonObj;
 	    }
+	    else if (tagname == "check_ticket_in_samsung_wallet") {
+	    	cb_ret.check_ticket_in_samsung_wallet = jsonObj;
+	    } 
+	    else if (tagname == "show_ticket_in_samsung_wallet") {
+	    	cb_ret.show_ticket_in_samsung_wallet = jsonObj;
+	    }
+	    else if (tagname == "download_ticket_in_samsung_wallet") {
+	    	cb_ret.download_ticket_in_samsung_wallet = jsonObj;
+	    }
     }
 };
 
@@ -570,16 +579,48 @@ asyncTest("测试支付App安装",function() {
 	});
 });
 
-asyncTest("测试跳转支付App", function(){
+asyncTest("测试Ticket是否在三星钱包", function(){
 	expect(1);
-	CtripPay.app_open_pay_app_by_url("aliWalet", "alipay://alipayclient/xxx", "car/index.html" ,"car/index.html");
+	CtripSumSungWallet.app_check_ticket_in_samsung_wallet("ID123333");
 	setTimeout(function(){
 		start();
-		var jsonObj = cb_ret.open_pay_app_by_url;
-		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "open_pay_app_by_url") {
-			ok(true,"跳转支付App成功:"+JSON.stringify(jsonObj));
+		var jsonObj = cb_ret.check_ticket_in_samsung_wallet;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "check_ticket_in_samsung_wallet") {
+			ok(jsonObj.param.isInSamSungWallet, "测试Ticket是否在三星钱包:"+JSON.stringify(jsonObj));
+		} 
+		else {
+			ok(false,"测试Ticket是否在三星钱包失败:"+JSON.stringify(jsonObj));
+		}
+	});
+
+});
+
+asyncTest("测试在三星钱包中下载Ticket", function(){
+	expect(1);
+    CtripSumSungWallet.app_download_ticket_in_samsung_wallet("ID123333");
+
+	setTimeout(function(){
+		start();
+		var jsonObj = cb_ret.download_ticket_in_samsung_wallet;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "download_ticket_in_samsung_wallet") {
+			ok(jsonObj.param.isDownloadSuccess,"测试在三星钱包中下载Ticket:"+JSON.stringify(jsonObj));
 		}else {
-			ok(false,"跳转支付App失败:"+JSON.stringify(jsonObj));
+			ok(false,"测试在三星钱包中下载Ticket失败:"+JSON.stringify(jsonObj));
+		}
+	});
+
+});
+
+asyncTest("测试在三星钱包中查看Ticket", function(){
+	expect(1);
+    CtripSumSungWallet.app_show_ticket_in_samsung_wallet("ID123333");
+	setTimeout(function(){
+		start();
+		var jsonObj = cb_ret.show_ticket_in_samsung_wallet;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "show_ticket_in_samsung_wallet") {
+			ok(true,"测试在三星钱包中查看Ticket:"+JSON.stringify(jsonObj));
+		} else {
+			ok(false,"测试在三星钱包中查看Ticket失败:"+JSON.stringify(jsonObj));
 		}
 	});
 

@@ -1908,6 +1908,108 @@ var CtripPipe = {
     }
 };
 
+var CtripSumSungWallet = {
+
+     /**
+     * @description 检查ticket是否在三星钱包app中
+     * @brief 检查ticket是否在三星钱包app中
+     * @method app_check_ticket_in_samsung_wallet
+     * @param {String} ticketID ticket的ID，服务器返回
+     * @since v5.3.2
+     * @author jimzhao
+     * @example 
+     * 
+     * CtripSumSungWallet.app_check_ticket_in_samsung_wallet(&quot;ID123333&quot;);
+
+       //调用之后会收到
+        var json_obj = {
+            tagname : &quot;check_ticket_in_samsung_wallet&quot;,
+            param : {
+                insInSamSungWallet: false, //true
+            }
+        }
+        
+        app.callback(json_obj);
+     */
+    app_check_ticket_in_samsung_wallet:function(ticketID) {
+        if (!ticketID) {
+            ticketID = &quot;&quot;;
+        }
+
+        var param = {};
+        param.ticketID = ticketID;
+
+        paramString = Internal.makeParamString(&quot;SamSungWallet&quot;, &quot;checkTicketInSamSungWallet&quot;, params, &#x27;check_ticket_in_samsung_wallet&#x27;);
+        if (Internal.isAndroid) {
+            window.SamSungWallet_a.checkTicketInSamSungWallet(paramString);
+        }
+    },
+
+     /**
+     * @description 到三星钱包中下载ticket
+     * @brief 到三星钱包中下载ticket
+     * @method app_download_ticket_in_samsung_wallet
+     * @param {String} ticketID ticket的ID，服务器返回
+     * @since v5.32
+     * @author jimzhao
+     * @example 
+     * 
+     * CtripSumSungWallet.app_download_ticket_in_samsung_wallet(&quot;ID123333&quot;);
+    
+        //调用之后会收到
+        var json_obj = {
+            tagname : &quot;download_ticket_in_samsung_wallet&quot;,
+            param : {
+                isDownloadSuccess: false, //true，下载成功的时候没有errorInfo
+                errorInfo: &quot;网络故障&quot;, 
+            }
+        }
+
+        app.callback(json_obj);
+     */
+    app_download_ticket_in_samsung_wallet:function(ticketID) {
+        if (!ticketID) {
+            ticketID = &quot;&quot;;
+        }
+
+        var param = {};
+        param.ticketID = ticketID;
+
+        paramString = Internal.makeParamString(&quot;SamSungWallet&quot;, &quot;downloadTicketInSamSungWallet&quot;, params, &#x27;download_ticket_in_samsung_wallet&#x27;);
+        if (Internal.isAndroid) {
+            window.SamSungWallet_a.downloadTicketInSamSungWallet(paramString);
+        }
+    },
+
+     /**
+     * @description 在三星钱包app中查看Ticket
+     * @brief 在三星钱包app中查看Ticket
+     * @method app_show_ticket_in_samsung_wallet
+     * @param {String} ticketID ticket的ID，服务器返回
+     * @since v5.32
+     * @author jimzhao
+     * @example 
+     * 
+     * CtripSumSungWallet.app_show_ticket_in_samsung_wallet(&quot;ID123333&quot;);
+     *
+     */
+    app_show_ticket_in_samsung_wallet:function(ticketID) {
+        if (!ticketID) {
+            ticketID = &quot;&quot;;
+        }
+
+        var param = {};
+        param.ticketID = ticketID;
+
+        paramString = Internal.makeParamString(&quot;SamSungWallet&quot;, &quot;showTicketInSamSungWallet&quot;, params, &#x27;show_ticket_in_samsung_wallet&#x27;);
+        if (Internal.isAndroid) {
+            window.SamSungWallet_a.showTicketInSamSungWallet(paramString);
+        }
+    }
+
+};
+
+
 //获取当前app环境
  CtripTool.app_is_in_ctrip_app();
 

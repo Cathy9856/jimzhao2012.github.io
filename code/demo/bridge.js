@@ -1808,5 +1808,107 @@ var CtripPipe = {
     }
 };
 
+var CtripSumSungWallet = {
+
+     /**
+     * @description 检查ticket是否在三星钱包app中
+     * @brief 检查ticket是否在三星钱包app中
+     * @method app_check_ticket_in_samsung_wallet
+     * @param {String} ticketID ticket的ID，服务器返回
+     * @since v5.3.2
+     * @author jimzhao
+     * @example 
+     * 
+     * CtripSumSungWallet.app_check_ticket_in_samsung_wallet("ID123333");
+
+       //调用之后会收到
+        var json_obj = {
+            tagname : "check_ticket_in_samsung_wallet",
+            param : {
+                insInSamSungWallet: false, //true
+            }
+        }
+        
+        app.callback(json_obj);
+     */
+    app_check_ticket_in_samsung_wallet:function(ticketID) {
+        if (!ticketID) {
+            ticketID = "";
+        }
+
+        var param = {};
+        param.ticketID = ticketID;
+
+        paramString = Internal.makeParamString("SamSungWallet", "checkTicketInSamSungWallet", params, 'check_ticket_in_samsung_wallet');
+        if (Internal.isAndroid) {
+            window.SamSungWallet_a.checkTicketInSamSungWallet(paramString);
+        }
+    },
+
+     /**
+     * @description 到三星钱包中下载ticket
+     * @brief 到三星钱包中下载ticket
+     * @method app_download_ticket_in_samsung_wallet
+     * @param {String} ticketID ticket的ID，服务器返回
+     * @since v5.32
+     * @author jimzhao
+     * @example 
+     * 
+     * CtripSumSungWallet.app_download_ticket_in_samsung_wallet("ID123333");
+    
+        //调用之后会收到
+        var json_obj = {
+            tagname : "download_ticket_in_samsung_wallet",
+            param : {
+                isDownloadSuccess: false, //true，下载成功的时候没有errorInfo
+                errorInfo: "网络故障", 
+            }
+        }
+
+        app.callback(json_obj);
+     */
+    app_download_ticket_in_samsung_wallet:function(ticketID) {
+        if (!ticketID) {
+            ticketID = "";
+        }
+
+        var param = {};
+        param.ticketID = ticketID;
+
+        paramString = Internal.makeParamString("SamSungWallet", "downloadTicketInSamSungWallet", params, 'download_ticket_in_samsung_wallet');
+        if (Internal.isAndroid) {
+            window.SamSungWallet_a.downloadTicketInSamSungWallet(paramString);
+        }
+    },
+
+     /**
+     * @description 在三星钱包app中查看Ticket
+     * @brief 在三星钱包app中查看Ticket
+     * @method app_show_ticket_in_samsung_wallet
+     * @param {String} ticketID ticket的ID，服务器返回
+     * @since v5.32
+     * @author jimzhao
+     * @example 
+     * 
+     * CtripSumSungWallet.app_show_ticket_in_samsung_wallet("ID123333");
+     *
+     */
+    app_show_ticket_in_samsung_wallet:function(ticketID) {
+        if (!ticketID) {
+            ticketID = "";
+        }
+
+        var param = {};
+        param.ticketID = ticketID;
+
+        paramString = Internal.makeParamString("SamSungWallet", "showTicketInSamSungWallet", params, 'show_ticket_in_samsung_wallet');
+        if (Internal.isAndroid) {
+            window.SamSungWallet_a.showTicketInSamSungWallet(paramString);
+        }
+    }
+
+};
+
+
 //获取当前app环境
  CtripTool.app_is_in_ctrip_app();
