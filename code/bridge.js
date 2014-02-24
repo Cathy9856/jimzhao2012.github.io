@@ -1808,6 +1808,13 @@ var CtripPipe = {
     }
 };
 
+
+
+/**
+ * @class CtripSumSungWallet
+ * @description 三星钱包相关API
+ * @brief 三星钱包相关API
+ */
 var CtripSumSungWallet = {
 
      /**

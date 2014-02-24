@@ -11,7 +11,8 @@
                 "CtripUser": 1,
                 "CtripEncrypt": 1,
                 "CtripPay": 1,
-                "CtripPipe": 1
+                "CtripPipe": 1,
+                "CtripSumSungWallet": 1
             },
             "fors": {},
             "namespaces": {}
@@ -111,6 +112,19 @@
             "line": 1641,
             "description": "App给H5提供的通讯管道",
             "brief": "提供标准HTTP和H5管道服务"
+        },
+        "CtripSumSungWallet": {
+            "name": "CtripSumSungWallet",
+            "shortname": "CtripSumSungWallet",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bridge.js",
+            "line": 1813,
+            "description": "三星钱包相关API",
+            "brief": "三星钱包相关API"
         }
     },
     "classitems": [
@@ -1146,7 +1160,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1813,
+            "line": 1820,
             "description": "检查ticket是否在三星钱包app中",
             "brief": "检查ticket是否在三星钱包app中",
             "itemtype": "method",
@@ -1163,11 +1177,11 @@
             "example": [
                 " \n\nCtripSumSungWallet.app_check_ticket_in_samsung_wallet(\"ID123333\");\n\n      //调用之后会收到\n       var json_obj = {\n           tagname : \"check_ticket_in_samsung_wallet\",\n           param : {\n               insInSamSungWallet: false, //true\n           }\n       }\n       \n       app.callback(json_obj);"
             ],
-            "class": "CtripPipe"
+            "class": "CtripSumSungWallet"
         },
         {
             "file": "bridge.js",
-            "line": 1848,
+            "line": 1855,
             "description": "到三星钱包中下载ticket",
             "brief": "到三星钱包中下载ticket",
             "itemtype": "method",
@@ -1184,11 +1198,11 @@
             "example": [
                 " \n\nCtripSumSungWallet.app_download_ticket_in_samsung_wallet(\"ID123333\");\n   \n       //调用之后会收到\n       var json_obj = {\n           tagname : \"download_ticket_in_samsung_wallet\",\n           param : {\n               isDownloadSuccess: false, //true，下载成功的时候没有errorInfo\n               errorInfo: \"网络故障\", \n           }\n       }\n\n       app.callback(json_obj);"
             ],
-            "class": "CtripPipe"
+            "class": "CtripSumSungWallet"
         },
         {
             "file": "bridge.js",
-            "line": 1884,
+            "line": 1891,
             "description": "在三星钱包app中查看Ticket",
             "brief": "在三星钱包app中查看Ticket",
             "itemtype": "method",
@@ -1205,7 +1219,7 @@
             "example": [
                 " \n\nCtripSumSungWallet.app_show_ticket_in_samsung_wallet(\"ID123333\");\n"
             ],
-            "class": "CtripPipe"
+            "class": "CtripSumSungWallet"
         }
     ],
     "warnings": [
@@ -1459,11 +1473,15 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1848"
+            "line": " bridge.js:1820"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1884"
+            "line": " bridge.js:1855"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1891"
         }
     ]
 }

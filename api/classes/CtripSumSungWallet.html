@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>CtripPipe</title>
+    <title>CtripSumSungWallet</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -96,7 +96,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>CtripPipe Class</h1>
+                        <h1>CtripSumSungWallet Class</h1>
 <div class="box meta">
     
 
@@ -104,7 +104,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l1641"><code>bridge.js:1641</code></a>
+            定义在: <a href="../files/bridge.js.html#l1813"><code>bridge.js:1813</code></a>
         </div>
     
 
@@ -116,7 +116,7 @@
 
 
 <div class="box intro">
-    <p>App给H5提供的通讯管道</p>
+    <p>三星钱包相关API</p>
 
 </div>
 
@@ -146,14 +146,22 @@
                     <table>
                     <tr><th>描述</th><th>函数</th></tr>
                     
-                    <tr><td>H5通过App发送服务</td><td><a href="#method_app_send_H5_pipe_request">app_send_H5_pipe_request</a></td></tr>
+                    <tr><td>检查ticket是否在三星钱包app中</td><td><a href="#method_app_check_ticket_in_samsung_wallet">app_check_ticket_in_samsung_wallet</a></td></tr>
                     
-                    <tr><td>H5通过App发送服务</td><td><a href="#method_app_send_HTTP_pipe_request">app_send_HTTP_pipe_request</a></td></tr>
+                    <tr><td>到三星钱包中下载ticket</td><td><a href="#method_app_download_ticket_in_samsung_wallet">app_download_ticket_in_samsung_wallet</a></td></tr>
+                    
+                    <tr><td>在三星钱包app中查看Ticket</td><td><a href="#method_app_show_ticket_in_samsung_wallet">app_show_ticket_in_samsung_wallet</a></td></tr>
                                   
                     </table>
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -183,8 +191,8 @@
                 <h2 class="off-left">方法</h2>
 
                 
-                    <div id="method_app_send_H5_pipe_request" class="method item">
-    <h3 class="name"><code>app_send_H5_pipe_request</code></h3>
+                    <div id="method_app_check_ticket_in_samsung_wallet" class="method item">
+    <h3 class="name"><code>app_check_ticket_in_samsung_wallet</code></h3>
 
     
         <div class="args">
@@ -192,25 +200,7 @@
             
                 <li class="arg">
                     
-                        <code>serviceCode</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>header</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>data</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>sequenceId</code>
+                        <code>ticketID</code>
                     
                 </li>
             
@@ -243,7 +233,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l1728"><code>bridge.js:1728</code></a>
+        <a href="../files/bridge.js.html#l1820"><code>bridge.js:1820</code></a>
         
         </p>
 
@@ -251,12 +241,12 @@
         
 
         
-            <p>可用版本 v5.4</p>
+            <p>可用版本 v5.3.2</p>
         
     </div>
 
     <div class="description">
-        <p>H5通过App发送服务</p>
+        <p>检查ticket是否在三星钱包app中</p>
 
     </div>
 
@@ -268,62 +258,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">serviceCode</code>
+                        <code class="param-name">ticketID</code>
                         <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>需要发送服务的服务号</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">header</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>服务的header</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">data</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>服务所需要的数据部分，各个服务都不同</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">sequenceId</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>发送服务的序列号，随机生存即可</p>
+                        <p>ticket的ID，服务器返回</p>
 
                     </div>
 
@@ -341,34 +283,15 @@
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> CtripUtil.app_send_H5_pipe_request(&quot;9500001&quot;, &quot;H5Agent&quot;,&quot;{}&quot;,&quot;13523333333&quot;);
-//调用后，H5会收到native回调的数据
-
-   //成功 
-   var json_obj =
-   {
-       tagname:&quot;send_h5_pipe_request&quot;,
-       param:
-       {
-           sequenceId:&quot;13523333333&quot;,
-           resultMessage:&quot;eHh4eHh4&quot;,
-           resultHead:&quot;eHh4eHh4&quot;,
-           resultBody:&quot;eHh4eHh4&quot;,
-           result:1,
-       },
+                <p>CtripSumSungWallet.app_check_ticket_in_samsung_wallet(&quot;ID123333&quot;);</p>
+<pre class="code prettyprint"><code>  //调用之后会收到
+   var json_obj = {
+       tagname : &quot;check_ticket_in_samsung_wallet&quot;,
+       param : {
+           insInSamSungWallet: false, //true
+       }
    }
 
-   //失败
-   var json_obj =
-   {
-       tagname:&quot;send_h5_pipe_request&quot;,
-       param:
-       {
-           sequenceId:&quot;13523333333&quot;,
-           errorInformation:&quot;eHh4eHh4&quot;,
-           serverErrorCode:&quot;eHh4eHh4&quot;,
-       },
-   }
    app.callback(json_obj);</code></pre>
 
             </div>
@@ -377,8 +300,8 @@
 </div>
 
                 
-                    <div id="method_app_send_HTTP_pipe_request" class="method item">
-    <h3 class="name"><code>app_send_HTTP_pipe_request</code></h3>
+                    <div id="method_app_download_ticket_in_samsung_wallet" class="method item">
+    <h3 class="name"><code>app_download_ticket_in_samsung_wallet</code></h3>
 
     
         <div class="args">
@@ -386,43 +309,7 @@
             
                 <li class="arg">
                     
-                        <code>baseURL</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>path</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>method</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>header</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>parameters</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>retryMeta</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>sequenceId</code>
+                        <code>ticketID</code>
                     
                 </li>
             
@@ -455,7 +342,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l1648"><code>bridge.js:1648</code></a>
+        <a href="../files/bridge.js.html#l1855"><code>bridge.js:1855</code></a>
         
         </p>
 
@@ -463,12 +350,12 @@
         
 
         
-            <p>可用版本 v5.4</p>
+            <p>可用版本 v5.32</p>
         
     </div>
 
     <div class="description">
-        <p>H5通过App发送服务</p>
+        <p>到三星钱包中下载ticket</p>
 
     </div>
 
@@ -480,110 +367,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">baseURL</code>
+                        <code class="param-name">ticketID</code>
                         <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>HTTP请求发送的URL地址</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">path</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>HTTP请求发送的URL的路径</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">method</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>HTTP请求方式GET/POST</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">header</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>HTTP头，JSON字符串格式key/value，cookie作为一个key存储再HEADER内部</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">parameters</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>key/value形式的参数，类似于网页form请求参数</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">retryMeta</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>重试相关信息，JSON格式，以下4个key：timeout, retry, retryCount, retryInterval</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">sequenceId</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>发送服务的序列号，随机生存即可</p>
+                        <p>ticket的ID，服务器返回</p>
 
                     </div>
 
@@ -601,18 +392,117 @@
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>//TODO:
- CtripUtil.app_send_HTTP_pipe_request(&quot;9500001&quot;, &quot;H5Agent&quot;,&quot;{}&quot;,);
-//调用后，H5会收到native回调的数据
-   var json_obj =
-   {
-       tagname:&quot;send_h5_pipe_request&quot;,
-       param:
-       {
-           pipeResponse:&quot;eHh4eHh4&quot;,
-       },
+                <p>CtripSumSungWallet.app_download_ticket_in_samsung_wallet(&quot;ID123333&quot;);</p>
+<pre class="code prettyprint"><code>   //调用之后会收到
+   var json_obj = {
+       tagname : &quot;download_ticket_in_samsung_wallet&quot;,
+       param : {
+           isDownloadSuccess: false, //true，下载成功的时候没有errorInfo
+           errorInfo: &quot;网络故障&quot;, 
+       }
    }
+
    app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_show_ticket_in_samsung_wallet" class="method item">
+    <h3 class="name"><code>app_show_ticket_in_samsung_wallet</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>ticketID</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l1891"><code>bridge.js:1891</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.32</p>
+        
+    </div>
+
+    <div class="description">
+        <p>在三星钱包app中查看Ticket</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">ticketID</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>ticket的ID，服务器返回</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p>CtripSumSungWallet.app_show_ticket_in_samsung_wallet(&quot;ID123333&quot;);</p>
 
             </div>
         </div>

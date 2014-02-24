@@ -4,6 +4,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "CtripEncrypt",
         "CtripPay",
         "CtripPipe",
+        "CtripSumSungWallet",
         "CtripTool",
         "CtripUser",
         "CtripUtil",
