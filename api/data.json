@@ -1217,7 +1217,7 @@
             "since": "v5.32",
             "author": "jimzhao",
             "example": [
-                " \n\nCtripSumSungWallet.app_show_ticket_in_samsung_wallet(\"ID123333\");\n"
+                " \n    \n     CtripSumSungWallet.app_show_ticket_in_samsung_wallet(\"ID123333\");\n\n    //调用之后会收到\n       var json_obj = {\n           tagname : \"show_ticket_in_samsung_wallet\",\n           param : {\n               errorInfo: \"Ticket ID不存在\", //true\n           }\n       }\n       \n       app.callback(json_obj);"
             ],
             "class": "CtripSumSungWallet"
         }

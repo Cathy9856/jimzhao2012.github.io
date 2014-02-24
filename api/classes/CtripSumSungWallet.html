@@ -502,7 +502,17 @@
             <h4>举例:</h4>
 
             <div class="example-content">
-                <p>CtripSumSungWallet.app_show_ticket_in_samsung_wallet(&quot;ID123333&quot;);</p>
+                <pre class="code prettyprint"><code> CtripSumSungWallet.app_show_ticket_in_samsung_wallet(&quot;ID123333&quot;);
+
+//调用之后会收到
+   var json_obj = {
+       tagname : &quot;show_ticket_in_samsung_wallet&quot;,
+       param : {
+           errorInfo: &quot;Ticket ID不存在&quot;, //true
+       }
+   }
+
+   app.callback(json_obj);</code></pre>
 
             </div>
         </div>

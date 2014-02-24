@@ -1896,9 +1896,18 @@ var CtripSumSungWallet = {
      * @since v5.32
      * @author jimzhao
      * @example 
-     * 
-     * CtripSumSungWallet.app_show_ticket_in_samsung_wallet("ID123333");
-     *
+     
+      CtripSumSungWallet.app_show_ticket_in_samsung_wallet("ID123333");
+
+     //调用之后会收到
+        var json_obj = {
+            tagname : "show_ticket_in_samsung_wallet",
+            param : {
+                errorInfo: "Ticket ID不存在", //true
+            }
+        }
+        
+        app.callback(json_obj);
      */
     app_show_ticket_in_samsung_wallet:function(ticketID) {
         if (!ticketID) {
