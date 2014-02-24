@@ -1286,7 +1286,7 @@ var CtripUtil = {
 
       CtripUtil.app_open_adv_page(&quot;http://pages.ctrip.com/adv.html?title=标题xxx&quot;);
      */
-    app_open_adv_page(advUrl) {
+    app_open_adv_page:function(advUrl) {
         var startVersion = &quot;5.4&quot;;
         if (!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
