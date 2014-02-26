@@ -122,7 +122,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1813,
+            "line": 1827,
             "description": "三星钱包相关API",
             "brief": "三星钱包相关API"
         }
@@ -1105,11 +1105,6 @@
                     "type": "String"
                 },
                 {
-                    "name": "retryMeta",
-                    "description": "重试相关信息，JSON格式，以下4个key：timeout, retry, retryCount, retryInterval",
-                    "type": "String"
-                },
-                {
                     "name": "sequenceId",
                     "description": "发送服务的序列号，随机生存即可",
                     "type": "String"
@@ -1118,13 +1113,13 @@
             "since": "v5.4",
             "author": "jimzhao",
             "example": [
-                " \n\n    //TODO:\n     CtripUtil.app_send_HTTP_pipe_request(\"9500001\", \"H5Agent\",\"{}\",);\n    //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"send_h5_pipe_request\",\n           param:\n           {\n               pipeResponse:\"eHh4eHh4\",\n           },\n       }\n       app.callback(json_obj);\n"
+                " \n\n    //GET http://www.baidu.com/s?wd=good+day&rsv_bp=0&ch=&tn=baidu&bar=&rsv_spt=3&ie=utf-8&rsv_sug3=4&rsv_sug4=469&rsv_sug1=2&rsv_sug2=0&inputT=166\n     var param = {};\n     param.wd=\"good+day\"\n     param.rsv_bp=0;\n     param.ch=\"\";\n     param.tn=\"\";\n     param.baidu=\"\";\n     param.bar=\"\";\n     param.rsv_spt=3;\n     param.ie=\"utf-8\";\n     param.rsv_sug3=4;\n     param.rsv_sug4=469;\n     param.rsv=\"\";\n     param.rsv_sug1=2;\n     param.rsv_sug2=0;\n     param.inputT=166;\n\n     CtripUtil.app_send_HTTP_pipe_request(\"http://www.baidu.com\", \"s\",\"GET\",null,JSON.stringfy(param), \"13222222\");\n\n    //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"send_h5_pipe_request\",\n           param:\n           {\n               pipeResponse:\"eHh4eHh4\",\n               sequenceId:\"13222222\"\n           },\n       }\n       app.callback(json_obj);\n"
             ],
             "class": "CtripPipe"
         },
         {
             "file": "bridge.js",
-            "line": 1728,
+            "line": 1742,
             "description": "H5通过App发送服务",
             "brief": "H5通过App发送服务",
             "itemtype": "method",
@@ -1160,7 +1155,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1820,
+            "line": 1834,
             "description": "检查ticket是否在三星钱包app中",
             "brief": "检查ticket是否在三星钱包app中",
             "itemtype": "method",
@@ -1181,7 +1176,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1855,
+            "line": 1869,
             "description": "到三星钱包中下载ticket",
             "brief": "到三星钱包中下载ticket",
             "itemtype": "method",
@@ -1202,7 +1197,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1891,
+            "line": 1905,
             "description": "在三星钱包app中查看Ticket",
             "brief": "在三星钱包app中查看Ticket",
             "itemtype": "method",
@@ -1465,23 +1460,23 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1728"
+            "line": " bridge.js:1742"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1813"
+            "line": " bridge.js:1827"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1820"
+            "line": " bridge.js:1834"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1855"
+            "line": " bridge.js:1869"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1891"
+            "line": " bridge.js:1905"
         }
     ]
 }

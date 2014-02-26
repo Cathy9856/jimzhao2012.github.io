@@ -1654,14 +1654,30 @@ var CtripPipe = {
      * @param {String} method HTTP请求方式GET/POST
      * @param {String} header HTTP头，JSON字符串格式key/value，cookie作为一个key存储再HEADER内部
      * @param {String} parameters key/value形式的参数，类似于网页form请求参数
-     * @param {String} retryMeta 重试相关信息，JSON格式，以下4个key：timeout, retry, retryCount, retryInterval
      * @param {String} sequenceId 发送服务的序列号，随机生存即可
      * @since v5.4
      * @author jimzhao
      * @example 
 
-     //TODO:
-      CtripUtil.app_send_HTTP_pipe_request("9500001", "H5Agent","{}",);
+     //GET http://www.baidu.com/s?wd=good+day&rsv_bp=0&ch=&tn=baidu&bar=&rsv_spt=3&ie=utf-8&rsv_sug3=4&rsv_sug4=469&rsv_sug1=2&rsv_sug2=0&inputT=166
+      var param = {};
+      param.wd="good+day"
+      param.rsv_bp=0;
+      param.ch="";
+      param.tn="";
+      param.baidu="";
+      param.bar="";
+      param.rsv_spt=3;
+      param.ie="utf-8";
+      param.rsv_sug3=4;
+      param.rsv_sug4=469;
+      param.rsv="";
+      param.rsv_sug1=2;
+      param.rsv_sug2=0;
+      param.inputT=166;
+
+      CtripUtil.app_send_HTTP_pipe_request("http://www.baidu.com", "s","GET",null,JSON.stringfy(param), "13222222");
+
      //调用后，H5会收到native回调的数据
         var json_obj =
         {
@@ -1669,12 +1685,13 @@ var CtripPipe = {
             param:
             {
                 pipeResponse:"eHh4eHh4",
+                sequenceId:"13222222"
             },
         }
         app.callback(json_obj);
 
      */
-    app_send_HTTP_pipe_request:function(baseURL, path, method, header, parameters, retryMeta, sequenceId) {
+    app_send_HTTP_pipe_request:function(baseURL, path, method, header, parameters, sequenceId) {
         var startVersion = "5.4";
         if(!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
@@ -1696,9 +1713,7 @@ var CtripPipe = {
         if (!parameters) {
             parameters = "";
         }
-        if (!retryMeta) {
-            retryMeta = "";
-        }
+
         if (!sequenceId) {
             sequenceId = "";
         }
@@ -1708,7 +1723,6 @@ var CtripPipe = {
         params.method = method;
         params.header = header;
         params.parameters = parameters;
-        params.retryMeta = retryMeta;
         params.sequenceId = sequenceId;
 
         paramString = Internal.makeParamString("Pipe", "sendHTTPPipeRequest", params, 'send_http_pipe_request');
