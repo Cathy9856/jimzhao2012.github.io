@@ -1035,6 +1035,10 @@ var CtripUtil = {
         if (!linkUrl) {
             linkUrl = "";
         }
+        params.title = title;
+        params.text = text;
+        params.linkUrl = linkUrl;
+        
         var paramString = Internal.makeParamString("Util", "shareByApp", params, "share_by_app");
         if (Internal.isIOS) {
             var url = Internal.makeURLWithParam(paramString);
