@@ -1068,7 +1068,7 @@ var CtripUtil = {
     },
 
     /**
-     * @description 调用系统的分享
+     * @description 调用系统的分享,iOS6以上使用系统分享，android为自定义的分享
      * @brief 调用系统的分享
      * @param {String} image_relative_path 将要分享的图片相对路径，相对webapp的路径
      * @param {String} text 需要分享的文字
@@ -1102,6 +1102,48 @@ var CtripUtil = {
         }
         else if (Internal.isAndroid) {
             window.Util_a.callSystemShare(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+   /**
+     * @description 调用app的分享,iOS和android均为自定义的分享
+     * @brief 调用app的分享
+     * @param {String} image_relative_path 将要分享的图片相对路径，相对webapp的路径
+     * @param {String} title 需要分享的标题
+     * @param {String} text 需要分享的文字
+     * @param {String} linkUrl 需要分享的链接
+     * @method app_share_by_app
+     * @since v5.3
+     * @author jimzhao
+     * @example
+      CtripUtil.app_share_by_app(&quot;标题&quot;, &quot;share to sina weibo/weixin&quot;, &quot;http://www.ctrip.com&quot;);
+     */
+    app_share_by_app:function(title, text, linkUrl) {
+        var startVersion = &quot;5.4&quot;;
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+        var params = {};
+        if (!title) {
+            title = &quot;&quot;;
+        }
+        if (!text) {
+            text = &quot;&quot;;
+        }
+        if (!linkUrl) {
+            linkUrl = &quot;&quot;;
+        }
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;shareByApp&quot;, params, &quot;share_by_app&quot;);
+        if (Internal.isIOS) {
+            var url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Util_a.shareByApp(paramString);
         }
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);

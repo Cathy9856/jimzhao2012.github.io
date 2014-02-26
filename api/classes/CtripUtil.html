@@ -192,12 +192,20 @@
                     
                     <tr><td>底部工具栏隐藏／显示</td><td><a href="#method_app_set_toolbar_hidden">app_set_toolbar_hidden</a></td></tr>
                     
+                    <tr><td>调用app的分享</td><td><a href="#method_app_share_by_app">app_share_by_app</a></td></tr>
+                    
                     <tr><td>查看最新版本功能介绍</td><td><a href="#method_app_show_newest_introduction">app_show_newest_introduction</a></td></tr>
                                   
                     </table>
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -776,7 +784,7 @@ CtripUtil.app_call_phone();</code></pre>
     </div>
 
     <div class="description">
-        <p>调用系统的分享</p>
+        <p>调用系统的分享,iOS6以上使用系统分享，android为自定义的分享</p>
 
     </div>
 
@@ -1376,7 +1384,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1009"><code>bridge.js:1009</code></a>
+        <a href="../files/bridge.js.html#l1051"><code>bridge.js:1051</code></a>
         
         </p>
 
@@ -1700,7 +1708,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1142"><code>bridge.js:1142</code></a>
+        <a href="../files/bridge.js.html#l1184"><code>bridge.js:1184</code></a>
         
         </p>
 
@@ -1917,7 +1925,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l1178"><code>bridge.js:1178</code></a>
+        <a href="../files/bridge.js.html#l1220"><code>bridge.js:1220</code></a>
         
         </p>
 
@@ -2029,7 +2037,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l1059"><code>bridge.js:1059</code></a>
+        <a href="../files/bridge.js.html#l1101"><code>bridge.js:1101</code></a>
         
         </p>
 
@@ -2679,7 +2687,7 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             
         
         
-        <a href="../files/bridge.js.html#l1110"><code>bridge.js:1110</code></a>
+        <a href="../files/bridge.js.html#l1152"><code>bridge.js:1152</code></a>
         
         </p>
 
@@ -2706,6 +2714,172 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
 
             <div class="example-content">
                 <pre class="code prettyprint"><code>CtripUtil.app_set_toolbar_hidden(false);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_share_by_app" class="method item">
+    <h3 class="name"><code>app_share_by_app</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>image_relative_path</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>title</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>text</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>linkUrl</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l1009"><code>bridge.js:1009</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.3</p>
+        
+    </div>
+
+    <div class="description">
+        <p>调用app的分享,iOS和android均为自定义的分享</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">image_relative_path</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>将要分享的图片相对路径，相对webapp的路径</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">title</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要分享的标题</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">text</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要分享的文字</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">linkUrl</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要分享的链接</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code> CtripUtil.app_share_by_app(&quot;标题&quot;, &quot;share to sina weibo/weixin&quot;, &quot;http://www.ctrip.com&quot;);</code></pre>
 
             </div>
         </div>
