@@ -12,8 +12,7 @@
                 "CtripEncrypt": 1,
                 "CtripPay": 1,
                 "CtripPipe": 1,
-                "CtripSumSungWallet": 1,
-                "CtripDemo": 1
+                "CtripSumSungWallet": 1
             },
             "fors": {},
             "namespaces": {}
@@ -126,19 +125,6 @@
             "line": 1845,
             "description": "三星钱包相关API",
             "brief": "三星钱包相关API"
-        },
-        "CtripDemo": {
-            "name": "CtripDemo",
-            "shortname": "CtripDemo",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "bridge.js",
-            "line": 1960,
-            "description": "demo插件的添加方式",
-            "brief": "demo插件的添加方式"
         }
     },
     "classitems": [
@@ -1244,27 +1230,6 @@
                 " \n    \n     CtripSumSungWallet.app_show_ticket_in_samsung_wallet(\"ID123333\");\n\n    //调用之后会收到\n       var json_obj = {\n           tagname : \"show_ticket_in_samsung_wallet\",\n           param : {\n               errorInfo: \"Ticket ID不存在\", //true\n           }\n       }\n       \n       app.callback(json_obj);"
             ],
             "class": "CtripSumSungWallet"
-        },
-        {
-            "file": "bridge.js",
-            "line": 1967,
-            "description": "读取文件内容",
-            "brief": "读取文件内容",
-            "itemtype": "method",
-            "name": "app_read_file",
-            "params": [
-                {
-                    "name": "fileName",
-                    "description": "需要读取内容的文件名",
-                    "type": "String"
-                }
-            ],
-            "since": "v2.0",
-            "author": "jimzhao",
-            "example": [
-                " \n    \n     CtripDemo.app_read_file(\"log.txt\");\n\n    //调用之后会收到\n       var json_obj = {\n           tagname : \"read_file\",\n           param : {\n               content: \"this is the content from log.txt file\"\n           }\n       }\n       \n       app.callback(json_obj);"
-            ],
-            "class": "CtripDemo"
         }
     ],
     "warnings": [
@@ -1527,14 +1492,6 @@
         {
             "message": "unknown tag: brief",
             "line": " bridge.js:1923"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:1960"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:1967"
         }
     ]
 }

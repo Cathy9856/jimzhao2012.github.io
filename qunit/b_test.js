@@ -96,9 +96,6 @@ var app = {
 	    else if (tagname == "download_ticket_in_samsung_wallet") {
 	    	cb_ret.download_ticket_in_samsung_wallet = jsonObj;
 	    }
-	    else if (tagname == "read_file") {
-	    	cb_ret.read_file = jsonObj;
-	    }
     }
 };
 
@@ -627,23 +624,6 @@ asyncTest("测试在三星钱包中查看Ticket", function(){
 			ok(false,"测试在三星钱包中查看Ticket失败:"+JSON.stringify(jsonObj));
 		}
 	},sync_time_interval*2);
-
-});
-
-asyncTest("测试读取文件", function() {
-	expect(1);
-	CtripDemo.app_read_file("log.txt");
-	setTimeout(function() {
-		start();
-		var jsonObj = cb_ret.read_file;
-		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "read_file") {
-			//假定log.txt文件内容为“this is a log file”
-			ok(jsonObj.param.content == "this is a log file", "测试读取文件成功"+JSON.stringify(jsonObj));
-		} else {
-			ok(false, "测试读取文件失败"+JSON.stringify(jsonObj));
-		}
-
-	})
 
 });
 
