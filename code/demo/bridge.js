@@ -979,7 +979,7 @@ var CtripUtil = {
      * @example
 
       CtripUtil.app_call_system_share("../wb_cache/pkg_name/md5_url_hash", "text to share weibo", "this is titile", "http://www.ctrip.com/", false);
-      
+
      */
     app_call_system_share:function(imageRelativePath, text, title, linkUrl, isIOSSystemShare) {
         var startVersion = "5.3";
@@ -1954,6 +1954,72 @@ var CtripSumSungWallet = {
             window.SamSungWallet_a.showTicketInSamSungWallet(paramString);
         }
     }
+
+};
+
+/**
+ * @class CtripDemo
+ * @description demo插件的添加方式
+ * @brief demo插件的添加方式
+ */
+var CtripDemo = {
+
+     /**
+     * @description 读取文件内容
+     * @brief 读取文件内容
+     * @method app_read_file
+     * @param {String} fileName 需要读取内容的文件名
+     * @since v2.0
+     * @author jimzhao
+     * @example 
+     
+      CtripDemo.app_read_file("log.txt");
+
+     //调用之后会收到
+        var json_obj = {
+            tagname : "read_file",
+            param : {
+                content: "this is the content from log.txt file"
+            }
+        }
+        
+        app.callback(json_obj);
+     */
+    app_read_file:function(fileName) {
+        //当前App的版本
+        var startVersion = "2.0";
+
+        //检查当前App是否支持该JS API
+        if(!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        //处理参数为空的情况
+        if (!fileName) {
+            fileName = "";
+        }
+      
+        var param = {};
+        param.fileName = fileName;
+
+        //拼接参数，指定Plugin名字为File，native插件的API名字为readFile,回掉的tagname为read_file(可以任意定义，建议规则：函数名去掉前缀app_)
+        paramString = Internal.makeParamString("File", "readFile", param, "read_file");
+
+        //根据各个平台，调用各自API
+
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Demo_a.readFile(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
 
 };
 

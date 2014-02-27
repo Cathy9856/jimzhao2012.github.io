@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>CtripTool</title>
+    <title>CtripDemo</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -98,7 +98,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>CtripTool Class</h1>
+                        <h1>CtripDemo Class</h1>
 <div class="box meta">
     
 
@@ -106,7 +106,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l251"><code>bridge.js:251</code></a>
+            定义在: <a href="../files/bridge.js.html#l1960"><code>bridge.js:1960</code></a>
         </div>
     
 
@@ -118,7 +118,7 @@
 
 
 <div class="box intro">
-    <p>工具类,和App无交互，纯JS处理</p>
+    <p>demo插件的添加方式</p>
 
 </div>
 
@@ -148,20 +148,12 @@
                     <table>
                     <tr><th>描述</th><th>函数</th></tr>
                     
-                    <tr><td>判断当前是否是在App内</td><td><a href="#method_app_is_in_ctrip_app">app_is_in_ctrip_app</a></td></tr>
-                    
-                    <tr><td>H5写日志到app(兼容)</td><td><a href="#method_app_log">app_log</a></td></tr>
+                    <tr><td>读取文件内容</td><td><a href="#method_app_read_file">app_read_file</a></td></tr>
                                   
                     </table>
 
 
                     <ul class="index-list methods">
-                        
-                            <li class="index-item method">
-
-                                
-                                
-                            </li>
                         
                             <li class="index-item method">
 
@@ -185,91 +177,8 @@
                 <h2 class="off-left">方法</h2>
 
                 
-                    <div id="method_app_is_in_ctrip_app" class="method item">
-    <h3 class="name"><code>app_is_in_ctrip_app</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                定义在
-                
-            
-        
-        
-        <a href="../files/bridge.js.html#l258"><code>bridge.js:258</code></a>
-        
-        </p>
-
-
-        
-
-        
-            <p>可用版本 5.2</p>
-        
-    </div>
-
-    <div class="description">
-        <p>判断当前H5页面是否是在App内</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>返回:</h4>
-
-            <div class="returns-description">
-                
-                    
-                    <p>bool, true代表在app环境，false表示不在app环境</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>举例:</h4>
-
-            <div class="example-content">
-                <p>var ret = CtripTool.app_is_in_ctrip_app();
-alert(&quot;isInApp==&quot;+ret);</p>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_app_log" class="method item">
-    <h3 class="name"><code>app_log</code></h3>
+                    <div id="method_app_read_file" class="method item">
+    <h3 class="name"><code>app_read_file</code></h3>
 
     
         <div class="args">
@@ -277,13 +186,7 @@ alert(&quot;isInApp==&quot;+ret);</p>
             
                 <li class="arg">
                     
-                        <code>log</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>result</code>
+                        <code>fileName</code>
                     
                 </li>
             
@@ -316,7 +219,7 @@ alert(&quot;isInApp==&quot;+ret);</p>
             
         
         
-        <a href="../files/bridge.js.html#l291"><code>bridge.js:291</code></a>
+        <a href="../files/bridge.js.html#l1967"><code>bridge.js:1967</code></a>
         
         </p>
 
@@ -324,12 +227,12 @@ alert(&quot;isInApp==&quot;+ret);</p>
         
 
         
-            <p>可用版本 v5.2</p>
+            <p>可用版本 v2.0</p>
         
     </div>
 
     <div class="description">
-        <p>将log写入到native的日志界面，该函数已移动到CtripUtil类，此处只做兼容。具体参考CtripUtil.app_log()函数</p>
+        <p>读取文件内容</p>
 
     </div>
 
@@ -341,30 +244,14 @@ alert(&quot;isInApp==&quot;+ret);</p>
             
                 <li class="param">
                     
-                        <code class="param-name">log</code>
+                        <code class="param-name">fileName</code>
                         <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>需要打印打log</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">result</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间</p>
+                        <p>需要读取内容的文件名</p>
 
                     </div>
 
@@ -382,7 +269,17 @@ alert(&quot;isInApp==&quot;+ret);</p>
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>CtripUtil.app_log(&quot;execute script xxxxx&quot;, &quot;result for script is oooooo&quot;);</code></pre>
+                <pre class="code prettyprint"><code> CtripDemo.app_read_file(&quot;log.txt&quot;);
+
+//调用之后会收到
+   var json_obj = {
+       tagname : &quot;read_file&quot;,
+       param : {
+           content: &quot;this is the content from log.txt file&quot;
+       }
+   }
+
+   app.callback(json_obj);</code></pre>
 
             </div>
         </div>
