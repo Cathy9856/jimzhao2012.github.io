@@ -1007,7 +1007,7 @@ var CtripUtil = {
         params.title = title;
         params.text = text;
         params.linkUrl = linkUrl;
-        params.imageRelativePath = image_relative_path;
+        params.imageRelativePath = imageRelativePath;
         params.isIOSSystemShare = isIOSSystemShare;
 
         paramString = Internal.makeParamString("Util", "callSystemShare", params, "call_system_share");
