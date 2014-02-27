@@ -70,7 +70,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1259,
+            "line": 1231,
             "description": "用户相关类",
             "brief": "用户相关类"
         },
@@ -83,7 +83,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1517,
+            "line": 1489,
             "description": "加解密/HASH/编码相关类",
             "brief": "提供给H5试用，通用加解密/HASH/编码相关类"
         },
@@ -96,7 +96,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1576,
+            "line": 1548,
             "description": "Ctrip相关支付控件",
             "brief": "提供Ctrip业务相关的支付功能"
         },
@@ -109,7 +109,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1687,
+            "line": 1659,
             "description": "App给H5提供的通讯管道",
             "brief": "提供标准HTTP和H5管道服务"
         },
@@ -122,7 +122,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1873,
+            "line": 1845,
             "description": "三星钱包相关API",
             "brief": "三星钱包相关API"
         }
@@ -794,11 +794,11 @@
         {
             "file": "bridge.js",
             "line": 968,
-            "description": "调用系统的分享,iOS6以上使用系统分享，android为自定义的分享",
-            "brief": "调用系统的分享",
+            "description": "调用App的分享, 可以支持iOS6系统的分享",
+            "brief": "调用App的分享",
             "params": [
                 {
-                    "name": "image_relative_path",
+                    "name": "imageRelativePath",
                     "description": "将要分享的图片相对路径，相对webapp的路径",
                     "type": "String"
                 },
@@ -806,6 +806,21 @@
                     "name": "text",
                     "description": "需要分享的文字",
                     "type": "String"
+                },
+                {
+                    "name": "title",
+                    "description": "需要分享的标题, v5.4开始支持该字段",
+                    "type": "String"
+                },
+                {
+                    "name": "linkUrl",
+                    "description": "需要分享的链接, v5.4开始支持该字段",
+                    "type": "String"
+                },
+                {
+                    "name": "isIOSSystemShare",
+                    "description": "是否是iOS6以上使用系统分享功能,对于先前门票分享功能，需要为true，其它都是false",
+                    "type": "Boolean"
                 }
             ],
             "itemtype": "method",
@@ -813,49 +828,13 @@
             "since": "v5.3",
             "author": "jimzhao",
             "example": [
-                "\n     CtripUtil.app_call_system_share(\"../wb_cache/pkg_name/md5_url_hash\", \"share to sina weibo\");"
+                "\n\n     CtripUtil.app_call_system_share(\"../wb_cache/pkg_name/md5_url_hash\", \"text to share weibo\", \"this is titile\", \"http://www.ctrip.com/\", false);\n     "
             ],
             "class": "CtripUtil"
         },
         {
             "file": "bridge.js",
-            "line": 1009,
-            "description": "调用app的分享,iOS和android均为自定义的分享",
-            "brief": "调用app的分享",
-            "params": [
-                {
-                    "name": "image_relative_path",
-                    "description": "将要分享的图片相对路径，相对webapp的路径",
-                    "type": "String"
-                },
-                {
-                    "name": "title",
-                    "description": "需要分享的标题",
-                    "type": "String"
-                },
-                {
-                    "name": "text",
-                    "description": "需要分享的文字",
-                    "type": "String"
-                },
-                {
-                    "name": "linkUrl",
-                    "description": "需要分享的链接",
-                    "type": "String"
-                }
-            ],
-            "itemtype": "method",
-            "name": "app_share_by_app",
-            "since": "v5.3",
-            "author": "jimzhao",
-            "example": [
-                "\n     CtripUtil.app_share_by_app(\"标题\", \"share to sina weibo/weixin\", \"http://www.ctrip.com\");"
-            ],
-            "class": "CtripUtil"
-        },
-        {
-            "file": "bridge.js",
-            "line": 1055,
+            "line": 1027,
             "description": "根据URL下载数据",
             "brief": "根据URL下载数据",
             "params": [
@@ -881,7 +860,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1105,
+            "line": 1077,
             "description": "打开其它App，android可以根据包名和URL跳转，iOS只支持URL跳转",
             "brief": "打开其它App",
             "params": [
@@ -912,7 +891,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1156,
+            "line": 1128,
             "description": "设置底部工具栏隐藏／显示",
             "brief": "底部工具栏隐藏／显示",
             "since": "5.4",
@@ -926,7 +905,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1188,
+            "line": 1160,
             "description": "将log写入到native的日志界面",
             "brief": "H5写日志到app",
             "itemtype": "method",
@@ -952,7 +931,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1224,
+            "line": 1196,
             "description": "打开Hybrid广告页面，会自动显示底部栏，且右上角有分享安妮",
             "brief": "打开Hybrid广告页面",
             "itemtype": "method",
@@ -973,7 +952,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1266,
+            "line": 1238,
             "description": "会员登录,native未登录时候，会显示会员登录界面，native会员已登录，直接完成，返回登录的用户信息",
             "brief": "会员登录",
             "since": "5.2",
@@ -987,7 +966,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1326,
+            "line": 1298,
             "description": "非会员登录",
             "brief": "非会员登录",
             "since": "5.2",
@@ -1004,7 +983,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1389,
+            "line": 1361,
             "description": "会员自动登录,对于已经在native登陆的用户，app会通过调用callback回传登录数据，H5页面需要处理用户信息， 不显示输入用户名密码界面",
             "brief": "会员自动登录",
             "since": "5.2",
@@ -1021,7 +1000,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1452,
+            "line": 1424,
             "description": "用户注册",
             "brief": "用户注册",
             "since": "5.2",
@@ -1038,7 +1017,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1524,
+            "line": 1496,
             "description": "base64 UTF8编码",
             "brief": "base64 UTF8编码",
             "since": "5.4",
@@ -1059,7 +1038,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1583,
+            "line": 1555,
             "description": "检查支付相关App安装情况",
             "brief": "检查支付相关App安装情况",
             "since": "5.4",
@@ -1073,7 +1052,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1627,
+            "line": 1599,
             "description": "根据URL打开支付App",
             "brief": "根据URL打开支付App",
             "params": [
@@ -1109,7 +1088,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1694,
+            "line": 1666,
             "description": "H5通过App发送服务",
             "brief": "H5通过App发送服务",
             "itemtype": "method",
@@ -1155,7 +1134,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1788,
+            "line": 1760,
             "description": "H5通过App发送服务",
             "brief": "H5通过App发送服务",
             "itemtype": "method",
@@ -1191,7 +1170,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1880,
+            "line": 1852,
             "description": "检查ticket是否在三星钱包app中",
             "brief": "检查ticket是否在三星钱包app中",
             "itemtype": "method",
@@ -1212,7 +1191,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1915,
+            "line": 1887,
             "description": "到三星钱包中下载ticket",
             "brief": "到三星钱包中下载ticket",
             "itemtype": "method",
@@ -1233,7 +1212,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1951,
+            "line": 1923,
             "description": "在三星钱包app中查看Ticket",
             "brief": "在三星钱包app中查看Ticket",
             "itemtype": "method",
@@ -1428,95 +1407,91 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1009"
+            "line": " bridge.js:1027"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1055"
+            "line": " bridge.js:1077"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1105"
+            "line": " bridge.js:1128"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1156"
+            "line": " bridge.js:1160"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1188"
+            "line": " bridge.js:1196"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1224"
+            "line": " bridge.js:1231"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1259"
+            "line": " bridge.js:1238"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1266"
+            "line": " bridge.js:1298"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1326"
+            "line": " bridge.js:1361"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1389"
+            "line": " bridge.js:1424"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1452"
+            "line": " bridge.js:1489"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1517"
+            "line": " bridge.js:1496"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1524"
+            "line": " bridge.js:1548"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1576"
+            "line": " bridge.js:1555"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1583"
+            "line": " bridge.js:1599"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1627"
+            "line": " bridge.js:1659"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1687"
+            "line": " bridge.js:1666"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1694"
+            "line": " bridge.js:1760"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1788"
+            "line": " bridge.js:1845"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1873"
+            "line": " bridge.js:1852"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1880"
+            "line": " bridge.js:1887"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1915"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:1951"
+            "line": " bridge.js:1923"
         }
     ]
 }
