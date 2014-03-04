@@ -48,6 +48,13 @@
       CtripUtil.app_open_url('http://www.baidu.com/', 2, 'Baidu');
       CtripUtil.app_back_to_last_page("xxxx", true);
     }
+
+    function doButtonTest() {
+      var nav_bar_config_json = {"left":[{"tagname":"back"}], "centerButtons":[{"tagname":"title","value":"接机/接火车","icon","null"}], "right":[{"tagname":"call"}, {"tagname":"home"}]};
+      var jsonStr = JSON.stringify(nav_bar_config_json);
+      CtripUtil.app_refresh_nav_bar(jsonStr);
+    }
+
   </script>
 </head>
 <body>
@@ -60,6 +67,8 @@
    <li class="li2"><a onclick='javascript:CtripUtil.app_call_system_share("",  "这个是分享的内容", "这是标题", "http://www.ctrip.com/",true)'>iOS6系统分享API</a></li>
   <br/>
    <li class="li2"><a onclick='javascript:CtripUtil.app_call_system_share("",  "这个是分享的内容", "这是标题", "http://www.ctrip.com/",false)'>App分享API</a></li>
+  <br/>
+  <li class="li2"><a onclick="javascript:doButtonTest()">doButtonTest</a></li>
   <br/>
    <li class="li2"><a onclick="javascript:doubleAction()">JSLib自动化测试</a></li>
   <br/>
