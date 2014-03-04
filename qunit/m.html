@@ -51,9 +51,7 @@
 
     function doButtonTest() {
       var nav_bar_config_json = {"left":[{"tagname":"back"}], "centerButtons":[{"tagname":"centenAction","value":"上海城市","icon":"icon_arrowx.png"}], "right":[{"tagname":"call"}, {"tagname":"home"}]};
-      alert(nav_bar_config_json);
       var jsonStr = JSON.stringify(nav_bar_config_json);
-      alert(jsonStr);
       CtripUtil.app_refresh_nav_bar(jsonStr);
     }
 
