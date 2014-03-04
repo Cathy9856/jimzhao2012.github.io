@@ -50,7 +50,7 @@
     }
 
     function doButtonTest() {
-      var nav_bar_config_json = {"left":[{"tagname":"back"}], "centerButtons":[{"tagname":"title","value":"接机/接火车","icon","null"}], "right":[{"tagname":"call"}, {"tagname":"home"}]};
+      var nav_bar_config_json = {"left":[{"tagname":"back"}], "centerButtons":[{"tagname":"title","value":"接机/接火车","icon":"null"}], "right":[{"tagname":"call"}, {"tagname":"home"}]};
       var jsonStr = JSON.stringify(nav_bar_config_json);
       CtripUtil.app_refresh_nav_bar(jsonStr);
     }
