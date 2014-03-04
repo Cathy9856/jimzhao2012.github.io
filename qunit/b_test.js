@@ -135,7 +135,7 @@ function checkLocateInfo(jsonObj) {
 asyncTest("刷新顶部条:app_refresh_nav_bar", function() {
 	expect(1);
 
-	var nav_bar_config_json = {"left":[{"tagname":"back"}], "center":[{"tagname":"title","value":"接机/接火车"}], "right":[{"tagname":"call"}, {"tagname":"home"}]};
+	var nav_bar_config_json = {"left":[{"tagname":"back"}], "center":[{"tagname":"title","value":"接机/接火车"},{"tagname":"subTitle","value":"上海到北京"}], "right":[{"tagname":"call"}, {"tagname":"home"}]};
 	var jsonStr = JSON.stringify(nav_bar_config_json);
 	CtripUtil.app_refresh_nav_bar(jsonStr);
 	
