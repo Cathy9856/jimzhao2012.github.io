@@ -130,6 +130,7 @@ asyncTest("获取当前沙盒名", function(){
 		} else {
 			ok(true, "获取当前沙盒名失败"+JSON.stringify(jsonObj));
 		}
+		cb_ret.get_current_sandbox_name = null;
 	});
 });
 
@@ -153,6 +154,7 @@ asyncTest("写文本内容到文件", function(){
 		else {
 			ok(false, "写文本文件失败"+JSON.stringify(jsonObj));
 		}
+		cb_ret.write_text_to_file = null;
 	});
 });
 
@@ -170,6 +172,7 @@ asyncTest("获取文件大小",function(){
 		else {
 			ok(false, "获取文件大小失败"+JSON.stringify(jsonObj));
 		}
+		cb_ret.get_file_size = null;
 	});
 
 });
@@ -186,6 +189,7 @@ asyncTest("检查文件是否存在", function(){
 		} else {
 			ok(false, "检查文件是否存在失败"+JSON.stringify(jsonObj));
 		}
+		cb_ret.check_file_exist = null;
 	});
 
 });
@@ -202,6 +206,7 @@ asyncTest("删除文件", function(){
 		} else {
 			ok(false, "删除文件失败"+JSON.stringify(jsonObj));
 		}
+		cb_ret.delete_file = null;
 	});
 });
 
@@ -218,6 +223,7 @@ asyncTest("创建文件夹", function(){
 		} else {
 			cb_ret(false, "创建文件夹失败"+JSON.stringify(jsonObj));
 		}
+		cb_ret.make_dir = null;
 	});
 });
 
