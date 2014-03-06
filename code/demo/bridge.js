@@ -546,7 +546,8 @@ var CtripUtil = {
 
         //导航栏总共分为3部分，1.左侧，返回按钮，不能修改; 2. 中间title，可以任意设置; 3.右侧按钮，定义格式为{tagname:"xxxx",value:"btn_title"}
         var nav_json = {
-            "center": [{"tagname": "title", "value":"携程" }],
+            "center": [{"tagname": "title", "value":"携程"},{"tagname":"subtitle", "上海到北京"}],
+            "centerButtons": [{"tagname": "cityChoose", "value":"上海", "icon":"arrow_up.png"}], //from 5.5version
             "right": [{"tagname": "click_tag_name", "value":"Click"}]
         }
         var json_str = JSON.stringify(nav_json);
@@ -1955,6 +1956,386 @@ var CtripSumSungWallet = {
         }
     }
 
+};
+
+/**
+ * @class CtripFile
+ * @description 文件IO操作相关API
+ * @brief 文件IO操作相关API
+ */
+
+var CtripFile  = {
+    /**
+     * @description 获取当前web页面的sandbox目录，在webapp/wb_cache/xxxx/目录下xxxx即为当前sandbox的名字
+     * @brief 获取当前web页面的sandbox目录
+     * @method app_get_current_sandbox_name
+     * @since v5.4
+     * @author jimzhao
+     * @example 
+     
+      CtripFile.app_get_current_sandbox_name();
+
+     //调用之后会收到
+        var json_obj = {
+            tagname : "get_current_sandbox_name",
+            param : {
+                sandboxName: "car", 
+            }
+        }
+        
+        app.callback(json_obj);
+     */
+    app_get_current_sandbox_name:function() {
+        var startVersion = "5.4";
+        if(!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        var params = {};
+        params.pageUrl = window.location.href;
+
+        paramString = Internal.makeParamString("File", "getCurrentSandboxName", params, 'get_current_sandbox_name');
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } 
+        else if (Internal.isAndroid) {
+            window.File_a.getCurrentSandboxName(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+    
+     /**
+     * @description 文本写入文件中，UTF8编码。可以指定文件名，或者相对路径
+     * @brief 写文本到本地文件
+     * @method app_write_text_to_file
+     * @param {String} text 需要写入文件的文本内容
+     * @param {String} fileName 写入的文件路径
+     * @param {String} relativeFilePath 写入的文件相对路径，需要调用app_get_current_sandbox_name获取sandbox的名字+路径
+     * @param {BOOL} isAppend 是否是将当前文件append到已有文件
+     * @since v5.4
+     * @author jimzhao
+     * @example 
+     
+      CtripFile.app_write_text_to_file("Hello,世界", "log.txt", null, false); //文件存储在本地的/webapp/wb_cache/car/log.txt
+      CtripFile.app_write_text_to_file("Hello2,世界", null, /car/mydir/log.txt, false); //文件存储在本地的/webapp/wb_cache/car/mydir/log.txt
+
+     //调用之后会收到
+        var json_obj = {
+            tagname : "write_text_to_file",
+            param : {
+                isSuccess: true, 
+            }
+        }
+        
+        app.callback(json_obj);
+     */
+    app_write_text_to_file:function(text, fileName, relativeFilePath, isAppend) {
+        var startVersion = "5.4";
+        if(!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+        if (!text) {
+            text = "";
+        }
+        if (!fileName) {
+            fileName = "";
+        }
+        if (!relativeFilePath) {
+            relativeFilePath = "";
+        }
+        var params = {};
+        params.pageUrl = window.location.href;
+        params.text = text;
+        params.fileName = fileName;
+        params.relativeFilePath = relativeFilePath;
+        params.isAppend = isAppend;
+        paramString = Internal.makeParamString("File", "writeTextToFile", params, 'write_text_to_file');
+
+        if (Internal.isIOS) {
+            url = Internal.makeParamString(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.File_a.writeTextToFile(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+     /**
+     * @description 删除文件/目录。可以指定文件名，或者相对路径
+     * @brief 删除文件/目录
+     * @method app_delete_file
+     * @param {String} fileName 需要删除的文件路径
+     * @param {String} relativeFilePath 需要删除的文件相对路径，需要调用app_get_current_sandbox_name获取sandbox的名字+路径
+     * @since v5.4
+     * @author jimzhao
+     * @example 
+     
+      CtripFile.app_delete_file("log.txt", null); //删除文件/webapp/wb_cache/car/log.txt
+      CtripFile.app_delete_file(null,"/car/mydir/log.txt"; //删除文件/webapp/wb_cache/car/mydir/log.txt
+
+     //调用之后会收到
+        var json_obj = {
+            tagname : "delete_file",
+            param : {
+                isSuccess: true, 
+            }
+        }
+        
+        app.callback(json_obj);
+     */    
+    app_delete_file:function(fileName, relativeFilePath) {
+        var startVersion = "5.4";
+        if(!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!fileName) {
+            fileName = "";
+        }
+        if (!relativeFilePath) {
+            relativeFilePath = "";
+        }
+
+        var params = {};
+        params.fileName = fileName;
+        params.relativeFilePath = relativeFilePath;
+        paramString = Internal.makeParamString("File", "deleteFile", params, 'delete_file');
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } 
+        else if (Internal.isAndroid) {
+            window.File_a.deleteFile(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+    
+    /**
+     * @description 读取文本文件内容，UTF-8编码。可以指定文件名，或者相对路径
+     * @brief 读取文本文件内容
+     * @method app_read_text_from_file
+     * @param {String} fileName 需要读取内容的文件路径
+     * @param {String} relativeFilePath 需要读取内容的文件相对路径，需要调用app_get_current_sandbox_name获取sandbox的名字+路径
+     * @since v5.4
+     * @author jimzhao
+     * @example 
+     
+      CtripFile.app_read_text_from_file("log.txt", null); //从文件/webapp/wb_cache/car/log.txt读取内容
+      CtripFile.app_read_text_from_file(null,"/car/mydir/log.txt"; //从文件/webapp/wb_cache/car/mydir/log.txt读取内容
+
+     //调用之后会收到
+        var json_obj = {
+            tagname : "read_text_from_file",
+            param : {
+                text: "Hello,世界", 
+            }
+        }
+        
+        app.callback(json_obj);
+     */ 
+    app_read_text_from_file:function(fileName, relativeFilePath) {
+        var startVersion = "5.4";
+        if(!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!fileName) {
+            fileName = "";
+        }
+        if (!relativeFilePath) {
+            relativeFilePath = "";
+        }
+
+        var params = {};
+        params.fileName = fileName;
+        params.relativeFilePath = relativeFilePath;
+        paramString = Internal.makeParamString("File", "readTextFromFile", params, 'read_text_from_file');
+
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.File_a.readTextFromFile(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+    
+    /**
+     * @description 读取文件大小。可以指定文件名，或者相对路径
+     * @brief 读取文件大小
+     * @method app_get_file_size
+     * @param {String} fileName 需要读取文件大小的文件路径
+     * @param {String} relativeFilePath 需要读取文件大小的文件相对路径，需要调用app_get_current_sandbox_name获取sandbox的名字+路径
+     * @since v5.4
+     * @author jimzhao
+     * @example 
+     
+      CtripFile.app_get_file_size("log.txt", null); //从文件/webapp/wb_cache/car/log.txt读取内容
+      CtripFile.app_get_file_size(null,"/car/mydir/log.txt"; //从文件/webapp/wb_cache/car/mydir/log.txt读取内容
+
+     //调用之后会收到
+        var json_obj = {
+            tagname : "get_file_size",
+            param : {
+                fileSize: 8 
+            }
+        }
+        
+        app.callback(json_obj);
+     */ 
+    app_get_file_size:function(fileName, relativeFilePath) {
+        var startVersion = "5.4";
+        if(!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!fileName) {
+            fileName = "";
+        }
+        if (!relativeFilePath) {
+            relativeFilePath = "";
+        }
+
+        var params = {};
+        params.fileName = fileName;
+        params.relativeFilePath = relativeFilePath;
+        paramString = Internal.makeParamString("File", "getFileSize", params, 'get_file_size');
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam();
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.File_a.getFileSize(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+    
+      /**
+     * @description 检查文件是否存在。可以指定文件名，或者相对路径
+     * @brief 检查文件是否存在
+     * @method app_check_file_exist
+     * @param {String} fileName 需要读取文件大小的文件路径
+     * @param {String} relativeFilePath 需要读取文件大小的文件相对路径，需要调用app_get_current_sandbox_name获取sandbox的名字+路径
+     * @since v5.4
+     * @author jimzhao
+     * @example 
+     
+      CtripFile.app_check_file_exist("log.txt", null); //从文件/webapp/wb_cache/car/log.txt读取内容
+      CtripFile.app_check_file_exist(null,"/car/mydir/log.txt"; //从文件/webapp/wb_cache/car/mydir/log.txt读取内容
+
+     //调用之后会收到
+        var json_obj = {
+            tagname : "check_file_exist",
+            param : {
+                isExist: true 
+            }
+        }
+        
+        app.callback(json_obj);
+     */ 
+    app_check_file_exist:function(fileName, relativeFilePath) {
+        var startVersion = "5.4";
+        if(!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!fileName) {
+            fileName = "";
+        }
+        if (!relativeFilePath) {
+            relativeFilePath = "";
+        }
+
+        var params = {};
+        params.fileName = fileName;
+        params.relativeFilePath = relativeFilePath;
+        paramString = Internal.makeParamString("File", "checkFileExist", params, 'check_file_exist');
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam();
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.File_a.checkFileExist(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+    
+    /**
+     * @description 创建文件夹。可以指定文件名，或者相对路径
+     * @brief 创建文件夹
+     * @method app_make_dir
+     * @param {String} dirName 需要创建的文件夹路径
+     * @param {String} relativeDirPath 需要创建的文件夹相对路径，需要调用app_get_current_sandbox_name获取sandbox的名字+路径
+     * @since v5.4
+     * @author jimzhao
+     * @example 
+     
+      CtripFile.app_make_dir("mydir2", null); //创建文件夹/webapp/wb_cache/car/mydir2/
+      CtripFile.app_make_dir(null,"/car/mydir/innerDir"; //创建文件夹/webapp/wb_cache/car/mydir/innerDir/
+
+     //调用之后会收到
+        var json_obj = {
+            tagname : "check_file_exist",
+            param : {
+                isSuccess: true 
+            }
+        }
+        
+        app.callback(json_obj);
+     */ 
+    app_make_dir:function(dirName,relativeDirPath) {
+        var startVersion = "5.4";
+        if(!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!dirName) {
+            dirName = "";
+        }
+        if (!relativeDirPath) {
+            relativeDirPath = "";
+        }
+
+        var params = {};
+        params.dirName = dirName;
+        params.relativeDirPath = relativeDirPath;
+
+        paramString = Internal.makeParamString("File", "makeDir", params, 'make_dir');
+
+         if (Internal.isIOS) {
+            url = Internal.makeURLWithParam();
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.File_a.makeDir(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    }
+    
 };
 
 

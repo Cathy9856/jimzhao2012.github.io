@@ -95,9 +95,128 @@ var app = {
 	    }
 	    else if (tagname == "download_ticket_in_samsung_wallet") {
 	    	cb_ret.download_ticket_in_samsung_wallet = jsonObj;
+	    } 
+	    else if (tagname == "get_current_sandbox_name") {
+	    	cb_ret.get_current_sandbox_name = jsonObj;
+	    }
+	    else if (tagname == "write_text_to_file") {
+	    	cb_ret.write_text_to_file = jsonObj;
+	    }
+	    else if (tagname == "delete_file") {
+	    	cb_ret.delete_file = jsonObj;
+	    }
+	    else if (tagname == "get_file_size") {
+	    	cb_ret.get_file_size = jsonObj;
+	    }
+	    else if (tagname == "check_file_exist") {
+	    	cb_ret.check_file_exist = jsonObj;
+	    }
+	    else if (tagname == "make_dir") {
+	    	cb_ret.make_dir = jsonObj;
 	    }
     }
 };
+
+asyncTest("获取当前沙盒名", function(){
+	expect(1);
+	CtripFile.app_get_current_sandbox_name();
+
+	setTimeout(function(){
+		start();
+
+		var jsonObj = cb_ret.get_current_sandbox_name;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "get_current_sandbox_name") {
+			ok(true, "获取当前沙盒名成功"+JSON.stringify(jsonObj));
+		} else {
+			ok(true, "获取当前沙盒名失败"+JSON.stringify(jsonObj));
+		}
+	});
+});
+
+var testText = "Hello, 时间，Good";
+var testAppendText = "This is append 啦啦x";
+var testFileName = "logd.txt";
+var testRelativeFile = null;
+var testDirName = "mFolder";
+var testRelativeDir = null;
+
+asyncTest("写文本内容到文件", function(){
+	expect(1);
+	CtripFile.app_write_text_to_file(testText, testFileName, testRelativeFile, false);
+
+	setTimeout(function(){
+		start();
+		var jsonObj = cb_ret.write_text_to_file;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "write_text_to_file") {
+			ok(true, "写文本文件成功"+JSON.stringify(jsonObj));
+		}
+		else {
+			ok(false, "写文本文件失败"+JSON.stringify(jsonObj));
+		}
+	});
+});
+
+
+asyncTest("获取文件大小",function(){
+	expect(1);
+	CtripFile.app_get_file_size(testFileName, testRelativeFile);
+
+	setTimeout(function(){
+		start();
+		var jsonObj = cb_ret.get_file_size;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "get_file_size") {
+			ok(true, "获取文件大小成功"+JSON.stringify(jsonObj));
+		} 
+		else {
+			ok(false, "获取文件大小失败"+JSON.stringify(jsonObj));
+		}
+	});
+
+});
+
+asyncTest("检查文件是否存在", function(){
+	expect(1);
+	CtripFile.app_check_file_exist(testFileName, testRelativeFile);
+
+	setTimeout(function(){
+		start();
+		var jsonObj = cb_ret.check_file_exist;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "check_file_exist") {
+
+		}
+	});
+
+});
+
+asyncTest("删除文件", function(){
+	expect(1);
+	CtripFile.app_delete_file(testFileName, testRelativeFile);
+
+	setTimeout(function(){
+		start();
+		var jsonObj = cb_ret.delete_file;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "delete_file") {
+			ok(true, "删除文件成功"+JSON.stringify(jsonObj));
+		} else {
+			ok(false, "删除文件失败"+JSON.stringify(jsonObj));
+		}
+	});
+});
+
+asyncTest("创建文件夹", function(){
+	expect(1);
+	CtripFile.app_make_dir(testDirName, testRelativeDir);
+
+	setTimeout(function(){
+		start();
+		var jsonObj = cb_ret.make_dir;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "make_dir") {
+			cb_ret(true, "创建文件夹成功"+JSON.stringify(jsonObj));
+		} else {
+			cb_ret(false, "创建文件夹失败"+JSON.stringify(jsonObj));
+		}
+	});
+});
 
 function checkLocateInfo(jsonObj) {
 	var geoInfo = jsonObj.param;
@@ -510,44 +629,6 @@ asyncTest("测试App环境", function(){
 asyncTest("测试通过APP管道发送服务",function(){
 	expect(1);
 
-	// data = {
- //             "biztype":4,
- //      "creditCardInfo":{
- //               			"add":{
- //                                "cvv2":"123",
- //                                "expiryDate":"2022/10/01 17:01:21",
- //                                "holder":"wwwwww",
- //                                "idCardNo":"310562566255662456854",
- //                                "idCardType":1,
- //                                "isLast4Pay":true,
- //                                "no":"5200820000000008",
- //                                "typeId":4
- //                       		},
- //                       	"amt": 573.0,
- //                    "oprType":1, //1：添加或支付
- //                   "payWayId":"EB_ABC"
- //             },
- //             "oprType":1, //1：支付
- //           "orderInfo":{
- //                       "amt":573.0,
- //                  "currency":"CNY",
- //                       	"id":351020348
- //             },
- //             "payType":2, //2：信用卡
- //             "useType":1 // 1支付； 2担保
- //    };
-
- //    header = {
- //         "auth":"9B9CC8C9C31A48E16602F31C54B8464817ACB9F16D6C90191C839572908384EA",
- //         "cid":"32012676700000095228",
- //         "ctok":"359614041107439",
- //         "cver":"5.0",
- //         "lang":"01",
- //         "sid":"8892",  
- //         "syscode":"32"
- //      };
-
-
 	header = "{\"auth\":\"A04AC1F9E7C2275CFA10640392B77045F044A53C173E7CFE34586FDBA9E7A65B\", \"cid\":1,\"ctok\":1,\"cver\":5.4,\"lang\":01,\"sid\":111,\"syscode\":32}";
 
 	data = "{\"ver\":1,\"oid\":351015106,\"amount\":1,\"mobphone\":13764471455,\"isnewcard\":false,\"cardno\":5194120000000001,\"typid\":4,\"category\":3}";
@@ -626,51 +707,4 @@ asyncTest("测试在三星钱包中查看Ticket", function(){
 	},sync_time_interval*2);
 
 });
-
-// asyncTest("推荐携程旅行给好友:app_recommend_app_to_friends", function() {
-// 	expect(1);
-// 	CtripUtil.app_recommend_app_to_friends();
-// 	setTimeout(function() {
-// 		start();
-// 		var jsonObj = cb_ret.recommend_app_to_friends;
-// 		if (jsonObj.tagname == "recommend_app_to_friends") {
-// 			ok(true, "推荐给携程旅行好友成功");
-// 			cb_ret.recommend_app_to_friends = null;
-// 		}
-// 	});
-// });
-
-// asyncTest("添加微信好友:app_add_weixin_friend", function() {
-// 	expect(1);
-// 	CtripUtil.app_add_weixin_friend();
-// 	setTimeout(function(){
-// 		start();
-// 		var jsonObj = cb_ret.add_weixin_friend;
-// 		if (jsonObj.tagname == "add_weixin_friend") {
-// 			ok(true, "添加微信好友成功");
-// 			cb_ret.add_weixin_friend = null;
-// 		};
-// 	})
-
-// });
-
-// asyncTest("查看新手引导页:app_show_newest_introduction", function() {
-// 	expect(1);
-// 	CtripUtil.app_show_newest_introduction();
-// 	setTimeout(function(){
-// 		start();
-// 		var jsonObj = cb_ret.show_newest_introduction;
-// 		if (jsonObj.tagname == "show_newest_introduction") {
-// 			ok(true, "查看新手引导页成功");
-// 			cb_ret.show_newest_introduction = null;
-// 		};
-// 	});
-// });
-
-//	  app_open_url:function(openUrl, targetMode, title) 测试
-//    app_cross_package_href:function(path, param) {
-
-// CtripUser 测试
-//    app_member_login:function() {
-//    app_member_register:function() {
 
