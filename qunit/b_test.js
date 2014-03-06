@@ -182,7 +182,9 @@ asyncTest("检查文件是否存在", function(){
 		start();
 		var jsonObj = cb_ret.check_file_exist;
 		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "check_file_exist") {
-
+			ok(true, "检查文件是否存在成功"+JSON.stringify(jsonObj));
+		} else {
+			ok(false, "检查文件是否存在失败"+JSON.stringify(jsonObj));
 		}
 	});
 
@@ -210,6 +212,7 @@ asyncTest("创建文件夹", function(){
 	setTimeout(function(){
 		start();
 		var jsonObj = cb_ret.make_dir;
+		alert(jsonObj);
 		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "make_dir") {
 			cb_ret(true, "创建文件夹成功"+JSON.stringify(jsonObj));
 		} else {
