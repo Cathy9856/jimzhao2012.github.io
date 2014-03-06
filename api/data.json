@@ -1297,7 +1297,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2071,
+            "line": 2070,
             "description": "删除文件/目录。可以指定文件名，或者相对路径",
             "brief": "删除文件/目录",
             "itemtype": "method",
@@ -1349,7 +1349,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2178,
+            "line": 2179,
             "description": "读取文件大小。可以指定文件名，或者相对路径",
             "brief": "读取文件大小",
             "itemtype": "method",
@@ -1375,7 +1375,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2231,
+            "line": 2233,
             "description": "检查文件是否存在。可以指定文件名，或者相对路径",
             "brief": "检查文件是否存在",
             "itemtype": "method",
@@ -1401,7 +1401,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2284,
+            "line": 2287,
             "description": "创建文件夹。可以指定文件名，或者相对路径",
             "brief": "创建文件夹",
             "itemtype": "method",
@@ -1701,7 +1701,7 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2071"
+            "line": " bridge.js:2070"
         },
         {
             "message": "unknown tag: brief",
@@ -1709,15 +1709,15 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2178"
+            "line": " bridge.js:2179"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2231"
+            "line": " bridge.js:2233"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2284"
+            "line": " bridge.js:2287"
         }
     ]
 }

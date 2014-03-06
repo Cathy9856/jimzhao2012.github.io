@@ -2055,10 +2055,8 @@ var CtripFile  = {
         params.relativeFilePath = relativeFilePath;
         params.isAppend = isAppend;
         paramString = Internal.makeParamString("File", "writeTextToFile", params, 'write_text_to_file');
-        alert(paramString);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
-            alert(url);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -2109,6 +2107,7 @@ var CtripFile  = {
         var params = {};
         params.fileName = fileName;
         params.relativeFilePath = relativeFilePath;
+        params.pageUrl = window.location.href;
         paramString = Internal.makeParamString("File", "deleteFile", params, 'delete_file');
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
@@ -2161,6 +2160,7 @@ var CtripFile  = {
 
         var params = {};
         params.fileName = fileName;
+        params.pageUrl = window.location.href;
         params.relativeFilePath = relativeFilePath;
         paramString = Internal.makeParamString("File", "readTextFromFile", params, 'read_text_from_file');
 
@@ -2216,6 +2216,7 @@ var CtripFile  = {
         var params = {};
         params.fileName = fileName;
         params.relativeFilePath = relativeFilePath;
+        params.pageUrl = window.location.href;
         paramString = Internal.makeParamString("File", "getFileSize", params, 'get_file_size');
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
@@ -2269,6 +2270,7 @@ var CtripFile  = {
         var params = {};
         params.fileName = fileName;
         params.relativeFilePath = relativeFilePath;
+        params.pageUrl = window.location.href;
         paramString = Internal.makeParamString("File", "checkFileExist", params, 'check_file_exist');
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
@@ -2321,6 +2323,7 @@ var CtripFile  = {
 
         var params = {};
         params.dirName = dirName;
+        params.pageUrl = window.location.href;
         params.relativeDirPath = relativeDirPath;
 
         paramString = Internal.makeParamString("File", "makeDir", params, 'make_dir');

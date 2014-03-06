@@ -2159,9 +2159,8 @@ var CtripFile  = {
         params.relativeFilePath = relativeFilePath;
         params.isAppend = isAppend;
         paramString = Internal.makeParamString(&quot;File&quot;, &quot;writeTextToFile&quot;, params, &#x27;write_text_to_file&#x27;);
-
         if (Internal.isIOS) {
-            url = Internal.makeParamString(paramString);
+            url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -2212,6 +2211,7 @@ var CtripFile  = {
         var params = {};
         params.fileName = fileName;
         params.relativeFilePath = relativeFilePath;
+        params.pageUrl = window.location.href;
         paramString = Internal.makeParamString(&quot;File&quot;, &quot;deleteFile&quot;, params, &#x27;delete_file&#x27;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
@@ -2264,6 +2264,7 @@ var CtripFile  = {
 
         var params = {};
         params.fileName = fileName;
+        params.pageUrl = window.location.href;
         params.relativeFilePath = relativeFilePath;
         paramString = Internal.makeParamString(&quot;File&quot;, &quot;readTextFromFile&quot;, params, &#x27;read_text_from_file&#x27;);
 
@@ -2319,9 +2320,10 @@ var CtripFile  = {
         var params = {};
         params.fileName = fileName;
         params.relativeFilePath = relativeFilePath;
+        params.pageUrl = window.location.href;
         paramString = Internal.makeParamString(&quot;File&quot;, &quot;getFileSize&quot;, params, &#x27;get_file_size&#x27;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam();
+            url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -2372,9 +2374,10 @@ var CtripFile  = {
         var params = {};
         params.fileName = fileName;
         params.relativeFilePath = relativeFilePath;
+        params.pageUrl = window.location.href;
         paramString = Internal.makeParamString(&quot;File&quot;, &quot;checkFileExist&quot;, params, &#x27;check_file_exist&#x27;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam();
+            url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -2424,12 +2427,13 @@ var CtripFile  = {
 
         var params = {};
         params.dirName = dirName;
+        params.pageUrl = window.location.href;
         params.relativeDirPath = relativeDirPath;
 
         paramString = Internal.makeParamString(&quot;File&quot;, &quot;makeDir&quot;, params, &#x27;make_dir&#x27;);
 
          if (Internal.isIOS) {
-            url = Internal.makeURLWithParam();
+            url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
