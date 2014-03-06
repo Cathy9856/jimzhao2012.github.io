@@ -217,9 +217,11 @@ asyncTest("创建文件夹", function(){
 	setTimeout(function(){
 		start();
 		var jsonObj = cb_ret.make_dir;
-		alert(JSON.stringify(jsonObj));
 		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "make_dir") {
-			cb_ret(true, "创建文件夹成功"+JSON.stringify(jsonObj));
+			alert(JSON.stringify(jsonObj));
+			var alertStr = "创建文件夹成功" + JSON.stringify(jsonObj);
+			alert(alertStr);
+			cb_ret(true, alertStr);
 		} else {
 			cb_ret(false, "创建文件夹失败"+JSON.stringify(jsonObj));
 		}
