@@ -2055,9 +2055,10 @@ var CtripFile  = {
         params.relativeFilePath = relativeFilePath;
         params.isAppend = isAppend;
         paramString = Internal.makeParamString("File", "writeTextToFile", params, 'write_text_to_file');
-
+        alert(paramString);
         if (Internal.isIOS) {
-            url = Internal.makeParamString(paramString);
+            url = Internal.makeURLWithParam(paramString);
+            alert(url);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -2217,7 +2218,7 @@ var CtripFile  = {
         params.relativeFilePath = relativeFilePath;
         paramString = Internal.makeParamString("File", "getFileSize", params, 'get_file_size');
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam();
+            url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -2270,7 +2271,7 @@ var CtripFile  = {
         params.relativeFilePath = relativeFilePath;
         paramString = Internal.makeParamString("File", "checkFileExist", params, 'check_file_exist');
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam();
+            url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -2325,7 +2326,7 @@ var CtripFile  = {
         paramString = Internal.makeParamString("File", "makeDir", params, 'make_dir');
 
          if (Internal.isIOS) {
-            url = Internal.makeURLWithParam();
+            url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
