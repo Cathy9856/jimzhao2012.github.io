@@ -546,8 +546,8 @@ var CtripUtil = {
 
         //导航栏总共分为3部分，1.左侧，返回按钮，不能修改; 2. 中间title，可以任意设置; 3.右侧按钮，定义格式为{tagname:"xxxx",value:"btn_title"}
         var nav_json = {
-            "center": [{"tagname": "title", "value":"携程"},{"tagname":"subtitle", "上海到北京"}],
-            "centerButtons": [{"tagname": "cityChoose", "value":"上海", "icon":"arrow_up.png"}], //from 5.5version
+            "center": [{"tagname": "title", "value":"携程"},{"tagname":"subtitle", value:"上海到北京"}],
+            "centerButton": [{"tagname": "cityChoose", "value":"上海", "a_icon":"arrow_up.png", "i_icon":"arrow_up.png"}], //from 5.5version
             "right": [{"tagname": "click_tag_name", "value":"Click"}]
         }
         var json_str = JSON.stringify(nav_json);
