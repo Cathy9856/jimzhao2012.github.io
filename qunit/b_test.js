@@ -155,7 +155,7 @@ asyncTest("写文本内容到文件", function(){
 			ok(false, "写文本文件失败"+JSON.stringify(jsonObj));
 		}
 		cb_ret.write_text_to_file = null;
-	});
+	},sync_time_interval);
 });
 
 
@@ -173,7 +173,7 @@ asyncTest("获取文件大小",function(){
 			ok(false, "获取文件大小失败"+JSON.stringify(jsonObj));
 		}
 		cb_ret.get_file_size = null;
-	});
+	},sync_time_interval);
 
 });
 
@@ -190,7 +190,7 @@ asyncTest("检查文件是否存在", function(){
 			ok(false, "检查文件是否存在失败"+JSON.stringify(jsonObj));
 		}
 		cb_ret.check_file_exist = null;
-	});
+	},sync_time_interval);
 
 });
 
@@ -207,7 +207,7 @@ asyncTest("删除文件", function(){
 			ok(false, "删除文件失败"+JSON.stringify(jsonObj));
 		}
 		cb_ret.delete_file = null;
-	});
+	},sync_time_interval);
 });
 
 asyncTest("创建文件夹", function(){
@@ -223,7 +223,7 @@ asyncTest("创建文件夹", function(){
 			ok(false, "创建文件夹失败"+JSON.stringify(jsonObj));
 		}
 		cb_ret.make_dir = null;
-	});
+	},sync_time_interval);
 });
 
 function checkLocateInfo(jsonObj) {
