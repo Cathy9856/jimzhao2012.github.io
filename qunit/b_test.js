@@ -655,9 +655,9 @@ asyncTest("测试App环境", function(){
 asyncTest("测试通过APP管道发送服务",function(){
 	expect(1);
 
-	header = "{\"auth\":\"A04AC1F9E7C2275CFA10640392B77045F044A53C173E7CFE34586FDBA9E7A65B\", \"cid\":1,\"ctok\":1,\"cver\":5.4,\"lang\":01,\"sid\":111,\"syscode\":32}";
+	// header = "{\"auth\":\"A04AC1F9E7C2275CFA10640392B77045F044A53C173E7CFE34586FDBA9E7A65B\", \"cid\":1,\"ctok\":1,\"cver\":5.4,\"lang\":01,\"sid\":111,\"syscode\":32}";
 
-	data = "{\"ver\":1,\"oid\":351015106,\"amount\":1,\"mobphone\":13764471455,\"isnewcard\":false,\"cardno\":5194120000000001,\"typid\":4,\"category\":3}";
+	// data = "{\"ver\":1,\"oid\":351015106,\"amount\":1,\"mobphone\":13764471455,\"isnewcard\":false,\"cardno\":5194120000000001,\"typid\":4,\"category\":3}";
 
 	header = "{\"cid\": \"c564c11c-26a5-9d5d-7603-b803af0a4c18\",\"ctok\": \"351858059049938\",\"cver\": \"1.0\",\"lang\": \"01\",\"sid\": \"8888\",\"syscode\": \"09\",\"auth\": \"401DA7A93EE8BA5264DE8F0466E080C8C2B5292F14CBE5DF8D2AF150AE148911\"}";
 
