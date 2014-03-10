@@ -140,7 +140,7 @@ asyncTest("获取当前沙盒名", function(){
 var testText = "Hello, 时间，Good";
 var testAppendText = "This is append 啦啦x";
 var testFileName = null;//"logd.txt";
-var testRelativeFile = "/mdir/logdt.txt";//null;
+var testRelativeFile = "/jimzhao2012.github.io/mdir/logdt.txt";//null;
 var testDirName =  "mFolder";
 var testRelativeDir = null;
 
@@ -662,7 +662,7 @@ asyncTest("测试通过APP管道发送服务",function(){
 	header = "{\"cid\": \"c564c11c-26a5-9d5d-7603-b803af0a4c18\",\"ctok\": \"351858059049938\",\"cver\": \"1.0\",\"lang\": \"01\",\"sid\": \"8888\",\"syscode\": \"09\",\"auth\": \"401DA7A93EE8BA5264DE8F0466E080C8C2B5292F14CBE5DF8D2AF150AE148911\"}";
 
 	data = "{\"ver\": 0,\"bustype\": 2001,\"oid\": 53814,\"searchmap\": 0,\"usetype\": 1}";
-	
+
 	serviceCode = "31000101";
 
 	CtripPipe.app_send_H5_pipe_request(serviceCode,header,data,"12345");
