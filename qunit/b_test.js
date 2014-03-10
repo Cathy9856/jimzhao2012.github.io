@@ -139,9 +139,9 @@ asyncTest("获取当前沙盒名", function(){
 
 var testText = "Hello, 时间，Good";
 var testAppendText = "This is append 啦啦x";
-var testFileName = "logd.txt";
-var testRelativeFile = null;
-var testDirName = "mFolder";
+var testFileName = null;//"logd.txt";
+var testRelativeFile = "/mdir/logdt.txt";//null;
+var testDirName =  "mFolder";
 var testRelativeDir = null;
 
 asyncTest("写文本内容到文件", function(){
