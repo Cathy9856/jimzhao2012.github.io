@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>CtripTool</title>
+    <title>CtripBar</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -100,7 +100,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>CtripTool Class</h1>
+                        <h1>CtripBar Class</h1>
 <div class="box meta">
     
 
@@ -108,7 +108,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l251"><code>bridge.js:251</code></a>
+            定义在: <a href="../files/bridge.js.html#l2296"><code>bridge.js:2296</code></a>
         </div>
     
 
@@ -120,7 +120,7 @@
 
 
 <div class="box intro">
-    <p>工具类,和App无交互，纯JS处理</p>
+    <p>H5页面顶部导航栏和底部工具栏的控制</p>
 
 </div>
 
@@ -150,14 +150,22 @@
                     <table>
                     <tr><th>描述</th><th>函数</th></tr>
                     
-                    <tr><td>判断当前是否是在App内</td><td><a href="#method_app_is_in_ctrip_app">app_is_in_ctrip_app</a></td></tr>
+                    <tr><td>刷新顶部条按钮和文字</td><td><a href="#method_app_refresh_nav_bar">app_refresh_nav_bar</a></td></tr>
                     
-                    <tr><td>H5写日志到app(兼容)</td><td><a href="#method_app_log">app_log</a></td></tr>
+                    <tr><td>顶部导航隐藏／显示</td><td><a href="#method_app_set_navbar_hidden">app_set_navbar_hidden</a></td></tr>
+                    
+                    <tr><td>底部工具栏隐藏／显示</td><td><a href="#method_app_set_toolbar_hidden">app_set_toolbar_hidden</a></td></tr>
                                   
                     </table>
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -187,91 +195,8 @@
                 <h2 class="off-left">方法</h2>
 
                 
-                    <div id="method_app_is_in_ctrip_app" class="method item">
-    <h3 class="name"><code>app_is_in_ctrip_app</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                定义在
-                
-            
-        
-        
-        <a href="../files/bridge.js.html#l258"><code>bridge.js:258</code></a>
-        
-        </p>
-
-
-        
-
-        
-            <p>可用版本 5.2</p>
-        
-    </div>
-
-    <div class="description">
-        <p>判断当前H5页面是否是在App内</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>返回:</h4>
-
-            <div class="returns-description">
-                
-                    
-                    <p>bool, true代表在app环境，false表示不在app环境</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>举例:</h4>
-
-            <div class="example-content">
-                <p>var ret = CtripTool.app_is_in_ctrip_app();
-alert(&quot;isInApp==&quot;+ret);</p>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_app_log" class="method item">
-    <h3 class="name"><code>app_log</code></h3>
+                    <div id="method_app_refresh_nav_bar" class="method item">
+    <h3 class="name"><code>app_refresh_nav_bar</code></h3>
 
     
         <div class="args">
@@ -279,13 +204,7 @@ alert(&quot;isInApp==&quot;+ret);</p>
             
                 <li class="arg">
                     
-                        <code>log</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>result</code>
+                        <code>(String)</code>
                     
                 </li>
             
@@ -318,7 +237,7 @@ alert(&quot;isInApp==&quot;+ret);</p>
             
         
         
-        <a href="../files/bridge.js.html#l291"><code>bridge.js:291</code></a>
+        <a href="../files/bridge.js.html#l2303"><code>bridge.js:2303</code></a>
         
         </p>
 
@@ -331,7 +250,7 @@ alert(&quot;isInApp==&quot;+ret);</p>
     </div>
 
     <div class="description">
-        <p>将log写入到native的日志界面，该函数已移动到CtripUtil类，此处只做兼容。具体参考CtripUtil.app_log()函数</p>
+        <p>刷新顶部条按钮和文字</p>
 
     </div>
 
@@ -343,30 +262,14 @@ alert(&quot;isInApp==&quot;+ret);</p>
             
                 <li class="param">
                     
-                        <code class="param-name">log</code>
-                        <span class="type">String</span>
+                        <code class="param-name">(String)</code>
+                        <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>需要打印打log</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">result</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间</p>
+                        <p>nav_bar_config_json 顶部条配置json串</p>
 
                     </div>
 
@@ -384,7 +287,151 @@ alert(&quot;isInApp==&quot;+ret);</p>
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>CtripUtil.app_log(&quot;execute script xxxxx&quot;, &quot;result for script is oooooo&quot;);</code></pre>
+                <pre class="code prettyprint"><code>   //导航栏总共分为3部分，1.左侧，返回按钮，不能修改; 2. 中间title，可以任意设置; 3.右侧按钮，定义格式为{tagname:&quot;xxxx&quot;,value:&quot;btn_title&quot;}
+   var nav_json = {
+       &quot;center&quot;: [{&quot;tagname&quot;: &quot;title&quot;, &quot;value&quot;:&quot;携程&quot;},{&quot;tagname&quot;:&quot;subtitle&quot;, value:&quot;上海到北京&quot;}],
+       &quot;centerButton&quot;: [{&quot;tagname&quot;: &quot;cityChoose&quot;, &quot;value&quot;:&quot;上海&quot;, &quot;a_icon&quot;:&quot;arrow_up.png&quot;, &quot;i_icon&quot;:&quot;arrow_up.png&quot;}], //from 5.5version
+       &quot;right&quot;: [{&quot;tagname&quot;: &quot;click_tag_name&quot;, &quot;value&quot;:&quot;Click&quot;}]
+   }
+   var json_str = JSON.stringify(nav_json);
+   CtripBar.app_refresh_nav_bar(json_str);
+
+   //调用完成，顶部条title为携程，右侧有一个按钮，按钮文字为Click，用户点击按钮后，H5页面会收到如下回调
+   var cb_json = {tagname:&quot;click_tag_name&quot;};
+   app.callback(cb_json);
+   //H5页面需要处理tagname为click_tag_name的事件</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_set_navbar_hidden" class="method item">
+    <h3 class="name"><code>app_set_navbar_hidden</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l2350"><code>bridge.js:2350</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 5.4</p>
+        
+    </div>
+
+    <div class="description">
+        <p>设置顶部导航栏隐藏／显示</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>CtripBar.app_set_navbar_hidden(false);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_set_toolbar_hidden" class="method item">
+    <h3 class="name"><code>app_set_toolbar_hidden</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l2383"><code>bridge.js:2383</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 5.4</p>
+        
+    </div>
+
+    <div class="description">
+        <p>设置底部工具栏隐藏／显示</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>CtripBar.app_set_toolbar_hidden(false);</code></pre>
 
             </div>
         </div>

@@ -551,7 +551,7 @@ var CtripUtil = {
             "right": [{"tagname": "click_tag_name", "value":"Click"}]
         }
         var json_str = JSON.stringify(nav_json);
-        CtripUtil.app_refresh_nav_bar(json_str);
+        CtripBar.app_refresh_nav_bar(json_str);
 
         //调用完成，顶部条title为携程，右侧有一个按钮，按钮文字为Click，用户点击按钮后，H5页面会收到如下回调
         var cb_json = {tagname:"click_tag_name"};
@@ -559,26 +559,9 @@ var CtripUtil = {
         //H5页面需要处理tagname为click_tag_name的事件
      */
     app_refresh_nav_bar:function(nav_bar_config_json) {
-        if (Internal.isNotEmptyString(nav_bar_config_json)) {
-            jsonObj = JSON.parse(nav_bar_config_json);
-
-            jsonObj.service = "NavBar";
-            jsonObj.action = "refresh";
-            jsonObj.callback_tagname = "refresh_nav_bar";
-
-            paramString = JSON.stringify(jsonObj);
-            if (Internal.isIOS) {
-                url = Internal.makeURLWithParam(paramString);
-                Internal.loadURL(url);
-            }
-            else if (Internal.isAndroid) {
-                window.NavBar_a.refresh(paramString);
-            }
-            else if (Internal.isWinOS) {
-                Internal.callWin8App(paramString);
-            }
-        }
+        CtripBar.app_refresh_nav_bar(nav_bar_config_json);
     },
+
 
     /**
      * @description Hybrid页面，打开链接URL地址，兼容App和浏览器
@@ -1124,38 +1107,6 @@ var CtripUtil = {
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
-    },
-
-    /**
-     * @description 设置底部工具栏隐藏／显示
-     * @brief 底部工具栏隐藏／显示
-     * @since 5.4
-     * @method app_set_toolbar_hidden
-     * @author jimzhao
-     * @example 
-
-     CtripUtil.app_set_toolbar_hidden(false);
-     */
-    app_set_toolbar_hidden:function(isHidden) {
-        var startVersion = "5.4";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
-            return;
-        }    
-        var params = {};
-        params.isHidden = isHidden;
-        paramString = Internal.makeParamString("Util","setToolBarHidden",params,"set_toolbar_hidden");
-        
-        if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
-        }
-        else if (Internal.isAndroid) {
-            window.Util_a.setToolBarHidden(paramString);
-        }
-        else if (Internal.isWinOS) {
-            Internal.callWin8App(paramString);
-        }   
     },
 
      /**
@@ -2340,6 +2291,126 @@ var CtripFile  = {
         }
     }
     
+};
+
+/**
+ * @class CtripBar
+ * @description H5页面顶部导航栏和底部工具栏的控制
+ * @brief H5页面顶部/底部导航栏控制
+ */
+
+var CtripBar = {
+     /**
+     * @description 刷新顶部条按钮和文字
+     * @brief 刷新顶部条按钮和文字
+     * @param (String) nav_bar_config_json 顶部条配置json串
+     * @method app_refresh_nav_bar
+     * @author jimzhao
+     * @since v5.2
+     * @example
+
+        //导航栏总共分为3部分，1.左侧，返回按钮，不能修改; 2. 中间title，可以任意设置; 3.右侧按钮，定义格式为{tagname:"xxxx",value:"btn_title"}
+        var nav_json = {
+            "center": [{"tagname": "title", "value":"携程"},{"tagname":"subtitle", value:"上海到北京"}],
+            "centerButton": [{"tagname": "cityChoose", "value":"上海", "a_icon":"arrow_up.png", "i_icon":"arrow_up.png"}], //from 5.5version
+            "right": [{"tagname": "click_tag_name", "value":"Click"}]
+        }
+        var json_str = JSON.stringify(nav_json);
+        CtripBar.app_refresh_nav_bar(json_str);
+
+        //调用完成，顶部条title为携程，右侧有一个按钮，按钮文字为Click，用户点击按钮后，H5页面会收到如下回调
+        var cb_json = {tagname:"click_tag_name"};
+        app.callback(cb_json);
+        //H5页面需要处理tagname为click_tag_name的事件
+     */
+    app_refresh_nav_bar:function(nav_bar_config_json) {
+        if (Internal.isNotEmptyString(nav_bar_config_json)) {
+            jsonObj = JSON.parse(nav_bar_config_json);
+
+            jsonObj.service = "NavBar";
+            jsonObj.action = "refresh";
+            jsonObj.callback_tagname = "refresh_nav_bar";
+            
+            paramString = JSON.stringify(jsonObj);
+
+            if (Internal.isIOS) {
+                url = Internal.makeURLWithParam(paramString);
+                Internal.loadURL(url);
+            }
+            else if (Internal.isAndroid) {
+                window.NavBar_a.refresh(paramString);
+            }
+            else if (Internal.isWinOS) {
+                Internal.callWin8App(paramString);
+            }
+        }
+    },
+
+
+      /**
+     * @description 设置顶部导航栏隐藏／显示
+     * @brief 顶部导航隐藏／显示
+     * @since 5.4
+     * @method app_set_navbar_hidden
+     * @author jimzhao
+     * @example 
+
+     CtripBar.app_set_navbar_hidden(false);
+     */
+    app_set_navbar_hidden:function(isHidden) {
+        var startVersion = "5.4";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }    
+
+        var params = {};
+        params.isHidden = isHidden;
+        paramString = Internal.makeParamString("NavBar","setNavBarHidden",params,"set_navbar_hidden");
+        
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.NavBar_a.setToolBarHidden(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }   
+    },
+
+      /**
+     * @description 设置底部工具栏隐藏／显示
+     * @brief 底部工具栏隐藏／显示
+     * @since 5.4
+     * @method app_set_toolbar_hidden
+     * @author jimzhao
+     * @example 
+
+     CtripBar.app_set_toolbar_hidden(false);
+     */
+    app_set_toolbar_hidden:function(isHidden) {
+        var startVersion = "5.4";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }    
+        var params = {};
+        params.isHidden = isHidden;
+        paramString = Internal.makeParamString("NavBar","setToolBarHidden",params,"set_toolbar_hidden");
+        
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Util_a.setToolBarHidden(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }   
+    }
 };
 
 

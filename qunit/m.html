@@ -55,6 +55,13 @@
       CtripUtil.app_refresh_nav_bar(jsonStr);
     }
 
+    var bflag = false;
+    
+    function doNavBarHiddenTest() {
+      CtripBar.app_set_navbar_hidden(bflag);
+      bflag = !bflag;
+    }
+
   </script>
 </head>
 <body>
@@ -69,6 +76,8 @@
    <li class="li2"><a onclick='javascript:CtripUtil.app_call_system_share("",  "这个是分享的内容", "这是标题", "http://www.ctrip.com/",false)'>App分享API</a></li>
   <br/>
   <li class="li2"><a onclick="javascript:doButtonTest()">doButtonTest</a></li>
+  <br/>
+  <li class="li2"><a onclick="javascript:doNavBarHiddenTest()">doNavBarHiddenTest</a></li>
   <br/>
    <li class="li2"><a onclick="javascript:doubleAction()">JSLib自动化测试</a></li>
   <br/>
