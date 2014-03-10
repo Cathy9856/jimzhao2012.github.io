@@ -2373,7 +2373,7 @@ var CtripBar = {
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
-            window.NavBar_a.setToolBarHidden(paramString);
+            window.NavBar_a.setNavBarHidden(paramString);
         }
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
