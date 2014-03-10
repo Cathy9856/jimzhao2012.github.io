@@ -658,7 +658,12 @@ asyncTest("测试通过APP管道发送服务",function(){
 	header = "{\"auth\":\"A04AC1F9E7C2275CFA10640392B77045F044A53C173E7CFE34586FDBA9E7A65B\", \"cid\":1,\"ctok\":1,\"cver\":5.4,\"lang\":01,\"sid\":111,\"syscode\":32}";
 
 	data = "{\"ver\":1,\"oid\":351015106,\"amount\":1,\"mobphone\":13764471455,\"isnewcard\":false,\"cardno\":5194120000000001,\"typid\":4,\"category\":3}";
-	serviceCode = "31000401";
+
+	header = "{\"cid\": \"c564c11c-26a5-9d5d-7603-b803af0a4c18\",\"ctok\": \"351858059049938\",\"cver\": \"1.0\",\"lang\": \"01\",\"sid\": \"8888\",\"syscode\": \"09\",\"auth\": \"401DA7A93EE8BA5264DE8F0466E080C8C2B5292F14CBE5DF8D2AF150AE148911\"}";
+
+	data = "{\"ver\": 0,\"bustype\": 2001,\"oid\": 53814,\"searchmap\": 0,\"usetype\": 1}";
+	
+	serviceCode = "31000101";
 
 	CtripPipe.app_send_H5_pipe_request(serviceCode,header,data,"12345");
 	setTimeout(function(){
