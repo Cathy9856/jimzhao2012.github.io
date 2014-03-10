@@ -2348,7 +2348,7 @@ var CtripBar = {
 
 
       /**
-     * @description 设置顶部导航栏隐藏／显示
+     * @description 设置顶部导航栏隐藏／显示，使用该函数的隐藏顶部栏之后，必须保证页面有离开H5页面的功能，否则用户无法离开，必须要kill掉app。
      * @brief 顶部导航隐藏／显示
      * @since 5.4
      * @method app_set_navbar_hidden
