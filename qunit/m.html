@@ -50,7 +50,7 @@
     }
 
     function doButtonTest() {
-      var nav_bar_config_json = {"left":[{"tagname":"back"}], "centerButton":[{"tagname":"centenAction","value":"上海城市","icon":"icon_arrowx.png"}], "right":[{"tagname":"call"}, {"tagname":"home"}]};
+      var nav_bar_config_json = {"left":[{"tagname":"back"}], "centerButton":[{"tagname":"centenAction","value":"上海城市","i_icon":"icon_arrowx.png","a_icon":"icon_arrowx.png"}], "right":[{"tagname":"call"}, {"tagname":"home"}]};
       var jsonStr = JSON.stringify(nav_bar_config_json);
       CtripUtil.app_refresh_nav_bar(jsonStr);
     }
