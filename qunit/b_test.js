@@ -97,6 +97,7 @@ var app = {
 	    	cb_ret.download_ticket_in_samsung_wallet = jsonObj;
 	    } 
 	    else if (tagname == "get_current_sandbox_name") {
+	    	alert("jsonObj get_current_sandbox_name==="+ JSON.stringify(jsonObj));
 	    	cb_ret.get_current_sandbox_name = jsonObj;
 	    }
 	    else if (tagname == "write_text_to_file") {
