@@ -144,7 +144,7 @@ var testAppendText = "This is append 啦啦x";
 var testFileName = null;//"logd.txt";
 var testRelativeFile = "/jimzhao2012.github.io/mdir/logdt.txt";//null;
 var testDirName =  null;//"mFolder";
-var testRelativeDir = "/jimzhao2012.github.io/mmdir/";
+var testRelativeDir = "/jimzhao2012.github.io/mcmdir/";
 
 asyncTest("写文本内容到文件", function(){
 	expect(1);
