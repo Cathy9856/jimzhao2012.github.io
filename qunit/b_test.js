@@ -128,6 +128,7 @@ asyncTest("获取当前沙盒名", function(){
 		start();
 
 		var jsonObj = cb_ret.get_current_sandbox_name;
+		alert(JSON.stringify(jsonObj));
 		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "get_current_sandbox_name") {
 			ok(true, "获取当前沙盒名成功"+JSON.stringify(jsonObj));
 		} else {
