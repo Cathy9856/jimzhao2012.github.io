@@ -1646,7 +1646,7 @@ var CtripPipe = {
       param.rsv_sug2=0;
       param.inputT=166;
 
-      CtripUtil.app_send_HTTP_pipe_request("http://www.baidu.com", "s","GET",null,JSON.stringfy(param), "13222222");
+      CtripPipe.app_send_HTTP_pipe_request("http://www.baidu.com", "s","GET",null,JSON.stringfy(param), "13222222");
 
      //调用后，H5会收到native回调的数据
         var json_obj =
@@ -1701,12 +1701,50 @@ var CtripPipe = {
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
-            window.Pay_a.sendHTTPPipeRequest(paramString);
+            window.Pipe_a.sendHTTPPipeRequest(paramString);
         }
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
 
+    },
+
+     /**
+     * @description 根据发送的sequenceId，终止正在发送的HTTP协议
+     * @brief 终止正在发送的HTTP协议
+     * @method app_abort_HTTP_pipe_request
+     * @param {String} sequenceId 发送服务的序列号，随机生存即可
+     * @since v5.4
+     * @author jimzhao
+     * @example 
+     
+      CtripPipe.app_abort_HTTP_pipe_request("13523333333");
+
+     */
+    app_abort_HTTP_pipe_request:function(sequenceId) {
+        var startVersion = "5.4";
+        if(!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+        if (!sequenceId) {
+            sequenceId = "";
+        }
+
+        var params = {};
+        params.sequenceId = sequenceId;
+        paramString = Internal.makeParamString("Pipe", "abortHTTPRequest", params, 'abort_http_pipe_request');
+        
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } 
+        else if (Internal.isAndroid) {
+            window.Pipe_a.abortHTTPRequest(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     },
 
      /**

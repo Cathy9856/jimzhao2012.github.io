@@ -150,6 +150,8 @@
                     <table>
                     <tr><th>描述</th><th>函数</th></tr>
                     
+                    <tr><td>终止正在发送的HTTP协议</td><td><a href="#method_app_abort_HTTP_pipe_request">app_abort_HTTP_pipe_request</a></td></tr>
+                    
                     <tr><td>H5通过App发送服务</td><td><a href="#method_app_send_H5_pipe_request">app_send_H5_pipe_request</a></td></tr>
                     
                     <tr><td>H5通过App发送服务</td><td><a href="#method_app_send_HTTP_pipe_request">app_send_HTTP_pipe_request</a></td></tr>
@@ -158,6 +160,12 @@
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -185,6 +193,106 @@
         
             <div id="methods" class="api-class-tabpanel">
                 <h2 class="off-left">方法</h2>
+
+                
+                    <div id="method_app_abort_HTTP_pipe_request" class="method item">
+    <h3 class="name"><code>app_abort_HTTP_pipe_request</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>sequenceId</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l1712"><code>bridge.js:1712</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.4</p>
+        
+    </div>
+
+    <div class="description">
+        <p>根据发送的sequenceId，终止正在发送的HTTP协议</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">sequenceId</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>发送服务的序列号，随机生存即可</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code> CtripPipe.app_abort_HTTP_pipe_request(&quot;13523333333&quot;);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
 
                 
                     <div id="method_app_send_H5_pipe_request" class="method item">
@@ -247,7 +355,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l1712"><code>bridge.js:1712</code></a>
+        <a href="../files/bridge.js.html#l1750"><code>bridge.js:1750</code></a>
         
         </p>
 
@@ -600,7 +708,7 @@
  param.rsv_sug2=0;
  param.inputT=166;
 
- CtripUtil.app_send_HTTP_pipe_request(&quot;http://www.baidu.com&quot;, &quot;s&quot;,&quot;GET&quot;,null,JSON.stringfy(param), &quot;13222222&quot;);
+ CtripPipe.app_send_HTTP_pipe_request(&quot;http://www.baidu.com&quot;, &quot;s&quot;,&quot;GET&quot;,null,JSON.stringfy(param), &quot;13222222&quot;);
 
 //调用后，H5会收到native回调的数据
    var json_obj =

@@ -1752,7 +1752,7 @@ var CtripPipe = {
       param.rsv_sug2=0;
       param.inputT=166;
 
-      CtripUtil.app_send_HTTP_pipe_request(&quot;http://www.baidu.com&quot;, &quot;s&quot;,&quot;GET&quot;,null,JSON.stringfy(param), &quot;13222222&quot;);
+      CtripPipe.app_send_HTTP_pipe_request(&quot;http://www.baidu.com&quot;, &quot;s&quot;,&quot;GET&quot;,null,JSON.stringfy(param), &quot;13222222&quot;);
 
      //调用后，H5会收到native回调的数据
         var json_obj =
@@ -1807,12 +1807,50 @@ var CtripPipe = {
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
-            window.Pay_a.sendHTTPPipeRequest(paramString);
+            window.Pipe_a.sendHTTPPipeRequest(paramString);
         }
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
 
+    },
+
+     /**
+     * @description 根据发送的sequenceId，终止正在发送的HTTP协议
+     * @brief 终止正在发送的HTTP协议
+     * @method app_abort_HTTP_pipe_request
+     * @param {String} sequenceId 发送服务的序列号，随机生存即可
+     * @since v5.4
+     * @author jimzhao
+     * @example 
+     
+      CtripPipe.app_abort_HTTP_pipe_request(&quot;13523333333&quot;);
+
+     */
+    app_abort_HTTP_pipe_request:function(sequenceId) {
+        var startVersion = &quot;5.4&quot;;
+        if(!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+        if (!sequenceId) {
+            sequenceId = &quot;&quot;;
+        }
+
+        var params = {};
+        params.sequenceId = sequenceId;
+        paramString = Internal.makeParamString(&quot;Pipe&quot;, &quot;abortHTTPRequest&quot;, params, &#x27;abort_http_pipe_request&#x27;);
+        
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } 
+        else if (Internal.isAndroid) {
+            window.Pipe_a.abortHTTPRequest(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     },
 
      /**
