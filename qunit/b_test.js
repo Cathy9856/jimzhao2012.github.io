@@ -97,7 +97,6 @@ var app = {
 	    	cb_ret.download_ticket_in_samsung_wallet = jsonObj;
 	    } 
 	    else if (tagname == "get_current_sandbox_name") {
-	    	alert("jsonObj get_current_sandbox_name==="+ JSON.stringify(jsonObj));
 	    	cb_ret.get_current_sandbox_name = jsonObj;
 	    }
 	    else if (tagname == "write_text_to_file") {
@@ -129,14 +128,13 @@ asyncTest("获取当前沙盒名", function(){
 		start();
 
 		var jsonObj = cb_ret.get_current_sandbox_name;
-		alert(JSON.stringify(jsonObj));
 		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "get_current_sandbox_name") {
 			ok(true, "获取当前沙盒名成功"+JSON.stringify(jsonObj));
 		} else {
 			ok(true, "获取当前沙盒名失败"+JSON.stringify(jsonObj));
 		}
 		cb_ret.get_current_sandbox_name = null;
-	});
+	}, async_time_interval);
 });
 
 var testText = "Hello, 时间，Good";
