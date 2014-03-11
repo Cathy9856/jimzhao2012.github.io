@@ -192,7 +192,7 @@
                     
                     <tr><td>H5通知Native刷新</td><td><a href="#method_app_refresh_native_page">app_refresh_native_page</a></td></tr>
                     
-                    <tr><td>刷新顶部条按钮和文字</td><td><a href="#method_app_refresh_nav_bar">app_refresh_nav_bar</a></td></tr>
+                    <tr><td>刷新顶部条按钮和文字(兼容，移动至CtripBar)</td><td><a href="#method_app_refresh_nav_bar(Deprecated)">app_refresh_nav_bar(Deprecated)</a></td></tr>
                     
                     <tr><td>查看最新版本功能介绍</td><td><a href="#method_app_show_newest_introduction">app_show_newest_introduction</a></td></tr>
                                   
@@ -387,7 +387,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l681"><code>bridge.js:681</code></a>
+        <a href="../files/bridge.js.html#l669"><code>bridge.js:669</code></a>
         
         </p>
 
@@ -777,7 +777,7 @@ CtripUtil.app_call_phone();</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l952"><code>bridge.js:952</code></a>
+        <a href="../files/bridge.js.html#l940"><code>bridge.js:940</code></a>
         
         </p>
 
@@ -947,7 +947,7 @@ CtripUtil.app_call_phone();</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l800"><code>bridge.js:800</code></a>
+        <a href="../files/bridge.js.html#l788"><code>bridge.js:788</code></a>
         
         </p>
 
@@ -1060,7 +1060,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l768"><code>bridge.js:768</code></a>
+        <a href="../files/bridge.js.html#l756"><code>bridge.js:756</code></a>
         
         </p>
 
@@ -1133,7 +1133,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l633"><code>bridge.js:633</code></a>
+        <a href="../files/bridge.js.html#l621"><code>bridge.js:621</code></a>
         
         </p>
 
@@ -1209,7 +1209,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l879"><code>bridge.js:879</code></a>
+        <a href="../files/bridge.js.html#l867"><code>bridge.js:867</code></a>
         
         </p>
 
@@ -1315,7 +1315,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l705"><code>bridge.js:705</code></a>
+        <a href="../files/bridge.js.html#l693"><code>bridge.js:693</code></a>
         
         </p>
 
@@ -1438,7 +1438,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1011"><code>bridge.js:1011</code></a>
+        <a href="../files/bridge.js.html#l999"><code>bridge.js:999</code></a>
         
         </p>
 
@@ -1762,7 +1762,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1112"><code>bridge.js:1112</code></a>
+        <a href="../files/bridge.js.html#l1100"><code>bridge.js:1100</code></a>
         
         </p>
 
@@ -1979,7 +1979,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l1148"><code>bridge.js:1148</code></a>
+        <a href="../files/bridge.js.html#l1136"><code>bridge.js:1136</code></a>
         
         </p>
 
@@ -2091,7 +2091,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l1061"><code>bridge.js:1061</code></a>
+        <a href="../files/bridge.js.html#l1049"><code>bridge.js:1049</code></a>
         
         </p>
 
@@ -2239,7 +2239,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l566"><code>bridge.js:566</code></a>
+        <a href="../files/bridge.js.html#l554"><code>bridge.js:554</code></a>
         
         </p>
 
@@ -2369,7 +2369,7 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             
         
         
-        <a href="../files/bridge.js.html#l914"><code>bridge.js:914</code></a>
+        <a href="../files/bridge.js.html#l902"><code>bridge.js:902</code></a>
         
         </p>
 
@@ -2442,7 +2442,7 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             
         
         
-        <a href="../files/bridge.js.html#l658"><code>bridge.js:658</code></a>
+        <a href="../files/bridge.js.html#l646"><code>bridge.js:646</code></a>
         
         </p>
 
@@ -2524,7 +2524,7 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             
         
         
-        <a href="../files/bridge.js.html#l843"><code>bridge.js:843</code></a>
+        <a href="../files/bridge.js.html#l831"><code>bridge.js:831</code></a>
         
         </p>
 
@@ -2598,8 +2598,8 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
 </div>
 
                 
-                    <div id="method_app_refresh_nav_bar" class="method item">
-    <h3 class="name"><code>app_refresh_nav_bar</code></h3>
+                    <div id="method_app_refresh_nav_bar(Deprecated)" class="method item">
+    <h3 class="name"><code>app_refresh_nav_bar(Deprecated)</code></h3>
 
     
         <div class="args">
@@ -2690,19 +2690,7 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>   //导航栏总共分为3部分，1.左侧，返回按钮，不能修改; 2. 中间title，可以任意设置; 3.右侧按钮，定义格式为{tagname:&quot;xxxx&quot;,value:&quot;btn_title&quot;}
-   var nav_json = {
-       &quot;center&quot;: [{&quot;tagname&quot;: &quot;title&quot;, &quot;value&quot;:&quot;携程&quot;},{&quot;tagname&quot;:&quot;subtitle&quot;, value:&quot;上海到北京&quot;}],
-       &quot;centerButton&quot;: [{&quot;tagname&quot;: &quot;cityChoose&quot;, &quot;value&quot;:&quot;上海&quot;, &quot;a_icon&quot;:&quot;arrow_up.png&quot;, &quot;i_icon&quot;:&quot;arrow_up.png&quot;}], //from 5.5version
-       &quot;right&quot;: [{&quot;tagname&quot;: &quot;click_tag_name&quot;, &quot;value&quot;:&quot;Click&quot;}]
-   }
-   var json_str = JSON.stringify(nav_json);
-   CtripBar.app_refresh_nav_bar(json_str);
-
-   //调用完成，顶部条title为携程，右侧有一个按钮，按钮文字为Click，用户点击按钮后，H5页面会收到如下回调
-   var cb_json = {tagname:&quot;click_tag_name&quot;};
-   app.callback(cb_json);
-   //H5页面需要处理tagname为click_tag_name的事件</code></pre>
+                <pre class="code prettyprint"><code>   请参考 CtripBar.app_refresh_nav_bar(json_str)的使用;</code></pre>
 
             </div>
         </div>
@@ -2742,7 +2730,7 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             
         
         
-        <a href="../files/bridge.js.html#l744"><code>bridge.js:744</code></a>
+        <a href="../files/bridge.js.html#l732"><code>bridge.js:732</code></a>
         
         </p>
 

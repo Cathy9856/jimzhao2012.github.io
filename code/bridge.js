@@ -290,8 +290,8 @@ var CtripTool = {
 
     /**
      * @description 将log写入到native的日志界面，该函数已移动到CtripUtil类，此处只做兼容。具体参考CtripUtil.app_log()函数
-     * @brief H5写日志到app(兼容)
-     * @method app_log
+     * @brief H5写日志到app(兼容，移动至CtripUtil)
+     * @method app_log(Deprecated)
      * @param {String} log 需要打印打log
      * @param {String} result 上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间
      * @since v5.2
@@ -537,26 +537,14 @@ var CtripUtil = {
 
     /**
      * @description 刷新顶部条按钮和文字
-     * @brief 刷新顶部条按钮和文字
+     * @brief 刷新顶部条按钮和文字(兼容，移动至CtripBar)
      * @param (String) nav_bar_config_json 顶部条配置json串
-     * @method app_refresh_nav_bar
+     * @method app_refresh_nav_bar(Deprecated)
      * @author jimzhao
      * @since v5.2
      * @example
 
-        //导航栏总共分为3部分，1.左侧，返回按钮，不能修改; 2. 中间title，可以任意设置; 3.右侧按钮，定义格式为{tagname:"xxxx",value:"btn_title"}
-        var nav_json = {
-            "center": [{"tagname": "title", "value":"携程"},{"tagname":"subtitle", value:"上海到北京"}],
-            "centerButton": [{"tagname": "cityChoose", "value":"上海", "a_icon":"arrow_up.png", "i_icon":"arrow_up.png"}], //from 5.5version
-            "right": [{"tagname": "click_tag_name", "value":"Click"}]
-        }
-        var json_str = JSON.stringify(nav_json);
-        CtripBar.app_refresh_nav_bar(json_str);
-
-        //调用完成，顶部条title为携程，右侧有一个按钮，按钮文字为Click，用户点击按钮后，H5页面会收到如下回调
-        var cb_json = {tagname:"click_tag_name"};
-        app.callback(cb_json);
-        //H5页面需要处理tagname为click_tag_name的事件
+        请参考 CtripBar.app_refresh_nav_bar(json_str)的使用;
      */
     app_refresh_nav_bar:function(nav_bar_config_json) {
         CtripBar.app_refresh_nav_bar(nav_bar_config_json);
@@ -1710,8 +1698,8 @@ var CtripPipe = {
     },
 
      /**
-     * @description 根据发送的sequenceId，终止正在发送的HTTP协议
-     * @brief 终止正在发送的HTTP协议
+     * @description 根据发送的sequenceId，终止正在发送的HTTP请求
+     * @brief 终止正在发送的HTTP请求
      * @method app_abort_HTTP_pipe_request
      * @param {String} sequenceId 发送服务的序列号，随机生存即可
      * @since v5.4
@@ -2353,6 +2341,12 @@ var CtripBar = {
             "centerButton": [{"tagname": "cityChoose", "value":"上海", "a_icon":"arrow_up.png", "i_icon":"arrow_up.png"}], //from 5.5version
             "right": [{"tagname": "click_tag_name", "value":"Click"}]
         }
+        //nav_json参数配置说明：
+        //1. 支持的key有3个： center/right 从app 5.1之后版本支持， centerButton 从app 5.4版本之后支持
+        //2. center配置辅助标题： 5.4 之后app支持, 举例："center": [{"tagname": "title", "value":"携程"},{"tagname":"subtitle", value:"上海到北京"}], 辅助标题为数组第二项，且tagname必须为subtitle；
+        //3. centerButton按钮支持：5.4之后app支持，举例："centerButton": [{"tagname": "cityChoose", "value":"上海", "a_icon":"arrow_up.png", "i_icon":"arrow_up.png"}], a_icon为android中按钮右侧图片名字，i_icon为iOS中按钮右侧图片名字。注意centerButton和center所占用的是同样的界面元素，app默认优先级centerButton>center,因此为了兼容先前版本centerButton和center可以同时设置
+        //4. right配置：tagname=call时候显示app中的默认拨号icon，tagname=home时候显示app中默认的主页icon，当right只有这两者之一，都只显示一个按钮，如果right有2项，且tagname分别为call/home,则显示2个按钮图标，其它情况均显示value配置的文字；
+
         var json_str = JSON.stringify(nav_json);
         CtripBar.app_refresh_nav_bar(json_str);
 
@@ -2360,6 +2354,7 @@ var CtripBar = {
         var cb_json = {tagname:"click_tag_name"};
         app.callback(cb_json);
         //H5页面需要处理tagname为click_tag_name的事件
+
      */
     app_refresh_nav_bar:function(nav_bar_config_json) {
         if (Internal.isNotEmptyString(nav_bar_config_json)) {
