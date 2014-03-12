@@ -13,7 +13,7 @@ category: doc
 
 
 ###1. 进入H5开发设置页面，打开本地Debug开关;
-![a](/images/hybrid_debug/open_debug.png)
+![a](/images/hybrid_debug/open_debug.PNG)
 
 ###2. 通过iTunes File Sharing拷贝开发的Webapp目录;
 ![b](/images/hybrid_debug/webapp.png)
@@ -27,7 +27,7 @@ category: doc
 
 ###4. 准备lipin.zip文件夹；
 
-![e](/images/hybrid_debug/lipin.png)
+![e](/images/hybrid_debug/lipin.PNG)
 
 ###5. 将lipin.zip通过iTunes File Sharing拷贝到Webapp目录；
 ![f](/images/hybrid_debug/lipin_a.png)
