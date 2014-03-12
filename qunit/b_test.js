@@ -697,7 +697,6 @@ asyncTest("测试Ticket是否在三星钱包", function(){
 	setTimeout(function(){
 		start();
 		var jsonObj = cb_ret.check_ticket_in_samsung_wallet;
-		alert(JSON.stringify(jsonObj));
 		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "check_ticket_in_samsung_wallet") {
 			ok(jsonObj.param.isInSamSungWallet, "测试Ticket是否在三星钱包:"+JSON.stringify(jsonObj));
 		} 
