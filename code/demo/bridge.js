@@ -219,10 +219,15 @@ function __bridge_callback(param) {
     if (jsonObj != null) {
         if (jsonObj.param != null && jsonObj.param.hasOwnProperty("platform")) {
             platform = jsonObj.param.platform;
+            if (typeof platform == "number") {
+                if (platform == 1 || platform == 2 || platform == 3) {
+                    Internal.isIOS = (platform == 1);
+                    Internal.isAndroid = (platform == 2);
+                    Internal.isWinOS = (platform == 3);                    
+                }
+            }
+
             Internal.isInApp = true;
-            Internal.isIOS = (platform == 1);
-            Internal.isAndroid = (platform == 2);
-            Internal.isWinOS = (platform == 3);
             Internal.appVersion = jsonObj.param.version;
             Internal.osVersion = jsonObj.param.osVersion;
         }
