@@ -31,13 +31,13 @@ category: doc
 
 ###4. 准备lipin.zip文件夹；
 
-![e](/images/hybrid_debug/lipin.PNG)
+![e](/images/hybrid_debug/lipin.png)
 
 ###5. 将lipin.zip通过iTunes File Sharing拷贝到Webapp目录；
 ![f](/images/hybrid_debug/lipin_a.png)
 
 ###6. 在H5开发设置页面，添加lipin入口；
-![g](/images/hybrid_debug/lipin_b.png)
+![g](/images/hybrid_debug/lipin_b.PNG)
 
 `NOTE:通过iTunes File Sharing拷贝的zip文件夹和新增的测试入口名字必须一致；
 例如此处，添加的是lipin.zip文件夹，添加的测试入口为/lipin/index.html`
