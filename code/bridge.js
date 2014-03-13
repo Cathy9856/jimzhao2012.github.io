@@ -842,14 +842,21 @@ var CtripUtil = {
      * @since v5.2
      * @author jimzhao
      * @example 
-    //H5调用
-     CtripUtil.app_refresh_native_page("xxxxPageName", "xxxx_json_string");
+        
+        //H5调用
+        
+        CtripUtil.app_refresh_native_page("xxxxPageName", "xxxx_json_string");
 
-    //Native需要处理的地方
-    iOS:
-    1. 添加Notification的关注
+        //Native需要处理的地方
+     
+        iOS:
+        
+         1. 添加Notification的关注
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh:) name:kH5NativeShouldReloadNotification object:nil];
-    2. 实现方法
+        
+        2. 实现方法
+        
         - (void)refresh:(NSNotification *)notification {
              NSDictionary *dic = [notification userInfo];
              NSString *value = [dic objectForKey:@"pageName"];
@@ -858,47 +865,51 @@ var CtripUtil = {
                  NSLog("Do Something here");      
              }
         }
-    3. 移除Notification的关注
+        
+        3. 移除Notification的关注
+        
         [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-    Android:
-    1. 创建BroadcastReceiver;
+        Android:
+        1. 创建BroadcastReceiver;
 
-    private BroadcastReceiver mFocusNewStateReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
+        private BroadcastReceiver mFocusNewStateReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
 
-            if (H5UtilPlugin.TAG_UPDATE_NATIVE_PAGE.equals(intent.getAction())) {
-                String info = intent.getStringExtra("info");
-                if (!StringUtil.emptyOrNull(info)) {
-                    try {
-                        JSONObject jsonObject = new JSONObject(info);
-                        String value = jsonObject.getString("pageName");
-                        if (!StringUtil.emptyOrNull(value)) {
-                            if (value.equalsIgnoreCase("xxxxPageName")) {
-                                //TODO: do your job here
+                if (H5UtilPlugin.TAG_UPDATE_NATIVE_PAGE.equals(intent.getAction())) {
+                    String info = intent.getStringExtra("info");
+                    if (!StringUtil.emptyOrNull(info)) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(info);
+                            String value = jsonObject.getString("pageName");
+                            if (!StringUtil.emptyOrNull(value)) {
+                                if (value.equalsIgnoreCase("xxxxPageName")) {
+                                    //TODO: do your job here
+                                }
                             }
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    } finally {
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        } finally {
 
+                        }
                     }
                 }
             }
-        }
-    };
+        };
     
-    2. 注册创建BroadcastReceiver;
+        2. 注册创建BroadcastReceiver;
+
             IntentFilter filter = new IntentFilter();
             filter.addAction(H5UtilPlugin.TAG_UPDATE_NATIVE_PAGE);
             LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(mFocusNewStateReceiver, filter);
             registerReceiver(mFocusNewStateReceiver, filter);
 
-    3. 使用完成，移除BroadcastReceiver
+        3. 使用完成，移除BroadcastReceiver
+        
             LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(mFocusNewStateReceiver);
             unregisterReceiver(mFocusNewStateReceiver);
-            
+
      */
     app_refresh_native_page:function(pageName, jsonStr) {
         var params = {};

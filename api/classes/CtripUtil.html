@@ -777,7 +777,7 @@ CtripUtil.app_call_phone();</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1001"><code>bridge.js:1001</code></a>
+        <a href="../files/bridge.js.html#l1012"><code>bridge.js:1012</code></a>
         
         </p>
 
@@ -1209,7 +1209,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l928"><code>bridge.js:928</code></a>
+        <a href="../files/bridge.js.html#l939"><code>bridge.js:939</code></a>
         
         </p>
 
@@ -1438,7 +1438,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1060"><code>bridge.js:1060</code></a>
+        <a href="../files/bridge.js.html#l1071"><code>bridge.js:1071</code></a>
         
         </p>
 
@@ -1762,7 +1762,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1161"><code>bridge.js:1161</code></a>
+        <a href="../files/bridge.js.html#l1172"><code>bridge.js:1172</code></a>
         
         </p>
 
@@ -1979,7 +1979,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l1197"><code>bridge.js:1197</code></a>
+        <a href="../files/bridge.js.html#l1208"><code>bridge.js:1208</code></a>
         
         </p>
 
@@ -2091,7 +2091,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l1110"><code>bridge.js:1110</code></a>
+        <a href="../files/bridge.js.html#l1121"><code>bridge.js:1121</code></a>
         
         </p>
 
@@ -2369,7 +2369,7 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             
         
         
-        <a href="../files/bridge.js.html#l963"><code>bridge.js:963</code></a>
+        <a href="../files/bridge.js.html#l974"><code>bridge.js:974</code></a>
         
         </p>
 
@@ -2590,31 +2590,37 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             <h4>举例:</h4>
 
             <div class="example-content">
-                <p>   //H5调用
-    CtripUtil.app_refresh_native_page(&quot;xxxxPageName&quot;, &quot;xxxx_json_string&quot;);</p>
-<p>   //Native需要处理的地方
-   iOS:</p>
-<ol>
-<li>添加Notification的关注
- [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh:) name:kH5NativeShouldReloadNotification object:nil];</li>
-<li>实现方法<ul>
-<li>(void)refresh:(NSNotification <em>)notification {
-   NSDictionary </em>dic = [notification userInfo];
-   NSString *value = [dic objectForKey:@&quot;pageName&quot;];
-   if ([value isEqualToString:@&quot;xxxxPageName&quot;])
-   {<pre class="code prettyprint"><code>   NSLog(&quot;Do Something here&quot;);      </code></pre>
+                <pre class="code prettyprint"><code>   //H5调用
+
+   CtripUtil.app_refresh_native_page(&quot;xxxxPageName&quot;, &quot;xxxx_json_string&quot;);
+
+   //Native需要处理的地方
+
+   iOS:
+
+    1. 添加Notification的关注
+
+   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh:) name:kH5NativeShouldReloadNotification object:nil];
+
+   2. 实现方法
+
+   - (void)refresh:(NSNotification *)notification {
+        NSDictionary *dic = [notification userInfo];
+        NSString *value = [dic objectForKey:@&quot;pageName&quot;];
+        if ([value isEqualToString:@&quot;xxxxPageName&quot;])
+        {
+            NSLog(&quot;Do Something here&quot;);      
+        }
    }
-}</li>
-</ul>
-</li>
-<li><p>移除Notification的关注
- [[NSNotificationCenter defaultCenter] removeObserver:self];</p>
-<p>Android:</p>
-</li>
-<li><p>创建BroadcastReceiver;</p>
-<p>private BroadcastReceiver mFocusNewStateReceiver = new BroadcastReceiver() {</p>
-</li>
-</ol>
+
+   3. 移除Notification的关注
+
+   [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+   Android:
+   1. 创建BroadcastReceiver;
+
+   private BroadcastReceiver mFocusNewStateReceiver = new BroadcastReceiver() {</code></pre>
 
             </div>
         </div>
