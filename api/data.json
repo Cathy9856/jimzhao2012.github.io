@@ -1442,7 +1442,7 @@
             "since": "v5.4",
             "author": "jimzhao",
             "example": [
-                " \n    \n     CtripFile.app_make_dir(\"mydir2\", null); //创建文件夹/webapp/wb_cache/car/mydir2/\n     CtripFile.app_make_dir(null,\"/car/mydir/innerDir\"; //创建文件夹/webapp/wb_cache/car/mydir/innerDir/\n\n    //调用之后会收到\n       var json_obj = {\n           tagname : \"check_file_exist\",\n           param : {\n               isSuccess: true \n           }\n       }\n       \n       app.callback(json_obj);"
+                " \n    \n     CtripFile.app_make_dir(\"mydir2\", null); //创建文件夹/webapp/wb_cache/car/mydir2/\n     CtripFile.app_make_dir(null,\"/car/mydir/innerDir\"; //创建文件夹/webapp/wb_cache/car/mydir/innerDir/\n\n    //调用之后会收到\n       var json_obj = {\n           tagname : \"make_dir\",\n           param : {\n               isSuccess: true \n           }\n       }\n       \n       app.callback(json_obj);"
             ],
             "class": "CtripFile"
         },

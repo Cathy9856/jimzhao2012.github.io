@@ -2281,7 +2281,7 @@ var CtripFile  = {
 
      //调用之后会收到
         var json_obj = {
-            tagname : "check_file_exist",
+            tagname : "make_dir",
             param : {
                 isSuccess: true 
             }
