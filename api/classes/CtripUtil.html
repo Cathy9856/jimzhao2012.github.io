@@ -777,7 +777,7 @@ CtripUtil.app_call_phone();</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1011"><code>bridge.js:1011</code></a>
+        <a href="../files/bridge.js.html#l1005"><code>bridge.js:1005</code></a>
         
         </p>
 
@@ -1209,7 +1209,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l938"><code>bridge.js:938</code></a>
+        <a href="../files/bridge.js.html#l932"><code>bridge.js:932</code></a>
         
         </p>
 
@@ -1438,7 +1438,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1070"><code>bridge.js:1070</code></a>
+        <a href="../files/bridge.js.html#l1064"><code>bridge.js:1064</code></a>
         
         </p>
 
@@ -1762,7 +1762,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1171"><code>bridge.js:1171</code></a>
+        <a href="../files/bridge.js.html#l1165"><code>bridge.js:1165</code></a>
         
         </p>
 
@@ -1979,7 +1979,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l1207"><code>bridge.js:1207</code></a>
+        <a href="../files/bridge.js.html#l1201"><code>bridge.js:1201</code></a>
         
         </p>
 
@@ -2091,7 +2091,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l1120"><code>bridge.js:1120</code></a>
+        <a href="../files/bridge.js.html#l1114"><code>bridge.js:1114</code></a>
         
         </p>
 
@@ -2369,7 +2369,7 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             
         
         
-        <a href="../files/bridge.js.html#l973"><code>bridge.js:973</code></a>
+        <a href="../files/bridge.js.html#l967"><code>bridge.js:967</code></a>
         
         </p>
 
@@ -2598,11 +2598,9 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
 
    //iOS:
    //1. 添加Notification的关注
-
    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh:) name:kH5NativeShouldReloadNotification object:nil];
 
    //2. 实现方法
-
    - (void)refresh:(NSNotification *)notification {
         NSDictionary *dic = [notification userInfo];
         NSString *value = [dic objectForKey:@&quot;pageName&quot;];
@@ -2613,12 +2611,10 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
    }
 
    //3. 移除Notification的关注
-
    [[NSNotificationCenter defaultCenter] removeObserver:self];
 
   // Android:
   // 1. 创建BroadcastReceiver;
-
    private BroadcastReceiver mFocusNewStateReceiver = new BroadcastReceiver() {
        //@Override
        public void onReceive(Context context, Intent intent) {
@@ -2645,14 +2641,12 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
    };
 
    //2. 注册创建BroadcastReceiver;
-
        IntentFilter filter = new IntentFilter();
        filter.addAction(H5UtilPlugin.TAG_UPDATE_NATIVE_PAGE);
        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(mFocusNewStateReceiver, filter);
        registerReceiver(mFocusNewStateReceiver, filter);
 
    //3. 使用完成，移除BroadcastReceiver
-
        LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(mFocusNewStateReceiver);
        unregisterReceiver(mFocusNewStateReceiver);</code></pre>
 
