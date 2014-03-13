@@ -849,13 +849,12 @@ var CtripUtil = {
 
         //Native需要处理的地方
      
-        iOS:
-        
-         1. 添加Notification的关注
+        //iOS:
+        //1. 添加Notification的关注
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh:) name:kH5NativeShouldReloadNotification object:nil];
         
-        2. 实现方法
+        //2. 实现方法
         
         - (void)refresh:(NSNotification *)notification {
              NSDictionary *dic = [notification userInfo];
@@ -866,15 +865,15 @@ var CtripUtil = {
              }
         }
         
-        3. 移除Notification的关注
+        //3. 移除Notification的关注
         
         [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-        Android:
-        1. 创建BroadcastReceiver;
+       // Android:
+       // 1. 创建BroadcastReceiver;
 
         private BroadcastReceiver mFocusNewStateReceiver = new BroadcastReceiver() {
-            @Override
+            //@Override
             public void onReceive(Context context, Intent intent) {
 
                 if (H5UtilPlugin.TAG_UPDATE_NATIVE_PAGE.equals(intent.getAction())) {
@@ -898,14 +897,14 @@ var CtripUtil = {
             }
         };
     
-        2. 注册创建BroadcastReceiver;
+        //2. 注册创建BroadcastReceiver;
 
             IntentFilter filter = new IntentFilter();
             filter.addAction(H5UtilPlugin.TAG_UPDATE_NATIVE_PAGE);
             LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(mFocusNewStateReceiver, filter);
             registerReceiver(mFocusNewStateReceiver, filter);
 
-        3. 使用完成，移除BroadcastReceiver
+        //3. 使用完成，移除BroadcastReceiver
         
             LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(mFocusNewStateReceiver);
             unregisterReceiver(mFocusNewStateReceiver);
