@@ -208,7 +208,7 @@ var Internal = {
  * @brief app回调bridge.js
  * @description 将native的callback数据转换给H5页面的app.callback(JSON)
  * @method __bridge_callback
- * @param {Number} param native传给H5的字符串,该字符串在app组装的时候做过URLEncode
+ * @param {String} param native传给H5的字符串,该字符串在app组装的时候做过URLEncode
  * @since v5.2
  * @author jimzhao
  */
@@ -2409,7 +2409,7 @@ var CtripBar = {
         //nav_json参数配置说明：
         //1. 支持的key有3个： center/right 从app 5.1之后版本支持， centerButton 从app 5.4版本之后支持
         //2. center配置辅助标题： 5.4 之后app支持, 举例："center": [{"tagname": "title", "value":"携程"},{"tagname":"subtitle", value:"上海到北京"}], 辅助标题为数组第二项，且tagname必须为subtitle；
-        //3. centerButton按钮支持：5.4之后app支持，举例："centerButton": [{"tagname": "cityChoose", "value":"上海", "a_icon":"arrow_up.png", "i_icon":"arrow_up.png"}], a_icon为android中按钮右侧图片名字，i_icon为iOS中按钮右侧图片名字。注意centerButton和center所占用的是同样的界面元素，app默认优先级centerButton>center,因此为了兼容先前版本centerButton和center可以同时设置
+        //3. centerButton按钮支持：5.4之后app支持，举例："centerButton": [{"tagname": "cityChoose", "value":"上海", "a_icon":"arrow_up", "i_icon":"arrow_up.png"}], a_icon为android中按钮右侧图片名字，android文件名不需要带后缀，i_icon为iOS中按钮右侧图片名字。注意centerButton和center所占用的是同样的界面元素，app默认优先级centerButton>center,因此为了兼容先前版本centerButton和center可以同时设置
         //4. right配置：tagname=call时候显示app中的默认拨号icon，tagname=home时候显示app中默认的主页icon，当right只有这两者之一，都只显示一个按钮，如果right有2项，且tagname分别为call/home,则显示2个按钮图标，其它情况均显示value配置的文字；
 
         var json_str = JSON.stringify(nav_json);

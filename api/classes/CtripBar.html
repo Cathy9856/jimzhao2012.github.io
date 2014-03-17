@@ -296,7 +296,7 @@
    //nav_json参数配置说明：
    //1. 支持的key有3个： center/right 从app 5.1之后版本支持， centerButton 从app 5.4版本之后支持
    //2. center配置辅助标题： 5.4 之后app支持, 举例：&quot;center&quot;: [{&quot;tagname&quot;: &quot;title&quot;, &quot;value&quot;:&quot;携程&quot;},{&quot;tagname&quot;:&quot;subtitle&quot;, value:&quot;上海到北京&quot;}], 辅助标题为数组第二项，且tagname必须为subtitle；
-   //3. centerButton按钮支持：5.4之后app支持，举例：&quot;centerButton&quot;: [{&quot;tagname&quot;: &quot;cityChoose&quot;, &quot;value&quot;:&quot;上海&quot;, &quot;a_icon&quot;:&quot;arrow_up.png&quot;, &quot;i_icon&quot;:&quot;arrow_up.png&quot;}], a_icon为android中按钮右侧图片名字，i_icon为iOS中按钮右侧图片名字。注意centerButton和center所占用的是同样的界面元素，app默认优先级centerButton&gt;center,因此为了兼容先前版本centerButton和center可以同时设置
+   //3. centerButton按钮支持：5.4之后app支持，举例：&quot;centerButton&quot;: [{&quot;tagname&quot;: &quot;cityChoose&quot;, &quot;value&quot;:&quot;上海&quot;, &quot;a_icon&quot;:&quot;arrow_up&quot;, &quot;i_icon&quot;:&quot;arrow_up.png&quot;}], a_icon为android中按钮右侧图片名字，android文件名不需要带后缀，i_icon为iOS中按钮右侧图片名字。注意centerButton和center所占用的是同样的界面元素，app默认优先级centerButton&gt;center,因此为了兼容先前版本centerButton和center可以同时设置
    //4. right配置：tagname=call时候显示app中的默认拨号icon，tagname=home时候显示app中默认的主页icon，当right只有这两者之一，都只显示一个按钮，如果right有2项，且tagname分别为call/home,则显示2个按钮图标，其它情况均显示value配置的文字；
 
    var json_str = JSON.stringify(nav_json);
