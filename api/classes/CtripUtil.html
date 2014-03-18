@@ -1409,6 +1409,12 @@ app.callback(json_obj);</code></pre>
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code>isIgnoreHttpsCertification</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -1493,6 +1499,22 @@ app.callback(json_obj);</code></pre>
                     
                 </li>
             
+                <li class="param">
+                    
+                        <code class="param-name">isIgnoreHttpsCertification</code>
+                        <span class="type">Boolean</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>是否忽略非法的HTTPS证书</p>
+
+                    </div>
+
+                    
+                </li>
+            
             </ul>
         </div>
     
@@ -1509,7 +1531,7 @@ app.callback(json_obj);</code></pre>
 var json_obj = {
    tagname:&quot;download_data&quot;,
    error_code:&quot;xxxxx&quot;,//param_error,download_faild
-   param:{downloadUrl:&quot;http://www.baidu.com/bdlogo.gif&quot;, savedPath:&quot;../wb_cache/pkg_name/md5_url_hash&quot;}
+   param:{downloadUrl:&quot;http://www.baidu.com/bdlogo.gif&quot;, savedPath:&quot;../wb_cache/pkg_name/md5_url_hash&quot;, false}
 };
 app.callback(json_obj);</code></pre>
 
@@ -1762,7 +1784,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1165"><code>bridge.js:1165</code></a>
+        <a href="../files/bridge.js.html#l1167"><code>bridge.js:1167</code></a>
         
         </p>
 
@@ -1979,7 +2001,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l1201"><code>bridge.js:1201</code></a>
+        <a href="../files/bridge.js.html#l1203"><code>bridge.js:1203</code></a>
         
         </p>
 
@@ -2091,7 +2113,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l1114"><code>bridge.js:1114</code></a>
+        <a href="../files/bridge.js.html#l1116"><code>bridge.js:1116</code></a>
         
         </p>
 

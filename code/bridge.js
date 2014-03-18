@@ -1066,6 +1066,7 @@ var CtripUtil = {
      * @brief 根据URL下载数据
      * @param {String} download_url 需要下载内容的URL
      * @param {String} suffix 保存的文件后缀
+     * @param {Boolean} isIgnoreHttpsCertification 是否忽略非法的HTTPS证书
      * @method app_download_data
      * @since v5.3
      * @author jimzhao
@@ -1076,11 +1077,11 @@ var CtripUtil = {
      var json_obj = {
         tagname:"download_data",
         error_code:"xxxxx",//param_error,download_faild
-        param:{downloadUrl:"http://www.baidu.com/bdlogo.gif", savedPath:"../wb_cache/pkg_name/md5_url_hash"}
+        param:{downloadUrl:"http://www.baidu.com/bdlogo.gif", savedPath:"../wb_cache/pkg_name/md5_url_hash", false}
      };
      app.callback(json_obj);
      */
-    app_download_data:function(download_url, suffix) {
+    app_download_data:function(download_url, suffix, isIgnoreHttpsCertification) {
         var startVersion = "5.3";
         if (!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
@@ -1097,6 +1098,7 @@ var CtripUtil = {
         params.downloadUrl = download_url;
         params.suffix = suffix;
         params.pageUrl = window.location.href;
+        params.isIgnoreHttpsCertification = isIgnoreHttpsCertification;
 
         var paramString = Internal.makeParamString("Util", "downloadData",params,"download_data");
         if (Internal.isIOS) {
