@@ -68,10 +68,14 @@
       bflag = !bflag;
     }
 
-    function doHTTPSDownloadTest() {
+    function doHTTPSInValidDownloadTest() {
       CtripUtil.app_download_data('https://kyfw.12306.cn/otn/passcodeNew/getPassCodeNew.do?module=login&rand=sjrand&t=0.48812331395048034835','jpeg',true);
     }
     
+    function doHTTPSValidDownloadTest() {
+      CtripUtil.app_download_data('https://github.com/apple-touch-icon-114.png','jpeg',false);
+    }
+
     function doHTTPPipeTest() {
 //GET http://www.baidu.com/s?wd=good+day&rsv_bp=0&ch=&tn=baidu&bar=&rsv_spt=3&ie=utf-8&rsv_sug3=4&rsv_sug4=469&rsv_sug1=2&rsv_sug2=0&inputT=166
     
@@ -109,9 +113,10 @@
   <br/>
   <li class="li2"><a onclick="javascript:doButtonTest()">doButtonTest</a></li>
   <br/>
-  <li class="li2"><a onclick="javascript:doHTTPSDownloadTest()">doHTTPSDownloadTest</a></li>
+  <li class="li2"><a onclick="javascript:doHTTPSInValidDownloadTest()">doHTTPSInValidDownloadTest</a></li>
   <br/>
-
+ <li class="li2"><a onclick="javascript:doHTTPSValidDownloadTest()">doHTTPSValidDownloadTest</a></li>
+  <br/>
   <li class="li2"><a onclick="javascript:doHTTPPipeTest()">doHTTPPipeTest</a></li>
   <br/>
   <li class="li2"><a onclick="javascript:doNavBarHiddenTest()">doNavBarHiddenTest</a></li>
