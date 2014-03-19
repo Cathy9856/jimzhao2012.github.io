@@ -1678,38 +1678,37 @@ var CtripPipe = {
      * @param {String} path HTTP请求发送的URL的路径
      * @param {String} method HTTP请求方式GET/POST
      * @param {String} header HTTP头，JSON字符串格式key/value，cookie作为一个key存储再HEADER内部
-     * @param {String} parameters key/value形式的参数，类似于网页form请求参数
+     * @param {Array}  parameters key=value形式的字符串数组,请做好参数的Encode，app端只负责拼接
      * @param {String} sequenceId 发送服务的序列号，随机生存即可
      * @since v5.4
      * @author jimzhao
      * @example 
 
      //GET http://www.baidu.com/s?wd=good+day&rsv_bp=0&ch=&tn=baidu&bar=&rsv_spt=3&ie=utf-8&rsv_sug3=4&rsv_sug4=469&rsv_sug1=2&rsv_sug2=0&inputT=166
-      var param = {};
-      param.wd="good+day"
-      param.rsv_bp=0;
-      param.ch="";
-      param.tn="";
-      param.baidu="";
-      param.bar="";
-      param.rsv_spt=3;
-      param.ie="utf-8";
-      param.rsv_sug3=4;
-      param.rsv_sug4=469;
-      param.rsv="";
-      param.rsv_sug1=2;
-      param.rsv_sug2=0;
-      param.inputT=166;
+    
+      var paramArr = new Array();
+      paramArr[0]="wd=good+day";
+      paramArr[1]="rsv_bp=0";
+      paramArr[2]="ch=";
+      paramArr[3]="tn=";
+      paramArr[4]="baidu=";
+      paramArr[5]="bar=";
+      paramArr[6]="rsv_spt=3";
+      paramArr[7]="ie=utf-8";
+      paramArr[8]="rsv_sug3=4";
+      paramArr[9]="rsv_sug4=469";
+      //。。。。其它参数依次类推，请做好参数的Encode，app端只负责拼接
 
-      CtripPipe.app_send_HTTP_pipe_request("http://www.baidu.com", "s","GET",null,JSON.stringfy(param), "13222222");
+      CtripPipe.app_send_HTTP_pipe_request("http://www.baidu.com", "s","GET",null,paramArr, "13222222");
 
      //调用后，H5会收到native回调的数据
         var json_obj =
         {
-            tagname:"send_h5_pipe_request",
+            tagname:"send_http_pipe_request",
             param:
             {
                 pipeResponse:"eHh4eHh4",
+                pipeCookie:"key:value",
                 sequenceId:"13222222"
             },
         }

@@ -237,7 +237,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l1767"><code>bridge.js:1767</code></a>
+        <a href="../files/bridge.js.html#l1766"><code>bridge.js:1766</code></a>
         
         </p>
 
@@ -355,7 +355,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l1805"><code>bridge.js:1805</code></a>
+        <a href="../files/bridge.js.html#l1804"><code>bridge.js:1804</code></a>
         
         </p>
 
@@ -651,13 +651,13 @@
                 <li class="param">
                     
                         <code class="param-name">parameters</code>
-                        <span class="type">String</span>
+                        <span class="type">Array</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>key/value形式的参数，类似于网页form请求参数</p>
+                        <p>key=value形式的字符串数组,请做好参数的Encode，app端只负责拼接</p>
 
                     </div>
 
@@ -692,31 +692,30 @@
 
             <div class="example-content">
                 <pre class="code prettyprint"><code>//GET http://www.baidu.com/s?wd=good+day&amp;rsv_bp=0&amp;ch=&amp;tn=baidu&amp;bar=&amp;rsv_spt=3&amp;ie=utf-8&amp;rsv_sug3=4&amp;rsv_sug4=469&amp;rsv_sug1=2&amp;rsv_sug2=0&amp;inputT=166
- var param = {};
- param.wd=&quot;good+day&quot;
- param.rsv_bp=0;
- param.ch=&quot;&quot;;
- param.tn=&quot;&quot;;
- param.baidu=&quot;&quot;;
- param.bar=&quot;&quot;;
- param.rsv_spt=3;
- param.ie=&quot;utf-8&quot;;
- param.rsv_sug3=4;
- param.rsv_sug4=469;
- param.rsv=&quot;&quot;;
- param.rsv_sug1=2;
- param.rsv_sug2=0;
- param.inputT=166;
 
- CtripPipe.app_send_HTTP_pipe_request(&quot;http://www.baidu.com&quot;, &quot;s&quot;,&quot;GET&quot;,null,JSON.stringfy(param), &quot;13222222&quot;);
+ var paramArr = new Array();
+ paramArr[0]=&quot;wd=good+day&quot;;
+ paramArr[1]=&quot;rsv_bp=0&quot;;
+ paramArr[2]=&quot;ch=&quot;;
+ paramArr[3]=&quot;tn=&quot;;
+ paramArr[4]=&quot;baidu=&quot;;
+ paramArr[5]=&quot;bar=&quot;;
+ paramArr[6]=&quot;rsv_spt=3&quot;;
+ paramArr[7]=&quot;ie=utf-8&quot;;
+ paramArr[8]=&quot;rsv_sug3=4&quot;;
+ paramArr[9]=&quot;rsv_sug4=469&quot;;
+ //。。。。其它参数依次类推，请做好参数的Encode，app端只负责拼接
+
+ CtripPipe.app_send_HTTP_pipe_request(&quot;http://www.baidu.com&quot;, &quot;s&quot;,&quot;GET&quot;,null,paramArr, &quot;13222222&quot;);
 
 //调用后，H5会收到native回调的数据
    var json_obj =
    {
-       tagname:&quot;send_h5_pipe_request&quot;,
+       tagname:&quot;send_http_pipe_request&quot;,
        param:
        {
            pipeResponse:&quot;eHh4eHh4&quot;,
+           pipeCookie:&quot;key:value&quot;,
            sequenceId:&quot;13222222&quot;
        },
    }
