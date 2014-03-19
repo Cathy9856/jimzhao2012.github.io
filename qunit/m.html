@@ -38,6 +38,9 @@
           else if (tagname == "member_register") {
             alert("用户注册:"+JSON.stringify(jsonobj));
           }
+          else if (tagname == "download_data") {
+            alert("下载图片:"+JSON.stringify(jsonobj));
+          }
         }
     };
 
@@ -62,6 +65,10 @@
       bflag = !bflag;
     }
 
+    function doHTTPSDownloadTest() {
+      CtripUtil.app_download_data('https://kyfw.12306.cn/otn/passcodeNew/getPassCodeNew.do?module=login&rand=sjrand&t=0.48812331395048034835','jpeg',true);
+    }
+
   </script>
 </head>
 <body>
@@ -76,6 +83,8 @@
    <li class="li2"><a onclick='javascript:CtripUtil.app_call_system_share("",  "这个是分享的内容", "这是标题", "http://www.ctrip.com/",false)'>App分享API</a></li>
   <br/>
   <li class="li2"><a onclick="javascript:doButtonTest()">doButtonTest</a></li>
+  <br/>
+  <li class="li2"><a onclick="javascript:doHTTPSDownloadTest()">doHTTPSDownloadTest</a></li>
   <br/>
   <li class="li2"><a onclick="javascript:doNavBarHiddenTest()">doNavBarHiddenTest</a></li>
   <br/>
