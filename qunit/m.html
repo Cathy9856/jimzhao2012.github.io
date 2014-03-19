@@ -41,6 +41,9 @@
           else if (tagname == "download_data") {
             alert("下载图片:"+JSON.stringify(jsonobj));
           }
+          else if (tagname == "send_http_pipe_request") {
+            alert("HTTP管道:"+JSON.stringify(jsonobj));
+          }
         }
     };
 
@@ -67,6 +70,28 @@
 
     function doHTTPSDownloadTest() {
       CtripUtil.app_download_data('https://kyfw.12306.cn/otn/passcodeNew/getPassCodeNew.do?module=login&rand=sjrand&t=0.48812331395048034835','jpeg',true);
+    }
+    
+    function doHTTPPipeTest() {
+//GET http://www.baidu.com/s?wd=good+day&rsv_bp=0&ch=&tn=baidu&bar=&rsv_spt=3&ie=utf-8&rsv_sug3=4&rsv_sug4=469&rsv_sug1=2&rsv_sug2=0&inputT=166
+    
+      var paramArr = new Array();
+      paramArr[0]="wd=good+day";
+      paramArr[1]="rsv_bp=0";
+      paramArr[2]="ch=";
+      paramArr[3]="tn=";
+      paramArr[4]="baidu=";
+      paramArr[5]="bar=";
+      paramArr[6]="rsv_spt=3";
+      paramArr[7]="ie=utf-8";
+      paramArr[8]="rsv_sug3=4";
+      paramArr[9]="rsv_sug4=469";
+      paramArr[10]="rsv_sug1=2";
+      paramArr[11]="rsv_sug2=0";
+      paramArr[12]="inputT=166";
+      //。。。。其它参数依次类推，请做好参数的Encode，app端只负责拼接
+
+      CtripPipe.app_send_HTTP_pipe_request("http://www.baidu.com", "s","GET",null,paramArr, "13222222");
     }
 
   </script>
