@@ -1699,7 +1699,7 @@ var CtripPipe = {
       paramArr[9]="rsv_sug4=469";
       //。。。。其它参数依次类推，请做好参数的Encode，app端只负责拼接
 
-      CtripPipe.app_send_HTTP_pipe_request("http://www.baidu.com", "s","GET",null,paramArr, "13222222");
+      CtripPipe.app_send_HTTP_pipe_request("http://www.baidu.com", "/s","GET",null,paramArr, "13222222");
 
      //调用后，H5会收到native回调的数据
         var json_obj =
