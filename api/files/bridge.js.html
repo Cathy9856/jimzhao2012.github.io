@@ -315,11 +315,15 @@ var Internal = {
  * @description 将native的callback数据转换给H5页面的app.callback(JSON)
  * @method __bridge_callback
  * @param {String} param native传给H5的字符串,该字符串在app组装的时候做过URLEncode
+ * @param {Boolean} isIgnoreURLEncode, 是否忽略URLEncode，5.4之前版本，app-&gt;bridge.js的参数都是URLEncode之后的，该值为false，5.4之后，是未URLEncode的，该值为true
  * @since v5.2
  * @author jimzhao
  */
-function __bridge_callback(param) {
-    param = decodeURIComponent(param);
+function __bridge_callback(param, isIgnoreURLEncode) {
+    if (!isIgnoreURLEncode) {
+        param = decodeURIComponent(param);        
+    }
+    
     var jsonObj = JSON.parse(param);
 
     if (jsonObj != null) {
