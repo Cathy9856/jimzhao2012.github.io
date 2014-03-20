@@ -214,8 +214,8 @@ var Internal = {
  */
 function __bridge_callback(param) {
     param = decodeURIComponent(param);
-    param = param.replace("%20", " ");
-
+    param = param.replace(/%20/g," ");
+    
     var jsonObj = JSON.parse(param);
 
     if (jsonObj != null) {
