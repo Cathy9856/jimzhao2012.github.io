@@ -320,7 +320,6 @@ var Internal = {
  */
 function __bridge_callback(param) {
     param = decodeURIComponent(param);
-    param = param.replace(/%20/g,&quot; &quot;);
     
     var jsonObj = JSON.parse(param);
 
