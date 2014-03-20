@@ -28,7 +28,7 @@
   var app = {
         callback: function(jsonobj) {
           var tagname = jsonobj.tagname;
-
+          alert("tagname=="+tagname);
           if ( tagname == 'back') {
             History.back();
           }
@@ -42,6 +42,8 @@
             alert("下载图片:"+JSON.stringify(jsonobj));
           }
           else if (tagname == "send_http_pipe_request") {
+            alert("Got HTTP Pipe Response");
+
             alert("HTTP管道:"+JSON.stringify(jsonobj));
           }
         }
@@ -117,7 +119,7 @@
   <br/>
  <li class="li2"><a onclick="javascript:doHTTPSValidDownloadTest()">doHTTPSValidDownloadTest</a></li>
   <br/>
-  <li class="li2"><a onclick="javascript:doHTTPPipeTest()">doHTTPPipeTest</a></li>
+  <li class="li2"><a onclick="javascript:doHTTPPipeTest()">doBaiduHTTPPipeTest</a></li>
   <br/>
   <li class="li2"><a onclick="javascript:doNavBarHiddenTest()">doNavBarHiddenTest</a></li>
   <br/>
