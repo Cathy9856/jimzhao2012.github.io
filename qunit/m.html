@@ -98,7 +98,161 @@
       CtripPipe.app_send_HTTP_pipe_request("http://www.baidu.com", "/s","GET",null,paramArr, "13222222");
     }
 
+ function dobase64test() {
+
+
+ }
   </script>
+
+  <script>
+    var mapEn = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".split('');
+
+    var mapDe = {};
+
+    for(var i=0; i<64; i++)
+
+           mapDe[mapEn[i]] = i;
+
+    /*
+
+    * 函数: Base64Encode
+
+    * 说明: 编码
+
+    */
+
+    function Base64Encode(data)
+
+    {
+
+           var buf = [];
+
+           var map = mapEn;
+
+           var n = data.length;       //总字节数
+
+           var val;                            //中间值
+
+           var i = 0;
+
+           /*
+
+            * 3字节 ==> val ==> 4字符
+
+            */
+
+           while(i < n)
+
+           {
+
+                  val = (data[ i ] << 16)       |
+
+                           (data[i+1] << 8)       |
+
+                           (data[i+2]);
+
+                  buf.push(map[val>>18],
+
+                                 map[val>>12 & 63],
+
+                                 map[val>>6 & 63],
+
+                                 map[val & 63]);
+
+                  i += 3;
+
+           }
+
+           if(n%3 == 1)                            //凑两个"="
+
+                  buf.pop(),buf.pop(),buf.push('=', '=');
+
+           else                                          //凑一个"="
+
+                  buf.pop(),buf.push('=');
+
+           return buf.join('');
+
+    }
+
+    /*
+
+    * 函数: Base64Decode
+
+    * 说明: 解码
+
+    */
+
+    function Base64Decode(str)
+
+    {
+
+           var buf = [];
+
+           var arr = str.split('');
+
+           var map = mapDe;
+
+           var n = arr.length;              //总字符数
+
+           var val;                            //中间值
+
+           var i=0;
+
+           /*
+
+            * 长度异常
+
+            */
+
+           if(n % 4)
+
+                  return;
+
+           /*
+
+            * 4字符 ==> val ==> 3字节
+
+            */
+
+           while(i < n)
+
+           {
+
+                  val = (map[arr[ i ]] << 18) |
+
+                           (map[arr[i+1]] << 12) |
+
+                           (map[arr[i+2]] << 6)  |
+
+                           (map[arr[i+3]]);
+
+                  buf.push(val>>16,
+
+                                 val>>8 & 0xFF,
+
+                                 val & 0xFF);
+
+                  i += 4;
+
+           }
+
+           /*
+
+            * 凑字字符"="个数
+
+            */
+
+           while(arr[--n] == '=')
+
+                  buf.pop();
+
+           return buf;
+
+    }
+
+</script>
+
 </head>
 <body>
 
@@ -113,11 +267,13 @@
   <br/>
   <li class="li2"><a onclick="javascript:doButtonTest()">doButtonTest</a></li>
   <br/>
+  <li class="li2"><a onclick="javascript:dobase64test()">doButtonTest</a></li>
+  <br/>
   <li class="li2"><a onclick="javascript:doHTTPSInValidDownloadTest()">doHTTPSInValidDownloadTest</a></li>
   <br/>
  <li class="li2"><a onclick="javascript:doHTTPSValidDownloadTest()">doHTTPSValidDownloadTest</a></li>
   <br/>
-  <li class="li2"><a onclick="javascript:doHTTPPipeTest()">doBaidu4HTTPPipeTest</a></li>
+  <li class="li2"><a onclick="javascript:doHTTPPipeTest()">doBaidu5HTTPPipeTest</a></li>
   <br/>
   <li class="li2"><a onclick="javascript:doNavBarHiddenTest()">doNavBarHiddenTest</a></li>
   <br/>
