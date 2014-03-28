@@ -2589,7 +2589,7 @@ var CtripMap = {
             title = "";
         }
         if (!subtitle) {
-            !subtitle = "";
+            subtitle = "";
         }
 
         var params = {};
