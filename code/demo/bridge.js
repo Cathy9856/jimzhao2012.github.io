@@ -2609,9 +2609,9 @@ var CtripMap = {
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
-    },
+    }
 
-},
+};
 
 //获取当前app环境
  CtripTool.app_is_in_ctrip_app();
