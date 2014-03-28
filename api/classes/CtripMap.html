@@ -110,7 +110,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l2515"><code>bridge.js:2515</code></a>
+            定义在: <a href="../files/bridge.js.html#l2502"><code>bridge.js:2502</code></a>
         </div>
     
 
@@ -153,11 +153,19 @@
                     <tr><th>描述</th><th>函数</th></tr>
                     
                     <tr><td>定位</td><td><a href="#method_app_locate">app_locate</a></td></tr>
+                    
+                    <tr><td>在地图上显示某个位置/导航</td><td><a href="#method_app_show_map">app_show_map</a></td></tr>
                                   
                     </table>
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -223,7 +231,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2522"><code>bridge.js:2522</code></a>
+        <a href="../files/bridge.js.html#l2509"><code>bridge.js:2509</code></a>
         
         </p>
 
@@ -290,6 +298,172 @@
        }
    }
    app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_show_map" class="method item">
+    <h3 class="name"><code>app_show_map</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>latitude,</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>longitude,</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>title,</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>subtitle,</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l2554"><code>bridge.js:2554</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.5</p>
+        
+    </div>
+
+    <div class="description">
+        <p>在地图上显示某个位置</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">latitude,</code>
+                        <span class="type">Double</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>纬度</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">longitude,</code>
+                        <span class="type">Double</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>经度</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">title,</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>在地图上显示的点的主标题</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">subtitle,</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>在地图上显示点的附标题</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p>CtripMap.app_show_map(31.3222323, 121.32232332, &quot;上海野生动物园&quot;, &quot;浦东新区陆家嘴1234号&quot;);</p>
 
             </div>
         </div>

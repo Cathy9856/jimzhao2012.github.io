@@ -499,12 +499,12 @@ var CtripUtil = {
 
     /**
      * @description 定位
-     * @brief 定位
+     * @brief 定位(兼容，移动到CtripMap)
      * @param {Bool} is_async, true标识是异步定位，false标识为同步定位
-     * @method app_locate
+     * @method app_locate(Deprecated)
      * @example
 
-        CtripUtil.app_locate(true);
+        CtripMap.app_locate(true);
         //定位完成后H5页面会收到回调数据
         var json_obj =
         {
@@ -524,20 +524,7 @@ var CtripUtil = {
      * 
      */
     app_locate:function(is_async) {
-        var params = {};
-        params.is_async = is_async;
-
-        paramString = Internal.makeParamString("Locate", "locate", params, 'locate')
-        if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
-        }
-        else if (Internal.isAndroid) {
-            window.Locate_a.locate(paramString);
-        }
-        else if (Internal.isWinOS) {
-            Internal.callWin8App(paramString);
-        }
+        CtripMap.app_locate(is_async);
     },
 
     /**
@@ -2564,7 +2551,8 @@ var CtripMap = {
         }
     },
 
-    /* @description 在地图上显示某个位置
+    /**
+     * @description 在地图上显示某个位置
      * @brief 在地图上显示某个位置/导航
      * @param {double} latitude, 纬度
      * @param {double} longitude, 经度

@@ -176,7 +176,7 @@
                     
                     <tr><td>初始化H5模块数据</td><td><a href="#method_app_init_member_H5_info">app_init_member_H5_info</a></td></tr>
                     
-                    <tr><td>定位</td><td><a href="#method_app_locate">app_locate</a></td></tr>
+                    <tr><td>定位(兼容，移动到CtripMap)</td><td><a href="#method_app_locate(Deprecated)">app_locate(Deprecated)</a></td></tr>
                     
                     <tr><td>H5写日志到app</td><td><a href="#method_app_log">app_log</a></td></tr>
                     
@@ -389,7 +389,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l674"><code>bridge.js:674</code></a>
+        <a href="../files/bridge.js.html#l661"><code>bridge.js:661</code></a>
         
         </p>
 
@@ -779,7 +779,7 @@ CtripUtil.app_call_phone();</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1005"><code>bridge.js:1005</code></a>
+        <a href="../files/bridge.js.html#l992"><code>bridge.js:992</code></a>
         
         </p>
 
@@ -949,7 +949,7 @@ CtripUtil.app_call_phone();</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l793"><code>bridge.js:793</code></a>
+        <a href="../files/bridge.js.html#l780"><code>bridge.js:780</code></a>
         
         </p>
 
@@ -1062,7 +1062,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l761"><code>bridge.js:761</code></a>
+        <a href="../files/bridge.js.html#l748"><code>bridge.js:748</code></a>
         
         </p>
 
@@ -1135,7 +1135,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l626"><code>bridge.js:626</code></a>
+        <a href="../files/bridge.js.html#l613"><code>bridge.js:613</code></a>
         
         </p>
 
@@ -1211,7 +1211,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l932"><code>bridge.js:932</code></a>
+        <a href="../files/bridge.js.html#l919"><code>bridge.js:919</code></a>
         
         </p>
 
@@ -1317,7 +1317,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l698"><code>bridge.js:698</code></a>
+        <a href="../files/bridge.js.html#l685"><code>bridge.js:685</code></a>
         
         </p>
 
@@ -1446,7 +1446,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1064"><code>bridge.js:1064</code></a>
+        <a href="../files/bridge.js.html#l1051"><code>bridge.js:1051</code></a>
         
         </p>
 
@@ -1624,8 +1624,8 @@ app.callback(json_obj);</code></pre>
 </div>
 
                 
-                    <div id="method_app_locate" class="method item">
-    <h3 class="name"><code>app_locate</code></h3>
+                    <div id="method_app_locate(Deprecated)" class="method item">
+    <h3 class="name"><code>app_locate(Deprecated)</code></h3>
 
     
         <div class="args">
@@ -1714,7 +1714,7 @@ app.callback(json_obj);</code></pre>
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>   CtripUtil.app_locate(true);
+                <pre class="code prettyprint"><code>   CtripMap.app_locate(true);
    //定位完成后H5页面会收到回调数据
    var json_obj =
    {
@@ -1786,7 +1786,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1167"><code>bridge.js:1167</code></a>
+        <a href="../files/bridge.js.html#l1154"><code>bridge.js:1154</code></a>
         
         </p>
 
@@ -2003,7 +2003,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l1203"><code>bridge.js:1203</code></a>
+        <a href="../files/bridge.js.html#l1190"><code>bridge.js:1190</code></a>
         
         </p>
 
@@ -2115,7 +2115,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l1116"><code>bridge.js:1116</code></a>
+        <a href="../files/bridge.js.html#l1103"><code>bridge.js:1103</code></a>
         
         </p>
 
@@ -2263,7 +2263,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l559"><code>bridge.js:559</code></a>
+        <a href="../files/bridge.js.html#l546"><code>bridge.js:546</code></a>
         
         </p>
 
@@ -2393,7 +2393,7 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             
         
         
-        <a href="../files/bridge.js.html#l967"><code>bridge.js:967</code></a>
+        <a href="../files/bridge.js.html#l954"><code>bridge.js:954</code></a>
         
         </p>
 
@@ -2466,7 +2466,7 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             
         
         
-        <a href="../files/bridge.js.html#l651"><code>bridge.js:651</code></a>
+        <a href="../files/bridge.js.html#l638"><code>bridge.js:638</code></a>
         
         </p>
 
@@ -2548,7 +2548,7 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             
         
         
-        <a href="../files/bridge.js.html#l836"><code>bridge.js:836</code></a>
+        <a href="../files/bridge.js.html#l823"><code>bridge.js:823</code></a>
         
         </p>
 
@@ -2722,7 +2722,7 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             
         
         
-        <a href="../files/bridge.js.html#l543"><code>bridge.js:543</code></a>
+        <a href="../files/bridge.js.html#l530"><code>bridge.js:530</code></a>
         
         </p>
 
@@ -2812,7 +2812,7 @@ CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&q
             
         
         
-        <a href="../files/bridge.js.html#l737"><code>bridge.js:737</code></a>
+        <a href="../files/bridge.js.html#l724"><code>bridge.js:724</code></a>
         
         </p>
 
