@@ -1708,7 +1708,6 @@ var CtripPipe = {
             param:
             {
                 pipeResponse:"eHh4eHh4",
-                pipeCookie:"key:value",
                 sequenceId:"13222222"
             },
         }
@@ -2512,6 +2511,107 @@ var CtripBar = {
     }
 };
 
+
+/**
+ * @class CtripMap
+ * @description 地图相关类，定位/导航
+ * @brief 地图相关类，定位/导航
+ */
+
+var CtripMap = {
+ /**
+     * @description 定位
+     * @brief 定位
+     * @param {Bool} is_async, true标识是异步定位，false标识为同步定位
+     * @method app_locate
+     * @author jimzhao
+     * @since v5.1
+     * @example
+
+        CtripUtil.app_locate(true);
+        //定位完成后H5页面会收到回调数据
+        var json_obj =
+        {
+            tagname:'locate',
+            param:{
+                "value":{
+                    ctyName: '上海',
+                    addrs:'上海市浦东南路22号',
+                    lat:'121.487899',
+                    lng:'31.249162'
+                },
+                'timeout': '2013/09/12 12:32:36',
+                'locateStatus':0,//iOS新增字段:-1网络不通，当前无法定位,-2定位没有开启
+            }
+        }
+        app.callback(json_obj);
+     * 
+     */
+    app_locate:function(is_async) {
+        var params = {};
+        params.is_async = is_async;
+
+        paramString = Internal.makeParamString("Locate", "locate", params, 'locate')
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Locate_a.locate(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /* @description 在地图上显示某个位置
+     * @brief 在地图上显示某个位置/导航
+     * @param {double} latitude, 纬度
+     * @param {double} longitude, 经度
+     * @param {String} title, 在地图上显示的点的主标题
+     * @param {String} subtitle, 在地图上显示点的附标题
+     * @method app_show_map
+     * @author jimzhao
+     * @since v5.5
+     * @example
+     *
+     * CtripMap.app_show_map(31.3222323, 121.32232332, "上海野生动物园", "浦东新区陆家嘴1234号");
+     *
+     */
+    app_show_map:function(latitude, longitude, title, subtitle) {
+        var startVersion = "5.5";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!title) {
+            title = "";
+        }
+        if (!subtitle) {
+            !subtitle = "";
+        }
+
+        var params = {};
+        params.latitude = latitude;
+        params.longitude = longitude;
+        params.title = title;
+        params.subtitle = subtitle;
+        paramString = Internal.makeParamString("Locate", "showMap",params, 'show_map');
+
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Locate_a.showMap(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+},
 
 //获取当前app环境
  CtripTool.app_is_in_ctrip_app();

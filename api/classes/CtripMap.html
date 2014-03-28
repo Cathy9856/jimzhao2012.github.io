@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>CtripEncrypt</title>
+    <title>CtripMap</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -102,7 +102,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>CtripEncrypt Class</h1>
+                        <h1>CtripMap Class</h1>
 <div class="box meta">
     
 
@@ -110,7 +110,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l1496"><code>bridge.js:1496</code></a>
+            定义在: <a href="../files/bridge.js.html#l2515"><code>bridge.js:2515</code></a>
         </div>
     
 
@@ -122,7 +122,7 @@
 
 
 <div class="box intro">
-    <p>加解密/HASH/编码相关类</p>
+    <p>地图相关类，定位/导航</p>
 
 </div>
 
@@ -152,7 +152,7 @@
                     <table>
                     <tr><th>描述</th><th>函数</th></tr>
                     
-                    <tr><td>base64 UTF8编码</td><td><a href="#method_app_base64_encode">app_base64_encode</a></td></tr>
+                    <tr><td>定位</td><td><a href="#method_app_locate">app_locate</a></td></tr>
                                   
                     </table>
 
@@ -181,8 +181,8 @@
                 <h2 class="off-left">方法</h2>
 
                 
-                    <div id="method_app_base64_encode" class="method item">
-    <h3 class="name"><code>app_base64_encode</code></h3>
+                    <div id="method_app_locate" class="method item">
+    <h3 class="name"><code>app_locate</code></h3>
 
     
         <div class="args">
@@ -190,7 +190,7 @@
             
                 <li class="arg">
                     
-                        <code>toIncodeString</code>
+                        <code>is_async,</code>
                     
                 </li>
             
@@ -223,7 +223,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l1503"><code>bridge.js:1503</code></a>
+        <a href="../files/bridge.js.html#l2522"><code>bridge.js:2522</code></a>
         
         </p>
 
@@ -231,12 +231,12 @@
         
 
         
-            <p>可用版本 5.4</p>
+            <p>可用版本 v5.1</p>
         
     </div>
 
     <div class="description">
-        <p>base64 UTF8编码</p>
+        <p>定位</p>
 
     </div>
 
@@ -248,14 +248,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">toIncodeString</code>
-                        <span class="type">String</span>
+                        <code class="param-name">is_async,</code>
+                        <span class="type">Bool</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>需要做base64 encode的字符串</p>
+                        <p>true标识是异步定位，false标识为同步定位</p>
 
                     </div>
 
@@ -273,15 +273,21 @@
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> CtripEncrypt.app_base64_encode(&quot;xxxxxx&quot;);
- //调用后，H5会收到native回调的数据
+                <pre class="code prettyprint"><code>   CtripUtil.app_locate(true);
+   //定位完成后H5页面会收到回调数据
    var json_obj =
    {
-       tagname:&quot;base64_encode&quot;,
-       param:
-       {
-           encodedString:&quot;eHh4eHh4&quot;,
-       },
+       tagname:&#39;locate&#39;,
+       param:{
+           &quot;value&quot;:{
+               ctyName: &#39;上海&#39;,
+               addrs:&#39;上海市浦东南路22号&#39;,
+               lat:&#39;121.487899&#39;,
+               lng:&#39;31.249162&#39;
+           },
+           &#39;timeout&#39;: &#39;2013/09/12 12:32:36&#39;,
+           &#39;locateStatus&#39;:0,//iOS新增字段:-1网络不通，当前无法定位,-2定位没有开启
+       }
    }
    app.callback(json_obj);</code></pre>
 

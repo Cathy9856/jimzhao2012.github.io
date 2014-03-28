@@ -47,6 +47,8 @@
             
                 <li><a href="../classes/CtripFile.html">CtripFile</a></li>
             
+                <li><a href="../classes/CtripMap.html">CtripMap</a></li>
+            
                 <li><a href="../classes/CtripPay.html">CtripPay</a></li>
             
                 <li><a href="../classes/CtripPipe.html">CtripPipe</a></li>
@@ -1814,7 +1816,6 @@ var CtripPipe = {
             param:
             {
                 pipeResponse:&quot;eHh4eHh4&quot;,
-                pipeCookie:&quot;key:value&quot;,
                 sequenceId:&quot;13222222&quot;
             },
         }
@@ -2618,6 +2619,107 @@ var CtripBar = {
     }
 };
 
+
+/**
+ * @class CtripMap
+ * @description 地图相关类，定位/导航
+ * @brief 地图相关类，定位/导航
+ */
+
+var CtripMap = {
+ /**
+     * @description 定位
+     * @brief 定位
+     * @param {Bool} is_async, true标识是异步定位，false标识为同步定位
+     * @method app_locate
+     * @author jimzhao
+     * @since v5.1
+     * @example
+
+        CtripUtil.app_locate(true);
+        //定位完成后H5页面会收到回调数据
+        var json_obj =
+        {
+            tagname:&#x27;locate&#x27;,
+            param:{
+                &quot;value&quot;:{
+                    ctyName: &#x27;上海&#x27;,
+                    addrs:&#x27;上海市浦东南路22号&#x27;,
+                    lat:&#x27;121.487899&#x27;,
+                    lng:&#x27;31.249162&#x27;
+                },
+                &#x27;timeout&#x27;: &#x27;2013/09/12 12:32:36&#x27;,
+                &#x27;locateStatus&#x27;:0,//iOS新增字段:-1网络不通，当前无法定位,-2定位没有开启
+            }
+        }
+        app.callback(json_obj);
+     * 
+     */
+    app_locate:function(is_async) {
+        var params = {};
+        params.is_async = is_async;
+
+        paramString = Internal.makeParamString(&quot;Locate&quot;, &quot;locate&quot;, params, &#x27;locate&#x27;)
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Locate_a.locate(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /* @description 在地图上显示某个位置
+     * @brief 在地图上显示某个位置/导航
+     * @param {double} latitude, 纬度
+     * @param {double} longitude, 经度
+     * @param {String} title, 在地图上显示的点的主标题
+     * @param {String} subtitle, 在地图上显示点的附标题
+     * @method app_show_map
+     * @author jimzhao
+     * @since v5.5
+     * @example
+     *
+     * CtripMap.app_show_map(31.3222323, 121.32232332, &quot;上海野生动物园&quot;, &quot;浦东新区陆家嘴1234号&quot;);
+     *
+     */
+    app_show_map:function(latitude, longitude, title, subtitle) {
+        var startVersion = &quot;5.5&quot;;
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!title) {
+            title = &quot;&quot;;
+        }
+        if (!subtitle) {
+            !subtitle = &quot;&quot;;
+        }
+
+        var params = {};
+        params.latitude = latitude;
+        params.longitude = longitude;
+        params.title = title;
+        params.subtitle = subtitle;
+        paramString = Internal.makeParamString(&quot;Locate&quot;, &quot;showMap&quot;,params, &#x27;show_map&#x27;);
+
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Locate_a.showMap(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+},
 
 //获取当前app环境
  CtripTool.app_is_in_ctrip_app();

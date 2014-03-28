@@ -97,7 +97,7 @@
 
       CtripPipe.app_send_HTTP_pipe_request("http://www.baidu.com", "/s","GET",null,paramArr, "13222222");
     }
-    
+    CtripMap.app_show_map(31.3222323, 121.32232332, "上海野生动物园", "浦东新区陆家嘴1234号");
   </script>
 
 </head>
@@ -115,6 +115,8 @@
   <li class="li2"><a onclick="javascript:doButtonTest()">doButtonTest</a></li> 
   <br/>
   <li class="li2"><a onclick="javascript:doHTTPSInValidDownloadTest()">doHTTPSInValidDownloadTest</a></li>
+  <br/>
+  <li class="li2"><a onclick='javascript:CtripMap.app_show_map(31.235260, 121.505836, "上海野生动物园", "浦东新区陆家嘴1234号")'>地图导航</a></li>
   <br/>
  <li class="li2"><a onclick="javascript:doHTTPSValidDownloadTest()">doHTTPSValidDownloadTest</a></li>
   <br/>

@@ -14,7 +14,8 @@
                 "CtripPipe": 1,
                 "CtripSumSungWallet": 1,
                 "CtripFile": 1,
-                "CtripBar": 1
+                "CtripBar": 1,
+                "CtripMap": 1
             },
             "fors": {},
             "namespaces": {}
@@ -124,7 +125,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1889,
+            "line": 1888,
             "description": "三星钱包相关API",
             "brief": "三星钱包相关API"
         },
@@ -137,7 +138,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 2004,
+            "line": 2003,
             "description": "文件IO操作相关API",
             "brief": "文件IO操作相关API"
         },
@@ -150,9 +151,22 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 2388,
+            "line": 2387,
             "description": "H5页面顶部导航栏和底部工具栏的控制",
             "brief": "H5页面顶部/底部导航栏控制"
+        },
+        "CtripMap": {
+            "name": "CtripMap",
+            "shortname": "CtripMap",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bridge.js",
+            "line": 2515,
+            "description": "地图相关类，定位/导航",
+            "brief": "地图相关类，定位/导航"
         }
     },
     "classitems": [
@@ -1146,13 +1160,13 @@
             "since": "v5.4",
             "author": "jimzhao",
             "example": [
-                " \n\n    //GET http://www.baidu.com/s?wd=good+day&rsv_bp=0&ch=&tn=baidu&bar=&rsv_spt=3&ie=utf-8&rsv_sug3=4&rsv_sug4=469&rsv_sug1=2&rsv_sug2=0&inputT=166\n   \n     var paramArr = new Array();\n     paramArr[0]=\"wd=good+day\";\n     paramArr[1]=\"rsv_bp=0\";\n     paramArr[2]=\"ch=\";\n     paramArr[3]=\"tn=\";\n     paramArr[4]=\"baidu=\";\n     paramArr[5]=\"bar=\";\n     paramArr[6]=\"rsv_spt=3\";\n     paramArr[7]=\"ie=utf-8\";\n     paramArr[8]=\"rsv_sug3=4\";\n     paramArr[9]=\"rsv_sug4=469\";\n     //。。。。其它参数依次类推，请做好参数的Encode，app端只负责拼接\n\n     CtripPipe.app_send_HTTP_pipe_request(\"http://www.baidu.com\", \"/s\",\"GET\",null,paramArr, \"13222222\");\n\n    //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"send_http_pipe_request\",\n           param:\n           {\n               pipeResponse:\"eHh4eHh4\",\n               pipeCookie:\"key:value\",\n               sequenceId:\"13222222\"\n           },\n       }\n       app.callback(json_obj);\n"
+                " \n\n    //GET http://www.baidu.com/s?wd=good+day&rsv_bp=0&ch=&tn=baidu&bar=&rsv_spt=3&ie=utf-8&rsv_sug3=4&rsv_sug4=469&rsv_sug1=2&rsv_sug2=0&inputT=166\n   \n     var paramArr = new Array();\n     paramArr[0]=\"wd=good+day\";\n     paramArr[1]=\"rsv_bp=0\";\n     paramArr[2]=\"ch=\";\n     paramArr[3]=\"tn=\";\n     paramArr[4]=\"baidu=\";\n     paramArr[5]=\"bar=\";\n     paramArr[6]=\"rsv_spt=3\";\n     paramArr[7]=\"ie=utf-8\";\n     paramArr[8]=\"rsv_sug3=4\";\n     paramArr[9]=\"rsv_sug4=469\";\n     //。。。。其它参数依次类推，请做好参数的Encode，app端只负责拼接\n\n     CtripPipe.app_send_HTTP_pipe_request(\"http://www.baidu.com\", \"/s\",\"GET\",null,paramArr, \"13222222\");\n\n    //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"send_http_pipe_request\",\n           param:\n           {\n               pipeResponse:\"eHh4eHh4\",\n               sequenceId:\"13222222\"\n           },\n       }\n       app.callback(json_obj);\n"
             ],
             "class": "CtripPipe"
         },
         {
             "file": "bridge.js",
-            "line": 1766,
+            "line": 1765,
             "description": "根据发送的sequenceId，终止正在发送的HTTP请求",
             "brief": "终止正在发送的HTTP请求",
             "itemtype": "method",
@@ -1173,7 +1187,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1804,
+            "line": 1803,
             "description": "H5通过App发送服务",
             "brief": "H5通过App发送服务",
             "itemtype": "method",
@@ -1209,7 +1223,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1896,
+            "line": 1895,
             "description": "检查ticket是否在三星钱包app中",
             "brief": "检查ticket是否在三星钱包app中",
             "itemtype": "method",
@@ -1230,7 +1244,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1931,
+            "line": 1930,
             "description": "到三星钱包中下载ticket",
             "brief": "到三星钱包中下载ticket",
             "itemtype": "method",
@@ -1251,7 +1265,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1967,
+            "line": 1966,
             "description": "在三星钱包app中查看Ticket",
             "brief": "在三星钱包app中查看Ticket",
             "itemtype": "method",
@@ -1272,7 +1286,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2011,
+            "line": 2010,
             "description": "获取当前web页面的sandbox目录，在webapp/wb_cache/xxxx/目录下xxxx即为当前sandbox的名字",
             "brief": "获取当前web页面的sandbox目录",
             "itemtype": "method",
@@ -1286,7 +1300,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2054,
+            "line": 2053,
             "description": "文本写入文件中，UTF8编码。可以指定文件名，或者相对路径",
             "brief": "写文本到本地文件",
             "itemtype": "method",
@@ -1322,7 +1336,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2113,
+            "line": 2112,
             "description": "删除文件/目录。可以指定文件名，或者相对路径",
             "brief": "删除文件/目录",
             "itemtype": "method",
@@ -1348,7 +1362,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2167,
+            "line": 2166,
             "description": "读取文本文件内容，UTF-8编码。可以指定文件名，或者相对路径",
             "brief": "读取文本文件内容",
             "itemtype": "method",
@@ -1374,7 +1388,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2222,
+            "line": 2221,
             "description": "读取文件大小。可以指定文件名，或者相对路径",
             "brief": "读取文件大小",
             "itemtype": "method",
@@ -1400,7 +1414,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2276,
+            "line": 2275,
             "description": "检查文件是否存在。可以指定文件名，或者相对路径",
             "brief": "检查文件是否存在",
             "itemtype": "method",
@@ -1426,7 +1440,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2330,
+            "line": 2329,
             "description": "创建文件夹。可以指定文件名，或者相对路径",
             "brief": "创建文件夹",
             "itemtype": "method",
@@ -1452,7 +1466,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2395,
+            "line": 2394,
             "description": "刷新顶部条按钮和文字",
             "brief": "刷新顶部条按钮和文字",
             "params": [
@@ -1472,7 +1486,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2449,
+            "line": 2448,
             "description": "设置顶部导航栏隐藏／显示，使用该函数的隐藏顶部栏之后，必须保证页面有离开H5页面的功能，否则用户无法离开，必须要kill掉app。",
             "brief": "顶部导航隐藏／显示",
             "since": "5.4",
@@ -1486,7 +1500,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2482,
+            "line": 2481,
             "description": "设置底部工具栏隐藏／显示",
             "brief": "底部工具栏隐藏／显示",
             "since": "5.4",
@@ -1497,6 +1511,27 @@
                 " \n\n    CtripBar.app_set_toolbar_hidden(false);"
             ],
             "class": "CtripBar"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2522,
+            "description": "定位",
+            "brief": "定位",
+            "params": [
+                {
+                    "name": "is_async,",
+                    "description": "true标识是异步定位，false标识为同步定位",
+                    "type": "Bool"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_locate",
+            "author": "jimzhao",
+            "since": "v5.1",
+            "example": [
+                "\n\n       CtripUtil.app_locate(true);\n       //定位完成后H5页面会收到回调数据\n       var json_obj =\n       {\n           tagname:'locate',\n           param:{\n               \"value\":{\n                   ctyName: '上海',\n                   addrs:'上海市浦东南路22号',\n                   lat:'121.487899',\n                   lng:'31.249162'\n               },\n               'timeout': '2013/09/12 12:32:36',\n               'locateStatus':0,//iOS新增字段:-1网络不通，当前无法定位,-2定位没有开启\n           }\n       }\n       app.callback(json_obj);\n"
+            ],
+            "class": "CtripMap"
         }
     ],
     "warnings": [
@@ -1734,75 +1769,83 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1766"
+            "line": " bridge.js:1765"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1804"
+            "line": " bridge.js:1803"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1889"
+            "line": " bridge.js:1888"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1896"
+            "line": " bridge.js:1895"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1931"
+            "line": " bridge.js:1930"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1967"
+            "line": " bridge.js:1966"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2004"
+            "line": " bridge.js:2003"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2011"
+            "line": " bridge.js:2010"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2054"
+            "line": " bridge.js:2053"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2113"
+            "line": " bridge.js:2112"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2167"
+            "line": " bridge.js:2166"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2222"
+            "line": " bridge.js:2221"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2276"
+            "line": " bridge.js:2275"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2330"
+            "line": " bridge.js:2329"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2388"
+            "line": " bridge.js:2387"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2395"
+            "line": " bridge.js:2394"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2449"
+            "line": " bridge.js:2448"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2482"
+            "line": " bridge.js:2481"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2515"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2522"
         }
     ]
 }
