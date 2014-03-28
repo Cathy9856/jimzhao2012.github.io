@@ -1666,6 +1666,7 @@ var CtripPipe = {
      * @param {String} method HTTP请求方式GET/POST
      * @param {String} header HTTP头，JSON字符串格式key/value，cookie作为一个key存储再HEADER内部
      * @param {Array}  parameters key=value形式的字符串数组,请做好参数的Encode，app端只负责拼接
+     * @param {Boolean}  isIgnoreHTTPSCertification 是否忽略HTTPS证书
      * @param {String} sequenceId 发送服务的序列号，随机生存即可
      * @since v5.4
      * @author jimzhao
@@ -1686,7 +1687,7 @@ var CtripPipe = {
       paramArr[9]="rsv_sug4=469";
       //。。。。其它参数依次类推，请做好参数的Encode，app端只负责拼接
 
-      CtripPipe.app_send_HTTP_pipe_request("http://www.baidu.com", "/s","GET",null,paramArr, "13222222");
+      CtripPipe.app_send_HTTP_pipe_request("http://www.baidu.com", "/s","GET",null,paramArr, false, "13222222");
 
      //调用后，H5会收到native回调的数据
         var json_obj =
@@ -1701,7 +1702,7 @@ var CtripPipe = {
         app.callback(json_obj);
 
      */
-    app_send_HTTP_pipe_request:function(baseURL, path, method, header, parameters, sequenceId) {
+    app_send_HTTP_pipe_request:function(baseURL, path, method, header, parameters, isIgnoreHTTPSCertification, sequenceId) {
         var startVersion = "5.4";
         if(!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
@@ -1734,6 +1735,7 @@ var CtripPipe = {
         params.header = header;
         params.parameters = parameters;
         params.sequenceId = sequenceId;
+        params.isIgnoreHTTPSCertification = isIgnoreHTTPSCertification;
 
         paramString = Internal.makeParamString("Pipe", "sendHTTPPipeRequest", params, 'send_http_pipe_request');
         if (Internal.isIOS) {

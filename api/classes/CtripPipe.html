@@ -239,7 +239,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l1752"><code>bridge.js:1752</code></a>
+        <a href="../files/bridge.js.html#l1754"><code>bridge.js:1754</code></a>
         
         </p>
 
@@ -357,7 +357,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l1790"><code>bridge.js:1790</code></a>
+        <a href="../files/bridge.js.html#l1792"><code>bridge.js:1792</code></a>
         
         </p>
 
@@ -530,6 +530,12 @@
             
                 <li class="arg">
                     
+                        <code>isIgnoreHTTPSCertification</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
                         <code>sequenceId</code>
                     
                 </li>
@@ -668,6 +674,22 @@
             
                 <li class="param">
                     
+                        <code class="param-name">isIgnoreHTTPSCertification</code>
+                        <span class="type">Boolean</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>是否忽略HTTPS证书</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
                         <code class="param-name">sequenceId</code>
                         <span class="type">String</span>
                     
@@ -708,7 +730,7 @@
  paramArr[9]=&quot;rsv_sug4=469&quot;;
  //。。。。其它参数依次类推，请做好参数的Encode，app端只负责拼接
 
- CtripPipe.app_send_HTTP_pipe_request(&quot;http://www.baidu.com&quot;, &quot;/s&quot;,&quot;GET&quot;,null,paramArr, &quot;13222222&quot;);
+ CtripPipe.app_send_HTTP_pipe_request(&quot;http://www.baidu.com&quot;, &quot;/s&quot;,&quot;GET&quot;,null,paramArr, false, &quot;13222222&quot;);
 
 //调用后，H5会收到native回调的数据
    var json_obj =
