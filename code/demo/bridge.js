@@ -498,7 +498,7 @@ var CtripUtil = {
     },
 
     /**
-     * @description 定位
+     * @description 定位(兼容，已经移动到CtripMap)
      * @brief 定位(兼容，移动到CtripMap)
      * @param {Bool} is_async, true标识是异步定位，false标识为同步定位
      * @method app_locate(Deprecated)
@@ -528,7 +528,7 @@ var CtripUtil = {
     },
 
     /**
-     * @description 刷新顶部条按钮和文字
+     * @description 刷新顶部条按钮和文字(兼容，已移动至CtripBar)
      * @brief 刷新顶部条按钮和文字(兼容，移动至CtripBar)
      * @param (String) nav_bar_config_json 顶部条配置json串
      * @method app_refresh_nav_bar(Deprecated)

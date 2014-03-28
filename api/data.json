@@ -581,7 +581,7 @@
         {
             "file": "bridge.js",
             "line": 500,
-            "description": "定位",
+            "description": "定位(兼容，已经移动到CtripMap)",
             "brief": "定位(兼容，移动到CtripMap)",
             "params": [
                 {
@@ -600,7 +600,7 @@
         {
             "file": "bridge.js",
             "line": 530,
-            "description": "刷新顶部条按钮和文字",
+            "description": "刷新顶部条按钮和文字(兼容，已移动至CtripBar)",
             "brief": "刷新顶部条按钮和文字(兼容，移动至CtripBar)",
             "params": [
                 {
