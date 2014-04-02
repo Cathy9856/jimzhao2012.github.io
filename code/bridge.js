@@ -1696,11 +1696,11 @@ var CtripPipe = {
             param:
             {
                 responseString:"eHh4eHh4",
-                responseCookie =     {
-                     BAIDUID = "2959D035E2F5D7C979687934D558DCD3:FG=1",
-                     BDSVRTM = 10,
-                     "BD_CK_SAM" = 1,
-                     "H_PS_PSSID" = "1429_5225_5287_5722_5848_4261_5830_4759_5659_5857",
+                responseCookie : {
+                     "BAIDUID":"2959D035E2F5D7C979687934D558DCD3:FG=1",
+                     "BDSVRTM":10,
+                     "BD_CK_SAM":1,
+                     "H_PS_PSSID":"1429_5225_5287_5722_5848_4261_5830_4759_5659_5857"
                 },
 
                 sequenceId:"13222222"
