@@ -44,6 +44,9 @@
           else if (tagname == "send_http_pipe_request") {
             alert("HTTP管道:"+JSON.stringify(jsonobj));
           }
+          else if (tagname == "web_view_finished_load") {
+            CtripUtil.app_init_member_H5_info();
+          }
         }
     };
 
@@ -111,7 +114,7 @@
   <br/>
    <li class="li2"><a onclick='javascript:CtripUtil.app_call_system_share("",  "E这%a5个是分享*的%2b内%20容 ， 有%空&格+和 + 加#号", "这是标题", "http://www.ctrip.com/",false)'>E_App分享API</a></li>
   <br/>
-  <li class="li2"><a onclick="javascript:doButtonTest()">doButtonTest</a></li> 
+  <li class="li2"><a onclick="javascript:doButtonTest()">doButtonTestB</a></li> 
   <br/>
   <li class="li2"><a onclick="javascript:doHTTPSInValidDownloadTest()">doHTTPSInValidDownloadTest</a></li>
   <br/>
