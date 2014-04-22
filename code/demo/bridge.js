@@ -1623,7 +1623,7 @@ var CtripUser = {
 
         params = {};
         params.inString = inString;
-
+        params.encType = encType;
         paramString = Internal.makeParamString("Encrypt", "ctripEncrypt", params, 'ctrip_encrypt');
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);

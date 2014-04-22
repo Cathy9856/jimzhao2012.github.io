@@ -1731,7 +1731,7 @@ var CtripUser = {
 
         params = {};
         params.inString = inString;
-
+        params.encType = encType;
         paramString = Internal.makeParamString(&quot;Encrypt&quot;, &quot;ctripEncrypt&quot;, params, &#x27;ctrip_encrypt&#x27;);
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
