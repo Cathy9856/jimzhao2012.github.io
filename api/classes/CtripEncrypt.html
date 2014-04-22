@@ -153,11 +153,27 @@
                     <tr><th>描述</th><th>函数</th></tr>
                     
                     <tr><td>base64 UTF8编码</td><td><a href="#method_app_base64_encode">app_base64_encode</a></td></tr>
+                    
+                    <tr><td>Ctrip私有加解密算法</td><td><a href="#method_app_ctrip_encrypt">app_ctrip_encrypt</a></td></tr>
+                    
+                    <tr><td>base64 MD5 哈希算法</td><td><a href="#method_app_md5_hash">app_md5_hash</a></td></tr>
                                   
                     </table>
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -281,6 +297,250 @@
        param:
        {
            encodedString:&quot;eHh4eHh4&quot;,
+       },
+   }
+   app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_ctrip_encrypt" class="method item">
+    <h3 class="name"><code>app_ctrip_encrypt</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>inString</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>encType</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l1588"><code>bridge.js:1588</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 5.5</p>
+        
+    </div>
+
+    <div class="description">
+        <p>Ctrip私有加解密算法</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">inString</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要做加解密的字符串</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">encType</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>加解密类型，加密为1， 解密为2，其它不处理</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code> CtripEncrypt.app_ctrip_encrypt(&quot;xxxxxx&quot;,1);
+ //调用后，H5会收到native回调的数据
+   var json_obj =
+   {
+       tagname:&quot;ctrip_encrypt&quot;,
+       param:
+       {
+           inString:&quot;xxxxxx&quot;,
+           outString:&quot;eHh4eHh4&quot;,
+           encType:1
+       },
+   }
+   app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_md5_hash" class="method item">
+    <h3 class="name"><code>app_md5_hash</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>inString</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l1539"><code>bridge.js:1539</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 5.4</p>
+        
+    </div>
+
+    <div class="description">
+        <p>MD5 哈希算法，长度32，大写</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">inString</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要做MD5 哈希的字符串</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code> CtripEncrypt.app_md5_hash(&quot;xxxxxx&quot;);
+ //调用后，H5会收到native回调的数据
+   var json_obj =
+   {
+       tagname:&quot;md5_hash&quot;,
+       param:
+       {
+           outString:&quot;eHh4eHh4&quot;,
        },
    }
    app.callback(json_obj);</code></pre>

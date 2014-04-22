@@ -1534,6 +1534,107 @@ var CtripUser = {
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
+    },
+
+     /**
+      * @description MD5 哈希算法，长度32，大写
+      * @brief base64 MD5 哈希算法
+      * @since 5.4
+      * @method app_md5_hash
+      * @param {String} inString 需要做MD5 哈希的字符串
+      * @author jimzhao
+      * @example 
+
+      CtripEncrypt.app_md5_hash("xxxxxx");
+      //调用后，H5会收到native回调的数据
+        var json_obj =
+        {
+            tagname:"md5_hash",
+            param:
+            {
+                outString:"eHh4eHh4",
+            },
+        }
+        app.callback(json_obj);
+          
+      */
+    app_md5_hash:function(inString) {
+        var startVersion = "5.5";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!inString) {
+            inString = "";
+        }
+
+        params = {};
+        params.inString = inString;
+
+        paramString = Internal.makeParamString("Encrypt", "md5Hash", params, 'md5_hash');
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Encrypt_a.md5Hash(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /**
+      * @description Ctrip私有加解密算法
+      * @brief Ctrip私有加解密算法
+      * @since 5.5
+      * @method app_ctrip_encrypt
+      * @param {String} inString 需要做加解密的字符串
+      * @param {String} encType 加解密类型，加密为1， 解密为2，其它不处理
+      * @author jimzhao
+      * @example 
+
+      CtripEncrypt.app_ctrip_encrypt("xxxxxx",1);
+      //调用后，H5会收到native回调的数据
+        var json_obj =
+        {
+            tagname:"ctrip_encrypt",
+            param:
+            {
+                inString:"xxxxxx",
+                outString:"eHh4eHh4",
+                encType:1
+            },
+        }
+        app.callback(json_obj);
+          
+      */
+    app_ctrip_encrypt:function(inString, encType) {
+        var startVersion = "5.5";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!inString) {
+            inString = "";
+        }
+
+        params = {};
+        params.inString = inString;
+
+        paramString = Internal.makeParamString("Encrypt", "ctripEncrypt", params, 'ctrip_encrypt');
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Encrypt_a.ctripEncrypt(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     }
 
  };
