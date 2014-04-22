@@ -117,6 +117,9 @@ var app = {
 	    else if (tagname == "read_text_from_file") {
 	    	cb_ret.read_text_from_file = jsonObj;
 	    }
+	    else if (tagname == "ctrip_encrypt") {
+	    	cb_ret.ctrip_encrypt = jsonObj;
+	    }
     }
 };
 
@@ -143,6 +146,45 @@ var testFileName = null;//"logd.txt";
 var testRelativeFile = "/jimzhao2012.github.io/mdir/logdt.txt";//null;
 var testDirName =  null;//"mFolder";
 var testRelativeDir = "/jimzhao2012.github.io/mcmdir/";
+var encString = "abcdxxxx";
+var encdString = "";
+
+asyncTest("Ctrip加密", function(){
+	expect(1);
+	CtripEncrypt.app_ctrip_encrypt(encString, 1);
+
+	setTimeout(function(){
+		start();
+		var jsonObj = cb_ret.ctrip_encrypt;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "ctrip_encrypt" && jsonObj.param.outString) {
+			encdString = jsonObj.param.outString;
+			ok(true, "Ctrip加密成功"+JSON.stringify(jsonObj));
+		}
+		else {
+			ok(false, "Ctrip加密失败"+JSON.stringify(jsonObj));
+		}
+		cb_ret.ctrip_encrypt = null;
+	},async_time_interval);
+});
+
+
+asyncTest("Ctrip解密", function(){
+	expect(1);
+	CtripEncrypt.app_ctrip_encrypt(encdString, 2);
+
+	setTimeout(function(){
+		start();
+		var jsonObj = cb_ret.ctrip_encrypt;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "ctrip_encrypt" && jsonObj.param.outString) {
+			ok(true, "Ctrip加解成功"+JSON.stringify(jsonObj));
+		}
+		else {
+			ok(false, "Ctrip加解失败"+JSON.stringify(jsonObj));
+		}
+		cb_ret.ctrip_encrypt = null;
+	},async_time_interval);
+});
+
 
 asyncTest("写文本内容到文件", function(){
 	expect(1);
