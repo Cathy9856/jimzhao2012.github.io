@@ -1523,8 +1523,9 @@
             "brief": "刷新顶部条按钮和文字",
             "params": [
                 {
-                    "name": "(String)",
-                    "description": "nav_bar_config_json 顶部条配置json串"
+                    "name": "nav_bar_config_json",
+                    "description": "顶部条配置json串",
+                    "type": "String"
                 }
             ],
             "itemtype": "method",
