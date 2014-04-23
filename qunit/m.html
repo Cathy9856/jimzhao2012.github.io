@@ -67,10 +67,13 @@
       if (icount == 0) {
           nav_bar_config_json = {"center":[{"tagname":"title", "value":"产品详情"}], "right":[{"tagname":"call"}, {"tagname":"home"}]};
       } else if (icount%2==0){
-          nav_bar_config_json = {"center":[{"tagname":"title","value":"接机/接火车"},{"tagname":"subTitle","value":"上海到北京"}], "right":[{"tagname":"call"}, {"tagname":"home"}]};
+          nav_bar_config_json = {"center":[{"tagname":"title","value":"选择日期和人数"},{"tagname":"subTitle","value":"最少起订：1人"}], "right":[{"tagname":"call"}, {"tagname":"home"}]};
       } else if (icount%3==0) {
           nav_bar_config_json = {"left":[{"tagname":"back"}], "centerButtons":[{"tagname":"centenAction","value":"上海城市","i_icon":"icon_arrowx.png","a_icon":"icon_arrowx"}], "right":[{"tagname":"call"} , {"tagname":"home"}]};
+      } else {
+          nav_bar_config_json = {"center":[{"tagname":"title", "value":"产品详情"}], "right":[{"tagname":"call"}, {"tagname":"home"}]};
       }
+      
       icount++;
 
       var jsonStr = JSON.stringify(nav_bar_config_json);
