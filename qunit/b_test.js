@@ -129,6 +129,9 @@ var app = {
 	    else if (tagname == "ctrip_encrypt") {
 	    	cb_ret.ctrip_encrypt = jsonObj;
 	    }
+	    else if (tagname == "md5_hash") {
+	    	cb_ret.md5_hash = jsonObj;
+	    }
     }
 };
 
@@ -157,6 +160,23 @@ var testDirName =  null;//"mFolder";
 var testRelativeDir = "/jimzhao2012.github.io/mcmdir/";
 var encString = "abcdxxxx";
 var encdString = "";
+
+asyncTest("MD5哈希", function(){
+	expect(1);
+	CtripEncrypt.app_md5_hash(encString);
+
+	setTimeout(function(){
+		start();
+		var jsonObj = cb_ret.md5_hash;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "md5_hash" && jsonObj.param.outString) {
+			ok(true, "MD5哈希成功"+JSON.stringify(jsonObj));
+		}
+		else {
+			ok(false, "MD5哈希失败"+JSON.stringify(jsonObj));
+		}
+		cb_ret.md5_hash = null;
+	},async_time_interval);
+});
 
 asyncTest("Ctrip加密", function(){
 	expect(1);
