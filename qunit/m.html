@@ -58,8 +58,21 @@
       CtripUtil.app_back_to_last_page("xxxx", true);
     }
 
+   var icount = 0;
+
     function doButtonTest() {
-      var nav_bar_config_json = {"left":[{"tagname":"back"}], "centerButtons":[{"tagname":"centenAction","value":"上海城市","i_icon":"icon_arrowx.png","a_icon":"icon_arrowx"}], "right":[{"tagname":"call"}, {"tagname":"home"}]};
+
+      var nav_bar_config_json = {};
+
+      if (icount == 0) {
+          nav_bar_config_json = {"center":"产品详情", "right":[{"tagname":"call"}, {"tagname":"home"}]};
+      } else if (icount%2==0){
+          nav_bar_config_json = {"center":[{"tagname":"title","value":"接机/接火车"},{"tagname":"subTitle","value":"上海到北京"}], "right":[{"tagname":"call"}, {"tagname":"home"}]};
+      } else if (icount%3==0) {
+          nav_bar_config_json = {"left":[{"tagname":"back"}], "centerButtons":[{"tagname":"centenAction","value":"上海城市","i_icon":"icon_arrowx.png","a_icon":"icon_arrowx"}], "right":[{"tagname":"call"} , {"tagname":"home"}]};
+      }
+      icount++;
+
       var jsonStr = JSON.stringify(nav_bar_config_json);
       CtripUtil.app_refresh_nav_bar(jsonStr);
     }
@@ -116,7 +129,7 @@
   <br/>
    <li class="li2"><a onclick='javascript:CtripUtil.app_call_system_share("",  "内容没有链接，E这%a5个是分享*的%2b内%20容 ， 有%空&格+和 + 加#号", "内容这是标题", null,false)'>App分享内容 API</a></li>
   <br/>
-  <li class="li2"><a onclick="javascript:doButtonTest()">doButtonTestB</a></li> 
+  <li class="li2"><a onclick="javascript:doButtonTest()">导航栏刷新测试</a></li> 
   <br/>
     <li class="li2"><a onclick="javascript:CtripPay.app_check_pay_app_install_status()">Payment check app</a></li> 
   <br/>
