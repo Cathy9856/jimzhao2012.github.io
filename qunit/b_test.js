@@ -2,7 +2,6 @@
 var cb_ret = {};
 
 var async_time_interval = 3000;
-var sync_time_interval = 1000;
 var test_copy_string = "*****测试字符串clipboard******";
 
 function sleep(seconds) {
@@ -344,9 +343,9 @@ asyncTest("刷新顶部条:app_refresh_nav_bar", function() {
 		};
         cb_ret.refresh_nav_bar = null;
 
-	}, sync_time_interval*2);
+	}, async_time_interval);
 
-});
+}, async_time_interval);
 
 
 asyncTest('定位:app_locate', function() {  
@@ -378,7 +377,7 @@ asyncTest("检查网络状况:app_check_network_status", function() {
 			ok(true, "检查网络状况成功");
 			cb_ret.check_network_status = null;
 		};
-	},sync_time_interval);
+	},async_time_interval);
 });
 
 
@@ -398,7 +397,7 @@ asyncTest("检查软件是否安装:app_check_app_install_status", function() {
 			}
 			cb_ret.check_app_install_status = null;
 		};
-	},sync_time_interval);
+	},async_time_interval);
 });
 
 asyncTest("通知native刷新:app_refresh_native_page", function() {
@@ -413,7 +412,7 @@ asyncTest("通知native刷新:app_refresh_native_page", function() {
 			ok(true, "通知App刷新成功");
 			cb_ret.refresh_native_page = null;
 		};
-	},sync_time_interval);
+	},async_time_interval);
 });
 
 asyncTest("复制内容到粘贴版:app_copy_string_to_clipboard", function() {
@@ -427,7 +426,7 @@ asyncTest("复制内容到粘贴版:app_copy_string_to_clipboard", function() {
 			cb_ret.copy_string_to_clipboard = null;
 		}
 
-	},sync_time_interval);
+	},async_time_interval);
 });
 
 asyncTest("从粘贴板读取内容:app_read_copied_string_from_clipboard",function() {
@@ -445,7 +444,7 @@ asyncTest("从粘贴板读取内容:app_read_copied_string_from_clipboard",funct
 			}
 			cb_ret.read_copied_string_from_clipboard = null;
 		}
-	},sync_time_interval);
+	},async_time_interval);
 });
 
 // asyncTest("调用系统分享:app_call_system_share", function() {
@@ -539,7 +538,7 @@ asyncTest("自动登录:app_member_auto_login",function(){
 		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "member_auto_login") {
 			check_member_info(jsonObj, true);
 		};
-	}, sync_time_interval);
+	}, async_time_interval);
 });
 
 asyncTest("非会员登录: app_non_member_login", function(){
@@ -569,7 +568,7 @@ asyncTest("调用app的ActionLog日志: app_log_event", function(){
 			ok(true, "调用app的ActionLog日志成功"+JSON.stringify(jsonObj));
 		};
 		cb_ret.log_event = null;
-	}, sync_time_interval);
+	}, async_time_interval);
 });
 
 function check_init_H5_member_info_value(jsonObj) {
@@ -607,7 +606,7 @@ asyncTest("初始化H5数据: app_init_member_H5_info", function(){
 			check_init_H5_member_info_value(jsonObj);
 		};
 		cb_ret.init_member_H5_info = null;
-	}, sync_time_interval);
+	}, async_time_interval);
 });
 
 asyncTest("写日志到App: app_log", function(){
@@ -622,7 +621,7 @@ asyncTest("写日志到App: app_log", function(){
 			ok(true, "写日志到App成功"+JSON.stringify(jsonObj));
 		};
 		cb_ret.log = null;
-	}, sync_time_interval);
+	}, async_time_interval);
 });
 
 asyncTest("测试下载内容:app_download_data", function() {
@@ -674,7 +673,7 @@ asyncTest("base64 UTF8编码", function() {
 		}
 
 	});
-});
+},async_time_interval);
 
 asyncTest("显示底部导航栏", function(){
 	expect(1);
@@ -689,7 +688,7 @@ asyncTest("显示底部导航栏", function(){
 		}
 	});
 
-});
+}, async_time_interval);
 
 asyncTest("测试App环境", function(){
 	expect(1);
@@ -702,7 +701,7 @@ asyncTest("测试App环境", function(){
 			ok(false, "不是App环境，测试失败");
 		}
 	});
-});
+}, async_time_interval/2);
 
 asyncTest("测试通过APP管道发送服务",function(){
 	expect(1);
