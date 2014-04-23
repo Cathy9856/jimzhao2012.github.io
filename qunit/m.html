@@ -65,7 +65,7 @@
       var nav_bar_config_json = {};
 
       if (icount == 0) {
-          nav_bar_config_json = {"center":"产品详情", "right":[{"tagname":"call"}, {"tagname":"home"}]};
+          nav_bar_config_json = {"center":[{"tagname":"title", "value":"产品详情"}], "right":[{"tagname":"call"}, {"tagname":"home"}]};
       } else if (icount%2==0){
           nav_bar_config_json = {"center":[{"tagname":"title","value":"接机/接火车"},{"tagname":"subTitle","value":"上海到北京"}], "right":[{"tagname":"call"}, {"tagname":"home"}]};
       } else if (icount%3==0) {
