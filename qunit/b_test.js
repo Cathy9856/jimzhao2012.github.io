@@ -438,19 +438,19 @@ asyncTest("从粘贴板读取内容:app_read_copied_string_from_clipboard",funct
 	},sync_time_interval);
 });
 
-asyncTest("调用系统分享:app_call_system_share", function() {
-	expect(1);
-	CtripUtil.app_call_system_share("http://www.baidu.com", null, "title here");
-	setTimeout(function() {
-		start();
-		var jsonObj = cb_ret.call_system_share;
-		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "call_system_share") {
-			ok(true, "调用系统分享成功");
-		}
+// asyncTest("调用系统分享:app_call_system_share", function() {
+// 	expect(1);
+// 	CtripUtil.app_call_system_share("http://www.baidu.com", null, "title here");
+// 	setTimeout(function() {
+// 		start();
+// 		var jsonObj = cb_ret.call_system_share;
+// 		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "call_system_share") {
+// 			ok(true, "调用系统分享成功");
+// 		}
 
-		cb_ret.call_system_share = null;
-	},sync_time_interval)
-});
+// 		cb_ret.call_system_share = null;
+// 	},sync_time_interval)
+// });
 
 function check_member_info(jsonObj, isAutoLogin) {
 	/*
@@ -629,21 +629,21 @@ asyncTest("测试下载内容:app_download_data", function() {
 	}, async_time_interval);
 });
 
-asyncTest("检查版本更新:app_check_update", function() {
-	expect(1);
+// asyncTest("检查版本更新:app_check_update", function() {
+// 	expect(1);
 
-	CtripUtil.app_check_update();
+// 	CtripUtil.app_check_update();
 
-	setTimeout(function() {
-		start();
-		var jsonObj = cb_ret.check_update;
-		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "check_update") {
-			ok(true, "检查版本更新回调成功!" );
-		}
-		cb_ret.check_update = null;
+// 	setTimeout(function() {
+// 		start();
+// 		var jsonObj = cb_ret.check_update;
+// 		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "check_update") {
+// 			ok(true, "检查版本更新回调成功!" );
+// 		}
+// 		cb_ret.check_update = null;
 
-	}, async_time_interval);
-});
+// 	}, async_time_interval);
+// });
 
 asyncTest("base64 UTF8编码", function() {
 	expect(1);
@@ -733,50 +733,50 @@ asyncTest("测试支付App安装",function() {
 	});
 });
 
-asyncTest("测试Ticket是否在三星钱包", function(){
-	expect(1);
-	CtripSumSungWallet.app_check_ticket_in_samsung_wallet("ID123333");
-	setTimeout(function(){
-		start();
-		var jsonObj = cb_ret.check_ticket_in_samsung_wallet;
-		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "check_ticket_in_samsung_wallet") {
-			ok(jsonObj.param.isInSamSungWallet, "测试Ticket是否在三星钱包:"+JSON.stringify(jsonObj));
-		} 
-		else {
-			ok(false,"测试Ticket是否在三星钱包失败:"+JSON.stringify(jsonObj));
-		}
-	},sync_time_interval*2);
+// asyncTest("测试Ticket是否在三星钱包", function(){
+// 	expect(1);
+// 	CtripSumSungWallet.app_check_ticket_in_samsung_wallet("ID123333");
+// 	setTimeout(function(){
+// 		start();
+// 		var jsonObj = cb_ret.check_ticket_in_samsung_wallet;
+// 		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "check_ticket_in_samsung_wallet") {
+// 			ok(jsonObj.param.isInSamSungWallet, "测试Ticket是否在三星钱包:"+JSON.stringify(jsonObj));
+// 		} 
+// 		else {
+// 			ok(false,"测试Ticket是否在三星钱包失败:"+JSON.stringify(jsonObj));
+// 		}
+// 	},sync_time_interval*2);
 
-});
+// });
 
-asyncTest("测试在三星钱包中下载Ticket", function(){
-	expect(1);
-    CtripSumSungWallet.app_download_ticket_in_samsung_wallet("ID123333");
+// asyncTest("测试在三星钱包中下载Ticket", function(){
+// 	expect(1);
+//     CtripSumSungWallet.app_download_ticket_in_samsung_wallet("ID123333");
 
-	setTimeout(function(){
-		start();
-		var jsonObj = cb_ret.download_ticket_in_samsung_wallet;
-		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "download_ticket_in_samsung_wallet") {
-			ok(jsonObj.param.isDownloadSuccess,"测试在三星钱包中下载Ticket:"+JSON.stringify(jsonObj));
-		}else {
-			ok(false,"测试在三星钱包中下载Ticket失败:"+JSON.stringify(jsonObj));
-		}
-	},sync_time_interval*2);
+// 	setTimeout(function(){
+// 		start();
+// 		var jsonObj = cb_ret.download_ticket_in_samsung_wallet;
+// 		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "download_ticket_in_samsung_wallet") {
+// 			ok(jsonObj.param.isDownloadSuccess,"测试在三星钱包中下载Ticket:"+JSON.stringify(jsonObj));
+// 		}else {
+// 			ok(false,"测试在三星钱包中下载Ticket失败:"+JSON.stringify(jsonObj));
+// 		}
+// 	},sync_time_interval*2);
 
-});
+// });
 
-asyncTest("测试在三星钱包中查看Ticket", function(){
-	expect(1);
-    CtripSumSungWallet.app_show_ticket_in_samsung_wallet("ID123333");
-	setTimeout(function(){
-		start();
-		var jsonObj = cb_ret.show_ticket_in_samsung_wallet;
-		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "show_ticket_in_samsung_wallet") {
-			ok(true,"测试在三星钱包中查看Ticket:"+JSON.stringify(jsonObj));
-		} else {
-			ok(false,"测试在三星钱包中查看Ticket失败:"+JSON.stringify(jsonObj));
-		}
-	},sync_time_interval*2);
+// asyncTest("测试在三星钱包中查看Ticket", function(){
+// 	expect(1);
+//     CtripSumSungWallet.app_show_ticket_in_samsung_wallet("ID123333");
+// 	setTimeout(function(){
+// 		start();
+// 		var jsonObj = cb_ret.show_ticket_in_samsung_wallet;
+// 		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "show_ticket_in_samsung_wallet") {
+// 			ok(true,"测试在三星钱包中查看Ticket:"+JSON.stringify(jsonObj));
+// 		} else {
+// 			ok(false,"测试在三星钱包中查看Ticket失败:"+JSON.stringify(jsonObj));
+// 		}
+// 	},sync_time_interval*2);
 
-});
+// });
 
