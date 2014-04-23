@@ -345,7 +345,7 @@ asyncTest("刷新顶部条:app_refresh_nav_bar", function() {
 
 	}, async_time_interval);
 
-}, async_time_interval);
+});
 
 
 asyncTest('定位:app_locate', function() {  
@@ -672,8 +672,8 @@ asyncTest("base64 UTF8编码", function() {
 			ok(false,"Base64 UTF8编码失败"+JSON.stringify(jsonObj));
 		}
 
-	});
-},async_time_interval);
+	},async_time_interval);
+});
 
 asyncTest("显示底部导航栏", function(){
 	expect(1);
@@ -686,9 +686,9 @@ asyncTest("显示底部导航栏", function(){
 		} else {
 			ok(false,"显示底部导航栏失败！")
 		}
-	});
+	},async_time_interval);
 
-}, async_time_interval);
+});
 
 asyncTest("测试App环境", function(){
 	expect(1);
@@ -700,8 +700,8 @@ asyncTest("测试App环境", function(){
 		} else{
 			ok(false, "不是App环境，测试失败");
 		}
-	});
-}, async_time_interval/2);
+	},async_time_interval);
+});
 
 asyncTest("测试通过APP管道发送服务",function(){
 	expect(1);
@@ -739,7 +739,7 @@ asyncTest("测试支付App安装",function() {
 		} else {
 			ok(false,"检测支付工具安装状态失败");
 		}
-	});
+	},async_time_interval);
 });
 
 // asyncTest("测试Ticket是否在三星钱包", function(){
