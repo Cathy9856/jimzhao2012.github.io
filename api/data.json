@@ -1543,8 +1543,9 @@
             "brief": "顶部导航隐藏／显示",
             "params": [
                 {
-                    "name": "(boolean)",
-                    "description": "isHidden 是否隐藏顶部导航栏"
+                    "name": "isHidden",
+                    "description": "是否隐藏顶部导航栏",
+                    "type": "Boolean"
                 }
             ],
             "since": "5.4",
@@ -1563,8 +1564,9 @@
             "brief": "底部工具栏隐藏／显示",
             "params": [
                 {
-                    "name": "(boolean)",
-                    "description": "isHidden 是否隐藏底部工具栏"
+                    "name": "isHidden",
+                    "description": "是否隐藏底部工具栏",
+                    "type": "Boolean"
                 }
             ],
             "since": "5.4",
