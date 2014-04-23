@@ -5,6 +5,8 @@ var async_time_interval = 3000;
 var sync_time_interval = 1000;
 var test_copy_string = "*****测试字符串clipboard******";
 
+sleep(2);
+
 var app = {
     callback: function(jsonObj) {
 		var tagname = jsonObj.tagname;
