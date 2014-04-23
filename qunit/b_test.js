@@ -670,7 +670,7 @@ asyncTest("base64 UTF8编码", function() {
 
 asyncTest("显示底部导航栏", function(){
 	expect(1);
-	CtripUtil.app_set_toolbar_hidden(false);
+	CtripBar.app_set_toolbar_hidden(false);
 	setTimeout(function(){
 		start();
 		var jsonObj = cb_ret.set_toolbar_hidden;
