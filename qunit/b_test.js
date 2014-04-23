@@ -169,7 +169,9 @@ asyncTest("MD5哈希", function(){
 		start();
 		var jsonObj = cb_ret.md5_hash;
 		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "md5_hash" && jsonObj.param.outString) {
-			ok(true, "MD5哈希成功"+JSON.stringify(jsonObj));
+			if (jsonObj.param.outString == "FDA820BA864415E2451BE1C67F1F304A") {
+			ok(true, "MD5哈希成功"+JSON.stringify(jsonObj));				
+			}
 		}
 		else {
 			ok(false, "MD5哈希失败"+JSON.stringify(jsonObj));

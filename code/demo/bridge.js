@@ -1503,6 +1503,7 @@ var CtripUser = {
             tagname:"base64_encode",
             param:
             {
+                inString:"xxxxxx",
                 encodedString:"eHh4eHh4",
             },
         }
@@ -1545,14 +1546,15 @@ var CtripUser = {
       * @author jimzhao
       * @example 
 
-      CtripEncrypt.app_md5_hash("xxxxxx");
+      CtripEncrypt.app_md5_hash("abcdxxxx");
       //调用后，H5会收到native回调的数据
         var json_obj =
         {
             tagname:"md5_hash",
             param:
-            {
-                outString:"eHh4eHh4",
+            {   
+                inString:"abcdxxxx"
+                outString:"FDA820BA864415E2451BE1C67F1F304A",
             },
         }
         app.callback(json_obj);
@@ -1595,15 +1597,15 @@ var CtripUser = {
       * @author jimzhao
       * @example 
 
-      CtripEncrypt.app_ctrip_encrypt("xxxxxx",1);
+      CtripEncrypt.app_ctrip_encrypt("abcdxxxx",1);
       //调用后，H5会收到native回调的数据
         var json_obj =
         {
             tagname:"ctrip_encrypt",
             param:
             {
-                inString:"xxxxxx",
-                outString:"eHh4eHh4",
+                inString:"abcdxxxx",
+                outString:"ABScdXkYZunwXVF5kQpffnY+oL/MFmJGkn8ra8Ab5cI=",
                 encType:1
             },
         }
