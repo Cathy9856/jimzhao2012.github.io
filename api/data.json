@@ -1072,7 +1072,7 @@
             "file": "bridge.js",
             "line": 1540,
             "description": "MD5 哈希算法，长度32，大写",
-            "brief": "base64 MD5 哈希算法",
+            "brief": "MD5 哈希算法",
             "since": "5.4",
             "itemtype": "method",
             "name": "app_md5_hash",

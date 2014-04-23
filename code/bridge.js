@@ -1539,7 +1539,7 @@ var CtripUser = {
 
      /**
       * @description MD5 哈希算法，长度32，大写
-      * @brief base64 MD5 哈希算法
+      * @brief MD5 哈希算法
       * @since 5.4
       * @method app_md5_hash
       * @param {String} inString 需要做MD5 哈希的字符串
