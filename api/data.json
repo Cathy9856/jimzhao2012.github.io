@@ -164,7 +164,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 2614,
+            "line": 2616,
             "description": "地图相关类，定位/导航",
             "brief": "地图相关类，定位/导航"
         }
@@ -1541,6 +1541,12 @@
             "line": 2547,
             "description": "设置顶部导航栏隐藏／显示，使用该函数的隐藏顶部栏之后，必须保证页面有离开H5页面的功能，否则用户无法离开，必须要kill掉app。",
             "brief": "顶部导航隐藏／显示",
+            "params": [
+                {
+                    "name": "(boolean)",
+                    "description": "isHidden 是否隐藏顶部导航栏"
+                }
+            ],
             "since": "5.4",
             "itemtype": "method",
             "name": "app_set_navbar_hidden",
@@ -1552,9 +1558,15 @@
         },
         {
             "file": "bridge.js",
-            "line": 2580,
+            "line": 2581,
             "description": "设置底部工具栏隐藏／显示",
             "brief": "底部工具栏隐藏／显示",
+            "params": [
+                {
+                    "name": "(boolean)",
+                    "description": "isHidden 是否隐藏底部工具栏"
+                }
+            ],
             "since": "5.4",
             "itemtype": "method",
             "name": "app_set_toolbar_hidden",
@@ -1566,7 +1578,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2621,
+            "line": 2623,
             "description": "定位",
             "brief": "定位",
             "params": [
@@ -1587,7 +1599,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2666,
+            "line": 2668,
             "description": "在地图上显示某个位置",
             "brief": "在地图上显示某个位置/导航",
             "params": [
@@ -1933,19 +1945,19 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2580"
+            "line": " bridge.js:2581"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2614"
+            "line": " bridge.js:2616"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2621"
+            "line": " bridge.js:2623"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2666"
+            "line": " bridge.js:2668"
         }
     ]
 }
