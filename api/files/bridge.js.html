@@ -657,10 +657,11 @@ var CtripUtil = {
      * @param {String} openUrl 需要打开的URL，可以为ctrip://,http(s)://,file://等协议的URL
      * @param {String} title 当targetMode＝2时候，新打开的H5页面的title
      * @param {int} targetMode 
-     0,当前页面刷新url;
-     1,处理ctrip://协议;
-     2,开启新的H5页面,title生效;
+     0.当前页面刷新url;
+     1.处理ctrip://协议;
+     2.开启新的H5页面,title生效;
      3.使用系统浏览器打开;
+     4.开启本地新的H5页面，title生效，此时URL为相对路径；
      * @method app_open_url
      * @since v5.2
      * @author jimzhao
@@ -672,6 +673,8 @@ var CtripUtil = {
      CtripUtil.app_open_url(&quot;ctrip://wireless/hotel?id=1234&quot;, 1);
      //开启新的H5页面，进入m.ctrip.com
      CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&quot;);
+     //开启新的H5页面，进入webapp/car/index.html
+     CtripUtil.app_open_url(&quot;car/index.html&quot;, 4, &quot;用车首页&quot;);
 
      */
      app_open_url:function(openUrl, targetMode, title) {
@@ -1102,13 +1105,42 @@ var CtripUtil = {
      * @brief 调用App的分享
      * @param {String} imageRelativePath 将要分享的图片相对路径，相对webapp的路径
      * @param {String} text 需要分享的文字
-     * @param {String} title 需要分享的标题, v5.4开始支持该字段
+     * @param {String} title 需要分享的标题, v5.4开始支持该字段，微信和email支持；
      * @param {String} linkUrl 需要分享的链接, v5.4开始支持该字段
      * @param {boolean} isIOSSystemShare  是否是iOS6以上使用系统分享功能,对于先前门票分享功能，需要为true，其它都是false
      * @method app_call_system_share
      * @since v5.3
      * @author jimzhao
      * @example
+
+     *  微信(微信朋友/微信朋友圈)分享说明：
+        1. 图片分享，只能分享图片，所传的文字，title都无效；
+        2. 链接分享，所传的图片为分享网页的缩略图，title有效；
+        3. 纯文本分享，只能分享text，title无效；
+        4. 优先级 链接分享&gt;图片分享&gt;纯文本分享。
+           a. 如果有linkUrl，会被当作网页分享，图片作为缩略图；
+           b. 如果没有linkUrl，有图片，当作图片分享，text,title无效;
+           c. 如果没有linkUrl，没有图片，当作纯文本分享；
+        
+        微博分享：
+        1. 图片为所分享的图片；
+        2. 分享title不起作用；
+        3. 如果linkUrl有， 分享的text后面会自动添加linkUrl
+    
+        Email分享：
+        1. 图片为所分享的图片；
+        2. 分享title作为Email标题；
+        3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
+
+        短信分享：
+        1. 图片为所分享的图片；注：iOS7.0之后才支持；
+        2. 分享title不起作用；
+        3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
+
+        复制分享：
+        1. 分享的图片不起作用;
+        2. 分享的title不起作用;
+        3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
 
       CtripUtil.app_call_system_share(&quot;../wb_cache/pkg_name/md5_url_hash&quot;, &quot;text to share weibo&quot;, &quot;this is titile&quot;, &quot;http://www.ctrip.com/&quot;, false);
 
