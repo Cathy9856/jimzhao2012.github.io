@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>CtripSumSungWallet</title>
+    <title>CtripBusiness</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -104,7 +104,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>CtripSumSungWallet Class</h1>
+                        <h1>CtripBusiness Class</h1>
 <div class="box meta">
     
 
@@ -112,7 +112,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l2019"><code>bridge.js:2019</code></a>
+            定义在: <a href="../files/bridge.js.html#l2750"><code>bridge.js:2750</code></a>
         </div>
     
 
@@ -124,7 +124,7 @@
 
 
 <div class="box intro">
-    <p>三星钱包相关API</p>
+    <p>Ctrip业务相关，需要返回数据给H5页面</p>
 
 </div>
 
@@ -154,28 +154,12 @@
                     <table>
                     <tr><th>描述</th><th>函数</th></tr>
                     
-                    <tr><td>检查ticket是否在三星钱包app中</td><td><a href="#method_app_check_ticket_in_samsung_wallet">app_check_ticket_in_samsung_wallet</a></td></tr>
-                    
-                    <tr><td>到三星钱包中下载ticket</td><td><a href="#method_app_download_ticket_in_samsung_wallet">app_download_ticket_in_samsung_wallet</a></td></tr>
-                    
-                    <tr><td>在三星钱包app中查看Ticket</td><td><a href="#method_app_show_ticket_in_samsung_wallet">app_show_ticket_in_samsung_wallet</a></td></tr>
+                    <tr><td>选择常用发票title</td><td><a href="#method_app_choose_invoice_title">app_choose_invoice_title</a></td></tr>
                                   
                     </table>
 
 
                     <ul class="index-list methods">
-                        
-                            <li class="index-item method">
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-
-                                
-                                
-                            </li>
                         
                             <li class="index-item method">
 
@@ -199,8 +183,8 @@
                 <h2 class="off-left">方法</h2>
 
                 
-                    <div id="method_app_check_ticket_in_samsung_wallet" class="method item">
-    <h3 class="name"><code>app_check_ticket_in_samsung_wallet</code></h3>
+                    <div id="method_app_choose_invoice_title" class="method item">
+    <h3 class="name"><code>app_choose_invoice_title</code></h3>
 
     
         <div class="args">
@@ -208,7 +192,7 @@
             
                 <li class="arg">
                     
-                        <code>ticketID</code>
+                        <code>selectedInvoiceTitle,</code>
                     
                 </li>
             
@@ -241,7 +225,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2026"><code>bridge.js:2026</code></a>
+        <a href="../files/bridge.js.html#l2757"><code>bridge.js:2757</code></a>
         
         </p>
 
@@ -249,12 +233,12 @@
         
 
         
-            <p>可用版本 v5.3.2</p>
+            <p>可用版本 v5.6</p>
         
     </div>
 
     <div class="description">
-        <p>检查ticket是否在三星钱包app中</p>
+        <p>选择常用发票title</p>
 
     </div>
 
@@ -266,14 +250,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">ticketID</code>
+                        <code class="param-name">selectedInvoiceTitle,</code>
                         <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>ticket的ID，服务器返回</p>
+                        <p>当前已经选择好的</p>
 
                     </div>
 
@@ -291,236 +275,16 @@
             <h4>举例:</h4>
 
             <div class="example-content">
-                <p>CtripSumSungWallet.app_check_ticket_in_samsung_wallet(&quot;ID123333&quot;);</p>
-<pre class="code prettyprint"><code>  //调用之后会收到
-   var json_obj = {
-       tagname : &quot;check_ticket_in_samsung_wallet&quot;,
-       param : {
-           insInSamSungWallet: false, //true
-       }
-   }
-
-   app.callback(json_obj);</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_app_download_ticket_in_samsung_wallet" class="method item">
-    <h3 class="name"><code>app_download_ticket_in_samsung_wallet</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>ticketID</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                定义在
-                
-            
-        
-        
-        <a href="../files/bridge.js.html#l2061"><code>bridge.js:2061</code></a>
-        
-        </p>
-
-
-        
-
-        
-            <p>可用版本 v5.32</p>
-        
-    </div>
-
-    <div class="description">
-        <p>到三星钱包中下载ticket</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>参数:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">ticketID</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>ticket的ID，服务器返回</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>举例:</h4>
-
-            <div class="example-content">
-                <p>CtripSumSungWallet.app_download_ticket_in_samsung_wallet(&quot;ID123333&quot;);</p>
-<pre class="code prettyprint"><code>   //调用之后会收到
-   var json_obj = {
-       tagname : &quot;download_ticket_in_samsung_wallet&quot;,
-       param : {
-           isDownloadSuccess: false, //true，下载成功的时候没有errorInfo
-           errorInfo: &quot;网络故障&quot;, 
-       }
-   }
-
-   app.callback(json_obj);</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_app_show_ticket_in_samsung_wallet" class="method item">
-    <h3 class="name"><code>app_show_ticket_in_samsung_wallet</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>ticketID</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                定义在
-                
-            
-        
-        
-        <a href="../files/bridge.js.html#l2097"><code>bridge.js:2097</code></a>
-        
-        </p>
-
-
-        
-
-        
-            <p>可用版本 v5.32</p>
-        
-    </div>
-
-    <div class="description">
-        <p>在三星钱包app中查看Ticket</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>参数:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">ticketID</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>ticket的ID，服务器返回</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>举例:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code> CtripSumSungWallet.app_show_ticket_in_samsung_wallet(&quot;ID123333&quot;);
-
-//调用之后会收到
-   var json_obj = {
-       tagname : &quot;show_ticket_in_samsung_wallet&quot;,
-       param : {
-           errorInfo: &quot;Ticket ID不存在&quot;, //true
-       }
-   }
-
-   app.callback(json_obj);</code></pre>
+                <p>CtripBusiness.app_choose_invoice_title(&quot;上次选择的发票title，或者为空，用于标记已选title&quot;);
+     //调用之后，H5页面会收到回调数据
+       var json_obj =
+       {
+           tagname:&#39;locate&#39;,
+           param:{
+               selectedInvoiceTitle:&quot;所选择的发票title&quot;
+           }
+       }</p>
+<pre class="code prettyprint"><code>   app.callback(json_obj);</code></pre>
 
             </div>
         </div>

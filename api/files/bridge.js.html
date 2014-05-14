@@ -43,6 +43,8 @@
             
                 <li><a href="../classes/CtripBar.html">CtripBar</a></li>
             
+                <li><a href="../classes/CtripBusiness.html">CtripBusiness</a></li>
+            
                 <li><a href="../classes/CtripEncrypt.html">CtripEncrypt</a></li>
             
                 <li><a href="../classes/CtripFile.html">CtripFile</a></li>
@@ -2847,6 +2849,62 @@ var CtripMap = {
         }
         else if (Internal.isAndroid) {
             window.Locate_a.showMap(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    }
+
+};
+
+/**
+ * @class CtripBusiness
+ * @description Ctrip业务相关，需要返回数据给H5页面
+ * @brief Ctrip业务相关，需要返回数据给H5页面
+ */
+var CtripBusiness = {
+
+    /**
+     * @description 选择常用发票title
+     * @brief 选择常用发票title
+     * @param {String} selectedInvoiceTitle, 当前已经选择好的
+     * @method app_choose_invoice_title
+     * @author jimzhao
+     * @since v5.6
+     * @example
+     *
+     * CtripBusiness.app_choose_invoice_title(&quot;上次选择的发票title，或者为空，用于标记已选title&quot;);
+      //调用之后，H5页面会收到回调数据
+        var json_obj =
+        {
+            tagname:&#x27;locate&#x27;,
+            param:{
+                selectedInvoiceTitle:&quot;所选择的发票title&quot;
+            }
+        }
+        
+        app.callback(json_obj);
+     */
+    app_choose_invoice_title:function(selectedInvoiceTitle) {
+        var startVersion = &quot;5.6&quot;;
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!selectedInvoiceTitle) {
+            selectedInvoiceTitle = &quot;&quot;;
+        }
+        var params = {};
+        params.selectedInvoiceTitle = selectedInvoiceTitle;
+        paramString = Internal.makeParamString(&quot;Business&quot;, &quot;chooseInvoiceTitle&quot;, params, &#x27;choose_invoice_title&#x27;);
+
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Business_a.chooseInvoiceTitle(paramString);
         }
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);

@@ -15,7 +15,8 @@
                 "CtripSumSungWallet": 1,
                 "CtripFile": 1,
                 "CtripBar": 1,
-                "CtripMap": 1
+                "CtripMap": 1,
+                "CtripBusiness": 1
             },
             "fors": {},
             "namespaces": {}
@@ -167,6 +168,19 @@
             "line": 2648,
             "description": "地图相关类，定位/导航",
             "brief": "地图相关类，定位/导航"
+        },
+        "CtripBusiness": {
+            "name": "CtripBusiness",
+            "shortname": "CtripBusiness",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bridge.js",
+            "line": 2750,
+            "description": "Ctrip业务相关，需要返回数据给H5页面",
+            "brief": "Ctrip业务相关，需要返回数据给H5页面"
         }
     },
     "classitems": [
@@ -1635,6 +1649,27 @@
                 "\n\nCtripMap.app_show_map(31.3222323, 121.32232332, \"上海野生动物园\", \"浦东新区陆家嘴1234号\");\n"
             ],
             "class": "CtripMap"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2757,
+            "description": "选择常用发票title",
+            "brief": "选择常用发票title",
+            "params": [
+                {
+                    "name": "selectedInvoiceTitle,",
+                    "description": "当前已经选择好的",
+                    "type": "String"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_choose_invoice_title",
+            "author": "jimzhao",
+            "since": "v5.6",
+            "example": [
+                "\n\nCtripBusiness.app_choose_invoice_title(\"上次选择的发票title，或者为空，用于标记已选title\");\n     //调用之后，H5页面会收到回调数据\n       var json_obj =\n       {\n           tagname:'locate',\n           param:{\n               selectedInvoiceTitle:\"所选择的发票title\"\n           }\n       }\n       \n       app.callback(json_obj);"
+            ],
+            "class": "CtripBusiness"
         }
     ],
     "warnings": [
@@ -1961,6 +1996,14 @@
         {
             "message": "unknown tag: brief",
             "line": " bridge.js:2700"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2750"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2757"
         }
     ]
 }

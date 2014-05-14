@@ -2747,5 +2747,61 @@ var CtripMap = {
 
 };
 
+/**
+ * @class CtripBusiness
+ * @description Ctrip业务相关，需要返回数据给H5页面
+ * @brief Ctrip业务相关，需要返回数据给H5页面
+ */
+var CtripBusiness = {
+
+    /**
+     * @description 选择常用发票title
+     * @brief 选择常用发票title
+     * @param {String} selectedInvoiceTitle, 当前已经选择好的
+     * @method app_choose_invoice_title
+     * @author jimzhao
+     * @since v5.6
+     * @example
+     *
+     * CtripBusiness.app_choose_invoice_title("上次选择的发票title，或者为空，用于标记已选title");
+      //调用之后，H5页面会收到回调数据
+        var json_obj =
+        {
+            tagname:'locate',
+            param:{
+                selectedInvoiceTitle:"所选择的发票title"
+            }
+        }
+        
+        app.callback(json_obj);
+     */
+    app_choose_invoice_title:function(selectedInvoiceTitle) {
+        var startVersion = "5.6";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!selectedInvoiceTitle) {
+            selectedInvoiceTitle = "";
+        }
+        var params = {};
+        params.selectedInvoiceTitle = selectedInvoiceTitle;
+        paramString = Internal.makeParamString("Business", "chooseInvoiceTitle", params, 'choose_invoice_title');
+
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Business_a.chooseInvoiceTitle(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    }
+
+};
+
 //获取当前app环境
  CtripTool.app_is_in_ctrip_app();
