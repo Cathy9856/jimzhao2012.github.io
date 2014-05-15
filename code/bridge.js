@@ -547,13 +547,14 @@ var CtripUtil = {
      * @description Hybrid页面，打开链接URL地址，兼容App和浏览器
      * @brief Hybrid页面打开链接URL
      * @param {String} openUrl 需要打开的URL，可以为ctrip://,http(s)://,file://等协议的URL
-     * @param {String} title 当targetMode＝2时候，新打开的H5页面的title
      * @param {int} targetMode 
      0.当前页面刷新url;
      1.处理ctrip://协议;
      2.开启新的H5页面,title生效;
      3.使用系统浏览器打开;
-     4.开启本地新的H5页面，title生效，此时URL为相对路径；
+     4.开启本地新的H5页面，title生效，此时URL为相对路径；5.6版本加入
+     * @param {String} title 当targetMode＝2时候，新打开的H5页面的title
+     * @param {String} pageName 当targetMode＝0、2、4时候，本页面，或者新打开的H5页面，此时pageName有效，pageName当作H5页面唯一标识，可用于刷新页面；5.6版本加入
      * @method app_open_url
      * @since v5.2
      * @author jimzhao
@@ -564,12 +565,12 @@ var CtripUtil = {
      //进入App的酒店详情页
      CtripUtil.app_open_url("ctrip://wireless/hotel?id=1234", 1);
      //开启新的H5页面，进入m.ctrip.com
-     CtripUtil.app_open_url("http://m.ctrip.com", 2, "Ctrip H5首页");
+     CtripUtil.app_open_url("http://m.ctrip.com", 2, "Ctrip H5首页", "ctrip_home_page_id");
      //开启新的H5页面，进入webapp/car/index.html
-     CtripUtil.app_open_url("car/index.html", 4, "用车首页");
+     CtripUtil.app_open_url("car/index.html", 4, "用车首页", "car_index_page_id");
 
      */
-     app_open_url:function(openUrl, targetMode, title) {
+     app_open_url:function(openUrl, targetMode, title, pageName) {
         var params = {};
         if(!openUrl) {
             openUrl = "";
@@ -577,9 +578,14 @@ var CtripUtil = {
         if (!title) {
             title = "";
         }
+        if (!pageName) {
+            pageName = "";
+        }
+
         params.openUrl = openUrl;
         params.title = title;
         params.targetMode = targetMode;
+        params.pageName = pageName;
         paramString = Internal.makeParamString("Util", "openUrl", params, "open_url");
         
         if (Internal.appVersion) { //有AppVersion，为5.3及之后版本，或者5.2本地H5页面
