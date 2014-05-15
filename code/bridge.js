@@ -839,6 +839,12 @@ var CtripUtil = {
      * @author jimzhao
      * @example 
         
+        5.6新增说明：
+        刷新app_open_url打开的H5页面
+        CtripUtil.app_open_url();函数打开的H5页面，设置pagename:h5_page_identify
+        CtripUtil.app_refresh_native_page("h5_page_identify", "xxxx_json_string");
+        
+        先前版本，刷新Native的页面
         //H5调用
         
         CtripUtil.app_refresh_native_page("xxxxPageName", "xxxx_json_string");

@@ -781,7 +781,7 @@ CtripUtil.app_call_phone();</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1001"><code>bridge.js:1001</code></a>
+        <a href="../files/bridge.js.html#l1007"><code>bridge.js:1007</code></a>
         
         </p>
 
@@ -1242,7 +1242,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l928"><code>bridge.js:928</code></a>
+        <a href="../files/bridge.js.html#l934"><code>bridge.js:934</code></a>
         
         </p>
 
@@ -1477,7 +1477,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1089"><code>bridge.js:1089</code></a>
+        <a href="../files/bridge.js.html#l1095"><code>bridge.js:1095</code></a>
         
         </p>
 
@@ -1817,7 +1817,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1192"><code>bridge.js:1192</code></a>
+        <a href="../files/bridge.js.html#l1198"><code>bridge.js:1198</code></a>
         
         </p>
 
@@ -2034,7 +2034,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l1228"><code>bridge.js:1228</code></a>
+        <a href="../files/bridge.js.html#l1234"><code>bridge.js:1234</code></a>
         
         </p>
 
@@ -2146,7 +2146,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l1141"><code>bridge.js:1141</code></a>
+        <a href="../files/bridge.js.html#l1147"><code>bridge.js:1147</code></a>
         
         </p>
 
@@ -2449,7 +2449,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 4, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l963"><code>bridge.js:963</code></a>
+        <a href="../files/bridge.js.html#l969"><code>bridge.js:969</code></a>
         
         </p>
 
@@ -2670,7 +2670,13 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 4, &quot;用车首页&quot;, 
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>   //H5调用
+                <pre class="code prettyprint"><code>   5.6新增说明：
+   刷新app_open_url打开的H5页面
+   CtripUtil.app_open_url();函数打开的H5页面，设置pagename:h5_page_identify
+   CtripUtil.app_refresh_native_page(&quot;h5_page_identify&quot;, &quot;xxxx_json_string&quot;);
+
+   先前版本，刷新Native的页面
+   //H5调用
 
    CtripUtil.app_refresh_native_page(&quot;xxxxPageName&quot;, &quot;xxxx_json_string&quot;);
 
