@@ -192,7 +192,7 @@
             
                 <li class="arg">
                     
-                        <code>selectedInvoiceTitle,</code>
+                        <code>selectedInvoiceTitle</code>
                     
                 </li>
             
@@ -250,14 +250,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">selectedInvoiceTitle,</code>
+                        <code class="param-name">selectedInvoiceTitle</code>
                         <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>当前已经选择好的</p>
+                        <p>当前已经选择好的发票title</p>
 
                     </div>
 
@@ -275,16 +275,18 @@
             <h4>举例:</h4>
 
             <div class="example-content">
-                <p>CtripBusiness.app_choose_invoice_title(&quot;上次选择的发票title，或者为空，用于标记已选title&quot;);
-     //调用之后，H5页面会收到回调数据
-       var json_obj =
-       {
-           tagname:&#39;locate&#39;,
-           param:{
-               selectedInvoiceTitle:&quot;所选择的发票title&quot;
-           }
-       }</p>
-<pre class="code prettyprint"><code>   app.callback(json_obj);</code></pre>
+                <pre class="code prettyprint"><code>   CtripBusiness.app_choose_invoice_title(&quot;上次选择的发票title，或者为空，用于标记已选title&quot;);
+
+   //调用之后，H5页面会收到回调数据
+   var json_obj =
+   {
+       tagname:&#39;locate&#39;,
+       param:{
+           selectedInvoiceTitle:&quot;所选择的发票title&quot;
+       }
+   }
+
+   app.callback(json_obj);</code></pre>
 
             </div>
         </div>

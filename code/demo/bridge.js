@@ -2757,14 +2757,16 @@ var CtripBusiness = {
     /**
      * @description 选择常用发票title
      * @brief 选择常用发票title
-     * @param {String} selectedInvoiceTitle, 当前已经选择好的
+     * @param {String} selectedInvoiceTitle 当前已经选择好的发票title
      * @method app_choose_invoice_title
      * @author jimzhao
      * @since v5.6
      * @example
      *
-     * CtripBusiness.app_choose_invoice_title("上次选择的发票title，或者为空，用于标记已选title");
-      //调用之后，H5页面会收到回调数据
+     * 
+        CtripBusiness.app_choose_invoice_title("上次选择的发票title，或者为空，用于标记已选title");
+        
+        //调用之后，H5页面会收到回调数据
         var json_obj =
         {
             tagname:'locate',

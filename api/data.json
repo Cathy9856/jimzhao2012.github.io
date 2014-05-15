@@ -1657,8 +1657,8 @@
             "brief": "选择常用发票title",
             "params": [
                 {
-                    "name": "selectedInvoiceTitle,",
-                    "description": "当前已经选择好的",
+                    "name": "selectedInvoiceTitle",
+                    "description": "当前已经选择好的发票title",
                     "type": "String"
                 }
             ],
@@ -1667,7 +1667,7 @@
             "author": "jimzhao",
             "since": "v5.6",
             "example": [
-                "\n\nCtripBusiness.app_choose_invoice_title(\"上次选择的发票title，或者为空，用于标记已选title\");\n     //调用之后，H5页面会收到回调数据\n       var json_obj =\n       {\n           tagname:'locate',\n           param:{\n               selectedInvoiceTitle:\"所选择的发票title\"\n           }\n       }\n       \n       app.callback(json_obj);"
+                "\n\n\n       CtripBusiness.app_choose_invoice_title(\"上次选择的发票title，或者为空，用于标记已选title\");\n       \n       //调用之后，H5页面会收到回调数据\n       var json_obj =\n       {\n           tagname:'locate',\n           param:{\n               selectedInvoiceTitle:\"所选择的发票title\"\n           }\n       }\n       \n       app.callback(json_obj);"
             ],
             "class": "CtripBusiness"
         }
