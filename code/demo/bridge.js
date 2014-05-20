@@ -70,6 +70,12 @@ var Internal = {
      * alert(isLarger); // depends
      */
     isAppVersionGreatThan:function(verStr) {
+
+        var ua = navigator.userAgent;
+        if (ua.indexOf("Youth_CtripWireless") > 0) { //青春版不做校验
+            return false;
+        }
+
         if ((typeof verStr == "string") && (verStr.length > 0)) {
             var inVer = parseFloat(verStr);
             var nowVer = parseFloat(Internal.appVersion);
@@ -2666,7 +2672,7 @@ var CtripMap = {
  /**
      * @description 定位
      * @brief 定位
-     * @param {Bool} is_async, true标识是异步定位，false标识为同步定位
+     * @param {Bool} is_async true标识是异步定位，false标识为同步定位
      * @method app_locate
      * @author jimzhao
      * @since v5.1
@@ -2719,8 +2725,8 @@ var CtripMap = {
      * @author jimzhao
      * @since v5.5
      * @example
-     *
-     * CtripMap.app_show_map(31.3222323, 121.32232332, "上海野生动物园", "浦东新区陆家嘴1234号");
+        
+        CtripMap.app_show_map(31.3222323, 121.32232332, "上海野生动物园", "浦东新区陆家嘴1234号");
      *
      */
     app_show_map:function(latitude, longitude, title, subtitle) {
@@ -2814,6 +2820,52 @@ var CtripBusiness = {
         }
     }
 
+};
+
+/**
+ * @class CtripPage
+ * @description 页面跳转，导航，刷新相关API
+ * @brief 页面跳转，导航，刷新相关API
+ */
+var CtripPage = {
+
+    /**
+     * @description 设置当前页面名，可用于页面导航，刷新
+     * @brief 设置当前页面名，可用于页面导航，刷新
+     * @param {String} pageName 设置当前页面名
+     * @method app_set_page_name
+     * @author jimzhao
+     * @since v5.6
+     * @example
+     *
+     * 
+        CtripPage.app_set_page_name("USE_CAR_PAGE_IDENTIFY");
+
+     */
+    app_set_page_name:function(pageName) {
+        var startVersion = "5.6";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!pageName) {
+            pageName = "";
+        }
+
+        var params = {};
+        params.pageName = pageName;
+
+        paramString = Internal.makeParamString("Page", "setPageName", params, "set_page_name");
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            window.Page_a.setPageName(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    }
 };
 
 //获取当前app环境
