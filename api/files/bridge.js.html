@@ -185,7 +185,7 @@ var Internal = {
 
         var ua = navigator.userAgent;
         if (ua.indexOf(&quot;Youth_CtripWireless&quot;) &gt; 0) { //青春版不做校验
-            return false;
+            return true;
         }
 
         if ((typeof verStr == &quot;string&quot;) &amp;&amp; (verStr.length &gt; 0)) {

@@ -73,7 +73,7 @@ var Internal = {
 
         var ua = navigator.userAgent;
         if (ua.indexOf("Youth_CtripWireless") > 0) { //青春版不做校验
-            return false;
+            return true;
         }
 
         if ((typeof verStr == "string") && (verStr.length > 0)) {
