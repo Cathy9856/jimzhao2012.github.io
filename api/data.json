@@ -192,7 +192,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 2825,
+            "line": 2832,
             "description": "页面跳转，导航，刷新相关API",
             "brief": "页面跳转，导航，刷新相关API"
         }
@@ -1692,7 +1692,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2832,
+            "line": 2839,
             "description": "设置当前页面名，可用于页面导航，刷新",
             "brief": "设置当前页面名，可用于页面导航，刷新",
             "params": [
@@ -2047,11 +2047,11 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2825"
+            "line": " bridge.js:2832"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2832"
+            "line": " bridge.js:2839"
         }
     ]
 }

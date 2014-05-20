@@ -2796,6 +2796,13 @@ var CtripBusiness = {
      */
     app_choose_invoice_title:function(selectedInvoiceTitle) {
         var startVersion = "5.6";
+        var ua = navigator.userAgent;
+        if (ua.indexOf("Youth_CtripWireless") > 0) { //青春版不做校验
+           alert("true:"+ua);
+        } else {
+            alert("false:"+ua);
+        }
+
         if (!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
             return;
