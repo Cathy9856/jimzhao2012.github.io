@@ -2908,13 +2908,6 @@ var CtripBusiness = {
      */
     app_choose_invoice_title:function(selectedInvoiceTitle) {
         var startVersion = &quot;5.6&quot;;
-        var ua = navigator.userAgent;
-        if (ua.indexOf(&quot;Youth_CtripWireless&quot;) &gt; 0) { //青春版不做校验
-           alert(&quot;true:&quot;+ua);
-        } else {
-            alert(&quot;false:&quot;+ua);
-        }
-
         if (!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
             return;
