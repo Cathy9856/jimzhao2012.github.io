@@ -64,7 +64,7 @@ var Internal = {
      * @type String
      * @property isYouthApp
      */ 
-    isYouthApp:false;
+    isYouthApp:false,
     
     /**
      * @brief 判断版本大小
