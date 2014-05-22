@@ -1,6 +1,7 @@
 
 var __CTRIP_JS_PARAM = "?jsparam="
 var __CTRIP_URL_PLUGIN = "ctrip://h5/plugin" + __CTRIP_JS_PARAM;
+var __CTRIP_YOUTH_URL_PLUGIN = "ctripyouth://h5/plugin" + __CTRIP_JS_PARAM;
 
 /**
 * @class Internal
@@ -56,6 +57,14 @@ var Internal = {
      * @property osVersion
      */ 
     osVersion:"",
+
+    /**
+     * @brief 当前App是否是青春版
+     * @description bridge.js内部使用，判断是否是青春版
+     * @type String
+     * @property isYouthApp
+     */ 
+    isYouthApp:false;
     
     /**
      * @brief 判断版本大小
@@ -70,9 +79,7 @@ var Internal = {
      * alert(isLarger); // depends
      */
     isAppVersionGreatThan:function(verStr) {
-
-        var ua = navigator.userAgent;
-        if (ua.indexOf("Youth_CtripWireless") > 0) { //青春版不做校验
+        if (Internal.isYouthApp) { //青春版不做校验
             return true;
         }
 
@@ -194,8 +201,11 @@ var Internal = {
         }
 
         paramString = encodeURIComponent(paramString);
-
-        return  __CTRIP_URL_PLUGIN + paramString;
+        if (Internal.isYouthApp) {
+            return __CTRIP_YOUTH_URL_PLUGIN + paramString;
+        } else {
+            return  __CTRIP_URL_PLUGIN + paramString;
+        }
     },
 
      /**
@@ -228,6 +238,12 @@ function __bridge_callback(param) {
             platform = jsonObj.param.platform;
             if (typeof platform == "number") {
                 if (platform == 1 || platform == 2 || platform == 3) {
+
+                    var ua = navigator.userAgent;
+                    if (ua.indexOf("Youth_CtripWireless") > 0) { 
+                        Internal.isYouthApp = true;
+                    }
+
                     Internal.isIOS = (platform == 1);
                     Internal.isAndroid = (platform == 2);
                     Internal.isWinOS = (platform == 3);                    
@@ -461,7 +477,12 @@ var CtripUtil = {
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
-            CtripUtil.app_open_url("ctrip://wireless/", 1, "  ");
+            homeURL = "ctrip://wireless/";
+            if (Internal.isYouthApp) {
+                homeURL = "ctripyouth://wireless/";
+            }
+
+            CtripUtil.app_open_url(homeURL, 1, "  ");
             // window.Util_a.backToHome(paramString);
         }
         else if (Internal.isWinOS) {
