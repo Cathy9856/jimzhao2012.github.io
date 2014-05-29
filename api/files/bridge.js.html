@@ -416,12 +416,10 @@ var CtripTool = {
 
          var ua = navigator.userAgent;
          if (ua.indexOf(&quot;CtripWireless&quot;)&gt;0) {
-            Internal.isAndroid = true;
             isInCtripApp = true;
          }
-         else if (( ua.indexOf(&quot;iPhone&quot;) &gt; 0 || ua.indexOf(&quot;iPad&quot;) &gt; 0 || ua.indexOf(&quot;iPhone&quot;)) &amp;&amp; 
+         if (( ua.indexOf(&quot;iPhone&quot;) &gt; 0 || ua.indexOf(&quot;iPad&quot;) &gt; 0 || ua.indexOf(&quot;iPhone&quot;)) &amp;&amp; 
             ua.indexOf(&quot;Safari&quot;) &lt; 0) {
-            isInCtripApp = true;
             Internal.isIOS = true;
          }
         
@@ -3000,10 +2998,6 @@ var CtripPage = {
         }
     }
 };
-
-//获取当前app环境
- CtripTool.app_is_in_ctrip_app();
-
     </pre>
 </div>
 
