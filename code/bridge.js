@@ -313,7 +313,7 @@ var CtripTool = {
     /**
      * @description 将log写入到native的日志界面，该函数已移动到CtripUtil类，此处只做兼容。具体参考CtripUtil.app_log()函数
      * @brief H5写日志到app(移动到CtripUtil)
-     * @method app_log(Moved)
+     * @method (Moved)app_log
      * @param {String} log 需要打印打log
      * @param {String} result 上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间
      * @since v5.2
@@ -335,34 +335,18 @@ var CtripTool = {
 var CtripUtil = {
 
     /**
-     * @description Native收集用户行为,该日志会被上传
-     * H5页面调用该函数，需要将增加的event_name告知native，native需要整理纪录
-     * @brief 收集ActionLog
-     * @method app_log_event
+     * @description 调用App的上传ActionLog,移动到CtripBusiness
+     * @brief App的上传ActionLog,移动到CtripBusiness
+     * @method (Moved)app_log_event
      * @param {String} event_name 需要纪录的事件名
      * @since v5.2
      * @author jimzhao
      * @example 
 
-     Util.app_log_event('GoodDay')
+     CtripBusiness.app_log_event('GoodDay')
      */
     app_log_event:function(event_name) {
-        if (Internal.isNotEmptyString(event_name)) {
-            var params = {};
-            params.event = event_name;
-            paramString =  Internal.makeParamString("Util", "logEvent", params, "log_event");
-
-            if (Internal.isIOS) {
-                url = Internal.makeURLWithParam(paramString);
-                Internal.loadURL(url);
-            }
-            else if (Internal.isAndroid) {
-                window.Util_a.logEvent(paramString);
-            }
-            else if (Internal.isWinOS) {
-                Internal.callWin8App(paramString);
-            }
-        }
+        CtripBusiness.app_log_event(event_name);
     },
 
 
@@ -523,7 +507,7 @@ var CtripUtil = {
      * @description 定位(移动到CtripMap)
      * @brief 定位(移动到CtripMap)
      * @param {Bool} is_async, true标识是异步定位，false标识为同步定位
-     * @method app_locate(Moved)
+     * @method (Moved)app_locate
      * @example
 
         CtripMap.app_locate(true);
@@ -553,7 +537,7 @@ var CtripUtil = {
      * @description 刷新顶部条按钮和文字(移动到CtripBar)
      * @brief 刷新顶部条按钮和文字(移动到CtripBar)
      * @param (String) nav_bar_config_json 顶部条配置json串
-     * @method app_refresh_nav_bar(Moved)
+     * @method (Moved)app_refresh_nav_bar
      * @author jimzhao
      * @since v5.2
      * @example
@@ -645,7 +629,7 @@ var CtripUtil = {
      * @description 检查App的版本更新(移动到CtripBusiness)
      * @brief 检查App的版本更新(移动到CtripBusiness)
      * @since v5.2
-     * @method app_check_update(Moved)
+     * @method (Moved)app_check_update
      * @author jimzhao
      * @example 
 
@@ -660,7 +644,7 @@ var CtripUtil = {
      * @description 推荐携程旅行给好友(移动到CtripBusiness)
      * @brief 推荐携程旅行给好友(移动到CtripBusiness)
      * @since v5.2
-     * @method app_recommend_app_to_friends(Moved)
+     * @method (Moved)app_recommend_app_to_friends
      * @author jimzhao
      * @example 
 
@@ -675,7 +659,7 @@ var CtripUtil = {
      * @description 添加微信好友(移动到CtripBusiness)
      * @brief 添加微信好友(移动到CtripBusiness)
      * @since v5.2
-     * @method app_add_weixin_friend(Moved)
+     * @method (Moved)app_add_weixin_friend
      * @author jimzhao
      * @example 
 
@@ -728,7 +712,7 @@ var CtripUtil = {
      * @description 查看最新版本功能介绍(移动到CtripBusiness)
      * @brief 查看最新版本功能介绍(移动到CtripBusiness)
      * @since v5.2
-     * @method app_show_newest_introduction(Moved)
+     * @method (Moved)app_show_newest_introduction
      * @author jimzhao
      * @example 
 
@@ -995,7 +979,7 @@ var CtripUtil = {
      * @param {String} title 需要分享的标题, v5.4开始支持该字段，微信和email支持；
      * @param {String} linkUrl 需要分享的链接, v5.4开始支持该字段
      * @param {boolean} isIOSSystemShare  是否是iOS6以上使用系统分享功能,对于先前门票分享功能，需要为true，其它都是false
-     * @method app_call_system_share(Moved)
+     * @method (Moved)app_call_system_share
      * @since v5.3
      * @author jimzhao
      * @example
@@ -1178,7 +1162,7 @@ var CtripUtil = {
    /**
      * @description 打开Hybrid广告页面，会自动显示底部栏，且右上角有分享安妮 (移动到CtripBusiness)
      * @brief 打开Hybrid广告页面(移动到CtripBusiness)
-     * @method app_open_adv_page(Moved)
+     * @method (Moved)app_open_adv_page
      * @param {String} advUrl 广告URL， URL参数带title=xxx,设置xxx为标题
      * @since v5.4
      * @author jimzhao
@@ -1979,7 +1963,7 @@ var CtripPipe = {
         if (!pipeType) {
             pipeType = 0;
         }
-        
+
         var params = {};
         params.serviceCode = serviceCode;
         params.header = header;
@@ -3052,7 +3036,39 @@ var CtripBusiness = {
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
+    },
+
+    /**
+     * @description Native收集用户行为,该日志会被上传
+     * H5页面调用该函数，需要将增加的event_name告知native，native需要整理纪录
+     * @brief 收集ActionLog
+     * @method app_log_event
+     * @param {String} event_name 需要纪录的事件名
+     * @since v5.2
+     * @author jimzhao
+     * @example 
+
+     Util.app_log_event('GoodDay')
+     */
+    app_log_event:function(event_name) {
+        if (Internal.isNotEmptyString(event_name)) {
+            var params = {};
+            params.event = event_name;
+            paramString =  Internal.makeParamString("Util", "logEvent", params, "log_event");
+
+            if (Internal.isIOS) {
+                url = Internal.makeURLWithParam(paramString);
+                Internal.loadURL(url);
+            }
+            else if (Internal.isAndroid) {
+                window.Util_a.logEvent(paramString);
+            }
+            else if (Internal.isWinOS) {
+                Internal.callWin8App(paramString);
+            }
+        }
     }
+
 };
 
 /**
