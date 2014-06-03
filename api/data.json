@@ -499,7 +499,7 @@
             "description": "将log写入到native的日志界面，该函数已移动到CtripUtil类，此处只做兼容。具体参考CtripUtil.app_log()函数",
             "brief": "H5写日志到app(移动到CtripUtil)",
             "itemtype": "method",
-            "name": "(Moved)app_log",
+            "name": "【Moved】app_log",
             "params": [
                 {
                     "name": "log",
@@ -525,7 +525,7 @@
             "description": "调用App的上传ActionLog,移动到CtripBusiness",
             "brief": "App的上传ActionLog,移动到CtripBusiness",
             "itemtype": "method",
-            "name": "(Moved)app_log_event",
+            "name": "【Moved】app_log_event",
             "params": [
                 {
                     "name": "event_name",
@@ -629,7 +629,7 @@
                 }
             ],
             "itemtype": "method",
-            "name": "(Moved)app_locate",
+            "name": "【Moved】app_locate",
             "example": [
                 "\n\n       CtripMap.app_locate(true);\n       //定位完成后H5页面会收到回调数据\n       var json_obj =\n       {\n           tagname:'locate',\n           param:{\n               \"value\":{\n                   ctyName: '上海',\n                   addrs:'上海市浦东南路22号',\n                   lat:'121.487899',\n                   lng:'31.249162'\n               },\n               'timeout': '2013/09/12 12:32:36',\n               'locateStatus':0,//iOS新增字段:-1网络不通，当前无法定位,-2定位没有开启\n           }\n       }\n       app.callback(json_obj);\n"
             ],
@@ -647,7 +647,7 @@
                 }
             ],
             "itemtype": "method",
-            "name": "(Moved)app_refresh_nav_bar",
+            "name": "【Moved】app_refresh_nav_bar",
             "author": "jimzhao",
             "since": "v5.2",
             "example": [
@@ -698,7 +698,7 @@
             "brief": "检查App的版本更新(移动到CtripBusiness)",
             "since": "v5.2",
             "itemtype": "method",
-            "name": "(Moved)app_check_update",
+            "name": "【Moved】app_check_update",
             "author": "jimzhao",
             "example": [
                 " \n\n       CtripBusiness.app_check_update();\n"
@@ -712,7 +712,7 @@
             "brief": "推荐携程旅行给好友(移动到CtripBusiness)",
             "since": "v5.2",
             "itemtype": "method",
-            "name": "(Moved)app_recommend_app_to_friends",
+            "name": "【Moved】app_recommend_app_to_friends",
             "author": "jimzhao",
             "example": [
                 " \n\n       CtripBusiness.app_recommend_app_to_friends();\n"
@@ -726,7 +726,7 @@
             "brief": "添加微信好友(移动到CtripBusiness)",
             "since": "v5.2",
             "itemtype": "method",
-            "name": "(Moved)app_add_weixin_friend",
+            "name": "【Moved】app_add_weixin_friend",
             "author": "jimzhao",
             "example": [
                 " \n\n        CtripBusiness.app_add_weixin_friend();"
@@ -766,7 +766,7 @@
             "brief": "查看最新版本功能介绍(移动到CtripBusiness)",
             "since": "v5.2",
             "itemtype": "method",
-            "name": "(Moved)app_show_newest_introduction",
+            "name": "【Moved】app_show_newest_introduction",
             "author": "jimzhao",
             "example": [
                 " \n\n    CtripBusiness.app_show_newest_introduction();"
@@ -908,7 +908,7 @@
                 }
             ],
             "itemtype": "method",
-            "name": "(Moved)app_call_system_share",
+            "name": "【Moved】app_call_system_share",
             "since": "v5.3",
             "author": "jimzhao",
             "example": [
@@ -1010,7 +1010,7 @@
             "description": "打开Hybrid广告页面，会自动显示底部栏，且右上角有分享安妮 (移动到CtripBusiness)",
             "brief": "打开Hybrid广告页面(移动到CtripBusiness)",
             "itemtype": "method",
-            "name": "(Moved)app_open_adv_page",
+            "name": "【Moved】app_open_adv_page",
             "params": [
                 {
                     "name": "advUrl",
