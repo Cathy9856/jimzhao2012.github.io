@@ -306,18 +306,14 @@ var CtripTool = {
          if (ua.indexOf("CtripWireless")>0) {
             isInCtripApp = true;
          }
-         if (( ua.indexOf("iPhone") > 0 || ua.indexOf("iPad") > 0 || ua.indexOf("iPhone")) && 
-            ua.indexOf("Safari") < 0) {
-            Internal.isIOS = true;
-         }
         
         return isInCtripApp;
     },
 
     /**
      * @description 将log写入到native的日志界面，该函数已移动到CtripUtil类，此处只做兼容。具体参考CtripUtil.app_log()函数
-     * @brief H5写日志到app(兼容，移动至CtripUtil)
-     * @method app_log(Deprecated)
+     * @brief H5写日志到app(移动到CtripUtil)
+     * @method app_log(Moved)
      * @param {String} log 需要打印打log
      * @param {String} result 上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间
      * @since v5.2
@@ -498,7 +494,8 @@ var CtripUtil = {
      * @author jimzhao
      * @example 
 
-     CtripUtil.app_back_to_last_page("This is a json string for my previous H5 page", false);
+        CtripUtil.app_back_to_last_page("This is a json string for my previous H5 page", false);
+
      */
     app_back_to_last_page:function(callbackString, isDeleteH5Page) {
         var params = {};
@@ -523,10 +520,10 @@ var CtripUtil = {
     },
 
     /**
-     * @description 定位(兼容，已经移动到CtripMap)
-     * @brief 定位(兼容，移动到CtripMap)
+     * @description 定位(移动到CtripMap)
+     * @brief 定位(移动到CtripMap)
      * @param {Bool} is_async, true标识是异步定位，false标识为同步定位
-     * @method app_locate(Deprecated)
+     * @method app_locate(Moved)
      * @example
 
         CtripMap.app_locate(true);
@@ -553,10 +550,10 @@ var CtripUtil = {
     },
 
     /**
-     * @description 刷新顶部条按钮和文字(兼容，已移动至CtripBar)
-     * @brief 刷新顶部条按钮和文字(兼容，移动至CtripBar)
+     * @description 刷新顶部条按钮和文字(移动到CtripBar)
+     * @brief 刷新顶部条按钮和文字(移动到CtripBar)
      * @param (String) nav_bar_config_json 顶部条配置json串
-     * @method app_refresh_nav_bar(Deprecated)
+     * @method app_refresh_nav_bar(Moved)
      * @author jimzhao
      * @since v5.2
      * @example
@@ -645,75 +642,47 @@ var CtripUtil = {
 
 
     /**
-     * @description 检查App的版本更新
-     * @brief 检查App的版本更新
+     * @description 检查App的版本更新(移动到CtripBusiness)
+     * @brief 检查App的版本更新(移动到CtripBusiness)
      * @since v5.2
-     * @method app_check_update
+     * @method app_check_update(Moved)
      * @author jimzhao
      * @example 
 
-     CtripUtil.app_check_update();
+        CtripBusiness.app_check_update();
      *
      */
     app_check_update:function() {
-        paramString = Internal.makeParamString("Util", "checkUpdate", null, "check_update");
-        if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
-        }
-        else if (Internal.isAndroid) {
-            window.Util_a.checkUpdate(paramString);
-        }
-        else if (Internal.isWinOS) {
-            Internal.callWin8App(paramString);
-        }
+        CtripBusiness.app_check_update();
     },
 
     /**
-     * @description 推荐携程旅行给好友
-     * @brief 推荐携程旅行给好友
+     * @description 推荐携程旅行给好友(移动到CtripBusiness)
+     * @brief 推荐携程旅行给好友(移动到CtripBusiness)
      * @since v5.2
-     * @method app_recommend_app_to_friends
-     * @author jimzhao
-     * @example CtripUtil.app_recommend_app_to_friends();
-     *
-     */
-    app_recommend_app_to_friends:function() {
-        paramString = Internal.makeParamString("Util", "recommendAppToFriends", null, "recommend_app_to_friends");
-        if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
-        }
-        else if (Internal.isAndroid) {
-            window.Util_a.recommendAppToFriends(paramString);
-        }
-        else if (Internal.isWinOS) {
-            Internal.callWin8App(paramString);
-        }
-    },
-
-    /**
-     * @description 添加微信好友
-     * @brief 添加微信好友
-     * @since v5.2
-     * @method app_add_weixin_friend
+     * @method app_recommend_app_to_friends(Moved)
      * @author jimzhao
      * @example 
 
-     CtripUtil.app_add_weixin_friend();
+        CtripBusiness.app_recommend_app_to_friends();
+     *
+     */
+    app_recommend_app_to_friends:function() {
+        CtripBusiness.app_recommend_app_to_friends();
+    },
+
+    /**
+     * @description 添加微信好友(移动到CtripBusiness)
+     * @brief 添加微信好友(移动到CtripBusiness)
+     * @since v5.2
+     * @method app_add_weixin_friend(Moved)
+     * @author jimzhao
+     * @example 
+
+         CtripBusiness.app_add_weixin_friend();
      */
     app_add_weixin_friend:function() {
-        paramString = Internal.makeParamString("Util", "addWeixinFriend", null, "add_weixin_friend");
-        if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
-        }
-        else if (Internal.isAndroid) {
-            window.Util_a.addWeixinFriend(paramString);
-        }
-        else if (Internal.isWinOS) {
-            Internal.callWin8App(paramString);
-        }
+        CtripBusiness.app_add_weixin_friend();
     },
 
     /**
@@ -756,27 +725,17 @@ var CtripUtil = {
     },
 
     /**
-     * @description 查看最新版本功能介绍
-     * @brief 查看最新版本功能介绍
+     * @description 查看最新版本功能介绍(移动到CtripBusiness)
+     * @brief 查看最新版本功能介绍(移动到CtripBusiness)
      * @since v5.2
-     * @method app_show_newest_introduction
+     * @method app_show_newest_introduction(Moved)
      * @author jimzhao
      * @example 
 
-     CtripUtil.app_show_newest_introduction();
+     CtripBusiness.app_show_newest_introduction();
      */
     app_show_newest_introduction:function() {
-        paramString = Internal.makeParamString("Util", "showNewestIntroduction", null, "show_newest_introduction");
-        if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
-        }
-        else if (Internal.isAndroid) {
-            window.Util_a.showNewestIntroduction(paramString);
-        }
-        else if (Internal.isWinOS) {
-            Internal.callWin8App(paramString);
-        }
+        CtripBusiness.app_show_newest_introduction();
     },
 
     /**
@@ -1029,14 +988,14 @@ var CtripUtil = {
     },
 
     /**
-     * @description 调用App的分享, 可以支持iOS6系统的分享
-     * @brief 调用App的分享
+     * @description 调用App的分享, 可以支持iOS6系统的分享，具体定义请参考(移动到CtripBusiness)
+     * @brief 调用App的分享(移动到CtripBusiness)
      * @param {String} imageRelativePath 将要分享的图片相对路径，相对webapp的路径
      * @param {String} text 需要分享的文字
      * @param {String} title 需要分享的标题, v5.4开始支持该字段，微信和email支持；
      * @param {String} linkUrl 需要分享的链接, v5.4开始支持该字段
      * @param {boolean} isIOSSystemShare  是否是iOS6以上使用系统分享功能,对于先前门票分享功能，需要为true，其它都是false
-     * @method app_call_system_share
+     * @method app_call_system_share(Moved)
      * @since v5.3
      * @author jimzhao
      * @example
@@ -1070,50 +1029,11 @@ var CtripUtil = {
         2. 分享的title不起作用;
         3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
 
-      CtripUtil.app_call_system_share("../wb_cache/pkg_name/md5_url_hash", "text to share weibo", "this is titile", "http://www.ctrip.com/", false);
+        CtripBusiness.app_call_system_share("../wb_cache/pkg_name/md5_url_hash", "text to share weibo", "this is titile", "http://www.ctrip.com/", false);
 
      */
     app_call_system_share:function(imageRelativePath, text, title, linkUrl, isIOSSystemShare) {
-        var startVersion = "5.3";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
-            return;
-        }
-        var params = {};
-        if(!imageRelativePath) {
-            imageRelativePath = "";
-        }
-
-        if (!title) {
-            title = "";
-        }
-        
-        if (!text) {
-            text = "";
-        }
-
-        if (!linkUrl) {
-            linkUrl = "";
-        }
-
-        params.title = title;
-        params.text = text;
-        params.linkUrl = linkUrl;
-        params.imageRelativePath = imageRelativePath;
-        params.isIOSSystemShare = isIOSSystemShare;
-
-        paramString = Internal.makeParamString("Util", "callSystemShare", params, "call_system_share");
-
-        if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
-        }
-        else if (Internal.isAndroid) {
-            window.Util_a.callSystemShare(paramString);
-        }
-        else if (Internal.isWinOS) {
-            Internal.callWin8App(paramString);
-        }
+        CtripBusiness.app_call_system_share(imageRelativePath, text, title, linkUrl, isIOSSystemShare);
     },
 
     /**
@@ -1186,7 +1106,7 @@ var CtripUtil = {
      //3. iOS， winPhone OS都使用URL协议跳转;
      */
     app_open_other_app:function(packageId, jsonParam, url) {
-       var startVersion = "5.3";
+        var startVersion = "5.3";
         if (!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
             return;
@@ -1256,38 +1176,63 @@ var CtripUtil = {
     },
 
    /**
-     * @description 打开Hybrid广告页面，会自动显示底部栏，且右上角有分享安妮
-     * @brief 打开Hybrid广告页面
-     * @method app_open_adv_page
+     * @description 打开Hybrid广告页面，会自动显示底部栏，且右上角有分享安妮 (移动到CtripBusiness)
+     * @brief 打开Hybrid广告页面(移动到CtripBusiness)
+     * @method app_open_adv_page(Moved)
      * @param {String} advUrl 广告URL， URL参数带title=xxx,设置xxx为标题
      * @since v5.4
      * @author jimzhao
      * @example
 
-      CtripUtil.app_open_adv_page("http://pages.ctrip.com/adv.html?title=标题xxx");
+      CtripBusiness.app_open_adv_page("http://pages.ctrip.com/adv.html?title=标题xxx");
      */
     app_open_adv_page:function(advUrl) {
-        var startVersion = "5.4";
+        CtripBusiness.app_open_adv_page(advUrl);
+    },
+
+
+     /**
+     * @description 选取图片/拍摄照片，base64返回图片
+     * @brief 打开Hybrid广告页面
+     * @method app_choose_image
+     * @since v5.7
+     * @author jimzhao
+     * @example
+
+       CtripUtil.app_choose_image();
+
+       //调用完成之后，返回的数据格式
+       var json_obj =
+        {
+            tagname:"choose_image",
+            param:{
+                base64Image:"xx089xessewz...."
+            }
+        }
+        app.callback(json_obj);
+     
+     */
+    app_choose_image:function() {
+        var startVersion = "5.7";
         if (!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
             return;
-        }   
+        }
 
-        var params = {};
-        params.advUrl = advUrl;
-        paramString = Internal.makeParamString("Util", "openAdvPage", params, "open_adv_page");
+        var paramString = Internal.makeParamString("Util", "chooseImage", null, "choose_image");
+
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
-        }
-        else if (Internal.isAndroid) 
-        {
-            window.Util_a.openAdvPage(paramString);
-        }
+        } 
+        else if (Internal.isAndroid) {
+            window.Util_a.openOtherApp(paramString);
+        } 
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
     }
+
 };
 
 /**
@@ -1975,6 +1920,7 @@ var CtripPipe = {
      * @param {String} header 服务的header
      * @param {String} data 服务所需要的数据部分，各个服务都不同
      * @param {String} sequenceId 发送服务的序列号，随机生存即可
+     * @param {int} pipeType 管道类型，因mobileServer原因，5.4的管道是支付专用，默认是0=支付管道，1＝公共管道
      * @since v5.4
      * @author jimzhao
      * @example 
@@ -2010,7 +1956,7 @@ var CtripPipe = {
         app.callback(json_obj);
 
      */
-    app_send_H5_pipe_request:function(serviceCode,header,data, sequenceId) {
+    app_send_H5_pipe_request:function(serviceCode,header,data, sequenceId, pipeType) {
         var startVersion = "5.4";
         if(!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
@@ -2030,11 +1976,16 @@ var CtripPipe = {
             sequenceId = "";
         }
 
+        if (!pipeType) {
+            pipeType = 0;
+        }
+        
         var params = {};
         params.serviceCode = serviceCode;
         params.header = header;
         params.data = data;
         params.sequenceId = sequenceId;
+        params.pipeType = pipeType;
 
         paramString = Internal.makeParamString("Pipe", "sendH5PipeRequest", params, 'send_h5_pipe_request');
         if (Internal.isIOS) {
@@ -2837,8 +2788,271 @@ var CtripBusiness = {
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
-    }
+    },
 
+    //
+
+    /**
+     * @description 进入语音搜索
+     * @brief 进入语音搜索， 5.7版本，语音搜索之后的结果，不需要BU处理，只需调用即可，后续版本，可能只做语音解析，解析结果传递给H5，BU自行处理
+     * @param {int} bussinessType 业务类型(0. 无（默认）1. 机票 2. 酒店3 . 火车票 4. 团队游 5. 目的地 6. 攻略 7.景点门票 8.周末/短途游)
+     * @method app_show_voice_search
+     * @author jimzhao
+     * @since v5.7
+     * @example
+     *
+     * 
+        CtripBusiness.app_show_voice_search(7);
+        
+        //调用之后，H5页面会收到回调数据
+        var json_obj =
+        {
+            tagname:'show_voice_search',
+           //param:{} 后续版本使用，返回语音解析的数据map，5.7暂不提供
+        }
+        
+        app.callback(json_obj);
+     */
+    app_show_voice_search:function(bussinessType) {
+        var startVersion = "5.7";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        var params = {};
+        params.bussinessType = bussinessType;
+        paramString = Internal.makeParamString("Business", "showVoiceSearch", params, 'show_voice_search');
+
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Business_a.chooseInvoiceTitle(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /**
+     * @description 打开Hybrid广告页面，会自动显示底部栏，且右上角有分享安妮
+     * @brief 打开Hybrid广告页面
+     * @method app_open_adv_page
+     * @param {String} advUrl 广告URL， URL参数带title=xxx,设置xxx为标题
+     * @since v5.4
+     * @author jimzhao
+     * @example
+
+      CtripBusiness.app_open_adv_page("http://pages.ctrip.com/adv.html?title=标题xxx");
+     */
+    app_open_adv_page:function(advUrl) {
+        var startVersion = "5.4";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }   
+
+        var params = {};
+        params.advUrl = advUrl;
+        paramString = Internal.makeParamString("Util", "openAdvPage", params, "open_adv_page");
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) 
+        {
+            window.Util_a.openAdvPage(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /**
+     * @description 查看最新版本功能介绍
+     * @brief 查看最新版本功能介绍
+     * @since v5.2
+     * @method app_show_newest_introduction
+     * @author jimzhao
+     * @example 
+
+     CtripUtil.app_show_newest_introduction();
+     */
+    app_show_newest_introduction:function() {
+        paramString = Internal.makeParamString("Util", "showNewestIntroduction", null, "show_newest_introduction");
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Util_a.showNewestIntroduction(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /**
+     * @description 检查App的版本更新
+     * @brief 检查App的版本更新
+     * @since v5.2
+     * @method app_check_update
+     * @author jimzhao
+     * @example 
+
+     CtripUtil.app_check_update();
+     *
+     */
+    app_check_update:function() {
+        paramString = Internal.makeParamString("Util", "checkUpdate", null, "check_update");
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Util_a.checkUpdate(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /**
+     * @description 推荐携程旅行给好友
+     * @brief 推荐携程旅行给好友
+     * @since v5.2
+     * @method app_recommend_app_to_friends
+     * @author jimzhao
+     * @example CtripUtil.app_recommend_app_to_friends();
+     *
+     */
+    app_recommend_app_to_friends:function() {
+        paramString = Internal.makeParamString("Util", "recommendAppToFriends", null, "recommend_app_to_friends");
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Util_a.recommendAppToFriends(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /**
+     * @description 添加微信好友
+     * @brief 添加微信好友
+     * @since v5.2
+     * @method app_add_weixin_friend
+     * @author jimzhao
+     * @example 
+
+     CtripUtil.app_add_weixin_friend();
+     */
+    app_add_weixin_friend:function() {
+        paramString = Internal.makeParamString("Util", "addWeixinFriend", null, "add_weixin_friend");
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Util_a.addWeixinFriend(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /**
+     * @description 调用App的分享, 可以支持iOS6系统的分享
+     * @brief 调用App的分享
+     * @param {String} imageRelativePath 将要分享的图片相对路径，相对webapp的路径
+     * @param {String} text 需要分享的文字
+     * @param {String} title 需要分享的标题, v5.4开始支持该字段，微信和email支持；
+     * @param {String} linkUrl 需要分享的链接, v5.4开始支持该字段
+     * @param {boolean} isIOSSystemShare  是否是iOS6以上使用系统分享功能,对于先前门票分享功能，需要为true，其它都是false
+     * @method app_call_system_share
+     * @since v5.3
+     * @author jimzhao
+     * @example
+
+     *  微信(微信朋友/微信朋友圈)分享说明：
+        1. 图片分享，只能分享图片，所传的文字，title都无效；
+        2. 链接分享，所传的图片为分享网页的缩略图，title有效；
+        3. 纯文本分享，只能分享text，title无效；
+        4. 优先级 链接分享>图片分享>纯文本分享。
+           a. 如果有linkUrl，会被当作网页分享，图片作为缩略图；
+           b. 如果没有linkUrl，有图片，当作图片分享，text,title无效;
+           c. 如果没有linkUrl，没有图片，当作纯文本分享；
+        
+        微博分享：
+        1. 图片为所分享的图片；
+        2. 分享title不起作用；
+        3. 如果linkUrl有， 分享的text后面会自动添加linkUrl
+    
+        Email分享：
+        1. 图片为所分享的图片；
+        2. 分享title作为Email标题；
+        3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
+
+        短信分享：
+        1. 图片为所分享的图片；注：iOS7.0之后才支持；
+        2. 分享title不起作用；
+        3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
+
+        复制分享：
+        1. 分享的图片不起作用;
+        2. 分享的title不起作用;
+        3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
+
+      CtripUtil.app_call_system_share("../wb_cache/pkg_name/md5_url_hash", "text to share weibo", "this is titile", "http://www.ctrip.com/", false);
+
+     */
+    app_call_system_share:function(imageRelativePath, text, title, linkUrl, isIOSSystemShare) {
+        var startVersion = "5.3";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+        var params = {};
+        if(!imageRelativePath) {
+            imageRelativePath = "";
+        }
+
+        if (!title) {
+            title = "";
+        }
+        
+        if (!text) {
+            text = "";
+        }
+
+        if (!linkUrl) {
+            linkUrl = "";
+        }
+
+        params.title = title;
+        params.text = text;
+        params.linkUrl = linkUrl;
+        params.imageRelativePath = imageRelativePath;
+        params.isIOSSystemShare = isIOSSystemShare;
+
+        paramString = Internal.makeParamString("Util", "callSystemShare", params, "call_system_share");
+
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Util_a.callSystemShare(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    }
 };
 
 /**

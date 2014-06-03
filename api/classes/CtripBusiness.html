@@ -114,7 +114,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l2786"><code>bridge.js:2786</code></a>
+            定义在: <a href="../files/bridge.js.html#l2737"><code>bridge.js:2737</code></a>
         </div>
     
 
@@ -156,12 +156,68 @@
                     <table>
                     <tr><th>描述</th><th>函数</th></tr>
                     
+                    <tr><td>添加微信好友</td><td><a href="#method_app_add_weixin_friend">app_add_weixin_friend</a></td></tr>
+                    
+                    <tr><td>调用App的分享</td><td><a href="#method_app_call_system_share">app_call_system_share</a></td></tr>
+                    
+                    <tr><td>检查App的版本更新</td><td><a href="#method_app_check_update">app_check_update</a></td></tr>
+                    
                     <tr><td>选择常用发票title</td><td><a href="#method_app_choose_invoice_title">app_choose_invoice_title</a></td></tr>
+                    
+                    <tr><td>打开Hybrid广告页面</td><td><a href="#method_app_open_adv_page">app_open_adv_page</a></td></tr>
+                    
+                    <tr><td>推荐携程旅行给好友</td><td><a href="#method_app_recommend_app_to_friends">app_recommend_app_to_friends</a></td></tr>
+                    
+                    <tr><td>查看最新版本功能介绍</td><td><a href="#method_app_show_newest_introduction">app_show_newest_introduction</a></td></tr>
+                    
+                    <tr><td>进入语音搜索， 5.7版本，语音搜索之后的结果，不需要BU处理，只需调用即可，后续版本，可能只做语音解析，解析结果传递给H5，BU自行处理</td><td><a href="#method_app_show_voice_search">app_show_voice_search</a></td></tr>
                                   
                     </table>
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -183,6 +239,355 @@
         
             <div id="methods" class="api-class-tabpanel">
                 <h2 class="off-left">方法</h2>
+
+                
+                    <div id="method_app_add_weixin_friend" class="method item">
+    <h3 class="name"><code>app_add_weixin_friend</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l2945"><code>bridge.js:2945</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>添加微信好友</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>CtripUtil.app_add_weixin_friend();</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_call_system_share" class="method item">
+    <h3 class="name"><code>app_call_system_share</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>imageRelativePath</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>text</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>title</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>linkUrl</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>isIOSSystemShare</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l2969"><code>bridge.js:2969</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.3</p>
+        
+    </div>
+
+    <div class="description">
+        <p>调用App的分享, 可以支持iOS6系统的分享</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">imageRelativePath</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>将要分享的图片相对路径，相对webapp的路径</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">text</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要分享的文字</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">title</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要分享的标题, v5.4开始支持该字段，微信和email支持；</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">linkUrl</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要分享的链接, v5.4开始支持该字段</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">isIOSSystemShare</code>
+                        <span class="type">Boolean</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>是否是iOS6以上使用系统分享功能,对于先前门票分享功能，需要为true，其它都是false</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p> 微信(微信朋友/微信朋友圈)分享说明：</p>
+<pre class="code prettyprint"><code>   1. 图片分享，只能分享图片，所传的文字，title都无效；
+   2. 链接分享，所传的图片为分享网页的缩略图，title有效；
+   3. 纯文本分享，只能分享text，title无效；
+   4. 优先级 链接分享&gt;图片分享&gt;纯文本分享。
+      a. 如果有linkUrl，会被当作网页分享，图片作为缩略图；
+      b. 如果没有linkUrl，有图片，当作图片分享，text,title无效;
+      c. 如果没有linkUrl，没有图片，当作纯文本分享；
+
+   微博分享：
+   1. 图片为所分享的图片；
+   2. 分享title不起作用；
+   3. 如果linkUrl有， 分享的text后面会自动添加linkUrl
+
+   Email分享：
+   1. 图片为所分享的图片；
+   2. 分享title作为Email标题；
+   3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
+
+   短信分享：
+   1. 图片为所分享的图片；注：iOS7.0之后才支持；
+   2. 分享title不起作用；
+   3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
+
+   复制分享：
+   1. 分享的图片不起作用;
+   2. 分享的title不起作用;
+   3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
+
+ CtripUtil.app_call_system_share(&quot;../wb_cache/pkg_name/md5_url_hash&quot;, &quot;text to share weibo&quot;, &quot;this is titile&quot;, &quot;http://www.ctrip.com/&quot;, false);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_check_update" class="method item">
+    <h3 class="name"><code>app_check_update</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l2897"><code>bridge.js:2897</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>检查App的版本更新</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>CtripUtil.app_check_update();</code></pre>
+
+            </div>
+        </div>
+    
+</div>
 
                 
                     <div id="method_app_choose_invoice_title" class="method item">
@@ -227,7 +632,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2793"><code>bridge.js:2793</code></a>
+        <a href="../files/bridge.js.html#l2744"><code>bridge.js:2744</code></a>
         
         </p>
 
@@ -286,6 +691,347 @@
        param:{
            selectedInvoiceTitle:&quot;所选择的发票title&quot;
        }
+   }
+
+   app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_open_adv_page" class="method item">
+    <h3 class="name"><code>app_open_adv_page</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>advUrl</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l2839"><code>bridge.js:2839</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.4</p>
+        
+    </div>
+
+    <div class="description">
+        <p>打开Hybrid广告页面，会自动显示底部栏，且右上角有分享安妮</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">advUrl</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>广告URL， URL参数带title=xxx,设置xxx为标题</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code> CtripBusiness.app_open_adv_page(&quot;http://pages.ctrip.com/adv.html?title=标题xxx&quot;);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_recommend_app_to_friends" class="method item">
+    <h3 class="name"><code>app_recommend_app_to_friends</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l2922"><code>bridge.js:2922</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>推荐携程旅行给好友</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p> CtripUtil.app_recommend_app_to_friends();</p>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_show_newest_introduction" class="method item">
+    <h3 class="name"><code>app_show_newest_introduction</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l2873"><code>bridge.js:2873</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>查看最新版本功能介绍</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>CtripUtil.app_show_newest_introduction();</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_show_voice_search" class="method item">
+    <h3 class="name"><code>app_show_voice_search</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>bussinessType</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l2795"><code>bridge.js:2795</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.7</p>
+        
+    </div>
+
+    <div class="description">
+        <p>进入语音搜索</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">bussinessType</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>业务类型(0. 无（默认）1. 机票 2. 酒店3 . 火车票 4. 团队游 5. 目的地 6. 攻略 7.景点门票 8.周末/短途游)</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   CtripBusiness.app_show_voice_search(7);
+
+   //调用之后，H5页面会收到回调数据
+   var json_obj =
+   {
+       tagname:&#39;show_voice_search&#39;,
+      //param:{} 后续版本使用，返回语音解析的数据map，5.7暂不提供
    }
 
    app.callback(json_obj);</code></pre>
