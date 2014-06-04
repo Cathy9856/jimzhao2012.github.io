@@ -372,7 +372,8 @@ var CtripUtil = {
                 appId:"com.ctrip.wrieless",
                 osVersion:"iOS_6.0",
                 serverVersion:"5.3",
-                platform:1, //区分平台，iPhone为1, Android为2
+                platform:1, //区分平台，iPhone为1, Android为2, winPhone为3
+                isPreProduction:0,//UAT:2, FAT:0,堡垒:1,生产不会有该字段
                 extSouceID:"8888",//外部渠道ID,since 5.4
                 clientID:"1323333333333333", //客户端唯一标识, since5.4
                 systemCode:16, //iOS 标准版code 16，学生版12， android标准版32, since 5.6
@@ -1215,8 +1216,10 @@ var CtripUtil = {
             Internal.appVersionNotSupportCallback(startVersion);
             return;
         }
-
-        var paramString = Internal.makeParamString("Util", "choosePhoto", null, "choose_photo");
+        var params = {};
+        params.maxFileSize = maxFileSize;
+        params.maxPhotoCount = maxPhotoCount;
+        var paramString = Internal.makeParamString("Util", "choosePhoto", params, "choose_photo");
 
         if (Internal.isIOS) {
             var url = Internal.makeURLWithParam(paramString);
@@ -3162,7 +3165,7 @@ var CtripBusiness = {
             return;
         }
 
-        paramString = Internal.makeParamString("Business", "getDeviceInfo", params, "get_device_info");
+        paramString = Internal.makeParamString("Business", "getDeviceInfo", null, "get_device_info");
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
