@@ -784,7 +784,7 @@ asyncTest("测试获取DeviceInfo", function(){
 	setTimeout(function(){
 		start();
 		var jsonObj = cb_ret.get_device_info;
-		if (isEqualToTagName(jsonObj, get_device_info)) {
+		if (isEqualToTagName(jsonObj, "get_device_info")) {
 			ok(true, "获取deviceInfo成功："+JSON.stringify(jsonObj));
 		} else {
 			ok(false, "获取deviceInfo失败："+JSON.stringify(jsonObj));
