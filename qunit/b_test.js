@@ -132,6 +132,9 @@ var app = {
 	    else if (tagname == "md5_hash") {
 	    	cb_ret.md5_hash = jsonObj;
 	    }
+	    else if (tagname == "get_device_info") {
+	    	cb_ret.get_device_info = jsonObj;
+	    }
     }
 };
 
