@@ -13,7 +13,7 @@ function sleep(seconds) {
 }
 
 function isEqualToTagName(inJsonObj, inTagName) {
-	if (jsonObj && inJsonObj.tagname && inJsonObj.tagname == inTagName) {
+	if (inJsonObj && inJsonObj.tagname && inJsonObj.tagname == inTagName) {
 		return true;
 	}
 
