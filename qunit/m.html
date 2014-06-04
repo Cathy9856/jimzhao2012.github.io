@@ -92,6 +92,13 @@
       bflag = !bflag;
     }
 
+    function doFinishRegister() {
+      var jsonObj = {};
+      jsonObj.userID = "wireless";
+      jsonObj.password = "wireless";
+      CtripUser.app_finished_register(jsonObj);
+    }
+
     function doHTTPSInValidDownloadTest() {
       CtripUtil.app_download_data('https://kyfw.12306.cn/otn/passcodeNew/getPassCodeNew.do?module=login&rand=sjrand&t=0.48812331395048034835','jpeg',true);
     }
@@ -139,7 +146,7 @@
   <br/>
   <li class="li2"><a onclick="javascript:doButtonTest()">导航栏刷新测试DA</a></li> 
   <br/>
-  <li class="li2"><a onclick="javascript:CtripUser.app_finished_register()">H5注册完成，调用Native</a></li> 
+  <li class="li2"><a onclick="javascript:doFinishRegister()">H5注册完成，调用Native</a></li> 
   <br/>
   <li class="li2"><a onclick="javascript:CtripUtil.app_choose_photo(200000,3)">选择图片，多张</a></li> 
   <br/>
