@@ -114,7 +114,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l2721"><code>bridge.js:2721</code></a>
+            定义在: <a href="../files/bridge.js.html#l2766"><code>bridge.js:2766</code></a>
         </div>
     
 
@@ -164,6 +164,8 @@
                     
                     <tr><td>选择常用发票title</td><td><a href="#method_app_choose_invoice_title">app_choose_invoice_title</a></td></tr>
                     
+                    <tr><td>获取设备相关信息，相关部门需要</td><td><a href="#method_app_get_device_info">app_get_device_info</a></td></tr>
+                    
                     <tr><td>收集ActionLog</td><td><a href="#method_app_log_event">app_log_event</a></td></tr>
                     
                     <tr><td>打开Hybrid广告页面</td><td><a href="#method_app_open_adv_page">app_open_adv_page</a></td></tr>
@@ -178,6 +180,12 @@
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -281,7 +289,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2929"><code>bridge.js:2929</code></a>
+        <a href="../files/bridge.js.html#l2976"><code>bridge.js:2976</code></a>
         
         </p>
 
@@ -307,7 +315,7 @@
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>CtripUtil.app_add_weixin_friend();</code></pre>
+                <pre class="code prettyprint"><code>   CtripBusiness.app_add_weixin_friend();</code></pre>
 
             </div>
         </div>
@@ -381,7 +389,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2953"><code>bridge.js:2953</code></a>
+        <a href="../files/bridge.js.html#l3001"><code>bridge.js:3001</code></a>
         
         </p>
 
@@ -524,7 +532,7 @@
    2. 分享的title不起作用;
    3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
 
- CtripUtil.app_call_system_share(&quot;../wb_cache/pkg_name/md5_url_hash&quot;, &quot;text to share weibo&quot;, &quot;this is titile&quot;, &quot;http://www.ctrip.com/&quot;, false);</code></pre>
+   CtripBusiness.app_call_system_share(&quot;../wb_cache/pkg_name/md5_url_hash&quot;, &quot;text to share weibo&quot;, &quot;this is titile&quot;, &quot;http://www.ctrip.com/&quot;, false);</code></pre>
 
             </div>
         </div>
@@ -564,7 +572,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2881"><code>bridge.js:2881</code></a>
+        <a href="../files/bridge.js.html#l2926"><code>bridge.js:2926</code></a>
         
         </p>
 
@@ -590,7 +598,7 @@
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>CtripUtil.app_check_update();</code></pre>
+                <pre class="code prettyprint"><code>CtripBusiness.app_check_update();</code></pre>
 
             </div>
         </div>
@@ -640,7 +648,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2728"><code>bridge.js:2728</code></a>
+        <a href="../files/bridge.js.html#l2773"><code>bridge.js:2773</code></a>
         
         </p>
 
@@ -709,6 +717,89 @@
 </div>
 
                 
+                    <div id="method_app_get_device_info" class="method item">
+    <h3 class="name"><code>app_get_device_info</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3120"><code>bridge.js:3120</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.7</p>
+        
+    </div>
+
+    <div class="description">
+        <p>获取设备相关信息，相关部门需要</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   CtripBusiness.app_get_device_info()
+   调用之后，返回数据
+
+   var json_obj = {
+       IP:&quot;&quot;,
+       OS:&quot;\U82f9\U679c&quot;,
+       account:&quot;&quot;,
+       areaCode:&quot;&quot;,
+       baseStation:&quot;&quot;,
+       clientID:12933032900000135327,
+       latitude:0,
+       longitude:0,
+       mac:&quot;10:DD:B1:CF:C1:80&quot;,
+       port:&quot;&quot;,
+       wifiMac:&quot;&quot;
+   };
+
+   app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_app_log_event" class="method item">
     <h3 class="name"><code>app_log_event</code></h3>
 
@@ -751,7 +842,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3041"><code>bridge.js:3041</code></a>
+        <a href="../files/bridge.js.html#l3089"><code>bridge.js:3089</code></a>
         
         </p>
 
@@ -802,7 +893,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>Util.app_log_event(&#39;GoodDay&#39;)</code></pre>
+                <pre class="code prettyprint"><code>   CtripBusiness.app_log_event(&#39;GoodDay&#39;)</code></pre>
 
             </div>
         </div>
@@ -852,7 +943,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l2823"><code>bridge.js:2823</code></a>
+        <a href="../files/bridge.js.html#l2868"><code>bridge.js:2868</code></a>
         
         </p>
 
@@ -942,7 +1033,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l2906"><code>bridge.js:2906</code></a>
+        <a href="../files/bridge.js.html#l2951"><code>bridge.js:2951</code></a>
         
         </p>
 
@@ -968,7 +1059,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             <h4>举例:</h4>
 
             <div class="example-content">
-                <p> CtripUtil.app_recommend_app_to_friends();</p>
+                <pre class="code prettyprint"><code>   CtripBusiness.app_recommend_app_to_friends();</code></pre>
 
             </div>
         </div>
@@ -1008,7 +1099,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l2857"><code>bridge.js:2857</code></a>
+        <a href="../files/bridge.js.html#l2902"><code>bridge.js:2902</code></a>
         
         </p>
 
@@ -1084,7 +1175,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l2779"><code>bridge.js:2779</code></a>
+        <a href="../files/bridge.js.html#l2824"><code>bridge.js:2824</code></a>
         
         </p>
 

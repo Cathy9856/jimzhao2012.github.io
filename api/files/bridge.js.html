@@ -1290,32 +1290,34 @@ var CtripUtil = {
      /**
      * @description 选取图片/拍摄照片，base64返回图片
      * @brief 打开Hybrid广告页面
-     * @method app_choose_image
+     * @param {int} maxFileSize 最大的图片文件大小，默认200KB
+     * @param {int} maxPhotoCount 最多支持选择的图片个数,默认为1张，此时不显示多选
+     * @method app_choose_photo
      * @since v5.7
      * @author jimzhao
      * @example
 
-       CtripUtil.app_choose_image();
+       CtripUtil.app_choose_photo();
 
        //调用完成之后，返回的数据格式
        var json_obj =
         {
-            tagname:&quot;choose_image&quot;,
+            tagname:&quot;choose_photo&quot;,
             param:{
-                base64Image:&quot;xx089xessewz....&quot;
+                photoList:[&quot;xx089xessewz....&quot;, &quot;xx089xessewz....&quot;]
             }
         }
         app.callback(json_obj);
      
      */
-    app_choose_image:function() {
+    app_choose_photo:function(maxFileSize, maxPhotoCount) {
         var startVersion = &quot;5.7&quot;;
         if (!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
             return;
         }
 
-        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;chooseImage&quot;, null, &quot;choose_image&quot;);
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;choosePhoto&quot;, null, &quot;choose_photo&quot;);
 
         if (Internal.isIOS) {
             var url = Internal.makeURLWithParam(paramString);
@@ -1582,6 +1584,49 @@ var CtripUser = {
             window.User_a.memberRegister(paramString);
         }
         else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+
+     /**
+     * @description H5完成注册，将注册信息告知Native
+     * @brief H5完成注册，通知Native登录
+     * @method app_finished_register
+     * @param {JSON} userInfoJson 注册完成的用户信息
+     * @since v5.7
+     * @author jimzhao
+     * @example 
+        
+        var userInfo = {};
+        userInfo.uid = &quot;xxxxxx&quot;;
+        userInfo.phone=&quot;13900000000&quot;;
+        userInfo.password=&quot;asdzxc&quot;;
+
+        CtripUser.app_finished_register(userInfo)
+
+     */
+    app_finished_register:function(userInfoJson) {
+        var startVersion = &quot;5.7&quot;;
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!userInfoJson) {
+            userInfoJson = &quot;&quot;;
+        }
+
+        var params = {};
+        params.userInfoJson = userInfoJson;
+
+        paramString = Internal.makeParamString(&quot;User&quot;, &quot;finishedRegister&quot;, params, &quot;finished_register&quot;);
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            window.User_a.setPageName(paramString);
+        } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
     }
@@ -2998,7 +3043,7 @@ var CtripBusiness = {
      * @author jimzhao
      * @example 
 
-     CtripUtil.app_check_update();
+     CtripBusiness.app_check_update();
      *
      */
     app_check_update:function() {
@@ -3021,7 +3066,9 @@ var CtripBusiness = {
      * @since v5.2
      * @method app_recommend_app_to_friends
      * @author jimzhao
-     * @example CtripUtil.app_recommend_app_to_friends();
+     * @example 
+
+        CtripBusiness.app_recommend_app_to_friends();
      *
      */
     app_recommend_app_to_friends:function() {
@@ -3046,7 +3093,8 @@ var CtripBusiness = {
      * @author jimzhao
      * @example 
 
-     CtripUtil.app_add_weixin_friend();
+        CtripBusiness.app_add_weixin_friend();
+
      */
     app_add_weixin_friend:function() {
         paramString = Internal.makeParamString(&quot;Util&quot;, &quot;addWeixinFriend&quot;, null, &quot;add_weixin_friend&quot;);
@@ -3104,7 +3152,7 @@ var CtripBusiness = {
         2. 分享的title不起作用;
         3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
 
-      CtripUtil.app_call_system_share(&quot;../wb_cache/pkg_name/md5_url_hash&quot;, &quot;text to share weibo&quot;, &quot;this is titile&quot;, &quot;http://www.ctrip.com/&quot;, false);
+        CtripBusiness.app_call_system_share(&quot;../wb_cache/pkg_name/md5_url_hash&quot;, &quot;text to share weibo&quot;, &quot;this is titile&quot;, &quot;http://www.ctrip.com/&quot;, false);
 
      */
     app_call_system_share:function(imageRelativePath, text, title, linkUrl, isIOSSystemShare) {
@@ -3160,7 +3208,7 @@ var CtripBusiness = {
      * @author jimzhao
      * @example 
 
-     Util.app_log_event(&#x27;GoodDay&#x27;)
+        CtripBusiness.app_log_event(&#x27;GoodDay&#x27;)
      */
     app_log_event:function(event_name) {
         if (Internal.isNotEmptyString(event_name)) {
@@ -3178,6 +3226,51 @@ var CtripBusiness = {
             else if (Internal.isWinOS) {
                 Internal.callWin8App(paramString);
             }
+        }
+    },
+
+     /**
+     * @description 获取设备相关信息，相关部门需要
+     * @brief 获取设备相关信息，相关部门需要
+     * @method app_get_device_info
+     * @since v5.7
+     * @author jimzhao
+     * @example 
+
+        CtripBusiness.app_get_device_info()
+        调用之后，返回数据
+
+        var json_obj = {
+            IP:&quot;&quot;,
+            OS:&quot;\U82f9\U679c&quot;,
+            account:&quot;&quot;,
+            areaCode:&quot;&quot;,
+            baseStation:&quot;&quot;,
+            clientID:12933032900000135327,
+            latitude:0,
+            longitude:0,
+            mac:&quot;10:DD:B1:CF:C1:80&quot;,
+            port:&quot;&quot;,
+            wifiMac:&quot;&quot;
+        };
+
+        app.callback(json_obj);
+     */
+    app_get_device_info:function() {
+        var startVersion = &quot;5.7&quot;;
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        paramString = Internal.makeParamString(&quot;Business&quot;, &quot;getDeviceInfo&quot;, params, &quot;get_device_info&quot;);
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            window.Business_a.setPageName(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     }
 

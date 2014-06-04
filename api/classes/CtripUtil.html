@@ -166,7 +166,7 @@
                     
                     <tr><td>检查当前App网络状况</td><td><a href="#method_app_check_network_status">app_check_network_status</a></td></tr>
                     
-                    <tr><td>打开Hybrid广告页面</td><td><a href="#method_app_choose_image">app_choose_image</a></td></tr>
+                    <tr><td>打开Hybrid广告页面</td><td><a href="#method_app_choose_photo">app_choose_photo</a></td></tr>
                     
                     <tr><td>复制文字到粘贴板</td><td><a href="#method_app_copy_string_to_clipboard">app_copy_string_to_clipboard</a></td></tr>
                     
@@ -861,11 +861,27 @@ app.callback(json_obj);</code></pre>
 </div>
 
                 
-                    <div id="method_app_choose_image" class="method item">
-    <h3 class="name"><code>app_choose_image</code></h3>
+                    <div id="method_app_choose_photo" class="method item">
+    <h3 class="name"><code>app_choose_photo</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>maxFileSize</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>maxPhotoCount</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -911,6 +927,46 @@ app.callback(json_obj);</code></pre>
     </div>
 
     
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">maxFileSize</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>最大的图片文件大小，默认200KB</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">maxPhotoCount</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>最多支持选择的图片个数,默认为1张，此时不显示多选</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
 
     
 
@@ -919,14 +975,14 @@ app.callback(json_obj);</code></pre>
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>  CtripUtil.app_choose_image();
+                <pre class="code prettyprint"><code>  CtripUtil.app_choose_photo();
 
   //调用完成之后，返回的数据格式
   var json_obj =
    {
-       tagname:&quot;choose_image&quot;,
+       tagname:&quot;choose_photo&quot;,
        param:{
-           base64Image:&quot;xx089xessewz....&quot;
+           photoList:[&quot;xx089xessewz....&quot;, &quot;xx089xessewz....&quot;]
        }
    }
    app.callback(json_obj);</code></pre>

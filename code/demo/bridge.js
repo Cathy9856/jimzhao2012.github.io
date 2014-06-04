@@ -1178,32 +1178,34 @@ var CtripUtil = {
      /**
      * @description 选取图片/拍摄照片，base64返回图片
      * @brief 打开Hybrid广告页面
-     * @method app_choose_image
+     * @param {int} maxFileSize 最大的图片文件大小，默认200KB
+     * @param {int} maxPhotoCount 最多支持选择的图片个数,默认为1张，此时不显示多选
+     * @method app_choose_photo
      * @since v5.7
      * @author jimzhao
      * @example
 
-       CtripUtil.app_choose_image();
+       CtripUtil.app_choose_photo();
 
        //调用完成之后，返回的数据格式
        var json_obj =
         {
-            tagname:"choose_image",
+            tagname:"choose_photo",
             param:{
-                base64Image:"xx089xessewz...."
+                photoList:["xx089xessewz....", "xx089xessewz...."]
             }
         }
         app.callback(json_obj);
      
      */
-    app_choose_image:function() {
+    app_choose_photo:function(maxFileSize, maxPhotoCount) {
         var startVersion = "5.7";
         if (!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
             return;
         }
 
-        var paramString = Internal.makeParamString("Util", "chooseImage", null, "choose_image");
+        var paramString = Internal.makeParamString("Util", "choosePhoto", null, "choose_photo");
 
         if (Internal.isIOS) {
             var url = Internal.makeURLWithParam(paramString);
@@ -1470,6 +1472,49 @@ var CtripUser = {
             window.User_a.memberRegister(paramString);
         }
         else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+
+     /**
+     * @description H5完成注册，将注册信息告知Native
+     * @brief H5完成注册，通知Native登录
+     * @method app_finished_register
+     * @param {JSON} userInfoJson 注册完成的用户信息
+     * @since v5.7
+     * @author jimzhao
+     * @example 
+        
+        var userInfo = {};
+        userInfo.uid = "xxxxxx";
+        userInfo.phone="13900000000";
+        userInfo.password="asdzxc";
+
+        CtripUser.app_finished_register(userInfo)
+
+     */
+    app_finished_register:function(userInfoJson) {
+        var startVersion = "5.7";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!userInfoJson) {
+            userInfoJson = "";
+        }
+
+        var params = {};
+        params.userInfoJson = userInfoJson;
+
+        paramString = Internal.makeParamString("User", "finishedRegister", params, "finished_register");
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            window.User_a.setPageName(paramString);
+        } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
     }
@@ -2886,7 +2931,7 @@ var CtripBusiness = {
      * @author jimzhao
      * @example 
 
-     CtripUtil.app_check_update();
+     CtripBusiness.app_check_update();
      *
      */
     app_check_update:function() {
@@ -2909,7 +2954,9 @@ var CtripBusiness = {
      * @since v5.2
      * @method app_recommend_app_to_friends
      * @author jimzhao
-     * @example CtripUtil.app_recommend_app_to_friends();
+     * @example 
+
+        CtripBusiness.app_recommend_app_to_friends();
      *
      */
     app_recommend_app_to_friends:function() {
@@ -2934,7 +2981,8 @@ var CtripBusiness = {
      * @author jimzhao
      * @example 
 
-     CtripUtil.app_add_weixin_friend();
+        CtripBusiness.app_add_weixin_friend();
+
      */
     app_add_weixin_friend:function() {
         paramString = Internal.makeParamString("Util", "addWeixinFriend", null, "add_weixin_friend");
@@ -2992,7 +3040,7 @@ var CtripBusiness = {
         2. 分享的title不起作用;
         3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
 
-      CtripUtil.app_call_system_share("../wb_cache/pkg_name/md5_url_hash", "text to share weibo", "this is titile", "http://www.ctrip.com/", false);
+        CtripBusiness.app_call_system_share("../wb_cache/pkg_name/md5_url_hash", "text to share weibo", "this is titile", "http://www.ctrip.com/", false);
 
      */
     app_call_system_share:function(imageRelativePath, text, title, linkUrl, isIOSSystemShare) {
@@ -3048,7 +3096,7 @@ var CtripBusiness = {
      * @author jimzhao
      * @example 
 
-     Util.app_log_event('GoodDay')
+        CtripBusiness.app_log_event('GoodDay')
      */
     app_log_event:function(event_name) {
         if (Internal.isNotEmptyString(event_name)) {
@@ -3066,6 +3114,51 @@ var CtripBusiness = {
             else if (Internal.isWinOS) {
                 Internal.callWin8App(paramString);
             }
+        }
+    },
+
+     /**
+     * @description 获取设备相关信息，相关部门需要
+     * @brief 获取设备相关信息，相关部门需要
+     * @method app_get_device_info
+     * @since v5.7
+     * @author jimzhao
+     * @example 
+
+        CtripBusiness.app_get_device_info()
+        调用之后，返回数据
+
+        var json_obj = {
+            IP:"",
+            OS:"\U82f9\U679c",
+            account:"",
+            areaCode:"",
+            baseStation:"",
+            clientID:12933032900000135327,
+            latitude:0,
+            longitude:0,
+            mac:"10:DD:B1:CF:C1:80",
+            port:"",
+            wifiMac:""
+        };
+
+        app.callback(json_obj);
+     */
+    app_get_device_info:function() {
+        var startVersion = "5.7";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        paramString = Internal.makeParamString("Business", "getDeviceInfo", params, "get_device_info");
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            window.Business_a.setPageName(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
         }
     }
 
