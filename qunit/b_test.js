@@ -12,6 +12,14 @@ function sleep(seconds) {
   	return true;
 }
 
+function isEqualToTagName(inJsonObj, inTagName) {
+	if (jsonObj && inJsonObj.tagname && inJsonObj.tagname == inTagName) {
+		return true;
+	}
+
+	return false;
+}
+
 sleep(2);
 
 var app = {
@@ -138,13 +146,7 @@ var app = {
     }
 };
 
-boolean isEqualToTagName(inJsonObj, inTagName) {
-	if (jsonObj && inJsonObj.tagname && inJsonObj.tagname == inTagName) {
-		return true;
-	}
 
-	return false;
-}
 
 asyncTest("获取当前沙盒名", function(){
 	expect(1);
