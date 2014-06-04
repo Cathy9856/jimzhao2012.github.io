@@ -360,21 +360,32 @@ var CtripUtil = {
      * @callback tagname="init_member_H5_info"
      * @example
 
-     CtripUtil.app_init_member_H5_info();
-     //调用完成，H5页面会收到如下返回数据
-     var json_obj =
-     {
-        tagname:"init_member_H5_info",
-        timestamp:135333222,
-        version:"5.2",
-        device:"iPhone4S",
-        appId:"com.ctrip.wrieless",
-        osVersion:"iOS_6.0",
-        serverVersion:"5.3",
-        platform:1, //区分平台，iPhone为1, Android为2
-        userInfo={USERINFO},//USERINFO内部结构参考CtripUser.app_member_login();    
-     }
-     app.callback(json_obj);
+         CtripUtil.app_init_member_H5_info();
+         //调用完成，H5页面会收到如下返回数据
+         var json_obj =
+         {
+            tagname:"init_member_H5_info",
+            param:{
+                timestamp:135333222,
+                version:"5.2",
+                device:"iPhone4S",
+                appId:"com.ctrip.wrieless",
+                osVersion:"iOS_6.0",
+                serverVersion:"5.3",
+                platform:1, //区分平台，iPhone为1, Android为2
+                extSouceID:"8888",//外部渠道ID,since 5.4
+                clientID:"1323333333333333", //客户端唯一标识, since5.4
+                systemCode:16, //iOS 标准版code 16，学生版12， android标准版32, since 5.6
+                latitude:32.011111,//缓存的纬度 since 5.7
+                longitude:121.000332,//缓存的经度 since 5.7
+                screenWidth:320,//晶赞广告系统使用 since 5.7
+                screenHeight:480,//晶赞广告系统使用 since 5.7
+                screenPxDensity:1,//晶赞广告系统使用 since 5.7
+                deviceOSVersion:4.3,//晶赞广告系统使用 since 5.7
+                userInfo={USERINFO},//USERINFO内部结构参考CtripUser.app_member_login();    
+            }
+         }
+         app.callback(json_obj);
      */
     app_init_member_H5_info:function() {
         paramString = Internal.makeParamString("User", "initMemberH5Info", null, "init_member_H5_info");

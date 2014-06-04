@@ -401,7 +401,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l441"><code>bridge.js:441</code></a>
+        <a href="../files/bridge.js.html#l452"><code>bridge.js:452</code></a>
         
         </p>
 
@@ -483,7 +483,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l471"><code>bridge.js:471</code></a>
+        <a href="../files/bridge.js.html#l482"><code>bridge.js:482</code></a>
         
         </p>
 
@@ -599,7 +599,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l393"><code>bridge.js:393</code></a>
+        <a href="../files/bridge.js.html#l404"><code>bridge.js:404</code></a>
         
         </p>
 
@@ -707,7 +707,7 @@ CtripUtil.app_call_phone();</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l757"><code>bridge.js:757</code></a>
+        <a href="../files/bridge.js.html#l768"><code>bridge.js:768</code></a>
         
         </p>
 
@@ -820,7 +820,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l725"><code>bridge.js:725</code></a>
+        <a href="../files/bridge.js.html#l736"><code>bridge.js:736</code></a>
         
         </p>
 
@@ -909,7 +909,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1178"><code>bridge.js:1178</code></a>
+        <a href="../files/bridge.js.html#l1189"><code>bridge.js:1189</code></a>
         
         </p>
 
@@ -1035,7 +1035,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l901"><code>bridge.js:901</code></a>
+        <a href="../files/bridge.js.html#l912"><code>bridge.js:912</code></a>
         
         </p>
 
@@ -1141,7 +1141,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l672"><code>bridge.js:672</code></a>
+        <a href="../files/bridge.js.html#l683"><code>bridge.js:683</code></a>
         
         </p>
 
@@ -1270,7 +1270,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1023"><code>bridge.js:1023</code></a>
+        <a href="../files/bridge.js.html#l1034"><code>bridge.js:1034</code></a>
         
         </p>
 
@@ -1426,21 +1426,32 @@ H5接收到web_view_did_finished_load的回调之后，调用该函数，初始�
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>CtripUtil.app_init_member_H5_info();
-//调用完成，H5页面会收到如下返回数据
-var json_obj =
-{
-   tagname:&quot;init_member_H5_info&quot;,
-   timestamp:135333222,
-   version:&quot;5.2&quot;,
-   device:&quot;iPhone4S&quot;,
-   appId:&quot;com.ctrip.wrieless&quot;,
-   osVersion:&quot;iOS_6.0&quot;,
-   serverVersion:&quot;5.3&quot;,
-   platform:1, //区分平台，iPhone为1, Android为2
-   userInfo={USERINFO},//USERINFO内部结构参考CtripUser.app_member_login();    
-}
-app.callback(json_obj);</code></pre>
+                <pre class="code prettyprint"><code>    CtripUtil.app_init_member_H5_info();
+    //调用完成，H5页面会收到如下返回数据
+    var json_obj =
+    {
+       tagname:&quot;init_member_H5_info&quot;,
+       param:{
+           timestamp:135333222,
+           version:&quot;5.2&quot;,
+           device:&quot;iPhone4S&quot;,
+           appId:&quot;com.ctrip.wrieless&quot;,
+           osVersion:&quot;iOS_6.0&quot;,
+           serverVersion:&quot;5.3&quot;,
+           platform:1, //区分平台，iPhone为1, Android为2
+           extSouceID:&quot;8888&quot;,//外部渠道ID,since 5.4
+           clientID:&quot;1323333333333333&quot;, //客户端唯一标识, since5.4
+           systemCode:16, //iOS 标准版code 16，学生版12， android标准版32, since 5.6
+           latitude:32.011111,//缓存的纬度 since 5.7
+           longitude:121.000332,//缓存的经度 since 5.7
+           screenWidth:320,//晶赞广告系统使用 since 5.7
+           screenHeight:480,//晶赞广告系统使用 since 5.7
+           screenPxDensity:1,//晶赞广告系统使用 since 5.7
+           deviceOSVersion:4.3,//晶赞广告系统使用 since 5.7
+           userInfo={USERINFO},//USERINFO内部结构参考CtripUser.app_member_login();    
+       }
+    }
+    app.callback(json_obj);</code></pre>
 
             </div>
         </div>
@@ -1496,7 +1507,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1126"><code>bridge.js:1126</code></a>
+        <a href="../files/bridge.js.html#l1137"><code>bridge.js:1137</code></a>
         
         </p>
 
@@ -1624,7 +1635,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1075"><code>bridge.js:1075</code></a>
+        <a href="../files/bridge.js.html#l1086"><code>bridge.js:1086</code></a>
         
         </p>
 
@@ -1778,7 +1789,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l552"><code>bridge.js:552</code></a>
+        <a href="../files/bridge.js.html#l563"><code>bridge.js:563</code></a>
         
         </p>
 
@@ -1927,7 +1938,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 4, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l936"><code>bridge.js:936</code></a>
+        <a href="../files/bridge.js.html#l947"><code>bridge.js:947</code></a>
         
         </p>
 
@@ -2016,7 +2027,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 4, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l800"><code>bridge.js:800</code></a>
+        <a href="../files/bridge.js.html#l811"><code>bridge.js:811</code></a>
         
         </p>
 
@@ -2185,7 +2196,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 4, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l658"><code>bridge.js:658</code></a>
+        <a href="../files/bridge.js.html#l669"><code>bridge.js:669</code></a>
         
         </p>
 
@@ -2285,7 +2296,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 4, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l974"><code>bridge.js:974</code></a>
+        <a href="../files/bridge.js.html#l985"><code>bridge.js:985</code></a>
         
         </p>
 
@@ -2468,7 +2479,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 4, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l628"><code>bridge.js:628</code></a>
+        <a href="../files/bridge.js.html#l639"><code>bridge.js:639</code></a>
         
         </p>
 
@@ -2544,7 +2555,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 4, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l506"><code>bridge.js:506</code></a>
+        <a href="../files/bridge.js.html#l517"><code>bridge.js:517</code></a>
         
         </p>
 
@@ -2758,7 +2769,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 4, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l1162"><code>bridge.js:1162</code></a>
+        <a href="../files/bridge.js.html#l1173"><code>bridge.js:1173</code></a>
         
         </p>
 
@@ -2848,7 +2859,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 4, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l643"><code>bridge.js:643</code></a>
+        <a href="../files/bridge.js.html#l654"><code>bridge.js:654</code></a>
         
         </p>
 
@@ -2924,7 +2935,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 4, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l536"><code>bridge.js:536</code></a>
+        <a href="../files/bridge.js.html#l547"><code>bridge.js:547</code></a>
         
         </p>
 
@@ -3014,7 +3025,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 4, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l711"><code>bridge.js:711</code></a>
+        <a href="../files/bridge.js.html#l722"><code>bridge.js:722</code></a>
         
         </p>
 
