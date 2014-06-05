@@ -238,6 +238,8 @@ function __bridge_callback(param) {
         if (jsonObj.param != null && jsonObj.param.hasOwnProperty("platform")) {
             platform = jsonObj.param.platform;
             alert("platform="+platform);
+            var d = typeof platform;
+            alert("typeof platform="+d);
 
             if (typeof platform == "number") {
                 if (platform == 1 || platform == 2 || platform == 3) {
