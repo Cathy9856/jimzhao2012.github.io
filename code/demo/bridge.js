@@ -234,11 +234,14 @@ function __bridge_callback(param) {
     var jsonObj = JSON.parse(param);
 
     if (jsonObj != null) {
+        alert("alert="+JSON.stringify(jsonObj));
         if (jsonObj.param != null && jsonObj.param.hasOwnProperty("platform")) {
             platform = jsonObj.param.platform;
+            alert("platform="+platform);
+
             if (typeof platform == "number") {
                 if (platform == 1 || platform == 2 || platform == 3) {
-
+                    alert("platformd="+platform);
                     var ua = navigator.userAgent;
                     if (ua.indexOf("Youth_CtripWireless") > 0) { 
                         Internal.isYouthApp = true;
@@ -1501,7 +1504,7 @@ var CtripUser = {
      * @example 
         
         var userInfo = {};
-        userInfo.uid = "xxxxxx";
+        userInfo.userID = "xxxxxx";
         userInfo.phone="13900000000";
         userInfo.password="asdzxc";
 
@@ -2799,7 +2802,7 @@ var CtripBusiness = {
         //调用之后，H5页面会收到回调数据
         var json_obj =
         {
-            tagname:'locate',
+            tagname:'choose_invoice_title',
             param:{
                 selectedInvoiceTitle:"所选择的发票title"
             }
