@@ -1234,7 +1234,7 @@ var CtripUtil = {
             Internal.loadURL(url);
         } 
         else if (Internal.isAndroid) {
-            window.Util_a.openOtherApp(paramString);
+            window.Util_a.choosePhoto(paramString);
         } 
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
@@ -1535,7 +1535,7 @@ var CtripUser = {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
-            window.User_a.setPageName(paramString);
+            window.User_a.finishedRegister(paramString);
         } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
@@ -2880,7 +2880,7 @@ var CtripBusiness = {
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
-            window.Business_a.chooseInvoiceTitle(paramString);
+            window.Business_a.showVoiceSearch(paramString);
         }
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
@@ -3178,7 +3178,7 @@ var CtripBusiness = {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
-            window.Business_a.setPageName(paramString);
+            window.Business_a.getDeviceInfo(paramString);
         } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
