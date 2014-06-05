@@ -347,28 +347,23 @@ function __bridge_callback(param) {
 
     if (jsonObj != null) {
         if (jsonObj.param != null &amp;&amp; jsonObj.param.hasOwnProperty(&quot;platform&quot;)) {
+            var ua = navigator.userAgent;
+            if (ua.indexOf(&quot;Youth_CtripWireless&quot;) &gt; 0) { 
+                Internal.isYouthApp = true;
+            }
+
             platform = jsonObj.param.platform;
             var typePf = typeof platform;
 
-            if (typePf == &quot;number&quot;) {
+            if (typePf == &quot;number&quot;) { //iOS
                 if (platform == 1 || platform == 2 || platform == 3) {
-                    var ua = navigator.userAgent;
-                    if (ua.indexOf(&quot;Youth_CtripWireless&quot;) &gt; 0) { 
-                        Internal.isYouthApp = true;
-                    }
-
                     Internal.isIOS = (platform == 1);
                     Internal.isAndroid = (platform == 2);
                     Internal.isWinOS = (platform == 3);                    
                 }
             }
-            else if (typePf == &quot;string&quot;) {
+            else if (typePf == &quot;string&quot;) { //Android
                 if (platform == &quot;1&quot; || platform == &quot;2&quot; || platform == &quot;3&quot;) {
-                    var ua = navigator.userAgent;
-                    if (ua.indexOf(&quot;Youth_CtripWireless&quot;) &gt; 0) { 
-                        Internal.isYouthApp = true;
-                    }
-                    
                     Internal.isIOS = (platform == &quot;1&quot;);
                     Internal.isAndroid = (platform == &quot;2&quot;);
                     Internal.isWinOS = (platform == &quot;3&quot;);     

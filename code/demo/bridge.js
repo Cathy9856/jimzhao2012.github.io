@@ -235,28 +235,23 @@ function __bridge_callback(param) {
 
     if (jsonObj != null) {
         if (jsonObj.param != null && jsonObj.param.hasOwnProperty("platform")) {
+            var ua = navigator.userAgent;
+            if (ua.indexOf("Youth_CtripWireless") > 0) { 
+                Internal.isYouthApp = true;
+            }
+
             platform = jsonObj.param.platform;
             var typePf = typeof platform;
 
-            if (typePf == "number") {
+            if (typePf == "number") { //iOS
                 if (platform == 1 || platform == 2 || platform == 3) {
-                    var ua = navigator.userAgent;
-                    if (ua.indexOf("Youth_CtripWireless") > 0) { 
-                        Internal.isYouthApp = true;
-                    }
-
                     Internal.isIOS = (platform == 1);
                     Internal.isAndroid = (platform == 2);
                     Internal.isWinOS = (platform == 3);                    
                 }
             }
-            else if (typePf == "string") {
+            else if (typePf == "string") { //Android
                 if (platform == "1" || platform == "2" || platform == "3") {
-                    var ua = navigator.userAgent;
-                    if (ua.indexOf("Youth_CtripWireless") > 0) { 
-                        Internal.isYouthApp = true;
-                    }
-                    
                     Internal.isIOS = (platform == "1");
                     Internal.isAndroid = (platform == "2");
                     Internal.isWinOS = (platform == "3");     

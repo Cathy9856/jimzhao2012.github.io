@@ -12,6 +12,14 @@ function sleep(seconds) {
   	return true;
 }
 
+// function isEqualToTagName(inJsonObj, inTagName) {
+// 	if (inJsonObj && inJsonObj.tagname && inJsonObj.tagname == inTagName) {
+// 		return true;
+// 	}
+
+// 	return false;
+// }
+
 sleep(2);
 
 var app = {
@@ -132,10 +140,15 @@ var app = {
 	    else if (tagname == "md5_hash") {
 	    	cb_ret.md5_hash = jsonObj;
 	    }
+	    else if (tagname == "get_device_info") {
+	    	cb_ret.get_device_info = jsonObj;
+	    }
     }
 };
 
-asyncTest("获取当前沙盒名", function(){
+
+
+asyncTest("获取当前沙盒名D", function(){
 	expect(1);
 	CtripFile.app_get_current_sandbox_name();
 
@@ -764,6 +777,23 @@ asyncTest("测试支付App安装",function() {
 	},async_time_interval);
 });
 
+
+asyncTest("测试获取DeviceInfo", function(){
+	expect(1);
+	CtripBusiness.app_get_device_info();
+	setTimeout(function(){
+		start();
+		var jsonObj = cb_ret.get_device_info;
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "get_device_info") {
+			ok(true, "获取deviceInfo成功："+JSON.stringify(jsonObj));
+		} else {
+			ok(false, "获取deviceInfo失败："+JSON.stringify(jsonObj));
+		}
+
+// 	}, async_time_interval);
+// });
+
+
 // asyncTest("测试Ticket是否在三星钱包", function(){
 // 	expect(1);
 // 	CtripSumSungWallet.app_check_ticket_in_samsung_wallet("ID123333");
@@ -810,3 +840,4 @@ asyncTest("测试支付App安装",function() {
 // 	},sync_time_interval*2);
 
 // });
+
