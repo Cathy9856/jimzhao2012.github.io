@@ -346,16 +346,12 @@ function __bridge_callback(param) {
     var jsonObj = JSON.parse(param);
 
     if (jsonObj != null) {
-        alert(&quot;alert=&quot;+JSON.stringify(jsonObj));
         if (jsonObj.param != null &amp;&amp; jsonObj.param.hasOwnProperty(&quot;platform&quot;)) {
             platform = jsonObj.param.platform;
-            alert(&quot;platform=&quot;+platform);
-            var d = typeof platform;
-            alert(&quot;typeof platform=&quot;+d);
+            var typePf = typeof platform;
 
-            if (typeof platform == &quot;number&quot;) {
+            if (typePf == &quot;number&quot;) {
                 if (platform == 1 || platform == 2 || platform == 3) {
-                    alert(&quot;platformd=&quot;+platform);
                     var ua = navigator.userAgent;
                     if (ua.indexOf(&quot;Youth_CtripWireless&quot;) &gt; 0) { 
                         Internal.isYouthApp = true;
@@ -364,6 +360,18 @@ function __bridge_callback(param) {
                     Internal.isIOS = (platform == 1);
                     Internal.isAndroid = (platform == 2);
                     Internal.isWinOS = (platform == 3);                    
+                }
+            }
+            else if (typePf == &quot;string&quot;) {
+                if (platform == &quot;1&quot; || platform == &quot;2&quot; || platform == &quot;3&quot;) {
+                    var ua = navigator.userAgent;
+                    if (ua.indexOf(&quot;Youth_CtripWireless&quot;) &gt; 0) { 
+                        Internal.isYouthApp = true;
+                    }
+                    
+                    Internal.isIOS = (platform == &quot;1&quot;);
+                    Internal.isAndroid = (platform == &quot;2&quot;);
+                    Internal.isWinOS = (platform == &quot;3&quot;);     
                 }
             }
 

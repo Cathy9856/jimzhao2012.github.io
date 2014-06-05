@@ -234,16 +234,12 @@ function __bridge_callback(param) {
     var jsonObj = JSON.parse(param);
 
     if (jsonObj != null) {
-        alert("alert="+JSON.stringify(jsonObj));
         if (jsonObj.param != null && jsonObj.param.hasOwnProperty("platform")) {
             platform = jsonObj.param.platform;
-            alert("platform="+platform);
-            var d = typeof platform;
-            alert("typeof platform="+d);
+            var typePf = typeof platform;
 
-            if (typeof platform == "number") {
+            if (typePf == "number") {
                 if (platform == 1 || platform == 2 || platform == 3) {
-                    alert("platformd="+platform);
                     var ua = navigator.userAgent;
                     if (ua.indexOf("Youth_CtripWireless") > 0) { 
                         Internal.isYouthApp = true;
@@ -252,6 +248,18 @@ function __bridge_callback(param) {
                     Internal.isIOS = (platform == 1);
                     Internal.isAndroid = (platform == 2);
                     Internal.isWinOS = (platform == 3);                    
+                }
+            }
+            else if (typePf == "string") {
+                if (platform == "1" || platform == "2" || platform == "3") {
+                    var ua = navigator.userAgent;
+                    if (ua.indexOf("Youth_CtripWireless") > 0) { 
+                        Internal.isYouthApp = true;
+                    }
+                    
+                    Internal.isIOS = (platform == "1");
+                    Internal.isAndroid = (platform == "2");
+                    Internal.isWinOS = (platform == "3");     
                 }
             }
 
