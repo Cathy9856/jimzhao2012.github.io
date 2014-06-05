@@ -12,13 +12,13 @@ function sleep(seconds) {
   	return true;
 }
 
-function isEqualToTagName(inJsonObj, inTagName) {
-	if (inJsonObj && inJsonObj.tagname && inJsonObj.tagname == inTagName) {
-		return true;
-	}
+// function isEqualToTagName(inJsonObj, inTagName) {
+// 	if (inJsonObj && inJsonObj.tagname && inJsonObj.tagname == inTagName) {
+// 		return true;
+// 	}
 
-	return false;
-}
+// 	return false;
+// }
 
 sleep(2);
 
@@ -148,7 +148,7 @@ var app = {
 
 
 
-asyncTest("获取当前沙盒名", function(){
+asyncTest("获取当前沙盒名D", function(){
 	expect(1);
 	CtripFile.app_get_current_sandbox_name();
 
@@ -156,7 +156,7 @@ asyncTest("获取当前沙盒名", function(){
 		start();
 
 		var jsonObj = cb_ret.get_current_sandbox_name;
-		if (isEqualToTagName(jsonObj, "get_current_sandbox_name")) {
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "get_current_sandbox_name") {
 			ok(true, "获取当前沙盒名成功"+JSON.stringify(jsonObj));
 		} else {
 			ok(true, "获取当前沙盒名失败"+JSON.stringify(jsonObj));
@@ -784,14 +784,14 @@ asyncTest("测试获取DeviceInfo", function(){
 	setTimeout(function(){
 		start();
 		var jsonObj = cb_ret.get_device_info;
-		if (isEqualToTagName(jsonObj, "get_device_info")) {
+		if (jsonObj && jsonObj.tagname && jsonObj.tagname == "get_device_info") {
 			ok(true, "获取deviceInfo成功："+JSON.stringify(jsonObj));
 		} else {
 			ok(false, "获取deviceInfo失败："+JSON.stringify(jsonObj));
 		}
 
-	}, async_time_interval);
-});
+// 	}, async_time_interval);
+// });
 
 
 // asyncTest("测试Ticket是否在三星钱包", function(){
