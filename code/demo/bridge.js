@@ -230,6 +230,7 @@ var Internal = {
  */
 function __bridge_callback(param) {
     param = decodeURIComponent(param);
+    alert("bridge call back:"+param);
 
     var jsonObj = JSON.parse(param);
 
@@ -263,7 +264,11 @@ function __bridge_callback(param) {
             Internal.osVersion = jsonObj.param.osVersion;
         }
 
-        return window.app.callback(jsonObj);
+        val = window.app.callback(jsonObj);
+        if (val != null && val.length > 0) {
+            alert("execute-->":val);
+        }
+        return val;
     }
 
     return -1;
@@ -1198,7 +1203,7 @@ var CtripUtil = {
      /**
      * @description 选取图片/拍摄照片，base64返回图片
      * @brief 打开Hybrid广告页面
-     * @param {int} maxFileSize 最大的图片文件大小，默认200KB
+     * @param {int} maxFileSize 最大的图片文件大小，单位是bit，默认200*1024
      * @param {int} maxPhotoCount 最多支持选择的图片个数,默认为1张，此时不显示多选
      * @method app_choose_photo
      * @since v5.7

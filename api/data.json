@@ -49,7 +49,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 287,
+            "line": 292,
             "brief": "工具类",
             "description": "工具类,和App无交互，纯JS处理"
         },
@@ -62,7 +62,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 338,
+            "line": 343,
             "description": "常用Util",
             "brief": "常用Util"
         },
@@ -75,7 +75,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1246,
+            "line": 1251,
             "description": "用户相关类",
             "brief": "用户相关类"
         },
@@ -88,7 +88,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1547,
+            "line": 1552,
             "description": "加解密/HASH/编码相关类",
             "brief": "提供给H5试用，通用加解密/HASH/编码相关类"
         },
@@ -101,7 +101,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1709,
+            "line": 1714,
             "description": "Ctrip相关支付控件",
             "brief": "提供Ctrip业务相关的支付功能"
         },
@@ -114,7 +114,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 1820,
+            "line": 1825,
             "description": "App给H5提供的通讯管道",
             "brief": "提供标准HTTP和H5管道服务"
         },
@@ -127,7 +127,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 2057,
+            "line": 2062,
             "description": "三星钱包相关API",
             "brief": "三星钱包相关API"
         },
@@ -140,7 +140,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 2172,
+            "line": 2177,
             "description": "文件IO操作相关API",
             "brief": "文件IO操作相关API"
         },
@@ -153,7 +153,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 2556,
+            "line": 2561,
             "description": "H5页面顶部导航栏和底部工具栏的控制",
             "brief": "H5页面顶部/底部导航栏控制"
         },
@@ -166,7 +166,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 2686,
+            "line": 2691,
             "description": "地图相关类，定位/导航",
             "brief": "地图相关类，定位/导航"
         },
@@ -179,7 +179,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 2788,
+            "line": 2793,
             "description": "Ctrip业务相关，需要返回数据给H5页面",
             "brief": "Ctrip业务相关，需要返回数据给H5页面"
         },
@@ -192,7 +192,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 3189,
+            "line": 3194,
             "description": "页面跳转，导航，刷新相关API",
             "brief": "页面跳转，导航，刷新相关API"
         }
@@ -455,7 +455,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 272,
+            "line": 277,
             "brief": "app写localstorage",
             "description": "写key/value数据到H5页面的local storage",
             "itemtype": "method",
@@ -478,7 +478,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 294,
+            "line": 299,
             "brief": "判断当前是否是在App内",
             "description": "判断当前H5页面是否是在App内",
             "since": "5.2",
@@ -495,7 +495,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 321,
+            "line": 326,
             "description": "将log写入到native的日志界面，该函数已移动到CtripUtil类，此处只做兼容。具体参考CtripUtil.app_log()函数",
             "brief": "H5写日志到app(移动到CtripUtil)",
             "itemtype": "method",
@@ -521,7 +521,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 345,
+            "line": 350,
             "description": "调用App的上传ActionLog,移动到CtripBusiness",
             "brief": "App的上传ActionLog,移动到CtripBusiness",
             "itemtype": "method",
@@ -542,7 +542,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 361,
+            "line": 366,
             "description": "进入H5模块，初始化数据\nH5接收到web_view_did_finished_load的回调之后，调用该函数，初始化数据会通过callback传递给H5",
             "brief": "初始化H5模块数据",
             "itemtype": "method",
@@ -557,7 +557,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 413,
+            "line": 418,
             "description": "拨打电话",
             "brief": "拨打电话",
             "params": [
@@ -578,7 +578,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 461,
+            "line": 466,
             "description": "退回到首页，离开H5",
             "brief": "回到首页",
             "since": "v5.2",
@@ -592,7 +592,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 491,
+            "line": 496,
             "description": "退回到H5页面的上一个页面，离开H5. v5.3开始支持带参数给上一个H5页面",
             "brief": "离开H5回上一个页面",
             "itemtype": "method",
@@ -618,7 +618,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 526,
+            "line": 531,
             "description": "定位(移动到CtripMap)",
             "brief": "定位(移动到CtripMap)",
             "params": [
@@ -637,7 +637,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 556,
+            "line": 561,
             "description": "刷新顶部条按钮和文字(移动到CtripBar)",
             "brief": "刷新顶部条按钮和文字(移动到CtripBar)",
             "params": [
@@ -657,7 +657,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 572,
+            "line": 577,
             "description": "Hybrid页面，打开链接URL地址，兼容App和浏览器",
             "brief": "Hybrid页面打开链接URL",
             "params": [
@@ -693,7 +693,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 648,
+            "line": 653,
             "description": "检查App的版本更新(移动到CtripBusiness)",
             "brief": "检查App的版本更新(移动到CtripBusiness)",
             "since": "v5.2",
@@ -707,7 +707,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 663,
+            "line": 668,
             "description": "推荐携程旅行给好友(移动到CtripBusiness)",
             "brief": "推荐携程旅行给好友(移动到CtripBusiness)",
             "since": "v5.2",
@@ -721,7 +721,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 678,
+            "line": 683,
             "description": "添加微信好友(移动到CtripBusiness)",
             "brief": "添加微信好友(移动到CtripBusiness)",
             "since": "v5.2",
@@ -735,7 +735,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 692,
+            "line": 697,
             "description": "H5跨模块/站点跳转",
             "brief": "H5跨模块/站点跳转",
             "params": [
@@ -761,7 +761,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 731,
+            "line": 736,
             "description": "查看最新版本功能介绍(移动到CtripBusiness)",
             "brief": "查看最新版本功能介绍(移动到CtripBusiness)",
             "since": "v5.2",
@@ -775,7 +775,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 745,
+            "line": 750,
             "description": "检查当前App网络状况",
             "brief": "检查当前App网络状况",
             "since": "v5.2",
@@ -789,7 +789,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 777,
+            "line": 782,
             "description": "检查是否安装App",
             "brief": "检查是否安装App",
             "params": [
@@ -815,7 +815,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 820,
+            "line": 825,
             "description": "H5通知Native刷新",
             "brief": "H5通知Native刷新",
             "params": [
@@ -841,7 +841,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 921,
+            "line": 926,
             "description": "复制文字到粘贴板",
             "brief": "复制文字到粘贴板",
             "params": [
@@ -862,7 +862,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 956,
+            "line": 961,
             "description": "从粘贴板读取复制的文字",
             "brief": "从粘贴板读取复制的文字",
             "callback": "tagname=\"read_copied_string_from_clipboard\";//返回当前粘贴板中的文字key=copiedString",
@@ -877,7 +877,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 994,
+            "line": 999,
             "description": "调用App的分享, 可以支持iOS6系统的分享，具体定义请参考(移动到CtripBusiness)",
             "brief": "调用App的分享(移动到CtripBusiness)",
             "params": [
@@ -918,7 +918,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1043,
+            "line": 1048,
             "description": "根据URL下载数据",
             "brief": "根据URL下载数据",
             "params": [
@@ -949,7 +949,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1095,
+            "line": 1100,
             "description": "打开其它App，android可以根据包名和URL跳转，iOS只支持URL跳转",
             "brief": "打开其它App",
             "params": [
@@ -980,7 +980,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1146,
+            "line": 1151,
             "description": "将log写入到native的日志界面",
             "brief": "H5写日志到app",
             "itemtype": "method",
@@ -1006,7 +1006,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1182,
+            "line": 1187,
             "description": "打开Hybrid广告页面，会自动显示底部栏，且右上角有分享安妮 (移动到CtripBusiness)",
             "brief": "打开Hybrid广告页面(移动到CtripBusiness)",
             "itemtype": "method",
@@ -1027,13 +1027,13 @@
         },
         {
             "file": "bridge.js",
-            "line": 1198,
+            "line": 1203,
             "description": "选取图片/拍摄照片，base64返回图片",
             "brief": "打开Hybrid广告页面",
             "params": [
                 {
                     "name": "maxFileSize",
-                    "description": "最大的图片文件大小，默认200KB",
+                    "description": "最大的图片文件大小，单位是bit，默认200*1024",
                     "type": "Int"
                 },
                 {
@@ -1053,7 +1053,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1253,
+            "line": 1258,
             "description": "会员登录,native未登录时候，会显示会员登录界面，native会员已登录，直接完成，返回登录的用户信息",
             "brief": "会员登录",
             "since": "5.2",
@@ -1067,7 +1067,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1313,
+            "line": 1318,
             "description": "非会员登录",
             "brief": "非会员登录",
             "since": "5.2",
@@ -1084,7 +1084,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1376,
+            "line": 1381,
             "description": "会员自动登录,对于已经在native登陆的用户，app会通过调用callback回传登录数据，H5页面需要处理用户信息， 不显示输入用户名密码界面",
             "brief": "会员自动登录",
             "since": "5.2",
@@ -1101,7 +1101,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1439,
+            "line": 1444,
             "description": "用户注册",
             "brief": "用户注册",
             "since": "5.2",
@@ -1118,7 +1118,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1502,
+            "line": 1507,
             "description": "H5完成注册，将注册信息告知Native",
             "brief": "H5完成注册，通知Native登录",
             "itemtype": "method",
@@ -1139,7 +1139,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1554,
+            "line": 1559,
             "description": "base64 UTF8编码",
             "brief": "base64 UTF8编码",
             "since": "5.4",
@@ -1160,7 +1160,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1604,
+            "line": 1609,
             "description": "MD5 哈希算法，长度32，大写",
             "brief": "MD5 哈希算法",
             "since": "5.4",
@@ -1181,7 +1181,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1654,
+            "line": 1659,
             "description": "Ctrip私有加解密算法",
             "brief": "Ctrip私有加解密算法",
             "since": "5.5",
@@ -1207,7 +1207,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1716,
+            "line": 1721,
             "description": "检查支付相关App安装情况",
             "brief": "检查支付相关App安装情况",
             "since": "5.4",
@@ -1221,7 +1221,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1760,
+            "line": 1765,
             "description": "根据URL打开支付App",
             "brief": "根据URL打开支付App",
             "params": [
@@ -1257,7 +1257,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1827,
+            "line": 1832,
             "description": "H5通过App发送服务",
             "brief": "H5通过App发送服务",
             "itemtype": "method",
@@ -1308,7 +1308,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1928,
+            "line": 1933,
             "description": "根据发送的sequenceId，终止正在发送的HTTP请求",
             "brief": "终止正在发送的HTTP请求",
             "itemtype": "method",
@@ -1329,7 +1329,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 1966,
+            "line": 1971,
             "description": "H5通过App发送服务",
             "brief": "H5通过App发送服务",
             "itemtype": "method",
@@ -1370,7 +1370,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2064,
+            "line": 2069,
             "description": "检查ticket是否在三星钱包app中",
             "brief": "检查ticket是否在三星钱包app中",
             "itemtype": "method",
@@ -1391,7 +1391,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2099,
+            "line": 2104,
             "description": "到三星钱包中下载ticket",
             "brief": "到三星钱包中下载ticket",
             "itemtype": "method",
@@ -1412,7 +1412,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2135,
+            "line": 2140,
             "description": "在三星钱包app中查看Ticket",
             "brief": "在三星钱包app中查看Ticket",
             "itemtype": "method",
@@ -1433,7 +1433,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2179,
+            "line": 2184,
             "description": "获取当前web页面的sandbox目录，在webapp/wb_cache/xxxx/目录下xxxx即为当前sandbox的名字",
             "brief": "获取当前web页面的sandbox目录",
             "itemtype": "method",
@@ -1447,7 +1447,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2222,
+            "line": 2227,
             "description": "文本写入文件中，UTF8编码。可以指定文件名，或者相对路径",
             "brief": "写文本到本地文件",
             "itemtype": "method",
@@ -1483,7 +1483,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2281,
+            "line": 2286,
             "description": "删除文件/目录。可以指定文件名，或者相对路径",
             "brief": "删除文件/目录",
             "itemtype": "method",
@@ -1509,7 +1509,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2335,
+            "line": 2340,
             "description": "读取文本文件内容，UTF-8编码。可以指定文件名，或者相对路径",
             "brief": "读取文本文件内容",
             "itemtype": "method",
@@ -1535,7 +1535,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2390,
+            "line": 2395,
             "description": "读取文件大小。可以指定文件名，或者相对路径",
             "brief": "读取文件大小",
             "itemtype": "method",
@@ -1561,7 +1561,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2444,
+            "line": 2449,
             "description": "检查文件是否存在。可以指定文件名，或者相对路径",
             "brief": "检查文件是否存在",
             "itemtype": "method",
@@ -1587,7 +1587,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2498,
+            "line": 2503,
             "description": "创建文件夹。可以指定文件名，或者相对路径",
             "brief": "创建文件夹",
             "itemtype": "method",
@@ -1613,7 +1613,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2563,
+            "line": 2568,
             "description": "刷新顶部条按钮和文字",
             "brief": "刷新顶部条按钮和文字",
             "params": [
@@ -1634,7 +1634,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2617,
+            "line": 2622,
             "description": "设置顶部导航栏隐藏／显示，使用该函数的隐藏顶部栏之后，必须保证页面有离开H5页面的功能，否则用户无法离开，必须要kill掉app。",
             "brief": "顶部导航隐藏／显示",
             "params": [
@@ -1655,7 +1655,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2651,
+            "line": 2656,
             "description": "设置底部工具栏隐藏／显示",
             "brief": "底部工具栏隐藏／显示",
             "params": [
@@ -1676,7 +1676,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2693,
+            "line": 2698,
             "description": "定位",
             "brief": "定位",
             "params": [
@@ -1697,7 +1697,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2738,
+            "line": 2743,
             "description": "在地图上显示某个位置",
             "brief": "在地图上显示某个位置/导航",
             "params": [
@@ -1733,7 +1733,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2795,
+            "line": 2800,
             "description": "选择常用发票title",
             "brief": "选择常用发票title",
             "params": [
@@ -1754,7 +1754,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2846,
+            "line": 2851,
             "description": "进入语音搜索,5.7版本，语音搜索之后的结果，不需要BU处理，只需调用即可，后续版本，可能只做语音解析，解析结果传递给H5，BU自行处理",
             "brief": "进入语音搜索",
             "params": [
@@ -1775,7 +1775,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2890,
+            "line": 2895,
             "description": "打开Hybrid广告页面，会自动显示底部栏，且右上角有分享安妮",
             "brief": "打开Hybrid广告页面",
             "itemtype": "method",
@@ -1796,7 +1796,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2924,
+            "line": 2929,
             "description": "查看最新版本功能介绍",
             "brief": "查看最新版本功能介绍",
             "since": "v5.2",
@@ -1810,7 +1810,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2948,
+            "line": 2953,
             "description": "检查App的版本更新",
             "brief": "检查App的版本更新",
             "since": "v5.2",
@@ -1824,7 +1824,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2973,
+            "line": 2978,
             "description": "推荐携程旅行给好友",
             "brief": "推荐携程旅行给好友",
             "since": "v5.2",
@@ -1838,7 +1838,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2998,
+            "line": 3003,
             "description": "添加微信好友",
             "brief": "添加微信好友",
             "since": "v5.2",
@@ -1852,7 +1852,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3023,
+            "line": 3028,
             "description": "调用App的分享, 可以支持iOS6系统的分享",
             "brief": "调用App的分享",
             "params": [
@@ -1893,7 +1893,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3111,
+            "line": 3116,
             "description": "Native收集用户行为,该日志会被上传\nH5页面调用该函数，需要将增加的event_name告知native，native需要整理纪录",
             "brief": "收集ActionLog",
             "itemtype": "method",
@@ -1914,7 +1914,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3142,
+            "line": 3147,
             "description": "获取设备相关信息，相关部门需要",
             "brief": "获取设备相关信息，相关部门需要",
             "itemtype": "method",
@@ -1928,7 +1928,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3196,
+            "line": 3201,
             "description": "设置当前页面名，可用于页面导航，刷新",
             "brief": "设置当前页面名，可用于页面导航，刷新",
             "params": [
@@ -2019,323 +2019,323 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:272"
+            "line": " bridge.js:277"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:287"
+            "line": " bridge.js:292"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:294"
+            "line": " bridge.js:299"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:321"
+            "line": " bridge.js:326"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:338"
+            "line": " bridge.js:343"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:345"
+            "line": " bridge.js:350"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:361"
-        },
-        {
-            "message": "unknown tag: callback",
-            "line": " bridge.js:361"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:413"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:461"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:491"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:526"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:556"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:572"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:648"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:663"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:678"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:692"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:731"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:745"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:777"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:820"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:921"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:956"
+            "line": " bridge.js:366"
         },
         {
             "message": "unknown tag: callback",
-            "line": " bridge.js:956"
+            "line": " bridge.js:366"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:994"
+            "line": " bridge.js:418"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1043"
+            "line": " bridge.js:466"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1095"
+            "line": " bridge.js:496"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1146"
+            "line": " bridge.js:531"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1182"
+            "line": " bridge.js:561"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1198"
+            "line": " bridge.js:577"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1246"
+            "line": " bridge.js:653"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1253"
+            "line": " bridge.js:668"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1313"
+            "line": " bridge.js:683"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1376"
+            "line": " bridge.js:697"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1439"
+            "line": " bridge.js:736"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1502"
+            "line": " bridge.js:750"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1547"
+            "line": " bridge.js:782"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1554"
+            "line": " bridge.js:825"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1604"
+            "line": " bridge.js:926"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1654"
+            "line": " bridge.js:961"
+        },
+        {
+            "message": "unknown tag: callback",
+            "line": " bridge.js:961"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1709"
+            "line": " bridge.js:999"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1716"
+            "line": " bridge.js:1048"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1760"
+            "line": " bridge.js:1100"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1820"
+            "line": " bridge.js:1151"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1827"
+            "line": " bridge.js:1187"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1928"
+            "line": " bridge.js:1203"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:1966"
+            "line": " bridge.js:1251"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2057"
+            "line": " bridge.js:1258"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2064"
+            "line": " bridge.js:1318"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2099"
+            "line": " bridge.js:1381"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2135"
+            "line": " bridge.js:1444"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2172"
+            "line": " bridge.js:1507"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2179"
+            "line": " bridge.js:1552"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2222"
+            "line": " bridge.js:1559"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2281"
+            "line": " bridge.js:1609"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2335"
+            "line": " bridge.js:1659"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2390"
+            "line": " bridge.js:1714"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2444"
+            "line": " bridge.js:1721"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2498"
+            "line": " bridge.js:1765"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2556"
+            "line": " bridge.js:1825"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2563"
+            "line": " bridge.js:1832"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2617"
+            "line": " bridge.js:1933"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2651"
+            "line": " bridge.js:1971"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2686"
+            "line": " bridge.js:2062"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2693"
+            "line": " bridge.js:2069"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2738"
+            "line": " bridge.js:2104"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2788"
+            "line": " bridge.js:2140"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2795"
+            "line": " bridge.js:2177"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2846"
+            "line": " bridge.js:2184"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2890"
+            "line": " bridge.js:2227"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2924"
+            "line": " bridge.js:2286"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2948"
+            "line": " bridge.js:2340"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2973"
+            "line": " bridge.js:2395"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2998"
+            "line": " bridge.js:2449"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3023"
+            "line": " bridge.js:2503"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3111"
+            "line": " bridge.js:2561"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3142"
+            "line": " bridge.js:2568"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3189"
+            "line": " bridge.js:2622"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3196"
+            "line": " bridge.js:2656"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2691"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2698"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2743"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2793"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2800"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2851"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2895"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2929"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2953"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2978"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3003"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3028"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3116"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3147"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3194"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3201"
         }
     ]
 }
