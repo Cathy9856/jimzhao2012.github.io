@@ -342,8 +342,7 @@ var Internal = {
  */
 function __bridge_callback(param) {
     param = decodeURIComponent(param);
-    // alert(&quot;bridge call back:&quot;+param);
-
+    
     var jsonObj = JSON.parse(param);
 
     if (jsonObj != null) {
@@ -377,9 +376,6 @@ function __bridge_callback(param) {
         }
 
         val = window.app.callback(jsonObj);
-        if ((val != null) &amp;&amp; (val.length &gt; 0)) {
-            alert(&quot;execute--&gt;&quot;+val);
-        }
         return val;
     }
 
