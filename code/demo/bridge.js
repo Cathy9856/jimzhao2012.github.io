@@ -266,7 +266,7 @@ function __bridge_callback(param) {
 
         val = window.app.callback(jsonObj);
         if ((val != null) && (val.length > 0)) {
-            alert("execute-->":val);
+            alert("execute-->"+val);
         }
         return val;
     }
