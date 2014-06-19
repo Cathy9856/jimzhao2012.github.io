@@ -1255,12 +1255,12 @@ var CtripUser = {
      * @description 会员登录,native未登录时候，会显示会员登录界面，native会员已登录，直接完成，返回登录的用户信息
      * @brief 会员登录
      * @since 5.2
-     * @param {Boolean} isShowNonMemberLogin 是否现实非会员登录入， 5.7加入，默认不显示
      * @method app_member_login 
+     * @param {Boolean} isShowNonMemberLogin 是否现实非会员登录入， 5.7加入，默认不显示
      * @author jimzhao
      * @example 
 
-     CtripUser.app_member_login();
+     CtripUser.app_member_login(false);
      //调用完成后，H5会收到如下数据
      var userInfo = {
         "timeout":"2013/09/12",
