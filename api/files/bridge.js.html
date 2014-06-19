@@ -1367,7 +1367,8 @@ var CtripUser = {
      * @description 会员登录,native未登录时候，会显示会员登录界面，native会员已登录，直接完成，返回登录的用户信息
      * @brief 会员登录
      * @since 5.2
-     * @method app_member_login
+     * @param {Boolean} isShowNonMemberLogin 是否现实非会员登录入， 5.7加入，默认不显示
+     * @method app_member_login 
      * @author jimzhao
      * @example 
 
@@ -1409,8 +1410,11 @@ var CtripUser = {
     app.callback(json_obj);
      
      */
-    app_member_login:function() {
-        paramString =  Internal.makeParamString(&quot;User&quot;, &quot;memberLogin&quot;, null, &#x27;member_login&#x27;);
+    app_member_login:function(isShowNonMemberLogin) {
+        var params = {};
+        params.isShowNonMemberLogin = isShowNonMemberLogin;
+        paramString =  Internal.makeParamString(&quot;User&quot;, &quot;memberLogin&quot;, params, &#x27;member_login&#x27;);
+
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
