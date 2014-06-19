@@ -2851,7 +2851,7 @@ var CtripBusiness = {
     /**
      * @description 进入语音搜索,5.7版本，语音搜索之后的结果，不需要BU处理，只需调用即可，后续版本，可能只做语音解析，解析结果传递给H5，BU自行处理
      * @brief 进入语音搜索
-     * @param {int} bussinessType 业务类型(0. 无（默认）1. 机票 2. 酒店3 . 火车票 4. 团队游 5. 目的地 6. 攻略 7.景点门票 8.周末/短途游)
+     * @param {int} businessType 业务类型(0. 无（默认）1. 机票 2. 酒店3 . 火车票 5. 目的地 6. 攻略 7.景点门票 8.周末/短途游)  61：团队游 62：周末游  63：自由行 64：邮轮  
      * @method app_show_voice_search
      * @author jimzhao
      * @since v5.7
@@ -2869,7 +2869,7 @@ var CtripBusiness = {
         
         app.callback(json_obj);
      */
-    app_show_voice_search:function(bussinessType) {
+    app_show_voice_search:function(businessType) {
         var startVersion = "5.7";
         if (!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
@@ -2877,7 +2877,7 @@ var CtripBusiness = {
         }
 
         var params = {};
-        params.bussinessType = bussinessType;
+        params.businessType = businessType;
         paramString = Internal.makeParamString("Business", "showVoiceSearch", params, 'show_voice_search');
 
         if (Internal.isIOS) {
