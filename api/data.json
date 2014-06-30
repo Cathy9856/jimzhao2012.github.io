@@ -166,7 +166,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 2691,
+            "line": 2733,
             "description": "地图相关类，定位/导航",
             "brief": "地图相关类，定位/导航"
         },
@@ -179,7 +179,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 2793,
+            "line": 2835,
             "description": "Ctrip业务相关，需要返回数据给H5页面",
             "brief": "Ctrip业务相关，需要返回数据给H5页面"
         },
@@ -192,7 +192,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 3194,
+            "line": 3236,
             "description": "页面跳转，导航，刷新相关API",
             "brief": "页面跳转，导航，刷新相关API"
         }
@@ -1635,13 +1635,13 @@
             "author": "jimzhao",
             "since": "v5.2",
             "example": [
-                "\n\n       //导航栏总共分为3部分，1.左侧，返回按钮，不能修改; 2. 中间title，可以任意设置; 3.右侧按钮，定义格式为{tagname:\"xxxx\",value:\"btn_title\"}\n       var nav_json = {\n           \"center\": [{\"tagname\": \"title\", \"value\":\"携程\"},{\"tagname\":\"subtitle\", value:\"上海到北京\"}],\n           \"centerButtons\": [{\"tagname\": \"cityChoose\", \"value\":\"上海\", \"a_icon\":\"icon_arrowx\", \"i_icon\":\"icon_arrowx.png\"}], //from 5.5version\n           \"right\": [{\"tagname\": \"click_tag_name\", \"value\":\"Click\"}]\n       }\n       //nav_json参数配置说明：\n       //1. 支持的key有3个： center/right 从app 5.1之后版本支持， centerButton 从app 5.4版本之后支持\n       //2. center配置辅助标题： 5.4 之后app支持, 举例：\"center\": [{\"tagname\": \"title\", \"value\":\"携程\"},{\"tagname\":\"subtitle\", value:\"上海到北京\"}], 辅助标题为数组第二项，且tagname必须为subtitle；\n       //3. centerButton按钮支持：5.4之后app支持，举例：\"centerButtons\": [{\"tagname\": \"cityChoose\", \"value\":\"上海\", \"a_icon\":\"icon_arrowx\", \"i_icon\":\"icon_arrowx.png\"}], a_icon为android中按钮右侧图片名字，android文件名不需要带后缀，i_icon为iOS中按钮右侧图片名字。注意centerButton和center所占用的是同样的界面元素，app默认优先级centerButton>center,因此为了兼容先前版本centerButton和center可以同时设置\n       //4. right配置：tagname=call时候显示app中的默认拨号icon，tagname=home时候显示app中默认的主页icon，当right只有这两者之一，都只显示一个按钮，如果right有2项，且tagname分别为call/home,则显示2个按钮图标，其它情况均显示value配置的文字；\n\n       var json_str = JSON.stringify(nav_json);\n       CtripBar.app_refresh_nav_bar(json_str);\n\n       //调用完成，顶部条title为携程，右侧有一个按钮，按钮文字为Click，用户点击按钮后，H5页面会收到如下回调\n       var cb_json = {tagname:\"click_tag_name\"};\n       app.callback(cb_json);\n       //H5页面需要处理tagname为click_tag_name的事件\n"
+                "\n\n       //导航栏总共分为3部分:\n       1.左侧，返回按钮，不能修改; \n\n       2.中间title，可以自定义，样式总共3种;\n           a.标题[1行或者2行subtitle]；\n           key=center;\n           [\n               {\n                   \"tagname\": \"title\", \n                   \"value\":\"携程\" //标题文字\n               },\n               {\n                   \"tagname\":\"subtitle\",//子标题的tagname必须为subtitle\n                    value:\"上海到北京\", //子标题文字\n               }\n           ],\n           b.带事件的标题；\n           key=centerButtons;\n           [\n               {\n                   \"tagname\": \"cityChoose\",  //点击标题回调H5的tagname\n                   \"value\":\"上海\",  //标题文字\n                   \"a_icon\":\"icon_arrowx\", //标题文字后面的按钮图片名，for android\n                   \"i_icon\":\"icon_arrowx.png\", //标题文字后面的按钮图片名，for iOS\n                   \"imagePath\":\"car/res/logo.png\", //标题文字后面的按钮图片名，图片路径，相对于业务模块的路径，比如car/res/logo.png， v5.8开始支持\n                   \"pressedImagePath\":\"car/res/logo.png\"  //标题文字后面的按钮图片名，选中状态图片路径，相对于业务模块的路径，比如car/res/logo.png， v5.8开始支持\n               }\n           ], \n\n       3.右侧按钮，可以自定义，样式总共3种， \n           A.1个文字按钮;\n           B.1个图片按钮；\n           C.2个图片按钮；\n           单个右侧按钮样式的定义格式为\n           {\n               tagname:\"xxxx\",  //点击之后 callback给H5的事件名字,\n               value:\"btn_title\", //按钮上的文字\n               imagePath:\"car/res/logo.png\",  //按钮上的图片，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持\n               pressedImagePath:\"car/res/logo.png\" //按钮上的图片选中的效果图，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持\n           }\n           特殊tagname定义及说明：\n           a. tagname=home, 返回app首页，图片，事件 都不需要H5处理；\n           b. tagname=call, 拨打呼叫中心，图片，事件 都不需要H5处理；\n           c. tagname=share, 分享，图片-native预置，事件将会交给H5处理；v5.8开始支持\n           d. tagname=favorite, 收藏，图片-native预置, 事件交给H5处理；v5.8开始支持\n           e. tagname=favorited, 已经收藏，图片-native预置，事件交给H5处理；v5.8开始支持\n           g. 其他tagname，图片有H5提供，事件H5处理；\n\n       示例：\n       var nav_json = {   \n           \"right\": [{\"tagname\": \"click_tag_name\", \"value\":\"Click\", \"imagePath\":\"car/res/logo.png\", \"pressedImagePath\":\"car/res/logo_pressed.png\"}],\n           \"center\": [{\"tagname\": \"title\", \"value\":\"携程\"},{\"tagname\":\"subtitle\", value:\"上海到北京\"}],\n           \"centerButtons\": [{\"tagname\": \"cityChoose\", \"value\":\"上海\", \"a_icon\":\"icon_arrowx\", \"i_icon\":\"icon_arrowx.png\",\"imagePath\":\"car/res/logo.png\", \"pressedImagePath\":\"car/res/logo_pressed.png\"}], \n       }\n       var json_str = JSON.stringify(nav_json);\n       CtripBar.app_refresh_nav_bar(json_str);\n\n       //调用完成，顶部条title为携程，右侧有一个按钮，按钮文字为Click，用户点击按钮后，H5页面会收到如下回调\n       var cb_json = {tagname:\"click_tag_name\"};\n       app.callback(cb_json);\n       //H5页面需要处理tagname为click_tag_name的事件\n"
             ],
             "class": "CtripBar"
         },
         {
             "file": "bridge.js",
-            "line": 2622,
+            "line": 2664,
             "description": "设置顶部导航栏隐藏／显示，使用该函数的隐藏顶部栏之后，必须保证页面有离开H5页面的功能，否则用户无法离开，必须要kill掉app。",
             "brief": "顶部导航隐藏／显示",
             "params": [
@@ -1662,7 +1662,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2656,
+            "line": 2698,
             "description": "设置底部工具栏隐藏／显示",
             "brief": "底部工具栏隐藏／显示",
             "params": [
@@ -1683,7 +1683,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2698,
+            "line": 2740,
             "description": "定位",
             "brief": "定位",
             "params": [
@@ -1704,7 +1704,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2743,
+            "line": 2785,
             "description": "在地图上显示某个位置",
             "brief": "在地图上显示某个位置/导航",
             "params": [
@@ -1740,7 +1740,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2800,
+            "line": 2842,
             "description": "选择常用发票title",
             "brief": "选择常用发票title",
             "params": [
@@ -1761,7 +1761,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2851,
+            "line": 2893,
             "description": "进入语音搜索,5.7版本，语音搜索之后的结果，不需要BU处理，只需调用即可，后续版本，可能只做语音解析，解析结果传递给H5，BU自行处理",
             "brief": "进入语音搜索",
             "params": [
@@ -1782,7 +1782,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2895,
+            "line": 2937,
             "description": "打开Hybrid广告页面，会自动显示底部栏，且右上角有分享安妮",
             "brief": "打开Hybrid广告页面",
             "itemtype": "method",
@@ -1803,7 +1803,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2929,
+            "line": 2971,
             "description": "查看最新版本功能介绍",
             "brief": "查看最新版本功能介绍",
             "since": "v5.2",
@@ -1817,7 +1817,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2953,
+            "line": 2995,
             "description": "检查App的版本更新",
             "brief": "检查App的版本更新",
             "since": "v5.2",
@@ -1831,7 +1831,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 2978,
+            "line": 3020,
             "description": "推荐携程旅行给好友",
             "brief": "推荐携程旅行给好友",
             "since": "v5.2",
@@ -1845,7 +1845,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3003,
+            "line": 3045,
             "description": "添加微信好友",
             "brief": "添加微信好友",
             "since": "v5.2",
@@ -1859,7 +1859,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3028,
+            "line": 3070,
             "description": "调用App的分享, 可以支持iOS6系统的分享",
             "brief": "调用App的分享",
             "params": [
@@ -1900,7 +1900,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3116,
+            "line": 3158,
             "description": "Native收集用户行为,该日志会被上传\nH5页面调用该函数，需要将增加的event_name告知native，native需要整理纪录",
             "brief": "收集ActionLog",
             "itemtype": "method",
@@ -1921,7 +1921,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3147,
+            "line": 3189,
             "description": "获取设备相关信息，相关部门需要",
             "brief": "获取设备相关信息，相关部门需要",
             "itemtype": "method",
@@ -1935,7 +1935,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3201,
+            "line": 3243,
             "description": "设置当前页面名，可用于页面导航，刷新",
             "brief": "设置当前页面名，可用于页面导航，刷新",
             "params": [
@@ -2274,15 +2274,7 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2622"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:2656"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:2691"
+            "line": " bridge.js:2664"
         },
         {
             "message": "unknown tag: brief",
@@ -2290,59 +2282,67 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2743"
+            "line": " bridge.js:2733"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2793"
+            "line": " bridge.js:2740"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2800"
+            "line": " bridge.js:2785"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2851"
+            "line": " bridge.js:2835"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2895"
+            "line": " bridge.js:2842"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2929"
+            "line": " bridge.js:2893"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2953"
+            "line": " bridge.js:2937"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:2978"
+            "line": " bridge.js:2971"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3003"
+            "line": " bridge.js:2995"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3028"
+            "line": " bridge.js:3020"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3116"
+            "line": " bridge.js:3045"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3147"
+            "line": " bridge.js:3070"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3194"
+            "line": " bridge.js:3158"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3201"
+            "line": " bridge.js:3189"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3236"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3243"
         }
     ]
 }

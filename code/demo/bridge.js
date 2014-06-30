@@ -2574,18 +2574,60 @@ var CtripBar = {
      * @since v5.2
      * @example
 
-        //导航栏总共分为3部分，1.左侧，返回按钮，不能修改; 2. 中间title，可以任意设置; 3.右侧按钮，定义格式为{tagname:"xxxx",value:"btn_title"}
-        var nav_json = {
-            "center": [{"tagname": "title", "value":"携程"},{"tagname":"subtitle", value:"上海到北京"}],
-            "centerButtons": [{"tagname": "cityChoose", "value":"上海", "a_icon":"icon_arrowx", "i_icon":"icon_arrowx.png"}], //from 5.5version
-            "right": [{"tagname": "click_tag_name", "value":"Click"}]
-        }
-        //nav_json参数配置说明：
-        //1. 支持的key有3个： center/right 从app 5.1之后版本支持， centerButton 从app 5.4版本之后支持
-        //2. center配置辅助标题： 5.4 之后app支持, 举例："center": [{"tagname": "title", "value":"携程"},{"tagname":"subtitle", value:"上海到北京"}], 辅助标题为数组第二项，且tagname必须为subtitle；
-        //3. centerButton按钮支持：5.4之后app支持，举例："centerButtons": [{"tagname": "cityChoose", "value":"上海", "a_icon":"icon_arrowx", "i_icon":"icon_arrowx.png"}], a_icon为android中按钮右侧图片名字，android文件名不需要带后缀，i_icon为iOS中按钮右侧图片名字。注意centerButton和center所占用的是同样的界面元素，app默认优先级centerButton>center,因此为了兼容先前版本centerButton和center可以同时设置
-        //4. right配置：tagname=call时候显示app中的默认拨号icon，tagname=home时候显示app中默认的主页icon，当right只有这两者之一，都只显示一个按钮，如果right有2项，且tagname分别为call/home,则显示2个按钮图标，其它情况均显示value配置的文字；
+        //导航栏总共分为3部分:
+        1.左侧，返回按钮，不能修改; 
 
+        2.中间title，可以自定义，样式总共3种;
+            a.标题[1行或者2行subtitle]；
+            key=center;
+            [
+                {
+                    "tagname": "title", 
+                    "value":"携程" //标题文字
+                },
+                {
+                    "tagname":"subtitle",//子标题的tagname必须为subtitle
+                     value:"上海到北京", //子标题文字
+                }
+            ],
+            b.带事件的标题；
+            key=centerButtons;
+            [
+                {
+                    "tagname": "cityChoose",  //点击标题回调H5的tagname
+                    "value":"上海",  //标题文字
+                    "a_icon":"icon_arrowx", //标题文字后面的按钮图片名，for android
+                    "i_icon":"icon_arrowx.png", //标题文字后面的按钮图片名，for iOS
+                    "imagePath":"car/res/logo.png", //标题文字后面的按钮图片名，图片路径，相对于业务模块的路径，比如car/res/logo.png， v5.8开始支持
+                    "pressedImagePath":"car/res/logo.png"  //标题文字后面的按钮图片名，选中状态图片路径，相对于业务模块的路径，比如car/res/logo.png， v5.8开始支持
+                }
+            ], 
+
+        3.右侧按钮，可以自定义，样式总共3种， 
+            A.1个文字按钮;
+            B.1个图片按钮；
+            C.2个图片按钮；
+            单个右侧按钮样式的定义格式为
+            {
+                tagname:"xxxx",  //点击之后 callback给H5的事件名字,
+                value:"btn_title", //按钮上的文字
+                imagePath:"car/res/logo.png",  //按钮上的图片，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
+                pressedImagePath:"car/res/logo.png" //按钮上的图片选中的效果图，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
+            }
+            特殊tagname定义及说明：
+            a. tagname=home, 返回app首页，图片，事件 都不需要H5处理；
+            b. tagname=call, 拨打呼叫中心，图片，事件 都不需要H5处理；
+            c. tagname=share, 分享，图片-native预置，事件将会交给H5处理；v5.8开始支持
+            d. tagname=favorite, 收藏，图片-native预置, 事件交给H5处理；v5.8开始支持
+            e. tagname=favorited, 已经收藏，图片-native预置，事件交给H5处理；v5.8开始支持
+            g. 其他tagname，图片有H5提供，事件H5处理；
+
+        示例：
+        var nav_json = {   
+            "right": [{"tagname": "click_tag_name", "value":"Click", "imagePath":"car/res/logo.png", "pressedImagePath":"car/res/logo_pressed.png"}],
+            "center": [{"tagname": "title", "value":"携程"},{"tagname":"subtitle", value:"上海到北京"}],
+            "centerButtons": [{"tagname": "cityChoose", "value":"上海", "a_icon":"icon_arrowx", "i_icon":"icon_arrowx.png","imagePath":"car/res/logo.png", "pressedImagePath":"car/res/logo_pressed.png"}], 
+        }
         var json_str = JSON.stringify(nav_json);
         CtripBar.app_refresh_nav_bar(json_str);
 
