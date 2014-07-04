@@ -86,6 +86,27 @@
       CtripUtil.app_refresh_nav_bar(jsonStr);
     }
 
+    function doButtonTest2() {
+
+      var nav_bar_config_json = {};
+
+      if (icount == 0) {
+          nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试A"}], "right":[{"tagname":"something","value":"doSome","imagePath":"car/res/img/icon_muticolor_gs.png","pressedImagePath":"car/res/img/icon_muticolor_c.png"}, {"tagname":"favorited"}]};
+      } else if (icount%2==0){
+          nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试B"}], "right":[{"tagname":"something","value":"doSome","imagePath":"car/res/img/icon_muticolor_gs.png","pressedImagePath":"car/res/img/icon_muticolor_c.png"}]};     
+     } else if (icount%3==0) {
+        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试C"}], "right":[{"tagname":"share"}, {"tagname":"favorited"}]};
+      } else {
+        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试C"}], "right":[{"tagname":"share"}, {"tagname":"favorite"}]};
+      }
+      
+      icount++;
+
+      var jsonStr = JSON.stringify(nav_bar_config_json);
+      CtripUtil.app_refresh_nav_bar(jsonStr);
+    }
+
+
     var bflag = false;
     
     function doNavBarHiddenTest() {
@@ -146,6 +167,8 @@
    <li class="li2"><a onclick='javascript:CtripUtil.app_call_system_share("",  "内容没有链接，E这%a5个是分享*的%2b内%20容 ， 有%空&格+和 + 加#号", "内容这是标题", null,false)'>App分享内容 API</a></li>
   <br/>
   <li class="li2"><a onclick="javascript:doButtonTest()">导航栏刷新测试DA</a></li> 
+  <br/>
+    <li class="li2"><a onclick="javascript:doButtonTest2()">导航栏刷新测试DB</a></li> 
   <br/>
   <li class="li2"><a onclick="javascript:doFinishRegister()">H5注册完成，调用Native</a></li> 
   <br/>
