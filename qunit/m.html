@@ -93,13 +93,13 @@
       var nav_bar_config_json = {};
 
       if (icountd == 0) {
-          nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试A"}], "right":[{"tagname":"something","value":"doSome","imagePath":"wallet/res/img/bank/BANK_BOD.png","pressedImagePath":"wallet/res/img/bank/BANK_ABC.png"}, {"tagname":"favorited"}]};
+        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试C"}], "right":[{"tagname":"share"}, {"tagname":"favorite"}]};
       } else if (icountd%2==0){
-          nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试B"}], "right":[{"tagname":"something","value":"doSome","imagePath":"wallet/res/img/bank/BANK_CDRCB.png","pressedImagePath":"wallet/res/img/bank/BANK_CITIC.png"}]};     
-     } else if (icountd%3==0) {
+        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试B"}], "right":[{"tagname":"something","value":"doSome","imagePath":"wallet/res/img/bank/BANK_CDRCB.png","pressedImagePath":"wallet/res/img/bank/BANK_CITIC.png"}]};     
+      } else if (icountd%3==0) {
         nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试C"}], "right":[{"tagname":"share"}, {"tagname":"favorited"}]};
       } else {
-        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试C"}], "right":[{"tagname":"share"}, {"tagname":"favorite"}]};
+        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试A"}], "right":[{"tagname":"something","value":"doSome","imagePath":"wallet/res/img/bank/BANK_BOD.png","pressedImagePath":"wallet/res/img/bank/BANK_ABC.png"}, {"tagname":"favorited"}]};
       }
       
       icountd++;
