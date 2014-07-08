@@ -757,6 +757,7 @@ var CtripUtil = {
      {
         tagname:"check_network_status",
         hasNetwork:true,//布尔值返回是否有网络
+        networkType:"3G" //5.8开始加入， None-无网络, 2G-蜂窝数据网EDGE/GPRS, 3G-蜂窝数据网HSPDA/LTE等, WIFI-WLAN网络
      }
      app.callback(json_obj);
      
