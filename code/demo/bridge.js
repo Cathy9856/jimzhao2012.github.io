@@ -1202,7 +1202,7 @@ var CtripUtil = {
      * @brief 打开Hybrid广告页面
      * @param {int} maxFileSize 最大的图片文件大小，单位是bit，默认200*1024
      * @param {int} maxPhotoCount 最多支持选择的图片个数,默认为1张，此时不显示多选
-     * @param {JSON} meta, 图片选取相关配置信息，5.8新增，5.8版本开始支持2个key， canEditSinglePhotoViaCamera:单选拍照是否能编辑， canEditSinglePhotoViaAlbum:单选从相册选取能否编辑
+     * @param {JSON} meta 图片选取相关配置信息，5.8新增，5.8版本开始支持2个key， canEditSinglePhoto:单选能否编辑
      * @method app_choose_photo
      * @since v5.7
      * @author jimzhao
@@ -1210,8 +1210,7 @@ var CtripUtil = {
 
        //选择一张需要编辑的图片
        var meta = {};
-       meta.canEditSinglePhotoViaCamera = true;
-       meta.canEditSinglePhotoViaAlbum = true;
+       meta.canEditSinglePhoto = true;
        CtripUtil.app_choose_photo(200*1024, 1, meta);
         
        //选择多张图片

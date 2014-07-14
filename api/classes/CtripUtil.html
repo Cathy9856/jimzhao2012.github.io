@@ -883,7 +883,7 @@ app.callback(json_obj);</code></pre>
             
                 <li class="arg">
                     
-                        <code>meta,</code>
+                        <code>meta</code>
                     
                 </li>
             
@@ -973,14 +973,14 @@ app.callback(json_obj);</code></pre>
             
                 <li class="param">
                     
-                        <code class="param-name">meta,</code>
+                        <code class="param-name">meta</code>
                         <span class="type">JSON</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>图片选取相关配置信息，5.8新增，5.8版本开始支持2个key， canEditSinglePhotoViaCamera:单选拍照是否能编辑， canEditSinglePhotoViaAlbum:单选从相册选取能否编辑</p>
+                        <p>图片选取相关配置信息，5.8新增，5.8版本开始支持2个key， canEditSinglePhoto:单选能否编辑</p>
 
                     </div>
 
@@ -1000,8 +1000,7 @@ app.callback(json_obj);</code></pre>
             <div class="example-content">
                 <pre class="code prettyprint"><code>  //选择一张需要编辑的图片
   var meta = {};
-  meta.canEditSinglePhotoViaCamera = true;
-  meta.canEditSinglePhotoViaAlbum = true;
+  meta.canEditSinglePhoto = true;
   CtripUtil.app_choose_photo(200*1024, 1, meta);
 
   //选择多张图片
