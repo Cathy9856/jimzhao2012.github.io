@@ -1202,13 +1202,21 @@ var CtripUtil = {
      * @brief 打开Hybrid广告页面
      * @param {int} maxFileSize 最大的图片文件大小，单位是bit，默认200*1024
      * @param {int} maxPhotoCount 最多支持选择的图片个数,默认为1张，此时不显示多选
+     * @param {JSON} meta, 图片选取相关配置信息，5.8新增，5.8版本开始支持2个key， canEditSinglePhotoViaCamera:单选拍照是否能编辑， canEditSinglePhotoViaAlbum:单选从相册选取能否编辑
      * @method app_choose_photo
      * @since v5.7
      * @author jimzhao
      * @example
 
-       CtripUtil.app_choose_photo();
-
+       //选择一张需要编辑的图片
+       var meta = {};
+       meta.canEditSinglePhotoViaCamera = true;
+       meta.canEditSinglePhotoViaAlbum = true;
+       CtripUtil.app_choose_photo(200*1024, 1, meta);
+        
+       //选择多张图片
+       CtripUtil.app_choose_photo(200*1024, 2);
+        
        //调用完成之后，返回的数据格式
        var json_obj =
         {
@@ -1220,7 +1228,7 @@ var CtripUtil = {
         app.callback(json_obj);
      
      */
-    app_choose_photo:function(maxFileSize, maxPhotoCount) {
+    app_choose_photo:function(maxFileSize, maxPhotoCount, meta) {
         var startVersion = "5.7";
         if (!Internal.isAppVersionGreatThan(startVersion)) {
             Internal.appVersionNotSupportCallback(startVersion);
@@ -1229,6 +1237,8 @@ var CtripUtil = {
         var params = {};
         params.maxFileSize = maxFileSize;
         params.maxPhotoCount = maxPhotoCount;
+        params.meta = meta;
+
         var paramString = Internal.makeParamString("Util", "choosePhoto", params, "choose_photo");
 
         if (Internal.isIOS) {
@@ -1506,7 +1516,7 @@ var CtripUser = {
 
 
      /**
-     * @description H5完成注册，将注册信息告知Native
+     * @description H5完成注册，将注册信用户息告知Native，native做登录
      * @brief H5完成注册，通知Native登录
      * @method app_finished_register
      * @param {JSON} userInfoJson 注册完成的用户信息
@@ -1542,6 +1552,48 @@ var CtripUser = {
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.User_a.finishedRegister(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+     /**
+     * @description H5登陆完成，将注册信息告知Native，native写入memory，修改登录态
+     * @brief H5完成登录，通知Native修改登录态
+     * @method app_finished_login
+     * @param {JSON} userInfoJson 登录完成，服务器返回的用户信息
+     * @since v5.8
+     * @author jimzhao
+     * @example 
+        
+        var userInfo = {};
+        userInfo.userID = "xxxxxx";
+        userInfo.phone="13900000000";
+        userInfo.auth ="asdzxc";
+        //.... json对象为服务器返回的用户信息对象
+        CtripUser.app_finished_login(userInfo)
+
+     */
+    app_finished_login:function(userInfoJson) {
+        var startVersion = "5.8";
+        if (!Internal.isAppVersionGreatThan(startVersion)) {
+            Internal.appVersionNotSupportCallback(startVersion);
+            return;
+        }
+
+        if (!userInfoJson) {
+            userInfoJson = "";
+        }
+
+        var params = {};
+        params.userInfoJson = userInfoJson;
+
+        paramString = Internal.makeParamString("User", "finishedLogin", params, "finished_login");
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            window.User_a.finishedLogin(paramString);
         } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }

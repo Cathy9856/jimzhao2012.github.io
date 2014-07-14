@@ -114,7 +114,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l1248"><code>bridge.js:1248</code></a>
+            定义在: <a href="../files/bridge.js.html#l1258"><code>bridge.js:1258</code></a>
         </div>
     
 
@@ -156,6 +156,8 @@
                     <table>
                     <tr><th>描述</th><th>函数</th></tr>
                     
+                    <tr><td>H5完成登录，通知Native修改登录态</td><td><a href="#method_app_finished_login">app_finished_login</a></td></tr>
+                    
                     <tr><td>H5完成注册，通知Native登录</td><td><a href="#method_app_finished_register">app_finished_register</a></td></tr>
                     
                     <tr><td>会员自动登录</td><td><a href="#method_app_member_auto_login">app_member_auto_login</a></td></tr>
@@ -170,6 +172,12 @@
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -217,6 +225,111 @@
                 <h2 class="off-left">方法</h2>
 
                 
+                    <div id="method_app_finished_login" class="method item">
+    <h3 class="name"><code>app_finished_login</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>userInfoJson</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l1560"><code>bridge.js:1560</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.8</p>
+        
+    </div>
+
+    <div class="description">
+        <p>H5登陆完成，将注册信息告知Native，native写入memory，修改登录态</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">userInfoJson</code>
+                        <span class="type">JSON</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>登录完成，服务器返回的用户信息</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   var userInfo = {};
+   userInfo.userID = &quot;xxxxxx&quot;;
+   userInfo.phone=&quot;13900000000&quot;;
+   userInfo.auth =&quot;asdzxc&quot;;
+   //.... json对象为服务器返回的用户信息对象
+   CtripUser.app_finished_login(userInfo)</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_app_finished_register" class="method item">
     <h3 class="name"><code>app_finished_register</code></h3>
 
@@ -259,7 +372,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l1508"><code>bridge.js:1508</code></a>
+        <a href="../files/bridge.js.html#l1518"><code>bridge.js:1518</code></a>
         
         </p>
 
@@ -272,7 +385,7 @@
     </div>
 
     <div class="description">
-        <p>H5完成注册，将注册信息告知Native</p>
+        <p>H5完成注册，将注册信用户息告知Native，native做登录</p>
 
     </div>
 
@@ -354,7 +467,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l1382"><code>bridge.js:1382</code></a>
+        <a href="../files/bridge.js.html#l1392"><code>bridge.js:1392</code></a>
         
         </p>
 
@@ -466,7 +579,7 @@ var userInfo = {
             
         
         
-        <a href="../files/bridge.js.html#l1255"><code>bridge.js:1255</code></a>
+        <a href="../files/bridge.js.html#l1265"><code>bridge.js:1265</code></a>
         
         </p>
 
@@ -590,7 +703,7 @@ var userInfo = {
             
         
         
-        <a href="../files/bridge.js.html#l1445"><code>bridge.js:1445</code></a>
+        <a href="../files/bridge.js.html#l1455"><code>bridge.js:1455</code></a>
         
         </p>
 
@@ -692,7 +805,7 @@ var userInfo = {
             
         
         
-        <a href="../files/bridge.js.html#l1319"><code>bridge.js:1319</code></a>
+        <a href="../files/bridge.js.html#l1329"><code>bridge.js:1329</code></a>
         
         </p>
 
