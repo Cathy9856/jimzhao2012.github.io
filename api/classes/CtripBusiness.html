@@ -114,7 +114,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l2887"><code>bridge.js:2887</code></a>
+            定义在: <a href="../files/bridge.js.html#l2929"><code>bridge.js:2929</code></a>
         </div>
     
 
@@ -170,6 +170,8 @@
                     
                     <tr><td>打开Hybrid广告页面</td><td><a href="#method_app_open_adv_page">app_open_adv_page</a></td></tr>
                     
+                    <tr><td>获取短信中的验证码</td><td><a href="#method_app_read_verification_code_from_sms">app_read_verification_code_from_sms</a></td></tr>
+                    
                     <tr><td>推荐携程旅行给好友</td><td><a href="#method_app_recommend_app_to_friends">app_recommend_app_to_friends</a></td></tr>
                     
                     <tr><td>查看最新版本功能介绍</td><td><a href="#method_app_show_newest_introduction">app_show_newest_introduction</a></td></tr>
@@ -180,6 +182,12 @@
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -289,7 +297,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3097"><code>bridge.js:3097</code></a>
+        <a href="../files/bridge.js.html#l3133"><code>bridge.js:3133</code></a>
         
         </p>
 
@@ -389,7 +397,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3122"><code>bridge.js:3122</code></a>
+        <a href="../files/bridge.js.html#l3158"><code>bridge.js:3158</code></a>
         
         </p>
 
@@ -572,7 +580,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3047"><code>bridge.js:3047</code></a>
+        <a href="../files/bridge.js.html#l3083"><code>bridge.js:3083</code></a>
         
         </p>
 
@@ -648,7 +656,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2894"><code>bridge.js:2894</code></a>
+        <a href="../files/bridge.js.html#l2936"><code>bridge.js:2936</code></a>
         
         </p>
 
@@ -749,7 +757,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3241"><code>bridge.js:3241</code></a>
+        <a href="../files/bridge.js.html#l3275"><code>bridge.js:3275</code></a>
         
         </p>
 
@@ -842,7 +850,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3210"><code>bridge.js:3210</code></a>
+        <a href="../files/bridge.js.html#l3244"><code>bridge.js:3244</code></a>
         
         </p>
 
@@ -943,7 +951,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l2989"><code>bridge.js:2989</code></a>
+        <a href="../files/bridge.js.html#l3027"><code>bridge.js:3027</code></a>
         
         </p>
 
@@ -1001,6 +1009,79 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
 </div>
 
                 
+                    <div id="method_app_read_verification_code_from_sms" class="method item">
+    <h3 class="name"><code>app_read_verification_code_from_sms</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3319"><code>bridge.js:3319</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.8</p>
+        
+    </div>
+
+    <div class="description">
+        <p>获取短信中的验证码</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   CtripBusiness.app_read_verification_code_from_sms()
+   调用之后，返回数据
+
+   var json_obj = {
+       verificationCode = &quot;8890&quot;
+   };
+
+   app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_app_recommend_app_to_friends" class="method item">
     <h3 class="name"><code>app_recommend_app_to_friends</code></h3>
 
@@ -1033,7 +1114,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3072"><code>bridge.js:3072</code></a>
+        <a href="../files/bridge.js.html#l3108"><code>bridge.js:3108</code></a>
         
         </p>
 
@@ -1099,7 +1180,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3023"><code>bridge.js:3023</code></a>
+        <a href="../files/bridge.js.html#l3059"><code>bridge.js:3059</code></a>
         
         </p>
 
@@ -1175,7 +1256,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l2945"><code>bridge.js:2945</code></a>
+        <a href="../files/bridge.js.html#l2985"><code>bridge.js:2985</code></a>
         
         </p>
 

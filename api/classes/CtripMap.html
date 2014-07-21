@@ -114,7 +114,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l2785"><code>bridge.js:2785</code></a>
+            定义在: <a href="../files/bridge.js.html#l2771"><code>bridge.js:2771</code></a>
         </div>
     
 
@@ -159,11 +159,19 @@
                     <tr><td>定位</td><td><a href="#method_app_locate">app_locate</a></td></tr>
                     
                     <tr><td>在地图上显示某个位置/导航</td><td><a href="#method_app_show_map">app_show_map</a></td></tr>
+                    
+                    <tr><td>在地图上显示多个位置/导航</td><td><a href="#method_app_show_map_with_POI_list">app_show_map_with_POI_list</a></td></tr>
                                   
                     </table>
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -235,7 +243,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2792"><code>bridge.js:2792</code></a>
+        <a href="../files/bridge.js.html#l2778"><code>bridge.js:2778</code></a>
         
         </p>
 
@@ -369,7 +377,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2837"><code>bridge.js:2837</code></a>
+        <a href="../files/bridge.js.html#l2823"><code>bridge.js:2823</code></a>
         
         </p>
 
@@ -468,6 +476,130 @@
 
             <div class="example-content">
                 <pre class="code prettyprint"><code>   CtripMap.app_show_map(31.3222323, 121.32232332, &quot;上海野生动物园&quot;, &quot;浦东新区陆家嘴1234号&quot;);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_show_map_with_POI_list" class="method item">
+    <h3 class="name"><code>app_show_map_with_POI_list</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>poiList</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l2869"><code>bridge.js:2869</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.8</p>
+        
+    </div>
+
+    <div class="description">
+        <p>在地图上显示多个POI位置点</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">poiList</code>
+                        <span class="type">Array</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>poi列表, list中为JSON对象，key为：latitude, longitude, title, subtitle</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   var poi0 = {};
+   poi0.latitude = 31.3222323; //must
+   poi0.longitude = 121.32232332;//must
+   poi0.title = &quot;上海野生动物园&quot;; //must
+   poi0.subtitle = &quot;浦东新区陆家嘴1234号&quot;;//optional
+
+   var poi1 = {};
+   poi1.latitude = 30.3222323; //must
+   poi1.longitude = 120.32232332;//must
+   poi1.title = &quot;上海野生动物园A&quot;; //must
+   poi1.subtitle = &quot;浦东新区陆家嘴1234号A&quot;;//optional
+
+
+   var poi2 = {};
+   poi2.latitude = 32.3222323; //must
+   poi2.longitude = 122.32232332;//must
+   poi2.title = &quot;上海野生动物园B&quot;; //must
+   poi2.subtitle = &quot;浦东新区陆家嘴1234号B&quot;;//optional
+
+   var poiList = new Array();
+   poiList[0] = poi0;
+   poiList[1] = poi1;
+   poiList[2] = poi2;
+
+   CtripMap.app_show_map(poiList);</code></pre>
 
             </div>
         </div>

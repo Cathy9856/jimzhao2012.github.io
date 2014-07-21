@@ -152,6 +152,35 @@
 
       CtripPipe.app_send_HTTP_pipe_request("http://www.baidu.com", "/s","GET",null,paramArr, false, "13222222");
     }
+
+    function showPOIList() {
+        var poi0 = {};
+        poi0.latitude = 31.3222323; //must
+        poi0.longitude = 121.32232332;//must
+        poi0.title = "上海野生动物园"; //must
+        poi0.subtitle = "浦东新区陆家嘴1234号";//optional
+
+        var poi1 = {};
+        poi1.latitude = 30.3222323; //must
+        poi1.longitude = 120.32232332;//must
+        poi1.title = "上海野生动物园A"; //must
+        poi1.subtitle = "浦东新区陆家嘴1234号A";//optional
+
+
+        var poi2 = {};
+        poi2.latitude = 32.3222323; //must
+        poi2.longitude = 122.32232332;//must
+        poi2.title = "上海野生动物园B"; //must
+        poi2.subtitle = "浦东新区陆家嘴1234号B";//optional
+        
+        var poiList = new Array();
+        poiList[0] = poi0;
+        poiList[1] = poi1;
+        poiList[2] = poi2;
+
+        CtripMap.app_show_map(poiList);
+    }
+
   </script>
 
 </head>
@@ -239,5 +268,9 @@
   <br/>
   <li class="li2"><a onclick="javascript:CtripUtil.app_open_other_app('com.tencent.mm', null, 'weixin://xxxx')">11. 打开其它应用_weixin</a></li>
   <br/>
+  <li class="li2"><a onclick="javascript:CtripBusiness.app_read_verification_code_from_sms()">14. 从短信读取验证码</a></li>
+  <br/>
 
+  <li class="li2"><a onclick="javascript:showPOIList">15. 显示多个POI点</a></li>
+  <br/>
 </body></html>

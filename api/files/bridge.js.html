@@ -187,7 +187,7 @@ var Internal = {
      * @since v5.2
      * @example
      
-     * var isLarger = isAppVersionGreatThan(5.2); &lt;br /&gt;
+     * var isLarger = isAppVersionGreatThan(&quot;5.2&quot;); &lt;br /&gt;
      * alert(isLarger); // depends
      */
     isAppVersionGreatThan:function(verStr) {
@@ -206,6 +206,25 @@ var Internal = {
         return false;
     },
 
+     /**
+     * @brief 判断API是否支持
+     * @description 判断API是否支持当前版本
+     * @param {String} verStr 版本号
+     * @method isSupportAPIWithVersion
+     * @return {Bool} 是否支持该API
+     * @since v5.2
+     * @example
+     
+     * var isSupport = isSupportAPIWithVersion(&quot;5.2&quot;); &lt;br /&gt;
+     * alert(isSupport); // depends
+     */
+    isSupportAPIWithVersion:function(verStr) {
+        if (!Internal.isAppVersionGreatThan(verStr)) {
+            Internal.appVersionNotSupportCallback(verStr);
+            return false;
+        }
+        return true;
+    }
    /**
      * @brief app版本过低回调
      * @description 回调H5页面，告知API开始支持的版本号及当前App的版本
@@ -350,8 +369,8 @@ function __bridge_callback(param) {
             var ua = navigator.userAgent;
             if (ua.indexOf(&quot;Youth_CtripWireless&quot;) &gt; 0) { 
                 Internal.isYouthApp = true;
-            }
-
+            } 
+            
             platform = jsonObj.param.platform;
             var typePf = typeof platform;
 
@@ -1043,9 +1062,7 @@ var CtripUtil = {
 
      */
     app_copy_string_to_clipboard:function(toCopyStr) {
-        var startVersion = &quot;5.3&quot;;
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.3&quot;)) {
             return;
         }
         var params = {};
@@ -1087,8 +1104,7 @@ var CtripUtil = {
      */
     app_read_copied_string_from_clipboard:function() {
         var startVersion = &quot;5.3&quot;;
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+         if (!Internal.isSupportAPIWithVersion(&quot;5.3&quot;)) {
             return;
         }
 
@@ -1175,9 +1191,7 @@ var CtripUtil = {
      app.callback(json_obj);
      */
     app_download_data:function(download_url, suffix, isIgnoreHttpsCertification) {
-        var startVersion = &quot;5.3&quot;;
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.3&quot;)) {
             return;
         }
 
@@ -1224,9 +1238,7 @@ var CtripUtil = {
      //3. iOS， winPhone OS都使用URL协议跳转;
      */
     app_open_other_app:function(packageId, jsonParam, url) {
-        var startVersion = &quot;5.3&quot;;
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.3&quot;)) {
             return;
         }
 
@@ -1340,9 +1352,7 @@ var CtripUtil = {
      
      */
     app_choose_photo:function(maxFileSize, maxPhotoCount, meta) {
-        var startVersion = &quot;5.7&quot;;
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.7&quot;)) {
             return;
         }
         var params = {};
@@ -1644,9 +1654,7 @@ var CtripUser = {
 
      */
     app_finished_register:function(userInfoJson) {
-        var startVersion = &quot;5.7&quot;;
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.7&quot;)) {
             return;
         }
 
@@ -1676,22 +1684,33 @@ var CtripUser = {
      * @since v5.8
      * @author jimzhao
      * @example 
-        
-        var userInfo = {};
-        userInfo.userID = &quot;xxxxxx&quot;;
-        userInfo.phone=&quot;13900000000&quot;;
-        userInfo.auth =&quot;asdzxc&quot;;
+                
         //.... json对象为服务器返回的用户信息对象
+        var userModel = {};
+        userModel.UserID = &quot;132220000&quot;;
+        userModel.UserName = &quot;U2SB&quot;;
+        userModel.Mobilephone = &quot;13899999999&quot;;
+        userModel.BindedMobilePhone = &quot;13899999999&quot;;
+        userModel.Telephone = &quot;021-9999999&quot;
+        userModel.Gender =  0;
+        userModel.Address = &quot;火星，上海，月球&quot;;
+        userModel.PostCode = &quot;210000&quot;;
+        userModel.Birthday = &quot;1900-08-01&quot;;
+        userModel.Email =  &quot;US2B@gmail.com&quot;;
+        userModel.Experience = 1344;
+        userModel.VipGrade = 32;//
+        userModel.VipGradeRemark = &quot;蓝宝石&quot;;
+        userModel.SignUpdate = &quot;1911-09-09&quot;;
+        userModel.Authentication = &quot;2cxesescvdsfew32w3sxcq23&quot;;
+        userModel.UserIconList = [];
+
         CtripUser.app_finished_login(userInfo)
 
      */
     app_finished_login:function(userInfoJson) {
-        var startVersion = &quot;5.8&quot;;
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.8&quot;)) {
             return;
         }
-
         if (!userInfoJson) {
             userInfoJson = &quot;&quot;;
         }
@@ -1744,9 +1763,7 @@ var CtripUser = {
           
       */
     app_base64_encode:function(toIncodeString) {
-        var startVersion = &quot;5.3&quot;;
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.3&quot;)) {
             return;
         }
 
@@ -1794,9 +1811,7 @@ var CtripUser = {
           
       */
     app_md5_hash:function(inString) {
-        var startVersion = &quot;5.5&quot;;
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.5&quot;)) {
             return;
         }
 
@@ -1846,12 +1861,9 @@ var CtripUser = {
           
       */
     app_ctrip_encrypt:function(inString, encType) {
-        var startVersion = &quot;5.5&quot;;
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.5&quot;)) {
             return;
         }
-
         if (!inString) {
             inString = &quot;&quot;;
         }
@@ -1907,9 +1919,7 @@ var CtripUser = {
         app.callback(json_obj);
       */
     app_check_pay_app_install_status:function() {
-        var startVersion = &quot;5.4&quot;;
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
             return;
         }
 
@@ -1943,12 +1953,10 @@ var CtripUser = {
 
       */
     app_open_pay_app_by_url:function(payAppName, payMeta, successRelativeURL, detailRelativeURL) {
-
-        var startVersion = &quot;5.4&quot;;
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
             return;
         }
+
         if (!payMeta) {
             payMeta = &quot;&quot;;
         }
@@ -2046,9 +2054,7 @@ var CtripPipe = {
 
      */
     app_send_HTTP_pipe_request:function(baseURL, path, method, header, parameters, isIgnoreHTTPSCertification, sequenceId) {
-        var startVersion = &quot;5.4&quot;;
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
             return;
         }
 
@@ -2107,11 +2113,10 @@ var CtripPipe = {
 
      */
     app_abort_HTTP_pipe_request:function(sequenceId) {
-        var startVersion = &quot;5.4&quot;;
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
             return;
         }
+
         if (!sequenceId) {
             sequenceId = &quot;&quot;;
         }
@@ -2177,9 +2182,7 @@ var CtripPipe = {
 
      */
     app_send_H5_pipe_request:function(serviceCode,header,data, sequenceId, pipeType) {
-        var startVersion = &quot;5.4&quot;;
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
             return;
         }
 
@@ -2366,9 +2369,7 @@ var CtripFile  = {
         app.callback(json_obj);
      */
     app_get_current_sandbox_name:function() {
-        var startVersion = &quot;5.4&quot;;
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
             return;
         }
 
@@ -2414,11 +2415,10 @@ var CtripFile  = {
         app.callback(json_obj);
      */
     app_write_text_to_file:function(text, fileName, relativeFilePath, isAppend) {
-        var startVersion = &quot;5.4&quot;;
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
             return;
         }
+
         if (!text) {
             text = &quot;&quot;;
         }
@@ -2471,9 +2471,7 @@ var CtripFile  = {
         app.callback(json_obj);
      */    
     app_delete_file:function(fileName, relativeFilePath) {
-        var startVersion = &quot;5.4&quot;;
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
             return;
         }
 
@@ -2525,9 +2523,7 @@ var CtripFile  = {
         app.callback(json_obj);
      */ 
     app_read_text_from_file:function(fileName, relativeFilePath) {
-        var startVersion = &quot;5.4&quot;;
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
             return;
         }
 
@@ -2580,9 +2576,7 @@ var CtripFile  = {
         app.callback(json_obj);
      */ 
     app_get_file_size:function(fileName, relativeFilePath) {
-        var startVersion = &quot;5.4&quot;;
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
             return;
         }
 
@@ -2634,9 +2628,7 @@ var CtripFile  = {
         app.callback(json_obj);
      */ 
     app_check_file_exist:function(fileName, relativeFilePath) {
-        var startVersion = &quot;5.4&quot;;
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
             return;
         }
 
@@ -2688,9 +2680,7 @@ var CtripFile  = {
         app.callback(json_obj);
      */ 
     app_make_dir:function(dirName,relativeDirPath) {
-        var startVersion = &quot;5.4&quot;;
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
             return;
         }
 
@@ -2837,11 +2827,9 @@ var CtripBar = {
      CtripBar.app_set_navbar_hidden(false);
      */
     app_set_navbar_hidden:function(isHidden) {
-        var startVersion = &quot;5.4&quot;;
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
             return;
-        }    
+        }  
 
         var params = {};
         params.isHidden = isHidden;
@@ -2871,11 +2859,9 @@ var CtripBar = {
      CtripBar.app_set_toolbar_hidden(false);
      */
     app_set_toolbar_hidden:function(isHidden) {
-        var startVersion = &quot;5.4&quot;;
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
             return;
-        }    
+        }
         var params = {};
         params.isHidden = isHidden;
         paramString = Internal.makeParamString(&quot;NavBar&quot;,&quot;setToolBarHidden&quot;,params,&quot;set_toolbar_hidden&quot;);
@@ -2962,9 +2948,7 @@ var CtripMap = {
      *
      */
     app_show_map:function(latitude, longitude, title, subtitle) {
-        var startVersion = &quot;5.5&quot;;
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.5&quot;)) {
             return;
         }
 
@@ -2988,6 +2972,64 @@ var CtripMap = {
         }
         else if (Internal.isAndroid) {
             window.Locate_a.showMap(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+     /**
+     * @description 在地图上显示多个POI位置点
+     * @brief 在地图上显示多个位置/导航
+     * @param {Array} poiList poi列表, list中为JSON对象，key为：latitude, longitude, title, subtitle
+     * @method app_show_map_with_POI_list
+     * @author jimzhao
+     * @since v5.8
+     * @example
+        
+        var poi0 = {};
+        poi0.latitude = 31.3222323; //must
+        poi0.longitude = 121.32232332;//must
+        poi0.title = &quot;上海野生动物园&quot;; //must
+        poi0.subtitle = &quot;浦东新区陆家嘴1234号&quot;;//optional
+
+        var poi1 = {};
+        poi1.latitude = 30.3222323; //must
+        poi1.longitude = 120.32232332;//must
+        poi1.title = &quot;上海野生动物园A&quot;; //must
+        poi1.subtitle = &quot;浦东新区陆家嘴1234号A&quot;;//optional
+
+
+        var poi2 = {};
+        poi2.latitude = 32.3222323; //must
+        poi2.longitude = 122.32232332;//must
+        poi2.title = &quot;上海野生动物园B&quot;; //must
+        poi2.subtitle = &quot;浦东新区陆家嘴1234号B&quot;;//optional
+        
+        var poiList = new Array();
+        poiList[0] = poi0;
+        poiList[1] = poi1;
+        poiList[2] = poi2;
+
+        CtripMap.app_show_map(poiList);
+     *
+     */
+    app_show_map_with_POI_list:function(poiList) {
+        if (!Internal.isSupportAPIWithVersion(&quot;5.8&quot;)) {
+            return;
+        }
+
+        var params = {};
+        params.poiList = poiList;
+
+        paramString = Internal.makeParamString(&quot;Locate&quot;, &quot;showMapWithPOIList&quot;,params, &#x27;show_map_with_POI_list&#x27;);
+
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Locate_a.showMapWithPOIList(paramString);
         }
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
@@ -3027,9 +3069,7 @@ var CtripBusiness = {
         app.callback(json_obj);
      */
     app_choose_invoice_title:function(selectedInvoiceTitle) {
-        var startVersion = &quot;5.6&quot;;
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.6&quot;)) {
             return;
         }
 
@@ -3076,9 +3116,7 @@ var CtripBusiness = {
         app.callback(json_obj);
      */
     app_show_voice_search:function(businessType) {
-        var startVersion = &quot;5.7&quot;;
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.7&quot;)) {
             return;
         }
 
@@ -3110,11 +3148,9 @@ var CtripBusiness = {
       CtripBusiness.app_open_adv_page(&quot;http://pages.ctrip.com/adv.html?title=标题xxx&quot;);
      */
     app_open_adv_page:function(advUrl) {
-        var startVersion = &quot;5.4&quot;;
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
             return;
-        }   
+        } 
 
         var params = {};
         params.advUrl = advUrl;
@@ -3277,9 +3313,7 @@ var CtripBusiness = {
 
      */
     app_call_system_share:function(imageRelativePath, text, title, linkUrl, isIOSSystemShare) {
-        var startVersion = &quot;5.3&quot;;
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.3&quot;)) {
             return;
         }
         var params = {};
@@ -3378,9 +3412,7 @@ var CtripBusiness = {
         app.callback(json_obj);
      */
     app_get_device_info:function() {
-        var startVersion = &quot;5.7&quot;;
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.7&quot;)) {
             return;
         }
 
@@ -3393,8 +3425,40 @@ var CtripBusiness = {
         } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
-    }
+    },
 
+
+     /**
+     * @description 获取短信中的验证码
+     * @brief 获取短信中的验证码
+     * @method app_read_verification_code_from_sms
+     * @since v5.8
+     * @author jimzhao
+     * @example 
+
+        CtripBusiness.app_read_verification_code_from_sms()
+        调用之后，返回数据
+
+        var json_obj = {
+            verificationCode = &quot;8890&quot;
+        };
+
+        app.callback(json_obj);
+     */
+    app_read_verification_code_from_sms:function() {
+        if (!Internal.isSupportAPIWithVersion(&quot;5.8&quot;)) {
+            return;
+        }
+
+        paramString = Internal.makeParamString(&quot;Business&quot;, &quot;readVerificationCodeFromSMS&quot;, null, &quot;read_verification_code_from_sms&quot;);
+        if (Internal.isIOS) {
+            Internal.appVersionNotSupportCallback(&quot;iPhone不支持SMS读取&quot;);
+        } else if (Internal.isAndroid) {
+            window.Business_a.readVerificationCodeFromSMS(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    }
 };
 
 /**
@@ -3418,9 +3482,7 @@ var CtripPage = {
 
      */
     app_set_page_name:function(pageName) {
-        var startVersion = &quot;5.6&quot;;
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.6&quot;)) {
             return;
         }
 

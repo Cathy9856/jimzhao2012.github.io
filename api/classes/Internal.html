@@ -170,6 +170,8 @@
                     
                     <tr><td>判断字符串是否为空</td><td><a href="#method_isNotEmptyString">isNotEmptyString</a></td></tr>
                     
+                    <tr><td>判断API是否支持</td><td><a href="#method_isSupportAPIWithVersion">isSupportAPIWithVersion</a></td></tr>
+                    
                     <tr><td>内部URL跳转</td><td><a href="#method_loadURL">loadURL</a></td></tr>
                     
                     <tr><td>内部组装URL参数</td><td><a href="#method_makeParamString">makeParamString</a></td></tr>
@@ -182,6 +184,12 @@
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -372,7 +380,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l223"><code>bridge.js:223</code></a>
+        <a href="../files/bridge.js.html#l242"><code>bridge.js:242</code></a>
         
         </p>
 
@@ -469,7 +477,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l273"><code>bridge.js:273</code></a>
+        <a href="../files/bridge.js.html#l292"><code>bridge.js:292</code></a>
         
         </p>
 
@@ -576,7 +584,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l97"><code>bridge.js:97</code></a>
+        <a href="../files/bridge.js.html#l116"><code>bridge.js:116</code></a>
         
         </p>
 
@@ -667,7 +675,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l211"><code>bridge.js:211</code></a>
+        <a href="../files/bridge.js.html#l230"><code>bridge.js:230</code></a>
         
         </p>
 
@@ -825,7 +833,7 @@
             <h4>举例:</h4>
 
             <div class="example-content">
-                <p>var isLarger = isAppVersionGreatThan(5.2); <br />
+                <p>var isLarger = isAppVersionGreatThan(&quot;5.2&quot;); <br />
 alert(isLarger); // depends</p>
 
             </div>
@@ -876,7 +884,7 @@ alert(isLarger); // depends</p>
             
         
         
-        <a href="../files/bridge.js.html#l125"><code>bridge.js:125</code></a>
+        <a href="../files/bridge.js.html#l144"><code>bridge.js:144</code></a>
         
         </p>
 
@@ -925,6 +933,125 @@ alert(isLarger); // depends</p>
 </div>
 
                 
+                    <div id="method_isSupportAPIWithVersion" class="method item">
+    <h3 class="name"><code>isSupportAPIWithVersion</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>verStr</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Bool</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l97"><code>bridge.js:97</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>判断API是否支持当前版本</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">verStr</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>版本号</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>返回:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Bool</span>:
+                    
+                    <p>是否支持该API</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p>var isSupport = isSupportAPIWithVersion(&quot;5.2&quot;); <br />
+alert(isSupport); // depends</p>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_loadURL" class="method item">
     <h3 class="name"><code>loadURL</code></h3>
 
@@ -967,7 +1094,7 @@ alert(isLarger); // depends</p>
             
         
         
-        <a href="../files/bridge.js.html#l141"><code>bridge.js:141</code></a>
+        <a href="../files/bridge.js.html#l160"><code>bridge.js:160</code></a>
         
         </p>
 
@@ -1080,7 +1207,7 @@ alert(isLarger); // depends</p>
             
         
         
-        <a href="../files/bridge.js.html#l162"><code>bridge.js:162</code></a>
+        <a href="../files/bridge.js.html#l181"><code>bridge.js:181</code></a>
         
         </p>
 
@@ -1235,7 +1362,7 @@ alert(isLarger); // depends</p>
             
         
         
-        <a href="../files/bridge.js.html#l190"><code>bridge.js:190</code></a>
+        <a href="../files/bridge.js.html#l209"><code>bridge.js:209</code></a>
         
         </p>
 
@@ -1340,7 +1467,7 @@ alert(isLarger); // depends</p>
             
         
         
-        <a href="../files/bridge.js.html#l111"><code>bridge.js:111</code></a>
+        <a href="../files/bridge.js.html#l130"><code>bridge.js:130</code></a>
         
         </p>
 

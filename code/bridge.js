@@ -75,7 +75,7 @@ var Internal = {
      * @since v5.2
      * @example
      
-     * var isLarger = isAppVersionGreatThan(5.2); <br />
+     * var isLarger = isAppVersionGreatThan("5.2"); <br />
      * alert(isLarger); // depends
      */
     isAppVersionGreatThan:function(verStr) {
@@ -94,6 +94,25 @@ var Internal = {
         return false;
     },
 
+     /**
+     * @brief 判断API是否支持
+     * @description 判断API是否支持当前版本
+     * @param {String} verStr 版本号
+     * @method isSupportAPIWithVersion
+     * @return {Bool} 是否支持该API
+     * @since v5.2
+     * @example
+     
+     * var isSupport = isSupportAPIWithVersion("5.2"); <br />
+     * alert(isSupport); // depends
+     */
+    isSupportAPIWithVersion:function(verStr) {
+        if (!Internal.isAppVersionGreatThan(verStr)) {
+            Internal.appVersionNotSupportCallback(verStr);
+            return false;
+        }
+        return true;
+    }
    /**
      * @brief app版本过低回调
      * @description 回调H5页面，告知API开始支持的版本号及当前App的版本
@@ -238,8 +257,8 @@ function __bridge_callback(param) {
             var ua = navigator.userAgent;
             if (ua.indexOf("Youth_CtripWireless") > 0) { 
                 Internal.isYouthApp = true;
-            }
-
+            } 
+            
             platform = jsonObj.param.platform;
             var typePf = typeof platform;
 
@@ -931,9 +950,7 @@ var CtripUtil = {
 
      */
     app_copy_string_to_clipboard:function(toCopyStr) {
-        var startVersion = "5.3";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.3")) {
             return;
         }
         var params = {};
@@ -975,8 +992,7 @@ var CtripUtil = {
      */
     app_read_copied_string_from_clipboard:function() {
         var startVersion = "5.3";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+         if (!Internal.isSupportAPIWithVersion("5.3")) {
             return;
         }
 
@@ -1063,9 +1079,7 @@ var CtripUtil = {
      app.callback(json_obj);
      */
     app_download_data:function(download_url, suffix, isIgnoreHttpsCertification) {
-        var startVersion = "5.3";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.3")) {
             return;
         }
 
@@ -1112,9 +1126,7 @@ var CtripUtil = {
      //3. iOS， winPhone OS都使用URL协议跳转;
      */
     app_open_other_app:function(packageId, jsonParam, url) {
-        var startVersion = "5.3";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.3")) {
             return;
         }
 
@@ -1228,9 +1240,7 @@ var CtripUtil = {
      
      */
     app_choose_photo:function(maxFileSize, maxPhotoCount, meta) {
-        var startVersion = "5.7";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.7")) {
             return;
         }
         var params = {};
@@ -1532,9 +1542,7 @@ var CtripUser = {
 
      */
     app_finished_register:function(userInfoJson) {
-        var startVersion = "5.7";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.7")) {
             return;
         }
 
@@ -1564,22 +1572,33 @@ var CtripUser = {
      * @since v5.8
      * @author jimzhao
      * @example 
-        
-        var userInfo = {};
-        userInfo.userID = "xxxxxx";
-        userInfo.phone="13900000000";
-        userInfo.auth ="asdzxc";
+                
         //.... json对象为服务器返回的用户信息对象
+        var userModel = {};
+        userModel.UserID = "132220000";
+        userModel.UserName = "U2SB";
+        userModel.Mobilephone = "13899999999";
+        userModel.BindedMobilePhone = "13899999999";
+        userModel.Telephone = "021-9999999"
+        userModel.Gender =  0;
+        userModel.Address = "火星，上海，月球";
+        userModel.PostCode = "210000";
+        userModel.Birthday = "1900-08-01";
+        userModel.Email =  "US2B@gmail.com";
+        userModel.Experience = 1344;
+        userModel.VipGrade = 32;//
+        userModel.VipGradeRemark = "蓝宝石";
+        userModel.SignUpdate = "1911-09-09";
+        userModel.Authentication = "2cxesescvdsfew32w3sxcq23";
+        userModel.UserIconList = [];
+
         CtripUser.app_finished_login(userInfo)
 
      */
     app_finished_login:function(userInfoJson) {
-        var startVersion = "5.8";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.8")) {
             return;
         }
-
         if (!userInfoJson) {
             userInfoJson = "";
         }
@@ -1632,9 +1651,7 @@ var CtripUser = {
           
       */
     app_base64_encode:function(toIncodeString) {
-        var startVersion = "5.3";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.3")) {
             return;
         }
 
@@ -1682,9 +1699,7 @@ var CtripUser = {
           
       */
     app_md5_hash:function(inString) {
-        var startVersion = "5.5";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.5")) {
             return;
         }
 
@@ -1734,12 +1749,9 @@ var CtripUser = {
           
       */
     app_ctrip_encrypt:function(inString, encType) {
-        var startVersion = "5.5";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.5")) {
             return;
         }
-
         if (!inString) {
             inString = "";
         }
@@ -1795,9 +1807,7 @@ var CtripUser = {
         app.callback(json_obj);
       */
     app_check_pay_app_install_status:function() {
-        var startVersion = "5.4";
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.4")) {
             return;
         }
 
@@ -1831,12 +1841,10 @@ var CtripUser = {
 
       */
     app_open_pay_app_by_url:function(payAppName, payMeta, successRelativeURL, detailRelativeURL) {
-
-        var startVersion = "5.4";
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.4")) {
             return;
         }
+
         if (!payMeta) {
             payMeta = "";
         }
@@ -1934,9 +1942,7 @@ var CtripPipe = {
 
      */
     app_send_HTTP_pipe_request:function(baseURL, path, method, header, parameters, isIgnoreHTTPSCertification, sequenceId) {
-        var startVersion = "5.4";
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.4")) {
             return;
         }
 
@@ -1995,11 +2001,10 @@ var CtripPipe = {
 
      */
     app_abort_HTTP_pipe_request:function(sequenceId) {
-        var startVersion = "5.4";
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.4")) {
             return;
         }
+
         if (!sequenceId) {
             sequenceId = "";
         }
@@ -2065,9 +2070,7 @@ var CtripPipe = {
 
      */
     app_send_H5_pipe_request:function(serviceCode,header,data, sequenceId, pipeType) {
-        var startVersion = "5.4";
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.4")) {
             return;
         }
 
@@ -2254,9 +2257,7 @@ var CtripFile  = {
         app.callback(json_obj);
      */
     app_get_current_sandbox_name:function() {
-        var startVersion = "5.4";
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.4")) {
             return;
         }
 
@@ -2302,11 +2303,10 @@ var CtripFile  = {
         app.callback(json_obj);
      */
     app_write_text_to_file:function(text, fileName, relativeFilePath, isAppend) {
-        var startVersion = "5.4";
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.4")) {
             return;
         }
+
         if (!text) {
             text = "";
         }
@@ -2359,9 +2359,7 @@ var CtripFile  = {
         app.callback(json_obj);
      */    
     app_delete_file:function(fileName, relativeFilePath) {
-        var startVersion = "5.4";
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.4")) {
             return;
         }
 
@@ -2413,9 +2411,7 @@ var CtripFile  = {
         app.callback(json_obj);
      */ 
     app_read_text_from_file:function(fileName, relativeFilePath) {
-        var startVersion = "5.4";
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.4")) {
             return;
         }
 
@@ -2468,9 +2464,7 @@ var CtripFile  = {
         app.callback(json_obj);
      */ 
     app_get_file_size:function(fileName, relativeFilePath) {
-        var startVersion = "5.4";
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.4")) {
             return;
         }
 
@@ -2522,9 +2516,7 @@ var CtripFile  = {
         app.callback(json_obj);
      */ 
     app_check_file_exist:function(fileName, relativeFilePath) {
-        var startVersion = "5.4";
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.4")) {
             return;
         }
 
@@ -2576,9 +2568,7 @@ var CtripFile  = {
         app.callback(json_obj);
      */ 
     app_make_dir:function(dirName,relativeDirPath) {
-        var startVersion = "5.4";
-        if(!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.4")) {
             return;
         }
 
@@ -2725,11 +2715,9 @@ var CtripBar = {
      CtripBar.app_set_navbar_hidden(false);
      */
     app_set_navbar_hidden:function(isHidden) {
-        var startVersion = "5.4";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.4")) {
             return;
-        }    
+        }  
 
         var params = {};
         params.isHidden = isHidden;
@@ -2759,11 +2747,9 @@ var CtripBar = {
      CtripBar.app_set_toolbar_hidden(false);
      */
     app_set_toolbar_hidden:function(isHidden) {
-        var startVersion = "5.4";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.4")) {
             return;
-        }    
+        }
         var params = {};
         params.isHidden = isHidden;
         paramString = Internal.makeParamString("NavBar","setToolBarHidden",params,"set_toolbar_hidden");
@@ -2850,9 +2836,7 @@ var CtripMap = {
      *
      */
     app_show_map:function(latitude, longitude, title, subtitle) {
-        var startVersion = "5.5";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.5")) {
             return;
         }
 
@@ -2876,6 +2860,64 @@ var CtripMap = {
         }
         else if (Internal.isAndroid) {
             window.Locate_a.showMap(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+     /**
+     * @description 在地图上显示多个POI位置点
+     * @brief 在地图上显示多个位置/导航
+     * @param {Array} poiList poi列表, list中为JSON对象，key为：latitude, longitude, title, subtitle
+     * @method app_show_map_with_POI_list
+     * @author jimzhao
+     * @since v5.8
+     * @example
+        
+        var poi0 = {};
+        poi0.latitude = 31.3222323; //must
+        poi0.longitude = 121.32232332;//must
+        poi0.title = "上海野生动物园"; //must
+        poi0.subtitle = "浦东新区陆家嘴1234号";//optional
+
+        var poi1 = {};
+        poi1.latitude = 30.3222323; //must
+        poi1.longitude = 120.32232332;//must
+        poi1.title = "上海野生动物园A"; //must
+        poi1.subtitle = "浦东新区陆家嘴1234号A";//optional
+
+
+        var poi2 = {};
+        poi2.latitude = 32.3222323; //must
+        poi2.longitude = 122.32232332;//must
+        poi2.title = "上海野生动物园B"; //must
+        poi2.subtitle = "浦东新区陆家嘴1234号B";//optional
+        
+        var poiList = new Array();
+        poiList[0] = poi0;
+        poiList[1] = poi1;
+        poiList[2] = poi2;
+
+        CtripMap.app_show_map(poiList);
+     *
+     */
+    app_show_map_with_POI_list:function(poiList) {
+        if (!Internal.isSupportAPIWithVersion("5.8")) {
+            return;
+        }
+
+        var params = {};
+        params.poiList = poiList;
+
+        paramString = Internal.makeParamString("Locate", "showMapWithPOIList",params, 'show_map_with_POI_list');
+
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Locate_a.showMapWithPOIList(paramString);
         }
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
@@ -2915,9 +2957,7 @@ var CtripBusiness = {
         app.callback(json_obj);
      */
     app_choose_invoice_title:function(selectedInvoiceTitle) {
-        var startVersion = "5.6";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.6")) {
             return;
         }
 
@@ -2964,9 +3004,7 @@ var CtripBusiness = {
         app.callback(json_obj);
      */
     app_show_voice_search:function(businessType) {
-        var startVersion = "5.7";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.7")) {
             return;
         }
 
@@ -2998,11 +3036,9 @@ var CtripBusiness = {
       CtripBusiness.app_open_adv_page("http://pages.ctrip.com/adv.html?title=标题xxx");
      */
     app_open_adv_page:function(advUrl) {
-        var startVersion = "5.4";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.4")) {
             return;
-        }   
+        } 
 
         var params = {};
         params.advUrl = advUrl;
@@ -3165,9 +3201,7 @@ var CtripBusiness = {
 
      */
     app_call_system_share:function(imageRelativePath, text, title, linkUrl, isIOSSystemShare) {
-        var startVersion = "5.3";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.3")) {
             return;
         }
         var params = {};
@@ -3266,9 +3300,7 @@ var CtripBusiness = {
         app.callback(json_obj);
      */
     app_get_device_info:function() {
-        var startVersion = "5.7";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.7")) {
             return;
         }
 
@@ -3281,8 +3313,40 @@ var CtripBusiness = {
         } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
-    }
+    },
 
+
+     /**
+     * @description 获取短信中的验证码
+     * @brief 获取短信中的验证码
+     * @method app_read_verification_code_from_sms
+     * @since v5.8
+     * @author jimzhao
+     * @example 
+
+        CtripBusiness.app_read_verification_code_from_sms()
+        调用之后，返回数据
+
+        var json_obj = {
+            verificationCode = "8890"
+        };
+
+        app.callback(json_obj);
+     */
+    app_read_verification_code_from_sms:function() {
+        if (!Internal.isSupportAPIWithVersion("5.8")) {
+            return;
+        }
+
+        paramString = Internal.makeParamString("Business", "readVerificationCodeFromSMS", null, "read_verification_code_from_sms");
+        if (Internal.isIOS) {
+            Internal.appVersionNotSupportCallback("iPhone不支持SMS读取");
+        } else if (Internal.isAndroid) {
+            window.Business_a.readVerificationCodeFromSMS(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    }
 };
 
 /**
@@ -3306,9 +3370,7 @@ var CtripPage = {
 
      */
     app_set_page_name:function(pageName) {
-        var startVersion = "5.6";
-        if (!Internal.isAppVersionGreatThan(startVersion)) {
-            Internal.appVersionNotSupportCallback(startVersion);
+        if (!Internal.isSupportAPIWithVersion("5.6")) {
             return;
         }
 
