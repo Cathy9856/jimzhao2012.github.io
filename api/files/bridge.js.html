@@ -352,11 +352,14 @@ var Internal = {
     },
 
     execAPI:function(supportVersion, modelName, actionName, params, callbackTagName) {
-        if ((supportVersion != null) &amp;&amp; Internal.isSupportAPIWithVersion(supportVersion)) {
+        console.write(&quot;start exec execAPIA&quot;);
+        if ((supportVersion != null) &amp;&amp; !Internal.isSupportAPIWithVersion(supportVersion)) {
             return;
         }
 
         paramString = Internal.makeParamString(modelName, actionName, params, callbackTagName);
+        console.write(&quot;start exec execAPIB:&quot; + paramString);
+
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -367,6 +370,8 @@ var Internal = {
                 var pluginCmd = window[pluginModelName];
                 if (pluginCmd != null) {
                     pluginCmd = pluginCmd[actionName];
+                    console.write(&quot;start exec execAPID:&quot; + pluginCmd);
+
                     if (pluginCmd != null) {
                         pluginCmd(paramString);                        
                     }
@@ -2857,7 +2862,7 @@ var CtripBar = {
      CtripBar.app_set_navbar_hidden(false);
      */
     app_set_navbar_hidden:function(isHidden) {
-
+        console.write(&quot;start exec app_set_navbar_hidden&quot;);
         var params = {};
         params.isHidden = isHidden;
         Internal.execAPI(&quot;5.4&quot;,&quot;NavBar&quot;, &quot;setNavBarHidden&quot;,params,&quot;set_navbar_hidden&quot;);
