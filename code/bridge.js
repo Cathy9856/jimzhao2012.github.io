@@ -2768,9 +2768,9 @@ var CtripBar = {
         console.log("start exec app_set_navbar_hidden");
         Internal.execAPI('5.8','CtripTool','app_is_in_ctrip_app','sssssssssss') 
 
-        var params = {};
-        params.isHidden = isHidden;
-        Internal.execAPI("5.4","NavBar", "setNavBarHidden",params,"set_navbar_hidden");
+        // var params = {};
+        // params.isHidden = isHidden;
+        // Internal.execAPI("5.4","NavBar", "setNavBarHidden",params,"set_navbar_hidden");
         // if (!Internal.isSupportAPIWithVersion("5.4")) {
         //     return;
         // }  
