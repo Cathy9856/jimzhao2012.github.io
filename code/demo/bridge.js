@@ -261,11 +261,14 @@ var Internal = {
                     console.log("start exec execAPID:" + pluginCmd);
 
                     if (pluginCmd != null) {
-                        pluginCmd(paramString);                        
+                        console.log("start exec execAPIE:" + pluginCmd);
+                        pluginCmd(paramString);      
+                        console.log("start exec execAPIF:" + pluginCmd);
+                  
                     }
                 }
             } catch(e) {
-
+                 console.log("start exec Error" + e);
             }
         }
         else if (Internal.isWinOS) {
