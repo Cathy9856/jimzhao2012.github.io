@@ -236,6 +236,9 @@ var Internal = {
      * @since v5.3
      */
     callWin8App:function(paramString) {
+        console.log("call win 8 app :"+paramString);
+        alert(paramString);
+        
         window.external.notify(paramString);
     },
 
@@ -254,12 +257,20 @@ var Internal = {
         }
         else if(Internal.isAndroid) {
             try {
+                    var a = "window";
+                    var b = "app";
+                    var c = "Internal";
+                    var d = "callWin8App";
+                    var e = "param string to alert lah";
+                    a[b][c][d](e);
+
+                    // window.app.CtripTool.app_is_in_ctrip_app();
                 var pluginModelName = modelName + "_a";
                 var pluginCmd = window[pluginModelName];
                 if (pluginCmd != null) {
                     pluginCmd = pluginCmd[actionName];
                     console.log("start exec execAPID:" + pluginCmd);
-
+                    // window.app.CtripTool.app_is_in_ctrip_app();
                     if (pluginCmd != null) {
                         console.log("start exec execAPIE:" + pluginCmd);
                         pluginCmd(paramString);      
@@ -3423,14 +3434,40 @@ var CtripBusiness = {
     },
 
 
-    // app_check_android_package_info:function() {
-    //     if (Internal.isSupportAPIWithVersion("5.8")) {
-    //         return;
-    //     }
+     /**
+     * @description 检查android渠道包信息
+     * @brief 检查android渠道包信息
+     * @method app_check_android_package_info
+     * @callback check_android_package_info
+     * @since v5.8
+     * @author jimzhao
+     * @example 
 
+        CtripBusiness.app_check_android_package_info();
+        //调用之后，app返回
+        var json_obj = {
+            isHideAppUpdate:true,
+            isHideAdv:true
+        };
 
+        app.callback(json_obj);
+     */
+    app_check_android_package_info:function() {
+        if (Internal.isSupportAPIWithVersion("5.8")) {
+            return;
+        }
 
-    // }
+        paramString = Internal.makeParamString("Business", "checkAndroidPackageInfo", params, "check_android_package_info");
+
+        if (Internal.isIOS) {
+            Internal.appVersionNotSupportCallback("iPhone不支持检查渠道版本");
+        } else if (Internal.isAndroid) {
+            window.Business_a.checkAndroidPackageInfo(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+
+    }
 };
 
 /**

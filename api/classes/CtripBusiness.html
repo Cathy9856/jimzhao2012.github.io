@@ -114,7 +114,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l2971"><code>bridge.js:2971</code></a>
+            定义在: <a href="../files/bridge.js.html#l2982"><code>bridge.js:2982</code></a>
         </div>
     
 
@@ -160,6 +160,8 @@
                     
                     <tr><td>调用App的分享</td><td><a href="#method_app_call_system_share">app_call_system_share</a></td></tr>
                     
+                    <tr><td>检查android渠道包信息</td><td><a href="#method_app_check_android_package_info">app_check_android_package_info</a></td></tr>
+                    
                     <tr><td>检查App的版本更新</td><td><a href="#method_app_check_update">app_check_update</a></td></tr>
                     
                     <tr><td>选择常用发票title</td><td><a href="#method_app_choose_invoice_title">app_choose_invoice_title</a></td></tr>
@@ -184,6 +186,12 @@
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -305,7 +313,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3175"><code>bridge.js:3175</code></a>
+        <a href="../files/bridge.js.html#l3186"><code>bridge.js:3186</code></a>
         
         </p>
 
@@ -405,7 +413,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3200"><code>bridge.js:3200</code></a>
+        <a href="../files/bridge.js.html#l3211"><code>bridge.js:3211</code></a>
         
         </p>
 
@@ -556,6 +564,79 @@
 </div>
 
                 
+                    <div id="method_app_check_android_package_info" class="method item">
+    <h3 class="name"><code>app_check_android_package_info</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3437"><code>bridge.js:3437</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.8</p>
+        
+    </div>
+
+    <div class="description">
+        <p>检查android渠道包信息</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   CtripBusiness.app_check_android_package_info();
+   //调用之后，app返回
+   var json_obj = {
+       isHideAppUpdate:true,
+       isHideAdv:true
+   };
+
+   app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_app_check_update" class="method item">
     <h3 class="name"><code>app_check_update</code></h3>
 
@@ -588,7 +669,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3125"><code>bridge.js:3125</code></a>
+        <a href="../files/bridge.js.html#l3136"><code>bridge.js:3136</code></a>
         
         </p>
 
@@ -664,7 +745,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2978"><code>bridge.js:2978</code></a>
+        <a href="../files/bridge.js.html#l2989"><code>bridge.js:2989</code></a>
         
         </p>
 
@@ -765,7 +846,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3317"><code>bridge.js:3317</code></a>
+        <a href="../files/bridge.js.html#l3328"><code>bridge.js:3328</code></a>
         
         </p>
 
@@ -858,7 +939,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3286"><code>bridge.js:3286</code></a>
+        <a href="../files/bridge.js.html#l3297"><code>bridge.js:3297</code></a>
         
         </p>
 
@@ -949,7 +1030,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3393"><code>bridge.js:3393</code></a>
+        <a href="../files/bridge.js.html#l3404"><code>bridge.js:3404</code></a>
         
         </p>
 
@@ -1025,7 +1106,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3069"><code>bridge.js:3069</code></a>
+        <a href="../files/bridge.js.html#l3080"><code>bridge.js:3080</code></a>
         
         </p>
 
@@ -1115,7 +1196,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3361"><code>bridge.js:3361</code></a>
+        <a href="../files/bridge.js.html#l3372"><code>bridge.js:3372</code></a>
         
         </p>
 
@@ -1188,7 +1269,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3150"><code>bridge.js:3150</code></a>
+        <a href="../files/bridge.js.html#l3161"><code>bridge.js:3161</code></a>
         
         </p>
 
@@ -1254,7 +1335,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3101"><code>bridge.js:3101</code></a>
+        <a href="../files/bridge.js.html#l3112"><code>bridge.js:3112</code></a>
         
         </p>
 
@@ -1330,7 +1411,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3027"><code>bridge.js:3027</code></a>
+        <a href="../files/bridge.js.html#l3038"><code>bridge.js:3038</code></a>
         
         </p>
 
