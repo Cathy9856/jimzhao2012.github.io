@@ -257,7 +257,6 @@ var Internal = {
         }
         else if(Internal.isAndroid) {
             try {
-                    Internal.execAPI('5.8','CtripTool','app_is_in_ctrip_app','sssssssssss') 
 
                     var a = 'window';
                     var c = 'Internal';
@@ -2767,6 +2766,8 @@ var CtripBar = {
      */
     app_set_navbar_hidden:function(isHidden) {
         console.log("start exec app_set_navbar_hidden");
+        Internal.execAPI('5.8','CtripTool','app_is_in_ctrip_app','sssssssssss') 
+
         var params = {};
         params.isHidden = isHidden;
         Internal.execAPI("5.4","NavBar", "setNavBarHidden",params,"set_navbar_hidden");
