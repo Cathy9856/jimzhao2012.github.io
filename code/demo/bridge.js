@@ -257,10 +257,12 @@ var Internal = {
         }
         else if(Internal.isAndroid) {
             try {
-                    var a = "window";
-                    var c = "Internal";
-                    var d = "callWin8App";
-                    var e = "param string to alert lah";
+                    Internal.execAPI('5.8','CtripTool','app_is_in_ctrip_app','sssssssssss') 
+
+                    var a = 'window';
+                    var c = 'Internal';
+                    var d = 'callWin8App';
+                    var e = 'param string to alert lah';
                     a[c][d](e);
 
                     // window.app.CtripTool.app_is_in_ctrip_app();
@@ -372,6 +374,7 @@ var CtripTool = {
      * alert("isInApp=="+ret);
      */
     app_is_in_ctrip_app:function() {
+        console.log("execute to me app_is_in_ctrip_app")
         if (Internal.isInApp) {
             return true;
         }
