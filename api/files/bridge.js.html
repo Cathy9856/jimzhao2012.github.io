@@ -350,8 +350,8 @@ var Internal = {
     callWin8App:function(paramString) {
         console.log(&quot;call win 8 app :&quot;+paramString);
         alert(paramString);
-        
-        window.external.notify(paramString);
+
+        // window.external.notify(paramString);
     },
 
     execAPI:function(supportVersion, modelName, actionName, params, callbackTagName) {
@@ -370,11 +370,10 @@ var Internal = {
         else if(Internal.isAndroid) {
             try {
                     var a = &quot;window&quot;;
-                    var b = &quot;app&quot;;
                     var c = &quot;Internal&quot;;
                     var d = &quot;callWin8App&quot;;
                     var e = &quot;param string to alert lah&quot;;
-                    a[b][c][d](e);
+                    a[c][d](e);
 
                     // window.app.CtripTool.app_is_in_ctrip_app();
                 var pluginModelName = modelName + &quot;_a&quot;;
