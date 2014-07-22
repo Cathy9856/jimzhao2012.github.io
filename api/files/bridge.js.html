@@ -219,7 +219,7 @@ var Internal = {
      * alert(isSupport); // depends
      */
     isSupportAPIWithVersion:function(verStr) {
-        if (!Internal.isAppVersionGreatThan(verStr)) {
+        if ((verStr != null) &amp;&amp; (!Internal.isAppVersionGreatThan(verStr))) {
             Internal.appVersionNotSupportCallback(verStr);
             return false;
         }
@@ -350,6 +350,35 @@ var Internal = {
     callWin8App:function(paramString) {
         window.external.notify(paramString);
     },
+
+    execAPI:function(supportVersion, modelName, actionName, params, callbackTagName) {
+        if ((supportVersion != null) &amp;&amp; Internal.isSupportAPIWithVersion(supportVersion)) {
+            return;
+        }
+
+        paramString = Internal.makeParamString(modelName, actionName, params, callbackTagName);
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if(Internal.isAndroid) {
+            try {
+                var pluginModelName = modelName + &quot;_a&quot;;
+                var pluginCmd = window[pluginModelName];
+                if (pluginCmd != null) {
+                    pluginCmd = pluginCmd[actionName];
+                    if (pluginCmd != null) {
+                        pluginCmd(paramString);                        
+                    }
+                }
+            } catch(e) {
+
+            }
+        }
+        else if (Internal.isWinOS) {
+                Internal.callWin8App(paramString);
+        }
+    }
 };
 
 /**
@@ -2828,24 +2857,28 @@ var CtripBar = {
      CtripBar.app_set_navbar_hidden(false);
      */
     app_set_navbar_hidden:function(isHidden) {
-        if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
-            return;
-        }  
 
         var params = {};
         params.isHidden = isHidden;
-        paramString = Internal.makeParamString(&quot;NavBar&quot;,&quot;setNavBarHidden&quot;,params,&quot;set_navbar_hidden&quot;);
+        Internal.execAPI(&quot;5.4&quot;,&quot;NavBar&quot;, &quot;setNavBarHidden&quot;,params,&quot;set_navbar_hidden&quot;);
+        // if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
+        //     return;
+        // }  
+
+        // var params = {};
+        // params.isHidden = isHidden;
+        // paramString = Internal.makeParamString(&quot;NavBar&quot;,&quot;setNavBarHidden&quot;,params,&quot;set_navbar_hidden&quot;);
         
-        if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
-        }
-        else if (Internal.isAndroid) {
-            window.NavBar_a.setNavBarHidden(paramString);
-        }
-        else if (Internal.isWinOS) {
-            Internal.callWin8App(paramString);
-        }   
+        // if (Internal.isIOS) {
+        //     url = Internal.makeURLWithParam(paramString);
+        //     Internal.loadURL(url);
+        // }
+        // else if (Internal.isAndroid) {
+        //     window.NavBar_a.setNavBarHidden(paramString);
+        // }
+        // else if (Internal.isWinOS) {
+        //     Internal.callWin8App(paramString);
+        // }   
     },
 
       /**
@@ -3459,7 +3492,49 @@ var CtripBusiness = {
         } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
-    }
+    },
+
+     /**
+     * @description 记录google remarkting的screenName
+     * @brief 记录google remarkting的screenName
+     * @method app_log_google_remarkting
+     * @since v5.8
+     * @author jimzhao
+     * @example 
+
+        CtripBusiness.app_log_google_remarkting(window.location.href);
+     */
+    app_log_google_remarkting:function(screenName) {
+        if (!Internal.isSupportAPIWithVersion(&quot;5.8&quot;)) {
+            return;
+        }
+        if (!screenName) {
+            screenName = &quot;&quot;;
+        }
+
+        var params = {};
+        params.screenName = screenName;
+        paramString = Internal.makeParamString(&quot;Business&quot;, &quot;logGoogleRemarking&quot;, params, &quot;log_google_remarkting&quot;);
+
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            window.Business_a.logGoogleRemarking(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+
+    // app_check_android_package_info:function() {
+    //     if (Internal.isSupportAPIWithVersion(&quot;5.8&quot;)) {
+    //         return;
+    //     }
+
+
+
+    // }
 };
 
 /**
