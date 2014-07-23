@@ -356,6 +356,7 @@ var Internal = {
         if ((supportVersion != null) &amp;&amp; !Internal.isSupportAPIWithVersion(supportVersion)) {
             return;
         }
+//        Internal.execAPI(&quot;5.4&quot;,&quot;NavBar&quot;, &quot;setNavBarHidden&quot;,params,&quot;set_navbar_hidden&quot;);
 
         paramString = Internal.makeParamString(modelName, actionName, params, callbackTagName);
         console.log(&quot;start exec execAPIB:&quot; + paramString);
@@ -371,10 +372,11 @@ var Internal = {
                 if (pluginCmd != null) {
                     pluginCmd = pluginCmd[actionName];
                     console.log(&quot;start exec execAPID:&quot; + pluginCmd);
-                
+
                     if (pluginCmd != null) {
                         console.log(&quot;start exec execAPIE:&quot; + pluginCmd);
-                        pluginCmd(paramString);      
+                        //pluginCmd=window.Util_a.setNavBarHidden
+                        eval(&quot;pluginCmd(&quot;+paramString+&quot;)&quot;);      
                         console.log(&quot;start exec execAPIF:&quot; + pluginCmd);
                   
                     }
