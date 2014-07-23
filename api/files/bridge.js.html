@@ -349,48 +349,48 @@ var Internal = {
      */
     callWin8App:function(paramString) {
         window.external.notify(paramString);
-    },
-
-    execAPI:function(supportVersion, modelName, actionName, params, callbackTagName) {
-        console.log(&quot;start exec execAPIA&quot;);
-        if ((supportVersion != null) &amp;&amp; !Internal.isSupportAPIWithVersion(supportVersion)) {
-            return;
-        }
-//        Internal.execAPI(&quot;5.4&quot;,&quot;NavBar&quot;, &quot;setNavBarHidden&quot;,params,&quot;set_navbar_hidden&quot;);
-
-        paramString = Internal.makeParamString(modelName, actionName, params, callbackTagName);
-        console.log(&quot;start exec execAPIB:&quot; + paramString);
-
-        if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
-        }
-        else if(Internal.isAndroid) {
-            try {
-                var pluginModelName = modelName + &quot;_a&quot;;
-                var pluginCmd = window[pluginModelName];
-                if (pluginCmd != null) {
-                    pluginCmd = pluginCmd[actionName];
-                    console.log(&quot;start exec execAPID:&quot; + pluginCmd);
-
-                    if (pluginCmd != null) {
-                        console.log(&quot;start exec execAPIE:&quot; + pluginCmd);
-                        //pluginCmd=window.Util_a.setNavBarHidden
-                        vard = pluginCmd+&quot;(&quot;+paramString+&quot;)&quot;;
-                        console.log(&quot;start exec vard:&quot; + vard);
-                        eval(vard);      
-                        console.log(&quot;start exec execAPIF:&quot; + pluginCmd);
-                  
-                    }
-                }
-            } catch(e) {
-                 console.log(&quot;start exec ErrorG:&quot; + e);
-            }
-        }
-        else if (Internal.isWinOS) {
-                Internal.callWin8App(paramString);
-        }
     }
+
+//     execAPI:function(supportVersion, modelName, actionName, params, callbackTagName) {
+//         console.log(&quot;start exec execAPIA&quot;);
+//         if ((supportVersion != null) &amp;&amp; !Internal.isSupportAPIWithVersion(supportVersion)) {
+//             return;
+//         }
+// //        Internal.execAPI(&quot;5.4&quot;,&quot;NavBar&quot;, &quot;setNavBarHidden&quot;,params,&quot;set_navbar_hidden&quot;);
+
+//         paramString = Internal.makeParamString(modelName, actionName, params, callbackTagName);
+//         console.log(&quot;start exec execAPIB:&quot; + paramString);
+
+//         if (Internal.isIOS) {
+//             url = Internal.makeURLWithParam(paramString);
+//             Internal.loadURL(url);
+//         }
+//         else if(Internal.isAndroid) {
+//             try {
+//                 var pluginModelName = modelName + &quot;_a&quot;;
+//                 var pluginCmd = window[pluginModelName];
+//                 if (pluginCmd != null) {
+//                     pluginCmd = pluginCmd[actionName];
+//                     console.log(&quot;start exec execAPID:&quot; + pluginCmd);
+
+//                     if (pluginCmd != null) {
+//                         console.log(&quot;start exec execAPIE:&quot; + pluginCmd);
+//                         //pluginCmd=window.Util_a.setNavBarHidden
+//                         vard = pluginCmd(paramString);
+//                         console.log(&quot;start exec vard:&quot; + vard);
+//                         eval(vard);      
+//                         console.log(&quot;start exec execAPIF:&quot; + pluginCmd);
+                  
+//                     }
+//                 }
+//             } catch(e) {
+//                  console.log(&quot;start exec ErrorG:&quot; + e);
+//             }
+//         }
+//         else if (Internal.isWinOS) {
+//                 Internal.callWin8App(paramString);
+//         }
+//     }
 };
 
 /**
@@ -2869,28 +2869,27 @@ var CtripBar = {
      CtripBar.app_set_navbar_hidden(false);
      */
     app_set_navbar_hidden:function(isHidden) {
-        console.log(&quot;start exec app_set_navbar_hidden&quot;);
         var params = {};
         params.isHidden = isHidden;
-        Internal.execAPI(&quot;5.4&quot;,&quot;NavBar&quot;, &quot;setNavBarHidden&quot;,params,&quot;set_navbar_hidden&quot;);
-        // if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
-        //     return;
-        // }  
+        // Internal.execAPI(&quot;5.4&quot;,&quot;NavBar&quot;, &quot;setNavBarHidden&quot;,params,&quot;set_navbar_hidden&quot;);
+        if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
+            return;
+        }  
 
-        // var params = {};
-        // params.isHidden = isHidden;
-        // paramString = Internal.makeParamString(&quot;NavBar&quot;,&quot;setNavBarHidden&quot;,params,&quot;set_navbar_hidden&quot;);
+        var params = {};
+        params.isHidden = isHidden;
+        paramString = Internal.makeParamString(&quot;NavBar&quot;,&quot;setNavBarHidden&quot;,params,&quot;set_navbar_hidden&quot;);
         
-        // if (Internal.isIOS) {
-        //     url = Internal.makeURLWithParam(paramString);
-        //     Internal.loadURL(url);
-        // }
-        // else if (Internal.isAndroid) {
-        //     window.NavBar_a.setNavBarHidden(paramString);
-        // }
-        // else if (Internal.isWinOS) {
-        //     Internal.callWin8App(paramString);
-        // }   
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.NavBar_a.setNavBarHidden(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }   
     },
 
       /**
