@@ -236,10 +236,7 @@ var Internal = {
      * @since v5.3
      */
     callWin8App:function(paramString) {
-        console.log("call win 8 app :"+paramString);
-        alert(paramString);
-
-        // window.external.notify(paramString);
+        window.external.notify(paramString);
     },
 
     execAPI:function(supportVersion, modelName, actionName, params, callbackTagName) {
@@ -257,20 +254,12 @@ var Internal = {
         }
         else if(Internal.isAndroid) {
             try {
-
-                    var a = 'window';
-                    var c = 'Internal';
-                    var d = 'callWin8App';
-                    var e = 'param string to alert lah';
-                    a[c][d](e);
-
-                    // window.app.CtripTool.app_is_in_ctrip_app();
                 var pluginModelName = modelName + "_a";
                 var pluginCmd = window[pluginModelName];
                 if (pluginCmd != null) {
                     pluginCmd = pluginCmd[actionName];
                     console.log("start exec execAPID:" + pluginCmd);
-                    // window.app.CtripTool.app_is_in_ctrip_app();
+                
                     if (pluginCmd != null) {
                         console.log("start exec execAPIE:" + pluginCmd);
                         pluginCmd(paramString);      
@@ -373,7 +362,6 @@ var CtripTool = {
      * alert("isInApp=="+ret);
      */
     app_is_in_ctrip_app:function() {
-        console.log("execute to me app_is_in_ctrip_app")
         if (Internal.isInApp) {
             return true;
         }
@@ -2766,11 +2754,9 @@ var CtripBar = {
      */
     app_set_navbar_hidden:function(isHidden) {
         console.log("start exec app_set_navbar_hidden");
-        Internal.execAPI('5.8','CtripTool','app_is_in_ctrip_app','sssssssssss') 
-
-        // var params = {};
-        // params.isHidden = isHidden;
-        // Internal.execAPI("5.4","NavBar", "setNavBarHidden",params,"set_navbar_hidden");
+        var params = {};
+        params.isHidden = isHidden;
+        Internal.execAPI("5.4","NavBar", "setNavBarHidden",params,"set_navbar_hidden");
         // if (!Internal.isSupportAPIWithVersion("5.4")) {
         //     return;
         // }  

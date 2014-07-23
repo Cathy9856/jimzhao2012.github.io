@@ -348,10 +348,7 @@ var Internal = {
      * @since v5.3
      */
     callWin8App:function(paramString) {
-        console.log(&quot;call win 8 app :&quot;+paramString);
-        alert(paramString);
-
-        // window.external.notify(paramString);
+        window.external.notify(paramString);
     },
 
     execAPI:function(supportVersion, modelName, actionName, params, callbackTagName) {
@@ -369,20 +366,12 @@ var Internal = {
         }
         else if(Internal.isAndroid) {
             try {
-
-                    var a = &#x27;window&#x27;;
-                    var c = &#x27;Internal&#x27;;
-                    var d = &#x27;callWin8App&#x27;;
-                    var e = &#x27;param string to alert lah&#x27;;
-                    a[c][d](e);
-
-                    // window.app.CtripTool.app_is_in_ctrip_app();
                 var pluginModelName = modelName + &quot;_a&quot;;
                 var pluginCmd = window[pluginModelName];
                 if (pluginCmd != null) {
                     pluginCmd = pluginCmd[actionName];
                     console.log(&quot;start exec execAPID:&quot; + pluginCmd);
-                    // window.app.CtripTool.app_is_in_ctrip_app();
+                
                     if (pluginCmd != null) {
                         console.log(&quot;start exec execAPIE:&quot; + pluginCmd);
                         pluginCmd(paramString);      
@@ -485,7 +474,6 @@ var CtripTool = {
      * alert(&quot;isInApp==&quot;+ret);
      */
     app_is_in_ctrip_app:function() {
-        console.log(&quot;execute to me app_is_in_ctrip_app&quot;)
         if (Internal.isInApp) {
             return true;
         }
@@ -2878,11 +2866,9 @@ var CtripBar = {
      */
     app_set_navbar_hidden:function(isHidden) {
         console.log(&quot;start exec app_set_navbar_hidden&quot;);
-        Internal.execAPI(&#x27;5.8&#x27;,&#x27;CtripTool&#x27;,&#x27;app_is_in_ctrip_app&#x27;,&#x27;sssssssssss&#x27;) 
-
-        // var params = {};
-        // params.isHidden = isHidden;
-        // Internal.execAPI(&quot;5.4&quot;,&quot;NavBar&quot;, &quot;setNavBarHidden&quot;,params,&quot;set_navbar_hidden&quot;);
+        var params = {};
+        params.isHidden = isHidden;
+        Internal.execAPI(&quot;5.4&quot;,&quot;NavBar&quot;, &quot;setNavBarHidden&quot;,params,&quot;set_navbar_hidden&quot;);
         // if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
         //     return;
         // }  
