@@ -382,7 +382,7 @@ var Internal = {
                     }
                 }
             } catch(e) {
-                 console.log(&quot;start exec Error&quot; + e);
+                 console.log(&quot;start exec ErrorG:&quot; + e);
             }
         }
         else if (Internal.isWinOS) {
@@ -3549,8 +3549,8 @@ var CtripBusiness = {
         CtripBusiness.app_check_android_package_info();
         //调用之后，app返回
         var json_obj = {
-            isHideAppUpdate:true,
-            isHideAdv:true
+            isHideAdv:true,
+            isHideAppRecommend:true
         };
 
         app.callback(json_obj);

@@ -2043,7 +2043,7 @@
             "since": "v5.8",
             "author": "jimzhao",
             "example": [
-                " \n\n       CtripBusiness.app_check_android_package_info();\n       //调用之后，app返回\n       var json_obj = {\n           isHideAppUpdate:true,\n           isHideAdv:true\n       };\n\n       app.callback(json_obj);"
+                " \n\n       CtripBusiness.app_check_android_package_info();\n       //调用之后，app返回\n       var json_obj = {\n           isHideAdv:true,\n           isHideAppRecommend:true\n       };\n\n       app.callback(json_obj);"
             ],
             "class": "CtripBusiness"
         },
