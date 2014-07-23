@@ -264,7 +264,9 @@ var Internal = {
                     if (pluginCmd != null) {
                         console.log("start exec execAPIE:" + pluginCmd);
                         //pluginCmd=window.Util_a.setNavBarHidden
-                        eval(pluginCmd+"("+paramString+")");      
+                        vard = pluginCmd+"("+paramString+")";
+                        console.log("start exec vard:" + vard);
+                        eval(vard);      
                         console.log("start exec execAPIF:" + pluginCmd);
                   
                     }
