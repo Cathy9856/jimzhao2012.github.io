@@ -641,6 +641,7 @@ var CtripUtil = {
      2.开启新的H5页面,title生效;
      3.使用系统浏览器打开;
      4.开启本地新的H5页面，title生效，此时URL为相对路径；5.6版本加入
+     5.当前页面打开相对路径；5.8版本加入，但是所有版本都支持，5.8之前版本，内部自动调用app_cross_package_href
      * @param {String} title 当targetMode＝2时候，新打开的H5页面的title
      * @param {String} pageName 当targetMode＝0、2、4时候，本页面，或者新打开的H5页面，此时pageName有效，pageName当作H5页面唯一标识，可用于刷新页面；5.6版本加入
      * @method app_open_url
@@ -656,6 +657,8 @@ var CtripUtil = {
      CtripUtil.app_open_url("http://m.ctrip.com", 2, "Ctrip H5首页", "ctrip_home_page_id");
      //开启新的H5页面，进入webapp/car/index.html
      CtripUtil.app_open_url("car/index.html", 4, "用车首页", "car_index_page_id");
+     //当前H5页面，跨包跳转进入webapp/car/index.html
+     CtripUtil.app_open_url("car/index.html", 5, "用车首页", null);
 
      */
      app_open_url:function(openUrl, targetMode, title, pageName) {
@@ -677,15 +680,28 @@ var CtripUtil = {
         paramString = Internal.makeParamString("Util", "openUrl", params, "open_url");
         
         if (Internal.appVersion) { //有AppVersion，为5.3及之后版本，或者5.2本地H5页面
-            if (Internal.isIOS) {
-                url = Internal.makeURLWithParam(paramString);
-                Internal.loadURL(url);
-            }
-            else if (Internal.isAndroid) {
-                window.Util_a.openUrl(paramString);
-            }
-            else if (Internal.isWinOS) {
-                Internal.callWin8App(paramString);
+            if (targetMode == 5) { //targetMode=5,5.8新增,可以兼容到以前版本
+                if (Internal.isAppVersionGreatThan("5.8")) {
+                    firstSplashIndex = openUrl.indexOf("/");
+                    if (firstSplashIndex > 0) {
+                        packageName = openUrl.substr(0, firstSplashIndex);
+                        pageParam = openUrl.substr(openUrl)
+                        CtripUtil.app_cross_package_href(packageName, pageParam);
+                    } else {
+                        Internal.appVersionNotSupportCallback("传入URL有错误，eg. car/index.html#xxooee");
+                    }
+                } 
+            } else {
+                if (Internal.isIOS) {
+                    url = Internal.makeURLWithParam(paramString);
+                    Internal.loadURL(url);
+                }
+                else if (Internal.isAndroid) {
+                    window.Util_a.openUrl(paramString);
+                }
+                else if (Internal.isWinOS) {
+                    Internal.callWin8App(paramString);
+                }
             }
         } 
         else
@@ -3427,10 +3443,10 @@ var CtripBusiness = {
 
 
      /**
-     * @description 检查android渠道包信息
-     * @brief 检查android渠道包信息
-     * @method app_check_android_package_info
-     * @callback check_android_package_info
+     * @description 检查渠道包信息
+     * @brief 检查渠道包信息
+     * @method app_check_app_package_info
+     * @callback check_app_package_info
      * @since v5.8
      * @author jimzhao
      * @example 
@@ -3444,15 +3460,16 @@ var CtripBusiness = {
 
         app.callback(json_obj);
      */
-    app_check_android_package_info:function() {
+    app_check_app_package_info:function() {
         if (Internal.isSupportAPIWithVersion("5.8")) {
             return;
         }
 
-        paramString = Internal.makeParamString("Business", "checkAndroidPackageInfo", params, "check_android_package_info");
+        paramString = Internal.makeParamString("Business", "checkAppPackageInfo", params, "check_app_package_info");
 
         if (Internal.isIOS) {
-            Internal.appVersionNotSupportCallback("iPhone不支持检查渠道版本");
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.Business_a.checkAndroidPackageInfo(paramString);
         } else if (Internal.isWinOS) {
