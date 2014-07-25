@@ -2696,8 +2696,8 @@ var CtripBar = {
                 {
                     "tagname": "cityChoose",  //点击标题回调H5的tagname
                     "value":"上海",  //标题文字
-                    "a_icon":"icon_arrowx", //标题文字后面的按钮图片名，for android
-                    "i_icon":"icon_arrowx.png", //标题文字后面的按钮图片名，for iOS
+                    "a_icon":"icon_arrowx", //标题文字后面的按钮图片名，for android @deprecated
+                    "i_icon":"icon_arrowx.png", //标题文字后面的按钮图片名，for iOS @deprecated
                     "imagePath":"car/res/logo.png", //标题文字后面的按钮图片名，图片路径，相对于业务模块的路径，比如car/res/logo.png， v5.8开始支持
                     "pressedImagePath":"car/res/logo.png"  //标题文字后面的按钮图片名，选中状态图片路径，相对于业务模块的路径，比如car/res/logo.png， v5.8开始支持
                 }
@@ -2717,9 +2717,10 @@ var CtripBar = {
             特殊tagname定义及说明：
             a. tagname=home, 返回app首页，图片，事件 都不需要H5处理；
             b. tagname=call, 拨打呼叫中心，图片，事件 都不需要H5处理；
-            c. tagname=share, 分享，图片-native预置，事件将会交给H5处理；v5.8开始支持
-            d. tagname=favorite, 收藏，图片-native预置, 事件交给H5处理；v5.8开始支持
-            e. tagname=favorited, 已经收藏，图片-native预置，事件交给H5处理；v5.8开始支持
+            c. tagname=phone, 拨打电话，图片-native预置，事件交由H5处理；v5.8开始支持；
+            d. tagname=share, 分享，图片-native预置，事件将会交给H5处理；v5.8开始支持；
+            e. tagname=favorite, 收藏，图片-native预置, 事件交给H5处理；v5.8开始支持；
+            f. tagname=favorited, 已经收藏，图片-native预置，事件交给H5处理；v5.8开始支持；
             g. 其他tagname，图片有H5提供，事件H5处理；
 
         示例：
