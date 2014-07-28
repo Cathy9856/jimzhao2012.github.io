@@ -182,7 +182,53 @@
         CtripMap.app_show_map_with_POI_list(poiList);
     }
 
+    function doFinishedLogin() {
+        var userInfo = {
+            "uid": "wwwwww",
+            "uname": "野原新之助",
+            "phone": "15847851253",
+            "bindedphone": "15424785879",
+            "tel": "",
+            "gender": 1,
+            "addr": "",
+            "post": "",
+            "birth": "2007-08-16 00:00:00",
+            "email": "a15456@qq.com",
+            "experience": 167374,
+            "vipgrade": 0,
+            "vipremark": "普通会员",
+            "signdate": "2000-01-29 00:00:00",
+            "voipid": "111000000000178",
+            "voidpwd": "wwwwww",
+            "callnum": "739701",
+            "isopenvoip": false,
+            "auth": "0D326655ECA3C68102633E00ECBEB2F5F0D0E6BADB7BD790AB106E526EBCF598",
+            "icons": [
+                {
+                    "type": 4,
+                    "value": "http://uploadimg.uat.qa.nt.ctripcorp.com/upload/targethttp://ws.crm.fws.qa.nt.ctripcorp.com/customer-user-commoninfo-service/metadata"
+                },
+                {
+                    "type": 3,
+                    "value": "http://uploadimg.uat.qa.nt.ctripcorp.com/upload/targethttp://ws.crm.fws.qa.nt.ctripcorp.com/customer-user-commoninfo-service/metadata"
+                },
+                {
+                    "type": 2,
+                    "value": "http://uploadimg.uat.qa.nt.ctripcorp.com/upload/targethttp://ws.crm.fws.qa.nt.ctripcorp.com/customer-user-commoninfo-service/metadata"
+                },
+                {
+                    "type": 1,
+                    "value": "http://uploadimg.uat.qa.nt.ctripcorp.com/upload/targethttp://ws.crm.fws.qa.nt.ctripcorp.com/customer-user-commoninfo-service/metadata"
+                }
+            ]
+        }
+
+        CtripUser.app_finished_login(userInfo);
+    }
+
   </script>
+
+
 
 </head>
 <body>
@@ -273,5 +319,7 @@
   <br/>
 
   <li class="li2"><a onclick="javascript:showPOIList()">15. 显示多个POI点</a></li>
+  <br/>
+  <li class="li2"><a onclick="javascript:doFinishedLogin()">16. 写用户登陆态</a></li>
   <br/>
 </body></html>
