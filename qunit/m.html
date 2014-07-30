@@ -48,6 +48,9 @@
           else if (tagname == "web_view_finished_load") {
             CtripUtil.app_init_member_H5_info();
           }
+          else if (tagname == "finished_login") {
+            CtripUtil.app_open_url("ctrip://wireless/myctrip/", 1);
+          }
         }
     };
 
