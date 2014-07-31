@@ -192,7 +192,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 3483,
+            "line": 3485,
             "description": "页面跳转，导航，刷新相关API",
             "brief": "页面跳转，导航，刷新相关API"
         }
@@ -2008,9 +2008,10 @@
             "file": "bridge.js",
             "line": 3381,
             "description": "获取短信中的验证码",
-            "brief": "获取短信中的验证码",
+            "brief": "获取短信中的验证码,iPhone不能读取，直接callback",
             "itemtype": "method",
             "name": "app_read_verification_code_from_sms",
+            "callback": "read_verification_code_from_sms",
             "since": "v5.8",
             "author": "jimzhao",
             "example": [
@@ -2020,7 +2021,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3413,
+            "line": 3415,
             "description": "记录google remarkting的screenName",
             "brief": "记录google remarkting的screenName",
             "itemtype": "method",
@@ -2034,7 +2035,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3446,
+            "line": 3448,
             "description": "检查渠道包信息",
             "brief": "检查渠道包信息",
             "itemtype": "method",
@@ -2049,7 +2050,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3490,
+            "line": 3492,
             "description": "设置当前页面名，可用于页面导航，刷新",
             "brief": "设置当前页面名，可用于页面导航，刷新",
             "params": [
@@ -2467,24 +2468,28 @@
             "line": " bridge.js:3381"
         },
         {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:3413"
+            "message": "unknown tag: callback",
+            "line": " bridge.js:3381"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3446"
+            "line": " bridge.js:3415"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3448"
         },
         {
             "message": "unknown tag: callback",
-            "line": " bridge.js:3446"
+            "line": " bridge.js:3448"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3483"
+            "line": " bridge.js:3485"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3490"
+            "line": " bridge.js:3492"
         }
     ]
 }

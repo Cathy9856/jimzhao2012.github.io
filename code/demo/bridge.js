@@ -3380,8 +3380,9 @@ var CtripBusiness = {
 
      /**
      * @description 获取短信中的验证码
-     * @brief 获取短信中的验证码
+     * @brief 获取短信中的验证码,iPhone不能读取，直接callback
      * @method app_read_verification_code_from_sms
+     * @callback read_verification_code_from_sms
      * @since v5.8
      * @author jimzhao
      * @example 
@@ -3402,7 +3403,8 @@ var CtripBusiness = {
 
         paramString = Internal.makeParamString("Business", "readVerificationCodeFromSMS", null, "read_verification_code_from_sms");
         if (Internal.isIOS) {
-            Internal.appVersionNotSupportCallback("iPhone不支持SMS读取");
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.Business_a.readVerificationCodeFromSMS(paramString);
         } else if (Internal.isWinOS) {
