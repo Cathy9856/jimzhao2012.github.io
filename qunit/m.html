@@ -185,6 +185,11 @@
         CtripMap.app_show_map_with_POI_list(poiList);
     }
 
+    function showPOIListForCtrip() {
+       var poiList = [{"title":"上海鑫港商务酒店","latitude":"31.176462","longitude":"121.345872"},{"title":"上海杜莎夫人蜡像馆","latitude":"31.23465","longitude":"121.4735"},{"title":"东方明珠","latitude":"31.23969","longitude":"121.4998"}];
+       CtripMap.app_show_map_with_POI_list(poiList);
+    }
+
     function doFinishedLogin() {
         var userInfo = {
             "uid": "wwwwww",
@@ -322,6 +327,8 @@
   <br/>
 
   <li class="li2"><a onclick="javascript:showPOIList()">15. 显示多个POI点</a></li>
+  <br/>
+  <li class="li2"><a onclick="javascript:showPOIListForCtrip()">15. 显示多个POI点-BUG</a></li>
   <br/>
   <li class="li2"><a onclick="javascript:doFinishedLogin()">16. 写用户登陆态</a></li>
   <br/>
