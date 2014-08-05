@@ -58,7 +58,7 @@
       CtripUtil.app_open_url('http://jimzhao2012.github.io/qunit/a.html', 2, 'Auto Test',"AUTO_TEST_PAGE_ID");
     }
     function tripleAction() {
-      CtripUtil.app_open_url('http://www.baidu.com/', 2, 'Baidu');
+      CtripUtil.app_open_url('http://www.baidu.com/', 2, 'Baidu', null);
       CtripUtil.app_back_to_last_page("xxxx", true);
     }
 
@@ -300,7 +300,7 @@
   <br/>
   <li class="li2"><a onclick="javascript:CtripUtil.app_show_newest_introduction()">4. 新版本欢迎页</a></li>
   <br/> 
-   <li class="li2"><a onclick="javascript:CtripUtil.app_open_url('http://www.baidu.com', 2, 'Baidu')">5. 打开Baidux</a></li>
+   <li class="li2"><a onclick="javascript:CtripUtil.app_open_url('http://www.baidu.com', 2, 'Baidu', '', true)">5. 打开Baiduxd</a></li>
   <br/> 
   <li class="li2"><a onclick="javascript:CtripUtil.app_open_url('ctrip://wireless/destination/toTicketBook?id=1644501&name=厦门世界名人馆门票', 1, 'Baidu')">5. 打开ctrip</a></li>
   <br/> 
