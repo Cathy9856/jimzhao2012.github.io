@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CtripMap</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: Ctrip Hybrid Javascript Lib</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">API定义</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">类</a></li>
+            <li><a href="#api-modules">模块</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/CtripBar.html">CtripBar</a></li>
+            
+                <li><a href="../classes/CtripBusiness.html">CtripBusiness</a></li>
+            
+                <li><a href="../classes/CtripEncrypt.html">CtripEncrypt</a></li>
+            
+                <li><a href="../classes/CtripFile.html">CtripFile</a></li>
+            
+                <li><a href="../classes/CtripMap.html">CtripMap</a></li>
+            
+                <li><a href="../classes/CtripPage.html">CtripPage</a></li>
+            
+                <li><a href="../classes/CtripPay.html">CtripPay</a></li>
+            
+                <li><a href="../classes/CtripPipe.html">CtripPipe</a></li>
+            
+                <li><a href="../classes/CtripSumSungWallet.html">CtripSumSungWallet</a></li>
+            
+                <li><a href="../classes/CtripTool.html">CtripTool</a></li>
+            
+                <li><a href="../classes/CtripUser.html">CtripUser</a></li>
+            
+                <li><a href="../classes/CtripUtil.html">CtripUtil</a></li>
+            
+                <li><a href="../classes/Internal.html">Internal</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1>CtripMap Class</h1>
+<div class="box meta">
+    
+
+    
+
+    
+        <div class="foundat">
+            定义在: <a href="../files/bridge.js.html#l2867"><code>bridge.js:2867</code></a>
+        </div>
+    
+
+    
+
+    
+</div>
+
+
+
+<div class="box intro">
+    <p>地图相关类，定位/导航</p>
+
+</div>
+
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">索引</a></li>
+
+        
+            <li class="api-class-tab methods"><a href="#methods">方法</a></li>
+        
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">条目索引</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>方法</h3>
+                    <br/>
+
+                    <table>
+                    <tr><th>描述</th><th>函数</th></tr>
+                    
+                    <tr><td>定位</td><td><a href="#method_app_locate">app_locate</a></td></tr>
+                    
+                    <tr><td>在地图上显示某个位置/导航</td><td><a href="#method_app_show_map">app_show_map</a></td></tr>
+                    
+                    <tr><td>在地图上显示多个位置/导航</td><td><a href="#method_app_show_map_with_POI_list">app_show_map_with_POI_list</a></td></tr>
+                                  
+                    </table>
+
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">方法</h2>
+
+                
+                    <div id="method_app_locate" class="method item">
+    <h3 class="name"><code>app_locate</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>is_async</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l2874"><code>bridge.js:2874</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.1</p>
+        
+    </div>
+
+    <div class="description">
+        <p>定位</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">is_async</code>
+                        <span class="type">Bool</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>true标识是异步定位，false标识为同步定位</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   CtripUtil.app_locate(true);
+   //定位完成后H5页面会收到回调数据
+   var json_obj =
+   {
+       tagname:&#39;locate&#39;,
+       param:{
+           &quot;value&quot;:{
+               ctyName: &#39;上海&#39;,
+               addrs:&#39;上海市浦东南路22号&#39;,
+               lat:&#39;121.487899&#39;,
+               lng:&#39;31.249162&#39;
+           },
+           &#39;timeout&#39;: &#39;2013/09/12 12:32:36&#39;,
+           &#39;locateStatus&#39;:0,//iOS新增字段:-1网络不通，当前无法定位,-2定位没有开启
+       }
+   }
+   app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_show_map" class="method item">
+    <h3 class="name"><code>app_show_map</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>latitude,</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>longitude,</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>title,</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>subtitle,</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l2919"><code>bridge.js:2919</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.5</p>
+        
+    </div>
+
+    <div class="description">
+        <p>在地图上显示某个位置</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">latitude,</code>
+                        <span class="type">Double</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>纬度</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">longitude,</code>
+                        <span class="type">Double</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>经度</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">title,</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>在地图上显示的点的主标题</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">subtitle,</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>在地图上显示点的附标题</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   CtripMap.app_show_map(31.3222323, 121.32232332, &quot;上海野生动物园&quot;, &quot;浦东新区陆家嘴1234号&quot;);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_show_map_with_POI_list" class="method item">
+    <h3 class="name"><code>app_show_map_with_POI_list</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>poiList</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l2965"><code>bridge.js:2965</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.8</p>
+        
+    </div>
+
+    <div class="description">
+        <p>在地图上显示多个POI位置点</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">poiList</code>
+                        <span class="type">Array</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>poi列表, list中为JSON对象，key为：latitude, longitude, title, subtitle</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   var poi0 = {};
+   poi0.latitude = 31.3222323; //must
+   poi0.longitude = 121.32232332;//must
+   poi0.title = &quot;上海野生动物园&quot;; //must
+   poi0.subtitle = &quot;浦东新区陆家嘴1234号&quot;;//optional
+
+   var poi1 = {};
+   poi1.latitude = 30.3222323; //must
+   poi1.longitude = 120.32232332;//must
+   poi1.title = &quot;上海野生动物园A&quot;; //must
+   poi1.subtitle = &quot;浦东新区陆家嘴1234号A&quot;;//optional
+
+
+   var poi2 = {};
+   poi2.latitude = 32.3222323; //must
+   poi2.longitude = 122.32232332;//must
+   poi2.title = &quot;上海野生动物园B&quot;; //must
+   poi2.subtitle = &quot;浦东新区陆家嘴1234号B&quot;;//optional
+
+   var poiList = new Array();
+   poiList[0] = poi0;
+   poiList[1] = poi1;
+   poiList[2] = poi2;
+
+   CtripMap.app_show_map(poiList);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

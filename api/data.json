@@ -1,0 +1,2525 @@
+{
+    "project": {},
+    "files": {
+        "bridge.js": {
+            "name": "bridge.js",
+            "modules": {},
+            "classes": {
+                "Internal": 1,
+                "CtripTool": 1,
+                "CtripUtil": 1,
+                "CtripUser": 1,
+                "CtripEncrypt": 1,
+                "CtripPay": 1,
+                "CtripPipe": 1,
+                "CtripSumSungWallet": 1,
+                "CtripFile": 1,
+                "CtripBar": 1,
+                "CtripMap": 1,
+                "CtripBusiness": 1,
+                "CtripPage": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "Internal": {
+            "name": "Internal",
+            "shortname": "Internal",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bridge.js",
+            "line": 6,
+            "description": "bridge.js内部使用的工具类",
+            "brief": "内部使用工具类",
+            "access": "private",
+            "tagname": ""
+        },
+        "CtripTool": {
+            "name": "CtripTool",
+            "shortname": "CtripTool",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bridge.js",
+            "line": 349,
+            "brief": "工具类",
+            "description": "工具类,和App无交互，纯JS处理"
+        },
+        "CtripUtil": {
+            "name": "CtripUtil",
+            "shortname": "CtripUtil",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bridge.js",
+            "line": 400,
+            "description": "常用Util",
+            "brief": "常用Util"
+        },
+        "CtripUser": {
+            "name": "CtripUser",
+            "shortname": "CtripUser",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bridge.js",
+            "line": 1359,
+            "description": "用户相关类",
+            "brief": "用户相关类"
+        },
+        "CtripEncrypt": {
+            "name": "CtripEncrypt",
+            "shortname": "CtripEncrypt",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bridge.js",
+            "line": 1715,
+            "description": "加解密/HASH/编码相关类",
+            "brief": "提供给H5试用，通用加解密/HASH/编码相关类"
+        },
+        "CtripPay": {
+            "name": "CtripPay",
+            "shortname": "CtripPay",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bridge.js",
+            "line": 1870,
+            "description": "Ctrip相关支付控件",
+            "brief": "提供Ctrip业务相关的支付功能"
+        },
+        "CtripPipe": {
+            "name": "CtripPipe",
+            "shortname": "CtripPipe",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bridge.js",
+            "line": 1977,
+            "description": "App给H5提供的通讯管道",
+            "brief": "提供标准HTTP和H5管道服务"
+        },
+        "CtripSumSungWallet": {
+            "name": "CtripSumSungWallet",
+            "shortname": "CtripSumSungWallet",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bridge.js",
+            "line": 2209,
+            "description": "三星钱包相关API",
+            "brief": "三星钱包相关API"
+        },
+        "CtripFile": {
+            "name": "CtripFile",
+            "shortname": "CtripFile",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bridge.js",
+            "line": 2324,
+            "description": "文件IO操作相关API",
+            "brief": "文件IO操作相关API"
+        },
+        "CtripBar": {
+            "name": "CtripBar",
+            "shortname": "CtripBar",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bridge.js",
+            "line": 2695,
+            "description": "H5页面顶部导航栏和底部工具栏的控制",
+            "brief": "H5页面顶部/底部导航栏控制"
+        },
+        "CtripMap": {
+            "name": "CtripMap",
+            "shortname": "CtripMap",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bridge.js",
+            "line": 2867,
+            "description": "地图相关类，定位/导航",
+            "brief": "地图相关类，定位/导航"
+        },
+        "CtripBusiness": {
+            "name": "CtripBusiness",
+            "shortname": "CtripBusiness",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bridge.js",
+            "line": 3025,
+            "description": "Ctrip业务相关，需要返回数据给H5页面",
+            "brief": "Ctrip业务相关，需要返回数据给H5页面"
+        },
+        "CtripPage": {
+            "name": "CtripPage",
+            "shortname": "CtripPage",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "bridge.js",
+            "line": 3520,
+            "description": "页面跳转，导航，刷新相关API",
+            "brief": "页面跳转，导航，刷新相关API"
+        }
+    },
+    "classitems": [
+        {
+            "file": "bridge.js",
+            "line": 13,
+            "brief": "是否是iOS设备",
+            "description": "bridge.js内部使用，判断是否是iOS",
+            "type": "Bool",
+            "itemtype": "property",
+            "name": "isIOS",
+            "class": "Internal"
+        },
+        {
+            "file": "bridge.js",
+            "line": 21,
+            "brief": "是否是Android设备",
+            "description": "bridge.js内部使用，判断是否是Android设备",
+            "type": "Bool",
+            "itemtype": "property",
+            "name": "isAndroid",
+            "class": "Internal"
+        },
+        {
+            "file": "bridge.js",
+            "line": 29,
+            "brief": "是否是WinPhone设备",
+            "description": "bridge.js内部使用，判断是否是Windows Phone设备",
+            "type": "Bool",
+            "itemtype": "property",
+            "name": "isWinOS",
+            "class": "Internal"
+        },
+        {
+            "file": "bridge.js",
+            "line": 37,
+            "brief": "当前是否是App环境",
+            "description": "bridge.js内部使用，判断当前是否是App环境",
+            "type": "Bool",
+            "itemtype": "property",
+            "name": "isInApp",
+            "class": "Internal"
+        },
+        {
+            "file": "bridge.js",
+            "line": 45,
+            "brief": "当前携程旅行App版本",
+            "description": "bridge.js内部使用，存储当前携程旅行App版本",
+            "type": "String",
+            "itemtype": "property",
+            "name": "appVersion",
+            "class": "Internal"
+        },
+        {
+            "file": "bridge.js",
+            "line": 53,
+            "brief": "当前操作系统版本",
+            "description": "bridge.js内部使用，存储当前操作系统版本",
+            "type": "String",
+            "itemtype": "property",
+            "name": "osVersion",
+            "class": "Internal"
+        },
+        {
+            "file": "bridge.js",
+            "line": 61,
+            "brief": "当前App是否是青春版",
+            "description": "bridge.js内部使用，判断是否是青春版",
+            "type": "String",
+            "itemtype": "property",
+            "name": "isYouthApp",
+            "class": "Internal"
+        },
+        {
+            "file": "bridge.js",
+            "line": 69,
+            "brief": "判断版本大小",
+            "description": "判断当前版本号是否大于传入的版本号",
+            "params": [
+                {
+                    "name": "verStr",
+                    "description": "版本号",
+                    "type": "String"
+                }
+            ],
+            "itemtype": "method",
+            "name": "isAppVersionGreatThan",
+            "return": {
+                "description": "是否大于该版本号",
+                "type": "Bool"
+            },
+            "since": "v5.2",
+            "example": [
+                "\n    \nvar isLarger = isAppVersionGreatThan(\"5.2\"); <br />\nalert(isLarger); // depends"
+            ],
+            "class": "Internal"
+        },
+        {
+            "file": "bridge.js",
+            "line": 97,
+            "brief": "判断API是否支持",
+            "description": "判断API是否支持当前版本",
+            "params": [
+                {
+                    "name": "verStr",
+                    "description": "版本号",
+                    "type": "String"
+                }
+            ],
+            "itemtype": "method",
+            "name": "isSupportAPIWithVersion",
+            "return": {
+                "description": "是否支持该API",
+                "type": "Bool"
+            },
+            "since": "v5.2",
+            "example": [
+                "\n    \nvar isSupport = isSupportAPIWithVersion(\"5.2\"); <br />\nalert(isSupport); // depends"
+            ],
+            "class": "Internal"
+        },
+        {
+            "file": "bridge.js",
+            "line": 117,
+            "brief": "app版本过低回调",
+            "description": "回调H5页面，告知API开始支持的版本号及当前App的版本",
+            "params": [
+                {
+                    "name": "supportVer",
+                    "description": "API支持的版本号",
+                    "type": "String"
+                }
+            ],
+            "itemtype": "method",
+            "name": "appVersionNotSupportCallback",
+            "since": "v5.2",
+            "author": "jimzhao",
+            "class": "Internal"
+        },
+        {
+            "file": "bridge.js",
+            "line": 131,
+            "brief": "参数错误回调",
+            "description": "回调H5页面，所调用的JS 参数有错误",
+            "params": [
+                {
+                    "name": "description",
+                    "description": "错误原因描述",
+                    "type": "String"
+                }
+            ],
+            "itemtype": "method",
+            "name": "paramErrorCallback",
+            "since": "v5.2",
+            "author": "jimzhao",
+            "class": "Internal"
+        },
+        {
+            "file": "bridge.js",
+            "line": 145,
+            "brief": "判断字符串是否为空",
+            "description": "判断字符串是否为空",
+            "itemtype": "method",
+            "name": "isNotEmptyString",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "需要判断的字符串",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.2",
+            "class": "Internal"
+        },
+        {
+            "file": "bridge.js",
+            "line": 161,
+            "brief": "内部URL跳转",
+            "description": "内部隐藏iframe，做URL跳转",
+            "itemtype": "method",
+            "name": "loadURL",
+            "params": [
+                {
+                    "name": "url",
+                    "description": "需要跳转的链接",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.2",
+            "class": "Internal"
+        },
+        {
+            "file": "bridge.js",
+            "line": 182,
+            "brief": "内部组装URL参数",
+            "description": "内部使用，组装URL参数",
+            "return": {
+                "description": "返回序列化之后的字符串"
+            },
+            "itemtype": "method",
+            "name": "makeParamString",
+            "params": [
+                {
+                    "name": "service",
+                    "description": "app响应的plugin的名字",
+                    "type": "String"
+                },
+                {
+                    "name": "action",
+                    "description": "该plugin响应的函数",
+                    "type": "String"
+                },
+                {
+                    "name": "param",
+                    "description": "扩展参数，json对象",
+                    "type": "JSON"
+                },
+                {
+                    "name": "callbackTag",
+                    "description": "app回调给H5页面的tagname",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.2",
+            "class": "Internal"
+        },
+        {
+            "file": "bridge.js",
+            "line": 210,
+            "brief": "内部组装URL",
+            "description": "内部使用，组装URL",
+            "return": {
+                "description": "encode之后的URL",
+                "type": "String"
+            },
+            "itemtype": "method",
+            "name": "makeURLWithParam",
+            "params": [
+                {
+                    "name": "paramString",
+                    "description": "拼接URL参数",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.2",
+            "class": "Internal"
+        },
+        {
+            "file": "bridge.js",
+            "line": 231,
+            "brief": "JS调用Win8 native",
+            "description": "内部使用，用于js调用win8",
+            "params": [
+                {
+                    "name": "传递给win8的参数",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "itemtype": "method",
+            "name": "callWin8App",
+            "since": "v5.3",
+            "class": "Internal"
+        },
+        {
+            "file": "bridge.js",
+            "line": 284,
+            "brief": "app回调bridge.js",
+            "description": "将native的callback数据转换给H5页面的app.callback(JSON)",
+            "itemtype": "method",
+            "name": "__bridge_callback",
+            "params": [
+                {
+                    "name": "param",
+                    "description": "native传给H5的字符串,该字符串在app组装的时候做过URLEncode",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.2",
+            "author": "jimzhao",
+            "class": "Internal"
+        },
+        {
+            "file": "bridge.js",
+            "line": 334,
+            "brief": "app写localstorage",
+            "description": "写key/value数据到H5页面的local storage",
+            "itemtype": "method",
+            "name": "__writeLocalStorage",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "需要写入数据库的key",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "需要写入数据库的value",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.2",
+            "author": "jimzhao",
+            "class": "Internal"
+        },
+        {
+            "file": "bridge.js",
+            "line": 356,
+            "brief": "判断当前是否是在App内",
+            "description": "判断当前H5页面是否是在App内",
+            "since": "5.2",
+            "itemtype": "method",
+            "name": "app_is_in_ctrip_app",
+            "author": "jimzhao",
+            "return": {
+                "description": "bool, true代表在app环境，false表示不在app环境"
+            },
+            "example": [
+                " \n\nvar ret = CtripTool.app_is_in_ctrip_app();\nalert(\"isInApp==\"+ret);"
+            ],
+            "class": "CtripTool"
+        },
+        {
+            "file": "bridge.js",
+            "line": 383,
+            "description": "将log写入到native的日志界面，该函数已移动到CtripUtil类，此处只做兼容。具体参考CtripUtil.app_log()函数",
+            "brief": "H5写日志到app(移动到CtripUtil)",
+            "itemtype": "method",
+            "name": "【Moved】app_log",
+            "params": [
+                {
+                    "name": "log",
+                    "description": "需要打印打log",
+                    "type": "String"
+                },
+                {
+                    "name": "result",
+                    "description": "上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.2",
+            "author": "jimzhao",
+            "example": [
+                " \n\n    CtripUtil.app_log(\"execute script xxxxx\", \"result for script is oooooo\");"
+            ],
+            "class": "CtripTool"
+        },
+        {
+            "file": "bridge.js",
+            "line": 407,
+            "description": "调用App的上传ActionLog,移动到CtripBusiness",
+            "brief": "App的上传ActionLog,移动到CtripBusiness",
+            "itemtype": "method",
+            "name": "【Moved】app_log_event",
+            "params": [
+                {
+                    "name": "event_name",
+                    "description": "需要纪录的事件名",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.2",
+            "author": "jimzhao",
+            "example": [
+                " \n\n    CtripBusiness.app_log_event('GoodDay')"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 423,
+            "description": "进入H5模块，初始化数据\nH5接收到web_view_did_finished_load的回调之后，调用该函数，初始化数据会通过callback传递给H5",
+            "brief": "初始化H5模块数据",
+            "itemtype": "method",
+            "name": "app_init_member_H5_info",
+            "since": "version 5.2",
+            "author": "jimzhao",
+            "callback": "tagname=\"init_member_H5_info\"",
+            "example": [
+                "\n\n        CtripUtil.app_init_member_H5_info();\n        //调用完成，H5页面会收到如下返回数据\n        var json_obj =\n        {\n           tagname:\"init_member_H5_info\",\n           param:{\n               timestamp:135333222,\n               version:\"5.2\",\n               device:\"iPhone4S\",\n               appId:\"com.ctrip.wrieless\",\n               osVersion:\"iOS_6.0\",\n               serverVersion:\"5.3\",\n               platform:1, //区分平台，iPhone为1, Android为2, winPhone为3\n               isPreProduction:0,//UAT:2, FAT:0,堡垒:1,生产不会有该字段\n               extSouceID:\"8888\",//外部渠道ID,since 5.4\n               clientID:\"1323333333333333\", //客户端唯一标识, since5.4\n               systemCode:16, //iOS 标准版code 16，学生版12， android标准版32, since 5.6\n               latitude:32.011111,//缓存的纬度 since 5.7\n               longitude:121.000332,//缓存的经度 since 5.7\n               screenWidth:320,//晶赞广告系统使用 since 5.7\n               screenHeight:480,//晶赞广告系统使用 since 5.7\n               screenPxDensity:1,//晶赞广告系统使用 since 5.7\n               deviceOSVersion:4.3,//晶赞广告系统使用 since 5.7\n               userInfo={USERINFO},//USERINFO内部结构参考CtripUser.app_member_login();    \n           }\n        }\n        app.callback(json_obj);"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 475,
+            "description": "拨打电话",
+            "brief": "拨打电话",
+            "params": [
+                {
+                    "name": "phone",
+                    "description": "需要拨打的电话号码，为空时候，会拨打ctrip呼叫中心号码",
+                    "type": "String"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_call_phone",
+            "since": "v5.2",
+            "author": "jimzhao",
+            "example": [
+                " \n\n    CtripUtil.app_call_phone(\"13800138000\");\n    //或者直接拨打呼叫中心\n    CtripUtil.app_call_phone();"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 523,
+            "description": "退回到首页，离开H5",
+            "brief": "回到首页",
+            "since": "v5.2",
+            "itemtype": "method",
+            "name": "app_back_to_home",
+            "author": "jimzhao",
+            "example": [
+                " \n\n    CtripUtil.app_back_to_home();"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 553,
+            "description": "退回到H5页面的上一个页面，离开H5. v5.3开始支持带参数给上一个H5页面",
+            "brief": "离开H5回上一个页面",
+            "itemtype": "method",
+            "name": "app_back_to_last_page",
+            "params": [
+                {
+                    "name": "callbackString",
+                    "description": "离开H5页面，需要传递给上一个H5页面的数据，上一个H5页面在web_view_did_appear回调里面将会收到该数据",
+                    "type": "String"
+                },
+                {
+                    "name": "isDeleteH5Page",
+                    "description": "是否是直接删除该H5页面。直接删除H5页面时候，页面切换会没有动画效果",
+                    "type": "Bool"
+                }
+            ],
+            "since": "v5.2",
+            "author": "jimzhao",
+            "example": [
+                " \n\n       CtripUtil.app_back_to_last_page(\"This is a json string for my previous H5 page\", false);\n"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 588,
+            "description": "定位(移动到CtripMap)",
+            "brief": "定位(移动到CtripMap)",
+            "params": [
+                {
+                    "name": "is_async,",
+                    "description": "true标识是异步定位，false标识为同步定位",
+                    "type": "Bool"
+                }
+            ],
+            "itemtype": "method",
+            "name": "【Moved】app_locate",
+            "example": [
+                "\n\n       CtripMap.app_locate(true);\n       //定位完成后H5页面会收到回调数据\n       var json_obj =\n       {\n           tagname:'locate',\n           param:{\n               \"value\":{\n                   ctyName: '上海',\n                   addrs:'上海市浦东南路22号',\n                   lat:'121.487899',\n                   lng:'31.249162'\n               },\n               'timeout': '2013/09/12 12:32:36',\n               'locateStatus':0,//iOS新增字段:-1网络不通，当前无法定位,-2定位没有开启\n           }\n       }\n       app.callback(json_obj);\n"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 618,
+            "description": "刷新顶部条按钮和文字(移动到CtripBar)",
+            "brief": "刷新顶部条按钮和文字(移动到CtripBar)",
+            "params": [
+                {
+                    "name": "(String)",
+                    "description": "nav_bar_config_json 顶部条配置json串"
+                }
+            ],
+            "itemtype": "method",
+            "name": "【Moved】app_refresh_nav_bar",
+            "author": "jimzhao",
+            "since": "v5.2",
+            "example": [
+                "\n\n       请参考 CtripBar.app_refresh_nav_bar(json_str)的使用;"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 634,
+            "description": "Hybrid页面，打开链接URL地址，兼容App和浏览器",
+            "brief": "Hybrid页面打开链接URL",
+            "params": [
+                {
+                    "name": "openUrl",
+                    "description": "@required 需要打开的URL，可以为ctrip://,http(s)://,file://等协议的URL",
+                    "type": "String"
+                },
+                {
+                    "name": "targetMode",
+                    "description": "@required\n    0.当前页面刷新url;\n    1.处理ctrip://协议;\n    2.开启新的H5页面,title生效;\n    3.使用系统浏览器打开;\n    4.开启本地新的H5页面，title生效，此时URL为相对路径；5.6版本加入\n    5.当前页面打开相对路径；5.8版本加入，但是所有版本都支持，5.8之前版本，内部自动调用app_cross_package_href",
+                    "type": "Int"
+                },
+                {
+                    "name": "title",
+                    "description": "@optional 当targetMode＝2时候，新打开的H5页面的title",
+                    "type": "String"
+                },
+                {
+                    "name": "pageName",
+                    "description": "@optional 当targetMode＝0、2、4时候，本页面，或者新打开的H5页面，此时pageName有效，pageName当作H5页面唯一标识，可用于刷新页面；5.6版本加入",
+                    "type": "String"
+                },
+                {
+                    "name": "isShowLoadingPage",
+                    "description": "@optional 开启新的webview的时候，是否加载app的loading",
+                    "type": "Boolean"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_open_url",
+            "since": "v5.2",
+            "author": "jimzhao",
+            "example": [
+                " \n\n    //当前H5页面打开ctrip.com\n    CtripUtil.app_open_url(\"http://www.ctrip.com\", 0);\n    //进入App的酒店详情页\n    CtripUtil.app_open_url(\"ctrip://wireless/hotel?id=1234\", 1);\n    //开启新的H5页面，进入m.ctrip.com\n    CtripUtil.app_open_url(\"http://m.ctrip.com\", 2, \"Ctrip H5首页\", \"ctrip_home_page_id\");\n    //开启新的H5页面，进入webapp/car/index.html\n    CtripUtil.app_open_url(\"car/index.html\", 4, \"用车首页\", \"car_index_page_id\");\n    //当前H5页面，跨包跳转进入webapp/car/index.html\n    CtripUtil.app_open_url(\"car/index.html\", 5, \"用车首页\", null);\n"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 728,
+            "description": "检查App的版本更新(移动到CtripBusiness)",
+            "brief": "检查App的版本更新(移动到CtripBusiness)",
+            "since": "v5.2",
+            "itemtype": "method",
+            "name": "【Moved】app_check_update",
+            "author": "jimzhao",
+            "example": [
+                " \n\n       CtripBusiness.app_check_update();\n"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 743,
+            "description": "推荐携程旅行给好友(移动到CtripBusiness)",
+            "brief": "推荐携程旅行给好友(移动到CtripBusiness)",
+            "since": "v5.2",
+            "itemtype": "method",
+            "name": "【Moved】app_recommend_app_to_friends",
+            "author": "jimzhao",
+            "example": [
+                " \n\n       CtripBusiness.app_recommend_app_to_friends();\n"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 758,
+            "description": "添加微信好友(移动到CtripBusiness)",
+            "brief": "添加微信好友(移动到CtripBusiness)",
+            "since": "v5.2",
+            "itemtype": "method",
+            "name": "【Moved】app_add_weixin_friend",
+            "author": "jimzhao",
+            "example": [
+                " \n\n        CtripBusiness.app_add_weixin_friend();"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 772,
+            "description": "H5跨模块/站点跳转",
+            "brief": "H5跨模块/站点跳转",
+            "params": [
+                {
+                    "name": "path",
+                    "description": "模块名称，如hotel, car, myctrip,",
+                    "type": "String"
+                },
+                {
+                    "name": "param",
+                    "description": "作为URL，拼接在path后面的页面和其它参数 index.html#cashcouponindex?cash=xxxx",
+                    "type": "String"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_cross_package_href",
+            "since": "v5.2",
+            "author": "jimzhao",
+            "example": [
+                "\n\n     //跳转到我的携程首页\n     CtripUtil.app_cross_package_href(\"myctrip\", \"index.html?ver=5.2\"); \n"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 811,
+            "description": "查看最新版本功能介绍(移动到CtripBusiness)",
+            "brief": "查看最新版本功能介绍(移动到CtripBusiness)",
+            "since": "v5.2",
+            "itemtype": "method",
+            "name": "【Moved】app_show_newest_introduction",
+            "author": "jimzhao",
+            "example": [
+                " \n\n    CtripBusiness.app_show_newest_introduction();"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 825,
+            "description": "检查当前App网络状况",
+            "brief": "检查当前App网络状况",
+            "since": "v5.2",
+            "itemtype": "method",
+            "name": "app_check_network_status",
+            "author": "jimzhao",
+            "example": [
+                " \n\n    CtripUtil.app_check_network_status();\n    //调用完成后，H5页面会收到如下回调数据\n    var json_obj = \n    {\n       tagname:\"check_network_status\",\n       hasNetwork:true,//布尔值返回是否有网络\n       networkType:\"3G\" //5.8开始加入， None-无网络, 2G-蜂窝数据网EDGE/GPRS, 3G-蜂窝数据网HSPDA/LTE等, WIFI-WLAN网络\n    }\n    app.callback(json_obj);\n    "
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 858,
+            "description": "检查是否安装App",
+            "brief": "检查是否安装App",
+            "params": [
+                {
+                    "name": "openUrl",
+                    "description": "尝试打开的URL，iOS使用",
+                    "type": "String"
+                },
+                {
+                    "name": "packageName",
+                    "description": "app的包名，android使用",
+                    "type": "String"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_check_app_install_status",
+            "since": "v5.2",
+            "author": "jimzhao",
+            "example": [
+                " \n\n    CtripUtil.app_check_app_install_status(\"ctrip://wireless\", \"com.ctrip.view\");\n    //调用完成后，H5页面会收到如下回调数据\n    var json_obj = \n    {\n       tagname:\"check_app_install_status\",\n       isInstalledApp:true,//布尔值返回是否有安装\n    }\n    app.callback(json_obj);"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 901,
+            "description": "H5通知Native刷新",
+            "brief": "H5通知Native刷新",
+            "params": [
+                {
+                    "name": "pageName",
+                    "description": "要刷新的页面名字,该字段需要H5和native共同约定，H5调用之后，native需要捕获该名字的boardcast/notification",
+                    "type": "String"
+                },
+                {
+                    "name": "jsonStr",
+                    "description": "刷新该页面需要的参数",
+                    "type": "String"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_refresh_native_page",
+            "since": "v5.2",
+            "author": "jimzhao",
+            "example": [
+                " \n       \n       5.6新增说明：刷新app_open_url打开的H5页面\n       CtripUtil.app_open_url();函数打开的H5页面，设置pagename:h5_page_identify\n       CtripUtil.app_refresh_native_page(\"h5_page_identify\", \"xxxx_json_string\");\n       \n       先前版本，刷新Native的页面\n       //H5调用\n       \n       CtripUtil.app_refresh_native_page(\"xxxxPageName\", \"xxxx_json_string\");\n\n       //Native需要处理的地方\n    \n       //iOS:\n       //1. 添加Notification的关注\n       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh:) name:kH5NativeShouldReloadNotification object:nil];\n       \n       //2. 实现方法\n       - (void)refresh:(NSNotification *)notification {\n            NSDictionary *dic = [notification userInfo];\n            NSString *value = [dic objectForKey:@\"pageName\"];\n            if ([value isEqualToString:@\"xxxxPageName\"])\n            {\n                NSLog(\"Do Something here\");      \n            }\n       }\n       \n       //3. 移除Notification的关注\n       [[NSNotificationCenter defaultCenter] removeObserver:self];\n\n      // Android:\n      // 1. 创建BroadcastReceiver;\n       private BroadcastReceiver mFocusNewStateReceiver = new BroadcastReceiver() {\n           //@Override\n           public void onReceive(Context context, Intent intent) {\n\n               if (H5UtilPlugin.TAG_UPDATE_NATIVE_PAGE.equals(intent.getAction())) {\n                   String info = intent.getStringExtra(\"info\");\n                   if (!StringUtil.emptyOrNull(info)) {\n                       try {\n                           JSONObject jsonObject = new JSONObject(info);\n                           String value = jsonObject.getString(\"pageName\");\n                           if (!StringUtil.emptyOrNull(value)) {\n                               if (value.equalsIgnoreCase(\"xxxxPageName\")) {\n                                   //TODO: do your job here\n                               }\n                           }\n                       } catch (JSONException e) {\n                           e.printStackTrace();\n                       } finally {\n\n                       }\n                   }\n               }\n           }\n       };\n   \n       //2. 注册创建BroadcastReceiver;\n           IntentFilter filter = new IntentFilter();\n           filter.addAction(H5UtilPlugin.TAG_UPDATE_NATIVE_PAGE);\n           LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(mFocusNewStateReceiver, filter);\n           registerReceiver(mFocusNewStateReceiver, filter);\n\n       //3. 使用完成，移除BroadcastReceiver\n           LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(mFocusNewStateReceiver);\n           unregisterReceiver(mFocusNewStateReceiver);\n"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1002,
+            "description": "复制文字到粘贴板",
+            "brief": "复制文字到粘贴板",
+            "params": [
+                {
+                    "name": "toCopyStr,",
+                    "description": "需要复制的文字",
+                    "type": "String"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_copy_string_to_clipboard",
+            "since": "v5.3",
+            "author": "jimzhao",
+            "example": [
+                " CtripUtil.app_copy_string_to_clipboard(\"words_to_be_copy_xxxxxx\");\n"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1035,
+            "description": "从粘贴板读取复制的文字",
+            "brief": "从粘贴板读取复制的文字",
+            "callback": "tagname=\"read_copied_string_from_clipboard\";//返回当前粘贴板中的文字key=copiedString",
+            "itemtype": "method",
+            "name": "app_read_copied_string_from_clipboard",
+            "since": "v5.3",
+            "author": "jimzhao",
+            "example": [
+                " \n\n       Ctrip.app_read_copied_string_from_clipboard();\n       //调用该函数之后，H5会收到如下回调\n       var json_obj = \n       {\n           tagname:\"read_copied_string_from_clipboard\",\n           copiedString:\"words_copied_xxxxxx\";\n       }\n       app.callback(json_obj);"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1072,
+            "description": "调用App的分享, 可以支持iOS6系统的分享，具体定义请参考(移动到CtripBusiness)",
+            "brief": "调用App的分享(移动到CtripBusiness)",
+            "params": [
+                {
+                    "name": "imageRelativePath",
+                    "description": "将要分享的图片相对路径，相对webapp的路径",
+                    "type": "String"
+                },
+                {
+                    "name": "text",
+                    "description": "需要分享的文字",
+                    "type": "String"
+                },
+                {
+                    "name": "title",
+                    "description": "需要分享的标题, v5.4开始支持该字段，微信和email支持；",
+                    "type": "String"
+                },
+                {
+                    "name": "linkUrl",
+                    "description": "需要分享的链接, v5.4开始支持该字段",
+                    "type": "String"
+                },
+                {
+                    "name": "isIOSSystemShare",
+                    "description": "是否是iOS6以上使用系统分享功能,对于先前门票分享功能，需要为true，其它都是false",
+                    "type": "Boolean"
+                }
+            ],
+            "itemtype": "method",
+            "name": "【Moved】app_call_system_share",
+            "since": "v5.3",
+            "author": "jimzhao",
+            "example": [
+                "\n\n 微信(微信朋友/微信朋友圈)分享说明：\n       1. 图片分享，只能分享图片，所传的文字，title都无效；\n       2. 链接分享，所传的图片为分享网页的缩略图，title有效；\n       3. 纯文本分享，只能分享text，title无效；\n       4. 优先级 链接分享>图片分享>纯文本分享。\n          a. 如果有linkUrl，会被当作网页分享，图片作为缩略图；\n          b. 如果没有linkUrl，有图片，当作图片分享，text,title无效;\n          c. 如果没有linkUrl，没有图片，当作纯文本分享；\n       \n       微博分享：\n       1. 图片为所分享的图片；\n       2. 分享title不起作用；\n       3. 如果linkUrl有， 分享的text后面会自动添加linkUrl\n   \n       Email分享：\n       1. 图片为所分享的图片；\n       2. 分享title作为Email标题；\n       3. 如果有linkUrl，分享的text后面会自动添加linkUrl;\n\n       短信分享：\n       1. 图片为所分享的图片；注：iOS7.0之后才支持；\n       2. 分享title不起作用；\n       3. 如果有linkUrl，分享的text后面会自动添加linkUrl;\n\n       复制分享：\n       1. 分享的图片不起作用;\n       2. 分享的title不起作用;\n       3. 如果有linkUrl，分享的text后面会自动添加linkUrl;\n\n       CtripBusiness.app_call_system_share(\"../wb_cache/pkg_name/md5_url_hash\", \"text to share weibo\", \"this is titile\", \"http://www.ctrip.com/\", false);\n"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1121,
+            "description": "根据URL下载数据",
+            "brief": "根据URL下载数据",
+            "params": [
+                {
+                    "name": "download_url",
+                    "description": "需要下载内容的URL",
+                    "type": "String"
+                },
+                {
+                    "name": "suffix",
+                    "description": "保存的文件后缀",
+                    "type": "String"
+                },
+                {
+                    "name": "isIgnoreHttpsCertification",
+                    "description": "是否忽略非法的HTTPS证书",
+                    "type": "Boolean"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_download_data",
+            "since": "v5.3",
+            "author": "jimzhao",
+            "example": [
+                "\n\n    CtripUtil.app_download_data(\"http://www.baidu.com/img/bdlogo.gif\", \"gif\");\n    //调用该函数后，native会返回H5内容\n    var json_obj = {\n       tagname:\"download_data\",\n       error_code:\"xxxxx\",//param_error,download_faild\n       param:{downloadUrl:\"http://www.baidu.com/bdlogo.gif\", savedPath:\"../wb_cache/pkg_name/md5_url_hash\", false}\n    };\n    app.callback(json_obj);"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1171,
+            "description": "打开其它App，android可以根据包名和URL跳转，iOS只支持URL跳转",
+            "brief": "打开其它App",
+            "params": [
+                {
+                    "name": "packageId",
+                    "description": "需要打开的app的包名，android使用",
+                    "type": "String"
+                },
+                {
+                    "name": "jsonParam",
+                    "description": "打开指定包名的app，所带的参数，json字符串",
+                    "type": "String"
+                },
+                {
+                    "name": "url",
+                    "description": "需要打开的app支持的URL协议，如ctrip://xxx",
+                    "type": "String"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_open_other_app",
+            "since": "v5.3",
+            "author": "jimzhao",
+            "example": [
+                "\n\n    CtripUtil.app_open_other_app(\"com.tencent.mm\", null, \"weixin://xxxxx\");\n    //优先级说明：\n    //1. android有packageId的时候，使用packageId＋jsonParam做跳转;\n    //2. 无包名时候，android使用URL协议跳转;\n    //3. iOS， winPhone OS都使用URL协议跳转;"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1220,
+            "description": "将log写入到native的日志界面",
+            "brief": "H5写日志到app",
+            "itemtype": "method",
+            "name": "app_log",
+            "params": [
+                {
+                    "name": "log",
+                    "description": "需要打印打log",
+                    "type": "String"
+                },
+                {
+                    "name": "result",
+                    "description": "上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.2",
+            "author": "jimzhao",
+            "example": [
+                "\n\n     CtripUtil.app_log(\"execute script xxxxx\", \"result for script is oooooo\");"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1256,
+            "description": "打开Hybrid广告页面，会自动显示底部栏，且右上角有分享安妮 (移动到CtripBusiness)",
+            "brief": "打开Hybrid广告页面(移动到CtripBusiness)",
+            "itemtype": "method",
+            "name": "【Moved】app_open_adv_page",
+            "params": [
+                {
+                    "name": "advUrl",
+                    "description": "广告URL， URL参数带title=xxx,设置xxx为标题",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.4",
+            "author": "jimzhao",
+            "example": [
+                "\n\n     CtripBusiness.app_open_adv_page(\"http://pages.ctrip.com/adv.html?title=标题xxx\");"
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1272,
+            "description": "选取图片/拍摄照片，base64返回图片",
+            "brief": "打开Hybrid广告页面",
+            "params": [
+                {
+                    "name": "maxFileSize",
+                    "description": "最大的图片文件大小，单位是bit，默认200*1024",
+                    "type": "Int"
+                },
+                {
+                    "name": "maxPhotoCount",
+                    "description": "最多支持选择的图片个数,默认为1张，此时不显示多选",
+                    "type": "Int"
+                },
+                {
+                    "name": "meta",
+                    "description": "图片选取相关配置信息，5.8新增，5.8版本开始支持1个key， canEditSinglePhoto:单选能否编辑",
+                    "type": "JSON"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_choose_photo",
+            "since": "v5.7",
+            "author": "jimzhao",
+            "example": [
+                "\n\n      //选择一张需要编辑的图片\n      var meta = {};\n      meta.canEditSinglePhoto = true;\n      CtripUtil.app_choose_photo(200*1024, 1, meta);\n       \n      //选择多张图片\n      CtripUtil.app_choose_photo(200*1024, 2);\n       \n      //调用完成之后，返回的数据格式\n      var json_obj =\n       {\n           tagname:\"choose_photo\",\n           param:{\n               photoList:[\"xx089xessewz....\", \"xx089xessewz....\"]\n           }\n       }\n       app.callback(json_obj);\n    "
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1326,
+            "description": "H5页面加载完成，通知native app，app会隐藏loading界面",
+            "brief": "H5页面加载完成，通知native app",
+            "itemtype": "method",
+            "name": "app_h5_page_finish_loading",
+            "since": "v5.8",
+            "author": "jimzhao",
+            "example": [
+                "\n\n      //H5页面加载完成后，通知native隐藏loading界面\n      \n      CtripUtil.app_h5_page_finish_loading();     \n      "
+            ],
+            "class": "CtripUtil"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1366,
+            "description": "会员登录,native未登录时候，会显示会员登录界面，native会员已登录，直接完成，返回登录的用户信息",
+            "brief": "会员登录",
+            "since": "5.2",
+            "itemtype": "method",
+            "name": "app_member_login",
+            "params": [
+                {
+                    "name": "isShowNonMemberLogin",
+                    "description": "是否现实非会员登录入， 5.7加入，默认不显示",
+                    "type": "Boolean"
+                }
+            ],
+            "author": "jimzhao",
+            "example": [
+                " \n\n    CtripUser.app_member_login(false);\n    //调用完成后，H5会收到如下数据\n    var userInfo = {\n       \"timeout\":\"2013/09/12\",\n       \"data\":\n       {\n         \"LoginName\":\"wwwwww\",\n         \"UserID\":\"21634352BAC43044380A7807B0699491\",\n         \"IsNonUser\":false,\n         \"UserName\":\"测试\",\n         \"Mobile\":\"13845612110\",\n         \"LoginToken\":\"\",\n         \"LoginCode\":0,\n         \"LoginErrMsg\":\"登录成功！\",\n         \"Address\":\"\",\n         \"Birthday\":\"19841010\",\n         \"Experience\":1453333973000,//微妙timestamp\n         \"Gender\":1,\n         \"PostCode\":\"111111\",\n         \"VipGrade\":30,\n         \"VipGradeRemark\":\"钻石贵宾\",\n         \"Email\":\"wang_peng@163.com\",\n         \"ExpiredTime\":\"2013-09-12\",\n         \"Auth\":\"079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219\",\n         \"IsRemember\":0,\n         \"BindMobile\":18688888888\n       },  \n       \"timeby\":1\n   }\n\n   var json_obj =\n   {\n       tagname:\"member_login\",\n       param:userInfo,\n   }\n   app.callback(json_obj);\n    "
+            ],
+            "class": "CtripUser"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1430,
+            "description": "非会员登录",
+            "brief": "非会员登录",
+            "since": "5.2",
+            "itemtype": "method",
+            "name": "app_non_member_login",
+            "author": "jimzhao",
+            "see": [
+                "app_member_login"
+            ],
+            "example": [
+                " \n\n     CtripUser.app_non_member_login();\n     //调用后，H5会收到native回调的数据\n     //回调的数据格式参考app_member_login()\n    var userInfo = {\n       \"timeout\":\"2013/09/12\",\n       \"data\":\n       {\n         \"LoginName\":\"wwwwww\",\n         \"UserID\":\"21634352BAC43044380A7807B0699491\",\n         \"IsNonUser\":false,\n         \"UserName\":\"测试\",\n         \"Mobile\":\"13845612110\",\n         \"LoginToken\":\"\",\n         \"LoginCode\":0,\n         \"LoginErrMsg\":\"登录成功！\",\n         \"Address\":\"\",\n         \"Birthday\":\"19841010\",\n         \"Experience\":1453333973000,//微妙timestamp\n         \"Gender\":1,\n         \"PostCode\":\"111111\",\n         \"VipGrade\":30,\n         \"VipGradeRemark\":\"钻石贵宾\",\n         \"Email\":\"wang_peng@163.com\",\n         \"ExpiredTime\":\"2013-09-12\",\n         \"Auth\":\"079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219\",\n         \"IsRemember\":0,\n         \"BindMobile\":18688888888\n       },  \n       \"timeby\":1\n       }\n\n       var json_obj =\n       {\n           tagname:\"member_login\",\n           param:userInfo,\n       }\n       app.callback(json_obj);\n     "
+            ],
+            "class": "CtripUser"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1493,
+            "description": "会员自动登录,对于已经在native登陆的用户，app会通过调用callback回传登录数据，H5页面需要处理用户信息， 不显示输入用户名密码界面",
+            "brief": "会员自动登录",
+            "since": "5.2",
+            "itemtype": "method",
+            "name": "app_member_auto_login",
+            "author": "jimzhao",
+            "see": [
+                "app_member_login"
+            ],
+            "example": [
+                " \n\n     CtripUser.app_member_auto_login();\n     //调用后，H5会收到native回调的数据\n     //回调的数据格式参考app_member_login()\n    var userInfo = {\n       \"timeout\":\"2013/09/12\",\n       \"data\":\n       {\n         \"LoginName\":\"wwwwww\",\n         \"UserID\":\"21634352BAC43044380A7807B0699491\",\n         \"IsNonUser\":false,\n         \"UserName\":\"测试\",\n         \"Mobile\":\"13845612110\",\n         \"LoginToken\":\"\",\n         \"LoginCode\":0,\n         \"LoginErrMsg\":\"登录成功！\",\n         \"Address\":\"\",\n         \"Birthday\":\"19841010\",\n         \"Experience\":1453333973000,//微妙timestamp\n         \"Gender\":1,\n         \"PostCode\":\"111111\",\n         \"VipGrade\":30,\n         \"VipGradeRemark\":\"钻石贵宾\",\n         \"Email\":\"wang_peng@163.com\",\n         \"ExpiredTime\":\"2013-09-12\",\n         \"Auth\":\"079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219\",\n         \"IsRemember\":0,\n         \"BindMobile\":18688888888\n       },  \n       \"timeby\":1\n       }\n\n       var json_obj =\n       {\n           tagname:\"member_login\",\n           param:userInfo,\n       }\n       app.callback(json_obj);\n     "
+            ],
+            "class": "CtripUser"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1556,
+            "description": "用户注册",
+            "brief": "用户注册",
+            "since": "5.2",
+            "itemtype": "method",
+            "name": "app_member_register",
+            "author": "jimzhao",
+            "see": [
+                "app_member_login"
+            ],
+            "example": [
+                " \n\n     CtripUser.app_member_register();\n     //调用后，H5会收到native回调的数据\n     //回调的数据格式参考app_member_login()\n    var userInfo = {\n       \"timeout\":\"2013/09/12\",\n       \"data\":\n       {\n         \"LoginName\":\"wwwwww\",\n         \"UserID\":\"21634352BAC43044380A7807B0699491\",\n         \"IsNonUser\":false,\n         \"UserName\":\"测试\",\n         \"Mobile\":\"13845612110\",\n         \"LoginToken\":\"\",\n         \"LoginCode\":0,\n         \"LoginErrMsg\":\"登录成功！\",\n         \"Address\":\"\",\n         \"Birthday\":\"19841010\",\n         \"Experience\":1453333973000,//微妙timestamp\n         \"Gender\":1,\n         \"PostCode\":\"111111\",\n         \"VipGrade\":30,\n         \"VipGradeRemark\":\"钻石贵宾\",\n         \"Email\":\"wang_peng@163.com\",\n         \"ExpiredTime\":\"2013-09-12\",\n         \"Auth\":\"079E643955C63839FF4617743DA20CFD93AFCAF6A82803A6F3ABD9219\",\n         \"IsRemember\":0,\n         \"BindMobile\":18688888888\n       },  \n       \"timeby\":1\n       }\n\n       var json_obj =\n       {\n           tagname:\"member_login\",\n           param:userInfo,\n       }\n       app.callback(json_obj);\n         "
+            ],
+            "class": "CtripUser"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1619,
+            "description": "H5完成注册，将注册信用户息告知Native，native做登录",
+            "brief": "H5完成注册，通知Native登录",
+            "itemtype": "method",
+            "name": "app_finished_register",
+            "params": [
+                {
+                    "name": "userInfoJson",
+                    "description": "注册完成的用户信息",
+                    "type": "JSON"
+                }
+            ],
+            "since": "v5.7",
+            "author": "jimzhao",
+            "example": [
+                " \n       \n       var userInfo = {};\n       userInfo.userID = \"xxxxxx\";\n       userInfo.phone=\"13900000000\";\n       userInfo.password=\"asdzxc\";\n\n       CtripUser.app_finished_register(userInfo)\n"
+            ],
+            "class": "CtripUser"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1659,
+            "description": "H5登陆完成，将注册信息告知Native，native写入memory，修改登录态",
+            "brief": "H5完成登录，通知Native修改登录态",
+            "itemtype": "method",
+            "name": "app_finished_login",
+            "params": [
+                {
+                    "name": "userInfoJson",
+                    "description": "登录完成，服务器返回的用户信息",
+                    "type": "JSON"
+                }
+            ],
+            "since": "v5.8",
+            "author": "jimzhao",
+            "example": [
+                " \n               \n       //.... json对象为服务器返回的用户信息对象\n       var userModel = {};\n       userModel.UserID = \"132220000\";\n       userModel.UserName = \"U2SB\";\n       userModel.Mobilephone = \"13899999999\";\n       userModel.BindedMobilePhone = \"13899999999\";\n       userModel.Telephone = \"021-9999999\"\n       userModel.Gender =  0;\n       userModel.Address = \"火星，上海，月球\";\n       userModel.PostCode = \"210000\";\n       userModel.Birthday = \"1900-08-01\";\n       userModel.Email =  \"US2B@gmail.com\";\n       userModel.Experience = 1344;\n       userModel.VipGrade = 32;//\n       userModel.VipGradeRemark = \"蓝宝石\";\n       userModel.SignUpdate = \"1911-09-09\";\n       userModel.Authentication = \"2cxesescvdsfew32w3sxcq23\";\n       userModel.UserIconList = [];\n\n       CtripUser.app_finished_login(userInfo)\n"
+            ],
+            "class": "CtripUser"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1722,
+            "description": "base64 UTF8编码",
+            "brief": "base64 UTF8编码",
+            "since": "5.4",
+            "itemtype": "method",
+            "name": "app_base64_encode",
+            "params": [
+                {
+                    "name": "toIncodeString",
+                    "description": "需要做base64 encode的字符串",
+                    "type": "String"
+                }
+            ],
+            "author": "jimzhao",
+            "example": [
+                " \n\n     CtripEncrypt.app_base64_encode(\"xxxxxx\");\n     //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"base64_encode\",\n           param:\n           {\n               inString:\"xxxxxx\",\n               encodedString:\"eHh4eHh4\",\n           },\n       }\n       app.callback(json_obj);\n         "
+            ],
+            "class": "CtripEncrypt"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1770,
+            "description": "MD5 哈希算法，长度32，大写",
+            "brief": "MD5 哈希算法",
+            "since": "5.4",
+            "itemtype": "method",
+            "name": "app_md5_hash",
+            "params": [
+                {
+                    "name": "inString",
+                    "description": "需要做MD5 哈希的字符串",
+                    "type": "String"
+                }
+            ],
+            "author": "jimzhao",
+            "example": [
+                " \n\n     CtripEncrypt.app_md5_hash(\"abcdxxxx\");\n     //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"md5_hash\",\n           param:\n           {   \n               inString:\"abcdxxxx\"\n               outString:\"FDA820BA864415E2451BE1C67F1F304A\",\n           },\n       }\n       app.callback(json_obj);\n         "
+            ],
+            "class": "CtripEncrypt"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1818,
+            "description": "Ctrip私有加解密算法",
+            "brief": "Ctrip私有加解密算法",
+            "since": "5.5",
+            "itemtype": "method",
+            "name": "app_ctrip_encrypt",
+            "params": [
+                {
+                    "name": "inString",
+                    "description": "需要做加解密的字符串",
+                    "type": "String"
+                },
+                {
+                    "name": "encType",
+                    "description": "加解密类型，加密为1， 解密为2，其它不处理",
+                    "type": "String"
+                }
+            ],
+            "author": "jimzhao",
+            "example": [
+                " \n\n     CtripEncrypt.app_ctrip_encrypt(\"abcdxxxx\",1);\n     //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"ctrip_encrypt\",\n           param:\n           {\n               inString:\"abcdxxxx\",\n               outString:\"ABScdXkYZunwXVF5kQpffnY+oL/MFmJGkn8ra8Ab5cI=\",\n               encType:1\n           },\n       }\n       app.callback(json_obj);\n         "
+            ],
+            "class": "CtripEncrypt"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1877,
+            "description": "检查支付相关App安装情况",
+            "brief": "检查支付相关App安装情况",
+            "since": "5.4",
+            "itemtype": "method",
+            "name": "app_check_pay_app_install_status",
+            "author": "jimzhao",
+            "example": [
+                " \n\n     CtripPay.app_check_pay_app_install_status();\n     //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"check_pay_app_install_status\",\n           param:\n           {\n               platform:\"iOS\", //Android\n               weixinPay:true,\n               aliWalet:true,\n               aliQuickPay:true,\n           },\n       }\n\n       app.callback(json_obj);"
+            ],
+            "class": "CtripPay"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1919,
+            "description": "根据URL打开支付App",
+            "brief": "根据URL打开支付App",
+            "params": [
+                {
+                    "name": "payAppName",
+                    "description": "支付App的URL，暂固定为以下4个， aliWalet/aliQuickPay/wapAliPay/weixinPay(微信支付暂未支持)",
+                    "type": "String"
+                },
+                {
+                    "name": "payMeta",
+                    "description": "服务器返回的支付配置信息，ali相关为URL，微信支付为xml",
+                    "type": "String"
+                },
+                {
+                    "name": "successRelativeURL",
+                    "description": "支付成功跳转的URL",
+                    "type": "String"
+                },
+                {
+                    "name": "detailRelativeURL",
+                    "description": "支付失败或者支付",
+                    "type": "String"
+                }
+            ],
+            "since": "5.4",
+            "itemtype": "method",
+            "name": "app_open_pay_app_by_url",
+            "author": "jimzhao",
+            "example": [
+                " \n\n     CtripPay.app_open_pay_app_by_url(\"aliWalet\",\"alipay://orderId=123\",\"car/paySuccess.html\", \"car/payDetail.html\");\n     //调用后，App会做相应的页面跳转\n"
+            ],
+            "class": "CtripPay"
+        },
+        {
+            "file": "bridge.js",
+            "line": 1984,
+            "description": "H5通过App发送服务",
+            "brief": "H5通过App发送服务",
+            "itemtype": "method",
+            "name": "app_send_HTTP_pipe_request",
+            "params": [
+                {
+                    "name": "baseURL",
+                    "description": "HTTP请求发送的URL地址",
+                    "type": "String"
+                },
+                {
+                    "name": "path",
+                    "description": "HTTP请求发送的URL的路径",
+                    "type": "String"
+                },
+                {
+                    "name": "method",
+                    "description": "HTTP请求方式GET/POST",
+                    "type": "String"
+                },
+                {
+                    "name": "header",
+                    "description": "HTTP头，JSON字符串格式key/value，cookie作为一个key存储再HEADER内部",
+                    "type": "String"
+                },
+                {
+                    "name": "parameters",
+                    "description": "key=value形式的字符串数组,请做好参数的Encode，app端只负责拼接",
+                    "type": "Array"
+                },
+                {
+                    "name": "isIgnoreHTTPSCertification",
+                    "description": "是否忽略HTTPS证书",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "sequenceId",
+                    "description": "发送服务的序列号，随机生存即可",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.4",
+            "author": "jimzhao",
+            "example": [
+                " \n\n    //GET http://www.baidu.com/s?wd=good+day&rsv_bp=0&ch=&tn=baidu&bar=&rsv_spt=3&ie=utf-8&rsv_sug3=4&rsv_sug4=469&rsv_sug1=2&rsv_sug2=0&inputT=166\n   \n     var paramArr = new Array();\n     paramArr[0]=\"wd=good+day\";\n     paramArr[1]=\"rsv_bp=0\";\n     paramArr[2]=\"ch=\";\n     paramArr[3]=\"tn=\";\n     paramArr[4]=\"baidu=\";\n     paramArr[5]=\"bar=\";\n     paramArr[6]=\"rsv_spt=3\";\n     paramArr[7]=\"ie=utf-8\";\n     paramArr[8]=\"rsv_sug3=4\";\n     paramArr[9]=\"rsv_sug4=469\";\n     //。。。。其它参数依次类推，请做好参数的Encode，app端只负责拼接\n\n     CtripPipe.app_send_HTTP_pipe_request(\"http://www.baidu.com\", \"/s\",\"GET\",null,paramArr, false, \"13222222\");\n\n    //调用后，H5会收到native回调的数据\n       var json_obj =\n       {\n           tagname:\"send_http_pipe_request\",\n           param:\n           {\n               responseString:\"eHh4eHh4\",\n               responseCookie : {\n                    \"BAIDUID\":\"2959D035E2F5D7C979687934D558DCD3:FG=1\",\n                    \"BDSVRTM\":10,\n                    \"BD_CK_SAM\":1,\n                    \"H_PS_PSSID\":\"1429_5225_5287_5722_5848_4261_5830_4759_5659_5857\"\n               },\n\n               sequenceId:\"13222222\"\n           },\n       }\n       app.callback(json_obj);\n"
+            ],
+            "class": "CtripPipe"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2083,
+            "description": "根据发送的sequenceId，终止正在发送的HTTP请求",
+            "brief": "终止正在发送的HTTP请求",
+            "itemtype": "method",
+            "name": "app_abort_HTTP_pipe_request",
+            "params": [
+                {
+                    "name": "sequenceId",
+                    "description": "发送服务的序列号，随机生存即可",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.4",
+            "author": "jimzhao",
+            "example": [
+                " \n    \n     CtripPipe.app_abort_HTTP_pipe_request(\"13523333333\");\n"
+            ],
+            "class": "CtripPipe"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2120,
+            "description": "H5通过App发送服务",
+            "brief": "H5通过App发送服务",
+            "itemtype": "method",
+            "name": "app_send_H5_pipe_request",
+            "params": [
+                {
+                    "name": "serviceCode",
+                    "description": "需要发送服务的服务号",
+                    "type": "String"
+                },
+                {
+                    "name": "header",
+                    "description": "服务的header",
+                    "type": "String"
+                },
+                {
+                    "name": "data",
+                    "description": "服务所需要的数据部分，各个服务都不同",
+                    "type": "String"
+                },
+                {
+                    "name": "sequenceId",
+                    "description": "发送服务的序列号，随机生存即可",
+                    "type": "String"
+                },
+                {
+                    "name": "pipeType",
+                    "description": "管道类型，因mobileServer原因，5.4的管道是支付专用，默认是0=支付管道，1＝公共管道",
+                    "type": "Int"
+                }
+            ],
+            "since": "v5.4",
+            "author": "jimzhao",
+            "example": [
+                " \n    \n     CtripUtil.app_send_H5_pipe_request(\"9500001\", \"H5Agent\",\"{}\",\"13523333333\");\n    //调用后，H5会收到native回调的数据\n\n       //成功 \n       var json_obj =\n       {\n           tagname:\"send_h5_pipe_request\",\n           param:\n           {\n               sequenceId:\"13523333333\",\n               resultMessage:\"eHh4eHh4\",\n               resultHead:\"eHh4eHh4\",\n               resultBody:\"eHh4eHh4\",\n               result:1,\n           },\n       }\n\n       //失败\n       var json_obj =\n       {\n           tagname:\"send_h5_pipe_request\",\n           param:\n           {\n               sequenceId:\"13523333333\",\n               errorInformation:\"eHh4eHh4\",\n               serverErrorCode:\"eHh4eHh4\",\n           },\n       }\n       app.callback(json_obj);\n"
+            ],
+            "class": "CtripPipe"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2216,
+            "description": "检查ticket是否在三星钱包app中",
+            "brief": "检查ticket是否在三星钱包app中",
+            "itemtype": "method",
+            "name": "app_check_ticket_in_samsung_wallet",
+            "params": [
+                {
+                    "name": "ticketID",
+                    "description": "ticket的ID，服务器返回",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.3.2",
+            "author": "jimzhao",
+            "example": [
+                " \n\nCtripSumSungWallet.app_check_ticket_in_samsung_wallet(\"ID123333\");\n\n      //调用之后会收到\n       var json_obj = {\n           tagname : \"check_ticket_in_samsung_wallet\",\n           param : {\n               insInSamSungWallet: false, //true\n           }\n       }\n       \n       app.callback(json_obj);"
+            ],
+            "class": "CtripSumSungWallet"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2251,
+            "description": "到三星钱包中下载ticket",
+            "brief": "到三星钱包中下载ticket",
+            "itemtype": "method",
+            "name": "app_download_ticket_in_samsung_wallet",
+            "params": [
+                {
+                    "name": "ticketID",
+                    "description": "ticket的ID，服务器返回",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.32",
+            "author": "jimzhao",
+            "example": [
+                " \n\nCtripSumSungWallet.app_download_ticket_in_samsung_wallet(\"ID123333\");\n   \n       //调用之后会收到\n       var json_obj = {\n           tagname : \"download_ticket_in_samsung_wallet\",\n           param : {\n               isDownloadSuccess: false, //true，下载成功的时候没有errorInfo\n               errorInfo: \"网络故障\", \n           }\n       }\n\n       app.callback(json_obj);"
+            ],
+            "class": "CtripSumSungWallet"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2287,
+            "description": "在三星钱包app中查看Ticket",
+            "brief": "在三星钱包app中查看Ticket",
+            "itemtype": "method",
+            "name": "app_show_ticket_in_samsung_wallet",
+            "params": [
+                {
+                    "name": "ticketID",
+                    "description": "ticket的ID，服务器返回",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.32",
+            "author": "jimzhao",
+            "example": [
+                " \n    \n     CtripSumSungWallet.app_show_ticket_in_samsung_wallet(\"ID123333\");\n\n    //调用之后会收到\n       var json_obj = {\n           tagname : \"show_ticket_in_samsung_wallet\",\n           param : {\n               errorInfo: \"Ticket ID不存在\", //true\n           }\n       }\n       \n       app.callback(json_obj);"
+            ],
+            "class": "CtripSumSungWallet"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2331,
+            "description": "获取当前web页面的sandbox目录，在webapp/wb_cache/xxxx/目录下xxxx即为当前sandbox的名字",
+            "brief": "获取当前web页面的sandbox目录",
+            "itemtype": "method",
+            "name": "app_get_current_sandbox_name",
+            "since": "v5.4",
+            "author": "jimzhao",
+            "example": [
+                " \n    \n     CtripFile.app_get_current_sandbox_name();\n\n    //调用之后会收到\n       var json_obj = {\n           tagname : \"get_current_sandbox_name\",\n           param : {\n               sandboxName: \"car\", \n           }\n       }\n       \n       app.callback(json_obj);"
+            ],
+            "class": "CtripFile"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2372,
+            "description": "文本写入文件中，UTF8编码。可以指定文件名，或者相对路径",
+            "brief": "写文本到本地文件",
+            "itemtype": "method",
+            "name": "app_write_text_to_file",
+            "params": [
+                {
+                    "name": "text",
+                    "description": "需要写入文件的文本内容",
+                    "type": "String"
+                },
+                {
+                    "name": "fileName",
+                    "description": "写入的文件路径",
+                    "type": "String"
+                },
+                {
+                    "name": "relativeFilePath",
+                    "description": "写入的文件相对路径，需要调用app_get_current_sandbox_name获取sandbox的名字+路径",
+                    "type": "String"
+                },
+                {
+                    "name": "isAppend",
+                    "description": "是否是将当前文件append到已有文件",
+                    "type": "BOOL"
+                }
+            ],
+            "since": "v5.4",
+            "author": "jimzhao",
+            "example": [
+                " \n    \n     CtripFile.app_write_text_to_file(\"Hello,世界\", \"log.txt\", null, false); //文件存储在本地的/webapp/wb_cache/car/log.txt\n     CtripFile.app_write_text_to_file(\"Hello2,世界\", null, /car/mydir/log.txt, false); //文件存储在本地的/webapp/wb_cache/car/mydir/log.txt\n\n    //调用之后会收到\n       var json_obj = {\n           tagname : \"write_text_to_file\",\n           param : {\n               isSuccess: true, \n           }\n       }\n       \n       app.callback(json_obj);"
+            ],
+            "class": "CtripFile"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2430,
+            "description": "删除文件/目录。可以指定文件名，或者相对路径",
+            "brief": "删除文件/目录",
+            "itemtype": "method",
+            "name": "app_delete_file",
+            "params": [
+                {
+                    "name": "fileName",
+                    "description": "需要删除的文件路径",
+                    "type": "String"
+                },
+                {
+                    "name": "relativeFilePath",
+                    "description": "需要删除的文件相对路径，需要调用app_get_current_sandbox_name获取sandbox的名字+路径",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.4",
+            "author": "jimzhao",
+            "example": [
+                " \n    \n     CtripFile.app_delete_file(\"log.txt\", null); //删除文件/webapp/wb_cache/car/log.txt\n     CtripFile.app_delete_file(null,\"/car/mydir/log.txt\"; //删除文件/webapp/wb_cache/car/mydir/log.txt\n\n    //调用之后会收到\n       var json_obj = {\n           tagname : \"delete_file\",\n           param : {\n               isSuccess: true, \n           }\n       }\n       \n       app.callback(json_obj);"
+            ],
+            "class": "CtripFile"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2482,
+            "description": "读取文本文件内容，UTF-8编码。可以指定文件名，或者相对路径",
+            "brief": "读取文本文件内容",
+            "itemtype": "method",
+            "name": "app_read_text_from_file",
+            "params": [
+                {
+                    "name": "fileName",
+                    "description": "需要读取内容的文件路径",
+                    "type": "String"
+                },
+                {
+                    "name": "relativeFilePath",
+                    "description": "需要读取内容的文件相对路径，需要调用app_get_current_sandbox_name获取sandbox的名字+路径",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.4",
+            "author": "jimzhao",
+            "example": [
+                " \n    \n     CtripFile.app_read_text_from_file(\"log.txt\", null); //从文件/webapp/wb_cache/car/log.txt读取内容\n     CtripFile.app_read_text_from_file(null,\"/car/mydir/log.txt\"; //从文件/webapp/wb_cache/car/mydir/log.txt读取内容\n\n    //调用之后会收到\n       var json_obj = {\n           tagname : \"read_text_from_file\",\n           param : {\n               text: \"Hello,世界\", \n           }\n       }\n       \n       app.callback(json_obj);"
+            ],
+            "class": "CtripFile"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2535,
+            "description": "读取文件大小。可以指定文件名，或者相对路径",
+            "brief": "读取文件大小",
+            "itemtype": "method",
+            "name": "app_get_file_size",
+            "params": [
+                {
+                    "name": "fileName",
+                    "description": "需要读取文件大小的文件路径",
+                    "type": "String"
+                },
+                {
+                    "name": "relativeFilePath",
+                    "description": "需要读取文件大小的文件相对路径，需要调用app_get_current_sandbox_name获取sandbox的名字+路径",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.4",
+            "author": "jimzhao",
+            "example": [
+                " \n    \n     CtripFile.app_get_file_size(\"log.txt\", null); //从文件/webapp/wb_cache/car/log.txt读取内容\n     CtripFile.app_get_file_size(null,\"/car/mydir/log.txt\"; //从文件/webapp/wb_cache/car/mydir/log.txt读取内容\n\n    //调用之后会收到\n       var json_obj = {\n           tagname : \"get_file_size\",\n           param : {\n               fileSize: 8 \n           }\n       }\n       \n       app.callback(json_obj);"
+            ],
+            "class": "CtripFile"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2587,
+            "description": "检查文件是否存在。可以指定文件名，或者相对路径",
+            "brief": "检查文件是否存在",
+            "itemtype": "method",
+            "name": "app_check_file_exist",
+            "params": [
+                {
+                    "name": "fileName",
+                    "description": "需要读取文件大小的文件路径",
+                    "type": "String"
+                },
+                {
+                    "name": "relativeFilePath",
+                    "description": "需要读取文件大小的文件相对路径，需要调用app_get_current_sandbox_name获取sandbox的名字+路径",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.4",
+            "author": "jimzhao",
+            "example": [
+                " \n    \n     CtripFile.app_check_file_exist(\"log.txt\", null); //从文件/webapp/wb_cache/car/log.txt读取内容\n     CtripFile.app_check_file_exist(null,\"/car/mydir/log.txt\"; //从文件/webapp/wb_cache/car/mydir/log.txt读取内容\n\n    //调用之后会收到\n       var json_obj = {\n           tagname : \"check_file_exist\",\n           param : {\n               isExist: true \n           }\n       }\n       \n       app.callback(json_obj);"
+            ],
+            "class": "CtripFile"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2639,
+            "description": "创建文件夹。可以指定文件名，或者相对路径",
+            "brief": "创建文件夹",
+            "itemtype": "method",
+            "name": "app_make_dir",
+            "params": [
+                {
+                    "name": "dirName",
+                    "description": "需要创建的文件夹路径",
+                    "type": "String"
+                },
+                {
+                    "name": "relativeDirPath",
+                    "description": "需要创建的文件夹相对路径，需要调用app_get_current_sandbox_name获取sandbox的名字+路径",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.4",
+            "author": "jimzhao",
+            "example": [
+                " \n    \n     CtripFile.app_make_dir(\"mydir2\", null); //创建文件夹/webapp/wb_cache/car/mydir2/\n     CtripFile.app_make_dir(null,\"/car/mydir/innerDir\"; //创建文件夹/webapp/wb_cache/car/mydir/innerDir/\n\n    //调用之后会收到\n       var json_obj = {\n           tagname : \"make_dir\",\n           param : {\n               isSuccess: true \n           }\n       }\n       \n       app.callback(json_obj);"
+            ],
+            "class": "CtripFile"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2702,
+            "description": "刷新顶部条按钮和文字",
+            "brief": "刷新顶部条按钮和文字",
+            "params": [
+                {
+                    "name": "nav_bar_config_json",
+                    "description": "顶部条配置json串",
+                    "type": "String"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_refresh_nav_bar",
+            "author": "jimzhao",
+            "since": "v5.2",
+            "example": [
+                "\n\n       //导航栏总共分为3部分:\n       1.左侧，返回按钮，不能修改; \n\n       2.中间title，可以自定义，样式总共3种;\n           a.标题[1行或者2行subtitle]；\n           key=center;\n           [\n               {\n                   \"tagname\": \"title\", \n                   \"value\":\"携程\" //标题文字\n               },\n               {\n                   \"tagname\":\"subtitle\",//子标题的tagname必须为subtitle\n                    value:\"上海到北京\", //子标题文字\n               }\n           ],\n           b.带事件的标题；\n           key=centerButtons;\n           [\n               {\n                   \"tagname\": \"cityChoose\",  //点击标题回调H5的tagname\n                   \"value\":\"上海\",  //标题文字\n                   \"a_icon\":\"icon_arrowx\", //标题文字后面的按钮图片名，for android @deprecated\n                   \"i_icon\":\"icon_arrowx.png\", //标题文字后面的按钮图片名，for iOS @deprecated\n                   \"imagePath\":\"car/res/logo.png\", //标题文字后面的按钮图片名，图片路径，相对于业务模块的路径，比如car/res/logo.png， v5.8开始支持\n                   \"pressedImagePath\":\"car/res/logo.png\"  //标题文字后面的按钮图片名，选中状态图片路径，相对于业务模块的路径，比如car/res/logo.png， v5.8开始支持\n               }\n           ], \n\n       3.右侧按钮，可以自定义，样式总共3种， \n           A.1个文字按钮;\n           B.1个图片按钮；\n           C.2个图片按钮；\n           单个右侧按钮样式的定义格式为\n           {\n               tagname:\"xxxx\",  //点击之后 callback给H5的事件名字,\n               value:\"btn_title\", //按钮上的文字\n               imagePath:\"car/res/logo.png\",  //按钮上的图片，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持\n               pressedImagePath:\"car/res/logo.png\" //按钮上的图片选中的效果图，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持\n           }\n           特殊tagname定义及说明：\n           a. tagname=home, 返回app首页，图片，事件 都不需要H5处理；\n           b. tagname=call, 拨打呼叫中心，图片，事件 都不需要H5处理；\n           c. tagname=phone, 拨打电话，图片-native预置，事件交由H5处理；v5.8开始支持；\n           d. tagname=share, 分享，图片-native预置，事件将会交给H5处理；v5.8开始支持；\n           e. tagname=favorite, 收藏，图片-native预置, 事件交给H5处理；v5.8开始支持；\n           f. tagname=favorited, 已经收藏，图片-native预置，事件交给H5处理；v5.8开始支持；\n           g. 其他tagname，图片有H5提供，事件H5处理；\n\n       示例：\n       var nav_json = {   \n           \"right\": [{\"tagname\": \"click_tag_name\", \"value\":\"Click\", \"imagePath\":\"car/res/logo.png\", \"pressedImagePath\":\"car/res/logo_pressed.png\"}],\n           \"center\": [{\"tagname\": \"title\", \"value\":\"携程\"},{\"tagname\":\"subtitle\", value:\"上海到北京\"}],\n           \"centerButtons\": [{\"tagname\": \"cityChoose\", \"value\":\"上海\", \"a_icon\":\"icon_arrowx\", \"i_icon\":\"icon_arrowx.png\",\"imagePath\":\"car/res/logo.png\", \"pressedImagePath\":\"car/res/logo_pressed.png\"}], \n       }\n       var json_str = JSON.stringify(nav_json);\n       CtripBar.app_refresh_nav_bar(json_str);\n\n       //调用完成，顶部条title为携程，右侧有一个按钮，按钮文字为Click，用户点击按钮后，H5页面会收到如下回调\n       var cb_json = {tagname:\"click_tag_name\"};\n       app.callback(cb_json);\n       //H5页面需要处理tagname为click_tag_name的事件\n"
+            ],
+            "class": "CtripBar"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2799,
+            "description": "设置顶部导航栏隐藏／显示，使用该函数的隐藏顶部栏之后，必须保证页面有离开H5页面的功能，否则用户无法离开，必须要kill掉app。",
+            "brief": "顶部导航隐藏／显示",
+            "params": [
+                {
+                    "name": "isHidden",
+                    "description": "是否隐藏顶部导航栏",
+                    "type": "Boolean"
+                }
+            ],
+            "since": "5.4",
+            "itemtype": "method",
+            "name": "app_set_navbar_hidden",
+            "author": "jimzhao",
+            "example": [
+                " \n\n    CtripBar.app_set_navbar_hidden(false);"
+            ],
+            "class": "CtripBar"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2834,
+            "description": "设置底部工具栏隐藏／显示",
+            "brief": "底部工具栏隐藏／显示",
+            "params": [
+                {
+                    "name": "isHidden",
+                    "description": "是否隐藏底部工具栏",
+                    "type": "Boolean"
+                }
+            ],
+            "since": "5.4",
+            "itemtype": "method",
+            "name": "app_set_toolbar_hidden",
+            "author": "jimzhao",
+            "example": [
+                " \n\n    CtripBar.app_set_toolbar_hidden(false);"
+            ],
+            "class": "CtripBar"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2874,
+            "description": "定位",
+            "brief": "定位",
+            "params": [
+                {
+                    "name": "is_async",
+                    "description": "true标识是异步定位，false标识为同步定位",
+                    "type": "Bool"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_locate",
+            "author": "jimzhao",
+            "since": "v5.1",
+            "example": [
+                "\n\n       CtripUtil.app_locate(true);\n       //定位完成后H5页面会收到回调数据\n       var json_obj =\n       {\n           tagname:'locate',\n           param:{\n               \"value\":{\n                   ctyName: '上海',\n                   addrs:'上海市浦东南路22号',\n                   lat:'121.487899',\n                   lng:'31.249162'\n               },\n               'timeout': '2013/09/12 12:32:36',\n               'locateStatus':0,//iOS新增字段:-1网络不通，当前无法定位,-2定位没有开启\n           }\n       }\n       app.callback(json_obj);\n"
+            ],
+            "class": "CtripMap"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2919,
+            "description": "在地图上显示某个位置",
+            "brief": "在地图上显示某个位置/导航",
+            "params": [
+                {
+                    "name": "latitude,",
+                    "description": "纬度",
+                    "type": "Double"
+                },
+                {
+                    "name": "longitude,",
+                    "description": "经度",
+                    "type": "Double"
+                },
+                {
+                    "name": "title,",
+                    "description": "在地图上显示的点的主标题",
+                    "type": "String"
+                },
+                {
+                    "name": "subtitle,",
+                    "description": "在地图上显示点的附标题",
+                    "type": "String"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_show_map",
+            "author": "jimzhao",
+            "since": "v5.5",
+            "example": [
+                "\n       \n       CtripMap.app_show_map(31.3222323, 121.32232332, \"上海野生动物园\", \"浦东新区陆家嘴1234号\");\n"
+            ],
+            "class": "CtripMap"
+        },
+        {
+            "file": "bridge.js",
+            "line": 2965,
+            "description": "在地图上显示多个POI位置点",
+            "brief": "在地图上显示多个位置/导航",
+            "params": [
+                {
+                    "name": "poiList",
+                    "description": "poi列表, list中为JSON对象，key为：latitude, longitude, title, subtitle",
+                    "type": "Array"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_show_map_with_POI_list",
+            "author": "jimzhao",
+            "since": "v5.8",
+            "example": [
+                "\n       \n       var poi0 = {};\n       poi0.latitude = 31.3222323; //must\n       poi0.longitude = 121.32232332;//must\n       poi0.title = \"上海野生动物园\"; //must\n       poi0.subtitle = \"浦东新区陆家嘴1234号\";//optional\n\n       var poi1 = {};\n       poi1.latitude = 30.3222323; //must\n       poi1.longitude = 120.32232332;//must\n       poi1.title = \"上海野生动物园A\"; //must\n       poi1.subtitle = \"浦东新区陆家嘴1234号A\";//optional\n\n\n       var poi2 = {};\n       poi2.latitude = 32.3222323; //must\n       poi2.longitude = 122.32232332;//must\n       poi2.title = \"上海野生动物园B\"; //must\n       poi2.subtitle = \"浦东新区陆家嘴1234号B\";//optional\n       \n       var poiList = new Array();\n       poiList[0] = poi0;\n       poiList[1] = poi1;\n       poiList[2] = poi2;\n\n       CtripMap.app_show_map(poiList);\n"
+            ],
+            "class": "CtripMap"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3032,
+            "description": "选择常用发票title",
+            "brief": "选择常用发票title",
+            "params": [
+                {
+                    "name": "selectedInvoiceTitle",
+                    "description": "当前已经选择好的发票title",
+                    "type": "String"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_choose_invoice_title",
+            "author": "jimzhao",
+            "since": "v5.6",
+            "example": [
+                "\n\n\n       CtripBusiness.app_choose_invoice_title(\"上次选择的发票title，或者为空，用于标记已选title\");\n       \n       //调用之后，H5页面会收到回调数据\n       var json_obj =\n       {\n           tagname:'choose_invoice_title',\n           param:{\n               selectedInvoiceTitle:\"所选择的发票title\"\n           }\n       }\n       \n       app.callback(json_obj);"
+            ],
+            "class": "CtripBusiness"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3081,
+            "description": "进入语音搜索,5.7版本，语音搜索之后的结果，不需要BU处理，只需调用即可，后续版本，可能只做语音解析，解析结果传递给H5，BU自行处理",
+            "brief": "进入语音搜索",
+            "params": [
+                {
+                    "name": "businessType",
+                    "description": "业务类型(0. 无（默认）1. 机票 2. 酒店3 . 火车票 5. 目的地 6. 攻略 7.景点门票 8.周末/短途游)  61：团队游 62：周末游  63：自由行 64：邮轮",
+                    "type": "Int"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_show_voice_search",
+            "author": "jimzhao",
+            "since": "v5.7",
+            "example": [
+                "\n\n\n       CtripBusiness.app_show_voice_search(7);\n       \n       //调用之后，H5页面会收到回调数据\n       var json_obj =\n       {\n           tagname:'show_voice_search',\n          //param:{} 后续版本使用，返回语音解析的数据map，5.7暂不提供\n       }\n       \n       app.callback(json_obj);"
+            ],
+            "class": "CtripBusiness"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3123,
+            "description": "打开Hybrid广告页面，会自动显示底部栏，且右上角有分享安妮",
+            "brief": "打开Hybrid广告页面",
+            "itemtype": "method",
+            "name": "app_open_adv_page",
+            "params": [
+                {
+                    "name": "advUrl",
+                    "description": "广告URL， URL参数带title=xxx,设置xxx为标题",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.4",
+            "author": "jimzhao",
+            "example": [
+                "\n\n     CtripBusiness.app_open_adv_page(\"http://pages.ctrip.com/adv.html?title=标题xxx\");"
+            ],
+            "class": "CtripBusiness"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3155,
+            "description": "查看最新版本功能介绍",
+            "brief": "查看最新版本功能介绍",
+            "since": "v5.2",
+            "itemtype": "method",
+            "name": "app_show_newest_introduction",
+            "author": "jimzhao",
+            "example": [
+                " \n\n    CtripUtil.app_show_newest_introduction();"
+            ],
+            "class": "CtripBusiness"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3179,
+            "description": "检查App的版本更新",
+            "brief": "检查App的版本更新",
+            "since": "v5.2",
+            "itemtype": "method",
+            "name": "app_check_update",
+            "author": "jimzhao",
+            "example": [
+                " \n\n    CtripBusiness.app_check_update();\n"
+            ],
+            "class": "CtripBusiness"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3204,
+            "description": "推荐携程旅行给好友",
+            "brief": "推荐携程旅行给好友",
+            "since": "v5.2",
+            "itemtype": "method",
+            "name": "app_recommend_app_to_friends",
+            "author": "jimzhao",
+            "example": [
+                " \n\n       CtripBusiness.app_recommend_app_to_friends();\n"
+            ],
+            "class": "CtripBusiness"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3229,
+            "description": "添加微信好友",
+            "brief": "添加微信好友",
+            "since": "v5.2",
+            "itemtype": "method",
+            "name": "app_add_weixin_friend",
+            "author": "jimzhao",
+            "example": [
+                " \n\n       CtripBusiness.app_add_weixin_friend();\n"
+            ],
+            "class": "CtripBusiness"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3254,
+            "description": "调用App的分享, 可以支持iOS6系统的分享",
+            "brief": "调用App的分享",
+            "params": [
+                {
+                    "name": "imageRelativePath",
+                    "description": "将要分享的图片相对路径，相对webapp的路径",
+                    "type": "String"
+                },
+                {
+                    "name": "text",
+                    "description": "需要分享的文字",
+                    "type": "String"
+                },
+                {
+                    "name": "title",
+                    "description": "需要分享的标题, v5.4开始支持该字段，微信和email支持；",
+                    "type": "String"
+                },
+                {
+                    "name": "linkUrl",
+                    "description": "需要分享的链接, v5.4开始支持该字段",
+                    "type": "String"
+                },
+                {
+                    "name": "isIOSSystemShare",
+                    "description": "是否是iOS6以上使用系统分享功能,对于先前门票分享功能，需要为true，其它都是false",
+                    "type": "Boolean"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_call_system_share",
+            "since": "v5.3",
+            "author": "jimzhao",
+            "example": [
+                "\n\n 微信(微信朋友/微信朋友圈)分享说明：\n       1. 图片分享，只能分享图片，所传的文字，title都无效；\n       2. 链接分享，所传的图片为分享网页的缩略图，title有效；\n       3. 纯文本分享，只能分享text，title无效；\n       4. 优先级 链接分享>图片分享>纯文本分享。\n          a. 如果有linkUrl，会被当作网页分享，图片作为缩略图；\n          b. 如果没有linkUrl，有图片，当作图片分享，text,title无效;\n          c. 如果没有linkUrl，没有图片，当作纯文本分享；\n       \n       微博分享：\n       1. 图片为所分享的图片；\n       2. 分享title不起作用；\n       3. 如果linkUrl有， 分享的text后面会自动添加linkUrl\n   \n       Email分享：\n       1. 图片为所分享的图片；\n       2. 分享title作为Email标题；\n       3. 如果有linkUrl，分享的text后面会自动添加linkUrl;\n\n       短信分享：\n       1. 图片为所分享的图片；注：iOS7.0之后才支持；\n       2. 分享title不起作用；\n       3. 如果有linkUrl，分享的text后面会自动添加linkUrl;\n\n       复制分享：\n       1. 分享的图片不起作用;\n       2. 分享的title不起作用;\n       3. 如果有linkUrl，分享的text后面会自动添加linkUrl;\n\n       CtripBusiness.app_call_system_share(\"../wb_cache/pkg_name/md5_url_hash\", \"text to share weibo\", \"this is titile\", \"http://www.ctrip.com/\", false);\n"
+            ],
+            "class": "CtripBusiness"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3340,
+            "description": "Native收集用户行为,该日志会被上传\nH5页面调用该函数，需要将增加的event_name告知native，native需要整理纪录",
+            "brief": "收集ActionLog",
+            "itemtype": "method",
+            "name": "app_log_event",
+            "params": [
+                {
+                    "name": "event_name",
+                    "description": "需要纪录的事件名",
+                    "type": "String"
+                }
+            ],
+            "since": "v5.2",
+            "author": "jimzhao",
+            "example": [
+                " \n\n       CtripBusiness.app_log_event('GoodDay')"
+            ],
+            "class": "CtripBusiness"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3371,
+            "description": "获取设备相关信息，相关部门需要",
+            "brief": "获取设备相关信息，相关部门需要",
+            "itemtype": "method",
+            "name": "app_get_device_info",
+            "since": "v5.7",
+            "author": "jimzhao",
+            "example": [
+                " \n\n       CtripBusiness.app_get_device_info()\n       调用之后，返回数据\n\n       var json_obj = {\n           IP:\"\",\n           OS:\"\\U82f9\\U679c\",\n           account:\"\",\n           areaCode:\"\",\n           baseStation:\"\",\n           clientID:12933032900000135327,\n           latitude:0,\n           longitude:0,\n           mac:\"10:DD:B1:CF:C1:80\",\n           port:\"\",\n           wifiMac:\"\"\n       };\n\n       app.callback(json_obj);"
+            ],
+            "class": "CtripBusiness"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3415,
+            "description": "获取短信中的验证码",
+            "brief": "获取短信中的验证码,iPhone不能读取，直接callback",
+            "itemtype": "method",
+            "name": "app_read_verification_code_from_sms",
+            "callback": "read_verification_code_from_sms",
+            "since": "v5.8",
+            "author": "jimzhao",
+            "example": [
+                " \n\n       CtripBusiness.app_read_verification_code_from_sms()\n       调用之后，返回数据\n\n       var json_obj = {\n           verificationCode = \"8890\"\n       };\n\n       app.callback(json_obj);"
+            ],
+            "class": "CtripBusiness"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3449,
+            "description": "记录google remarkting的screenName",
+            "brief": "记录google remarkting的screenName",
+            "params": [
+                {
+                    "name": "screenName",
+                    "description": "需要纪录的页面名",
+                    "type": "String"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_log_google_remarkting",
+            "since": "v5.8",
+            "author": "jimzhao",
+            "example": [
+                " \n\n       CtripBusiness.app_log_google_remarkting(window.location.href);"
+            ],
+            "class": "CtripBusiness"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3483,
+            "description": "检查渠道包信息",
+            "brief": "检查渠道包信息",
+            "itemtype": "method",
+            "name": "app_check_app_package_info",
+            "callback": "check_app_package_info",
+            "since": "v5.8",
+            "author": "jimzhao",
+            "example": [
+                " \n\n       CtripBusiness.app_check_android_package_info();\n       //调用之后，app返回\n       var json_obj = {\n           isHideAdv:true,\n           isHideAppRecommend:true\n       };\n\n       app.callback(json_obj);"
+            ],
+            "class": "CtripBusiness"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3527,
+            "description": "设置当前页面名，可用于页面导航，刷新",
+            "brief": "设置当前页面名，可用于页面导航，刷新",
+            "params": [
+                {
+                    "name": "pageName",
+                    "description": "设置当前页面名",
+                    "type": "String"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_set_page_name",
+            "author": "jimzhao",
+            "since": "v5.6",
+            "example": [
+                "\n\n\n       CtripPage.app_set_page_name(\"USE_CAR_PAGE_IDENTIFY\");\n"
+            ],
+            "class": "CtripPage"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:6"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:13"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:21"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:29"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:37"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:45"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:53"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:61"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:69"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:97"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:117"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:131"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:145"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:161"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:182"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:210"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:231"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:284"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:334"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:349"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:356"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:383"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:400"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:407"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:423"
+        },
+        {
+            "message": "unknown tag: callback",
+            "line": " bridge.js:423"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:475"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:523"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:553"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:588"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:618"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:634"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:728"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:743"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:758"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:772"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:811"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:825"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:858"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:901"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1002"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1035"
+        },
+        {
+            "message": "unknown tag: callback",
+            "line": " bridge.js:1035"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1072"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1121"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1171"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1220"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1256"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1272"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1326"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1359"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1366"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1430"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1493"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1556"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1619"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1659"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1715"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1722"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1770"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1818"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1870"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1877"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1919"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1977"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:1984"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2083"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2120"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2209"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2216"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2251"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2287"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2324"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2331"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2372"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2430"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2482"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2535"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2587"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2639"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2695"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2702"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2799"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2834"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2867"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2874"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2919"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:2965"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3025"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3032"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3081"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3123"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3155"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3179"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3204"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3229"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3254"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3340"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3371"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3415"
+        },
+        {
+            "message": "unknown tag: callback",
+            "line": " bridge.js:3415"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3449"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3483"
+        },
+        {
+            "message": "unknown tag: callback",
+            "line": " bridge.js:3483"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3520"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3527"
+        }
+    ]
+}
