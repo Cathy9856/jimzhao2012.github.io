@@ -3415,6 +3415,7 @@ var CtripBusiness = {
      /**
      * @description 记录google remarkting的screenName
      * @brief 记录google remarkting的screenName
+     * @param {String} screenName 需要纪录的页面名
      * @method app_log_google_remarkting
      * @since v5.8
      * @author jimzhao
