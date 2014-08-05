@@ -634,16 +634,17 @@ var CtripUtil = {
     /**
      * @description Hybrid页面，打开链接URL地址，兼容App和浏览器
      * @brief Hybrid页面打开链接URL
-     * @param {String} openUrl 需要打开的URL，可以为ctrip://,http(s)://,file://等协议的URL
-     * @param {int} targetMode 
+     * @param {String} openUrl @required 需要打开的URL，可以为ctrip://,http(s)://,file://等协议的URL
+     * @param {int} targetMode  @required
      0.当前页面刷新url;
      1.处理ctrip://协议;
      2.开启新的H5页面,title生效;
      3.使用系统浏览器打开;
      4.开启本地新的H5页面，title生效，此时URL为相对路径；5.6版本加入
      5.当前页面打开相对路径；5.8版本加入，但是所有版本都支持，5.8之前版本，内部自动调用app_cross_package_href
-     * @param {String} title 当targetMode＝2时候，新打开的H5页面的title
-     * @param {String} pageName 当targetMode＝0、2、4时候，本页面，或者新打开的H5页面，此时pageName有效，pageName当作H5页面唯一标识，可用于刷新页面；5.6版本加入
+     * @param {String} title @optional 当targetMode＝2时候，新打开的H5页面的title
+     * @param {String} pageName @optional 当targetMode＝0、2、4时候，本页面，或者新打开的H5页面，此时pageName有效，pageName当作H5页面唯一标识，可用于刷新页面；5.6版本加入
+     * @param {boolean} isShowLoadingPage  @optional 开启新的webview的时候，是否加载app的loading 
      * @method app_open_url
      * @since v5.2
      * @author jimzhao
@@ -661,7 +662,7 @@ var CtripUtil = {
      CtripUtil.app_open_url("car/index.html", 5, "用车首页", null);
 
      */
-     app_open_url:function(openUrl, targetMode, title, pageName) {
+     app_open_url:function(openUrl, targetMode, title, pageName, isShowLoadingPage) {
         var params = {};
         if(!openUrl) {
             openUrl = "";
@@ -677,6 +678,7 @@ var CtripUtil = {
         params.title = title;
         params.targetMode = targetMode;
         params.pageName = pageName;
+        params.isShowLoadingPage = isShowLoadingPage;
         paramString = Internal.makeParamString("Util", "openUrl", params, "open_url");
         
         if (Internal.appVersion) { //有AppVersion，为5.3及之后版本，或者5.2本地H5页面
@@ -1318,6 +1320,38 @@ var CtripUtil = {
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
+    },
+
+
+     /**
+     * @description H5页面加载完成，通知native app，app会隐藏loading界面
+     * @brief H5页面加载完成，通知native app
+     * @method app_h5_page_finish_loading
+     * @since v5.8
+     * @author jimzhao
+     * @example
+
+       //H5页面加载完成后，通知native隐藏loading界面
+       
+       CtripUtil.app_h5_page_finish_loading();     
+       
+     */
+    app_h5_page_finish_loading:function() {
+        if (!Internal.isSupportAPIWithVersion("5.8")) {
+            return;
+        }
+
+        var paramString = Internal.makeParamString("Util", "h5PageFinishLoading", null, "h5_page_finish_loading");
+        if (Internal.isIOS) {
+            var url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } 
+        else if (Internal.isAndroid) {
+            window.Util_a.h5PageFinishLoading(paramString);
+        } 
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        } 
     }
 
 };
