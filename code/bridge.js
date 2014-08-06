@@ -3558,5 +3558,41 @@ var CtripPage = {
         } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
+    },
+
+   /**
+     * @description 多webview app，回退到指定的webview页面
+     * @brief 回退到指定的webview页面
+     * @param {String} pageName 需要回退的页面名
+     * @method app_back_to_page
+     * @author jimzhao
+     * @since v5.8
+     * @example
+     *
+     * 
+        CtripPage.app_back_to_page("USE_CAR_PAGE_IDENTIFY");
+
+     */
+    app_back_to_page:function(pageName) {
+         if (!Internal.isSupportAPIWithVersion("5.8")) {
+            return;
+        }
+
+        if (!pageName) {
+            pageName = "";
+        }
+
+        var params = {};
+        params.pageName = pageName;
+
+        paramString = Internal.makeParamString("Page", "backToPage", params, "back_to_page");
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            window.Page_a.backToPage(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     }
 };

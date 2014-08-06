@@ -2094,6 +2094,27 @@
                 "\n\n\n       CtripPage.app_set_page_name(\"USE_CAR_PAGE_IDENTIFY\");\n"
             ],
             "class": "CtripPage"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3563,
+            "description": "多webview app，回退到指定的webview页面",
+            "brief": "回退到指定的webview页面",
+            "params": [
+                {
+                    "name": "pageName",
+                    "description": "需要回退的页面名",
+                    "type": "String"
+                }
+            ],
+            "itemtype": "method",
+            "name": "app_back_to_page",
+            "author": "jimzhao",
+            "since": "v5.8",
+            "example": [
+                "\n\n\n       CtripPage.app_back_to_page(\"USE_CAR_PAGE_IDENTIFY\");\n"
+            ],
+            "class": "CtripPage"
         }
     ],
     "warnings": [
@@ -2520,6 +2541,10 @@
         {
             "message": "unknown tag: brief",
             "line": " bridge.js:3527"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3563"
         }
     ]
 }
