@@ -453,6 +453,7 @@ var CtripUtil = {
                 screenHeight:480,//晶赞广告系统使用 since 5.7
                 screenPxDensity:1,//晶赞广告系统使用 since 5.7
                 deviceOSVersion:4.3,//晶赞广告系统使用 since 5.7
+                internalVersion:"5.7",//app内部版本，用于学生版版本更新判断，主版本不用
                 userInfo={USERINFO},//USERINFO内部结构参考CtripUser.app_member_login();    
             }
          }
