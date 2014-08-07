@@ -256,7 +256,7 @@
     </div>
 
     <div class="description">
-        <p>定位</p>
+        <p>定位，定位完成会有2次callback，第一次返回经纬度信息(5.8加入，使用定位缓存的时候，不回掉该结果，直接回掉逆地址解析的数据)，第二次返回逆地址解析的信息</p>
 
     </div>
 
@@ -293,8 +293,25 @@
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>   CtripUtil.app_locate(true);
-   //定位完成后H5页面会收到回调数据
+                <pre class="code prettyprint"><code>   //调用定位
+   CtripUtil.app_locate(true);
+
+   //1. 返回定位的经纬度信息-------5.8版本加入
+   var geo_json_obj = 
+    {
+       tagname:&#39;locate&#39;,
+       param:{
+           &quot;value&quot;:{
+               lat:&#39;121.487899&#39;,
+               lng:&#39;31.249162&#39;
+           },
+           &#39;timeout&#39;: &#39;2013/09/12 12:32:36&#39;,
+       }
+   }
+   app.callback(geo_json_obj);
+
+
+   //2. 返回定位的逆地址解析信息
    var json_obj =
    {
        tagname:&#39;locate&#39;,
@@ -377,7 +394,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2920"><code>bridge.js:2920</code></a>
+        <a href="../files/bridge.js.html#l2936"><code>bridge.js:2936</code></a>
         
         </p>
 
@@ -525,7 +542,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2966"><code>bridge.js:2966</code></a>
+        <a href="../files/bridge.js.html#l2982"><code>bridge.js:2982</code></a>
         
         </p>
 

@@ -453,7 +453,7 @@ var CtripUtil = {
                 screenHeight:480,//晶赞广告系统使用 since 5.7
                 screenPxDensity:1,//晶赞广告系统使用 since 5.7
                 deviceOSVersion:4.3,//晶赞广告系统使用 since 5.7
-                internalVersion:"5.7",//app内部版本，用于学生版版本更新判断，主版本不用
+                internalVersion:"5.7",//app内部版本，用于学生版版本更新判断，主版本不用 since 5.8
                 userInfo={USERINFO},//USERINFO内部结构参考CtripUser.app_member_login();    
             }
          }
@@ -2873,16 +2873,32 @@ var CtripBar = {
 
 var CtripMap = {
  /**
-     * @description 定位
+     * @description 定位，定位完成会有2次callback，第一次返回经纬度信息(5.8加入，使用定位缓存的时候，不回掉该结果，直接回掉逆地址解析的数据)，第二次返回逆地址解析的信息
      * @brief 定位
      * @param {Bool} is_async true标识是异步定位，false标识为同步定位
      * @method app_locate
      * @author jimzhao
      * @since v5.1
      * @example
-
+        //调用定位
         CtripUtil.app_locate(true);
-        //定位完成后H5页面会收到回调数据
+
+        //1. 返回定位的经纬度信息-------5.8版本加入
+        var geo_json_obj = 
+         {
+            tagname:'locate',
+            param:{
+                "value":{
+                    lat:'121.487899',
+                    lng:'31.249162'
+                },
+                'timeout': '2013/09/12 12:32:36',
+            }
+        }
+        app.callback(geo_json_obj);
+
+
+        //2. 返回定位的逆地址解析信息
         var json_obj =
         {
             tagname:'locate',
