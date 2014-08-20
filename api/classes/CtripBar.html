@@ -333,14 +333,44 @@
            imagePath:&quot;car/res/logo.png&quot;,  //按钮上的图片，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
            pressedImagePath:&quot;car/res/logo.png&quot; //按钮上的图片选中的效果图，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
        }
-       特殊tagname定义及说明：
-       a. tagname=home, 返回app首页，图片，事件 都不需要H5处理；
-       b. tagname=call, 拨打呼叫中心，图片，事件 都不需要H5处理；
-       c. tagname=phone, 拨打电话，图片-native预置，事件交由H5处理；v5.8开始支持；
-       d. tagname=share, 分享，图片-native预置，事件将会交给H5处理；v5.8开始支持；
-       e. tagname=favorite, 收藏，图片-native预置, 事件交给H5处理；v5.8开始支持；
-       f. tagname=favorited, 已经收藏，图片-native预置，事件交给H5处理；v5.8开始支持；
-       g. 其他tagname，图片有H5提供，事件H5处理；
+
+
+   4.跟多按钮 5.9新增 多个menu的配置
+       [
+           {
+               tagname:&quot;xxxx&quot;,  //点击之后 callback给H5的事件名字,
+               value:&quot;btn_title&quot;, //按钮上的文字
+               imagePath:&quot;car/res/logo.png&quot;,  //按钮上的图片，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
+               pressedImagePath:&quot;car/res/logo.png&quot; //按钮上的图片选中的效果图，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
+           }
+
+           {
+               tagname:&quot;xxxx&quot;,  //点击之后 callback给H5的事件名字,
+               value:&quot;btn_title&quot;, //按钮上的文字
+               imagePath:&quot;car/res/logo.png&quot;,  //按钮上的图片，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
+               pressedImagePath:&quot;car/res/logo.png&quot; //按钮上的图片选中的效果图，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
+           }
+
+           {
+               tagname:&quot;xxxx&quot;,  //点击之后 callback给H5的事件名字,
+               value:&quot;btn_title&quot;, //按钮上的文字
+               imagePath:&quot;car/res/logo.png&quot;,  //按钮上的图片，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
+               pressedImagePath:&quot;car/res/logo.png&quot; //按钮上的图片选中的效果图，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
+           }
+
+       ]
+   5.  特殊tagname定义及说明：
+       1). tagname=home, 返回app首页，图片，事件 都不需要H5处理；
+       2). tagname=call, 拨打呼叫中心，图片，事件 都不需要H5处理；
+       3). tagname=phone, 拨打电话，图片-native预置，事件交由H5处理；v5.8开始支持；
+       4). tagname=share, 分享，图片-native预置，事件将会交给H5处理；v5.8开始支持；
+       5). tagname=favorite, 收藏，图片-native预置, 事件交给H5处理；v5.8开始支持；
+       6). tagname=favorited, 已经收藏，图片-native预置，事件交给H5处理；v5.8开始支持；
+       7). tagname=more, 图片，事件 都不需要H5处理；
+       8). tagname=more-my_order, 更多菜单-我的订单
+       9). tagname=more-message_center, 更多菜单-消息中心
+      10). tagname=more-home, 更多菜单-App首页
+      11). 其他tagname，图片有H5提供，事件H5处理；
 
    示例：
    var nav_json = {   
@@ -404,7 +434,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2800"><code>bridge.js:2800</code></a>
+        <a href="../files/bridge.js.html#l2830"><code>bridge.js:2830</code></a>
         
         </p>
 
@@ -504,7 +534,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2835"><code>bridge.js:2835</code></a>
+        <a href="../files/bridge.js.html#l2865"><code>bridge.js:2865</code></a>
         
         </p>
 

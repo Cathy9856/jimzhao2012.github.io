@@ -2749,14 +2749,44 @@ var CtripBar = {
                 imagePath:"car/res/logo.png",  //按钮上的图片，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
                 pressedImagePath:"car/res/logo.png" //按钮上的图片选中的效果图，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
             }
-            特殊tagname定义及说明：
-            a. tagname=home, 返回app首页，图片，事件 都不需要H5处理；
-            b. tagname=call, 拨打呼叫中心，图片，事件 都不需要H5处理；
-            c. tagname=phone, 拨打电话，图片-native预置，事件交由H5处理；v5.8开始支持；
-            d. tagname=share, 分享，图片-native预置，事件将会交给H5处理；v5.8开始支持；
-            e. tagname=favorite, 收藏，图片-native预置, 事件交给H5处理；v5.8开始支持；
-            f. tagname=favorited, 已经收藏，图片-native预置，事件交给H5处理；v5.8开始支持；
-            g. 其他tagname，图片有H5提供，事件H5处理；
+           
+
+        4.跟多按钮 5.9新增 多个menu的配置
+            [
+                {
+                    tagname:"xxxx",  //点击之后 callback给H5的事件名字,
+                    value:"btn_title", //按钮上的文字
+                    imagePath:"car/res/logo.png",  //按钮上的图片，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
+                    pressedImagePath:"car/res/logo.png" //按钮上的图片选中的效果图，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
+                }
+
+                {
+                    tagname:"xxxx",  //点击之后 callback给H5的事件名字,
+                    value:"btn_title", //按钮上的文字
+                    imagePath:"car/res/logo.png",  //按钮上的图片，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
+                    pressedImagePath:"car/res/logo.png" //按钮上的图片选中的效果图，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
+                }
+
+                {
+                    tagname:"xxxx",  //点击之后 callback给H5的事件名字,
+                    value:"btn_title", //按钮上的文字
+                    imagePath:"car/res/logo.png",  //按钮上的图片，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
+                    pressedImagePath:"car/res/logo.png" //按钮上的图片选中的效果图，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
+                }
+
+            ]
+        5.  特殊tagname定义及说明：
+            1). tagname=home, 返回app首页，图片，事件 都不需要H5处理；
+            2). tagname=call, 拨打呼叫中心，图片，事件 都不需要H5处理；
+            3). tagname=phone, 拨打电话，图片-native预置，事件交由H5处理；v5.8开始支持；
+            4). tagname=share, 分享，图片-native预置，事件将会交给H5处理；v5.8开始支持；
+            5). tagname=favorite, 收藏，图片-native预置, 事件交给H5处理；v5.8开始支持；
+            6). tagname=favorited, 已经收藏，图片-native预置，事件交给H5处理；v5.8开始支持；
+            7). tagname=more, 图片，事件 都不需要H5处理；
+            8). tagname=more-my_order, 更多菜单-我的订单
+            9). tagname=more-message_center, 更多菜单-消息中心
+           10). tagname=more-home, 更多菜单-App首页
+           11). 其他tagname，图片有H5提供，事件H5处理；
 
         示例：
         var nav_json = {   
@@ -3531,6 +3561,47 @@ var CtripBusiness = {
             Internal.callWin8App(paramString);
         }
 
+    },
+
+
+    /**
+     * @description 从通讯录选取联系人
+     * @brief 从通讯录选取联系人
+     * @param {String} pageName 设置当前页面名
+     * @method app_set_page_name
+     * @author jimzhao
+     * @since v5.6
+     * @example
+     *
+     * 
+        //调用API
+        CtripBusiness.app_choose_contact_from_addressbook();
+         
+        //调用之后，app返回
+        var json_obj = {
+            name:"xxx",
+            phoneList:[{"家庭":1320000000}, {"工作":021888888888}], //手机号码有一个标签＋号码
+            emailList:[{"家庭":a@gmail.com}, {"工作":b@yahoo.com}]  //email有标签＋号码
+        };
+
+        app.callback(json_obj);
+
+     */
+    app_choose_contact_from_addressbook:function() {
+        if (Internal.isSupportAPIWithVersion("5.9")) {
+            return;
+        }
+
+        paramString = Internal.makeParamString("Business", "chooseContactFromAddressbook", params, "choose_contact_from_addressbook");
+
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            window.Business_a.chooseContactFromAddressbook(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     }
 };
 
@@ -3608,6 +3679,63 @@ var CtripPage = {
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.Page_a.backToPage(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /**
+     * @description 显示native的loading界面
+     * @brief 显示native的loading界面
+     * @method app_show_loading_page
+     * @author jimzhao
+     * @since v5.9
+     * @example
+     *
+     * 
+        CtripPage.app_show_loading_page();
+
+     */
+    app_show_loading_page:function() {
+        if (!Internal.isSupportAPIWithVersion("5.9")) {
+            return;
+        }
+
+        paramString = Internal.makeParamString("Page", "showLoadingPage", null, "show_loading_page");
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            window.Page_a.showLoadingPage(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+
+    /**
+     * @description 隐藏native的loading界面
+     * @brief 隐藏native的loading界面
+     * @method app_hide_loading_page
+     * @author jimzhao
+     * @since v5.9
+     * @example
+     *
+     * 
+        CtripPage.app_hide_loading_page();
+
+     */
+    app_hide_loading_page:function() {
+        if (!Internal.isSupportAPIWithVersion("5.9")) {
+            return;
+        }
+
+        paramString = Internal.makeParamString("Page", "hideLoadingPage", null, "hide_loading_page");
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            window.Page_a.hideLoadingPage(paramString);
         } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }

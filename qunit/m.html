@@ -115,6 +115,36 @@
     }
 
 
+
+    function doMoreMenuTest() {
+
+      var nav_bar_config_json = {};
+        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试B"}], "right":[{"tagname":"something","value":"doSome","imagePath":"wallet/res/img/bank/BANK_CDRCB.png","pressedImagePath":"wallet/res/img/bank/BANK_CITIC.png"}]};  
+
+        nav_bar_config_json.moreMenus = [
+          {
+              tagname:"team_travel",  //点击之后 callback给H5的事件名字,
+              value:"团队助手", //按钮上的文字
+              imagePath:"wallet/res/img/bank/BANK_BOD.png",
+              pressedImagePath:"wallet/res/img/bank/BANK_ABC.png"
+          },
+          {
+              tagname:"more-my_order",  //点击之后 callback给H5的事件名字,
+          },       
+          {
+              tagname:"more-my_favorite",  //点击之后 callback给H5的事件名字,
+          },
+          {
+              tagname:"more-message_center",  //点击之后 callback给H5的事件名字,
+          },       
+          {
+              tagname:"more-home",  //点击之后 callback给H5的事件名字,
+          }
+        ];
+      var jsonStr = JSON.stringify(nav_bar_config_json);
+      CtripUtil.app_refresh_nav_bar(jsonStr);
+    }
+
     var bflag = false;
     
     function doNavBarHiddenTest() {
@@ -338,5 +368,7 @@
   <li class="li2"><a onclick="javascript:doFinishedLogin()">16. 写用户登陆态</a></li>
   <br/>
   <li class="li2"><a onclick="javascript:CtripBusiness.app_get_device_info()">17. 获取设备统计信息</a></li>
+  <br/>
+  <li class="li2"><a onclick="javascript:doMoreMenuTest()">17. 右侧更多按钮测试</a></li>
   <br/>
 </body></html>
