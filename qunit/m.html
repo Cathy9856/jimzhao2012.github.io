@@ -120,22 +120,7 @@
 
         var nav_bar_config_json = {};
        
-        nav_bar_config_json.center = [
-              tagname:"Title",
-              value:"右侧更多按钮测试的"
-        ];
-
-        nav_bar_config_json.right = [
-          {
-              tagname:"something",
-              value:"doSome",
-              imagePath:"wallet/res/img/bank/BANK_CDRCB.png",
-              pressedImagePath:"wallet/res/img/bank/BANK_CITIC.png"
-          },
-          {
-              tagname:"more"
-          }
-        ];
+        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试B"}], "right":[{"tagname":"something","value":"doSome","imagePath":"wallet/res/img/bank/BANK_CDRCB.png","pressedImagePath":"wallet/res/img/bank/BANK_CITIC.png"},{"tagname":"more"}]}; 
 
         nav_bar_config_json.moreMenus = [
           {
@@ -162,7 +147,7 @@
           }
         ];
 
-       var jsonStr = JSON.stringify(nav_bar_config_json);
+        var jsonStr = JSON.stringify(nav_bar_config_json);
         CtripUtil.app_refresh_nav_bar(jsonStr);
     }
 
@@ -390,6 +375,6 @@
   <br/>
   <li class="li2"><a onclick="javascript:CtripBusiness.app_get_device_info()">17. 获取设备统计信息</a></li>
   <br/>
-  <li class="li2"><a onclick="javascript:doMoreMenuTest()">18x. 右侧更多按钮测试</a></li>
+  <li class="li2"><a onclick="javascript:doMoreMenuTest()">18g. 右侧更多按钮测试</a></li>
   <br/>
 </body></html>
