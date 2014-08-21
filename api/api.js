@@ -5,7 +5,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "CtripBusiness",
         "CtripEncrypt",
         "CtripFile",
-        "CtripGeoHelper",
         "CtripMap",
         "CtripPage",
         "CtripPay",

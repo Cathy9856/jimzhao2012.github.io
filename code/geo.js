@@ -1,4 +1,9 @@
- 
+
+/**
+ * @class CtripGeoHelper
+ * @description Geo 获取国内外API
+ * @brief Geo 获取国内外API
+ */
 var CtripGeoHelper = {
 
     /**
@@ -129,11 +134,11 @@ var CtripGeoHelper = {
      * @property largeChinaRect
      * @author jimzhao
      */
-    largeChinaRect:[73083331, 54006559, 135266195, 17015367];
+    largeChinaRect:[73083331, 54006559, 135266195, 17015367],
 
     /**
-     * @brief 大中华区域矩形框，包含日韩，泰国，印度，蒙古部分区域
-     * @description  中国国内按板块经纬度范围，被分为60多个矩阵
+     * @brief 是否在矩形范围内
+     * @description  是否在矩形范围内
      * @param {long} iLong 精度，long类型，乘以了1000000
      * @param {long} iLat 纬度，long类型，乘以了1000000
      * @param {Array} rectArr 矩形框的左上，右下两个点的左边，数组类型，rect
@@ -150,8 +155,8 @@ var CtripGeoHelper = {
     },
 
     /**
-     * @brief 大中华区域矩形框，包含日韩，泰国，印度，蒙古部分区域
-     * @description  中国国内按板块经纬度范围，被分为60多个矩阵
+     * @brief 是否在一组矩形框范围内
+     * @description  是否在一组矩形框范围内
      * @param {long} iLong 精度，long类型，乘以了1000000
      * @param {long} iLat 纬度，long类型，乘以了1000000
      * @param {Array<Rect>} rectArrList  一组坐标的矩形框，rect
@@ -161,8 +166,8 @@ var CtripGeoHelper = {
      */
     isInRectList:function(iLong, iLat, rectArrList) {
         for (var i = 0; i < rectArrList.length - 1; i++) { 
-            Array smallRect = rectArrList[i]
-            if (isInRect(newLat, newLat)) {
+            smallRect = rectArrList[i];
+            if (this.isInRect(iLong, iLat,smallRect)) {
                 return true;
             }
         }
@@ -171,35 +176,34 @@ var CtripGeoHelper = {
     },
 
     /**
-     * @brief 大中华区域矩形框，包含日韩，泰国，印度，蒙古部分区域
-     * @description  中国国内按板块经纬度范围，被分为60多个矩阵
-     * @param {long} iLong 精度，long类型，乘以了1000000
-     * @param {long} iLat 纬度，long类型，乘以了1000000
-     * @param {Array<Rect>} rectArrList  一组坐标的矩形框，rect
+     * @brief 获取国内外标识
+     * @description 获取国内外标识
+     * @param {float} longitude 精度，定位获取
+     * @param {float} latitude 纬度，定位获取
      * @return {Int}  Unknown/Domestic/Aboard,未知，国内，国外
      * @method getCountry
      * @author jimzhao
      */
     getCountry:function(longitude, latitude) {
-        var ret = Unknown;
+        var ret = this.Unknown;
         var newLat = latitude*1000000;
         var newLog = longitude*1000000;
 
-        boolean isInAboard = !isInRect(newLat, newLog, largeChinaRect); //非大中华区域判断
+        isInAboard = !(this.isInRect(newLog, newLat, this.largeChinaRect)); //非大中华区域判断
         if (!isInAboard) {
-            isInAboard = isInRectList(newLat, newLog, aroundAboardRectList); //中国周边的国外国家，日韩，泰国，印度等地区判断
+            isInAboard = this.isInRectList(newLog, newLat,this.aroundAboardRectList); //中国周边的国外国家，日韩，泰国，印度等地区判断
         }
 
         if (isInAboard) {
-            ret = Domestic; //国外
+            ret = this.Domestic; //国外
         } 
         else {
-            boolean inInLand = isInRectList(newLog, newLog, chinaRectList);
+            inInLand = this.isInRectList(newLog, newLat, this.chinaRectList);
             if (inInLand) {
-              ret = Aboard; //国内
+              ret = this.Aboard; //国内
             }
         }
 
         return ret;
       }
-}
+};
