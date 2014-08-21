@@ -3912,7 +3912,7 @@ var CtripGeoHelper = {
     isInRectList:function(iLong, iLat, rectArrList) {
         for (var i = 0; i < rectArrList.length - 1; i++) { 
             smallRect = rectArrList[i];
-            if (this.isInRect(iLong, iLat)) {
+            if (this.isInRect(iLong, iLat,smallRect)) {
                 return true;
             }
         }
