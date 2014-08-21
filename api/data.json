@@ -2164,6 +2164,165 @@
                 "\n\n\n       CtripPage.app_hide_loading_page();\n"
             ],
             "class": "CtripPage"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3749,
+            "brief": "国外",
+            "description": "国外",
+            "type": "Int",
+            "itemtype": "property",
+            "name": "Aboard",
+            "author": "jimzhao",
+            "class": "CtripPage"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3758,
+            "brief": "国内(包含港澳台)",
+            "description": "国内(包含港澳台)",
+            "type": "Int",
+            "itemtype": "property",
+            "name": "Domestic",
+            "author": "jimzhao",
+            "class": "CtripPage"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3767,
+            "brief": "未知国内外",
+            "description": "未知国内外，需要发送谷歌API确定",
+            "type": "Int",
+            "itemtype": "property",
+            "name": "Unknown",
+            "author": "jimzhao",
+            "class": "CtripPage"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3776,
+            "brief": "中国周边国家经纬度范围",
+            "description": "中国周边国家经纬度范围，主要是日韩，泰国，新德里等",
+            "type": "Array<Rect>",
+            "itemtype": "property",
+            "name": "aroundAboardRectList",
+            "author": "jimzhao",
+            "class": "CtripPage"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3796,
+            "brief": "中国国内按板块经纬度范围",
+            "description": "中国国内按板块经纬度范围，被分为60多个矩阵",
+            "type": "Array<Rect>",
+            "itemtype": "property",
+            "name": "chinaRectList",
+            "author": "jimzhao",
+            "class": "CtripPage"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3870,
+            "brief": "大中华区域矩形框，包含日韩，泰国，印度，蒙古部分区域",
+            "description": "中国国内按板块经纬度范围，被分为60多个矩阵",
+            "type": "Rect",
+            "itemtype": "property",
+            "name": "largeChinaRect",
+            "author": "jimzhao",
+            "class": "CtripPage"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3879,
+            "brief": "大中华区域矩形框，包含日韩，泰国，印度，蒙古部分区域",
+            "description": "中国国内按板块经纬度范围，被分为60多个矩阵",
+            "params": [
+                {
+                    "name": "iLong",
+                    "description": "精度，long类型，乘以了1000000",
+                    "type": "Long"
+                },
+                {
+                    "name": "iLat",
+                    "description": "纬度，long类型，乘以了1000000",
+                    "type": "Long"
+                },
+                {
+                    "name": "rectArr",
+                    "description": "矩形框的左上，右下两个点的左边，数组类型，rect",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "是否在矩形框内",
+                "type": "Boolean"
+            },
+            "itemtype": "method",
+            "name": "isInRect",
+            "author": "jimzhao",
+            "class": "CtripPage"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3897,
+            "brief": "大中华区域矩形框，包含日韩，泰国，印度，蒙古部分区域",
+            "description": "中国国内按板块经纬度范围，被分为60多个矩阵",
+            "params": [
+                {
+                    "name": "iLong",
+                    "description": "精度，long类型，乘以了1000000",
+                    "type": "Long"
+                },
+                {
+                    "name": "iLat",
+                    "description": "纬度，long类型，乘以了1000000",
+                    "type": "Long"
+                },
+                {
+                    "name": "rectArrList",
+                    "description": "一组坐标的矩形框，rect",
+                    "type": "Array<Rect>"
+                }
+            ],
+            "return": {
+                "description": "是否在一组坐标矩形框内",
+                "type": "Boolean"
+            },
+            "itemtype": "method",
+            "name": "isInRect",
+            "author": "jimzhao",
+            "class": "CtripPage"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3918,
+            "brief": "大中华区域矩形框，包含日韩，泰国，印度，蒙古部分区域",
+            "description": "中国国内按板块经纬度范围，被分为60多个矩阵",
+            "params": [
+                {
+                    "name": "iLong",
+                    "description": "精度，long类型，乘以了1000000",
+                    "type": "Long"
+                },
+                {
+                    "name": "iLat",
+                    "description": "纬度，long类型，乘以了1000000",
+                    "type": "Long"
+                },
+                {
+                    "name": "rectArrList",
+                    "description": "一组坐标的矩形框，rect",
+                    "type": "Array<Rect>"
+                }
+            ],
+            "return": {
+                "description": "Unknown/Domestic/Aboard,未知，国内，国外",
+                "type": "Int"
+            },
+            "itemtype": "method",
+            "name": "isInRect",
+            "author": "jimzhao",
+            "class": "CtripPage"
         }
     ],
     "warnings": [
@@ -2606,6 +2765,42 @@
         {
             "message": "unknown tag: brief",
             "line": " bridge.js:3716"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3749"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3758"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3767"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3776"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3796"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3870"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3879"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3897"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3918"
         }
     ]
 }

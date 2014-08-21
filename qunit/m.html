@@ -20,6 +20,7 @@
   <script type="text/javascript" src="/code/bridge.js"></script>
 
   <script type="text/javascript">
+
   function testJs() {
     alert('Js alert, invoke js function from OC');
     return "alert result NULL";
@@ -273,6 +274,16 @@
         CtripUser.app_finished_login(userInfo);
     }
 
+
+    function testGeoPoint() {
+      usRet =  CtripGeoHelper.getCountry(-112.738062,42.845191);
+      chinaRet = CtripGeoHelper.getCountry(120.75353,30.758427);
+      japanRet = CtripGeoHelper.getCountry(130.460979,31.665179);
+      thailandRet = CtripGeoHelper.getCountry(96.908909,19.959139);
+      hainanRet = CtripGeoHelper.getCountry(109.519106,18.23805);
+      alert("us:china:japan:thailand:hainan:"+usRet+"-"+chinaRet+"-"+japanRet+"-"+thailandRet+"-"+hainanRet);
+    }
+
   </script>
 
 
@@ -377,4 +388,7 @@
   <br/>
   <li class="li2"><a onclick="javascript:doMoreMenuTest()">18g. 右侧更多按钮测试</a></li>
   <br/>
+    <li class="li2"><a onclick="javascript:testGeoPoint()">19. GEO测试</a></li>
+  <br/>
+
 </body></html>

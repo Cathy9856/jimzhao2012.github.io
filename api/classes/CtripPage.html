@@ -140,6 +140,8 @@
             <li class="api-class-tab methods"><a href="#methods">方法</a></li>
         
         
+            <li class="api-class-tab properties"><a href="#properties">成员</a></li>
+        
         
         
     </ul>
@@ -163,6 +165,12 @@
                     <tr><td>设置当前页面名，可用于页面导航，刷新</td><td><a href="#method_app_set_page_name">app_set_page_name</a></td></tr>
                     
                     <tr><td>显示native的loading界面</td><td><a href="#method_app_show_loading_page">app_show_loading_page</a></td></tr>
+                    
+                    <tr><td>大中华区域矩形框，包含日韩，泰国，印度，蒙古部分区域</td><td><a href="#method_isInRect">isInRect</a></td></tr>
+                    
+                    <tr><td>大中华区域矩形框，包含日韩，泰国，印度，蒙古部分区域</td><td><a href="#method_isInRect">isInRect</a></td></tr>
+                    
+                    <tr><td>大中华区域矩形框，包含日韩，泰国，印度，蒙古部分区域</td><td><a href="#method_isInRect">isInRect</a></td></tr>
                                   
                     </table>
 
@@ -193,10 +201,91 @@
                                 
                             </li>
                         
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
                     </ul>
                 </div>
             
 
+            
+                <div class="index-section properties">
+                    <h3>成员</h3>
+                    <br/>
+
+                    <table>
+                    <tr><th>描述</th><th>成员</th></tr>
+                    
+                    <tr><td>国外</td><td><a href="#property_Aboard">Aboard</a></td></tr>
+                    
+                    <tr><td>中国周边国家经纬度范围</td><td><a href="#property_aroundAboardRectList">aroundAboardRectList</a></td></tr>
+                    
+                    <tr><td>中国国内按板块经纬度范围</td><td><a href="#property_chinaRectList">chinaRectList</a></td></tr>
+                    
+                    <tr><td>国内(包含港澳台)</td><td><a href="#property_Domestic">Domestic</a></td></tr>
+                    
+                    <tr><td>大中华区域矩形框，包含日韩，泰国，印度，蒙古部分区域</td><td><a href="#property_largeChinaRect">largeChinaRect</a></td></tr>
+                    
+                    <tr><td>未知国内外</td><td><a href="#property_Unknown">Unknown</a></td></tr>
+                                  
+                    </table>
+
+
+                    <ul class="index-list properties">
+                        
+                            <li class="index-item property">
+                               
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                               
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                               
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                               
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                               
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                               
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
             
 
             
@@ -541,9 +630,738 @@
 </div>
 
                 
+                    <div id="method_isInRect" class="method item">
+    <h3 class="name"><code>isInRect</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>iLong</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>iLat</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>rectArr</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3879"><code>bridge.js:3879</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>中国国内按板块经纬度范围，被分为60多个矩阵</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">iLong</code>
+                        <span class="type">Long</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>精度，long类型，乘以了1000000</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">iLat</code>
+                        <span class="type">Long</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>纬度，long类型，乘以了1000000</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">rectArr</code>
+                        <span class="type">Array</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>矩形框的左上，右下两个点的左边，数组类型，rect</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>返回:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Boolean</span>:
+                    
+                    <p>是否在矩形框内</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_isInRect" class="method item">
+    <h3 class="name"><code>isInRect</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>iLong</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>iLat</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>rectArrList</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3897"><code>bridge.js:3897</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>中国国内按板块经纬度范围，被分为60多个矩阵</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">iLong</code>
+                        <span class="type">Long</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>精度，long类型，乘以了1000000</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">iLat</code>
+                        <span class="type">Long</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>纬度，long类型，乘以了1000000</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">rectArrList</code>
+                        <span class="type">Array<Rect></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>一组坐标的矩形框，rect</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>返回:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Boolean</span>:
+                    
+                    <p>是否在一组坐标矩形框内</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_isInRect" class="method item">
+    <h3 class="name"><code>isInRect</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>iLong</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>iLat</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>rectArrList</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Int</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3918"><code>bridge.js:3918</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>中国国内按板块经纬度范围，被分为60多个矩阵</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">iLong</code>
+                        <span class="type">Long</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>精度，long类型，乘以了1000000</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">iLat</code>
+                        <span class="type">Long</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>纬度，long类型，乘以了1000000</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">rectArrList</code>
+                        <span class="type">Array<Rect></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>一组坐标的矩形框，rect</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>返回:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Int</span>:
+                    
+                    <p>Unknown/Domestic/Aboard,未知，国内，国外</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
             </div>
         
 
+        
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">成员变量</h2>
+
+                
+                    <div id="property_Aboard" class="property item">
+    <h3 class="name"><code>Aboard</code></h3>
+    <span class="type">Int</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3749"><code>bridge.js:3749</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>国外</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_aroundAboardRectList" class="property item">
+    <h3 class="name"><code>aroundAboardRectList</code></h3>
+    <span class="type">Array<Rect></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3776"><code>bridge.js:3776</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>中国周边国家经纬度范围，主要是日韩，泰国，新德里等</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_chinaRectList" class="property item">
+    <h3 class="name"><code>chinaRectList</code></h3>
+    <span class="type">Array<Rect></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3796"><code>bridge.js:3796</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>中国国内按板块经纬度范围，被分为60多个矩阵</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_Domestic" class="property item">
+    <h3 class="name"><code>Domestic</code></h3>
+    <span class="type">Int</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3758"><code>bridge.js:3758</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>国内(包含港澳台)</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_largeChinaRect" class="property item">
+    <h3 class="name"><code>largeChinaRect</code></h3>
+    <span class="type">Rect</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3870"><code>bridge.js:3870</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>中国国内按板块经纬度范围，被分为60多个矩阵</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_Unknown" class="property item">
+    <h3 class="name"><code>Unknown</code></h3>
+    <span class="type">Int</span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3767"><code>bridge.js:3767</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>未知国内外，需要发送谷歌API确定</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+            </div>
         
 
         
