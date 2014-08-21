@@ -3906,7 +3906,7 @@ var CtripGeoHelper = {
      */
     isInRectList:function(iLong, iLat, rectArrList) {
         for (var i = 0; i < rectArrList.length - 1; i++) { 
-            Array smallRect = rectArrList[i]
+            Array smallRect = rectArrList[i];
             if (isInRect(newLat, newLat)) {
                 return true;
             }
