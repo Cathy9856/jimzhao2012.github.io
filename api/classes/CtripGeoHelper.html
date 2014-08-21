@@ -160,11 +160,11 @@
                     <table>
                     <tr><th>描述</th><th>函数</th></tr>
                     
-                    <tr><td>大中华区域矩形框，包含日韩，泰国，印度，蒙古部分区域</td><td><a href="#method_isInRect">isInRect</a></td></tr>
+                    <tr><td>获取国内外标识</td><td><a href="#method_getCountry">getCountry</a></td></tr>
                     
-                    <tr><td>大中华区域矩形框，包含日韩，泰国，印度，蒙古部分区域</td><td><a href="#method_isInRect">isInRect</a></td></tr>
+                    <tr><td>是否在矩形范围内</td><td><a href="#method_isInRect">isInRect</a></td></tr>
                     
-                    <tr><td>大中华区域矩形框，包含日韩，泰国，印度，蒙古部分区域</td><td><a href="#method_isInRect">isInRect</a></td></tr>
+                    <tr><td>是否在一组矩形框范围内</td><td><a href="#method_isInRectList">isInRectList</a></td></tr>
                                   
                     </table>
 
@@ -268,6 +268,135 @@
                 <h2 class="off-left">方法</h2>
 
                 
+                    <div id="method_getCountry" class="method item">
+    <h3 class="name"><code>getCountry</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>longitude</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>latitude</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Int</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3923"><code>bridge.js:3923</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>获取国内外标识</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">longitude</code>
+                        <span class="type">Float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>精度，定位获取</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">latitude</code>
+                        <span class="type">Float</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>纬度，定位获取</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>返回:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Int</span>:
+                    
+                    <p>Unknown/Domestic/Aboard,未知，国内，国外</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_isInRect" class="method item">
     <h3 class="name"><code>isInRect</code></h3>
 
@@ -337,7 +466,7 @@
     </div>
 
     <div class="description">
-        <p>中国国内按板块经纬度范围，被分为60多个矩阵</p>
+        <p>是否在矩形范围内</p>
 
     </div>
 
@@ -419,8 +548,8 @@
 </div>
 
                 
-                    <div id="method_isInRect" class="method item">
-    <h3 class="name"><code>isInRect</code></h3>
+                    <div id="method_isInRectList" class="method item">
+    <h3 class="name"><code>isInRectList</code></h3>
 
     
         <div class="args">
@@ -488,7 +617,7 @@
     </div>
 
     <div class="description">
-        <p>中国国内按板块经纬度范围，被分为60多个矩阵</p>
+        <p>是否在一组矩形框范围内</p>
 
     </div>
 
@@ -560,157 +689,6 @@
                         <span class="type">Boolean</span>:
                     
                     <p>是否在一组坐标矩形框内</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_isInRect" class="method item">
-    <h3 class="name"><code>isInRect</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>iLong</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>iLat</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>rectArrList</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Int</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                定义在
-                
-            
-        
-        
-        <a href="../files/bridge.js.html#l3923"><code>bridge.js:3923</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>中国国内按板块经纬度范围，被分为60多个矩阵</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>参数:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">iLong</code>
-                        <span class="type">Long</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>精度，long类型，乘以了1000000</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">iLat</code>
-                        <span class="type">Long</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>纬度，long类型，乘以了1000000</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">rectArrList</code>
-                        <span class="type">Array<Rect></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>一组坐标的矩形框，rect</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>返回:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Int</span>:
-                    
-                    <p>Unknown/Domestic/Aboard,未知，国内，国外</p>
 
                 
             </div>

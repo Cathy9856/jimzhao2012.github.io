@@ -2248,8 +2248,8 @@
         {
             "file": "bridge.js",
             "line": 3884,
-            "brief": "大中华区域矩形框，包含日韩，泰国，印度，蒙古部分区域",
-            "description": "中国国内按板块经纬度范围，被分为60多个矩阵",
+            "brief": "是否在矩形范围内",
+            "description": "是否在矩形范围内",
             "params": [
                 {
                     "name": "iLong",
@@ -2279,8 +2279,8 @@
         {
             "file": "bridge.js",
             "line": 3902,
-            "brief": "大中华区域矩形框，包含日韩，泰国，印度，蒙古部分区域",
-            "description": "中国国内按板块经纬度范围，被分为60多个矩阵",
+            "brief": "是否在一组矩形框范围内",
+            "description": "是否在一组矩形框范围内",
             "params": [
                 {
                     "name": "iLong",
@@ -2303,30 +2303,25 @@
                 "type": "Boolean"
             },
             "itemtype": "method",
-            "name": "isInRect",
+            "name": "isInRectList",
             "author": "jimzhao",
             "class": "CtripGeoHelper"
         },
         {
             "file": "bridge.js",
             "line": 3923,
-            "brief": "大中华区域矩形框，包含日韩，泰国，印度，蒙古部分区域",
-            "description": "中国国内按板块经纬度范围，被分为60多个矩阵",
+            "brief": "获取国内外标识",
+            "description": "获取国内外标识",
             "params": [
                 {
-                    "name": "iLong",
-                    "description": "精度，long类型，乘以了1000000",
-                    "type": "Long"
+                    "name": "longitude",
+                    "description": "精度，定位获取",
+                    "type": "Float"
                 },
                 {
-                    "name": "iLat",
-                    "description": "纬度，long类型，乘以了1000000",
-                    "type": "Long"
-                },
-                {
-                    "name": "rectArrList",
-                    "description": "一组坐标的矩形框，rect",
-                    "type": "Array<Rect>"
+                    "name": "latitude",
+                    "description": "纬度，定位获取",
+                    "type": "Float"
                 }
             ],
             "return": {
@@ -2334,7 +2329,7 @@
                 "type": "Int"
             },
             "itemtype": "method",
-            "name": "isInRect",
+            "name": "getCountry",
             "author": "jimzhao",
             "class": "CtripGeoHelper"
         }
