@@ -3930,7 +3930,7 @@ var CtripGeoHelper = {
         var newLat = latitude*1000000;
         var newLog = longitude*1000000;
 
-        boolean isInAboard = !isInRect(newLat, newLog, largeChinaRect); //非大中华区域判断
+        isInAboard = !(isInRect(newLat, newLog, largeChinaRect)); //非大中华区域判断
         if (!isInAboard) {
             isInAboard = isInRectList(newLat, newLog, aroundAboardRectList); //中国周边的国外国家，日韩，泰国，印度等地区判断
         }
@@ -3939,7 +3939,7 @@ var CtripGeoHelper = {
             ret = Domestic; //国外
         } 
         else {
-            boolean inInLand = isInRectList(newLog, newLog, chinaRectList);
+            inInLand = isInRectList(newLog, newLog, chinaRectList);
             if (inInLand) {
               ret = Aboard; //国内
             }
