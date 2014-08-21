@@ -12,6 +12,7 @@ zip -r demo.zip demo;
 rm -rf tb;
 mkdir tb;
 cp bridge.js tb;
+cp geo.js tb;
 cd tb;
 rm -rf ../../api;
 yuidoc --themedir ../yui_theme -o ../../api .;

@@ -21,6 +21,15 @@
             },
             "fors": {},
             "namespaces": {}
+        },
+        "geo.js": {
+            "name": "geo.js",
+            "modules": {},
+            "classes": {
+                "CtripGeoHelper": 1
+            },
+            "fors": {},
+            "namespaces": {}
         }
     },
     "modules": {},
@@ -195,6 +204,19 @@
             "line": 3608,
             "description": "页面跳转，导航，刷新相关API",
             "brief": "页面跳转，导航，刷新相关API"
+        },
+        "CtripGeoHelper": {
+            "name": "CtripGeoHelper",
+            "shortname": "CtripGeoHelper",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "geo.js",
+            "line": 2,
+            "description": "Geo 获取国内外API",
+            "brief": "Geo 获取国内外API"
         }
     },
     "classitems": [
@@ -2164,6 +2186,160 @@
                 "\n\n\n       CtripPage.app_hide_loading_page();\n"
             ],
             "class": "CtripPage"
+        },
+        {
+            "file": "geo.js",
+            "line": 9,
+            "brief": "国外",
+            "description": "国外",
+            "type": "Int",
+            "itemtype": "property",
+            "name": "Aboard",
+            "author": "jimzhao",
+            "class": "CtripGeoHelper"
+        },
+        {
+            "file": "geo.js",
+            "line": 18,
+            "brief": "国内(包含港澳台)",
+            "description": "国内(包含港澳台)",
+            "type": "Int",
+            "itemtype": "property",
+            "name": "Domestic",
+            "author": "jimzhao",
+            "class": "CtripGeoHelper"
+        },
+        {
+            "file": "geo.js",
+            "line": 27,
+            "brief": "未知国内外",
+            "description": "未知国内外，需要发送谷歌API确定",
+            "type": "Int",
+            "itemtype": "property",
+            "name": "Unknown",
+            "author": "jimzhao",
+            "class": "CtripGeoHelper"
+        },
+        {
+            "file": "geo.js",
+            "line": 36,
+            "brief": "中国周边国家经纬度范围",
+            "description": "中国周边国家经纬度范围，主要是日韩，泰国，新德里等",
+            "type": "Array<Rect>",
+            "itemtype": "property",
+            "name": "aroundAboardRectList",
+            "author": "jimzhao",
+            "class": "CtripGeoHelper"
+        },
+        {
+            "file": "geo.js",
+            "line": 56,
+            "brief": "中国国内按板块经纬度范围",
+            "description": "中国国内按板块经纬度范围，被分为60多个矩阵",
+            "type": "Array<Rect>",
+            "itemtype": "property",
+            "name": "chinaRectList",
+            "author": "jimzhao",
+            "class": "CtripGeoHelper"
+        },
+        {
+            "file": "geo.js",
+            "line": 130,
+            "brief": "大中华区域矩形框，包含日韩，泰国，印度，蒙古部分区域",
+            "description": "中国国内按板块经纬度范围，被分为60多个矩阵",
+            "type": "Rect",
+            "itemtype": "property",
+            "name": "largeChinaRect",
+            "author": "jimzhao",
+            "class": "CtripGeoHelper"
+        },
+        {
+            "file": "geo.js",
+            "line": 139,
+            "brief": "是否在矩形范围内",
+            "description": "是否在矩形范围内",
+            "params": [
+                {
+                    "name": "iLong",
+                    "description": "精度，long类型，乘以了1000000",
+                    "type": "Long"
+                },
+                {
+                    "name": "iLat",
+                    "description": "纬度，long类型，乘以了1000000",
+                    "type": "Long"
+                },
+                {
+                    "name": "rectArr",
+                    "description": "矩形框的左上，右下两个点的左边，数组类型，rect",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "是否在矩形框内",
+                "type": "Boolean"
+            },
+            "itemtype": "method",
+            "name": "isInRect",
+            "author": "jimzhao",
+            "class": "CtripGeoHelper"
+        },
+        {
+            "file": "geo.js",
+            "line": 157,
+            "brief": "是否在一组矩形框范围内",
+            "description": "是否在一组矩形框范围内",
+            "params": [
+                {
+                    "name": "iLong",
+                    "description": "精度，long类型，乘以了1000000",
+                    "type": "Long"
+                },
+                {
+                    "name": "iLat",
+                    "description": "纬度，long类型，乘以了1000000",
+                    "type": "Long"
+                },
+                {
+                    "name": "rectArrList",
+                    "description": "一组坐标的矩形框，rect",
+                    "type": "Array<Rect>"
+                }
+            ],
+            "return": {
+                "description": "是否在一组坐标矩形框内",
+                "type": "Boolean"
+            },
+            "itemtype": "method",
+            "name": "isInRectList",
+            "author": "jimzhao",
+            "class": "CtripGeoHelper"
+        },
+        {
+            "file": "geo.js",
+            "line": 178,
+            "brief": "获取国内外标识",
+            "description": "获取国内外标识",
+            "params": [
+                {
+                    "name": "longitude",
+                    "description": "精度，定位获取",
+                    "type": "Float"
+                },
+                {
+                    "name": "latitude",
+                    "description": "纬度，定位获取",
+                    "type": "Float"
+                }
+            ],
+            "return": {
+                "description": "Unknown/Domestic/Aboard,未知，国内，国外",
+                "type": "Int"
+            },
+            "itemtype": "method",
+            "name": "getCountry",
+            "author": "jimzhao",
+            "class": "CtripGeoHelper"
         }
     ],
     "warnings": [
@@ -2606,6 +2782,46 @@
         {
             "message": "unknown tag: brief",
             "line": " bridge.js:3716"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " geo.js:2"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " geo.js:9"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " geo.js:18"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " geo.js:27"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " geo.js:36"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " geo.js:56"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " geo.js:130"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " geo.js:139"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " geo.js:157"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " geo.js:178"
         }
     ]
 }
