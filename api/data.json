@@ -2319,7 +2319,7 @@
             "file": "geo.js",
             "line": 178,
             "brief": "获取国内外标识",
-            "description": "获取国内外标识",
+            "description": "获取国内外标识， 返回为未知时候，请使用Google 逆地址API发送请求，根据google返回，确定国家.",
             "params": [
                 {
                     "name": "longitude",
@@ -2339,6 +2339,9 @@
             "itemtype": "method",
             "name": "getCountry",
             "author": "jimzhao",
+            "example": [
+                "\n\n       japanRet = CtripGeoHelper.getCountry(130.460979,31.665179);\n       if (japanRet == CtripGeoHelper.Domestic) {\n           //TODO:国内\n       } else if (japanRet == CtripGeoHelper.Aboard) {\n           //TODO:国外\n       } else {\n           //TODO未知:send API request to Google, 根据国家代码确定国家\n           //API－－－－ http://ditu.google.cn/maps/api/geocode/json?latlng=37.332331410000002,-122.0312186\n       }"
+            ],
             "class": "CtripGeoHelper"
         }
     ],

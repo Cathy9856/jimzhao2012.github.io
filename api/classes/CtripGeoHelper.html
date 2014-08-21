@@ -331,7 +331,7 @@
     </div>
 
     <div class="description">
-        <p>获取国内外标识</p>
+        <p>获取国内外标识， 返回为未知时候，请使用Google 逆地址API发送请求，根据google返回，确定国家.</p>
 
     </div>
 
@@ -393,6 +393,23 @@
         </div>
     
 
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   japanRet = CtripGeoHelper.getCountry(130.460979,31.665179);
+   if (japanRet == CtripGeoHelper.Domestic) {
+       //TODO:国内
+   } else if (japanRet == CtripGeoHelper.Aboard) {
+       //TODO:国外
+   } else {
+       //TODO未知:send API request to Google, 根据国家代码确定国家
+       //API－－－－ http://ditu.google.cn/maps/api/geocode/json?latlng=37.332331410000002,-122.0312186
+   }</code></pre>
+
+            </div>
+        </div>
     
 </div>
 
