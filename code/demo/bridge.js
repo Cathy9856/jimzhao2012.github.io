@@ -3744,6 +3744,11 @@ var CtripPage = {
 
 
  
+/**
+ * @class CtripGeoHelper
+ * @description Geo 获取国内外API
+ * @brief Geo 获取国内外API
+ */
 var CtripGeoHelper = {
 
     /**
@@ -3926,22 +3931,22 @@ var CtripGeoHelper = {
      * @author jimzhao
      */
     getCountry:function(longitude, latitude) {
-        var ret = Unknown;
+        var ret = this.Unknown;
         var newLat = latitude*1000000;
         var newLog = longitude*1000000;
 
-        isInAboard = !(isInRect(newLat, newLog, largeChinaRect)); //非大中华区域判断
+        isInAboard = !(this.isInRect(newLat, newLog, this.largeChinaRect)); //非大中华区域判断
         if (!isInAboard) {
-            isInAboard = isInRectList(newLat, newLog, aroundAboardRectList); //中国周边的国外国家，日韩，泰国，印度等地区判断
+            isInAboard = this.isInRectList(newLat, newLog, this.aroundAboardRectList); //中国周边的国外国家，日韩，泰国，印度等地区判断
         }
 
         if (isInAboard) {
-            ret = Domestic; //国外
+            ret = this.Domestic; //国外
         } 
         else {
-            inInLand = isInRectList(newLog, newLog, chinaRectList);
+            inInLand = this.isInRectList(newLog, newLog, this.chinaRectList);
             if (inInLand) {
-              ret = Aboard; //国内
+              ret = this.Aboard; //国内
             }
         }
 
