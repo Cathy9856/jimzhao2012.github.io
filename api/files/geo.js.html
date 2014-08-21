@@ -127,7 +127,7 @@ var CtripGeoHelper = {
      * @property Aboard
      * @author jimzhao
      */
-    Aboard:1,
+    Aboard:2,
 
     /**
      * @brief 国内(包含港澳台)
@@ -136,7 +136,7 @@ var CtripGeoHelper = {
      * @property Domestic
      * @author jimzhao
      */
-    Domestic:2,
+    Domestic:1,
 
     /**
      * @brief 未知国内外
@@ -294,7 +294,7 @@ var CtripGeoHelper = {
      * @description 获取国内外标识， 返回为未知时候，请使用Google 逆地址API发送请求，根据google返回，确定国家.
      * @param {float} longitude 精度，定位获取
      * @param {float} latitude 纬度，定位获取
-     * @return {Int}  Unknown/Domestic/Aboard,未知，国内，国外
+     * @return {Int}  Unknown=-1/Domestic=1/Aboard=2,未知，国内，国外
      * @method getCountry
      * @author jimzhao
      * @example
