@@ -601,6 +601,8 @@ var CtripUtil = {
             param:{
                 "value":{
                     ctyName: '上海',
+                    province: '上海',    //5.8.1版本加入
+                    district:"浦东新区", //5.8.1版本加入
                     addrs:'上海市浦东南路22号',
                     lat:'121.487899',
                     lng:'31.249162'
@@ -2775,6 +2777,7 @@ var CtripBar = {
                 }
 
             ]
+
         5.  特殊tagname定义及说明：
             1). tagname=home, 返回app首页，图片，事件 都不需要H5处理；
             2). tagname=call, 拨打呼叫中心，图片，事件 都不需要H5处理；
@@ -2783,10 +2786,11 @@ var CtripBar = {
             5). tagname=favorite, 收藏，图片-native预置, 事件交给H5处理；v5.8开始支持；
             6). tagname=favorited, 已经收藏，图片-native预置，事件交给H5处理；v5.8开始支持；
             7). tagname=more, 图片，事件 都不需要H5处理；
-            8). tagname=more-my_order, 更多菜单-我的订单
-            9). tagname=more-message_center, 更多菜单-消息中心
-           10). tagname=more-home, 更多菜单-App首页
-           11). 其他tagname，图片有H5提供，事件H5处理；
+            8). tagname=more-my_order, 更多菜单-我的订单, 图片，事件 都不需要H5处理;
+            9). tagname=more-message_center, 更多菜单-消息中心, 图片，事件 都不需要H5处理;
+           10). tagname=more-home, 更多菜单-App首页, 图片，事件 都不需要H5处理;
+           11). tagname-more-my_favorite 更多菜单－我的收藏, 图片，事件 都不需要H5处理;
+           12). 其他tagname，图片有H5提供，事件H5处理；
 
         示例：
         var nav_json = {   
