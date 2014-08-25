@@ -446,7 +446,7 @@ var CtripUtil = {
                 isPreProduction:0,//UAT:2, FAT:0,堡垒:1,生产不会有该字段
                 extSouceID:"8888",//外部渠道ID,since 5.4
                 clientID:"1323333333333333", //客户端唯一标识, since5.4
-                systemCode:16, //iOS 标准版code 16，学生版12， android标准版32, since 5.6
+                systemCode:16, //标准版-iOS:12, android:32; 学生版－ios:16, Android:32, since 5.6
                 latitude:32.011111,//缓存的纬度 since 5.7
                 longitude:121.000332,//缓存的经度 since 5.7
                 screenWidth:320,//晶赞广告系统使用 since 5.7
@@ -2715,9 +2715,8 @@ var CtripBar = {
         1.左侧，返回按钮，不能修改; 
 
         2.中间title，可以自定义，样式总共3种;
-            a.标题[1行或者2行subtitle]；
-            key=center;
-            [
+            a.标题[1行或者2行subtitle]；key=center;
+           center:[
                 {
                     "tagname": "title", 
                     "value":"携程" //标题文字
@@ -2727,9 +2726,8 @@ var CtripBar = {
                      value:"上海到北京", //子标题文字
                 }
             ],
-            b.带事件的标题；
-            key=centerButtons;
-            [
+            b.带事件的标题；key=centerButtons;
+            centerButtons:[
                 {
                     "tagname": "cityChoose",  //点击标题回调H5的tagname
                     "value":"上海",  //标题文字
@@ -2740,21 +2738,21 @@ var CtripBar = {
                 }
             ], 
 
-        3.右侧按钮，可以自定义，样式总共3种， 
+        3.右侧按钮,key=right, 可以自定义，样式总共3种， 
             A.1个文字按钮;
             B.1个图片按钮；
             C.2个图片按钮；
             单个右侧按钮样式的定义格式为
-            {
+            right:[{
                 tagname:"xxxx",  //点击之后 callback给H5的事件名字,
                 value:"btn_title", //按钮上的文字
                 imagePath:"car/res/logo.png",  //按钮上的图片，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
                 pressedImagePath:"car/res/logo.png" //按钮上的图片选中的效果图，可以是相对于业务模块的路径，比如 car/res/logo.png， v5.8开始支持
-            }
+            }]
            
 
-        4.跟多按钮 5.9新增 多个menu的配置
-            [
+        4.跟多按钮,key=moreMenus 5.9新增 多个menu的配置
+            moreMenus:[
                 {
                     tagname:"xxxx",  //点击之后 callback给H5的事件名字,
                     value:"btn_title", //按钮上的文字
@@ -2778,7 +2776,7 @@ var CtripBar = {
 
             ]
 
-        5.  特殊tagname定义及说明：
+        5.  app预置tagname定义及说明(hybrid开发人员请避免使用以下预置的tagname)：
             1). tagname=home, 返回app首页，图片，事件 都不需要H5处理；
             2). tagname=call, 拨打呼叫中心，图片，事件 都不需要H5处理；
             3). tagname=phone, 拨打电话，图片-native预置，事件交由H5处理；v5.8开始支持；
