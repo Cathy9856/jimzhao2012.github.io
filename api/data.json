@@ -2098,20 +2098,13 @@
         },
         {
             "file": "bridge.js",
-            "line": 3571,
+            "line": 3572,
             "description": "从通讯录选取联系人",
             "brief": "从通讯录选取联系人",
-            "params": [
-                {
-                    "name": "pageName",
-                    "description": "设置当前页面名",
-                    "type": "String"
-                }
-            ],
             "itemtype": "method",
-            "name": "app_set_page_name",
+            "name": "app_choose_contact_from_addressbook",
             "author": "jimzhao",
-            "since": "v5.6",
+            "since": "v5.9",
             "example": [
                 "\n\n\n       //调用API\n       CtripBusiness.app_choose_contact_from_addressbook();\n        \n       //调用之后，app返回\n       var json_obj = {\n           name:\"xxx\",\n           phoneList:[{\"家庭\":1320000000}, {\"工作\":021888888888}], //手机号码有一个标签＋号码\n           emailList:[{\"家庭\":a@gmail.com}, {\"工作\":b@yahoo.com}]  //email有标签＋号码\n       };\n\n       app.callback(json_obj);\n"
             ],
@@ -2764,7 +2757,7 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3571"
+            "line": " bridge.js:3572"
         },
         {
             "message": "unknown tag: brief",

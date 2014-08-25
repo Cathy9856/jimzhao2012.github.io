@@ -166,6 +166,8 @@
                     
                     <tr><td>检查App的版本更新</td><td><a href="#method_app_check_update">app_check_update</a></td></tr>
                     
+                    <tr><td>从通讯录选取联系人</td><td><a href="#method_app_choose_contact_from_addressbook">app_choose_contact_from_addressbook</a></td></tr>
+                    
                     <tr><td>选择常用发票title</td><td><a href="#method_app_choose_invoice_title">app_choose_invoice_title</a></td></tr>
                     
                     <tr><td>获取设备相关信息，相关部门需要</td><td><a href="#method_app_get_device_info">app_get_device_info</a></td></tr>
@@ -179,8 +181,6 @@
                     <tr><td>获取短信中的验证码,iPhone不能读取，直接callback</td><td><a href="#method_app_read_verification_code_from_sms">app_read_verification_code_from_sms</a></td></tr>
                     
                     <tr><td>推荐携程旅行给好友</td><td><a href="#method_app_recommend_app_to_friends">app_recommend_app_to_friends</a></td></tr>
-                    
-                    <tr><td>从通讯录选取联系人</td><td><a href="#method_app_set_page_name">app_set_page_name</a></td></tr>
                     
                     <tr><td>查看最新版本功能介绍</td><td><a href="#method_app_show_newest_introduction">app_show_newest_introduction</a></td></tr>
                     
@@ -706,6 +706,82 @@
 
             <div class="example-content">
                 <pre class="code prettyprint"><code>CtripBusiness.app_check_update();</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_choose_contact_from_addressbook" class="method item">
+    <h3 class="name"><code>app_choose_contact_from_addressbook</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3572"><code>bridge.js:3572</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.9</p>
+        
+    </div>
+
+    <div class="description">
+        <p>从通讯录选取联系人</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   //调用API
+   CtripBusiness.app_choose_contact_from_addressbook();
+
+   //调用之后，app返回
+   var json_obj = {
+       name:&quot;xxx&quot;,
+       phoneList:[{&quot;家庭&quot;:1320000000}, {&quot;工作&quot;:021888888888}], //手机号码有一个标签＋号码
+       emailList:[{&quot;家庭&quot;:a@gmail.com}, {&quot;工作&quot;:b@yahoo.com}]  //email有标签＋号码
+   };
+
+   app.callback(json_obj);</code></pre>
 
             </div>
         </div>
@@ -1340,116 +1416,6 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
 
             <div class="example-content">
                 <pre class="code prettyprint"><code>   CtripBusiness.app_recommend_app_to_friends();</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_app_set_page_name" class="method item">
-    <h3 class="name"><code>app_set_page_name</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>pageName</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                定义在
-                
-            
-        
-        
-        <a href="../files/bridge.js.html#l3571"><code>bridge.js:3571</code></a>
-        
-        </p>
-
-
-        
-
-        
-            <p>可用版本 v5.6</p>
-        
-    </div>
-
-    <div class="description">
-        <p>从通讯录选取联系人</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>参数:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">pageName</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>设置当前页面名</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>举例:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>   //调用API
-   CtripBusiness.app_choose_contact_from_addressbook();
-
-   //调用之后，app返回
-   var json_obj = {
-       name:&quot;xxx&quot;,
-       phoneList:[{&quot;家庭&quot;:1320000000}, {&quot;工作&quot;:021888888888}], //手机号码有一个标签＋号码
-       emailList:[{&quot;家庭&quot;:a@gmail.com}, {&quot;工作&quot;:b@yahoo.com}]  //email有标签＋号码
-   };
-
-   app.callback(json_obj);</code></pre>
 
             </div>
         </div>
