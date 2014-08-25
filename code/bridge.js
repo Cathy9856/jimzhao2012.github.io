@@ -446,7 +446,7 @@ var CtripUtil = {
                 isPreProduction:0,//UAT:2, FAT:0,堡垒:1,生产不会有该字段
                 extSouceID:"8888",//外部渠道ID,since 5.4
                 clientID:"1323333333333333", //客户端唯一标识, since5.4
-                systemCode:16, //标准版-iOS:12, android:32; 学生版－ios:16, Android:32, since 5.6
+                systemCode:16, //标准版-iOS:12, android:32; 学生版－ios:16, Android:36, since 5.6
                 latitude:32.011111,//缓存的纬度 since 5.7
                 longitude:121.000332,//缓存的经度 since 5.7
                 screenWidth:320,//晶赞广告系统使用 since 5.7
