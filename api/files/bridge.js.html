@@ -707,25 +707,7 @@ var CtripUtil = {
      * @method 【Moved】app_locate
      * @example
 
-        CtripMap.app_locate(true);
-        //定位完成后H5页面会收到回调数据
-        var json_obj =
-        {
-            tagname:&#x27;locate&#x27;,
-            param:{
-                &quot;value&quot;:{
-                    ctyName: &#x27;上海&#x27;,
-                    province: &#x27;上海&#x27;,    //5.8.1版本加入
-                    district:&quot;浦东新区&quot;, //5.8.1版本加入
-                    addrs:&#x27;上海市浦东南路22号&#x27;,
-                    lat:&#x27;121.487899&#x27;,
-                    lng:&#x27;31.249162&#x27;
-                },
-                &#x27;timeout&#x27;: &#x27;2013/09/12 12:32:36&#x27;,
-                &#x27;locateStatus&#x27;:0,//iOS新增字段:-1网络不通，当前无法定位,-2定位没有开启
-            }
-        }
-        app.callback(json_obj);
+        参考：CtripMap.app_locate(true);
      * 
      */
     app_locate:function(is_async) {
@@ -3051,6 +3033,8 @@ var CtripMap = {
             param:{
                 &quot;value&quot;:{
                     ctyName: &#x27;上海&#x27;,
+                    province: &#x27;上海&#x27;,    //5.8.1版本加入
+                    district:&quot;浦东新区&quot;, //5.8.1版本加入
                     addrs:&#x27;上海市浦东南路22号&#x27;,
                     lat:&#x27;121.487899&#x27;,
                     lng:&#x27;31.249162&#x27;

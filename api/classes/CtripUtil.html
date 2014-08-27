@@ -717,7 +717,7 @@ CtripUtil.app_call_phone();</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l861"><code>bridge.js:861</code></a>
+        <a href="../files/bridge.js.html#l843"><code>bridge.js:843</code></a>
         
         </p>
 
@@ -830,7 +830,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l828"><code>bridge.js:828</code></a>
+        <a href="../files/bridge.js.html#l810"><code>bridge.js:810</code></a>
         
         </p>
 
@@ -926,7 +926,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1275"><code>bridge.js:1275</code></a>
+        <a href="../files/bridge.js.html#l1257"><code>bridge.js:1257</code></a>
         
         </p>
 
@@ -1074,7 +1074,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1005"><code>bridge.js:1005</code></a>
+        <a href="../files/bridge.js.html#l987"><code>bridge.js:987</code></a>
         
         </p>
 
@@ -1180,7 +1180,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l775"><code>bridge.js:775</code></a>
+        <a href="../files/bridge.js.html#l757"><code>bridge.js:757</code></a>
         
         </p>
 
@@ -1309,7 +1309,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1124"><code>bridge.js:1124</code></a>
+        <a href="../files/bridge.js.html#l1106"><code>bridge.js:1106</code></a>
         
         </p>
 
@@ -1438,7 +1438,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1329"><code>bridge.js:1329</code></a>
+        <a href="../files/bridge.js.html#l1311"><code>bridge.js:1311</code></a>
         
         </p>
 
@@ -1616,7 +1616,7 @@ H5接收到web_view_did_finished_load的回调之后，调用该函数，初始�
             
         
         
-        <a href="../files/bridge.js.html#l1223"><code>bridge.js:1223</code></a>
+        <a href="../files/bridge.js.html#l1205"><code>bridge.js:1205</code></a>
         
         </p>
 
@@ -1744,7 +1744,7 @@ H5接收到web_view_did_finished_load的回调之后，调用该函数，初始�
             
         
         
-        <a href="../files/bridge.js.html#l1174"><code>bridge.js:1174</code></a>
+        <a href="../files/bridge.js.html#l1156"><code>bridge.js:1156</code></a>
         
         </p>
 
@@ -1904,7 +1904,7 @@ H5接收到web_view_did_finished_load的回调之后，调用该函数，初始�
             
         
         
-        <a href="../files/bridge.js.html#l637"><code>bridge.js:637</code></a>
+        <a href="../files/bridge.js.html#l619"><code>bridge.js:619</code></a>
         
         </p>
 
@@ -2073,7 +2073,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l1038"><code>bridge.js:1038</code></a>
+        <a href="../files/bridge.js.html#l1020"><code>bridge.js:1020</code></a>
         
         </p>
 
@@ -2162,7 +2162,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l904"><code>bridge.js:904</code></a>
+        <a href="../files/bridge.js.html#l886"><code>bridge.js:886</code></a>
         
         </p>
 
@@ -2331,7 +2331,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l761"><code>bridge.js:761</code></a>
+        <a href="../files/bridge.js.html#l743"><code>bridge.js:743</code></a>
         
         </p>
 
@@ -2431,7 +2431,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l1075"><code>bridge.js:1075</code></a>
+        <a href="../files/bridge.js.html#l1057"><code>bridge.js:1057</code></a>
         
         </p>
 
@@ -2614,7 +2614,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l731"><code>bridge.js:731</code></a>
+        <a href="../files/bridge.js.html#l713"><code>bridge.js:713</code></a>
         
         </p>
 
@@ -2738,25 +2738,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>   CtripMap.app_locate(true);
-   //定位完成后H5页面会收到回调数据
-   var json_obj =
-   {
-       tagname:&#39;locate&#39;,
-       param:{
-           &quot;value&quot;:{
-               ctyName: &#39;上海&#39;,
-               province: &#39;上海&#39;,    //5.8.1版本加入
-               district:&quot;浦东新区&quot;, //5.8.1版本加入
-               addrs:&#39;上海市浦东南路22号&#39;,
-               lat:&#39;121.487899&#39;,
-               lng:&#39;31.249162&#39;
-           },
-           &#39;timeout&#39;: &#39;2013/09/12 12:32:36&#39;,
-           &#39;locateStatus&#39;:0,//iOS新增字段:-1网络不通，当前无法定位,-2定位没有开启
-       }
-   }
-   app.callback(json_obj);</code></pre>
+                <pre class="code prettyprint"><code>   参考：CtripMap.app_locate(true);</code></pre>
 
             </div>
         </div>
@@ -2906,7 +2888,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l1259"><code>bridge.js:1259</code></a>
+        <a href="../files/bridge.js.html#l1241"><code>bridge.js:1241</code></a>
         
         </p>
 
@@ -2996,7 +2978,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l746"><code>bridge.js:746</code></a>
+        <a href="../files/bridge.js.html#l728"><code>bridge.js:728</code></a>
         
         </p>
 
@@ -3072,7 +3054,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l621"><code>bridge.js:621</code></a>
+        <a href="../files/bridge.js.html#l603"><code>bridge.js:603</code></a>
         
         </p>
 
@@ -3162,7 +3144,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l814"><code>bridge.js:814</code></a>
+        <a href="../files/bridge.js.html#l796"><code>bridge.js:796</code></a>
         
         </p>
 
