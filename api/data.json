@@ -201,7 +201,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 3618,
+            "line": 3614,
             "description": "页面跳转，导航，刷新相关API",
             "brief": "页面跳转，导航，刷新相关API"
         },
@@ -2112,7 +2112,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3580,
+            "line": 3576,
             "description": "调用Native的身份证输入控件",
             "brief": "调用Native的身份证输入控件",
             "itemtype": "method",
@@ -2126,7 +2126,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3625,
+            "line": 3621,
             "description": "设置当前页面名，可用于页面导航，刷新",
             "brief": "设置当前页面名，可用于页面导航，刷新",
             "params": [
@@ -2147,7 +2147,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3661,
+            "line": 3657,
             "description": "多webview app，回退到指定的webview页面",
             "brief": "回退到指定的webview页面",
             "params": [
@@ -2168,7 +2168,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3697,
+            "line": 3693,
             "description": "显示native的loading界面",
             "brief": "显示native的loading界面",
             "itemtype": "method",
@@ -2182,7 +2182,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3726,
+            "line": 3722,
             "description": "隐藏native的loading界面",
             "brief": "隐藏native的loading界面",
             "itemtype": "method",
@@ -2196,7 +2196,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3755,
+            "line": 3751,
             "description": "打开/关闭app的拖动手势，默认是关闭的",
             "brief": "打开/关闭app的拖动手势",
             "itemtype": "method",
@@ -2789,31 +2789,31 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3580"
+            "line": " bridge.js:3576"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3618"
+            "line": " bridge.js:3614"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3625"
+            "line": " bridge.js:3621"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3661"
+            "line": " bridge.js:3657"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3697"
+            "line": " bridge.js:3693"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3726"
+            "line": " bridge.js:3722"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3755"
+            "line": " bridge.js:3751"
         },
         {
             "message": "unknown tag: brief",

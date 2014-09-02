@@ -3517,7 +3517,7 @@ var CtripBusiness = {
         app.callback(json_obj);
      */
     app_check_app_package_info:function() {
-        if (Internal.isSupportAPIWithVersion("5.8")) {
+        if (!Internal.isSupportAPIWithVersion("5.8")) {
             return;
         }
 
@@ -3559,14 +3559,10 @@ var CtripBusiness = {
 
      */
     app_choose_contact_from_addressbook:function() {
-        alert("invoke app_choose_contact_from_addressbook");
-        if (Internal.isSupportAPIWithVersion("5.9")) {
+        if (!Internal.isSupportAPIWithVersion("5.9")) {
             return;
         }
-
         var paramString = Internal.makeParamString("Business", "chooseContactFromAddressbook", null, "choose_contact_from_addressbook");
-
-        alert("invoke app_choose_contact_from_addressbook"+paramString);
         if (Internal.isIOS) {
             var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
@@ -3598,7 +3594,7 @@ var CtripBusiness = {
 
      */
     app_input_ID_card_number:function() {
-        if (Internal.isSupportAPIWithVersion("5.9")) {
+        if (!Internal.isSupportAPIWithVersion("5.9")) {
             return;
         }
 
