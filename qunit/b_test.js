@@ -661,7 +661,7 @@ asyncTest("写日志到App: app_log", function(){
 
 asyncTest("测试下载内容:app_download_data", function() {
 	expect(1);
-	CtripUtil.app_download_data("http://www.baidu.com/img/bdlogo.gif", "jpg");
+	CtripUtil.app_download_data("http://10.2.5.158/images/hhtravel/006/374/105/c98b79a32bf4457bac2a06789fce3097_C_480_270_Q50.jpg", "jpg");
 
 	setTimeout(function(){
 		start();
