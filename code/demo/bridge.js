@@ -3578,13 +3578,50 @@ var CtripBusiness = {
             return;
         }
 
-        paramString = Internal.makeParamString("Business", "chooseContactFromAddressbook", params, "choose_contact_from_addressbook");
+        paramString = Internal.makeParamString("Business", "chooseContactFromAddressbook", null, "choose_contact_from_addressbook");
 
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.Business_a.chooseContactFromAddressbook(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /**
+     * @description 调用Native的身份证输入控件
+     * @brief 调用Native的身份证输入控件
+     * @method app_input_ID_card_number
+     * @author jimzhao
+     * @since v5.9
+     * @example
+     *
+     * 
+        //调用API
+        CtripBusiness.app_input_ID_card_number();
+         
+        //调用之后，app返回
+        var json_obj = {
+            inputNumber:"42108819990228123x",
+        };
+
+        app.callback(json_obj);
+
+     */
+    app_input_ID_card_number:function() {
+        if (Internal.isSupportAPIWithVersion("5.9")) {
+            return;
+        }
+
+        paramString = Internal.makeParamString("Business", "inputIDCardNumber", params, "input_ID_card_number");
+
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            window.Business_a.inputIDCardNumber(paramString);
         } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
@@ -3722,6 +3759,37 @@ var CtripPage = {
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.Page_a.hideLoadingPage(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+
+    /**
+     * @description 打开/关闭app的拖动手势，默认是关闭的
+     * @brief 打开/关闭app的拖动手势
+     * @method app_enable_drag_animation
+     * @author jimzhao
+     * @since v5.9
+     * @example
+     *
+     * 
+        CtripPage.app_enable_drag_animation(true);
+
+     */
+    app_enable_drag_animation:function(isEnable) {
+        if (!Internal.isSupportAPIWithVersion("5.9")) {
+            return;
+        }
+        var params = {};
+        params.isEnable = isEnable;
+
+        paramString = Internal.makeParamString("Page", "enableDragAnimation", params, "enable_drag_animation");
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            ;//do nothing for android
         } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }

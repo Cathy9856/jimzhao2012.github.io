@@ -201,7 +201,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 3594,
+            "line": 3631,
             "description": "页面跳转，导航，刷新相关API",
             "brief": "页面跳转，导航，刷新相关API"
         },
@@ -2112,7 +2112,21 @@
         },
         {
             "file": "bridge.js",
-            "line": 3601,
+            "line": 3593,
+            "description": "调用Native的身份证输入控件",
+            "brief": "调用Native的身份证输入控件",
+            "itemtype": "method",
+            "name": "app_input_ID_card_number",
+            "author": "jimzhao",
+            "since": "v5.9",
+            "example": [
+                "\n\n\n       //调用API\n       CtripBusiness.app_input_ID_card_number();\n        \n       //调用之后，app返回\n       var json_obj = {\n           inputNumber:\"42108819990228123x\",\n       };\n\n       app.callback(json_obj);\n"
+            ],
+            "class": "CtripBusiness"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3638,
             "description": "设置当前页面名，可用于页面导航，刷新",
             "brief": "设置当前页面名，可用于页面导航，刷新",
             "params": [
@@ -2133,7 +2147,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3637,
+            "line": 3674,
             "description": "多webview app，回退到指定的webview页面",
             "brief": "回退到指定的webview页面",
             "params": [
@@ -2154,7 +2168,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3673,
+            "line": 3710,
             "description": "显示native的loading界面",
             "brief": "显示native的loading界面",
             "itemtype": "method",
@@ -2168,7 +2182,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3702,
+            "line": 3739,
             "description": "隐藏native的loading界面",
             "brief": "隐藏native的loading界面",
             "itemtype": "method",
@@ -2177,6 +2191,20 @@
             "since": "v5.9",
             "example": [
                 "\n\n\n       CtripPage.app_hide_loading_page();\n"
+            ],
+            "class": "CtripPage"
+        },
+        {
+            "file": "bridge.js",
+            "line": 3768,
+            "description": "打开/关闭app的拖动手势，默认是关闭的",
+            "brief": "打开/关闭app的拖动手势",
+            "itemtype": "method",
+            "name": "app_enable_drag_animation",
+            "author": "jimzhao",
+            "since": "v5.9",
+            "example": [
+                "\n\n\n       CtripPage.app_enable_drag_animation(true);\n"
             ],
             "class": "CtripPage"
         },
@@ -2761,23 +2789,31 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3594"
+            "line": " bridge.js:3593"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3601"
+            "line": " bridge.js:3631"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3637"
+            "line": " bridge.js:3638"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3673"
+            "line": " bridge.js:3674"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3702"
+            "line": " bridge.js:3710"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3739"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:3768"
         },
         {
             "message": "unknown tag: brief",

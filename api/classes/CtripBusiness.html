@@ -172,6 +172,8 @@
                     
                     <tr><td>获取设备相关信息，相关部门需要</td><td><a href="#method_app_get_device_info">app_get_device_info</a></td></tr>
                     
+                    <tr><td>调用Native的身份证输入控件</td><td><a href="#method_app_input_ID_card_number">app_input_ID_card_number</a></td></tr>
+                    
                     <tr><td>收集ActionLog</td><td><a href="#method_app_log_event">app_log_event</a></td></tr>
                     
                     <tr><td>记录google remarkting的screenName</td><td><a href="#method_app_log_google_remarkting">app_log_google_remarkting</a></td></tr>
@@ -190,6 +192,12 @@
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -973,6 +981,80 @@
        mac:&quot;10:DD:B1:CF:C1:80&quot;,
        port:&quot;&quot;,
        wifiMac:&quot;&quot;
+   };
+
+   app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_input_ID_card_number" class="method item">
+    <h3 class="name"><code>app_input_ID_card_number</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3593"><code>bridge.js:3593</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.9</p>
+        
+    </div>
+
+    <div class="description">
+        <p>调用Native的身份证输入控件</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   //调用API
+   CtripBusiness.app_input_ID_card_number();
+
+   //调用之后，app返回
+   var json_obj = {
+       inputNumber:&quot;42108819990228123x&quot;,
    };
 
    app.callback(json_obj);</code></pre>
