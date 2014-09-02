@@ -574,9 +574,9 @@ var CtripUtil = {
          app.callback(json_obj);
      */
     app_init_member_H5_info:function() {
-        paramString = Internal.makeParamString(&quot;User&quot;, &quot;initMemberH5Info&quot;, null, &quot;init_member_H5_info&quot;);
+        var paramString = Internal.makeParamString(&quot;User&quot;, &quot;initMemberH5Info&quot;, null, &quot;init_member_H5_info&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if(Internal.isAndroid) {
@@ -610,22 +610,10 @@ var CtripUtil = {
         
         params.phone = phone;
 
-        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;callPhone&quot;, params, &quot;call_phone&quot;)
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;callPhone&quot;, params, &quot;call_phone&quot;)
         if (Internal.isIOS) {
-            var fixedFlag = false;
-
-            if (Internal.isNotEmptyString(phone)) {
-                if (!Internal.appVersion || (Internal.appVersion == &quot;5.2&quot;)) {
-                    fixedFlag = true;
-                    url = &quot;tel://&quot;+phone;
-                    window.location.href = url;
-                }
-            } 
-
-            if (!fixedFlag) {
-                url = Internal.makeURLWithParam(paramString);
-                Internal.loadURL(url);
-            }
+            var url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url); 
         }
         else if (Internal.isAndroid){
             window.Util_a.callPhone(paramString);
@@ -646,13 +634,13 @@ var CtripUtil = {
      CtripUtil.app_back_to_home();
      */
     app_back_to_home:function() {
-        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;backToHome&quot;, null, &quot;back_to_home&quot;);
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;backToHome&quot;, null, &quot;back_to_home&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
-            homeURL = &quot;ctrip://wireless/&quot;;
+            var homeURL = &quot;ctrip://wireless/&quot;;
             if (Internal.isYouthApp) {
                 homeURL = &quot;ctripyouth://wireless/&quot;;
             }
@@ -686,10 +674,10 @@ var CtripUtil = {
 
         params.callbackString = callbackString;
         params.isDeleteH5Page = isDeleteH5Page;
-        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;backToLast&quot;, params, &quot;back_to_last_page&quot;);
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;backToLast&quot;, params, &quot;back_to_last_page&quot;);
 
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -778,15 +766,15 @@ var CtripUtil = {
         params.targetMode = targetMode;
         params.pageName = pageName;
         params.isShowLoadingPage = isShowLoadingPage;
-        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;openUrl&quot;, params, &quot;open_url&quot;);
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;openUrl&quot;, params, &quot;open_url&quot;);
         
         if (Internal.appVersion) { //有AppVersion，为5.3及之后版本，或者5.2本地H5页面
             if (targetMode == 5) { //targetMode=5,5.8新增,可以兼容到以前版本
                 if (Internal.isAppVersionGreatThan(&quot;5.8&quot;)) {
-                    firstSplashIndex = openUrl.indexOf(&quot;/&quot;);
+                    var firstSplashIndex = openUrl.indexOf(&quot;/&quot;);
                     if (firstSplashIndex &gt; 0) {
-                        packageName = openUrl.substr(0, firstSplashIndex);
-                        pageParam = openUrl.substr(openUrl)
+                        var packageName = openUrl.substr(0, firstSplashIndex);
+                        var pageParam = openUrl.substr(openUrl)
                         CtripUtil.app_cross_package_href(packageName, pageParam);
                     } else {
                         Internal.appVersionNotSupportCallback(&quot;传入URL有错误，eg. car/index.html#xxooee&quot;);
@@ -794,7 +782,7 @@ var CtripUtil = {
                 } 
             } else {
                 if (Internal.isIOS) {
-                    url = Internal.makeURLWithParam(paramString);
+                    var url = Internal.makeURLWithParam(paramString);
                     Internal.loadURL(url);
                 }
                 else if (Internal.isAndroid) {
@@ -894,9 +882,9 @@ var CtripUtil = {
         params.path = path;
         params.param = param;
 
-        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;crossPackageJumpUrl&quot;, params, &quot;cross_package_href&quot;);
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;crossPackageJumpUrl&quot;, params, &quot;cross_package_href&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -941,9 +929,9 @@ var CtripUtil = {
      
      */
     app_check_network_status:function() {
-        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;checkNetworkStatus&quot;, null, &quot;check_network_status&quot;);
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;checkNetworkStatus&quot;, null, &quot;check_network_status&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -984,9 +972,9 @@ var CtripUtil = {
         params.openUrl = openUrl;
         params.packageName = packageName;
 
-        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;checkAppInstallStatus&quot;, params, &quot;check_app_install_status&quot;);
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;checkAppInstallStatus&quot;, params, &quot;check_app_install_status&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -1085,9 +1073,9 @@ var CtripUtil = {
         params.pageName = pageName;
         params.jsonStr = jsonStr;
 
-        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;refreshNativePage&quot;, params, &quot;refresh_native_page&quot;);
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;refreshNativePage&quot;, params, &quot;refresh_native_page&quot;);
         if(Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -1118,9 +1106,9 @@ var CtripUtil = {
         }
         params.copyString = toCopyStr;
 
-        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;copyToClipboard&quot;, params, &quot;copy_string_to_clipboard&quot;);
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;copyToClipboard&quot;, params, &quot;copy_string_to_clipboard&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -1155,9 +1143,9 @@ var CtripUtil = {
             return;
         }
 
-        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;readCopiedStringFromClipboard&quot;, null, &quot;read_copied_string_from_clipboard&quot;);
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;readCopiedStringFromClipboard&quot;, null, &quot;read_copied_string_from_clipboard&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -1338,9 +1326,9 @@ var CtripUtil = {
         var params = {};
         params.log = log;
         params.result = result;
-        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;h5Log&quot;, params, &quot;log&quot;);
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;h5Log&quot;, params, &quot;log&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid)
@@ -1512,10 +1500,10 @@ var CtripUser = {
     app_member_login:function(isShowNonMemberLogin) {
         var params = {};
         params.isShowNonMemberLogin = isShowNonMemberLogin;
-        paramString =  Internal.makeParamString(&quot;User&quot;, &quot;memberLogin&quot;, params, &#x27;member_login&#x27;);
+        var paramString =  Internal.makeParamString(&quot;User&quot;, &quot;memberLogin&quot;, params, &#x27;member_login&#x27;);
 
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -1575,9 +1563,9 @@ var CtripUser = {
       
       */
     app_non_member_login:function() {
-        paramString =  Internal.makeParamString(&quot;User&quot;, &quot;nonMemberLogin&quot;, null, &#x27;non_member_login&#x27;);
+        var paramString =  Internal.makeParamString(&quot;User&quot;, &quot;nonMemberLogin&quot;, null, &#x27;non_member_login&#x27;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -1638,9 +1626,9 @@ var CtripUser = {
       
       */
     app_member_auto_login:function() {
-        paramString =  Internal.makeParamString(&quot;User&quot;, &quot;memberAutoLogin&quot;, null, &#x27;member_auto_login&#x27;);
+        var paramString =  Internal.makeParamString(&quot;User&quot;, &quot;memberAutoLogin&quot;, null, &#x27;member_auto_login&#x27;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -1701,9 +1689,9 @@ var CtripUser = {
           
       */
     app_member_register:function() {
-        paramString = Internal.makeParamString(&quot;User&quot;, &quot;memberRegister&quot;, null, &#x27;member_register&#x27;);
+        var paramString = Internal.makeParamString(&quot;User&quot;, &quot;memberRegister&quot;, null, &#x27;member_register&#x27;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -1744,9 +1732,9 @@ var CtripUser = {
         var params = {};
         params.userInfoJson = userInfoJson;
 
-        paramString = Internal.makeParamString(&quot;User&quot;, &quot;finishedRegister&quot;, params, &quot;finished_register&quot;);
+        var paramString = Internal.makeParamString(&quot;User&quot;, &quot;finishedRegister&quot;, params, &quot;finished_register&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.User_a.finishedRegister(paramString);
@@ -1797,9 +1785,9 @@ var CtripUser = {
         var params = {};
         params.userInfoJson = userInfoJson;
 
-        paramString = Internal.makeParamString(&quot;User&quot;, &quot;finishedLogin&quot;, params, &quot;finished_login&quot;);
+        var paramString = Internal.makeParamString(&quot;User&quot;, &quot;finishedLogin&quot;, params, &quot;finished_login&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.User_a.finishedLogin(paramString);
@@ -1853,9 +1841,9 @@ var CtripUser = {
         params = {};
         params.toIncodeString = toIncodeString;
 
-        paramString = Internal.makeParamString(&quot;Encrypt&quot;, &quot;base64Encode&quot;, params, &#x27;base64_encode&#x27;);
+        var paramString = Internal.makeParamString(&quot;Encrypt&quot;, &quot;base64Encode&quot;, params, &#x27;base64_encode&#x27;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -1901,9 +1889,9 @@ var CtripUser = {
         params = {};
         params.inString = inString;
 
-        paramString = Internal.makeParamString(&quot;Encrypt&quot;, &quot;md5Hash&quot;, params, &#x27;md5_hash&#x27;);
+        var paramString = Internal.makeParamString(&quot;Encrypt&quot;, &quot;md5Hash&quot;, params, &#x27;md5_hash&#x27;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -1950,9 +1938,9 @@ var CtripUser = {
         params = {};
         params.inString = inString;
         params.encType = encType;
-        paramString = Internal.makeParamString(&quot;Encrypt&quot;, &quot;ctripEncrypt&quot;, params, &#x27;ctrip_encrypt&#x27;);
+        var paramString = Internal.makeParamString(&quot;Encrypt&quot;, &quot;ctripEncrypt&quot;, params, &#x27;ctrip_encrypt&#x27;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -2004,7 +1992,7 @@ var CtripUser = {
 
         var paramString = Internal.makeParamString(&quot;Pay&quot;,&quot;checkPayAppInstallStatus&quot;,null,&#x27;check_pay_app_install_status&#x27;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -2061,7 +2049,7 @@ var CtripUser = {
         var paramString = Internal.makeParamString(&quot;Pay&quot;,&quot;openPayAppByURL&quot;,params,&#x27;open_pay_app_by_url&#x27;);
 
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -2165,9 +2153,9 @@ var CtripPipe = {
         params.sequenceId = sequenceId;
         params.isIgnoreHTTPSCertification = isIgnoreHTTPSCertification;
 
-        paramString = Internal.makeParamString(&quot;Pipe&quot;, &quot;sendHTTPPipeRequest&quot;, params, &#x27;send_http_pipe_request&#x27;);
+        var paramString = Internal.makeParamString(&quot;Pipe&quot;, &quot;sendHTTPPipeRequest&quot;, params, &#x27;send_http_pipe_request&#x27;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -2202,10 +2190,10 @@ var CtripPipe = {
 
         var params = {};
         params.sequenceId = sequenceId;
-        paramString = Internal.makeParamString(&quot;Pipe&quot;, &quot;abortHTTPRequest&quot;, params, &#x27;abort_http_pipe_request&#x27;);
+        var paramString = Internal.makeParamString(&quot;Pipe&quot;, &quot;abortHTTPRequest&quot;, params, &#x27;abort_http_pipe_request&#x27;);
         
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } 
         else if (Internal.isAndroid) {
@@ -2289,9 +2277,9 @@ var CtripPipe = {
         params.sequenceId = sequenceId;
         params.pipeType = pipeType;
 
-        paramString = Internal.makeParamString(&quot;Pipe&quot;, &quot;sendH5PipeRequest&quot;, params, &#x27;send_h5_pipe_request&#x27;);
+        var paramString = Internal.makeParamString(&quot;Pipe&quot;, &quot;sendH5PipeRequest&quot;, params, &#x27;send_h5_pipe_request&#x27;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -2455,9 +2443,9 @@ var CtripFile  = {
         var params = {};
         params.pageUrl = window.location.href;
 
-        paramString = Internal.makeParamString(&quot;File&quot;, &quot;getCurrentSandboxName&quot;, params, &#x27;get_current_sandbox_name&#x27;);
+        var paramString = Internal.makeParamString(&quot;File&quot;, &quot;getCurrentSandboxName&quot;, params, &#x27;get_current_sandbox_name&#x27;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } 
         else if (Internal.isAndroid) {
@@ -2513,9 +2501,9 @@ var CtripFile  = {
         params.fileName = fileName;
         params.relativeFilePath = relativeFilePath;
         params.isAppend = isAppend;
-        paramString = Internal.makeParamString(&quot;File&quot;, &quot;writeTextToFile&quot;, params, &#x27;write_text_to_file&#x27;);
+        var paramString = Internal.makeParamString(&quot;File&quot;, &quot;writeTextToFile&quot;, params, &#x27;write_text_to_file&#x27;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -2565,9 +2553,9 @@ var CtripFile  = {
         params.fileName = fileName;
         params.relativeFilePath = relativeFilePath;
         params.pageUrl = window.location.href;
-        paramString = Internal.makeParamString(&quot;File&quot;, &quot;deleteFile&quot;, params, &#x27;delete_file&#x27;);
+        var paramString = Internal.makeParamString(&quot;File&quot;, &quot;deleteFile&quot;, params, &#x27;delete_file&#x27;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } 
         else if (Internal.isAndroid) {
@@ -2617,10 +2605,10 @@ var CtripFile  = {
         params.fileName = fileName;
         params.pageUrl = window.location.href;
         params.relativeFilePath = relativeFilePath;
-        paramString = Internal.makeParamString(&quot;File&quot;, &quot;readTextFromFile&quot;, params, &#x27;read_text_from_file&#x27;);
+        var paramString = Internal.makeParamString(&quot;File&quot;, &quot;readTextFromFile&quot;, params, &#x27;read_text_from_file&#x27;);
 
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -2670,9 +2658,9 @@ var CtripFile  = {
         params.fileName = fileName;
         params.relativeFilePath = relativeFilePath;
         params.pageUrl = window.location.href;
-        paramString = Internal.makeParamString(&quot;File&quot;, &quot;getFileSize&quot;, params, &#x27;get_file_size&#x27;);
+        var paramString = Internal.makeParamString(&quot;File&quot;, &quot;getFileSize&quot;, params, &#x27;get_file_size&#x27;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -2722,9 +2710,9 @@ var CtripFile  = {
         params.fileName = fileName;
         params.relativeFilePath = relativeFilePath;
         params.pageUrl = window.location.href;
-        paramString = Internal.makeParamString(&quot;File&quot;, &quot;checkFileExist&quot;, params, &#x27;check_file_exist&#x27;);
+        var paramString = Internal.makeParamString(&quot;File&quot;, &quot;checkFileExist&quot;, params, &#x27;check_file_exist&#x27;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -2775,10 +2763,10 @@ var CtripFile  = {
         params.pageUrl = window.location.href;
         params.relativeDirPath = relativeDirPath;
 
-        paramString = Internal.makeParamString(&quot;File&quot;, &quot;makeDir&quot;, params, &#x27;make_dir&#x27;);
+        var paramString = Internal.makeParamString(&quot;File&quot;, &quot;makeDir&quot;, params, &#x27;make_dir&#x27;);
 
          if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -2909,10 +2897,10 @@ var CtripBar = {
             jsonObj.action = &quot;refresh&quot;;
             jsonObj.callback_tagname = &quot;refresh_nav_bar&quot;;
             
-            paramString = JSON.stringify(jsonObj);
+            var paramString = JSON.stringify(jsonObj);
 
             if (Internal.isIOS) {
-                url = Internal.makeURLWithParam(paramString);
+                var url = Internal.makeURLWithParam(paramString);
                 Internal.loadURL(url);
             }
             else if (Internal.isAndroid) {
@@ -2937,19 +2925,16 @@ var CtripBar = {
      CtripBar.app_set_navbar_hidden(false);
      */
     app_set_navbar_hidden:function(isHidden) {
-        var params = {};
-        params.isHidden = isHidden;
-        // Internal.execAPI(&quot;5.4&quot;,&quot;NavBar&quot;, &quot;setNavBarHidden&quot;,params,&quot;set_navbar_hidden&quot;);
         if (!Internal.isSupportAPIWithVersion(&quot;5.4&quot;)) {
             return;
         }  
 
         var params = {};
         params.isHidden = isHidden;
-        paramString = Internal.makeParamString(&quot;NavBar&quot;,&quot;setNavBarHidden&quot;,params,&quot;set_navbar_hidden&quot;);
+        var paramString = Internal.makeParamString(&quot;NavBar&quot;,&quot;setNavBarHidden&quot;,params,&quot;set_navbar_hidden&quot;);
         
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -2977,10 +2962,10 @@ var CtripBar = {
         }
         var params = {};
         params.isHidden = isHidden;
-        paramString = Internal.makeParamString(&quot;NavBar&quot;,&quot;setToolBarHidden&quot;,params,&quot;set_toolbar_hidden&quot;);
+        var paramString = Internal.makeParamString(&quot;NavBar&quot;,&quot;setToolBarHidden&quot;,params,&quot;set_toolbar_hidden&quot;);
         
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -3050,9 +3035,9 @@ var CtripMap = {
         var params = {};
         params.is_async = is_async;
 
-        paramString = Internal.makeParamString(&quot;Locate&quot;, &quot;locate&quot;, params, &#x27;locate&#x27;)
+        var paramString = Internal.makeParamString(&quot;Locate&quot;, &quot;locate&quot;, params, &#x27;locate&#x27;)
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -3095,10 +3080,10 @@ var CtripMap = {
         params.longitude = longitude;
         params.title = title;
         params.subtitle = subtitle;
-        paramString = Internal.makeParamString(&quot;Locate&quot;, &quot;showMap&quot;,params, &#x27;show_map&#x27;);
+        var paramString = Internal.makeParamString(&quot;Locate&quot;, &quot;showMap&quot;,params, &#x27;show_map&#x27;);
 
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -3153,10 +3138,10 @@ var CtripMap = {
         var params = {};
         params.poiList = poiList;
 
-        paramString = Internal.makeParamString(&quot;Locate&quot;, &quot;showMapWithPOIList&quot;,params, &#x27;show_map_with_POI_list&#x27;);
+        var paramString = Internal.makeParamString(&quot;Locate&quot;, &quot;showMapWithPOIList&quot;,params, &#x27;show_map_with_POI_list&#x27;);
 
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -3209,10 +3194,10 @@ var CtripBusiness = {
         }
         var params = {};
         params.selectedInvoiceTitle = selectedInvoiceTitle;
-        paramString = Internal.makeParamString(&quot;Business&quot;, &quot;chooseInvoiceTitle&quot;, params, &#x27;choose_invoice_title&#x27;);
+        var paramString = Internal.makeParamString(&quot;Business&quot;, &quot;chooseInvoiceTitle&quot;, params, &#x27;choose_invoice_title&#x27;);
 
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -3253,10 +3238,10 @@ var CtripBusiness = {
 
         var params = {};
         params.businessType = businessType;
-        paramString = Internal.makeParamString(&quot;Business&quot;, &quot;showVoiceSearch&quot;, params, &#x27;show_voice_search&#x27;);
+        var paramString = Internal.makeParamString(&quot;Business&quot;, &quot;showVoiceSearch&quot;, params, &#x27;show_voice_search&#x27;);
 
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -3310,9 +3295,9 @@ var CtripBusiness = {
      CtripUtil.app_show_newest_introduction();
      */
     app_show_newest_introduction:function() {
-        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;showNewestIntroduction&quot;, null, &quot;show_newest_introduction&quot;);
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;showNewestIntroduction&quot;, null, &quot;show_newest_introduction&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -3335,9 +3320,9 @@ var CtripBusiness = {
      *
      */
     app_check_update:function() {
-        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;checkUpdate&quot;, null, &quot;check_update&quot;);
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;checkUpdate&quot;, null, &quot;check_update&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -3360,9 +3345,9 @@ var CtripBusiness = {
      *
      */
     app_recommend_app_to_friends:function() {
-        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;recommendAppToFriends&quot;, null, &quot;recommend_app_to_friends&quot;);
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;recommendAppToFriends&quot;, null, &quot;recommend_app_to_friends&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -3385,9 +3370,9 @@ var CtripBusiness = {
 
      */
     app_add_weixin_friend:function() {
-        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;addWeixinFriend&quot;, null, &quot;add_weixin_friend&quot;);
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;addWeixinFriend&quot;, null, &quot;add_weixin_friend&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -3470,10 +3455,10 @@ var CtripBusiness = {
         params.imageRelativePath = imageRelativePath;
         params.isIOSSystemShare = isIOSSystemShare;
 
-        paramString = Internal.makeParamString(&quot;Util&quot;, &quot;callSystemShare&quot;, params, &quot;call_system_share&quot;);
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;callSystemShare&quot;, params, &quot;call_system_share&quot;);
 
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
@@ -3500,10 +3485,10 @@ var CtripBusiness = {
         if (Internal.isNotEmptyString(event_name)) {
             var params = {};
             params.event = event_name;
-            paramString =  Internal.makeParamString(&quot;Util&quot;, &quot;logEvent&quot;, params, &quot;log_event&quot;);
+            var paramString =  Internal.makeParamString(&quot;Util&quot;, &quot;logEvent&quot;, params, &quot;log_event&quot;);
 
             if (Internal.isIOS) {
-                url = Internal.makeURLWithParam(paramString);
+                var url = Internal.makeURLWithParam(paramString);
                 Internal.loadURL(url);
             }
             else if (Internal.isAndroid) {
@@ -3547,9 +3532,9 @@ var CtripBusiness = {
             return;
         }
 
-        paramString = Internal.makeParamString(&quot;Business&quot;, &quot;getDeviceInfo&quot;, null, &quot;get_device_info&quot;);
+        var paramString = Internal.makeParamString(&quot;Business&quot;, &quot;getDeviceInfo&quot;, null, &quot;get_device_info&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.Business_a.getDeviceInfo(paramString);
@@ -3582,9 +3567,9 @@ var CtripBusiness = {
             return;
         }
 
-        paramString = Internal.makeParamString(&quot;Business&quot;, &quot;readVerificationCodeFromSMS&quot;, null, &quot;read_verification_code_from_sms&quot;);
+        var paramString = Internal.makeParamString(&quot;Business&quot;, &quot;readVerificationCodeFromSMS&quot;, null, &quot;read_verification_code_from_sms&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.Business_a.readVerificationCodeFromSMS(paramString);
@@ -3614,10 +3599,10 @@ var CtripBusiness = {
 
         var params = {};
         params.screenName = screenName;
-        paramString = Internal.makeParamString(&quot;Business&quot;, &quot;logGoogleRemarking&quot;, params, &quot;log_google_remarkting&quot;);
+        var paramString = Internal.makeParamString(&quot;Business&quot;, &quot;logGoogleRemarking&quot;, params, &quot;log_google_remarkting&quot;);
 
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.Business_a.logGoogleRemarking(paramString);
@@ -3650,10 +3635,10 @@ var CtripBusiness = {
             return;
         }
 
-        paramString = Internal.makeParamString(&quot;Business&quot;, &quot;checkAppPackageInfo&quot;, params, &quot;check_app_package_info&quot;);
+        var paramString = Internal.makeParamString(&quot;Business&quot;, &quot;checkAppPackageInfo&quot;, params, &quot;check_app_package_info&quot;);
 
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.Business_a.checkAndroidPackageInfo(paramString);
@@ -3688,14 +3673,16 @@ var CtripBusiness = {
 
      */
     app_choose_contact_from_addressbook:function() {
+        alert(&quot;invoke app_choose_contact_from_addressbook&quot;);
         if (Internal.isSupportAPIWithVersion(&quot;5.9&quot;)) {
             return;
         }
 
-        paramString = Internal.makeParamString(&quot;Business&quot;, &quot;chooseContactFromAddressbook&quot;, null, &quot;choose_contact_from_addressbook&quot;);
+        var paramString = Internal.makeParamString(&quot;Business&quot;, &quot;chooseContactFromAddressbook&quot;, null, &quot;choose_contact_from_addressbook&quot;);
 
+        alert(&quot;invoke app_choose_contact_from_addressbook&quot;+paramString);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.Business_a.chooseContactFromAddressbook(paramString);
@@ -3729,10 +3716,10 @@ var CtripBusiness = {
             return;
         }
 
-        paramString = Internal.makeParamString(&quot;Business&quot;, &quot;inputIDCardNumber&quot;, params, &quot;input_ID_card_number&quot;);
+        var paramString = Internal.makeParamString(&quot;Business&quot;, &quot;inputIDCardNumber&quot;, params, &quot;input_ID_card_number&quot;);
 
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.Business_a.inputIDCardNumber(paramString);
@@ -3774,9 +3761,9 @@ var CtripPage = {
         var params = {};
         params.pageName = pageName;
 
-        paramString = Internal.makeParamString(&quot;Page&quot;, &quot;setPageName&quot;, params, &quot;set_page_name&quot;);
+        var paramString = Internal.makeParamString(&quot;Page&quot;, &quot;setPageName&quot;, params, &quot;set_page_name&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.Page_a.setPageName(paramString);
@@ -3810,9 +3797,9 @@ var CtripPage = {
         var params = {};
         params.pageName = pageName;
 
-        paramString = Internal.makeParamString(&quot;Page&quot;, &quot;backToPage&quot;, params, &quot;back_to_page&quot;);
+        var paramString = Internal.makeParamString(&quot;Page&quot;, &quot;backToPage&quot;, params, &quot;back_to_page&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.Page_a.backToPage(paramString);
@@ -3838,9 +3825,9 @@ var CtripPage = {
             return;
         }
 
-        paramString = Internal.makeParamString(&quot;Page&quot;, &quot;showLoadingPage&quot;, null, &quot;show_loading_page&quot;);
+        var paramString = Internal.makeParamString(&quot;Page&quot;, &quot;showLoadingPage&quot;, null, &quot;show_loading_page&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.Page_a.showLoadingPage(paramString);
@@ -3867,9 +3854,9 @@ var CtripPage = {
             return;
         }
 
-        paramString = Internal.makeParamString(&quot;Page&quot;, &quot;hideLoadingPage&quot;, null, &quot;hide_loading_page&quot;);
+        var paramString = Internal.makeParamString(&quot;Page&quot;, &quot;hideLoadingPage&quot;, null, &quot;hide_loading_page&quot;);
         if (Internal.isIOS) {
-            url = Internal.makeURLWithParam(paramString);
+            var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.Page_a.hideLoadingPage(paramString);
