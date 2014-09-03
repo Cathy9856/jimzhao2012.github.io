@@ -2130,28 +2130,27 @@ var CtripPipe = {
         }
 
         //失败
-        //  code定义，返回给Hybrid时候，为负数，iOS －200开始，递减，android －300开始，递减
+        //  code定义，返回给Hybrid时候，为负数，iOS －200开始，递减
         //  CONN_FAIL_TYPE_NO_FAIL = 200------------------正确，无错误
-        //  CONN_FAIL_TYPE_GETCONN_UNKOWN = 201/301-----------从连接池获取长连接失败
-        //  CONN_FAIL_TYPE_GETIP = 202/302--------------------获取IP地址失败
-        //  CONN_FAIL_TYPE_CONNECT = 203/303------------------创建连接失败
-        //  CONN_FAIL_TYPE_SEND_DATA = 204/304----------------发送数据失败
-        //  CONN_FAIL_TYPE_RECEIVE_LENGTH = 205/305-----------读报文头失败
-        //  CONN_FAIL_TYPE_RECEIVE_BODY = 206/306-------------读报文体失败
-        //  CONN_FAIL_TYPE_BUILE_REQUESTDATAFAIL = 207/307----创建请求报文失败
-        //  CONN_FAIL_TYPE_BUILE_RESPONSEDATAFAIL = 208/308---解析返回报文失败
-        //  CONN_FAIL_TYPE_SERIALIZE_REQUEST_FAIL = 209/309---序列化请求报文失败
-        //  CONN_FAIL_TYPE_SERIALIZE_RESPONSE_FAIL = 210/310--序列化返回报文失败
-        //  CONN_FAIL_TYPE_RESPONSE_REPEAT = 211/311----------服务端下发需要重试
+        //  CONN_FAIL_TYPE_GETCONN_UNKOWN = 201-----------从连接池获取长连接失败
+        //  CONN_FAIL_TYPE_GETIP = 202--------------------获取IP地址失败
+        //  CONN_FAIL_TYPE_CONNECT = 203------------------创建连接失败
+        //  CONN_FAIL_TYPE_SEND_DATA = 204----------------发送数据失败
+        //  CONN_FAIL_TYPE_RECEIVE_LENGTH = 205-----------读报文头失败
+        //  CONN_FAIL_TYPE_RECEIVE_BODY = 206-------------读报文体失败
+        //  CONN_FAIL_TYPE_BUILE_REQUESTDATAFAIL = 207----创建请求报文失败
+        //  CONN_FAIL_TYPE_BUILE_RESPONSEDATAFAIL = 208---解析返回报文失败
+        //  CONN_FAIL_TYPE_SERIALIZE_REQUEST_FAIL = 209---序列化请求报文失败
+        //  CONN_FAIL_TYPE_SERIALIZE_RESPONSE_FAIL = 210--序列化返回报文失败
+        //  CONN_FAIL_TYPE_RESPONSE_REPEAT = 211----------服务端下发需要重试
         var json_obj =
         {
             tagname:"send_h5_pipe_request",
             param:
             {
                 sequenceId:"13523333333",
-                errorInformation:"eHh4eHh4",
+                errorInformation:"抱歉！加载失败，请重试(-203)", //括号内的code为errorCode，5.8.1加入
                 serverErrorCode:"eHh4eHh4",
-                errorCode:-205 //5.9版本加入,负数，code如前面定义
             },
         }
         app.callback(json_obj);
