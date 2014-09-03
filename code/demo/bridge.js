@@ -3534,8 +3534,6 @@ var CtripBusiness = {
 
     },
 
-    
-
     /**
      * @description 从通讯录选取联系人
      * @brief 从通讯录选取联系人
@@ -3574,37 +3572,32 @@ var CtripBusiness = {
     },
 
     /**
-     * @description 调用Native的身份证输入控件
-     * @brief 调用Native的身份证输入控件
-     * @method app_input_ID_card_number
+     * @description hybrid统计页面流量
+     * @brief hybrid统计页面流量
+     * @method app_send_ubt_log
+     * @param {JSON} tags 需要纪录的页面名
      * @author jimzhao
      * @since v5.9
      * @example
      *
      * 
         //调用API
-        CtripBusiness.app_input_ID_card_number();
-         
-        //调用之后，app返回
-        var json_obj = {
-            inputNumber:"42108819990228123x",
-        };
-
-        app.callback(json_obj);
+        CtripBusiness.app_send_ubt_log({pageId:'xxxx',a:'bbb'});
 
      */
-    app_input_ID_card_number:function() {
+    app_send_ubt_log:function(tags) {
         if (!Internal.isSupportAPIWithVersion("5.9")) {
             return;
         }
-
-        var paramString = Internal.makeParamString("Business", "inputIDCardNumber", params, "input_ID_card_number");
-
+        var params = {};
+        params.tags = tags;
+        
+        var paramString = Internal.makeParamString("Business", "sendUBTLog", params, "send_ubt_log");
         if (Internal.isIOS) {
             var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
-            window.Business_a.inputIDCardNumber(paramString);
+            window.Business_a.sendUBTLog(paramString);
         } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }

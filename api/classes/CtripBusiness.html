@@ -172,8 +172,6 @@
                     
                     <tr><td>获取设备相关信息，相关部门需要</td><td><a href="#method_app_get_device_info">app_get_device_info</a></td></tr>
                     
-                    <tr><td>调用Native的身份证输入控件</td><td><a href="#method_app_input_ID_card_number">app_input_ID_card_number</a></td></tr>
-                    
                     <tr><td>收集ActionLog</td><td><a href="#method_app_log_event">app_log_event</a></td></tr>
                     
                     <tr><td>记录google remarkting的screenName</td><td><a href="#method_app_log_google_remarkting">app_log_google_remarkting</a></td></tr>
@@ -183,6 +181,8 @@
                     <tr><td>获取短信中的验证码,iPhone不能读取，直接callback</td><td><a href="#method_app_read_verification_code_from_sms">app_read_verification_code_from_sms</a></td></tr>
                     
                     <tr><td>推荐携程旅行给好友</td><td><a href="#method_app_recommend_app_to_friends">app_recommend_app_to_friends</a></td></tr>
+                    
+                    <tr><td>hybrid统计页面流量</td><td><a href="#method_app_send_ubt_log">app_send_ubt_log</a></td></tr>
                     
                     <tr><td>查看最新版本功能介绍</td><td><a href="#method_app_show_newest_introduction">app_show_newest_introduction</a></td></tr>
                     
@@ -753,7 +753,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3539"><code>bridge.js:3539</code></a>
+        <a href="../files/bridge.js.html#l3537"><code>bridge.js:3537</code></a>
         
         </p>
 
@@ -981,80 +981,6 @@
        mac:&quot;10:DD:B1:CF:C1:80&quot;,
        port:&quot;&quot;,
        wifiMac:&quot;&quot;
-   };
-
-   app.callback(json_obj);</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_app_input_ID_card_number" class="method item">
-    <h3 class="name"><code>app_input_ID_card_number</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                定义在
-                
-            
-        
-        
-        <a href="../files/bridge.js.html#l3576"><code>bridge.js:3576</code></a>
-        
-        </p>
-
-
-        
-
-        
-            <p>可用版本 v5.9</p>
-        
-    </div>
-
-    <div class="description">
-        <p>调用Native的身份证输入控件</p>
-
-    </div>
-
-    
-
-    
-
-    
-        <div class="example">
-            <h4>举例:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>   //调用API
-   CtripBusiness.app_input_ID_card_number();
-
-   //调用之后，app返回
-   var json_obj = {
-       inputNumber:&quot;42108819990228123x&quot;,
    };
 
    app.callback(json_obj);</code></pre>
@@ -1498,6 +1424,107 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
 
             <div class="example-content">
                 <pre class="code prettyprint"><code>   CtripBusiness.app_recommend_app_to_friends();</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_send_ubt_log" class="method item">
+    <h3 class="name"><code>app_send_ubt_log</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>tags</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3574"><code>bridge.js:3574</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.9</p>
+        
+    </div>
+
+    <div class="description">
+        <p>hybrid统计页面流量</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">tags</code>
+                        <span class="type">JSON</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要纪录的页面名</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   //调用API
+   CtripBusiness.app_send_ubt_log({pageId:&#39;xxxx&#39;,a:&#39;bbb&#39;});</code></pre>
 
             </div>
         </div>
