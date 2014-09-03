@@ -1014,10 +1014,12 @@ var CtripUtil = {
         - (void)refresh:(NSNotification *)notification {
              NSDictionary *dic = [notification userInfo];
              NSString *value = [dic objectForKey:@&quot;pageName&quot;];
+             NSDictionary *objDict = [dict valueForKey:@&quot;arguments&quot;];
              if ([value isEqualToString:@&quot;xxxxPageName&quot;])
              {
-                 NSLog(&quot;Do Something here&quot;);      
+                 NSLog(&quot;Do Something here, objDict==%@&quot;, objDict);      
              }
+
         }
         
         //3. 移除Notification的关注

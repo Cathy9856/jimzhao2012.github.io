@@ -926,7 +926,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1252"><code>bridge.js:1252</code></a>
+        <a href="../files/bridge.js.html#l1254"><code>bridge.js:1254</code></a>
         
         </p>
 
@@ -1074,7 +1074,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l982"><code>bridge.js:982</code></a>
+        <a href="../files/bridge.js.html#l984"><code>bridge.js:984</code></a>
         
         </p>
 
@@ -1309,7 +1309,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1101"><code>bridge.js:1101</code></a>
+        <a href="../files/bridge.js.html#l1103"><code>bridge.js:1103</code></a>
         
         </p>
 
@@ -1438,7 +1438,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1306"><code>bridge.js:1306</code></a>
+        <a href="../files/bridge.js.html#l1308"><code>bridge.js:1308</code></a>
         
         </p>
 
@@ -1616,7 +1616,7 @@ H5接收到web_view_did_finished_load的回调之后，调用该函数，初始�
             
         
         
-        <a href="../files/bridge.js.html#l1200"><code>bridge.js:1200</code></a>
+        <a href="../files/bridge.js.html#l1202"><code>bridge.js:1202</code></a>
         
         </p>
 
@@ -1744,7 +1744,7 @@ H5接收到web_view_did_finished_load的回调之后，调用该函数，初始�
             
         
         
-        <a href="../files/bridge.js.html#l1151"><code>bridge.js:1151</code></a>
+        <a href="../files/bridge.js.html#l1153"><code>bridge.js:1153</code></a>
         
         </p>
 
@@ -2073,7 +2073,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l1015"><code>bridge.js:1015</code></a>
+        <a href="../files/bridge.js.html#l1017"><code>bridge.js:1017</code></a>
         
         </p>
 
@@ -2247,10 +2247,12 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
    - (void)refresh:(NSNotification *)notification {
         NSDictionary *dic = [notification userInfo];
         NSString *value = [dic objectForKey:@&quot;pageName&quot;];
+        NSDictionary *objDict = [dict valueForKey:@&quot;arguments&quot;];
         if ([value isEqualToString:@&quot;xxxxPageName&quot;])
         {
-            NSLog(&quot;Do Something here&quot;);      
+            NSLog(&quot;Do Something here, objDict==%@&quot;, objDict);      
         }
+
    }
 
    //3. 移除Notification的关注
@@ -2438,7 +2440,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l1052"><code>bridge.js:1052</code></a>
+        <a href="../files/bridge.js.html#l1054"><code>bridge.js:1054</code></a>
         
         </p>
 
@@ -2895,7 +2897,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l1236"><code>bridge.js:1236</code></a>
+        <a href="../files/bridge.js.html#l1238"><code>bridge.js:1238</code></a>
         
         </p>
 
