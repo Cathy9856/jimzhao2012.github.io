@@ -921,10 +921,17 @@ var CtripUtil = {
                         try {
                             JSONObject jsonObject = new JSONObject(info);
                             String value = jsonObject.getString("pageName");
+
                             if (!StringUtil.emptyOrNull(value)) {
                                 if (value.equalsIgnoreCase("xxxxPageName")) {
                                     //TODO: do your job here
                                 }
+                            }    
+
+                            String jsonStr = jsonObject.getString("jsonStr");
+                            if (!StringUtil.emptyOrNull(jsonStr)) {
+                                JSONObject obj = new JSONObject(jsonStr);
+                                //TODO:with obj from hybrid
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -3591,7 +3598,7 @@ var CtripBusiness = {
         }
         var params = {};
         params.tags = tags;
-        
+
         var paramString = Internal.makeParamString("Business", "sendUBTLog", params, "send_ubt_log");
         if (Internal.isIOS) {
             var url = Internal.makeURLWithParam(paramString);

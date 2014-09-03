@@ -926,7 +926,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1245"><code>bridge.js:1245</code></a>
+        <a href="../files/bridge.js.html#l1252"><code>bridge.js:1252</code></a>
         
         </p>
 
@@ -1074,7 +1074,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l975"><code>bridge.js:975</code></a>
+        <a href="../files/bridge.js.html#l982"><code>bridge.js:982</code></a>
         
         </p>
 
@@ -1309,7 +1309,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1094"><code>bridge.js:1094</code></a>
+        <a href="../files/bridge.js.html#l1101"><code>bridge.js:1101</code></a>
         
         </p>
 
@@ -1438,7 +1438,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1299"><code>bridge.js:1299</code></a>
+        <a href="../files/bridge.js.html#l1306"><code>bridge.js:1306</code></a>
         
         </p>
 
@@ -1616,7 +1616,7 @@ H5接收到web_view_did_finished_load的回调之后，调用该函数，初始�
             
         
         
-        <a href="../files/bridge.js.html#l1193"><code>bridge.js:1193</code></a>
+        <a href="../files/bridge.js.html#l1200"><code>bridge.js:1200</code></a>
         
         </p>
 
@@ -1744,7 +1744,7 @@ H5接收到web_view_did_finished_load的回调之后，调用该函数，初始�
             
         
         
-        <a href="../files/bridge.js.html#l1144"><code>bridge.js:1144</code></a>
+        <a href="../files/bridge.js.html#l1151"><code>bridge.js:1151</code></a>
         
         </p>
 
@@ -2073,7 +2073,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l1008"><code>bridge.js:1008</code></a>
+        <a href="../files/bridge.js.html#l1015"><code>bridge.js:1015</code></a>
         
         </p>
 
@@ -2268,10 +2268,17 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
                    try {
                        JSONObject jsonObject = new JSONObject(info);
                        String value = jsonObject.getString(&quot;pageName&quot;);
+
                        if (!StringUtil.emptyOrNull(value)) {
                            if (value.equalsIgnoreCase(&quot;xxxxPageName&quot;)) {
                                //TODO: do your job here
                            }
+                       }    
+
+                       String jsonStr = jsonObject.getString(&quot;jsonStr&quot;);
+                       if (!StringUtil.emptyOrNull(jsonStr)) {
+                           JSONObject obj = new JSONObject(jsonStr);
+                           //TODO:with obj from hybrid
                        }
                    } catch (JSONException e) {
                        e.printStackTrace();
@@ -2431,7 +2438,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l1045"><code>bridge.js:1045</code></a>
+        <a href="../files/bridge.js.html#l1052"><code>bridge.js:1052</code></a>
         
         </p>
 
@@ -2888,7 +2895,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l1229"><code>bridge.js:1229</code></a>
+        <a href="../files/bridge.js.html#l1236"><code>bridge.js:1236</code></a>
         
         </p>
 
