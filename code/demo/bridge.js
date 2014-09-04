@@ -454,6 +454,10 @@ var CtripUtil = {
                 screenPxDensity:1,//晶赞广告系统使用 since 5.7
                 deviceOSVersion:4.3,//晶赞广告系统使用 since 5.7
                 internalVersion:"5.7",//app内部版本，用于学生版版本更新判断，主版本不用 since 5.8
+                alianceId:"xxxxxxx", //5.9加入，营销业绩使用
+                sId:"ssssssss",//5.9加入，营销业绩使用
+                ouId:"ssseeeeee",//5.9加入，营销业绩使用
+                telephone:"999999999"//5.9加入，营销业绩使用
                 userInfo={USERINFO},//USERINFO内部结构参考CtripUser.app_member_login();    
             }
          }
@@ -2130,7 +2134,7 @@ var CtripPipe = {
         }
 
         //失败
-        //  code定义，返回给Hybrid时候，为负数，iOS －200开始，递减
+        //  code定义，返回给Hybrid时候，为负数，iOS/Android －200开始，递减
         //  CONN_FAIL_TYPE_NO_FAIL = 200------------------正确，无错误
         //  CONN_FAIL_TYPE_GETCONN_UNKOWN = 201-----------从连接池获取长连接失败
         //  CONN_FAIL_TYPE_GETIP = 202--------------------获取IP地址失败
@@ -2925,6 +2929,8 @@ var CtripMap = {
             tagname:'locate',
             param:{
                 "value":{
+                    country:"中国",//5.9加入
+                    countryShortName:"CN",//5.9加入
                     city:"上海", //5.9加入
                     ctyName: '上海', //后续版本将会废弃，使用city代替
                     province: '上海',    //5.8.1版本加入
