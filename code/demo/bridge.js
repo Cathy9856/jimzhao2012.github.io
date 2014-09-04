@@ -454,7 +454,7 @@ var CtripUtil = {
                 screenPxDensity:1,//晶赞广告系统使用 since 5.7
                 deviceOSVersion:4.3,//晶赞广告系统使用 since 5.7
                 internalVersion:"5.7",//app内部版本，用于学生版版本更新判断，主版本不用 since 5.8
-                alianceId:"xxxxxxx", //5.9加入，营销业绩使用
+                allianceId:"xxxxxxx", //5.9加入，营销业绩使用
                 sId:"ssssssss",//5.9加入，营销业绩使用
                 ouId:"ssseeeeee",//5.9加入，营销业绩使用
                 telephone:"999999999"//5.9加入，营销业绩使用
