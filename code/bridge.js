@@ -441,7 +441,7 @@ var CtripUtil = {
                 device:"iPhone4S",
                 appId:"com.ctrip.wrieless",
                 osVersion:"iOS_6.0",
-                serverVersion:"5.3",
+                serverVersion:"5.7.1",
                 platform:1, //区分平台，iPhone为1, Android为2, winPhone为3
                 isPreProduction:0,//UAT:2, FAT:0,堡垒:1,生产不会有该字段
                 extSouceID:"8888",//外部渠道ID,since 5.4
@@ -453,7 +453,7 @@ var CtripUtil = {
                 screenHeight:480,//晶赞广告系统使用 since 5.7
                 screenPxDensity:1,//晶赞广告系统使用 since 5.7
                 deviceOSVersion:4.3,//晶赞广告系统使用 since 5.7
-                internalVersion:"5.7",//app内部版本，用于学生版版本更新判断，主版本不用 since 5.8
+                internalVersion:"5.71",//app内部版本，和mobile server通讯需要，学生版可用该参数做版本更新判断，since 5.8
                 allianceId:"xxxxxxx", //5.9加入，营销业绩使用
                 sId:"ssssssss",//5.9加入，营销业绩使用
                 ouId:"ssseeeeee",//5.9加入，营销业绩使用
