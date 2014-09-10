@@ -199,26 +199,51 @@
       CtripPipe.app_send_HTTP_pipe_request("http://www.baidu.com", "/s","GET",null,paramArr, false, "13222222");
     }
 
+
+var showPOIIndex = 0;
+
     function showPOIList() {
-        console.log("start show poi list");
-        var poi0 = {};
+      console.log("start show poi list");
+      
+      var poi0 = {};
+      var poi1 = {};
+      var poi2 = {};
+
+      if (showPOIIndex % 2 == 0) {
         poi0.latitude = 30.6222323; //must
         poi0.longitude = 120.82232332;//must
         poi0.title = "上海野生动物园"; //must
         poi0.subtitle = "浦东新区陆家嘴1234号";//optional
 
-        var poi1 = {};
         poi1.latitude = 30.3222323; //must
         poi1.longitude = 120.32232332;//must
         poi1.title = "上海野生动物园A"; //must
         poi1.subtitle = "浦东新区陆家嘴1234号A";//optional
 
 
-        var poi2 = {};
         poi2.latitude = 30.1222323; //must
         poi2.longitude = 120.12232332;//must
         poi2.title = "上海野生动物园B"; //must
         poi2.subtitle = "浦东新区陆家嘴1234号B";//optional
+      } 
+      else {
+        poi0.latitude = 37.332707; //must
+        poi0.longitude = -122.0304855;//must
+        poi0.title = "USA Apple"; //must
+        poi0.subtitle = "2 Infinite Loop, 库比蒂诺加利福尼亚 95014美利坚合众国";//optional
+
+        poi1.latitude = 37.53233141; //must
+        poi1.longitude = -122.0312186;//must
+        poi1.title = "US Drive"; //must
+        poi1.subtitle = "6433 Galletta Drive, 纽瓦克加利福尼亚 94560美利坚合众国";//optional
+
+
+        poi2.latitude = 37.53233141; //must
+        poi2.longitude = -121.0312186;//must
+        poi2.title = "加利福尼亚州"; //must
+        poi2.subtitle = "7455 South Carpenter Road, 莫德斯托加利福尼亚 95358美利坚合众国";//optional
+      }
+        
         
         var poiList = new Array();
         poiList[0] = poi0;

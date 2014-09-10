@@ -458,6 +458,7 @@ var CtripUtil = {
                 sId:"ssssssss",//5.9加入，营销业绩使用
                 ouId:"ssseeeeee",//5.9加入，营销业绩使用
                 telephone:"999999999"//5.9加入，营销业绩使用
+                networkStatus:"4G"; //5.9加入，返回当前网络状态 2G/3G/4G/WIFI/None
                 userInfo={USERINFO},//USERINFO内部结构参考CtripUser.app_member_login();    
             }
          }
@@ -813,7 +814,7 @@ var CtripUtil = {
      {
         tagname:"check_network_status",
         hasNetwork:true,//布尔值返回是否有网络
-        networkType:"3G" //5.8开始加入， None-无网络, 2G-蜂窝数据网EDGE/GPRS, 3G-蜂窝数据网HSPDA/LTE等, WIFI-WLAN网络
+        networkType:"4G", //5.8开始加入， None-无网络, 2G-蜂窝数据网EDGE/GPRS, 3G-蜂窝数据网HSPDA,CDMAVOD, 4G-LTE(4G为5.9加入), WIFI-WLAN网络
      }
      app.callback(json_obj);
      
