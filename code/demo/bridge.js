@@ -1062,13 +1062,12 @@ var CtripUtil = {
     },
 
     /**
-     * @description 调用App的分享, 可以支持iOS6系统的分享，具体定义请参考(移动到CtripBusiness)
+     * @description 调用App的分享，具体定义请参考(移动到CtripBusiness)
      * @brief 调用App的分享(移动到CtripBusiness)
      * @param {String} imageRelativePath 将要分享的图片相对路径，相对webapp的路径
      * @param {String} text 需要分享的文字
      * @param {String} title 需要分享的标题, v5.4开始支持该字段，微信和email支持；
      * @param {String} linkUrl 需要分享的链接, v5.4开始支持该字段
-     * @param {boolean} isIOSSystemShare  是否是iOS6以上使用系统分享功能,对于先前门票分享功能，需要为true，其它都是false
      * @method 【Moved】app_call_system_share
      * @since v5.3
      * @author jimzhao
@@ -1103,11 +1102,11 @@ var CtripUtil = {
         2. 分享的title不起作用;
         3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
 
-        CtripBusiness.app_call_system_share("../wb_cache/pkg_name/md5_url_hash", "text to share weibo", "this is titile", "http://www.ctrip.com/", false);
+        CtripBusiness.app_call_system_share("../wb_cache/pkg_name/md5_url_hash", "text to share weibo", "this is titile", "http://www.ctrip.com/");
 
      */
-    app_call_system_share:function(imageRelativePath, text, title, linkUrl, isIOSSystemShare) {
-        CtripBusiness.app_call_system_share(imageRelativePath, text, title, linkUrl, isIOSSystemShare);
+    app_call_system_share:function(imageRelativePath, text, title, linkUrl) {
+        CtripBusiness.app_call_system_share(imageRelativePath, text, title, linkUrl);
     },
 
     /**
@@ -2847,6 +2846,8 @@ var CtripBar = {
            11). tagname-more_my_favorite 更多菜单－我的收藏, 图片-native预置，事件需要H5处理;
            12). tagname-more_share 更多菜单－分享, 图片-native预置，事件需要H5处理;
            13). tagname=search, 搜索，图片有native预置，事件交由H5处理；v5.9开始支持；
+           14). tagname=more_phone, 更多菜单－电话，图片有native预置，事件交由H5处理；v5.9开始支持；
+           15). tagname=more_share, 更多菜单－分享，图片有native预置，事件交由H5处理；v5.9开始支持；
            14). 其他tagname，图片有H5提供，事件H5处理；
 
         示例：
@@ -3362,13 +3363,12 @@ var CtripBusiness = {
     },
 
     /**
-     * @description 调用App的分享, 可以支持iOS6系统的分享
+     * @description 调用App的分享
      * @brief 调用App的分享
      * @param {String} imageRelativePath 将要分享的图片相对路径，相对webapp的路径
      * @param {String} text 需要分享的文字
      * @param {String} title 需要分享的标题, v5.4开始支持该字段，微信和email支持；
      * @param {String} linkUrl 需要分享的链接, v5.4开始支持该字段
-     * @param {boolean} isIOSSystemShare  是否是iOS6以上使用系统分享功能,对于先前门票分享功能，需要为true，其它都是false
      * @method app_call_system_share
      * @since v5.3
      * @author jimzhao
@@ -3403,10 +3403,10 @@ var CtripBusiness = {
         2. 分享的title不起作用;
         3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
 
-        CtripBusiness.app_call_system_share("../wb_cache/pkg_name/md5_url_hash", "text to share weibo", "this is titile", "http://www.ctrip.com/", false);
+        CtripBusiness.app_call_system_share("../wb_cache/pkg_name/md5_url_hash", "text to share weibo", "this is titile", "http://www.ctrip.com/");
 
      */
-    app_call_system_share:function(imageRelativePath, text, title, linkUrl, isIOSSystemShare) {
+    app_call_system_share:function(imageRelativePath, text, title, linkUrl) {
         if (!Internal.isSupportAPIWithVersion("5.3")) {
             return;
         }
@@ -3431,7 +3431,6 @@ var CtripBusiness = {
         params.text = text;
         params.linkUrl = linkUrl;
         params.imageRelativePath = imageRelativePath;
-        params.isIOSSystemShare = isIOSSystemShare;
 
         var paramString = Internal.makeParamString("Util", "callSystemShare", params, "call_system_share");
 
