@@ -661,9 +661,9 @@ var CtripUtil = {
         
         if (Internal.appVersion) { //有AppVersion，为5.3及之后版本，或者5.2本地H5页面
             var isHandled = false;
-            
-            if (targetMode == 5) { //targetMode=5,5.8新增,可以兼容到以前版本
-                if (!Internal.isAppVersionGreatThan("5.8")) {
+
+            if (targetMode == 5) { //targetMode=5,5.8新增,可以兼容到以前版本,5.9之前版本使用cross做内部替换
+                if (!Internal.isAppVersionGreatThan("5.9")) {
                     var firstSplashIndex = openUrl.indexOf("/");
                     if (firstSplashIndex > 0) {
                         var packageName = openUrl.substr(0, firstSplashIndex);
@@ -1314,6 +1314,61 @@ var CtripUtil = {
         }
     },
 
+     /**
+     * @description 保存照片到相册
+     * @brief  保存照片到相册
+     * @param {String} photoUrl 需要保存图片的URL， 注：当photoBase64String字段不为空的时候，base64图片内容优先，URL不处理
+     * @param {String} photoBase64String 需要保存图片的base64字符串,UTF8编码，
+     * @method app_save_photo
+     * @since v5.10
+     * @author jimzhao
+     * @example
+        
+       //保存图片base64内容
+       CtripUtil.app_save_photo(null, "xxoooe33xxxeseee");
+       //保存图片链接URL
+       CtripUtil.app_save_photo("http://www.baidu.com/img/bd_logo1.png", null);
+
+       //调用完成之后，返回的数据格式
+       var json_obj =
+        {
+            tagname:"save_photo",
+            param:{
+                save_photo_result:false,
+                error_info:"下载图片失败"//save_photo_result为false时候，会有error_info
+            }
+        }
+        app.callback(json_obj);
+     
+     */
+    app_save_photo:function(photoUrl, photoBase64String) {
+        if (!Internal.isSupportAPIWithVersion("5.7")) {
+            return;
+        }
+        var params = {};
+        if (!photoUrl) {
+            photoUrl = "";
+        }
+        if (!photoBase64String) {
+            photoBase64String = "";
+        }
+
+        params.photoUrl = photoUrl;
+        params.photoBase64String = photoBase64String;
+
+        var paramString = Internal.makeParamString("Util", "savePhoto", params, "save_photo");
+
+        if (Internal.isIOS) {
+            var url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } 
+        else if (Internal.isAndroid) {
+            window.Util_a.savePhoto(paramString);
+        } 
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
 
      /**
      * @description H5页面加载完成，通知native app，app会隐藏loading界面
@@ -3808,3 +3863,5 @@ var CtripPage = {
         }
     }
 };
+
+

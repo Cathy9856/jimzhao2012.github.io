@@ -190,6 +190,8 @@
                     
                     <tr><td>H5通知Native刷新</td><td><a href="#method_app_refresh_native_page">app_refresh_native_page</a></td></tr>
                     
+                    <tr><td>保存照片到相册</td><td><a href="#method_app_save_photo">app_save_photo</a></td></tr>
+                    
                     <tr><td>添加微信好友(移动到CtripBusiness)</td><td><a href="#method_【Moved】app_add_weixin_friend">【Moved】app_add_weixin_friend</a></td></tr>
                     
                     <tr><td>调用App的分享(移动到CtripBusiness)</td><td><a href="#method_【Moved】app_call_system_share">【Moved】app_call_system_share</a></td></tr>
@@ -212,6 +214,12 @@
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -1438,7 +1446,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1318"><code>bridge.js:1318</code></a>
+        <a href="../files/bridge.js.html#l1373"><code>bridge.js:1373</code></a>
         
         </p>
 
@@ -2306,6 +2314,142 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
    //3. 使用完成，移除BroadcastReceiver
        LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(mFocusNewStateReceiver);
        unregisterReceiver(mFocusNewStateReceiver);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_save_photo" class="method item">
+    <h3 class="name"><code>app_save_photo</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>photoUrl</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>photoBase64String</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l1317"><code>bridge.js:1317</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.10</p>
+        
+    </div>
+
+    <div class="description">
+        <p>保存照片到相册</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">photoUrl</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要保存图片的URL， 注：当photoBase64String字段不为空的时候，base64图片内容优先，URL不处理</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">photoBase64String</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要保存图片的base64字符串,UTF8编码，</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>  //保存图片base64内容
+  CtripUtil.app_save_photo(null, &quot;xxoooe33xxxeseee&quot;);
+  //保存图片链接URL
+  CtripUtil.app_save_photo(&quot;http://www.baidu.com/img/bd_logo1.png&quot;, null);
+
+  //调用完成之后，返回的数据格式
+  var json_obj =
+   {
+       tagname:&quot;save_photo&quot;,
+       param:{
+           save_photo_result:false,
+           error_info:&quot;下载图片失败&quot;//save_photo_result为false时候，会有error_info
+       }
+   }
+   app.callback(json_obj);</code></pre>
 
             </div>
         </div>
