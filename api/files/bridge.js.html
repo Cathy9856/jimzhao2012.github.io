@@ -2962,7 +2962,7 @@ var CtripBar = {
            13). tagname=search, 搜索，图片有native预置，事件交由H5处理；v5.9开始支持；
            14). tagname=more_phone, 更多菜单－电话，图片有native预置，事件交由H5处理；v5.9开始支持；
            15). tagname=more_share, 更多菜单－分享，图片有native预置，事件交由H5处理；v5.9开始支持；
-           14). 其他tagname，图片有H5提供，事件H5处理；
+           16). 其他tagname，图片有H5提供，事件H5处理；
 
         示例：
         var nav_json = {   
@@ -3480,7 +3480,7 @@ var CtripBusiness = {
      * @description 调用App的分享
      * @brief 调用App的分享
      * @param {String} imageRelativePath 将要分享的图片相对路径，相对webapp的路径
-     * @param {String} text 需要分享的文字
+     * @param {String} text 需要分享的文字,微博分享文字限制在140
      * @param {String} title 需要分享的标题, v5.4开始支持该字段，微信和email支持；
      * @param {String} linkUrl 需要分享的链接, v5.4开始支持该字段
      * @method app_call_system_share
