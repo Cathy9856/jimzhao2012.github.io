@@ -665,7 +665,7 @@ var CtripUtil = {
                     var firstSplashIndex = openUrl.indexOf("/");
                     if (firstSplashIndex > 0) {
                         var packageName = openUrl.substr(0, firstSplashIndex);
-                        var pageParam = openUrl.substr(firstSplashIndex)
+                        var pageParam = openUrl.substr(firstSplashIndex+1)
                         CtripUtil.app_cross_package_href(packageName, pageParam);
                     } else {
                         Internal.appVersionNotSupportCallback("传入URL有错误，eg. car/index.html#xxooee");
