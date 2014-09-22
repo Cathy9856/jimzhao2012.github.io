@@ -1332,10 +1332,11 @@ var CtripUtil = {
        var json_obj =
         {
             tagname:"save_photo",
-            param:{
-                save_photo_result:false,
-                error_info:"下载图片失败"//save_photo_result为false时候，会有error_info
-            }
+            error_code:"xxxxx",//error_code有内容时候，代表有错误，否则表示保存成功.error_code分为以下几种
+            //(-200)参数错误, base64字符串转换成图片失败
+            //(-201)下载成功，图片格式不正确
+            //(-202)下载图片失败
+            //(-203)保存到相册失败
         }
         app.callback(json_obj);
      
