@@ -660,6 +660,8 @@ var CtripUtil = {
         var paramString = Internal.makeParamString("Util", "openUrl", params, "open_url");
         
         if (Internal.appVersion) { //有AppVersion，为5.3及之后版本，或者5.2本地H5页面
+            var isHandled = false;
+            
             if (targetMode == 5) { //targetMode=5,5.8新增,可以兼容到以前版本
                 if (!Internal.isAppVersionGreatThan("5.8")) {
                     var firstSplashIndex = openUrl.indexOf("/");
@@ -670,8 +672,11 @@ var CtripUtil = {
                     } else {
                         Internal.appVersionNotSupportCallback("传入URL有错误，eg. car/index.html#xxooee");
                     }
+                    isHandled = true;
                 } 
-            } else {
+            }
+
+            if (!isHandled) {
                 if (Internal.isIOS) {
                     var url = Internal.makeURLWithParam(paramString);
                     Internal.loadURL(url);
