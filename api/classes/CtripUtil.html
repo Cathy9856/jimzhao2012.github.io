@@ -1446,7 +1446,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1373"><code>bridge.js:1373</code></a>
+        <a href="../files/bridge.js.html#l1377"><code>bridge.js:1377</code></a>
         
         </p>
 
@@ -2340,6 +2340,12 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code>imageName</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -2424,6 +2430,22 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
                     
                 </li>
             
+                <li class="param">
+                    
+                        <code class="param-name">imageName</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>图片保存到相册的名字，android有效，ios无效. 不传的时候，默认android存储为image.jpg</p>
+
+                    </div>
+
+                    
+                </li>
+            
             </ul>
         </div>
     
@@ -2436,7 +2458,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
 
             <div class="example-content">
                 <pre class="code prettyprint"><code>  //保存图片base64内容
-  CtripUtil.app_save_photo(null, &quot;xxoooe33xxxeseee&quot;);
+  CtripUtil.app_save_photo(null, &quot;xxoooe33xxxeseee&quot;,&quot;my_img.jpg&quot;);
   //保存图片链接URL
   CtripUtil.app_save_photo(&quot;http://www.baidu.com/img/bd_logo1.png&quot;, null);
 

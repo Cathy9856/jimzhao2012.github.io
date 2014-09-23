@@ -1318,13 +1318,14 @@ var CtripUtil = {
      * @brief  保存照片到相册
      * @param {String} photoUrl 需要保存图片的URL， 注：当photoBase64String字段不为空的时候，base64图片内容优先，URL不处理
      * @param {String} photoBase64String 需要保存图片的base64字符串,UTF8编码，
+     * @param {String} imageName 图片保存到相册的名字，android有效，ios无效. 不传的时候，默认android存储为image.jpg
      * @method app_save_photo
      * @since v5.10
      * @author jimzhao
      * @example
         
        //保存图片base64内容
-       CtripUtil.app_save_photo(null, "xxoooe33xxxeseee");
+       CtripUtil.app_save_photo(null, "xxoooe33xxxeseee","my_img.jpg");
        //保存图片链接URL
        CtripUtil.app_save_photo("http://www.baidu.com/img/bd_logo1.png", null);
 
@@ -1341,7 +1342,7 @@ var CtripUtil = {
         app.callback(json_obj);
      
      */
-    app_save_photo:function(photoUrl, photoBase64String) {
+    app_save_photo:function(photoUrl, photoBase64String, imageName) {
         if (!Internal.isSupportAPIWithVersion("5.7")) {
             return;
         }
@@ -1352,10 +1353,13 @@ var CtripUtil = {
         if (!photoBase64String) {
             photoBase64String = "";
         }
+        if (!imageName) {
+            imageName = "";
+        }
 
         params.photoUrl = photoUrl;
         params.photoBase64String = photoBase64String;
-
+        params.imageName = imageName;
         var paramString = Internal.makeParamString("Util", "savePhoto", params, "save_photo");
 
         if (Internal.isIOS) {
