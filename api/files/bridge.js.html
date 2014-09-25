@@ -439,6 +439,15 @@ function __bridge_callback(param) {
         }
 
         val = window.app.callback(jsonObj);
+        
+        if (Internal.isWinOS) {
+            if (val) {
+                val = &quot;true&quot;;
+            } else {
+                val = &quot;false&quot;;
+            }
+        }
+
         return val;
     }
 
