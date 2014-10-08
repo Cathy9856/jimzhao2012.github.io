@@ -329,7 +329,6 @@
                lat:&#39;121.487899&#39;,
                lng:&#39;31.249162&#39;
            },
-           &#39;timeout&#39;: &#39;2013/09/12 12:32:36&#39;,
        }
    }
    app.callback(geo_json_obj);
@@ -354,18 +353,18 @@
        }
    }
 
-   //3. 返回CtripCity信息，isNeedCtripCity参数为true的时候才有返回
+   //3. 返回CtripCity信息，isNeedCtripCity参数为true的时候才有返回，5.10加入
    var json_obj = {
        tagname:&#39;locate&#39;,
        param:{
            &quot;value&quot;:{
-               &quot;CityLongitude&quot;:31.249162,
-               &quot;CityLatitude&quot;:121.487899,
-               &quot;CountryName&quot;:&quot;中国&quot;,
-               &quot;ProvinceName&quot;:&quot;江苏&quot;,
-               &quot;CityEntities&quot;:[
-                   {&quot;CityName&quot;:&quot;昆山&quot;,&quot;CityID&quot;:100},
-                   {&quot;CityName&quot;:&quot;苏州&quot;,&quot;CityID&quot;:1000}
+               &quot;CityLongitude&quot;:31.249162, //城市中心点经度
+               &quot;CityLatitude&quot;:121.487899, //城市中心点纬度
+               &quot;CountryName&quot;:&quot;中国&quot;,       //所在国家
+               &quot;ProvinceName&quot;:&quot;江苏&quot;,      //所在省份
+               &quot;CityEntities&quot;:[            //城市名列表，城市等级从低到高，先是县级市，然后是地级市，使用者应按列表顺序匹配，匹配到即结束
+                   {&quot;CityName&quot;:&quot;昆山&quot;,&quot;CityID&quot;:100}, 
+                   {&quot;CityName&quot;:&quot;苏州&quot;,&quot;CityID&quot;:1000} 
                    ]
            }
        }
@@ -439,7 +438,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3048"><code>bridge.js:3048</code></a>
+        <a href="../files/bridge.js.html#l3047"><code>bridge.js:3047</code></a>
         
         </p>
 
@@ -587,7 +586,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3094"><code>bridge.js:3094</code></a>
+        <a href="../files/bridge.js.html#l3093"><code>bridge.js:3093</code></a>
         
         </p>
 

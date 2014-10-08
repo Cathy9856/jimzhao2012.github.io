@@ -2982,7 +2982,6 @@ var CtripMap = {
                     lat:'121.487899',
                     lng:'31.249162'
                 },
-                'timeout': '2013/09/12 12:32:36',
             }
         }
         app.callback(geo_json_obj);
@@ -3007,18 +3006,18 @@ var CtripMap = {
             }
         }
 
-        //3. 返回CtripCity信息，isNeedCtripCity参数为true的时候才有返回
+        //3. 返回CtripCity信息，isNeedCtripCity参数为true的时候才有返回，5.10加入
         var json_obj = {
             tagname:'locate',
             param:{
                 "value":{
-                    "CityLongitude":31.249162,
-                    "CityLatitude":121.487899,
-                    "CountryName":"中国",
-                    "ProvinceName":"江苏",
-                    "CityEntities":[
-                        {"CityName":"昆山","CityID":100},
-                        {"CityName":"苏州","CityID":1000}
+                    "CityLongitude":31.249162, //城市中心点经度
+                    "CityLatitude":121.487899, //城市中心点纬度
+                    "CountryName":"中国",       //所在国家
+                    "ProvinceName":"江苏",      //所在省份
+                    "CityEntities":[            //城市名列表，城市等级从低到高，先是县级市，然后是地级市，使用者应按列表顺序匹配，匹配到即结束
+                        {"CityName":"昆山","CityID":100}, 
+                        {"CityName":"苏州","CityID":1000} 
                         ]
                 }
             }
