@@ -2973,12 +2973,11 @@ var CtripMap = {
         //调用定位
         CtripUtil.app_locate(true);
 
-        //0. 定位失败
+        //0. 定位失败－－5.10加入
         var json_obj = {
             tagname:'locate',
             error_code:"(-201)定位未开启" 
         };
-        
         //error_code定义：
         a.(-201)定位未开启
         b.(-202)获取经纬度失败
