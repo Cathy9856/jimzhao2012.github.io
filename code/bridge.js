@@ -3034,7 +3034,7 @@ var CtripMap = {
                         {"CityName":"苏州","CityID":1000} 
                         ]
                 },
-                "type":"CtripCity" //表明是CtripCity成功的返回值
+                "type":"ctrip_city" //表明是ctrip_city成功的返回值
             }
         }
 
