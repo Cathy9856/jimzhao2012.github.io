@@ -320,8 +320,21 @@
                 <pre class="code prettyprint"><code>   //调用定位
    CtripUtil.app_locate(true);
 
+   //0. 定位失败
+   var json_obj = {
+       tagname:&#39;locate&#39;,
+       error_code:&quot;(-201)定位未开启&quot; 
+   };
+
+   //error_code定义：
+   a.(-201)定位未开启
+   b.(-202)获取经纬度失败
+   c.(-203)定位超时
+   d.(-204)逆地址解析失败
+   e.(-205)获取Ctrip城市信息失败
+
    //1. 返回定位的经纬度信息-------5.8版本加入
-   var geo_json_obj = 
+   var json_obj = 
     {
        tagname:&#39;locate&#39;,
        param:{
@@ -331,7 +344,7 @@
            },
        }
    }
-   app.callback(geo_json_obj);
+   app.callback(json_obj);
 
 
    //2. 返回定位的逆地址解析信息
@@ -438,7 +451,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3047"><code>bridge.js:3047</code></a>
+        <a href="../files/bridge.js.html#l3060"><code>bridge.js:3060</code></a>
         
         </p>
 
@@ -586,7 +599,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3093"><code>bridge.js:3093</code></a>
+        <a href="../files/bridge.js.html#l3106"><code>bridge.js:3106</code></a>
         
         </p>
 
