@@ -3108,6 +3108,7 @@ var CtripMap = {
                     lat:&#x27;121.487899&#x27;,
                     lng:&#x27;31.249162&#x27;
                 },
+                &quot;type&quot;:&quot;geo&quot; //表明是获取经纬度成功的返回值
             }
         }
         app.callback(json_obj);
@@ -3129,6 +3130,7 @@ var CtripMap = {
                     lat:&#x27;121.487899&#x27;,
                     lng:&#x27;31.249162&#x27;
                 },
+                &quot;type&quot;:&quot;address&quot; //表明是逆地址解析成功的返回值
             }
         }
 
@@ -3145,7 +3147,8 @@ var CtripMap = {
                         {&quot;CityName&quot;:&quot;昆山&quot;,&quot;CityID&quot;:100}, 
                         {&quot;CityName&quot;:&quot;苏州&quot;,&quot;CityID&quot;:1000} 
                         ]
-                }
+                },
+                &quot;type&quot;:&quot;CtripCity&quot; //表明是CtripCity成功的返回值
             }
         }
 
