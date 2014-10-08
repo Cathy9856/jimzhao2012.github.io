@@ -589,20 +589,6 @@ var CtripUtil = {
     },
 
     /**
-     * @description 定位(移动到CtripMap)
-     * @brief 定位(移动到CtripMap)
-     * @param {Bool} is_async, true标识是异步定位，false标识为同步定位
-     * @method 【Moved】app_locate
-     * @example
-
-        参考：CtripMap.app_locate(true);
-     * 
-     */
-    app_locate:function(is_async) {
-        CtripMap.app_locate(is_async);
-    },
-
-    /**
      * @description 刷新顶部条按钮和文字(移动到CtripBar)
      * @brief 刷新顶部条按钮和文字(移动到CtripBar)
      * @param (String) nav_bar_config_json 顶部条配置json串
@@ -2976,9 +2962,10 @@ var CtripBar = {
 
 var CtripMap = {
  /**
-     * @description 定位，定位完成会有2次callback，第一次返回经纬度信息(5.8加入，使用定位缓存的时候，不回掉该结果，直接回掉逆地址解析的数据)，第二次返回逆地址解析的信息
+     * @description 定位，定位完成会有2－3次callback，第一次返回经纬度信息，第二次返回逆地址解析的信息， 第三次返回ctripCity信息(调用参数isNeedCtripCity需要设置成true)
      * @brief 定位
-     * @param {Bool} is_async true标识是异步定位，false标识为同步定位
+     * @param {int} timeout 定位timeout，设置timeout<=0或者timeout>=60,都会默认设置为15s
+     * @param {Boolean} isNeedCtripCity 是否需要携程的城市定位，如果需要，会返回酒店&攻略的城市ID信息
      * @method app_locate
      * @author jimzhao
      * @since v5.1
@@ -3017,16 +3004,33 @@ var CtripMap = {
                     lat:'121.487899',
                     lng:'31.249162'
                 },
-                'timeout': '2013/09/12 12:32:36',
-                'locateStatus':0,//iOS新增字段:-1网络不通，当前无法定位,-2定位没有开启
             }
         }
+
+        //3. 返回CtripCity信息，isNeedCtripCity参数为true的时候才有返回
+        var json_obj = {
+            tagname:'locate',
+            param:{
+                "value":{
+                    "CityLongitude":31.249162,
+                    "CityLatitude":121.487899,
+                    "CountryName":"中国",
+                    "ProvinceName":"江苏",
+                    "CityEntities":[
+                        {"CityName":"昆山","CityID":100},
+                        {"CityName":"苏州","CityID":1000}
+                        ]
+                }
+            }
+        }
+
         app.callback(json_obj);
      * 
      */
-    app_locate:function(is_async) {
+    app_locate:function(timeout, isNeedCtripCity) {
         var params = {};
-        params.is_async = is_async;
+        params.timeout = timeout;
+        params.isNeedCtripCity = isNeedCtripCity;
 
         var paramString = Internal.makeParamString("Locate", "locate", params, 'locate')
         if (Internal.isIOS) {

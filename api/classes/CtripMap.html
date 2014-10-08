@@ -116,7 +116,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l2971"><code>bridge.js:2971</code></a>
+            定义在: <a href="../files/bridge.js.html#l2957"><code>bridge.js:2957</code></a>
         </div>
     
 
@@ -212,7 +212,13 @@
             
                 <li class="arg">
                     
-                        <code>is_async</code>
+                        <code>timeout</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>isNeedCtripCity</code>
                     
                 </li>
             
@@ -245,7 +251,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2978"><code>bridge.js:2978</code></a>
+        <a href="../files/bridge.js.html#l2964"><code>bridge.js:2964</code></a>
         
         </p>
 
@@ -258,7 +264,7 @@
     </div>
 
     <div class="description">
-        <p>定位，定位完成会有2次callback，第一次返回经纬度信息(5.8加入，使用定位缓存的时候，不回掉该结果，直接回掉逆地址解析的数据)，第二次返回逆地址解析的信息</p>
+        <p>定位，定位完成会有2－3次callback，第一次返回经纬度信息，第二次返回逆地址解析的信息， 第三次返回ctripCity信息(调用参数isNeedCtripCity需要设置成true)</p>
 
     </div>
 
@@ -270,14 +276,30 @@
             
                 <li class="param">
                     
-                        <code class="param-name">is_async</code>
-                        <span class="type">Bool</span>
+                        <code class="param-name">timeout</code>
+                        <span class="type">Int</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>true标识是异步定位，false标识为同步定位</p>
+                        <p>定位timeout，设置timeout&lt;=0或者timeout&gt;=60,都会默认设置为15s</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">isNeedCtripCity</code>
+                        <span class="type">Boolean</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>是否需要携程的城市定位，如果需要，会返回酒店&amp;攻略的城市ID信息</p>
 
                     </div>
 
@@ -329,10 +351,26 @@
                lat:&#39;121.487899&#39;,
                lng:&#39;31.249162&#39;
            },
-           &#39;timeout&#39;: &#39;2013/09/12 12:32:36&#39;,
-           &#39;locateStatus&#39;:0,//iOS新增字段:-1网络不通，当前无法定位,-2定位没有开启
        }
    }
+
+   //3. 返回CtripCity信息，isNeedCtripCity参数为true的时候才有返回
+   var json_obj = {
+       tagname:&#39;locate&#39;,
+       param:{
+           &quot;value&quot;:{
+               &quot;CityLongitude&quot;:31.249162,
+               &quot;CityLatitude&quot;:121.487899,
+               &quot;CountryName&quot;:&quot;中国&quot;,
+               &quot;ProvinceName&quot;:&quot;江苏&quot;,
+               &quot;CityEntities&quot;:[
+                   {&quot;CityName&quot;:&quot;昆山&quot;,&quot;CityID&quot;:100},
+                   {&quot;CityName&quot;:&quot;苏州&quot;,&quot;CityID&quot;:1000}
+                   ]
+           }
+       }
+   }
+
    app.callback(json_obj);</code></pre>
 
             </div>
@@ -401,7 +439,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3044"><code>bridge.js:3044</code></a>
+        <a href="../files/bridge.js.html#l3048"><code>bridge.js:3048</code></a>
         
         </p>
 
@@ -549,7 +587,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3090"><code>bridge.js:3090</code></a>
+        <a href="../files/bridge.js.html#l3094"><code>bridge.js:3094</code></a>
         
         </p>
 
