@@ -84,6 +84,7 @@ var Internal = {
         }
 
         if ((typeof verStr == "string") && (verStr.length > 0)) {
+            verStr＝verStr.replace(/\./g,'')
             var inVer = parseFloat(verStr);
             var nowVer = parseFloat(Internal.appVersion);
             if (isNaN(nowVer) || nowVer - inVer >= 0) {
