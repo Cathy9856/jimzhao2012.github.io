@@ -197,10 +197,12 @@ var Internal = {
             return true;
         }
 
-        if ((typeof verStr == &quot;string&quot;) &amp;&amp; (verStr.length &gt; 0)) {
-            var fVerStr = verStr.replace(/\./g,&#x27;&#x27;);
+        if ((typeof verStr == &quot;string&quot;) &amp;&amp; (verStr.length &gt; 0) &amp;&amp; Internal.appVersion) {
+            var fInVerStr = verStr.replace(/\./g,&#x27;&#x27;);
+            var fNowVerStr = Internal.appVersion.replace(/\./g,&#x27;&#x27;);
+
             var inVer = parseFloat(fVerStr);
-            var nowVer = parseFloat(Internal.appVersion);
+            var nowVer = parseFloat(fNowVerStr);
             if (isNaN(nowVer) || nowVer - inVer &gt;= 0) {
                 return true;
             }

@@ -83,10 +83,12 @@ var Internal = {
             return true;
         }
 
-        if ((typeof verStr == "string") && (verStr.length > 0)) {
-            var fVerStr = verStr.replace(/\./g,'');
+        if ((typeof verStr == "string") && (verStr.length > 0) && Internal.appVersion) {
+            var fInVerStr = verStr.replace(/\./g,'');
+            var fNowVerStr = Internal.appVersion.replace(/\./g,'');
+
             var inVer = parseFloat(fVerStr);
-            var nowVer = parseFloat(Internal.appVersion);
+            var nowVer = parseFloat(fNowVerStr);
             if (isNaN(nowVer) || nowVer - inVer >= 0) {
                 return true;
             }
