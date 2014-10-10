@@ -87,7 +87,7 @@ var Internal = {
             var fInVerStr = verStr.replace(/\./g,'');
             var fNowVerStr = Internal.appVersion.replace(/\./g,'');
 
-            var inVer = parseFloat(fVerStr);
+            var inVer = parseFloat(fInVerStr);
             var nowVer = parseFloat(fNowVerStr);
             if (isNaN(nowVer) || nowVer - inVer >= 0) {
                 return true;

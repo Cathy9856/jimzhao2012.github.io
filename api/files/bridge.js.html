@@ -201,7 +201,7 @@ var Internal = {
             var fInVerStr = verStr.replace(/\./g,&#x27;&#x27;);
             var fNowVerStr = Internal.appVersion.replace(/\./g,&#x27;&#x27;);
 
-            var inVer = parseFloat(fVerStr);
+            var inVer = parseFloat(fInVerStr);
             var nowVer = parseFloat(fNowVerStr);
             if (isNaN(nowVer) || nowVer - inVer &gt;= 0) {
                 return true;
