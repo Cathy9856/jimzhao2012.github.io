@@ -198,8 +198,8 @@ var Internal = {
         }
 
         if ((typeof verStr == &quot;string&quot;) &amp;&amp; (verStr.length &gt; 0)) {
-            verStr＝verStr.replace(/\./g,&#x27;&#x27;)
-            var inVer = parseFloat(verStr);
+            var fVerStr = verStr.replace(/\./g,&#x27;&#x27;);
+            var inVer = parseFloat(fVerStr);
             var nowVer = parseFloat(Internal.appVersion);
             if (isNaN(nowVer) || nowVer - inVer &gt;= 0) {
                 return true;
