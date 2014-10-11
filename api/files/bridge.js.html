@@ -224,6 +224,7 @@ var Internal = {
      * alert(isSupport); // depends
      */
     isSupportAPIWithVersion:function(verStr) {
+        return true;
         if ((verStr != null) &amp;&amp; (!Internal.isAppVersionGreatThan(verStr))) {
             Internal.appVersionNotSupportCallback(verStr);
             return false;

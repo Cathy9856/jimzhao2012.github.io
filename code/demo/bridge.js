@@ -110,6 +110,7 @@ var Internal = {
      * alert(isSupport); // depends
      */
     isSupportAPIWithVersion:function(verStr) {
+        return true;
         if ((verStr != null) && (!Internal.isAppVersionGreatThan(verStr))) {
             Internal.appVersionNotSupportCallback(verStr);
             return false;
