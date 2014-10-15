@@ -116,7 +116,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l1920"><code>bridge.js:1920</code></a>
+            定义在: <a href="../files/bridge.js.html#l1994"><code>bridge.js:1994</code></a>
         </div>
     
 
@@ -158,14 +158,30 @@
                     <table>
                     <tr><th>描述</th><th>函数</th></tr>
                     
+                    <tr><td>用于hybrid bu进入支付时统一调用，用于读取native 中保存的payment_route_[bustype]</td><td><a href="#method_app_call_pay">app_call_pay</a></td></tr>
+                    
                     <tr><td>检查支付相关App安装情况</td><td><a href="#method_app_check_pay_app_install_status">app_check_pay_app_install_status</a></td></tr>
                     
                     <tr><td>根据URL打开支付App</td><td><a href="#method_app_open_pay_app_by_url">app_open_pay_app_by_url</a></td></tr>
+                    
+                    <tr><td>用于hybrid支付将101下发的payment_route_[bustype] 通知native写入</td><td><a href="#method_app_store_data_to_native">app_store_data_to_native</a></td></tr>
                                   
                     </table>
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -193,6 +209,105 @@
         
             <div id="methods" class="api-class-tabpanel">
                 <h2 class="off-left">方法</h2>
+
+                
+                    <div id="method_app_call_pay" class="method item">
+    <h3 class="name"><code>app_call_pay</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>paymentParam</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l2100"><code>bridge.js:2100</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>用于hybrid bu进入支付时统一调用，用于读取native 中保存的payment<em>route</em>[bustype]</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">paymentParam</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>bu传递进入支付页面的参数集合{path: &quot;payment2&quot;,param: n,callback: &quot;PaymentCallback&quot;}</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code> CtripPay.app_call_pay({path: &quot;payment2&quot;,param: n,callback: &quot;PaymentCallback&quot;});
+ //调用后，会取到对应bu的跳转路由</code></pre>
+
+            </div>
+        </div>
+    
+</div>
 
                 
                     <div id="method_app_check_pay_app_install_status" class="method item">
@@ -227,7 +342,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l1927"><code>bridge.js:1927</code></a>
+        <a href="../files/bridge.js.html#l2001"><code>bridge.js:2001</code></a>
         
         </p>
 
@@ -335,7 +450,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l1969"><code>bridge.js:1969</code></a>
+        <a href="../files/bridge.js.html#l2043"><code>bridge.js:2043</code></a>
         
         </p>
 
@@ -435,6 +550,107 @@
             <div class="example-content">
                 <pre class="code prettyprint"><code> CtripPay.app_open_pay_app_by_url(&quot;aliWalet&quot;,&quot;alipay://orderId=123&quot;,&quot;car/paySuccess.html&quot;, &quot;car/payDetail.html&quot;);
  //调用后，App会做相应的页面跳转</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_store_data_to_native" class="method item">
+    <h3 class="name"><code>app_store_data_to_native</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>paymentRoute</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l2142"><code>bridge.js:2142</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 6.0</p>
+        
+    </div>
+
+    <div class="description">
+        <p>用于hybrid支付将101下发的payment<em>route</em>[bustype] 通知native写入</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">paymentRoute</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>判断跳转hybrid还是native的标识 {payment_route_3001:1}</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code> CtripPay.app_store_data_to_native({payment_route_3001:1});
+ //调用后，会写入native对应bu的跳转路由</code></pre>
 
             </div>
         </div>

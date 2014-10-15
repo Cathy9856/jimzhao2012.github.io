@@ -459,6 +459,79 @@ function __bridge_callback(param) {
 };
 
 /**
+  * @description  用于接收native 下发的payment_route 判断调用native或者hybrid支付
+  * @brief  用于接收native 下发的payment_route 判断调用native或者hybrid支付
+  * @param {String} paymentRouteGate native下发的Json字符串 {param:{platform:&quot;&quot;,version:&quot;&quot;,osVersion:&quot;&quot;},tagname:&quot;&quot;,payment_route_gate:1,callback:&quot;&quot;}
+  * @since 6.0
+  * @method __payment_callback
+  * @author jianggd@Ctrip.com
+  * @example 
+
+  __payment_callback({param:{platform:&quot;ios&quot;,version:&quot;6.0&quot;,osVersion:&quot;&quot;},tagname:&quot;app_getPayDataFromNative&quot;,payment_route_gate:1,callback:&quot;&quot;});
+  //调用后，会写入native对应bu的跳转路由
+**/
+
+function __payment_callback(paymentRouteGate) {
+    paymentRouteGate = decodeURIComponent(paymentRouteGate);
+    var jsonObj = JSON.parse(paymentRouteGate);
+    if (jsonObj != null) {
+        if (jsonObj.param != null &amp;&amp; jsonObj.param.hasOwnProperty(&quot;platform&quot;)) {
+            var ua = navigator.userAgent;
+            if (ua.indexOf(&quot;Youth_CtripWireless&quot;) &gt; 0) {
+                Internal.isYouthApp = true
+            }
+            platform = jsonObj.param.platform;
+            var b = typeof platform;
+            if (b == &quot;number&quot;) {
+                if (platform == 1 || platform == 2 || platform == 3) {
+                    Internal.isIOS = (platform == 1);
+                    Internal.isAndroid = (platform == 2);
+                    Internal.isWinOS = (platform == 3)
+                }
+            } else {
+                if (b == &quot;string&quot;) {
+                    if (platform == &quot;1&quot; || platform == &quot;2&quot; || platform == &quot;3&quot;) {
+                        Internal.isIOS = (platform == &quot;1&quot;);
+                        Internal.isAndroid = (platform == &quot;2&quot;);
+                        Internal.isWinOS = (platform == &quot;3&quot;)
+                    }
+                }
+            }
+            Internal.isInApp = true;
+            Internal.appVersion = jsonObj.param.version;
+            Internal.osVersion = jsonObj.param.osVersion
+        }
+        if(jsonObj.tagname == &quot;app_getPayDataFromNative&quot;){
+            if(jsonObj.payment_route_gate){
+                //jump to native
+                var paramString = Internal.makeParamString(&quot;Pay&quot;,&quot;payNative&quot;, jsonObj, jsonObj.callback);
+                var url = Internal.makeURLWithParam(paramString);
+                if (Internal.isIOS) {
+                    Internal.loadURL(url);
+                    return;
+                } else {
+                    if (Internal.isAndroid) {
+                        window.Util_a.payNative(paramString);
+                        return;
+                    } else {
+                        if (Internal.isWinOS) {
+                            Internal.callWin8App(paramString);
+                            return;
+                        }
+                    }
+                }
+            }else{
+                //jump to hybrid
+                var n = jsonObj.param;
+                CtripUtil.app_cross_package_href(jsonObj.path, n);
+                return;
+            }
+            return -1;
+        }
+    }
+}
+
+/**
  * @brief app写localstorage
  * @description 写key/value数据到H5页面的local storage
  * @method __writeLocalStorage
@@ -585,7 +658,8 @@ var CtripUtil = {
                 sId:&quot;ssssssss&quot;,//5.9加入，营销业绩使用
                 ouId:&quot;ssseeeeee&quot;,//5.9加入，营销业绩使用
                 telephone:&quot;999999999&quot;//5.9加入，营销业绩使用
-                networkStatus:&quot;4G&quot;; //5.9加入，返回当前网络状态 2G/3G/4G/WIFI/None
+                networkStatus:&quot;4G&quot;, //5.9加入，返回当前网络状态 2G/3G/4G/WIFI/None
+                isAppNeedUpdate:false, //5.10加入
                 userInfo={USERINFO},//USERINFO内部结构参考CtripUser.app_member_login();    
             }
          }
@@ -2135,6 +2209,76 @@ var CtripUser = {
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
+    },
+    
+    /**
+      * @description  用于hybrid bu进入支付时统一调用，用于读取native 中保存的payment_route_[bustype]
+      * @brief  用于hybrid bu进入支付时统一调用，用于读取native 中保存的payment_route_[bustype]
+      * @param {Object} paymentParam bu传递进入支付页面的参数集合{path: &quot;payment2&quot;,param: n,callback: &quot;PaymentCallback&quot;}
+
+      * @method app_call_pay
+      * @author jianggd@Ctrip.com
+      * @example 
+
+      CtripPay.app_call_pay({path: &quot;payment2&quot;,param: n,callback: &quot;PaymentCallback&quot;});
+      //调用后，会取到对应bu的跳转路由
+    **/
+    app_call_pay: function(paymentParam) {
+        alert(JSON.stringify(paymentParam));
+        var paramString = Internal.makeParamString(&quot;Pay&quot;,&quot;getPayDataFromNative&quot;, paymentParam, &quot;app_getPayDataFromNative&quot;),
+            paramJSON = JSON.parse(paramString),
+            urlDic = paramJSON.param.split(&quot;?&quot;)[1].split(&quot;&amp;&quot;),
+            bustype = &quot;&quot;;
+        for(var i = 0; i &lt; urlDic.length; i++){
+            var res = urlDic[i].split(&quot;=&quot;),
+                _key = res[0],
+                _value = res[1];
+            if(_key === &quot;bustype&quot;){
+                bustype = _value;
+                break;
+            }
+        }
+        paramJSON.names = [&quot;payment_route_&quot; + bustype];
+        paramString = JSON.stringify(paramJSON);
+        if (Internal.isIOS) {
+            var url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else {
+            if (Internal.isAndroid) {
+                window.Util_a.getPayDataFromNative(paramString);
+            } else {
+                if (Internal.isWinOS) {
+                    Internal.callWin8App(paramString)
+                }
+            }
+        }
+    },
+    /**
+      * @description  用于hybrid支付将101下发的payment_route_[bustype] 通知native写入
+      * @brief  用于hybrid支付将101下发的payment_route_[bustype] 通知native写入
+      * @param {Object} paymentRoute 判断跳转hybrid还是native的标识 {payment_route_3001:1}
+      * @since 6.0
+      * @method app_store_data_to_native
+      * @author jianggd@Ctrip.com
+      * @example 
+
+      CtripPay.app_store_data_to_native({payment_route_3001:1});
+      //调用后，会写入native对应bu的跳转路由
+    **/
+    app_store_data_to_native: function(paymentRoute) {
+        var paramString = Internal.makeParamString(&quot;Pay&quot;,&quot;setPayDataToNative&quot;, paymentRoute);
+        if (Internal.isIOS) {
+            var url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else {
+            if (Internal.isAndroid) {
+                window.Util_a.setPayDataToNative(paramString);
+            } else {
+                if (Internal.isWinOS) {
+                    Internal.callWin8App(paramString)
+                }
+            }
+        }
     }
  };
 
@@ -3143,8 +3287,6 @@ var CtripMap = {
             tagname:&#x27;locate&#x27;,
             param:{
                 &quot;value&quot;:{
-                    &quot;CityLongitude&quot;:31.249162, //城市中心点经度
-                    &quot;CityLatitude&quot;:121.487899, //城市中心点纬度
                     &quot;CountryName&quot;:&quot;中国&quot;,       //所在国家
                     &quot;ProvinceName&quot;:&quot;江苏&quot;,      //所在省份
                     &quot;CityEntities&quot;:[            //城市名列表，城市等级从低到高，先是县级市，然后是地级市，使用者应按列表顺序匹配，匹配到即结束
@@ -4012,8 +4154,6 @@ var CtripPage = {
         }
     }
 };
-
-
 
     </pre>
 </div>

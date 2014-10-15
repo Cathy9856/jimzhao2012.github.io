@@ -162,6 +162,8 @@
                     
                     <tr><td>app回调bridge.js</td><td><a href="#method___bridge_callback">__bridge_callback</a></td></tr>
                     
+                    <tr><td>用于接收native 下发的payment_route 判断调用native或者hybrid支付</td><td><a href="#method___payment_callback">__payment_callback</a></td></tr>
+                    
                     <tr><td>app写localstorage</td><td><a href="#method___writeLocalStorage">__writeLocalStorage</a></td></tr>
                     
                     <tr><td>app版本过低回调</td><td><a href="#method_appVersionNotSupportCallback">appVersionNotSupportCallback</a></td></tr>
@@ -186,6 +188,12 @@
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -431,6 +439,107 @@
 </div>
 
                 
+                    <div id="method___payment_callback" class="method item">
+    <h3 class="name"><code>__payment_callback</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>paymentRouteGate</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l347"><code>bridge.js:347</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 6.0</p>
+        
+    </div>
+
+    <div class="description">
+        <p>用于接收native 下发的payment_route 判断调用native或者hybrid支付</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">paymentRouteGate</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>native下发的Json字符串 {param:{platform:&quot;&quot;,version:&quot;&quot;,osVersion:&quot;&quot;},tagname:&quot;&quot;,payment_route_gate:1,callback:&quot;&quot;}</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <p> __payment_callback({param:{platform:&quot;ios&quot;,version:&quot;6.0&quot;,osVersion:&quot;&quot;},tagname:&quot;app_getPayDataFromNative&quot;,payment_route_gate:1,callback:&quot;&quot;});
+ //调用后，会写入native对应bu的跳转路由</p>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method___writeLocalStorage" class="method item">
     <h3 class="name"><code>__writeLocalStorage</code></h3>
 
@@ -479,7 +588,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l347"><code>bridge.js:347</code></a>
+        <a href="../files/bridge.js.html#l420"><code>bridge.js:420</code></a>
         
         </p>
 
