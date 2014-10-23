@@ -1356,11 +1356,22 @@ var CtripUtil = {
        var json_obj =
         {
             tagname:"choose_photo",
+            error_code:"",
             param:{
                 photoList:["xx089xessewz....", "xx089xessewz...."]
             }
         }
+
+        //未授权error_code,未授权错误返回如下，错误提示由native弹对话框处理。 6.0加入
+        var json_obj =
+        {
+            tagname:"choose_photo",
+            error_code:"(-301)相册/相机未授权",
+        }
+
         app.callback(json_obj);
+
+
      
      */
     app_choose_photo:function(maxFileSize, maxPhotoCount, meta) {
@@ -1411,6 +1422,7 @@ var CtripUtil = {
             //(-201)下载成功，图片格式不正确
             //(-202)下载图片失败
             //(-203)保存到相册失败
+            //(-301)相册未授权，错误提示由native弹对话框处理， 6.0加入
         }
         app.callback(json_obj);
      
