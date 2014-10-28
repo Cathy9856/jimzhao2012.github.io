@@ -312,7 +312,7 @@ function __bridge_callback(param) {
                 if (platform == 1 || platform == 2 || platform == 3) {
                     Internal.isIOS = (platform == 1);
                     Internal.isAndroid = (platform == 2);
-                    Internal.isWinOS = (platform == 3);                    
+                    Internal.isWinOS = (platform == 3);
                 }
             }
             else if (typePf == "string") { //Android
@@ -321,6 +321,10 @@ function __bridge_callback(param) {
                     Internal.isAndroid = (platform == "2");
                     Internal.isWinOS = (platform == "3");     
                 }
+            }
+
+            if (Internal.isWinOS) {
+                navigator.window.winPhoneUserAgent = navigator.window.userAgent+"CtripWireless";                 
             }
 
             Internal.isInApp = true;
@@ -464,22 +468,6 @@ var CtripTool = {
          }
         
         return isInCtripApp;
-    },
-
-    /**
-     * @description 将log写入到native的日志界面，该函数已移动到CtripUtil类，此处只做兼容。具体参考CtripUtil.app_log()函数
-     * @brief H5写日志到app(移动到CtripUtil)
-     * @method 【Moved】app_log
-     * @param {String} log 需要打印打log
-     * @param {String} result 上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间
-     * @since v5.2
-     * @author jimzhao
-     * @example 
-
-     CtripUtil.app_log("execute script xxxxx", "result for script is oooooo");
-     */
-    app_log:function(log, result) {
-        CtripUtil.app_log(log, result);
     }
 };
 
@@ -489,22 +477,6 @@ var CtripTool = {
  * @brief 常用Util
  */
 var CtripUtil = {
-
-    /**
-     * @description 调用App的上传ActionLog,移动到CtripBusiness
-     * @brief App的上传ActionLog,移动到CtripBusiness
-     * @method 【Moved】app_log_event
-     * @param {String} event_name 需要纪录的事件名
-     * @since v5.2
-     * @author jimzhao
-     * @example 
-
-     CtripBusiness.app_log_event('GoodDay')
-     */
-    app_log_event:function(event_name) {
-        CtripBusiness.app_log_event(event_name);
-    },
-
 
     /**
      * @description 进入H5模块，初始化数据
@@ -667,22 +639,6 @@ var CtripUtil = {
     },
 
     /**
-     * @description 刷新顶部条按钮和文字(移动到CtripBar)
-     * @brief 刷新顶部条按钮和文字(移动到CtripBar)
-     * @param (String) nav_bar_config_json 顶部条配置json串
-     * @method 【Moved】app_refresh_nav_bar
-     * @author jimzhao
-     * @since v5.2
-     * @example
-
-        请参考 CtripBar.app_refresh_nav_bar(json_str)的使用;
-     */
-    app_refresh_nav_bar:function(nav_bar_config_json) {
-        CtripBar.app_refresh_nav_bar(nav_bar_config_json);
-    },
-
-
-    /**
      * @description Hybrid页面，打开链接URL地址，兼容App和浏览器
      * @brief Hybrid页面打开链接URL
      * @param {String} openUrl @required 需要打开的URL，可以为ctrip://,http(s)://,file://等协议的URL
@@ -780,51 +736,6 @@ var CtripUtil = {
         }
     },
 
-
-    /**
-     * @description 检查App的版本更新(移动到CtripBusiness)
-     * @brief 检查App的版本更新(移动到CtripBusiness)
-     * @since v5.2
-     * @method 【Moved】app_check_update
-     * @author jimzhao
-     * @example 
-
-        CtripBusiness.app_check_update();
-     *
-     */
-    app_check_update:function() {
-        CtripBusiness.app_check_update();
-    },
-
-    /**
-     * @description 推荐携程旅行给好友(移动到CtripBusiness)
-     * @brief 推荐携程旅行给好友(移动到CtripBusiness)
-     * @since v5.2
-     * @method 【Moved】app_recommend_app_to_friends
-     * @author jimzhao
-     * @example 
-
-        CtripBusiness.app_recommend_app_to_friends();
-     *
-     */
-    app_recommend_app_to_friends:function() {
-        CtripBusiness.app_recommend_app_to_friends();
-    },
-
-    /**
-     * @description 添加微信好友(移动到CtripBusiness)
-     * @brief 添加微信好友(移动到CtripBusiness)
-     * @since v5.2
-     * @method 【Moved】app_add_weixin_friend
-     * @author jimzhao
-     * @example 
-
-         CtripBusiness.app_add_weixin_friend();
-     */
-    app_add_weixin_friend:function() {
-        CtripBusiness.app_add_weixin_friend();
-    },
-
     /**
      * @description H5跨模块/站点跳转
      * @brief H5跨模块/站点跳转
@@ -862,20 +773,6 @@ var CtripUtil = {
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
-    },
-
-    /**
-     * @description 查看最新版本功能介绍(移动到CtripBusiness)
-     * @brief 查看最新版本功能介绍(移动到CtripBusiness)
-     * @since v5.2
-     * @method 【Moved】app_show_newest_introduction
-     * @author jimzhao
-     * @example 
-
-     CtripBusiness.app_show_newest_introduction();
-     */
-    app_show_newest_introduction:function() {
-        CtripBusiness.app_show_newest_introduction();
     },
 
     /**
@@ -1135,54 +1032,6 @@ var CtripUtil = {
     },
 
     /**
-     * @description 调用App的分享，具体定义请参考(移动到CtripBusiness)
-     * @brief 调用App的分享(移动到CtripBusiness)
-     * @param {String} imageRelativePath 将要分享的图片相对路径，相对webapp的路径
-     * @param {String} text 需要分享的文字
-     * @param {String} title 需要分享的标题, v5.4开始支持该字段，微信和email支持；
-     * @param {String} linkUrl 需要分享的链接, v5.4开始支持该字段
-     * @method 【Moved】app_call_system_share
-     * @since v5.3
-     * @author jimzhao
-     * @example
-
-     *  微信(微信朋友/微信朋友圈)分享说明：
-        1. 图片分享，只能分享图片，所传的文字，title都无效；
-        2. 链接分享，所传的图片为分享网页的缩略图，title有效；
-        3. 纯文本分享，只能分享text，title无效；
-        4. 优先级 链接分享>图片分享>纯文本分享。
-           a. 如果有linkUrl，会被当作网页分享，图片作为缩略图；
-           b. 如果没有linkUrl，有图片，当作图片分享，text,title无效;
-           c. 如果没有linkUrl，没有图片，当作纯文本分享；
-        
-        微博分享：
-        1. 图片为所分享的图片；
-        2. 分享title不起作用；
-        3. 如果linkUrl有， 分享的text后面会自动添加linkUrl
-    
-        Email分享：
-        1. 图片为所分享的图片；
-        2. 分享title作为Email标题；
-        3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
-
-        短信分享：
-        1. 图片为所分享的图片；注：iOS7.0之后才支持；
-        2. 分享title不起作用；
-        3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
-
-        复制分享：
-        1. 分享的图片不起作用;
-        2. 分享的title不起作用;
-        3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
-
-        CtripBusiness.app_call_system_share("../wb_cache/pkg_name/md5_url_hash", "text to share weibo", "this is titile", "http://www.ctrip.com/");
-
-     */
-    app_call_system_share:function(imageRelativePath, text, title, linkUrl) {
-        CtripBusiness.app_call_system_share(imageRelativePath, text, title, linkUrl);
-    },
-
-    /**
      * @description 根据URL下载数据
      * @brief 根据URL下载数据
      * @param {String} download_url 需要下载内容的URL
@@ -1316,22 +1165,6 @@ var CtripUtil = {
             Internal.callWin8App(paramString);
         }
     },
-
-   /**
-     * @description 打开Hybrid广告页面，会自动显示底部栏，且右上角有分享安妮 (移动到CtripBusiness)
-     * @brief 打开Hybrid广告页面(移动到CtripBusiness)
-     * @method 【Moved】app_open_adv_page
-     * @param {String} advUrl 广告URL， URL参数带title=xxx,设置xxx为标题
-     * @since v5.4
-     * @author jimzhao
-     * @example
-
-      CtripBusiness.app_open_adv_page("http://pages.ctrip.com/adv.html?title=标题xxx");
-     */
-    app_open_adv_page:function(advUrl) {
-        CtripBusiness.app_open_adv_page(advUrl);
-    },
-
 
      /**
      * @description 选取图片/拍摄照片，base64返回图片
@@ -3879,6 +3712,95 @@ var CtripBusiness = {
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.Business_a.sendUBTLog(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /**
+     * @description hybrid写数据给Native
+     * @brief hybrid写数据给Native
+     * @method app_write_data_to_native
+     * @param {int} businessType 业务类型，1=公共相关，2=酒店，3=机票，4=支付
+     * @param {int} businessCode hybrid业务方和native开发人员沟通协商定义
+     * @param {JSON} jsonParam 需要写的json对象
+     * @author jimzhao
+     * @since v6.0
+     * @example
+     *
+     * 
+        //调用API
+        CtripBusiness.app_write_data_to_native(1, 10001, {aa:'aa_value',bb:'bb_value'});
+
+        //回调数据
+        var json_obj = {
+            tagname:"download_data",
+            error_code:"(-201)写数据到Native失败",//error_code,失败的时候才有error_code
+         };
+
+         app.callback(json_obj);
+     */
+    app_write_data_to_native:function(businessType, businessCode, jsonParam) {
+        if (!Internal.isSupportAPIWithVersion("6.0")) {
+            return;
+        }
+        var params = {};
+        params.businessType = businessType;
+        params.businessCode = businessCode;
+        params.jsonParam = jsonParam;
+
+        var paramString = Internal.makeParamString("Business", "writeDataToNative", params, "write_data_to_native");
+        if (Internal.isIOS) {
+            var url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            window.Business_a.writeDataToNative(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /**
+     * @description hybrid从Native读数据
+     * @brief hybrid从Native读数据
+     * @method app_read_data_from_native
+     * @param {int} businessType 业务类型，1=公共相关，2=酒店，3=机票，4=支付
+     * @param {int} businessCode hybrid业务方和native开发人员沟通协商定义
+     * @author jimzhao
+     * @since v6.0
+     * @example
+     *
+     * 
+        //调用API
+        CtripBusiness.app_read_data_from_native(1, 10001);
+  
+        //回调数据
+        var json_obj = {
+            tagname:"download_data",
+            error_code:"(-201)从Native读取数据失败",//error_code,失败的时候才有error_code
+            param: //有param时候，error_code为空
+                {
+                    aa:"aa_value",
+                    bb:"bb_value"
+                }
+         };
+
+         app.callback(json_obj);
+     */
+    app_read_data_from_native:function(businessType, businessCode) {
+        if (!Internal.isSupportAPIWithVersion("6.0")) {
+            return;
+        }
+        var params = {};
+        params.businessType = businessType;
+        params.businessCode = businessCode;
+
+        var paramString = Internal.makeParamString("Business", "readDataFromNative", params, "read_data_from_native");
+        if (Internal.isIOS) {
+            var url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            window.Business_a.readDataFromNative(paramString);
         } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }

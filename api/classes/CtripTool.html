@@ -116,7 +116,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l435"><code>bridge.js:435</code></a>
+            定义在: <a href="../files/bridge.js.html#l439"><code>bridge.js:439</code></a>
         </div>
     
 
@@ -159,19 +159,11 @@
                     <tr><th>描述</th><th>函数</th></tr>
                     
                     <tr><td>判断当前是否是在App内</td><td><a href="#method_app_is_in_ctrip_app">app_is_in_ctrip_app</a></td></tr>
-                    
-                    <tr><td>H5写日志到app(移动到CtripUtil)</td><td><a href="#method_【Moved】app_log">【Moved】app_log</a></td></tr>
                                   
                     </table>
 
 
                     <ul class="index-list methods">
-                        
-                            <li class="index-item method">
-
-                                
-                                
-                            </li>
                         
                             <li class="index-item method">
 
@@ -231,7 +223,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l442"><code>bridge.js:442</code></a>
+        <a href="../files/bridge.js.html#l446"><code>bridge.js:446</code></a>
         
         </p>
 
@@ -271,128 +263,6 @@
             <div class="example-content">
                 <p>var ret = CtripTool.app_is_in_ctrip_app();
 alert(&quot;isInApp==&quot;+ret);</p>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_【Moved】app_log" class="method item">
-    <h3 class="name"><code>【Moved】app_log</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>log</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>result</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                定义在
-                
-            
-        
-        
-        <a href="../files/bridge.js.html#l469"><code>bridge.js:469</code></a>
-        
-        </p>
-
-
-        
-
-        
-            <p>可用版本 v5.2</p>
-        
-    </div>
-
-    <div class="description">
-        <p>将log写入到native的日志界面，该函数已移动到CtripUtil类，此处只做兼容。具体参考CtripUtil.app_log()函数</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>参数:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">log</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>需要打印打log</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">result</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>上一句log执行的结果，可以为空,打印的时候会自动换行，加入时间</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>举例:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>CtripUtil.app_log(&quot;execute script xxxxx&quot;, &quot;result for script is oooooo&quot;);</code></pre>
 
             </div>
         </div>
