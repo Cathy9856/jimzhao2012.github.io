@@ -348,6 +348,42 @@ function __bridge_callback(param) {
     return -1;
 };
 
+
+function __payment_callback(paymentRouteGate) {
+    paymentRouteGate = decodeURIComponent(paymentRouteGate);
+    var jsonObj = JSON.parse(paymentRouteGate);
+    
+    if (jsonObj != null) {
+        if(jsonObj.tagname == "app_getPayDataFromNative"){
+            if(jsonObj.payment_route_gate){
+                //jump to native
+                var paramString = Internal.makeParamString("Pay","payNative", jsonObj, jsonObj.callback);
+                var url = Internal.makeURLWithParam(paramString);
+                if (Internal.isIOS) {
+                    Internal.loadURL(url);
+                    return;
+                } else {
+                    if (Internal.isAndroid) {
+                        window.Util_a.payNative(paramString);
+                        return;
+                    } else {
+                        if (Internal.isWinOS) {
+                            Internal.callWin8App(paramString);
+                            return;
+                        }
+                    }
+                }
+            }else{
+                //jump to hybrid
+                var n = jsonObj.param;
+                CtripUtil.app_cross_package_href(jsonObj.path, n);
+                return;
+            }
+            return -1;
+        }
+    }
+};
+
 /**
  * @brief app写localstorage
  * @description 写key/value数据到H5页面的local storage
@@ -2817,6 +2853,7 @@ var CtripMap = {
      * @param {int} timeout 定位timeout，设置timeout<=1或者timeout>=60,都会默认设置为15s
      * @param {Boolean} isNeedCtripCity 是否需要携程的城市定位，如果需要，会返回酒店&攻略的城市ID信息
      * @param {Boolean} isForceLocate 是否强制定位，如果是强制定位，native会发起定位，不用缓存中的数据 v6.0加入
+     * @param {int} sequenceId 定位是异步调用，调用的时候传入该字段，取消的时候，可以根据该sequenceId取消/停止定位 v6.0加入
      * @method app_locate
      * @author jimzhao
      * @since v5.1
@@ -2890,7 +2927,7 @@ var CtripMap = {
         app.callback(json_obj);
      * 
      */
-    app_locate:function(timeout, isNeedCtripCity, isForceLocate) {
+    app_locate:function(timeout, isNeedCtripCity, isForceLocate, sequenceId) {
         var params = {};
         params.timeout = timeout;
         params.isNeedCtripCity = isNeedCtripCity;
@@ -2902,6 +2939,38 @@ var CtripMap = {
         }
         else if (Internal.isAndroid) {
             window.Locate_a.locate(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /**
+     * @description 停止定位定位，传入定位app_locate时候，传递过去的sequenceId
+     * @brief 停止定位
+     * @param {int} sequenceId 定位app_locate时候，传递过去的sequenceId
+     * @method app_stop_locate
+     * @author jimzhao
+     * @since v6.0
+        
+        //使用
+        CtripMap.app_stop_locate();
+
+     */
+    app_stop_locate:function(sequenceId) {
+        if (!Internal.isSupportAPIWithVersion("6.0")) {
+            return;
+        }
+        var params = {};
+        params.sequenceId = sequenceId;
+
+        var paramString = Internal.makeParamString("Locate", "stopLocate", params, 'stop_locate')
+        if (Internal.isIOS) {
+            var url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Locate_a.stopLocate(paramString);
         }
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
@@ -3026,7 +3095,7 @@ var CtripMap = {
        //返回数据
         var json_obj = {
             tagname:'get_cached_ctrip_city',
-            param:{                           
+            param:{                         //param字段没有的时候，代表无ctripcity缓存                   
                 "CountryName":"中国",       //所在国家
                     "ProvinceName":"江苏",      //所在省份
                     "CityEntities":[            //城市名列表，城市等级从低到高，先是县级市，然后是地级市，使用者应按列表顺序匹配，匹配到即结束
@@ -3043,7 +3112,7 @@ var CtripMap = {
             return;
         }
 
-        var paramString = Internal.makeParamString("Locate", "getCachedCtripCity",params, 'get_cached_ctrip_city');
+        var paramString = Internal.makeParamString("Locate", "getCachedCtripCity", null, 'get_cached_ctrip_city');
 
         if (Internal.isIOS) {
             var url = Internal.makeURLWithParam(paramString);
