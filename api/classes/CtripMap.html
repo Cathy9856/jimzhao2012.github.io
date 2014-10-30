@@ -158,6 +158,8 @@
                     <table>
                     <tr><th>描述</th><th>函数</th></tr>
                     
+                    <tr><td>获取native缓存的ctrip city信息</td><td><a href="#method_app_get_cached_ctrip_city">app_get_cached_ctrip_city</a></td></tr>
+                    
                     <tr><td>定位</td><td><a href="#method_app_locate">app_locate</a></td></tr>
                     
                     <tr><td>在地图上显示某个位置/导航</td><td><a href="#method_app_show_map">app_show_map</a></td></tr>
@@ -168,6 +170,12 @@
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -203,6 +211,88 @@
                 <h2 class="off-left">方法</h2>
 
                 
+                    <div id="method_app_get_cached_ctrip_city" class="method item">
+    <h3 class="name"><code>app_get_cached_ctrip_city</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3015"><code>bridge.js:3015</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v6.0</p>
+        
+    </div>
+
+    <div class="description">
+        <p>获取native缓存的ctrip city信息, app会定时获取ctrip city, hybrid获取缓存命中率在99%以上，可以直接使用，获取不到的时候再进行定位</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>  //调用
+   CtripMap.app_get_cached_ctrip_city()
+
+  //返回数据
+   var json_obj = {
+       tagname:&#39;get_cached_ctrip_city&#39;,
+       param:{                           
+           &quot;CountryName&quot;:&quot;中国&quot;,       //所在国家
+               &quot;ProvinceName&quot;:&quot;江苏&quot;,      //所在省份
+               &quot;CityEntities&quot;:[            //城市名列表，城市等级从低到高，先是县级市，然后是地级市，使用者应按列表顺序匹配，匹配到即结束
+                   {&quot;CityName&quot;:&quot;昆山&quot;,&quot;CityID&quot;:100}, 
+                   {&quot;CityName&quot;:&quot;苏州&quot;,&quot;CityID&quot;:1000} 
+                   ]
+       }
+   }
+
+   app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_app_locate" class="method item">
     <h3 class="name"><code>app_locate</code></h3>
 
@@ -219,6 +309,12 @@
                 <li class="arg">
                     
                         <code>isNeedCtripCity</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>isForceLocate</code>
                     
                 </li>
             
@@ -300,6 +396,22 @@
 
                     <div class="param-description">
                         <p>是否需要携程的城市定位，如果需要，会返回酒店&amp;攻略的城市ID信息</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">isForceLocate</code>
+                        <span class="type">Boolean</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>是否强制定位，如果是强制定位，native会发起定位，不用缓存中的数据 v6.0加入</p>
 
                     </div>
 
@@ -451,7 +563,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2910"><code>bridge.js:2910</code></a>
+        <a href="../files/bridge.js.html#l2911"><code>bridge.js:2911</code></a>
         
         </p>
 
@@ -599,7 +711,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2956"><code>bridge.js:2956</code></a>
+        <a href="../files/bridge.js.html#l2957"><code>bridge.js:2957</code></a>
         
         </p>
 

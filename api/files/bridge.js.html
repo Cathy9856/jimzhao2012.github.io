@@ -2930,6 +2930,7 @@ var CtripMap = {
      * @brief 定位
      * @param {int} timeout 定位timeout，设置timeout&lt;=1或者timeout&gt;=60,都会默认设置为15s
      * @param {Boolean} isNeedCtripCity 是否需要携程的城市定位，如果需要，会返回酒店&amp;攻略的城市ID信息
+     * @param {Boolean} isForceLocate 是否强制定位，如果是强制定位，native会发起定位，不用缓存中的数据 v6.0加入
      * @method app_locate
      * @author jimzhao
      * @since v5.1
@@ -3003,7 +3004,7 @@ var CtripMap = {
         app.callback(json_obj);
      * 
      */
-    app_locate:function(timeout, isNeedCtripCity) {
+    app_locate:function(timeout, isNeedCtripCity, isForceLocate) {
         var params = {};
         params.timeout = timeout;
         params.isNeedCtripCity = isNeedCtripCity;
@@ -3123,8 +3124,52 @@ var CtripMap = {
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
-    }
+    },
 
+    /**
+     * @description 获取native缓存的ctrip city信息, app会定时获取ctrip city, hybrid获取缓存命中率在99%以上，可以直接使用，获取不到的时候再进行定位
+     * @brief 获取native缓存的ctrip city信息
+     * @method app_get_cached_ctrip_city
+     * @author jimzhao
+     * @since v6.0
+     * @example
+     *
+       //调用
+        CtripMap.app_get_cached_ctrip_city()
+
+       //返回数据
+        var json_obj = {
+            tagname:&#x27;get_cached_ctrip_city&#x27;,
+            param:{                           
+                &quot;CountryName&quot;:&quot;中国&quot;,       //所在国家
+                    &quot;ProvinceName&quot;:&quot;江苏&quot;,      //所在省份
+                    &quot;CityEntities&quot;:[            //城市名列表，城市等级从低到高，先是县级市，然后是地级市，使用者应按列表顺序匹配，匹配到即结束
+                        {&quot;CityName&quot;:&quot;昆山&quot;,&quot;CityID&quot;:100}, 
+                        {&quot;CityName&quot;:&quot;苏州&quot;,&quot;CityID&quot;:1000} 
+                        ]
+            }
+        }
+
+        app.callback(json_obj);
+     */
+    app_get_cached_ctrip_city:function() {
+        if (!Internal.isSupportAPIWithVersion(&quot;6.0&quot;)) {
+            return;
+        }
+
+        var paramString = Internal.makeParamString(&quot;Locate&quot;, &quot;getCachedCtripCity&quot;,params, &#x27;get_cached_ctrip_city&#x27;);
+
+        if (Internal.isIOS) {
+            var url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Locate_a.getCachedCtripCity(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    }
 };
 
 /**
@@ -3689,13 +3734,13 @@ var CtripBusiness = {
     },
 
     /**
-     * @description hybrid调用Native业务API通用管道
-     * @brief  hybrid调用Native业务API通用管道
+     * @description hybrid调用Native业务通用接口
+     * @brief  hybrid调用Native业务通用接口
      * @method app_do_business_job
      * @param {int} businessType 业务类型，1=公共相关，2=酒店，3=机票，4=支付,5=火车票,6=攻略
-     * @param {String} businessCode hybrid业务方和native开发人员沟通协商定义
-     * @param {JSON} jsonParam 需要写的json对象
-     * @param {int} sequenceId 调用的序列号，执行该任务的时候，如果native是异步处理的，hybrid需要设置该值,可以取当前timestamp. native处理完成，会在param里面带回该字段
+     * @param {String} businessCode 业务方hybrid和native开发人员协商定义
+     * @param {JSON} jsonParam hybrid传给Native的数据，JSON对象
+     * @param {int} sequenceId 调用的序列号，调用该API时，如果native需要异步处理(比如发送网络请求)的，hybrid需要设置该值,可以取当前timestamp. native处理完成，会在回调的数据里面带回该字段
      * @author jimzhao
      * @since v6.0
      * @example
