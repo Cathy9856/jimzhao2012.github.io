@@ -2931,7 +2931,8 @@ var CtripMap = {
         var params = {};
         params.timeout = timeout;
         params.isNeedCtripCity = isNeedCtripCity;
-
+        params.isForceLocate = isForceLocate;
+        params.sequenceId = sequenceId;
         var paramString = Internal.makeParamString("Locate", "locate", params, 'locate')
         if (Internal.isIOS) {
             var url = Internal.makeURLWithParam(paramString);
