@@ -116,7 +116,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l3159"><code>bridge.js:3159</code></a>
+            定义在: <a href="../files/bridge.js.html#l3016"><code>bridge.js:3016</code></a>
         </div>
     
 
@@ -170,6 +170,8 @@
                     
                     <tr><td>选择常用发票title</td><td><a href="#method_app_choose_invoice_title">app_choose_invoice_title</a></td></tr>
                     
+                    <tr><td>hybrid调用Native业务API通用管道</td><td><a href="#method_app_do_business_job">app_do_business_job</a></td></tr>
+                    
                     <tr><td>获取设备相关信息，相关部门需要</td><td><a href="#method_app_get_device_info">app_get_device_info</a></td></tr>
                     
                     <tr><td>收集ActionLog</td><td><a href="#method_app_log_event">app_log_event</a></td></tr>
@@ -177,8 +179,6 @@
                     <tr><td>记录google remarkting的screenName</td><td><a href="#method_app_log_google_remarkting">app_log_google_remarkting</a></td></tr>
                     
                     <tr><td>打开Hybrid广告页面</td><td><a href="#method_app_open_adv_page">app_open_adv_page</a></td></tr>
-                    
-                    <tr><td>hybrid从Native读数据</td><td><a href="#method_app_read_data_from_native">app_read_data_from_native</a></td></tr>
                     
                     <tr><td>获取短信中的验证码,iPhone不能读取，直接callback</td><td><a href="#method_app_read_verification_code_from_sms">app_read_verification_code_from_sms</a></td></tr>
                     
@@ -189,19 +189,11 @@
                     <tr><td>查看最新版本功能介绍</td><td><a href="#method_app_show_newest_introduction">app_show_newest_introduction</a></td></tr>
                     
                     <tr><td>进入语音搜索</td><td><a href="#method_app_show_voice_search">app_show_voice_search</a></td></tr>
-                    
-                    <tr><td>hybrid写数据给Native</td><td><a href="#method_app_write_data_to_native">app_write_data_to_native</a></td></tr>
                                   
                     </table>
 
 
                     <ul class="index-list methods">
-                        
-                            <li class="index-item method">
-
-                                
-                                
-                            </li>
                         
                             <li class="index-item method">
 
@@ -347,7 +339,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3363"><code>bridge.js:3363</code></a>
+        <a href="../files/bridge.js.html#l3220"><code>bridge.js:3220</code></a>
         
         </p>
 
@@ -441,7 +433,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3388"><code>bridge.js:3388</code></a>
+        <a href="../files/bridge.js.html#l3245"><code>bridge.js:3245</code></a>
         
         </p>
 
@@ -608,7 +600,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3615"><code>bridge.js:3615</code></a>
+        <a href="../files/bridge.js.html#l3472"><code>bridge.js:3472</code></a>
         
         </p>
 
@@ -681,7 +673,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3313"><code>bridge.js:3313</code></a>
+        <a href="../files/bridge.js.html#l3170"><code>bridge.js:3170</code></a>
         
         </p>
 
@@ -747,7 +739,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3651"><code>bridge.js:3651</code></a>
+        <a href="../files/bridge.js.html#l3508"><code>bridge.js:3508</code></a>
         
         </p>
 
@@ -833,7 +825,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3166"><code>bridge.js:3166</code></a>
+        <a href="../files/bridge.js.html#l3023"><code>bridge.js:3023</code></a>
         
         </p>
 
@@ -902,6 +894,193 @@
 </div>
 
                 
+                    <div id="method_app_do_business_job" class="method item">
+    <h3 class="name"><code>app_do_business_job</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>businessType</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>businessCode</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>jsonParam</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>sequenceId</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3577"><code>bridge.js:3577</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v6.0</p>
+        
+    </div>
+
+    <div class="description">
+        <p>hybrid调用Native业务API通用管道</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">businessType</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>业务类型，1=公共相关，2=酒店，3=机票，4=支付,5=火车票,6=攻略</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">businessCode</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>hybrid业务方和native开发人员沟通协商定义</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">jsonParam</code>
+                        <span class="type">JSON</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要写的json对象</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">sequenceId</code>
+                        <span class="type">Int</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>调用的序列号，执行该任务的时候，如果native是异步处理的，hybrid需要设置该值,可以取当前timestamp. native处理完成，会在param里面带回该字段</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   //调用API
+   CtripBusiness.app_do_business_job(1, 10001, {aa:&#39;aa_value&#39;,bb:&#39;bb_value&#39;}, 1111111);
+
+   //回调数据
+   var json_obj = {
+       tagname:&quot;download_data&quot;,
+       error_code:&quot;(-201) businessType不支持&quot;,//error_code,失败的时候才有error_code
+       param:{
+           sequenceId:1111111,
+           xxbusinessObj:{}, //自定义数据
+           yy:32232332       //自定义数据
+
+       }//param内容不固定，native／hybrid人员定义
+    };
+
+   // error_code定义：
+   // (-201) businessType不支持
+   // (-202) businessCode不支持
+   // (-203) 业务处理失败
+   // (-204)＋其它业务自定义错误
+
+    app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_app_get_device_info" class="method item">
     <h3 class="name"><code>app_get_device_info</code></h3>
 
@@ -934,7 +1113,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3503"><code>bridge.js:3503</code></a>
+        <a href="../files/bridge.js.html#l3360"><code>bridge.js:3360</code></a>
         
         </p>
 
@@ -1027,7 +1206,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3472"><code>bridge.js:3472</code></a>
+        <a href="../files/bridge.js.html#l3329"><code>bridge.js:3329</code></a>
         
         </p>
 
@@ -1128,7 +1307,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3581"><code>bridge.js:3581</code></a>
+        <a href="../files/bridge.js.html#l3438"><code>bridge.js:3438</code></a>
         
         </p>
 
@@ -1228,7 +1407,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3257"><code>bridge.js:3257</code></a>
+        <a href="../files/bridge.js.html#l3114"><code>bridge.js:3114</code></a>
         
         </p>
 
@@ -1286,142 +1465,6 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
 </div>
 
                 
-                    <div id="method_app_read_data_from_native" class="method item">
-    <h3 class="name"><code>app_read_data_from_native</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>businessType</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>businessCode</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                定义在
-                
-            
-        
-        
-        <a href="../files/bridge.js.html#l3763"><code>bridge.js:3763</code></a>
-        
-        </p>
-
-
-        
-
-        
-            <p>可用版本 v6.0</p>
-        
-    </div>
-
-    <div class="description">
-        <p>hybrid从Native读数据</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>参数:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">businessType</code>
-                        <span class="type">Int</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>业务类型，1=公共相关，2=酒店，3=机票，4=支付</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">businessCode</code>
-                        <span class="type">Int</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>hybrid业务方和native开发人员沟通协商定义</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>举例:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>   //调用API
-   CtripBusiness.app_read_data_from_native(1, 10001);
-
-   //回调数据
-   var json_obj = {
-       tagname:&quot;download_data&quot;,
-       error_code:&quot;(-201)从Native读取数据失败&quot;,//error_code,失败的时候才有error_code
-       param: //有param时候，error_code为空
-           {
-               aa:&quot;aa_value&quot;,
-               bb:&quot;bb_value&quot;
-           }
-    };
-
-    app.callback(json_obj);</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
                     <div id="method_app_read_verification_code_from_sms" class="method item">
     <h3 class="name"><code>app_read_verification_code_from_sms</code></h3>
 
@@ -1454,7 +1497,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3547"><code>bridge.js:3547</code></a>
+        <a href="../files/bridge.js.html#l3404"><code>bridge.js:3404</code></a>
         
         </p>
 
@@ -1527,7 +1570,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3338"><code>bridge.js:3338</code></a>
+        <a href="../files/bridge.js.html#l3195"><code>bridge.js:3195</code></a>
         
         </p>
 
@@ -1603,7 +1646,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3688"><code>bridge.js:3688</code></a>
+        <a href="../files/bridge.js.html#l3545"><code>bridge.js:3545</code></a>
         
         </p>
 
@@ -1694,7 +1737,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3289"><code>bridge.js:3289</code></a>
+        <a href="../files/bridge.js.html#l3146"><code>bridge.js:3146</code></a>
         
         </p>
 
@@ -1770,7 +1813,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3215"><code>bridge.js:3215</code></a>
+        <a href="../files/bridge.js.html#l3072"><code>bridge.js:3072</code></a>
         
         </p>
 
@@ -1830,159 +1873,6 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
    }
 
    app.callback(json_obj);</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_app_write_data_to_native" class="method item">
-    <h3 class="name"><code>app_write_data_to_native</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>businessType</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>businessCode</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>jsonParam</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                定义在
-                
-            
-        
-        
-        <a href="../files/bridge.js.html#l3720"><code>bridge.js:3720</code></a>
-        
-        </p>
-
-
-        
-
-        
-            <p>可用版本 v6.0</p>
-        
-    </div>
-
-    <div class="description">
-        <p>hybrid写数据给Native</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>参数:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">businessType</code>
-                        <span class="type">Int</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>业务类型，1=公共相关，2=酒店，3=机票，4=支付</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">businessCode</code>
-                        <span class="type">Int</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>hybrid业务方和native开发人员沟通协商定义</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">jsonParam</code>
-                        <span class="type">JSON</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>需要写的json对象</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>举例:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>   //调用API
-   CtripBusiness.app_write_data_to_native(1, 10001, {aa:&#39;aa_value&#39;,bb:&#39;bb_value&#39;});
-
-   //回调数据
-   var json_obj = {
-       tagname:&quot;download_data&quot;,
-       error_code:&quot;(-201)写数据到Native失败&quot;,//error_code,失败的时候才有error_code
-    };
-
-    app.callback(json_obj);</code></pre>
 
             </div>
         </div>

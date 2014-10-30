@@ -349,79 +349,6 @@ function __bridge_callback(param) {
 };
 
 /**
-  * @description  用于接收native 下发的payment_route 判断调用native或者hybrid支付
-  * @brief  用于接收native 下发的payment_route 判断调用native或者hybrid支付
-  * @param {String} paymentRouteGate native下发的Json字符串 {param:{platform:"",version:"",osVersion:""},tagname:"",payment_route_gate:1,callback:""}
-  * @since 6.0
-  * @method __payment_callback
-  * @author jianggd@Ctrip.com
-  * @example 
-
-  __payment_callback({param:{platform:"ios",version:"6.0",osVersion:""},tagname:"app_getPayDataFromNative",payment_route_gate:1,callback:""});
-  //调用后，会写入native对应bu的跳转路由
-**/
-
-function __payment_callback(paymentRouteGate) {
-    paymentRouteGate = decodeURIComponent(paymentRouteGate);
-    var jsonObj = JSON.parse(paymentRouteGate);
-    if (jsonObj != null) {
-        if (jsonObj.param != null && jsonObj.param.hasOwnProperty("platform")) {
-            var ua = navigator.userAgent;
-            if (ua.indexOf("Youth_CtripWireless") > 0) {
-                Internal.isYouthApp = true
-            }
-            platform = jsonObj.param.platform;
-            var b = typeof platform;
-            if (b == "number") {
-                if (platform == 1 || platform == 2 || platform == 3) {
-                    Internal.isIOS = (platform == 1);
-                    Internal.isAndroid = (platform == 2);
-                    Internal.isWinOS = (platform == 3)
-                }
-            } else {
-                if (b == "string") {
-                    if (platform == "1" || platform == "2" || platform == "3") {
-                        Internal.isIOS = (platform == "1");
-                        Internal.isAndroid = (platform == "2");
-                        Internal.isWinOS = (platform == "3")
-                    }
-                }
-            }
-            Internal.isInApp = true;
-            Internal.appVersion = jsonObj.param.version;
-            Internal.osVersion = jsonObj.param.osVersion
-        }
-        if(jsonObj.tagname == "app_getPayDataFromNative"){
-            if(jsonObj.payment_route_gate){
-                //jump to native
-                var paramString = Internal.makeParamString("Pay","payNative", jsonObj, jsonObj.callback);
-                var url = Internal.makeURLWithParam(paramString);
-                if (Internal.isIOS) {
-                    Internal.loadURL(url);
-                    return;
-                } else {
-                    if (Internal.isAndroid) {
-                        window.Util_a.payNative(paramString);
-                        return;
-                    } else {
-                        if (Internal.isWinOS) {
-                            Internal.callWin8App(paramString);
-                            return;
-                        }
-                    }
-                }
-            }else{
-                //jump to hybrid
-                var n = jsonObj.param;
-                CtripUtil.app_cross_package_href(jsonObj.path, n);
-                return;
-            }
-            return -1;
-        }
-    }
-}
-
-/**
  * @brief app写localstorage
  * @description 写key/value数据到H5页面的local storage
  * @method __writeLocalStorage
@@ -1939,76 +1866,6 @@ var CtripUser = {
         }
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
-        }
-    },
-    
-    /**
-      * @description  用于hybrid bu进入支付时统一调用，用于读取native 中保存的payment_route_[bustype]
-      * @brief  用于hybrid bu进入支付时统一调用，用于读取native 中保存的payment_route_[bustype]
-      * @param {Object} paymentParam bu传递进入支付页面的参数集合{path: "payment2",param: n,callback: "PaymentCallback"}
-
-      * @method app_call_pay
-      * @author jianggd@Ctrip.com
-      * @example 
-
-      CtripPay.app_call_pay({path: "payment2",param: n,callback: "PaymentCallback"});
-      //调用后，会取到对应bu的跳转路由
-    **/
-    app_call_pay: function(paymentParam) {
-        alert(JSON.stringify(paymentParam));
-        var paramString = Internal.makeParamString("Pay","getPayDataFromNative", paymentParam, "app_getPayDataFromNative"),
-            paramJSON = JSON.parse(paramString),
-            urlDic = paramJSON.param.split("?")[1].split("&"),
-            bustype = "";
-        for(var i = 0; i < urlDic.length; i++){
-            var res = urlDic[i].split("="),
-                _key = res[0],
-                _value = res[1];
-            if(_key === "bustype"){
-                bustype = _value;
-                break;
-            }
-        }
-        paramJSON.names = ["payment_route_" + bustype];
-        paramString = JSON.stringify(paramJSON);
-        if (Internal.isIOS) {
-            var url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
-        } else {
-            if (Internal.isAndroid) {
-                window.Util_a.getPayDataFromNative(paramString);
-            } else {
-                if (Internal.isWinOS) {
-                    Internal.callWin8App(paramString)
-                }
-            }
-        }
-    },
-    /**
-      * @description  用于hybrid支付将101下发的payment_route_[bustype] 通知native写入
-      * @brief  用于hybrid支付将101下发的payment_route_[bustype] 通知native写入
-      * @param {Object} paymentRoute 判断跳转hybrid还是native的标识 {payment_route_3001:1}
-      * @since 6.0
-      * @method app_store_data_to_native
-      * @author jianggd@Ctrip.com
-      * @example 
-
-      CtripPay.app_store_data_to_native({payment_route_3001:1});
-      //调用后，会写入native对应bu的跳转路由
-    **/
-    app_store_data_to_native: function(paymentRoute) {
-        var paramString = Internal.makeParamString("Pay","setPayDataToNative", paymentRoute);
-        if (Internal.isIOS) {
-            var url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
-        } else {
-            if (Internal.isAndroid) {
-                window.Util_a.setPayDataToNative(paramString);
-            } else {
-                if (Internal.isWinOS) {
-                    Internal.callWin8App(paramString)
-                }
-            }
         }
     }
  };
@@ -3718,89 +3575,58 @@ var CtripBusiness = {
     },
 
     /**
-     * @description hybrid写数据给Native
-     * @brief hybrid写数据给Native
-     * @method app_write_data_to_native
-     * @param {int} businessType 业务类型，1=公共相关，2=酒店，3=机票，4=支付
-     * @param {int} businessCode hybrid业务方和native开发人员沟通协商定义
+     * @description hybrid调用Native业务API通用管道
+     * @brief  hybrid调用Native业务API通用管道
+     * @method app_do_business_job
+     * @param {int} businessType 业务类型，1=公共相关，2=酒店，3=机票，4=支付,5=火车票,6=攻略
+     * @param {String} businessCode hybrid业务方和native开发人员沟通协商定义
      * @param {JSON} jsonParam 需要写的json对象
+     * @param {int} sequenceId 调用的序列号，执行该任务的时候，如果native是异步处理的，hybrid需要设置该值,可以取当前timestamp. native处理完成，会在param里面带回该字段
      * @author jimzhao
      * @since v6.0
      * @example
      *
      * 
         //调用API
-        CtripBusiness.app_write_data_to_native(1, 10001, {aa:'aa_value',bb:'bb_value'});
+        CtripBusiness.app_do_business_job(1, 10001, {aa:'aa_value',bb:'bb_value'}, 1111111);
 
         //回调数据
         var json_obj = {
             tagname:"download_data",
-            error_code:"(-201)写数据到Native失败",//error_code,失败的时候才有error_code
+            error_code:"(-201) businessType不支持",//error_code,失败的时候才有error_code
+            param:{
+                sequenceId:1111111,
+                xxbusinessObj:{}, //自定义数据
+                yy:32232332       //自定义数据
+
+            }//param内容不固定，native／hybrid人员定义
          };
+
+        // error_code定义：
+        // (-201) businessType不支持
+        // (-202) businessCode不支持
+        // (-203) 业务处理失败
+        // (-204)＋其它业务自定义错误
 
          app.callback(json_obj);
      */
-    app_write_data_to_native:function(businessType, businessCode, jsonParam) {
+    app_do_business_job:function(businessType, businessCode, jsonParam, sequenceId) {
         if (!Internal.isSupportAPIWithVersion("6.0")) {
             return;
         }
+
         var params = {};
         params.businessType = businessType;
         params.businessCode = businessCode;
         params.jsonParam = jsonParam;
+        params.sequenceId = sequenceId;
 
-        var paramString = Internal.makeParamString("Business", "writeDataToNative", params, "write_data_to_native");
+        var paramString = Internal.makeParamString("Business", "doBusinessJob", params, "do_business_job");
         if (Internal.isIOS) {
             var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
-            window.Business_a.writeDataToNative(paramString);
-        } else if (Internal.isWinOS) {
-            Internal.callWin8App(paramString);
-        }
-    },
-
-    /**
-     * @description hybrid从Native读数据
-     * @brief hybrid从Native读数据
-     * @method app_read_data_from_native
-     * @param {int} businessType 业务类型，1=公共相关，2=酒店，3=机票，4=支付
-     * @param {int} businessCode hybrid业务方和native开发人员沟通协商定义
-     * @author jimzhao
-     * @since v6.0
-     * @example
-     *
-     * 
-        //调用API
-        CtripBusiness.app_read_data_from_native(1, 10001);
-  
-        //回调数据
-        var json_obj = {
-            tagname:"download_data",
-            error_code:"(-201)从Native读取数据失败",//error_code,失败的时候才有error_code
-            param: //有param时候，error_code为空
-                {
-                    aa:"aa_value",
-                    bb:"bb_value"
-                }
-         };
-
-         app.callback(json_obj);
-     */
-    app_read_data_from_native:function(businessType, businessCode) {
-        if (!Internal.isSupportAPIWithVersion("6.0")) {
-            return;
-        }
-        var params = {};
-        params.businessType = businessType;
-        params.businessCode = businessCode;
-
-        var paramString = Internal.makeParamString("Business", "readDataFromNative", params, "read_data_from_native");
-        if (Internal.isIOS) {
-            var url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
-        } else if (Internal.isAndroid) {
-            window.Business_a.readDataFromNative(paramString);
+            window.Business_a.doBusinessJob(paramString);
         } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
