@@ -289,7 +289,9 @@ var Internal = {
 //     }
 };
 
-var console;
+var systemConsole = console;
+
+var console = systemConsole;
 
 var CtripConsole = {
     
@@ -358,9 +360,6 @@ function __bridge_callback(param) {
             else if (Internal.isIOS) {
                 console = CtripConsole;
             } 
-            else {
-                console = console;//系统console
-            }
 
             Internal.isInApp = true;
             Internal.appVersion = jsonObj.param.version;
@@ -1989,7 +1988,7 @@ var CtripUser = {
             }
         }
     }
-    
+
  };
 
 /**
