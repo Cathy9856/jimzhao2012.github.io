@@ -91,9 +91,9 @@ function fnErrorTrap(sMsg,sUrl,sLine){
           } 
           else if (tagname == "locate") {
             var vd = jsonObj.param.sequenceId;
-            console.log(vd);
+            // console.log(vd);
             var typePf = typeof vd;
-            console.log(typePf);
+            // console.log(typePf);
             alert(typePf);
             if(jsonObj.param.sequenceId == "22222222") {
                 CtripMap.app_stop_locate("22222222");  
