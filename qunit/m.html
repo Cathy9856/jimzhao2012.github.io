@@ -24,13 +24,21 @@
   <script type="text/javascript">
 
 console = new Object();
+
 console.log = function(log) {
-  var iframe = document.createElement("IFRAME");
-  iframe.setAttribute("src", "ios-log:#iOS#" + log);
-  document.documentElement.appendChild(iframe);
-  iframe.parentNode.removeChild(iframe);
-  iframe = null;    
+    var iframe = document.createElement("iframe");
+    var cont = document.body || document.documentElement;
+
+    iframe.style.display = "none";
+    iframe.setAttribute("src", "ios-log:#iOS#" + log);
+    cont.appendChild(iframe);
+
+    setTimeout(function(){
+        iframe.parentNode.removeChild(iframe);
+        iframe = null;
+    }, 200);
 };
+
 console.debug = console.log;
 console.info = console.log;
 console.warn = console.log;
@@ -86,7 +94,7 @@ function fnErrorTrap(sMsg,sUrl,sLine){
             console.log(vd);
             var typePf = typeof vd;
             console.log(typePf);
-            
+
             if(jsonObj.param.sequenceId == "22222222") {
                 CtripMap.app_stop_locate("22222222");  
                 alert("xxx["+jsonobj.param.sequenceId);
@@ -372,7 +380,7 @@ var showPOIIndex = 0;
 <ul class="ul1">
    <li class="li2"><a onclick='javascript:CtripMap.app_locate(12,true, true, "33333333")'>定位5.10_CtripCityF</a></li>
   <br/>
-  <li class="li2"><a onclick='javascript:CtripMap.app_locate(12,true, true, "22222222")'>定位5.10_获取经纬度后stopD</a></li>
+  <li class="li2"><a onclick='javascript:CtripMap.app_locate(12,true, true, "22222222")'>定位5.10_获取经纬度后stopG</a></li>
   <br/>
    <li class="li2"><a onclick='javascript:CtripBusiness.app_call_system_share("../wb_cache/tour/D7F47A20242D510B0F1C5FDF1C67D2E5.jpg",  "都有自己在后台的常驻时间，即：假如一个浏览器他在被切走之后，后台常驻10s，那么我们设置定时器5s过期就是徒劳的，而且5s的定时器，用户要空等5s！交互也不让你这样干啊！最后我们想到了pageshow和pagehide事件，即如果浏览器被切走到了要打开的app，应该会触发浏览器的pagehide事件，而从app重新返回到浏览器，就会触发pageshow方法。但是经过代码测试发现，在uc、chrome中，不会触发pagehide和pageshow的方法，而在safari中可以的", "这是标题", "",false)'>App分享图片 API-LONG</a></li>
   <br/>
