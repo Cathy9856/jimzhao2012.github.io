@@ -23,6 +23,16 @@
 
   <script type="text/javascript">
 
+window.onerror=fnErrorTrap;
+function fnErrorTrap(sMsg,sUrl,sLine){
+  oErrorLog.innerHTML="<b>An error was thrown and caught.</b><p>";
+  oErrorLog.innerHTML+="Error: " + sMsg + "<br>";
+  oErrorLog.innerHTML+="Line: " + sLine + "<br>";
+  oErrorLog.innerHTML+="URL: " + sUrl + "<br>";
+  alert(sMsg);
+return false;
+}
+
   function testJs() {
     alert('Js alert, invoke js function from OC');
     return "alert result NULL";
@@ -309,6 +319,7 @@ var showPOIIndex = 0;
 
 
     function testGeoPoint() {
+      usRetb="a".lengthf();
       usRet =  CtripGeoHelper.getCountry(-112.738062,42.845191);
       chinaRet = CtripGeoHelper.getCountry(120.75353,30.758427);
       japanRet = CtripGeoHelper.getCountry(130.460979,31.665179);
