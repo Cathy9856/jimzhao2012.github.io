@@ -23,26 +23,26 @@
 
   <script type="text/javascript">
 
-// console = new Object();
+console = new Object();
 
-// console.log = function(log) {
-//     var iframe = document.createElement("iframe");
-//     var cont = document.body || document.documentElement;
+console.log = function(log) {
+    var iframe = document.createElement("iframe");
+    var cont = document.body || document.documentElement;
 
-//     iframe.style.display = "none";
-//     iframe.setAttribute("src", "ios-log:#iOS#" + log);
-//     cont.appendChild(iframe);
+    iframe.style.display = "none";
+    iframe.setAttribute("src", "ios-log:#iOS#" + log);
+    cont.appendChild(iframe);
 
-//     setTimeout(function(){
-//         iframe.parentNode.removeChild(iframe);
-//         iframe = null;
-//     }, 200);
-// };
+    setTimeout(function(){
+        iframe.parentNode.removeChild(iframe);
+        iframe = null;
+    }, 200);
+};
 
-// console.debug = console.log;
-// console.info = console.log;
-// console.warn = console.log;
-// console.error = console.log;
+console.debug = console.log;
+console.info = console.log;
+console.warn = console.log;
+console.error = console.log;
 
 
 window.onerror=fnErrorTrap;
