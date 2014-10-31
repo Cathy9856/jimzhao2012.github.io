@@ -116,7 +116,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l1802"><code>bridge.js:1802</code></a>
+            定义在: <a href="../files/bridge.js.html#l1837"><code>bridge.js:1837</code></a>
         </div>
     
 
@@ -158,6 +158,8 @@
                     <table>
                     <tr><th>描述</th><th>函数</th></tr>
                     
+                    <tr><td>用于hybrid bu进入支付时统一调用，用于读取native 中保存的payment_route_[bustype]</td><td><a href="#method_app_call_pay">app_call_pay</a></td></tr>
+                    
                     <tr><td>检查支付相关App安装情况</td><td><a href="#method_app_check_pay_app_install_status">app_check_pay_app_install_status</a></td></tr>
                     
                     <tr><td>根据URL打开支付App</td><td><a href="#method_app_open_pay_app_by_url">app_open_pay_app_by_url</a></td></tr>
@@ -166,6 +168,12 @@
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -193,6 +201,105 @@
         
             <div id="methods" class="api-class-tabpanel">
                 <h2 class="off-left">方法</h2>
+
+                
+                    <div id="method_app_call_pay" class="method item">
+    <h3 class="name"><code>app_call_pay</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>paymentParam</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l1943"><code>bridge.js:1943</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>用于hybrid bu进入支付时统一调用，用于读取native 中保存的payment<em>route</em>[bustype]</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">paymentParam</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>bu传递进入支付页面的参数集合{path: &quot;payment2&quot;,param: n,callback: &quot;PaymentCallback&quot;}</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code> CtripPay.app_call_pay({path: &quot;payment2&quot;,param: n,callback: &quot;PaymentCallback&quot;});
+ //调用后，会取到对应bu的跳转路由</code></pre>
+
+            </div>
+        </div>
+    
+</div>
 
                 
                     <div id="method_app_check_pay_app_install_status" class="method item">
@@ -227,7 +334,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l1809"><code>bridge.js:1809</code></a>
+        <a href="../files/bridge.js.html#l1844"><code>bridge.js:1844</code></a>
         
         </p>
 
@@ -335,7 +442,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l1851"><code>bridge.js:1851</code></a>
+        <a href="../files/bridge.js.html#l1886"><code>bridge.js:1886</code></a>
         
         </p>
 

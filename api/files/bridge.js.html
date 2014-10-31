@@ -284,6 +284,10 @@ var Internal = {
      * @since v5.2
      */
     loadURL:function(url) {
+        if (url.length == 0) {
+            return;
+        }
+
         var iframe = document.createElement(&quot;iframe&quot;);
         var cont = document.body || document.documentElement;
 
@@ -399,6 +403,31 @@ var Internal = {
 //     }
 };
 
+var console;
+
+var CtripConsole = {
+    
+    log:function(log) {
+        Internal.loadURL(&quot;ios-log:#iOS#Log:&quot; + log);
+    },
+    
+    debug:function(log) {
+        Internal.loadURL(&quot;ios-log:#iOS#Debug:&quot; + log);
+    },
+    
+    info:function(log) {
+        Internal.loadURL(&quot;ios-log:#iOS#Info:&quot; + log);
+    },
+    
+    warn:function(log) {
+        Internal.loadURL(&quot;ios-log:#iOS#warn:&quot; + log);
+    },
+
+    error:function(log) {
+        Internal.loadURL(&quot;ios-log:#iOS#Error:&quot; + log);
+    }
+};
+
 /**
  * @brief app回调bridge.js
  * @description 将native的callback数据转换给H5页面的app.callback(JSON)
@@ -440,6 +469,12 @@ function __bridge_callback(param) {
             if (Internal.isWinOS) {
                 navigator.window.winPhoneUserAgent = navigator.window.userAgent+&quot;CtripWireless&quot;;                 
             }
+            else if (Internal.isIOS) {
+                console = ios_console;
+            } 
+            else {
+                console = console;//系统console
+            }
 
             Internal.isInApp = true;
             Internal.appVersion = jsonObj.param.version;
@@ -466,9 +501,9 @@ function __bridge_callback(param) {
 function __payment_callback(paymentRouteGate) {
     paymentRouteGate = decodeURIComponent(paymentRouteGate);
     var jsonObj = JSON.parse(paymentRouteGate);
-    
+   
     if (jsonObj != null) {
-        if(jsonObj.tagname == &quot;app_getPayDataFromNative&quot;){
+        if(jsonObj.tagname == &quot;call_pay&quot;){
             if(jsonObj.payment_route_gate){
                 //jump to native
                 var paramString = Internal.makeParamString(&quot;Pay&quot;,&quot;payNative&quot;, jsonObj, jsonObj.callback);
@@ -2017,7 +2052,58 @@ var CtripUser = {
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
+    },
+
+    /**
+      * @description  用于hybrid bu进入支付时统一调用，用于读取native 中保存的payment_route_[bustype]
+      * @brief  用于hybrid bu进入支付时统一调用，用于读取native 中保存的payment_route_[bustype]
+      * @param {Object} paymentParam bu传递进入支付页面的参数集合{path: &quot;payment2&quot;,param: n,callback: &quot;PaymentCallback&quot;}
+ 
+      * @method app_call_pay
+      * @author jianggd@Ctrip.com
+      * @example
+ 
+      CtripPay.app_call_pay({path: &quot;payment2&quot;,param: n,callback: &quot;PaymentCallback&quot;});
+      //调用后，会取到对应bu的跳转路由
+    **/
+    app_call_pay: function(paymentParam) {
+        paymentParam = paymentParam || {};
+        paymentParam.param = paymentParam.param || &quot;&quot;;
+        if(typeof(paymentParam.param) != &quot;string&quot;){
+            return;
+        }
+        var _urlParam = paymentParam.param.split(&quot;?&quot;)[1] || &quot;&quot;;
+        var _urlDic = _urlParam.split(&quot;&amp;&quot;) || [];
+        var _bustype = &quot;&quot;;
+ 
+        for(var i = 0; i &lt; _urlDic.length; i++){
+           var _res = _urlDic[i].split(&quot;=&quot;) || [];
+           var _key = _res[0];
+           var _value = _res[1];
+           if(_key === &quot;bustype&quot;){
+               _bustype = _value;
+               break;
+           }
+        }
+ 
+        paymentParam.names = [&quot;payment_route_&quot; + _bustype];
+ 
+        var paramString = Internal.makeParamString(&quot;Pay&quot;,&quot;callPay&quot;, paymentParam, &quot;call_pay&quot;);
+   
+        if (Internal.isIOS) {
+            var url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else {
+            if (Internal.isAndroid) {
+                window.Util_a.callPay(paramString);
+            } else {
+                if (Internal.isWinOS) {
+                    Internal.callWin8App(paramString)
+                }
+            }
+        }
     }
+    
  };
 
 /**
@@ -2967,13 +3053,13 @@ var CtripMap = {
      * @param {int} timeout 定位timeout，设置timeout&lt;=1或者timeout&gt;=60,都会默认设置为15s
      * @param {Boolean} isNeedCtripCity 是否需要携程的城市定位，如果需要，会返回酒店&amp;攻略的城市ID信息
      * @param {Boolean} isForceLocate 是否强制定位，如果是强制定位，native会发起定位，不用缓存中的数据 v6.0加入
-     * @param {int} sequenceId 定位是异步调用，调用的时候传入该字段，取消的时候，可以根据该sequenceId取消/停止定位 v6.0加入
+     * @param {String} sequenceId 定位是异步调用，调用的时候传入该字段，取消的时候，可以根据该sequenceId取消/停止定位 v6.0加入
      * @method app_locate
      * @author jimzhao
      * @since v5.1
      * @example
         //调用定位
-        CtripUtil.app_locate(true);
+        CtripUtil.app_locate(15, true, true, &quot;222222&quot;);
 
         //0. 定位失败－－5.10加入
         var json_obj = {
@@ -3063,13 +3149,13 @@ var CtripMap = {
     /**
      * @description 停止定位定位，传入定位app_locate时候，传递过去的sequenceId
      * @brief 停止定位
-     * @param {int} sequenceId 定位app_locate时候，传递过去的sequenceId
+     * @param {String} sequenceId 定位app_locate时候，传递过去的sequenceId
      * @method app_stop_locate
      * @author jimzhao
      * @since v6.0
         
         //使用
-        CtripMap.app_stop_locate();
+        CtripMap.app_stop_locate(&quot;222222&quot;);
 
      */
     app_stop_locate:function(sequenceId) {
@@ -3810,7 +3896,7 @@ var CtripBusiness = {
      * @param {int} businessType 业务类型，1=公共相关，2=酒店，3=机票，4=支付,5=火车票,6=攻略
      * @param {String} businessCode 业务方hybrid和native开发人员协商定义
      * @param {JSON} jsonParam hybrid传给Native的数据，JSON对象
-     * @param {int} sequenceId 调用的序列号，调用该API时，如果native需要异步处理(比如发送网络请求)的，hybrid需要设置该值,可以取当前timestamp. native处理完成，会在回调的数据里面带回该字段
+     * @param {String} sequenceId 调用的序列号，调用该API时，如果native需要异步处理(比如发送网络请求)的，hybrid需要设置该值,可以取当前timestamp. native处理完成，会在回调的数据里面带回该字段
      * @author jimzhao
      * @since v6.0
      * @example
@@ -3821,10 +3907,10 @@ var CtripBusiness = {
 
         //回调数据
         var json_obj = {
-            tagname:&quot;download_data&quot;,
+            tagname:&quot;do_business_job&quot;,
             error_code:&quot;(-201) businessType不支持&quot;,//error_code,失败的时候才有error_code
             param:{
-                sequenceId:1111111,
+                sequenceId:&quot;1111111&quot;,
                 xxbusinessObj:{}, //自定义数据
                 yy:32232332       //自定义数据
 
