@@ -90,8 +90,8 @@ function fnErrorTrap(sMsg,sUrl,sLine){
             CtripUtil.app_open_url("ctrip://wireless/myctrip/", 1);
           } 
           else if (tagname == "locate") {
-            var gad = jsonObj.param.sequenceId;
-            alert(gad);
+            var gad = jsonobj.param.sequenceId;
+            alert(typeof gad);
             // CtripMap.app_stop_locate("22222222");  
 
             if(jsonObj.param.sequenceId == "22222222") {
