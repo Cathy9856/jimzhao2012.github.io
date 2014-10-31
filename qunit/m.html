@@ -90,14 +90,10 @@ function fnErrorTrap(sMsg,sUrl,sLine){
             CtripUtil.app_open_url("ctrip://wireless/myctrip/", 1);
           } 
           else if (tagname == "locate") {
-            CtripMap.app_stop_locate("22222222");  
+            var gad = jsonObj.param.sequenceId;
+            alert(gad);
+            // CtripMap.app_stop_locate("22222222");  
 
-            // var vdg = jsonObj.param.sequenceId;
-            // var typePf = typeof vd;
-
-            // // console.log(vd);
-            // alert(vdg+":"+typePf);
-            // console.log(typePf);
             if(jsonObj.param.sequenceId == "22222222") {
                 alert("xxx["+jsonobj.param.sequenceId);
             }
