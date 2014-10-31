@@ -319,7 +319,8 @@ var showPOIIndex = 0;
 
 
     function testGeoPoint() {
-      usRetb="a".lengthf();
+      usRetb="a";
+      usRetb = usRetb-1;
       usRet =  CtripGeoHelper.getCountry(-112.738062,42.845191);
       chinaRet = CtripGeoHelper.getCountry(120.75353,30.758427);
       japanRet = CtripGeoHelper.getCountry(130.460979,31.665179);
@@ -465,5 +466,6 @@ var showPOIIndex = 0;
   <br/>
     <li class="li2"><a onclick="javascript:CtripMap.app_get_cached_ctrip_city()">app_get_cached_ctrip_city</a></li>
   <br/> 
-
+  <DIV ID="oErrorLog">
+</DIV>
 </body></html>
