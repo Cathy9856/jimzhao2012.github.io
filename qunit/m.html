@@ -23,6 +23,20 @@
 
   <script type="text/javascript">
 
+console = new Object();
+console.log = function(log) {
+  var iframe = document.createElement("IFRAME");
+  iframe.setAttribute("src", "ios-log:#iOS#" + log);
+  document.documentElement.appendChild(iframe);
+  iframe.parentNode.removeChild(iframe);
+  iframe = null;    
+};
+console.debug = console.log;
+console.info = console.log;
+console.warn = console.log;
+console.error = console.log;
+
+
 window.onerror=fnErrorTrap;
 function fnErrorTrap(sMsg,sUrl,sLine){
   oErrorLog.innerHTML="<b>An error was thrown and caught.</b><p>";
@@ -30,7 +44,7 @@ function fnErrorTrap(sMsg,sUrl,sLine){
   oErrorLog.innerHTML+="Line: " + sLine + "<br>";
   oErrorLog.innerHTML+="URL: " + sUrl + "<br>";
   alert(sMsg);
-return false;
+  return false;
 }
 
   function testJs() {
@@ -68,6 +82,11 @@ return false;
             CtripUtil.app_open_url("ctrip://wireless/myctrip/", 1);
           } 
           else if (tagname == "locate") {
+            var vd = jsonObj.param.sequenceId;
+            console.log(vd);
+            var typePf = typeof vd;
+            console.log(typePf);
+            
             if(jsonObj.param.sequenceId == "22222222") {
                 CtripMap.app_stop_locate("22222222");  
                 alert("xxx["+jsonobj.param.sequenceId);
