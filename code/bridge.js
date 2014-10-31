@@ -356,7 +356,7 @@ function __bridge_callback(param) {
                 navigator.window.winPhoneUserAgent = navigator.window.userAgent+"CtripWireless";                 
             }
             else if (Internal.isIOS) {
-                console = ios_console;
+                console = CtripConsole;
             } 
             else {
                 console = console;//系统console
