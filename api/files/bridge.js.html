@@ -3043,34 +3043,21 @@ var CtripMap = {
      */
     app_locate:function(timeout, isNeedCtripCity, isForceLocate, sequenceId) {
         var params = {};
-        alert(&quot;aa&quot;);
         params.timeout = timeout;
         params.isNeedCtripCity = isNeedCtripCity;
         params.isForceLocate = isForceLocate;
         params.sequenceId = sequenceId;
-        alert(&quot;bb&quot;);
-
         var paramString = Internal.makeParamString(&quot;Locate&quot;, &quot;locate&quot;, params, &#x27;locate&#x27;)
-                alert(&quot;cc&quot;);
-
         if (Internal.isIOS) {
-                    alert(&quot;dd&quot;);
-
             var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
-                    alert(&quot;ee&quot;);
-
             window.Locate_a.locate(paramString);
         }
         else if (Internal.isWinOS) {
-                                alert(&quot;ff&quot;);
-
             Internal.callWin8App(paramString);
         }
-                            alert(&quot;gg&quot;);
-
     },
 
     /**

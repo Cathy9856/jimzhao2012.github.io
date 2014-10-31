@@ -2929,34 +2929,21 @@ var CtripMap = {
      */
     app_locate:function(timeout, isNeedCtripCity, isForceLocate, sequenceId) {
         var params = {};
-        alert("aa");
         params.timeout = timeout;
         params.isNeedCtripCity = isNeedCtripCity;
         params.isForceLocate = isForceLocate;
         params.sequenceId = sequenceId;
-        alert("bb");
-
         var paramString = Internal.makeParamString("Locate", "locate", params, 'locate')
-                alert("cc");
-
         if (Internal.isIOS) {
-                    alert("dd");
-
             var url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
-                    alert("ee");
-
             window.Locate_a.locate(paramString);
         }
         else if (Internal.isWinOS) {
-                                alert("ff");
-
             Internal.callWin8App(paramString);
         }
-                            alert("gg");
-
     },
 
     /**
