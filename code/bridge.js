@@ -289,9 +289,10 @@ var Internal = {
 //     }
 };
 
-var systemConsole = console;
+var originalConsole = console;
 
-var console = systemConsole;
+var console = originalConsole;
+
 
 var CtripConsole = {
     
@@ -417,6 +418,7 @@ function __payment_callback(paymentRouteGate) {
         }
     }
 };
+ 
 
 /**
  * @brief app写localstorage
