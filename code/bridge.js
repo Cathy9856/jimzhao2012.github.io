@@ -1982,7 +1982,7 @@ var CtripUser = {
             Internal.loadURL(url);
         } else {
             if (Internal.isAndroid) {
-                window.Util_a.callPay(paramString);
+                window.Pay_a.callPay(paramString);
             } else {
                 if (Internal.isWinOS) {
                     Internal.callWin8App(paramString)
