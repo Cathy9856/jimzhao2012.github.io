@@ -399,7 +399,7 @@ function __payment_callback(paymentRouteGate) {
                     return;
                 } else {
                     if (Internal.isAndroid) {
-                        window.Util_a.payNative(paramString);
+                        window.Pay_a.payNative(paramString);
                         return;
                     } else {
                         if (Internal.isWinOS) {
