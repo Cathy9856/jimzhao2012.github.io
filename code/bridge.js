@@ -1168,7 +1168,7 @@ var CtripUtil = {
      /**
      * @description 选取图片/拍摄照片，返回图片base64字符串
      * @brief 选择图片/拍摄照片
-     * @param {int} maxFileSize 选择的单张图片的最大文件大小，单位是bit，默认200*1024
+     * @param {int} maxFileSize 选择的单张图片的最大文件大小，native会将图片做JPEG压缩到maxFileSize的范围内，单位是bit，默认200*1024
      * @param {int} maxPhotoCount 最多支持选择的图片个数,默认为1张，此时不显示多选
      * @param {JSON} meta 图片选取相关配置信息，5.8新增，5.8版本开始支持1个key， canEditSinglePhoto:单选能否编辑
      * @method app_choose_photo
