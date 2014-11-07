@@ -1166,9 +1166,9 @@ var CtripUtil = {
     },
 
      /**
-     * @description 选取图片/拍摄照片，base64返回图片
-     * @brief 打开Hybrid广告页面
-     * @param {int} maxFileSize 最大的图片文件大小，单位是bit，默认200*1024
+     * @description 选取图片/拍摄照片，返回图片base64字符串
+     * @brief 选择图片/拍摄照片
+     * @param {int} maxFileSize 选择的单张图片的最大文件大小，单位是bit，默认200*1024
      * @param {int} maxPhotoCount 最多支持选择的图片个数,默认为1张，此时不显示多选
      * @param {JSON} meta 图片选取相关配置信息，5.8新增，5.8版本开始支持1个key， canEditSinglePhoto:单选能否编辑
      * @method app_choose_photo
@@ -1181,7 +1181,7 @@ var CtripUtil = {
        meta.canEditSinglePhoto = true;
        CtripUtil.app_choose_photo(200*1024, 1, meta);
         
-       //选择多张图片
+       //选择2张图片，单张图片大小限制200KB
        CtripUtil.app_choose_photo(200*1024, 2);
         
        //调用完成之后，返回的数据格式
@@ -1202,8 +1202,6 @@ var CtripUtil = {
         }
 
         app.callback(json_obj);
-
-
      
      */
     app_choose_photo:function(maxFileSize, maxPhotoCount, meta) {
