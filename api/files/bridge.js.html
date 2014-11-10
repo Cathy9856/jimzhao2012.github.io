@@ -421,7 +421,7 @@ var CtripConsole = {
     
     debug:function(log) {
         if (Internal.isWinOS) {
-            Internal.callWin8App(&quot;wp-log:#wp#Debug:&quot;+paramString);
+            Internal.callWin8App(&quot;wp-log:#wp#Debug:&quot;+log);
         } 
         else if (Internal.isIOS) {
             Internal.loadURL(&quot;ios-log:#iOS#Debug:&quot; + log);
@@ -430,7 +430,7 @@ var CtripConsole = {
     
     info:function(log) {
         if (Internal.isWinOS) {
-            Internal.callWin8App(&quot;wp-log:#wp#info:&quot;+paramString);
+            Internal.callWin8App(&quot;wp-log:#wp#info:&quot;+log);
         } 
         else if (Internal.isIOS) {
             Internal.loadURL(&quot;ios-log:#iOS#Info:&quot; + log);
@@ -439,7 +439,7 @@ var CtripConsole = {
     
     warn:function(log) {
        if (Internal.isWinOS) {
-            Internal.callWin8App(&quot;wp-log:#wp#warn:&quot;+paramString);
+            Internal.callWin8App(&quot;wp-log:#wp#warn:&quot;+log);
         } 
         else if (Internal.isIOS) {
             Internal.loadURL(&quot;ios-log:#iOS#warn:&quot; + log);
@@ -448,7 +448,7 @@ var CtripConsole = {
 
     error:function(log) {
         if (Internal.isWinOS) {
-            Internal.callWin8App(&quot;wp-log:#wp#Error:&quot;+paramString);
+            Internal.callWin8App(&quot;wp-log:#wp#Error:&quot;+log);
         } 
         else if (Internal.isIOS) {
             Internal.loadURL(&quot;ios-log:#iOS#Error:&quot; + log);
