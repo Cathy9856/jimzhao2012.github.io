@@ -385,12 +385,10 @@ function __bridge_callback(param) {
             Internal.osVersion = jsonObj.param.osVersion;
 
             if (Internal.isWinOS) {
-                window.navigator.userAgent.winPhoneUserAgent = window.navigator.userAgent+"_CtripWireless_"+Internal.appVersion;                 
+                window.navigator.userAgent.winPhoneUserAgent = window.navigator.userAgent+"_CtripWireless_"+Internal.appVersion; 
+                console = CtripConsole;                
             }
             else if (Internal.isIOS) {
-                console = CtripConsole;
-            } 
-            else if (Internal.isWinOS) {
                 console = CtripConsole;
             }
         }
