@@ -412,7 +412,7 @@ var CtripConsole = {
     
     log:function(log) {
         if (Internal.isWinOS) {
-            Internal.callWin8App(&quot;wp-log:#wp#Log:&quot;+paramString);
+            Internal.callWin8App(&quot;wp-log:#wp#Log:&quot;+log);
         }
          else if (Internal.isIOS) {
             Internal.loadURL(&quot;ios-log:#iOS#Log:&quot; + log);            
