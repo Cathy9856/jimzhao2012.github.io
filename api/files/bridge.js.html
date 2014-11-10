@@ -927,8 +927,10 @@ var CtripUtil = {
      var json_obj = 
      {
         tagname:&quot;check_network_status&quot;,
-        hasNetwork:true,//布尔值返回是否有网络
-        networkType:&quot;4G&quot;, //5.8开始加入， None-无网络, 2G-蜂窝数据网EDGE/GPRS, 3G-蜂窝数据网HSPDA,CDMAVOD, 4G-LTE(4G为5.9加入), WIFI-WLAN网络
+        param = {
+            hasNetwork:true,//布尔值返回是否有网络
+            networkType:&quot;4G&quot;, //5.8开始加入， None-无网络, 2G-蜂窝数据网EDGE/GPRS, 3G-蜂窝数据网HSPDA,CDMAVOD, 4G-LTE(4G为5.9加入), WIFI-WLAN网络    
+        }
      }
      app.callback(json_obj);
      
@@ -962,7 +964,9 @@ var CtripUtil = {
      var json_obj = 
      {
         tagname:&quot;check_app_install_status&quot;,
-        isInstalledApp:true,//布尔值返回是否有安装
+        param: {
+            isInstalledApp:true,//布尔值返回是否有安装    
+        }
      }
      app.callback(json_obj);
      */
@@ -1147,7 +1151,9 @@ var CtripUtil = {
         var json_obj = 
         {
             tagname:&quot;read_copied_string_from_clipboard&quot;,
-            copiedString:&quot;words_copied_xxxxxx&quot;;
+            param: {
+                copiedString:&quot;words_copied_xxxxxx&quot;;
+            }
         }
         app.callback(json_obj);
      */
@@ -1186,7 +1192,10 @@ var CtripUtil = {
      var json_obj = {
         tagname:&quot;download_data&quot;,
         error_code:&quot;xxxxx&quot;,//param_error,download_faild
-        param:{downloadUrl:&quot;http://www.baidu.com/bdlogo.gif&quot;, savedPath:&quot;../wb_cache/pkg_name/md5_url_hash&quot;, false}
+        param:{
+            downloadUrl:&quot;http://www.baidu.com/bdlogo.gif&quot;, 
+            savedPath:&quot;../wb_cache/pkg_name/md5_url_hash&quot;
+        }
      };
      app.callback(json_obj);
      */
@@ -3754,7 +3763,10 @@ var CtripBusiness = {
         调用之后，返回数据
 
         var json_obj = {
-            verificationCode = &quot;8890&quot;
+            tagname = &quot;read_verification_code_from_sms&quot;,
+            param: {
+                verificationCode = &quot;8890&quot;
+            }
         };
 
         app.callback(json_obj);
@@ -3806,43 +3818,6 @@ var CtripBusiness = {
         } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
-    },
-
-
-     /**
-     * @description 检查渠道包信息
-     * @brief 检查渠道包信息
-     * @method app_check_app_package_info
-     * @callback check_app_package_info
-     * @since v5.8
-     * @author jimzhao
-     * @example 
-
-        CtripBusiness.app_check_android_package_info();
-        //调用之后，app返回
-        var json_obj = {
-            isHideAdv:true,
-            isHideAppRecommend:true
-        };
-
-        app.callback(json_obj);
-     */
-    app_check_app_package_info:function() {
-        if (!Internal.isSupportAPIWithVersion(&quot;5.8&quot;)) {
-            return;
-        }
-
-        var paramString = Internal.makeParamString(&quot;Business&quot;, &quot;checkAppPackageInfo&quot;, params, &quot;check_app_package_info&quot;);
-
-        if (Internal.isIOS) {
-            var url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
-        } else if (Internal.isAndroid) {
-            window.Business_a.checkAndroidPackageInfo(paramString);
-        } else if (Internal.isWinOS) {
-            Internal.callWin8App(paramString);
-        }
-
     },
 
     /**

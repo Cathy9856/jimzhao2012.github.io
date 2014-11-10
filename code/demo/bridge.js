@@ -813,8 +813,10 @@ var CtripUtil = {
      var json_obj = 
      {
         tagname:"check_network_status",
-        hasNetwork:true,//布尔值返回是否有网络
-        networkType:"4G", //5.8开始加入， None-无网络, 2G-蜂窝数据网EDGE/GPRS, 3G-蜂窝数据网HSPDA,CDMAVOD, 4G-LTE(4G为5.9加入), WIFI-WLAN网络
+        param = {
+            hasNetwork:true,//布尔值返回是否有网络
+            networkType:"4G", //5.8开始加入， None-无网络, 2G-蜂窝数据网EDGE/GPRS, 3G-蜂窝数据网HSPDA,CDMAVOD, 4G-LTE(4G为5.9加入), WIFI-WLAN网络    
+        }
      }
      app.callback(json_obj);
      
@@ -848,7 +850,9 @@ var CtripUtil = {
      var json_obj = 
      {
         tagname:"check_app_install_status",
-        isInstalledApp:true,//布尔值返回是否有安装
+        param: {
+            isInstalledApp:true,//布尔值返回是否有安装    
+        }
      }
      app.callback(json_obj);
      */
@@ -1033,7 +1037,9 @@ var CtripUtil = {
         var json_obj = 
         {
             tagname:"read_copied_string_from_clipboard",
-            copiedString:"words_copied_xxxxxx";
+            param: {
+                copiedString:"words_copied_xxxxxx";
+            }
         }
         app.callback(json_obj);
      */
@@ -1072,7 +1078,10 @@ var CtripUtil = {
      var json_obj = {
         tagname:"download_data",
         error_code:"xxxxx",//param_error,download_faild
-        param:{downloadUrl:"http://www.baidu.com/bdlogo.gif", savedPath:"../wb_cache/pkg_name/md5_url_hash", false}
+        param:{
+            downloadUrl:"http://www.baidu.com/bdlogo.gif", 
+            savedPath:"../wb_cache/pkg_name/md5_url_hash"
+        }
      };
      app.callback(json_obj);
      */
@@ -3640,7 +3649,10 @@ var CtripBusiness = {
         调用之后，返回数据
 
         var json_obj = {
-            verificationCode = "8890"
+            tagname = "read_verification_code_from_sms",
+            param: {
+                verificationCode = "8890"
+            }
         };
 
         app.callback(json_obj);
@@ -3692,43 +3704,6 @@ var CtripBusiness = {
         } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
-    },
-
-
-     /**
-     * @description 检查渠道包信息
-     * @brief 检查渠道包信息
-     * @method app_check_app_package_info
-     * @callback check_app_package_info
-     * @since v5.8
-     * @author jimzhao
-     * @example 
-
-        CtripBusiness.app_check_android_package_info();
-        //调用之后，app返回
-        var json_obj = {
-            isHideAdv:true,
-            isHideAppRecommend:true
-        };
-
-        app.callback(json_obj);
-     */
-    app_check_app_package_info:function() {
-        if (!Internal.isSupportAPIWithVersion("5.8")) {
-            return;
-        }
-
-        var paramString = Internal.makeParamString("Business", "checkAppPackageInfo", params, "check_app_package_info");
-
-        if (Internal.isIOS) {
-            var url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
-        } else if (Internal.isAndroid) {
-            window.Business_a.checkAndroidPackageInfo(paramString);
-        } else if (Internal.isWinOS) {
-            Internal.callWin8App(paramString);
-        }
-
     },
 
     /**
