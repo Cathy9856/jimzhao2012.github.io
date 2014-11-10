@@ -320,7 +320,7 @@ var CtripConsole = {
         } 
         else if (Internal.isIOS) {
             Internal.loadURL("ios-log:#iOS#Info:" + log);
-        ｝
+        }
     },
     
     warn:function(log) {
