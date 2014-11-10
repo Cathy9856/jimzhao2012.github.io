@@ -355,16 +355,16 @@ function __bridge_callback(param) {
                 }
             }
 
+            Internal.isInApp = true;
+            Internal.appVersion = jsonObj.param.version;
+            Internal.osVersion = jsonObj.param.osVersion;
+
             if (Internal.isWinOS) {
-                navigator.window.winPhoneUserAgent = navigator.window.userAgent+"CtripWireless";                 
+                window.navigator.userAgent.winPhoneUserAgent = window.navigator.userAgent+"_CtripWireless_"+Internal.appVersion;                 
             }
             else if (Internal.isIOS) {
                 console = CtripConsole;
             } 
-
-            Internal.isInApp = true;
-            Internal.appVersion = jsonObj.param.version;
-            Internal.osVersion = jsonObj.param.osVersion;
         }
 
         val = window.app.callback(jsonObj);
