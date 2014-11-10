@@ -3718,17 +3718,20 @@ var CtripBusiness = {
         调用之后，返回数据
 
         var json_obj = {
-            IP:&quot;&quot;,
-            OS:&quot;\U82f9\U679c&quot;,
-            account:&quot;&quot;,
-            areaCode:&quot;&quot;,
-            baseStation:&quot;&quot;,
-            clientID:12933032900000135327,
-            latitude:0,
-            longitude:0,
-            mac:&quot;10:DD:B1:CF:C1:80&quot;,
-            port:&quot;&quot;,
-            wifiMac:&quot;&quot;
+            tagname:&quot;get_device_info&quot;,
+            param: {
+                IP:&quot;&quot;,
+                OS:&quot;\U82f9\U679c&quot;,
+                account:&quot;&quot;,
+                areaCode:&quot;&quot;,
+                baseStation:&quot;&quot;,
+                clientID:12933032900000135327,
+                latitude:0,
+                longitude:0,
+                mac:&quot;10:DD:B1:CF:C1:80&quot;,
+                port:&quot;&quot;,
+                wifiMac:&quot;&quot;
+            }
         };
 
         app.callback(json_obj);
