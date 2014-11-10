@@ -297,23 +297,48 @@ var console = originalConsole;
 var CtripConsole = {
     
     log:function(log) {
-        Internal.loadURL("ios-log:#iOS#Log:" + log);
+        if (Internal.isWinOS) {
+            Internal.callWin8App("wp-log:#wp#Log:"+paramString);
+        }
+         else if (Internal.isIOS) {
+            Internal.loadURL("ios-log:#iOS#Log:" + log);            
+        }
     },
     
     debug:function(log) {
-        Internal.loadURL("ios-log:#iOS#Debug:" + log);
+        if (Internal.isWinOS) {
+            Internal.callWin8App("wp-log:#wp#Debug:"+paramString);
+        } 
+        else if (Internal.isIOS) {
+            Internal.loadURL("ios-log:#iOS#Debug:" + log);
+        }
     },
     
     info:function(log) {
-        Internal.loadURL("ios-log:#iOS#Info:" + log);
+        if (Internal.isWinOS) {
+            Internal.callWin8App("wp-log:#wp#info:"+paramString);
+        } 
+        else if (Internal.isIOS) {
+            Internal.loadURL("ios-log:#iOS#Info:" + log);
+        ｝
     },
     
     warn:function(log) {
-        Internal.loadURL("ios-log:#iOS#warn:" + log);
+       if (Internal.isWinOS) {
+            Internal.callWin8App("wp-log:#wp#warn:"+paramString);
+        } 
+        else if (Internal.isIOS) {
+            Internal.loadURL("ios-log:#iOS#warn:" + log);
+        }
     },
 
     error:function(log) {
-        Internal.loadURL("ios-log:#iOS#Error:" + log);
+        if (Internal.isWinOS) {
+            Internal.callWin8App("wp-log:#wp#Error:"+paramString);
+        } 
+        else if (Internal.isIOS) {
+            Internal.loadURL("ios-log:#iOS#Error:" + log);
+        }
     }
 };
 
@@ -365,6 +390,9 @@ function __bridge_callback(param) {
             else if (Internal.isIOS) {
                 console = CtripConsole;
             } 
+            else if (Internal.isWinOS) {
+                console = CtripConsole;
+            }
         }
 
         val = window.app.callback(jsonObj);
@@ -532,7 +560,7 @@ var CtripUtil = {
             window.User_a.initMemberH5Info(paramString);
         }
         else if (Internal.isWinOS) {
-                Internal.callWin8App(paramString);
+            Internal.callWin8App(paramString);
         }
     },
 

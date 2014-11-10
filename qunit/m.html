@@ -219,8 +219,6 @@ function fnErrorTrap(sMsg,sUrl,sLine){
 var showPOIIndex = 0;
 
     function showPOIList() {
-      alert(console);
-      console.log("start show poi list");
       
       var poi0 = {};
       var poi1 = {};
@@ -474,7 +472,8 @@ var showPOIIndex = 0;
   <br/>
     <li class="li2"><a onclick="javascript:CtripUtil.app_open_url('weixin://home', 1)">weixin://home</a></li>
   <br/>
- 
+    <li class="li2"><a onclick="javascript:console.log('中文日志内容：start show poi list，测试完成')">测试console.log</a></li>
+  <br/>
   <DIV ID="oErrorLog">
 </DIV>
 </body></html>
