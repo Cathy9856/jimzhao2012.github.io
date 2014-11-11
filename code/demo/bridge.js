@@ -573,7 +573,7 @@ var CtripUtil = {
 
      CtripUtil.app_call_phone("13800138000");
      //或者直接拨打呼叫中心
-     CtripUtil.app_call_phone();
+     CtripUtil.app_call_phone(phone);
      */
     app_call_phone:function(phone) {  
 
@@ -2840,8 +2840,8 @@ var CtripBar = {
 
         5.  app预置tagname定义及说明(hybrid开发人员请避免使用以下预置的tagname)：
             1). tagname=home, 返回app首页，图片，事件 都不需要H5处理；
-            2). tagname=call, 拨打呼叫中心，图片，事件 都不需要H5处理；
-            3). tagname=phone, 拨打电话，图片-native预置，事件交由H5处理；v5.8开始支持；
+            2). tagname=call, 拨打呼叫中心，图片，事件 都不需要H5处理；                 @电话CTI统一出口，6.1开始，当前tagname需要，json对象中需要配置businessCode， pageId字段
+            3). tagname=phone, 拨打电话，图片-native预置，事件交由H5处理；v5.8开始支持； 
             4). tagname=share, 分享，图片-native预置，事件将会交给H5处理；v5.8开始支持；
             5). tagname=favorite, 收藏，图片-native预置, 事件交给H5处理；v5.8开始支持；
             6). tagname=favorited, 已经收藏，图片-native预置，事件交给H5处理；v5.8开始支持；
@@ -2862,6 +2862,13 @@ var CtripBar = {
             "center": [{"tagname": "title", "value":"携程"},{"tagname":"subtitle", value:"上海到北京"}],
             "centerButtons": [{"tagname": "cityChoose", "value":"上海", "a_icon":"icon_arrowx", "i_icon":"icon_arrowx.png","imagePath":"car/res/logo.png", "pressedImagePath":"car/res/logo_pressed.png"}], 
         }
+        
+        //拨打电话增加CTI统一出口demo
+        var nav_json = {
+            "center": [{"tagname": "title", "value":"携程"}],
+            "right": [{"tagname": "call", "businessCode":"tour_call_id_0001", "pageId":"tour_page_id_1111"}],
+        }
+
         var json_str = JSON.stringify(nav_json);
         CtripBar.app_refresh_nav_bar(json_str);
 
