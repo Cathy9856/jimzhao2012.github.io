@@ -72,6 +72,9 @@ function fnErrorTrap(sMsg,sUrl,sLine){
                CtripMap.app_stop_locate("22222222");  
             }
           }
+          else if (tagname == "choose_photo") {
+            console.log("图片回调收到="+JSON.stringify(jsonobj));
+          }
         }
     };
 
