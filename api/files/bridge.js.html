@@ -683,24 +683,30 @@ var CtripUtil = {
      * @description 拨打电话
      * @brief 拨打电话
      * @param {String} phone 需要拨打的电话号码，为空时候，会拨打ctrip呼叫中心号码
+     * @param {String} pageId 页面PageId，可以为空，呼叫中心BI统计之用, 6.1加入
+     * @param {String} businessCode 拨打电话的业务标识号，可以为空，呼叫中心BI统计之用, 6.1加入
      * @method app_call_phone
      * @since v5.2
      * @author jimzhao
      * @example 
 
      CtripUtil.app_call_phone(&quot;13800138000&quot;);
+
+     CtripUtil.app_call_phone(&quot;400666668&quot;,&quot;page_car_333&quot;, &quot;car_phone_111&quot;);
+
      //或者直接拨打呼叫中心
-     CtripUtil.app_call_phone(phone);
+     CtripUtil.app_call_phone();
      */
-    app_call_phone:function(phone) {  
+    app_call_phone:function(phone, pageId, businessCode) {  
 
         if(!phone) {
             phone = &quot;&quot;;
         }
         
         var params = {};
-        
+        params.pageId = pageId;
         params.phone = phone;
+        params.businessCode = businessCode;
 
         var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;callPhone&quot;, params, &quot;call_phone&quot;)
         if (Internal.isIOS) {
@@ -2980,7 +2986,7 @@ var CtripBar = {
         //拨打电话增加CTI统一出口demo
         var nav_json = {
             &quot;center&quot;: [{&quot;tagname&quot;: &quot;title&quot;, &quot;value&quot;:&quot;携程&quot;}],
-            &quot;right&quot;: [{&quot;tagname&quot;: &quot;call&quot;, &quot;businessCode&quot;:&quot;tour_call_id_0001&quot;, &quot;pageId&quot;:&quot;tour_page_id_1111&quot;}],
+            &quot;right&quot;: [{&quot;tagname&quot;: &quot;call&quot;, &quot;businessCode&quot;:&quot;tour_call_id_0001&quot;, &quot;pageId&quot;:&quot;tour_page_id_1111&quot;}],//businessCode, pageId为6.1开始识别
         }
 
         var json_str = JSON.stringify(nav_json);
@@ -3600,7 +3606,7 @@ var CtripBusiness = {
 
     /**
      * @description 调用App的分享
-     * @brief 调用App的分享
+     * @brief 调用App的分享(Moved to CtripShare)
      * @param {String} imageRelativePath 将要分享的图片相对路径，相对webapp的路径
      * @param {String} text 需要分享的文字,微博分享文字限制在140
      * @param {String} title 需要分享的标题, v5.4开始支持该字段，微信和email支持；
@@ -3608,78 +3614,12 @@ var CtripBusiness = {
      * @method app_call_system_share
      * @since v5.3
      * @author jimzhao
-     * @example
+      @example
 
-     *  微信(微信朋友/微信朋友圈)分享说明：
-        1. 图片分享，只能分享图片，所传的文字，title都无效；
-        2. 链接分享，所传的图片为分享网页的缩略图，title有效；
-        3. 纯文本分享，只能分享text，title无效；
-        4. 优先级 链接分享&gt;图片分享&gt;纯文本分享。
-           a. 如果有linkUrl，会被当作网页分享，图片作为缩略图；
-           b. 如果没有linkUrl，有图片，当作图片分享，text,title无效;
-           c. 如果没有linkUrl，没有图片，当作纯文本分享；
-        
-        微博分享：
-        1. 图片为所分享的图片；
-        2. 分享title不起作用；
-        3. 如果linkUrl有， 分享的text后面会自动添加linkUrl
-    
-        Email分享：
-        1. 图片为所分享的图片；
-        2. 分享title作为Email标题；
-        3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
-
-        短信分享：
-        1. 图片为所分享的图片；注：iOS7.0之后才支持；
-        2. 分享title不起作用；
-        3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
-
-        复制分享：
-        1. 分享的图片不起作用;
-        2. 分享的title不起作用;
-        3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
-
-        CtripBusiness.app_call_system_share(&quot;../wb_cache/pkg_name/md5_url_hash&quot;, &quot;text to share weibo&quot;, &quot;this is titile&quot;, &quot;http://www.ctrip.com/&quot;);
-
+      参考CtripShare.app_call_system_share(....);
      */
     app_call_system_share:function(imageRelativePath, text, title, linkUrl) {
-        if (!Internal.isSupportAPIWithVersion(&quot;5.3&quot;)) {
-            return;
-        }
-        var params = {};
-        if(!imageRelativePath) {
-            imageRelativePath = &quot;&quot;;
-        }
-
-        if (!title) {
-            title = &quot;&quot;;
-        }
-        
-        if (!text) {
-            text = &quot;&quot;;
-        }
-
-        if (!linkUrl) {
-            linkUrl = &quot;&quot;;
-        }
-
-        params.title = title;
-        params.text = text;
-        params.linkUrl = linkUrl;
-        params.imageRelativePath = imageRelativePath;
-
-        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;callSystemShare&quot;, params, &quot;call_system_share&quot;);
-
-        if (Internal.isIOS) {
-            var url = Internal.makeURLWithParam(paramString);
-            Internal.loadURL(url);
-        }
-        else if (Internal.isAndroid) {
-            window.Util_a.callSystemShare(paramString);
-        }
-        else if (Internal.isWinOS) {
-            Internal.callWin8App(paramString);
-        }
+        CtripShare.app_call_system_share(imageRelativePath, text, title, linkUrl);
     },
 
     /**
@@ -4156,9 +4096,80 @@ var CtripPage = {
         (-202)分享被取消
         (-203)分享参数有错误
 
+        3. 分享规则
+
+        微信(微信朋友/微信朋友圈)分享说明：
+        1. 图片分享，只能分享图片，所传的文字，title都无效；
+        2. 链接分享，所传的图片为分享网页的缩略图，title有效；
+        3. 纯文本分享，只能分享text，title无效；
+        4. 优先级 链接分享&gt;图片分享&gt;纯文本分享。
+           a. 如果有linkUrl，会被当作网页分享，图片作为缩略图；
+           b. 如果没有linkUrl，有图片，当作图片分享，text,title无效;
+           c. 如果没有linkUrl，没有图片，当作纯文本分享；
+        
+        微博分享：
+        1. 图片为所分享的图片；
+        2. 分享title不起作用；
+        3. 如果linkUrl有， 分享的text后面会自动添加linkUrl
+    
+        Email分享：
+        1. 图片为所分享的图片；
+        2. 分享title作为Email标题；
+        3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
+
+        短信分享：
+        1. 图片为所分享的图片；注：iOS7.0之后才支持；
+        2. 分享title不起作用；
+        3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
+
+        复制分享：
+        1. 分享的图片不起作用;
+        2. 分享的title不起作用;
+        3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
+
+
  * @brief 第三方分享 
 */
 var CtripShare = {
+
+    /**
+     * @description 调用App的分享-兼容老的分享，调用之后，无回调信息，6.1之后不建议使用该API
+     * @brief 调用App的分享－兼容6.1之前版本
+     * @param {String} imageRelativePath 将要分享的图片相对路径，相对webapp的路径;需要调用CtripUtil.app_download_data()下载图片；
+     * @param {String} text 需要分享的文字,微博分享文字限制在140
+     * @param {String} title 需要分享的标题, v5.4开始支持该字段，微信和email支持；
+     * @param {String} linkUrl 需要分享的链接, v5.4开始支持该字段
+     * @method app_call_system_share
+     * @since v5.3
+     * @author jimzhao
+     * @example
+        
+        CtripBusiness.app_call_system_share(&quot;../wb_cache/pkg_name/md5_url_hash&quot;, &quot;text to share weibo&quot;, &quot;this is titile&quot;, &quot;http://www.ctrip.com/&quot;);
+
+     */
+    app_call_system_share:function(imageRelativePath, text, title, linkUrl) {
+        if (!Internal.isSupportAPIWithVersion(&quot;5.3&quot;)) {
+            return;
+        }
+        var params = {};
+        params.title = title;
+        params.text = text;
+        params.linkUrl = linkUrl;
+        params.imageRelativePath = imageRelativePath;
+
+        var paramString = Internal.makeParamString(&quot;Util&quot;, &quot;callSystemShare&quot;, params, &quot;call_system_share&quot;);
+
+        if (Internal.isIOS) {
+            var url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        }
+        else if (Internal.isAndroid) {
+            window.Util_a.callSystemShare(paramString);
+        }
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
 
     /**
      * @description 分享默认内容到各个平台，此API 为Javascript简化包装app_call_custom_share

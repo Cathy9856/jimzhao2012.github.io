@@ -118,7 +118,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l3256"><code>bridge.js:3256</code></a>
+            定义在: <a href="../files/bridge.js.html#l3262"><code>bridge.js:3262</code></a>
         </div>
     
 
@@ -162,7 +162,7 @@
                     
                     <tr><td>添加微信好友</td><td><a href="#method_app_add_weixin_friend">app_add_weixin_friend</a></td></tr>
                     
-                    <tr><td>调用App的分享</td><td><a href="#method_app_call_system_share">app_call_system_share</a></td></tr>
+                    <tr><td>调用App的分享(Moved to CtripShare)</td><td><a href="#method_app_call_system_share">app_call_system_share</a></td></tr>
                     
                     <tr><td>检查App的版本更新</td><td><a href="#method_app_check_update">app_check_update</a></td></tr>
                     
@@ -333,7 +333,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3460"><code>bridge.js:3460</code></a>
+        <a href="../files/bridge.js.html#l3466"><code>bridge.js:3466</code></a>
         
         </p>
 
@@ -427,7 +427,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3485"><code>bridge.js:3485</code></a>
+        <a href="../files/bridge.js.html#l3491"><code>bridge.js:3491</code></a>
         
         </p>
 
@@ -525,36 +525,7 @@
             <h4>举例:</h4>
 
             <div class="example-content">
-                <p> 微信(微信朋友/微信朋友圈)分享说明：</p>
-<pre class="code prettyprint"><code>   1. 图片分享，只能分享图片，所传的文字，title都无效；
-   2. 链接分享，所传的图片为分享网页的缩略图，title有效；
-   3. 纯文本分享，只能分享text，title无效；
-   4. 优先级 链接分享&gt;图片分享&gt;纯文本分享。
-      a. 如果有linkUrl，会被当作网页分享，图片作为缩略图；
-      b. 如果没有linkUrl，有图片，当作图片分享，text,title无效;
-      c. 如果没有linkUrl，没有图片，当作纯文本分享；
-
-   微博分享：
-   1. 图片为所分享的图片；
-   2. 分享title不起作用；
-   3. 如果linkUrl有， 分享的text后面会自动添加linkUrl
-
-   Email分享：
-   1. 图片为所分享的图片；
-   2. 分享title作为Email标题；
-   3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
-
-   短信分享：
-   1. 图片为所分享的图片；注：iOS7.0之后才支持；
-   2. 分享title不起作用；
-   3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
-
-   复制分享：
-   1. 分享的图片不起作用;
-   2. 分享的title不起作用;
-   3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
-
-   CtripBusiness.app_call_system_share(&quot;../wb_cache/pkg_name/md5_url_hash&quot;, &quot;text to share weibo&quot;, &quot;this is titile&quot;, &quot;http://www.ctrip.com/&quot;);</code></pre>
+                <pre class="code prettyprint"><code> 参考CtripShare.app_call_system_share(....);</code></pre>
 
             </div>
         </div>
@@ -594,7 +565,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3410"><code>bridge.js:3410</code></a>
+        <a href="../files/bridge.js.html#l3416"><code>bridge.js:3416</code></a>
         
         </p>
 
@@ -660,7 +631,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3717"><code>bridge.js:3717</code></a>
+        <a href="../files/bridge.js.html#l3657"><code>bridge.js:3657</code></a>
         
         </p>
 
@@ -746,7 +717,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3263"><code>bridge.js:3263</code></a>
+        <a href="../files/bridge.js.html#l3269"><code>bridge.js:3269</code></a>
         
         </p>
 
@@ -875,7 +846,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3786"><code>bridge.js:3786</code></a>
+        <a href="../files/bridge.js.html#l3726"><code>bridge.js:3726</code></a>
         
         </p>
 
@@ -1034,7 +1005,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3600"><code>bridge.js:3600</code></a>
+        <a href="../files/bridge.js.html#l3540"><code>bridge.js:3540</code></a>
         
         </p>
 
@@ -1130,7 +1101,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3569"><code>bridge.js:3569</code></a>
+        <a href="../files/bridge.js.html#l3509"><code>bridge.js:3509</code></a>
         
         </p>
 
@@ -1231,7 +1202,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3684"><code>bridge.js:3684</code></a>
+        <a href="../files/bridge.js.html#l3624"><code>bridge.js:3624</code></a>
         
         </p>
 
@@ -1331,7 +1302,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3354"><code>bridge.js:3354</code></a>
+        <a href="../files/bridge.js.html#l3360"><code>bridge.js:3360</code></a>
         
         </p>
 
@@ -1421,7 +1392,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3647"><code>bridge.js:3647</code></a>
+        <a href="../files/bridge.js.html#l3587"><code>bridge.js:3587</code></a>
         
         </p>
 
@@ -1497,7 +1468,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3435"><code>bridge.js:3435</code></a>
+        <a href="../files/bridge.js.html#l3441"><code>bridge.js:3441</code></a>
         
         </p>
 
@@ -1573,7 +1544,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3754"><code>bridge.js:3754</code></a>
+        <a href="../files/bridge.js.html#l3694"><code>bridge.js:3694</code></a>
         
         </p>
 
@@ -1664,7 +1635,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3386"><code>bridge.js:3386</code></a>
+        <a href="../files/bridge.js.html#l3392"><code>bridge.js:3392</code></a>
         
         </p>
 
@@ -1740,7 +1711,7 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
             
         
         
-        <a href="../files/bridge.js.html#l3312"><code>bridge.js:3312</code></a>
+        <a href="../files/bridge.js.html#l3318"><code>bridge.js:3318</code></a>
         
         </p>
 

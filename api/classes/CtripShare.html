@@ -118,7 +118,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l4023"><code>bridge.js:4023</code></a>
+            定义在: <a href="../files/bridge.js.html#l3963"><code>bridge.js:3963</code></a>
         </div>
     
 
@@ -145,7 +145,38 @@
    2.分享error_code定义
    (-201)分享失败
    (-202)分享被取消
-   (-203)分享参数有错误</code></pre>
+   (-203)分享参数有错误
+
+   3. 分享规则
+
+   微信(微信朋友/微信朋友圈)分享说明：
+   1. 图片分享，只能分享图片，所传的文字，title都无效；
+   2. 链接分享，所传的图片为分享网页的缩略图，title有效；
+   3. 纯文本分享，只能分享text，title无效；
+   4. 优先级 链接分享&gt;图片分享&gt;纯文本分享。
+      a. 如果有linkUrl，会被当作网页分享，图片作为缩略图；
+      b. 如果没有linkUrl，有图片，当作图片分享，text,title无效;
+      c. 如果没有linkUrl，没有图片，当作纯文本分享；
+
+   微博分享：
+   1. 图片为所分享的图片；
+   2. 分享title不起作用；
+   3. 如果linkUrl有， 分享的text后面会自动添加linkUrl
+
+   Email分享：
+   1. 图片为所分享的图片；
+   2. 分享title作为Email标题；
+   3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
+
+   短信分享：
+   1. 图片为所分享的图片；注：iOS7.0之后才支持；
+   2. 分享title不起作用；
+   3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
+
+   复制分享：
+   1. 分享的图片不起作用;
+   2. 分享的title不起作用;
+   3. 如果有linkUrl，分享的text后面会自动添加linkUrl;</code></pre>
 
 </div>
 
@@ -179,12 +210,20 @@
                     
                     <tr><td>指定内容，分享到特定平台</td><td><a href="#method_app_call_one_share">app_call_one_share</a></td></tr>
                     
+                    <tr><td>调用App的分享－兼容6.1之前版本</td><td><a href="#method_app_call_system_share">app_call_system_share</a></td></tr>
+                    
                     <tr><td>分享默认内容到各个平台(JS 二次包装)</td><td><a href="#method_wrap_call_default_share">wrap_call_default_share</a></td></tr>
                                   
                     </table>
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -268,7 +307,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l4079"><code>bridge.js:4079</code></a>
+        <a href="../files/bridge.js.html#l4090"><code>bridge.js:4090</code></a>
         
         </p>
 
@@ -455,7 +494,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l4153"><code>bridge.js:4153</code></a>
+        <a href="../files/bridge.js.html#l4164"><code>bridge.js:4164</code></a>
         
         </p>
 
@@ -608,6 +647,172 @@
 </div>
 
                 
+                    <div id="method_app_call_system_share" class="method item">
+    <h3 class="name"><code>app_call_system_share</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>imageRelativePath</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>text</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>title</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>linkUrl</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l4019"><code>bridge.js:4019</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v5.3</p>
+        
+    </div>
+
+    <div class="description">
+        <p>调用App的分享-兼容老的分享，调用之后，无回调信息，6.1之后不建议使用该API</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">imageRelativePath</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>将要分享的图片相对路径，相对webapp的路径;需要调用CtripUtil.app_download_data()下载图片；</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">text</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要分享的文字,微博分享文字限制在140</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">title</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要分享的标题, v5.4开始支持该字段，微信和email支持；</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">linkUrl</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要分享的链接, v5.4开始支持该字段</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   CtripBusiness.app_call_system_share(&quot;../wb_cache/pkg_name/md5_url_hash&quot;, &quot;text to share weibo&quot;, &quot;this is titile&quot;, &quot;http://www.ctrip.com/&quot;);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_wrap_call_default_share" class="method item">
     <h3 class="name"><code>wrap_call_default_share</code></h3>
 
@@ -674,7 +879,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l4047"><code>bridge.js:4047</code></a>
+        <a href="../files/bridge.js.html#l4058"><code>bridge.js:4058</code></a>
         
         </p>
 
