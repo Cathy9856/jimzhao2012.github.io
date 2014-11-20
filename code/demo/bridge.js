@@ -4026,8 +4026,6 @@ var CtripPage = {
 /*
  * @class CtripShare
  * @description 调用native的第三方分享
- * @brief 第三方分享
-
     通用参数， 分享平台(shareType)定义
     WeixinFriend------微信好友
     WeixinTimeLine----微信朋友圈
@@ -4037,6 +4035,8 @@ var CtripPage = {
     SMS---------------短信
     Email-------------邮件
     OSMore------------系统更多分享
+    
+ * @brief 第三方分享 
 */
 var CtripShare = {
 
