@@ -59,6 +59,8 @@
             
                 <li><a href="../classes/CtripPipe.html">CtripPipe</a></li>
             
+                <li><a href="../classes/CtripShare.html">CtripShare</a></li>
+            
                 <li><a href="../classes/CtripSumSungWallet.html">CtripSumSungWallet</a></li>
             
                 <li><a href="../classes/CtripTool.html">CtripTool</a></li>
@@ -3084,6 +3086,7 @@ var CtripBar = {
  * @description 地图相关类，定位/导航
  * @brief 地图相关类，定位/导航
  */
+
 var CtripMap = {
  /**
      * @description 定位，定位完成会有2－3次callback，第一次返回经纬度信息，第二次返回逆地址解析的信息， 第三次返回ctripCity信息(调用参数isNeedCtripCity需要设置成true)
@@ -4133,16 +4136,33 @@ var CtripPage = {
     }
 };
 
-/*
+/**
  * @class CtripShare
  * @description 调用native的第三方分享
+
+        通用参数，
+        1. 分享平台(shareType)定义
+        WeixinFriend------微信好友
+        WeixinTimeLine----微信朋友圈
+        SinaWeibo---------新浪微博
+        QQ----------------QQ
+        QQZone------------QQ空间
+        SMS---------------短信
+        Email-------------邮件
+        OSMore------------系统更多分享
+
+        2.分享error_code定义
+        (-201)分享失败
+        (-202)分享被取消
+        (-203)分享参数有错误
+
  * @brief 第三方分享 
 */
 var CtripShare = {
 
-    /*
+    /**
      * @description 分享默认内容到各个平台，此API 为Javascript简化包装app_call_custom_share
-     * @brief 分享默认内容到各个平台
+     * @brief 分享默认内容到各个平台(JS 二次包装)
      * @method wrap_call_default_share
      * @param{String} imageUrl, 分享图片的imageUrl
      * @param{String} title, 分享的标题
@@ -4172,7 +4192,7 @@ var CtripShare = {
         CtripShare.app_call_custom_share(dataList, businessCode);
     },
 
-    /*
+    /**
      * @description 自定义分享，各个平台可以分享不同的内容
      * @brief 自定义分享内容到第三方平台
      * @method app_call_custom_share
@@ -4213,7 +4233,7 @@ var CtripShare = {
         //1. 没有分享成功返回数据如下
         var json_obj = {
             tagname:&quot;call_custom_share&quot;,
-            error_code:&quot;(-201)分享失败&quot;
+            error_code:&quot;(-201)分享失败&quot; //error_code定义参考CtripShare通用参数定义
         }
 
         //2. 分享成功
@@ -4224,19 +4244,6 @@ var CtripShare = {
             }
         }
 
-        //error_code定义如下
-        //(-201)分享失败
-        //(-202)分享被取消
-        //(-203)分享参数有错误
-        通用参数， 分享平台(shareType)定义
-        WeixinFriend------微信好友
-        WeixinTimeLine----微信朋友圈
-        SinaWeibo---------新浪微博
-        QQ----------------QQ
-        QQZone------------QQ空间
-        SMS---------------短信
-        Email-------------邮件
-        OSMore------------系统更多分享
         app.callback(json_obj);
      */
     app_call_custom_share:function(dataList, businessCode) {
@@ -4259,7 +4266,7 @@ var CtripShare = {
     },
 
 
-    /*
+    /**
      * @description 指定内容，分享到特定平台
      * @brief 指定内容，分享到特定平台
      * @method app_call_one_share
@@ -4281,18 +4288,13 @@ var CtripShare = {
         //1. 没有分享成功返回数据如下
         var json_obj = {
             tagname:&quot;call_custom_share&quot;,
-            error_code:&quot;(-201)分享失败&quot;
+            error_code:&quot;(-201)分享失败&quot; //error_code定义参考CtripShare通用参数定义
         }
 
         //2. 分享成功
         var json_obj = {
             tagname:&quot;call_one_share&quot;,
         }
-
-        //error_code定义如下
-        //(-201)分享失败
-        //(-202)分享被取消
-        //(-203)分享参数有错误
 
         app.callback(json_obj);
      */

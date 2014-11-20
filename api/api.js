@@ -10,6 +10,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "CtripPage",
         "CtripPay",
         "CtripPipe",
+        "CtripShare",
         "CtripSumSungWallet",
         "CtripTool",
         "CtripUser",

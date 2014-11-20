@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>CtripPipe</title>
+    <title>CtripShare</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -110,7 +110,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>CtripPipe Class</h1>
+                        <h1>CtripShare Class</h1>
 <div class="box meta">
     
 
@@ -118,7 +118,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l2029"><code>bridge.js:2029</code></a>
+            定义在: <a href="../files/bridge.js.html#l4023"><code>bridge.js:4023</code></a>
         </div>
     
 
@@ -130,7 +130,22 @@
 
 
 <div class="box intro">
-    <p>App给H5提供的通讯管道</p>
+    <p>调用native的第三方分享</p>
+<pre class="code prettyprint"><code>   通用参数，
+   1. 分享平台(shareType)定义
+   WeixinFriend------微信好友
+   WeixinTimeLine----微信朋友圈
+   SinaWeibo---------新浪微博
+   QQ----------------QQ
+   QQZone------------QQ空间
+   SMS---------------短信
+   Email-------------邮件
+   OSMore------------系统更多分享
+
+   2.分享error_code定义
+   (-201)分享失败
+   (-202)分享被取消
+   (-203)分享参数有错误</code></pre>
 
 </div>
 
@@ -160,11 +175,11 @@
                     <table>
                     <tr><th>描述</th><th>函数</th></tr>
                     
-                    <tr><td>终止正在发送的HTTP请求</td><td><a href="#method_app_abort_HTTP_pipe_request">app_abort_HTTP_pipe_request</a></td></tr>
+                    <tr><td>自定义分享内容到第三方平台</td><td><a href="#method_app_call_custom_share">app_call_custom_share</a></td></tr>
                     
-                    <tr><td>H5通过App发送服务</td><td><a href="#method_app_send_H5_pipe_request">app_send_H5_pipe_request</a></td></tr>
+                    <tr><td>指定内容，分享到特定平台</td><td><a href="#method_app_call_one_share">app_call_one_share</a></td></tr>
                     
-                    <tr><td>H5通过App发送服务</td><td><a href="#method_app_send_HTTP_pipe_request">app_send_HTTP_pipe_request</a></td></tr>
+                    <tr><td>分享默认内容到各个平台(JS 二次包装)</td><td><a href="#method_wrap_call_default_share">wrap_call_default_share</a></td></tr>
                                   
                     </table>
 
@@ -205,8 +220,8 @@
                 <h2 class="off-left">方法</h2>
 
                 
-                    <div id="method_app_abort_HTTP_pipe_request" class="method item">
-    <h3 class="name"><code>app_abort_HTTP_pipe_request</code></h3>
+                    <div id="method_app_call_custom_share" class="method item">
+    <h3 class="name"><code>app_call_custom_share</code></h3>
 
     
         <div class="args">
@@ -214,7 +229,13 @@
             
                 <li class="arg">
                     
-                        <code>sequenceId</code>
+                        <code>dataList,</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>businessCode,</code>
                     
                 </li>
             
@@ -247,7 +268,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2135"><code>bridge.js:2135</code></a>
+        <a href="../files/bridge.js.html#l4079"><code>bridge.js:4079</code></a>
         
         </p>
 
@@ -255,12 +276,12 @@
         
 
         
-            <p>可用版本 v5.4</p>
+            <p>可用版本 v6.1</p>
         
     </div>
 
     <div class="description">
-        <p>根据发送的sequenceId，终止正在发送的HTTP请求</p>
+        <p>自定义分享，各个平台可以分享不同的内容</p>
 
     </div>
 
@@ -272,14 +293,30 @@
             
                 <li class="param">
                     
-                        <code class="param-name">sequenceId</code>
+                        <code class="param-name">dataList,</code>
+                        <span class="type">JSON</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>分享的内容，格式参考下面的example</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">businessCode,</code>
                         <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>发送服务的序列号，随机生存即可</p>
+                        <p>分享的业务ID，可以为空，设置后，方便BI统计数据</p>
 
                     </div>
 
@@ -297,235 +334,47 @@
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> CtripPipe.app_abort_HTTP_pipe_request(&quot;13523333333&quot;);</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_app_send_H5_pipe_request" class="method item">
-    <h3 class="name"><code>app_send_H5_pipe_request</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>serviceCode</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>header</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>data</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>sequenceId</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>pipeType</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                定义在
-                
-            
-        
-        
-        <a href="../files/bridge.js.html#l2172"><code>bridge.js:2172</code></a>
-        
-        </p>
-
-
-        
-
-        
-            <p>可用版本 v5.4</p>
-        
-    </div>
-
-    <div class="description">
-        <p>H5通过App发送服务</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>参数:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">serviceCode</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>需要发送服务的服务号</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">header</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>服务的header</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">data</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>服务所需要的数据部分，各个服务都不同</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">sequenceId</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>发送服务的序列号，随机生存即可</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">pipeType</code>
-                        <span class="type">Int</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>管道类型，因mobileServer原因，5.4的管道是支付专用，默认是0=支付管道，1＝公共管道</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>举例:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code> CtripUtil.app_send_H5_pipe_request(&quot;9500001&quot;, &quot;H5Agent&quot;,&quot;{}&quot;,&quot;13523333333&quot;);
-//调用后，H5会收到native回调的数据
-
-   //成功 
-   var json_obj =
-   {
-       tagname:&quot;send_h5_pipe_request&quot;,
-       param:
+                <pre class="code prettyprint"><code>   var dataList = {
        {
-           sequenceId:&quot;13523333333&quot;,
-           resultMessage:&quot;eHh4eHh4&quot;,
-           resultHead:&quot;eHh4eHh4&quot;,
-           resultBody:&quot;eHh4eHh4&quot;,
-           result:1,
+           shareType:&quot;QQ&quot;,
+           imageUrl:&quot;http://share.csdn.net/uploads/24bd27fd3ad6a559873c4aff3bd64a60/24bd27fd3ad6a559873c4aff3bd64a60_thumb.jpg&quot;,
+           title:&quot;分享图书&quot;,
+           text:&quot;这本书的简介大概是这样&quot;,
+           linkUrl:&quot;http://csdn.net&quot;
        },
+       {
+           shareType:&quot;WeiXin&quot;,
+           imageUrl:&quot;http://share.csdn.net/uploads/24bd27fd3ad6a559873c4aff3bd64a60/24bd27fd3ad6a559873c4aff3bd64a60_thumb.jpg&quot;,
+           title:&quot;分享图书给微信&quot;,
+           text:&quot;这本书的简介是专门为微信定制&quot;,
+           linkUrl:&quot;http://csdn.net/w&quot;
+       },
+       {
+           shareType:&quot;Default&quot;,
+           imageUrl:&quot;http://share.csdn.net/uploads/24bd27fd3ad6a559873c4aff3bd64a60/24bd27fd3ad6a559873c4aff3bd64a60_thumb.jpg&quot;,
+           title:&quot;通用分享图书&quot;,
+           text:&quot;这本书的简介是为其他分享定制的&quot;,
+           linkUrl:&quot;http://csdn.net/common_test&quot;
+       }  
    }
 
-   //失败
-   //  code定义，返回给Hybrid时候，为负数，iOS/Android －200开始，递减
-   //  CONN_FAIL_TYPE_NO_FAIL = 200------------------正确，无错误
-   //  CONN_FAIL_TYPE_GETCONN_UNKOWN = 201-----------从连接池获取长连接失败
-   //  CONN_FAIL_TYPE_GETIP = 202--------------------获取IP地址失败
-   //  CONN_FAIL_TYPE_CONNECT = 203------------------创建连接失败
-   //  CONN_FAIL_TYPE_SEND_DATA = 204----------------发送数据失败
-   //  CONN_FAIL_TYPE_RECEIVE_LENGTH = 205-----------读报文头失败
-   //  CONN_FAIL_TYPE_RECEIVE_BODY = 206-------------读报文体失败
-   //  CONN_FAIL_TYPE_BUILE_REQUESTDATAFAIL = 207----创建请求报文失败
-   //  CONN_FAIL_TYPE_BUILE_RESPONSEDATAFAIL = 208---解析返回报文失败
-   //  CONN_FAIL_TYPE_SERIALIZE_REQUEST_FAIL = 209---序列化请求报文失败
-   //  CONN_FAIL_TYPE_SERIALIZE_RESPONSE_FAIL = 210--序列化返回报文失败
-   //  CONN_FAIL_TYPE_RESPONSE_REPEAT = 211----------服务端下发需要重试
-   var json_obj =
-   {
-       tagname:&quot;send_h5_pipe_request&quot;,
-       param:
-       {
-           sequenceId:&quot;13523333333&quot;,
-           errorInformation:&quot;抱歉！加载失败，请重试(-203)&quot;, //括号内的code为errorCode，5.8.1加入
-           serverErrorCode:&quot;eHh4eHh4&quot;,
-       },
+   CtripShare.app_call_custom_share(dataList);
+
+   //调用处理完成之后
+   //1. 没有分享成功返回数据如下
+   var json_obj = {
+       tagname:&quot;call_custom_share&quot;,
+       error_code:&quot;(-201)分享失败&quot; //error_code定义参考CtripShare通用参数定义
    }
+
+   //2. 分享成功
+   var json_obj = {
+       tagname:&quot;call_custom_share&quot;,
+       param:{
+           shareType:&quot;WeiXin&quot;
+       }
+   }
+
    app.callback(json_obj);</code></pre>
 
             </div>
@@ -534,8 +383,8 @@
 </div>
 
                 
-                    <div id="method_app_send_HTTP_pipe_request" class="method item">
-    <h3 class="name"><code>app_send_HTTP_pipe_request</code></h3>
+                    <div id="method_app_call_one_share" class="method item">
+    <h3 class="name"><code>app_call_one_share</code></h3>
 
     
         <div class="args">
@@ -543,43 +392,37 @@
             
                 <li class="arg">
                     
-                        <code>baseURL</code>
+                        <code>shareType,</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>path</code>
+                        <code>imageUrl,</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>method</code>
+                        <code>title,</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>header</code>
+                        <code>text,</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>parameters</code>
+                        <code>linkUrl,</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>isIgnoreHTTPSCertification</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>sequenceId</code>
+                        <code>businessCode,</code>
                     
                 </li>
             
@@ -612,7 +455,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l2036"><code>bridge.js:2036</code></a>
+        <a href="../files/bridge.js.html#l4153"><code>bridge.js:4153</code></a>
         
         </p>
 
@@ -620,12 +463,12 @@
         
 
         
-            <p>可用版本 v5.4</p>
+            <p>可用版本 v6.1</p>
         
     </div>
 
     <div class="description">
-        <p>H5通过App发送服务</p>
+        <p>指定内容，分享到特定平台</p>
 
     </div>
 
@@ -637,14 +480,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">baseURL</code>
+                        <code class="param-name">shareType,</code>
                         <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>HTTP请求发送的URL地址</p>
+                        <p>分享的平台类型</p>
 
                     </div>
 
@@ -653,14 +496,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">path</code>
+                        <code class="param-name">imageUrl,</code>
                         <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>HTTP请求发送的URL的路径</p>
+                        <p>分享图片的imageUrl</p>
 
                     </div>
 
@@ -669,14 +512,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">method</code>
+                        <code class="param-name">title,</code>
                         <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>HTTP请求方式GET/POST</p>
+                        <p>分享的标题</p>
 
                     </div>
 
@@ -685,14 +528,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">header</code>
+                        <code class="param-name">text,</code>
                         <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>HTTP头，JSON字符串格式key/value，cookie作为一个key存储再HEADER内部</p>
+                        <p>分享的内容</p>
 
                     </div>
 
@@ -701,46 +544,30 @@
             
                 <li class="param">
                     
-                        <code class="param-name">parameters</code>
-                        <span class="type">Array</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>key=value形式的字符串数组,请做好参数的Encode，app端只负责拼接</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">isIgnoreHTTPSCertification</code>
-                        <span class="type">Boolean</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>是否忽略HTTPS证书</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">sequenceId</code>
+                        <code class="param-name">linkUrl,</code>
                         <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>发送服务的序列号，随机生存即可</p>
+                        <p>分享的链接</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">businessCode,</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>分享的业务ID，可以为空，设置后，方便BI统计数据</p>
 
                     </div>
 
@@ -758,41 +585,212 @@
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>//GET http://www.baidu.com/s?wd=good+day&amp;rsv_bp=0&amp;ch=&amp;tn=baidu&amp;bar=&amp;rsv_spt=3&amp;ie=utf-8&amp;rsv_sug3=4&amp;rsv_sug4=469&amp;rsv_sug1=2&amp;rsv_sug2=0&amp;inputT=166
+                <pre class="code prettyprint"><code>//调用
+   CtripShare.app_call_one_share(&quot;QQZone&quot;, &quot;http://a.hiphotos.baidu.com/ting/pic/item/314e251f95cad1c8ea16a3567d3e6709c93d5115.jpg&quot; , &quot;我是title&quot;, &quot;我是text&quot;, &quot;&quot;, &quot;ctrip_share_11111&quot;);
 
- var paramArr = new Array();
- paramArr[0]=&quot;wd=good+day&quot;;
- paramArr[1]=&quot;rsv_bp=0&quot;;
- paramArr[2]=&quot;ch=&quot;;
- paramArr[3]=&quot;tn=&quot;;
- paramArr[4]=&quot;baidu=&quot;;
- paramArr[5]=&quot;bar=&quot;;
- paramArr[6]=&quot;rsv_spt=3&quot;;
- paramArr[7]=&quot;ie=utf-8&quot;;
- paramArr[8]=&quot;rsv_sug3=4&quot;;
- paramArr[9]=&quot;rsv_sug4=469&quot;;
- //。。。。其它参数依次类推，请做好参数的Encode，app端只负责拼接
-
- CtripPipe.app_send_HTTP_pipe_request(&quot;http://www.baidu.com&quot;, &quot;/s&quot;,&quot;GET&quot;,null,paramArr, false, &quot;13222222&quot;);
-
-//调用后，H5会收到native回调的数据
-   var json_obj =
-   {
-       tagname:&quot;send_http_pipe_request&quot;,
-       param:
-       {
-           responseString:&quot;eHh4eHh4&quot;,
-           responseCookie : {
-                &quot;BAIDUID&quot;:&quot;2959D035E2F5D7C979687934D558DCD3:FG=1&quot;,
-                &quot;BDSVRTM&quot;:10,
-                &quot;BD_CK_SAM&quot;:1,
-                &quot;H_PS_PSSID&quot;:&quot;1429_5225_5287_5722_5848_4261_5830_4759_5659_5857&quot;
-           },
-
-           sequenceId:&quot;13222222&quot;
-       },
+   //调用处理完成之后
+   //1. 没有分享成功返回数据如下
+   var json_obj = {
+       tagname:&quot;call_custom_share&quot;,
+       error_code:&quot;(-201)分享失败&quot; //error_code定义参考CtripShare通用参数定义
    }
+
+   //2. 分享成功
+   var json_obj = {
+       tagname:&quot;call_one_share&quot;,
+   }
+
    app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_wrap_call_default_share" class="method item">
+    <h3 class="name"><code>wrap_call_default_share</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>imageUrl,</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>title,</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>text,</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>linkUrl,</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>businessCode,</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l4047"><code>bridge.js:4047</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v6.1</p>
+        
+    </div>
+
+    <div class="description">
+        <p>分享默认内容到各个平台，此API 为Javascript简化包装app_call_custom_share</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">imageUrl,</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>分享图片的imageUrl</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">title,</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>分享的标题</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">text,</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>分享的内容</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">linkUrl,</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>分享的链接</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">businessCode,</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>分享的业务ID，可以为空，设置后，方便BI统计数据</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   CtripShare.wrap_call_default_share(&quot;http://s0.ifengimg.com/2014/11/19/03ee1773b2262aa40a226b97f5b44c97.jpg&quot;, &quot;chen title&quot;, &quot;我的描述&quot;, &quot;http://www.ifeng.com&quot;);
+
+   //调用之后回调数据请参考 CtripShare.app_call_custom_share()的 example</code></pre>
 
             </div>
         </div>
