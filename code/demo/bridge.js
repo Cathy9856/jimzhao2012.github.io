@@ -542,6 +542,7 @@ var CtripUtil = {
                 ouId:"ssseeeeee",//5.9加入，营销业绩使用
                 telephone:"999999999"//5.9加入，营销业绩使用
                 networkStatus:"4G", //5.9加入，返回当前网络状态 2G/3G/4G/WIFI/None
+                isSaveFlow:true, //是否是省流量模式，since 6.0
                 isAppNeedUpdate:false, //5.10加入
                 userInfo={USERINFO},//USERINFO内部结构参考CtripUser.app_member_login();    
             }
@@ -3892,16 +3893,26 @@ var CtripPage = {
      * @brief 回退到指定的webview页面
      * @param {String} pageName 需要回退的页面名
      * @method app_back_to_page
+     * @callback back_to_page
      * @author jimzhao
      * @since v5.8
      * @example
      *
      * 
+
         CtripPage.app_back_to_page("USE_CAR_PAGE_IDENTIFY");
+
+        //调用之后，如果back失败，返回数据如下 since 6.0
+        var json_obj = {
+            tagname:"back_to_page",
+            error_code:"(-201)指定的PageName未找到" //成功的时候，不会有error_code
+        }
+
+        app.callback(json_obj);
 
      */
     app_back_to_page:function(pageName) {
-         if (!Internal.isSupportAPIWithVersion("5.8")) {
+        if (!Internal.isSupportAPIWithVersion("5.8")) {
             return;
         }
 
@@ -4000,13 +4011,201 @@ var CtripPage = {
         var params = {};
         params.isEnable = isEnable;
 
-        paramString = Internal.makeParamString("Page", "enableDragAnimation", params, "enable_drag_animation");
+        var paramString = Internal.makeParamString("Page", "enableDragAnimation", params, "enable_drag_animation");
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             ;//do nothing for android
         } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    }
+};
+
+/*
+ * @class CtripShare
+ * @description 调用native的第三方分享
+ * @brief 第三方分享
+
+    通用参数， 分享平台(shareType)定义
+    WeixinFriend------微信好友
+    WeixinTimeLine----微信朋友圈
+    SinaWeibo---------新浪微博
+    QQ----------------QQ
+    QQZone------------QQ空间
+    SMS---------------短信
+    Email-------------邮件
+    OSMore------------系统更多分享
+*/
+var CtripShare = {
+
+    /*
+     * @description 分享默认内容到各个平台，此API 为Javascript简化包装app_call_custom_share
+     * @brief 分享默认内容到各个平台
+     * @method wrap_call_default_share
+     * @param{String} imageUrl, 分享图片的imageUrl
+     * @param{String} title, 分享的标题
+     * @param{String} text, 分享的内容
+     * @param{String} linkUrl, 分享的链接
+     * @param{String} businessCode, 分享的业务ID，可以为空，设置后，方便BI统计数据
+     * @callback call_custom_share, 为app_call_custom_share的callBackTag名字
+     * @author jimzhao
+     * @since v6.1
+     * @example
+
+        CtripShare.wrap_call_default_share("http://s0.ifengimg.com/2014/11/19/03ee1773b2262aa40a226b97f5b44c97.jpg", "chen title", "我的描述", "http://www.ifeng.com");
+
+        //调用之后回调数据请参考 CtripShare.app_call_custom_share()的 example
+
+     */
+    wrap_call_default_share:function(imageUrl, title, text, linkUrl, businessCode) {
+        var shareData = {};
+        shareData.shareType = "Default";
+        shareData.imageUrl = imageUrl;
+        shareData.title = title;
+        shareData.text = text;
+        shareData.linkUrl = linkUrl;
+
+        var dataList = [];
+        dataList.push(shareData);
+        CtripShare.app_call_custom_share(dataList, businessCode);
+    },
+
+    /*
+     * @description 自定义分享，各个平台可以分享不同的内容
+     * @brief 自定义分享内容到第三方平台
+     * @method app_call_custom_share
+     * @param{JSON} dataList, 分享的内容，格式参考下面的example
+     * @param{String} businessCode, 分享的业务ID，可以为空，设置后，方便BI统计数据
+     * @callback call_custom_share
+     * @author jimzhao
+     * @since v6.1
+     * @example
+
+        var dataList = {
+            {
+                shareType:"QQ",
+                imageUrl:"http://share.csdn.net/uploads/24bd27fd3ad6a559873c4aff3bd64a60/24bd27fd3ad6a559873c4aff3bd64a60_thumb.jpg",
+                title:"分享图书",
+                text:"这本书的简介大概是这样",
+                linkUrl:"http://csdn.net"
+            },
+            {
+                shareType:"WeiXin",
+                imageUrl:"http://share.csdn.net/uploads/24bd27fd3ad6a559873c4aff3bd64a60/24bd27fd3ad6a559873c4aff3bd64a60_thumb.jpg",
+                title:"分享图书给微信",
+                text:"这本书的简介是专门为微信定制",
+                linkUrl:"http://csdn.net/w"
+            },
+            {
+                shareType:"Default",
+                imageUrl:"http://share.csdn.net/uploads/24bd27fd3ad6a559873c4aff3bd64a60/24bd27fd3ad6a559873c4aff3bd64a60_thumb.jpg",
+                title:"通用分享图书",
+                text:"这本书的简介是为其他分享定制的",
+                linkUrl:"http://csdn.net/common_test"
+            }  
+        }
+
+        CtripShare.app_call_custom_share(dataList);
+
+        //调用处理完成之后
+        //1. 没有分享成功返回数据如下
+        var json_obj = {
+            tagname:"call_custom_share",
+            error_code:"(-201)分享失败"
+        }
+
+        //2. 分享成功
+        var json_obj = {
+            tagname:"call_custom_share",
+            param:{
+                shareType:"WeiXin"
+            }
+        }
+
+        //error_code定义如下
+        //(-201)分享失败
+        //(-202)分享被取消
+        //(-203)分享参数有错误
+
+        app.callback(json_obj);
+     */
+    app_call_custom_share:function(dataList, businessCode) {
+        var param = {};
+        param.dataList = dataList;
+        param.businessCode = businessCode;
+
+        var paramString = Internal.makeParamString("Share", "enableDragAnimation", params, "call_custom_share");
+
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } 
+        else if (Internal.isAndroid) {
+            window.Share_a.callCustomShare(paramString);
+        } 
+        else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+
+    /*
+     * @description 指定内容，分享到特定平台
+     * @brief 指定内容，分享到特定平台
+     * @method app_call_one_share
+     * @param{String} shareType, 分享的平台类型
+     * @param{String} imageUrl, 分享图片的imageUrl
+     * @param{String} title, 分享的标题
+     * @param{String} text, 分享的内容
+     * @param{String} linkUrl, 分享的链接
+     * @param{String} businessCode, 分享的业务ID，可以为空，设置后，方便BI统计数据
+     * @callback call_one_share
+     * @author jimzhao
+     * @since v6.1
+     * @example
+
+     //调用
+        CtripShare.app_call_one_share("QQZone", "http://a.hiphotos.baidu.com/ting/pic/item/314e251f95cad1c8ea16a3567d3e6709c93d5115.jpg" , "我是title", "我是text", "", "ctrip_share_11111");
+
+        //调用处理完成之后
+        //1. 没有分享成功返回数据如下
+        var json_obj = {
+            tagname:"call_custom_share",
+            error_code:"(-201)分享失败"
+        }
+
+        //2. 分享成功
+        var json_obj = {
+            tagname:"call_one_share",
+        }
+
+        //error_code定义如下
+        //(-201)分享失败
+        //(-202)分享被取消
+        //(-203)分享参数有错误
+
+        app.callback(json_obj);
+     */
+    app_call_one_share:function(shareType, imageUrl, title, text, linkUrl, businessCode) {
+        var param = {};
+        param.shareType = shareType;
+        param.imageUrl = imageUrl;
+        param.title = title;
+        param.text = text;
+        param.linkUrl = linkUrl;
+        param.businessCode = businessCode;
+
+        var paramString = Internal.makeParamString("Share", "callOneShare", params, "call_one_share");
+        if (Internal.isIOS) {
+            url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } 
+        else if (Internal.isAndroid) {
+            window.Share_a.callOneShare(paramString);
+        } 
+        else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
     }

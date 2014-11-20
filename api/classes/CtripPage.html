@@ -116,7 +116,7 @@
 
     
         <div class="foundat">
-            定义在: <a href="../files/bridge.js.html#l3847"><code>bridge.js:3847</code></a>
+            定义在: <a href="../files/bridge.js.html#l3848"><code>bridge.js:3848</code></a>
         </div>
     
 
@@ -261,7 +261,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3890"><code>bridge.js:3890</code></a>
+        <a href="../files/bridge.js.html#l3891"><code>bridge.js:3891</code></a>
         
         </p>
 
@@ -311,7 +311,15 @@
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>   CtripPage.app_back_to_page(&quot;USE_CAR_PAGE_IDENTIFY&quot;);</code></pre>
+                <pre class="code prettyprint"><code>   CtripPage.app_back_to_page(&quot;USE_CAR_PAGE_IDENTIFY&quot;);
+
+   //调用之后，如果back失败，返回数据如下 since 6.0
+   var json_obj = {
+       tagname:&quot;back_to_page&quot;,
+       error_code:&quot;(-201)指定的PageName未找到&quot; //成功的时候，不会有error_code
+   }
+
+   app.callback(json_obj);</code></pre>
 
             </div>
         </div>
@@ -351,7 +359,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3984"><code>bridge.js:3984</code></a>
+        <a href="../files/bridge.js.html#l3995"><code>bridge.js:3995</code></a>
         
         </p>
 
@@ -417,7 +425,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3955"><code>bridge.js:3955</code></a>
+        <a href="../files/bridge.js.html#l3966"><code>bridge.js:3966</code></a>
         
         </p>
 
@@ -493,7 +501,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3854"><code>bridge.js:3854</code></a>
+        <a href="../files/bridge.js.html#l3855"><code>bridge.js:3855</code></a>
         
         </p>
 
@@ -583,7 +591,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3926"><code>bridge.js:3926</code></a>
+        <a href="../files/bridge.js.html#l3937"><code>bridge.js:3937</code></a>
         
         </p>
 
