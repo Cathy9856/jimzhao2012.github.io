@@ -4026,16 +4026,6 @@ var CtripPage = {
 /*
  * @class CtripShare
  * @description 调用native的第三方分享
-    通用参数， 分享平台(shareType)定义
-    WeixinFriend------微信好友
-    WeixinTimeLine----微信朋友圈
-    SinaWeibo---------新浪微博
-    QQ----------------QQ
-    QQZone------------QQ空间
-    SMS---------------短信
-    Email-------------邮件
-    OSMore------------系统更多分享
-    
  * @brief 第三方分享 
 */
 var CtripShare = {
@@ -4128,7 +4118,15 @@ var CtripShare = {
         //(-201)分享失败
         //(-202)分享被取消
         //(-203)分享参数有错误
-
+        通用参数， 分享平台(shareType)定义
+        WeixinFriend------微信好友
+        WeixinTimeLine----微信朋友圈
+        SinaWeibo---------新浪微博
+        QQ----------------QQ
+        QQZone------------QQ空间
+        SMS---------------短信
+        Email-------------邮件
+        OSMore------------系统更多分享
         app.callback(json_obj);
      */
     app_call_custom_share:function(dataList, businessCode) {
