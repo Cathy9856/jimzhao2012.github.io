@@ -544,6 +544,7 @@ var CtripUtil = {
                 networkStatus:"4G", //5.9加入，返回当前网络状态 2G/3G/4G/WIFI/None
                 isSaveFlow:true, //是否是省流量模式，since 6.0
                 isAppNeedUpdate:false, //5.10加入
+                idfa:"guid_xxxx_3333_16字节",// iOS设备的IDFA，android设备无此字段，since 6.1
                 userInfo={USERINFO},//USERINFO内部结构参考CtripUser.app_member_login();    
             }
          }
@@ -4146,7 +4147,7 @@ var CtripShare = {
         param.dataList = dataList;
         param.businessCode = businessCode;
 
-        var paramString = Internal.makeParamString("Share", "enableDragAnimation", params, "call_custom_share");
+        var paramString = Internal.makeParamString("Share", "callCustomShare", params, "call_custom_share");
 
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
