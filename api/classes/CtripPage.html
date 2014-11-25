@@ -131,6 +131,14 @@
 
 <div class="box intro">
     <p>页面跳转，导航，刷新相关API</p>
+<p>   通过CtripUtil.app_open_url(....)打开新的webview，可以给webview设置pageName
+   也可以调用CtripPage.app_set_page_name(...)给当前webview设置pageName；</p>
+<p>   页面跳转举例说明：
+   native--&gt;a(na)--&gt;b(nb)--&gt;c(nc)--&gt;d(nd)--&gt;e(ne) //括号内为页面pageName
+   1.native打开webview页面a，此时a的名字为设置，hybrid调用CtripPage.app_set_page_name(..), 设置当前页面名字为na；
+   2.在a页面用新的webview打开b页面，Ctrip.app_open_url(...),可以给b页面设置pageName为nb，或者调用CtripPage.app_set_page_name(..)，设置nb；
+   3.按照2的方式打开c，d，e；
+   4.如果需要从当前页面e(ne), 会退到c(nc), 调用CtripPage.app_back_to_page(&quot;nc&quot;);</p>
 
 </div>
 
@@ -263,7 +271,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3793"><code>bridge.js:3793</code></a>
+        <a href="../files/bridge.js.html#l3804"><code>bridge.js:3804</code></a>
         
         </p>
 
@@ -361,7 +369,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3897"><code>bridge.js:3897</code></a>
+        <a href="../files/bridge.js.html#l3908"><code>bridge.js:3908</code></a>
         
         </p>
 
@@ -427,7 +435,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3868"><code>bridge.js:3868</code></a>
+        <a href="../files/bridge.js.html#l3879"><code>bridge.js:3879</code></a>
         
         </p>
 
@@ -503,7 +511,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3757"><code>bridge.js:3757</code></a>
+        <a href="../files/bridge.js.html#l3768"><code>bridge.js:3768</code></a>
         
         </p>
 
@@ -593,7 +601,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l3839"><code>bridge.js:3839</code></a>
+        <a href="../files/bridge.js.html#l3850"><code>bridge.js:3850</code></a>
         
         </p>
 

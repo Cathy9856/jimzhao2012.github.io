@@ -3750,6 +3750,17 @@ var CtripBusiness = {
 /**
  * @class CtripPage
  * @description 页面跳转，导航，刷新相关API
+ 
+    通过CtripUtil.app_open_url(....)打开新的webview，可以给webview设置pageName
+    也可以调用CtripPage.app_set_page_name(...)给当前webview设置pageName；
+
+    页面跳转举例说明：
+    native-->a(na)-->b(nb)-->c(nc)-->d(nd)-->e(ne) //括号内为页面pageName
+    1.native打开webview页面a，此时a的名字为设置，hybrid调用CtripPage.app_set_page_name(..), 设置当前页面名字为na；
+    2.在a页面用新的webview打开b页面，Ctrip.app_open_url(...),可以给b页面设置pageName为nb，或者调用CtripPage.app_set_page_name(..)，设置nb；
+    3.按照2的方式打开c，d，e；
+    4.如果需要从当前页面e(ne), 会退到c(nc), 调用CtripPage.app_back_to_page("nc");
+
  * @brief 页面跳转，导航，刷新相关API
  */
 var CtripPage = {
