@@ -409,43 +409,6 @@ function __bridge_callback(param) {
     return -1;
 };
 
-
-function __payment_callback(paymentRouteGate) {
-    paymentRouteGate = decodeURIComponent(paymentRouteGate);
-    var jsonObj = JSON.parse(paymentRouteGate);
-   
-    if (jsonObj != null) {
-        if(jsonObj.tagname == "call_pay"){
-            if(jsonObj.payment_route_gate){
-                //jump to native
-                var paramString = Internal.makeParamString("Pay","payNative", jsonObj, jsonObj.callback);
-                var url = Internal.makeURLWithParam(paramString);
-                if (Internal.isIOS) {
-                    Internal.loadURL(url);
-                    return;
-                } else {
-                    if (Internal.isAndroid) {
-                        window.Pay_a.payNative(paramString);
-                        return;
-                    } else {
-                        if (Internal.isWinOS) {
-                            Internal.callWin8App(paramString);
-                            return;
-                        }
-                    }
-                }
-            }else{
-                //jump to hybrid
-                var n = jsonObj.param;
-                CtripUtil.app_cross_package_href(jsonObj.path, n);
-                return;
-            }
-            return -1;
-        }
-    }
-};
- 
-
 /**
  * @brief app写localstorage
  * @description 写key/value数据到H5页面的local storage
@@ -545,6 +508,7 @@ var CtripUtil = {
                 isSaveFlow:true, //是否是省流量模式，since 6.0
                 isAppNeedUpdate:false, //5.10加入
                 idfa:"guid_xxxx_3333_16字节",// iOS设备的IDFA，android设备无此字段，since 6.1
+                deviceToken:"guid_xxxx_3333_32字节",// iOS设备的push deviceToken，android设备无此字段，since 6.1
                 userInfo={USERINFO},//USERINFO内部结构参考CtripUser.app_member_login();    
             }
          }
@@ -4060,12 +4024,12 @@ var CtripShare = {
      * @description 分享默认内容到各个平台，此API 为Javascript简化包装app_call_custom_share
      * @brief 分享默认内容到各个平台(JS 二次包装)
      * @method wrap_call_default_share
-     * @param{String} imageUrl, 分享图片的imageUrl
-     * @param{String} title, 分享的标题
-     * @param{String} text, 分享的内容
-     * @param{String} linkUrl, 分享的链接
-     * @param{String} businessCode, 分享的业务ID，可以为空，设置后，方便BI统计数据
-     * @callback call_custom_share, 为app_call_custom_share的callBackTag名字
+     * @param{String} imageUrl 分享图片的imageUrl
+     * @param{String} title 分享的标题
+     * @param{String} text 分享的内容
+     * @param{String} linkUrl 分享的链接
+     * @param{String} businessCode 分享的业务ID，可以为空，设置后，方便BI统计数据
+     * @callback call_custom_share 为app_call_custom_share的callBackTag名字
      * @author jimzhao
      * @since v6.1
      * @example
@@ -4092,8 +4056,8 @@ var CtripShare = {
      * @description 自定义分享，各个平台可以分享不同的内容
      * @brief 自定义分享内容到第三方平台
      * @method app_call_custom_share
-     * @param{JSON} dataList, 分享的内容，格式参考下面的example
-     * @param{String} businessCode, 分享的业务ID，可以为空，设置后，方便BI统计数据
+     * @param{JSON} dataList 分享的内容，格式参考下面的example
+     * @param{String} businessCode 分享的业务ID，可以为空，设置后，方便BI统计数据
      * @callback call_custom_share
      * @author jimzhao
      * @since v6.1
@@ -4166,12 +4130,12 @@ var CtripShare = {
      * @description 指定内容，分享到特定平台
      * @brief 指定内容，分享到特定平台
      * @method app_call_one_share
-     * @param{String} shareType, 分享的平台类型
-     * @param{String} imageUrl, 分享图片的imageUrl
-     * @param{String} title, 分享的标题
-     * @param{String} text, 分享的内容
-     * @param{String} linkUrl, 分享的链接
-     * @param{String} businessCode, 分享的业务ID，可以为空，设置后，方便BI统计数据
+     * @param{String} shareType 分享的平台类型
+     * @param{String} imageUrl 分享图片的imageUrl
+     * @param{String} title 分享的标题
+     * @param{String} text 分享的内容
+     * @param{String} linkUrl 分享的链接
+     * @param{String} businessCode 分享的业务ID，可以为空，设置后，方便BI统计数据
      * @callback call_one_share
      * @author jimzhao
      * @since v6.1
