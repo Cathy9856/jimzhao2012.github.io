@@ -340,6 +340,40 @@ var showPOIIndex = 0;
       CtripUtil.app_save_photo(null,base64Str,"image_from_base64");
   }
 
+
+  function doOneShare() {
+      CtripShare.app_call_one_share("WeiXin", "http://e.hiphotos.baidu.com/image/w%3D230/sign=6642e33179f40ad115e4c0e0672c1151/1b4c510fd9f9d72a0c60c414d62a2834349bbbb7.jpg", "分享美女到微信",null,"wx_code_business--2222"); 
+  }
+
+  function doCustomShare() {
+    var dataList = {
+            {
+                shareType:"QQ",
+                imageUrl:"http://share.csdn.net/uploads/24bd27fd3ad6a559873c4aff3bd64a60/24bd27fd3ad6a559873c4aff3bd64a60_thumb.jpg",
+                title:"分享图书",
+                text:"这本书的简介大概是这样",
+                linkUrl:"http://csdn.net"
+            },
+            {
+                shareType:"WeiXin",
+                imageUrl:"http://a.hiphotos.baidu.com/image/w%3D230/sign=2ae8d7050fd79123e0e093779d355917/b58f8c5494eef01fda419fc8e3fe9925bc317d62.jpg",
+                title:"百度－微信图片分享",
+                text:"百度－微信图片分享－－－这本书的简介是专门为微信定制",
+            },
+            {
+                shareType:"Default",
+                imageUrl:"http://f.hiphotos.baidu.com/image/pic/item/0e2442a7d933c895e41c1f76d21373f082020058.jpg",
+                title:"百度图片美女分享",
+                text:"百度图片美女分享－内容，这本书的简介是为其他分享定制的",
+                linkUrl:"http://image.baidu.com/"
+            }  
+        };
+
+    CtripShare.app_call_custom_share(dataList, "c_custom_share_business_code--1111");
+
+
+  }
+
   </script>
 
 
@@ -352,6 +386,10 @@ var showPOIIndex = 0;
 <p class="p1"><br></p>
 <p class="p1"><br></p>
 <ul class="ul1">
+<li class="li2"><a onclick='javascript:doOneShare()'>分享6.1_分享到指定平台</a></li>
+  <br/>
+<li class="li2"><a onclick='javascript:doCustomShare()'>分享6.1_分享到所有平台</a></li>
+  <br/>
    <li class="li2"><a onclick='javascript:CtripMap.app_locate(12,true, true, "33333333")'>定位5.10_CtripCityF</a></li>
   <br/>
   <li class="li2"><a onclick='javascript:CtripMap.app_locate(12,true, true, "22222222")'>定位5.10_获取经纬度后stopD</a></li>
