@@ -638,11 +638,11 @@ var CtripUtil = {
     /**
      * @description Hybrid页面，打开链接URL地址，兼容App和浏览器
      * @brief Hybrid页面打开链接URL
-     * @param {String} openUrl @required 需要打开的URL，可以为ctrip://,http(s)://,file://等协议的URL
-     * @param {int} targetMode  @required
+     * @param {String} openUrl @required<br> 需要打开的URL，可以为ctrip://,http(s)://,file://等协议的URL
+     * @param {int} targetMode @required<br>
      0.当前页面刷新url, 该参数类似于js的location.href="", 注：只支持打online地址 <br/>
-     1.处理ctrip://协议;， 注：只处理ctrip协议的URL schema<br/>
-     2.开启新的H5页面,title生效; 注：只支持打online地址<br/>
+     1.处理ctrip://协议; 注：只处理ctrip协议的URL schema<br/>
+     2.开启新的H5页面,title生效; 注：只支持online地址和其它App的URL Schema，例如微信的weixin://home<br/>
      3.使用系统浏览器打开; 注：只支持online地址<br/>
      4.开启新的H5页面，title生效，打开webapp目录下的相对路径；注：和2对应，2打开online地址，4打开相对路径<br/>
      5.当前页面打开webapp目录下相对路径；注：和0对应，0是打开online地址，5是打开本地相对路径。 5.8之前版本，内部自动调用app_cross_package_href
