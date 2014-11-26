@@ -4121,9 +4121,9 @@ var CtripShare = {
         app.callback(json_obj);
      */
     app_call_custom_share:function(dataList, businessCode) {
-        var param = {};
-        param.dataList = dataList;
-        param.businessCode = businessCode;
+        var params = {};
+        params.dataList = dataList;
+        params.businessCode = businessCode;
 
         var paramString = Internal.makeParamString("Share", "callCustomShare", params, "call_custom_share");
 
@@ -4173,13 +4173,13 @@ var CtripShare = {
         app.callback(json_obj);
      */
     app_call_one_share:function(shareType, imageUrl, title, text, linkUrl, businessCode) {
-        var param = {};
-        param.shareType = shareType;
-        param.imageUrl = imageUrl;
-        param.title = title;
-        param.text = text;
-        param.linkUrl = linkUrl;
-        param.businessCode = businessCode;
+        var params = {};
+        params.shareType = shareType;
+        params.imageUrl = imageUrl;
+        params.title = title;
+        params.text = text;
+        params.linkUrl = linkUrl;
+        params.businessCode = businessCode;
 
         var paramString = Internal.makeParamString("Share", "callOneShare", params, "call_one_share");
         if (Internal.isIOS) {
