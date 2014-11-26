@@ -757,7 +757,7 @@ var CtripUtil = {
      * @param {String} openUrl @required&lt;br&gt; 需要打开的URL，可以为ctrip://,http(s)://,file://等协议的URL
      * @param {int} targetMode @required&lt;br&gt;
      0.当前页面刷新url, 该参数类似于js的location.href=&quot;&quot;, 注：只支持打online地址 &lt;br/&gt;
-     1.处理ctrip://协议; 注：只处理ctrip协议的URL schema&lt;br/&gt;
+     1.处理ctrip://协议; 注：只处理ctrip协议的URL Schema&lt;br/&gt;
      2.开启新的H5页面,title生效; 注：只支持online地址和其它App的URL Schema，例如微信的weixin://home&lt;br/&gt;
      3.使用系统浏览器打开; 注：只支持online地址&lt;br/&gt;
      4.开启新的H5页面，title生效，打开webapp目录下的相对路径；注：和2对应，2打开online地址，4打开相对路径&lt;br/&gt;
@@ -4061,12 +4061,13 @@ var CtripPage = {
         通用参数，
         1. 分享平台(shareType)定义
         WeixinFriend------微信好友
-        WeixinTimeLine----微信朋友圈
+        WeixinCircle----微信朋友圈
         SinaWeibo---------新浪微博
         QQ----------------QQ
         QQZone------------QQ空间
         SMS---------------短信
         Email-------------邮件
+        Copy--------------复制
         OSMore------------系统更多分享
 
         2.分享error_code定义

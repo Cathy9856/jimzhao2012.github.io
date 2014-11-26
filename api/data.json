@@ -216,7 +216,7 @@
             "extension_for": [],
             "file": "bridge.js",
             "line": 3941,
-            "description": "调用native的第三方分享\n\n       通用参数，\n       1. 分享平台(shareType)定义\n       WeixinFriend------微信好友\n       WeixinTimeLine----微信朋友圈\n       SinaWeibo---------新浪微博\n       QQ----------------QQ\n       QQZone------------QQ空间\n       SMS---------------短信\n       Email-------------邮件\n       OSMore------------系统更多分享\n\n       2.分享error_code定义\n       (-201)分享失败\n       (-202)分享被取消\n       (-203)分享参数有错误\n\n       3. 分享规则\n\n       微信(微信朋友/微信朋友圈)分享说明：\n       1. 图片分享，只能分享图片，所传的文字，title都无效；\n       2. 链接分享，所传的图片为分享网页的缩略图，title有效；\n       3. 纯文本分享，只能分享text，title无效；\n       4. 优先级 链接分享>图片分享>纯文本分享。\n          a. 如果有linkUrl，会被当作网页分享，图片作为缩略图；\n          b. 如果没有linkUrl，有图片，当作图片分享，text,title无效;\n          c. 如果没有linkUrl，没有图片，当作纯文本分享；\n       \n       微博分享：\n       1. 图片为所分享的图片；\n       2. 分享title不起作用；\n       3. 如果linkUrl有， 分享的text后面会自动添加linkUrl\n   \n       Email分享：\n       1. 图片为所分享的图片；\n       2. 分享title作为Email标题；\n       3. 如果有linkUrl，分享的text后面会自动添加linkUrl;\n\n       短信分享：\n       1. 图片为所分享的图片；注：iOS7.0之后才支持；\n       2. 分享title不起作用；\n       3. 如果有linkUrl，分享的text后面会自动添加linkUrl;\n\n       复制分享：\n       1. 分享的图片不起作用;\n       2. 分享的title不起作用;\n       3. 如果有linkUrl，分享的text后面会自动添加linkUrl;",
+            "description": "调用native的第三方分享\n\n       通用参数，\n       1. 分享平台(shareType)定义\n       WeixinFriend------微信好友\n       WeixinCircle----微信朋友圈\n       SinaWeibo---------新浪微博\n       QQ----------------QQ\n       QQZone------------QQ空间\n       SMS---------------短信\n       Email-------------邮件\n       Copy--------------复制\n       OSMore------------系统更多分享\n\n       2.分享error_code定义\n       (-201)分享失败\n       (-202)分享被取消\n       (-203)分享参数有错误\n\n       3. 分享规则\n\n       微信(微信朋友/微信朋友圈)分享说明：\n       1. 图片分享，只能分享图片，所传的文字，title都无效；\n       2. 链接分享，所传的图片为分享网页的缩略图，title有效；\n       3. 纯文本分享，只能分享text，title无效；\n       4. 优先级 链接分享>图片分享>纯文本分享。\n          a. 如果有linkUrl，会被当作网页分享，图片作为缩略图；\n          b. 如果没有linkUrl，有图片，当作图片分享，text,title无效;\n          c. 如果没有linkUrl，没有图片，当作纯文本分享；\n       \n       微博分享：\n       1. 图片为所分享的图片；\n       2. 分享title不起作用；\n       3. 如果linkUrl有， 分享的text后面会自动添加linkUrl\n   \n       Email分享：\n       1. 图片为所分享的图片；\n       2. 分享title作为Email标题；\n       3. 如果有linkUrl，分享的text后面会自动添加linkUrl;\n\n       短信分享：\n       1. 图片为所分享的图片；注：iOS7.0之后才支持；\n       2. 分享title不起作用；\n       3. 如果有linkUrl，分享的text后面会自动添加linkUrl;\n\n       复制分享：\n       1. 分享的图片不起作用;\n       2. 分享的title不起作用;\n       3. 如果有linkUrl，分享的text后面会自动添加linkUrl;",
             "brief": "第三方分享"
         },
         "CtripGeoHelper": {
@@ -652,7 +652,7 @@
                 },
                 {
                     "name": "targetMode",
-                    "description": "@required<br>\n    0.当前页面刷新url, 该参数类似于js的location.href=\"\", 注：只支持打online地址 <br/>\n    1.处理ctrip://协议; 注：只处理ctrip协议的URL schema<br/>\n    2.开启新的H5页面,title生效; 注：只支持online地址和其它App的URL Schema，例如微信的weixin://home<br/>\n    3.使用系统浏览器打开; 注：只支持online地址<br/>\n    4.开启新的H5页面，title生效，打开webapp目录下的相对路径；注：和2对应，2打开online地址，4打开相对路径<br/>\n    5.当前页面打开webapp目录下相对路径；注：和0对应，0是打开online地址，5是打开本地相对路径。 5.8之前版本，内部自动调用app_cross_package_href",
+                    "description": "@required<br>\n    0.当前页面刷新url, 该参数类似于js的location.href=\"\", 注：只支持打online地址 <br/>\n    1.处理ctrip://协议; 注：只处理ctrip协议的URL Schema<br/>\n    2.开启新的H5页面,title生效; 注：只支持online地址和其它App的URL Schema，例如微信的weixin://home<br/>\n    3.使用系统浏览器打开; 注：只支持online地址<br/>\n    4.开启新的H5页面，title生效，打开webapp目录下的相对路径；注：和2对应，2打开online地址，4打开相对路径<br/>\n    5.当前页面打开webapp目录下相对路径；注：和0对应，0是打开online地址，5是打开本地相对路径。 5.8之前版本，内部自动调用app_cross_package_href",
                     "type": "Int"
                 },
                 {
@@ -2152,7 +2152,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 3997,
+            "line": 3998,
             "description": "调用App的分享-兼容老的分享，调用之后，无回调信息，6.1之后不建议使用该API",
             "brief": "调用App的分享－兼容6.1之前版本",
             "params": [
@@ -2188,7 +2188,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 4036,
+            "line": 4037,
             "description": "分享默认内容到各个平台，此API 为Javascript简化包装app_call_custom_share",
             "brief": "分享默认内容到各个平台(JS 二次包装)",
             "itemtype": "method",
@@ -2230,7 +2230,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 4068,
+            "line": 4069,
             "description": "自定义分享，各个平台可以分享不同的内容",
             "brief": "自定义分享内容到第三方平台",
             "itemtype": "method",
@@ -2257,7 +2257,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 4142,
+            "line": 4143,
             "description": "指定内容，分享到特定平台",
             "brief": "指定内容，分享到特定平台",
             "itemtype": "method",
@@ -2891,31 +2891,31 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:3997"
+            "line": " bridge.js:3998"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:4036"
+            "line": " bridge.js:4037"
         },
         {
             "message": "unknown tag: callback",
-            "line": " bridge.js:4036"
+            "line": " bridge.js:4037"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:4068"
+            "line": " bridge.js:4069"
         },
         {
             "message": "unknown tag: callback",
-            "line": " bridge.js:4068"
+            "line": " bridge.js:4069"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:4142"
+            "line": " bridge.js:4143"
         },
         {
             "message": "unknown tag: callback",
-            "line": " bridge.js:4142"
+            "line": " bridge.js:4143"
         },
         {
             "message": "unknown tag: brief",

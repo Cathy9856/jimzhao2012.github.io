@@ -342,11 +342,14 @@ var showPOIIndex = 0;
 
 
   function doOneShare() {
+      console.log("do one share start");
       CtripShare.app_call_one_share("WeiXin", "http://e.hiphotos.baidu.com/image/w%3D230/sign=6642e33179f40ad115e4c0e0672c1151/1b4c510fd9f9d72a0c60c414d62a2834349bbbb7.jpg", "分享美女到微信",null,"wx_code_business--2222"); 
   }
 
   function doCustomShare() {
-    var dataList = {
+    console.log("do custom share start");
+
+    var dataList = [
             {
                 shareType:"QQ",
                 imageUrl:"http://share.csdn.net/uploads/24bd27fd3ad6a559873c4aff3bd64a60/24bd27fd3ad6a559873c4aff3bd64a60_thumb.jpg",
@@ -367,7 +370,7 @@ var showPOIIndex = 0;
                 text:"百度图片美女分享－内容，这本书的简介是为其他分享定制的",
                 linkUrl:"http://image.baidu.com/"
             }  
-        };
+        ];
 
     CtripShare.app_call_custom_share(dataList, "c_custom_share_business_code--1111");
 
