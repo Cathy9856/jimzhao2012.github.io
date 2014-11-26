@@ -640,12 +640,12 @@ var CtripUtil = {
      * @brief Hybrid页面打开链接URL
      * @param {String} openUrl @required 需要打开的URL，可以为ctrip://,http(s)://,file://等协议的URL
      * @param {int} targetMode  @required
-     0.当前页面刷新url;
-     1.处理ctrip://协议;
-     2.开启新的H5页面,title生效;
-     3.使用系统浏览器打开;
-     4.开启本地新的H5页面，title生效，此时URL为相对路径；5.6版本加入
-     5.当前页面打开相对路径；5.8版本加入，但是所有版本都支持，5.8之前版本，内部自动调用app_cross_package_href
+     0.当前页面刷新url, 该参数类似于js的location.href="", 注：只支持打online地址 <br/>
+     1.处理ctrip://协议;， 注：只处理ctrip协议的URL schema<br/>
+     2.开启新的H5页面,title生效; 注：只支持打online地址<br/>
+     3.使用系统浏览器打开; 注：只支持online地址<br/>
+     4.开启新的H5页面，title生效，打开webapp目录下的相对路径；注：和2对应，2打开online地址，4打开相对路径<br/>
+     5.当前页面打开webapp目录下相对路径；注：和0对应，0是打开online地址，5是打开本地相对路径。 5.8之前版本，内部自动调用app_cross_package_href
      * @param {String} title @optional 当targetMode＝2时候，新打开的H5页面的title
      * @param {String} pageName @optional 当targetMode＝0、2、4时候，本页面，或者新打开的H5页面，此时pageName有效，pageName当作H5页面唯一标识，可用于刷新页面；5.6版本加入
      * @param {boolean} isShowLoadingPage  @optional 开启新的webview的时候，是否加载app的loading 
