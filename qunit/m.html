@@ -520,8 +520,12 @@ var showPOIIndex = 0;
   <br/>
   <li class="li2"><a onclick="javascript:CtripUtil.app_open_url('car/index.html', 4, '用车的首页', 'car_index_page_id', true)">show crash Page 测试</a></li>
   <br/>
-    <li class="li2"><a onclick="javascript:CtripUtil.app_open_url('http://www.baidu.com', 2, 'B用车的首页', 'baidu_index_page_id', true)">baidu homepage测试</a></li>
-
+  <li class="li2"><a onclick="javascript:CtripUtil.app_open_url('http://www.baidu.com', 2, 'B用车的首页', 'baidu_index_page_id', true)">baidu homepage测试</a></li>
+  <br/>
+  <li class="li2"><a onclick="javascript:CtripBusiness.app_send_ubt_trace('trace_name_here', {pageId:'xxxx',a:'bbb'})">app_send_ubt_trace测试</a></li>
+  <br/>
+  <li class="li2"><a onclick="javascript:CtripBusiness.app_send_ubt_metrics('metrics_name_here', 10.2, {pageId:'xxxx',a:'bbb'})">app_send_ubt_metrics测试</a></li>
+  <br/>
   <DIV ID="oErrorLog">
 </DIV>
 </body></html>

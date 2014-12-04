@@ -587,13 +587,7 @@ var CtripUtil = {
             Internal.loadURL(url);
         }
         else if (Internal.isAndroid) {
-            var homeURL = "ctrip://wireless/";
-            if (Internal.isYouthApp) {
-                homeURL = "ctripyouth://wireless/";
-            }
-
-            CtripUtil.app_open_url(homeURL, 1, "  ");
-            // window.Util_a.backToHome(paramString);
+           window.Util_a.backToHome(paramString);
         }
         else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
@@ -3657,10 +3651,10 @@ var CtripBusiness = {
     },
 
     /**
-     * @description hybrid统计页面流量
+     * @description hybrid统计页面流量，框架使用，BU请勿使用
      * @brief hybrid统计页面流量
      * @method app_send_ubt_log
-     * @param {JSON} tags 需要纪录的页面名
+     * @param {JSON} tags 页面带的配置信息，可自定义，会传到UBT server，由BI分析
      * @author jimzhao
      * @since v5.9
      * @example
@@ -3683,6 +3677,76 @@ var CtripBusiness = {
             Internal.loadURL(url);
         } else if (Internal.isAndroid) {
             window.Business_a.sendUBTLog(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+    /**
+     * @description 使用native统计UBT trace日志
+     * @brief 使用native统计UBT trace日志
+     * @method app_send_ubt_trace
+     * @param {String} traceName 需要纪录的trace名
+     * @param {JSON} tags 页面带的配置信息，可自定义，会传到UBT server，由BI分析
+     * @author jimzhao
+     * @since v6.1
+     * @example
+     *
+     * 
+        //调用API
+        CtripBusiness.app_send_ubt_trace('trace_name_here', {pageId:'xxxx',a:'bbb'});
+
+     */
+    app_send_ubt_trace:function(traceName, tags) {
+        if (!Internal.isSupportAPIWithVersion("6.1")) {
+            return;
+        }
+        var params = {};
+        params.tags = tags;
+        params.traceName = traceName;
+        
+        var paramString = Internal.makeParamString("Business", "sendUBTTrace", params, "send_ubt_trace");
+        if (Internal.isIOS) {
+            var url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            window.Business_a.sendUBTTrace(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
+    },
+
+     /**
+     * @description 使用native统计UBT metrics日志，metrics日志是有个double的数字的
+     * @brief 使用native统计UBT metrics日志
+     * @method send_ubt_metrics
+     * @param {String} metricsName 需要纪录metrics名
+     * @param {double} numValue 需要纪录的metrics的数值
+     * @param {JSON} tags 页面带的配置信息，可自定义，会传到UBT server，由BI分析
+     * @author jimzhao
+     * @since v6.1
+     * @example
+     *
+     * 
+        //调用API
+        CtripBusiness.app_send_ubt_metrics('metrics_name_here', 10.2, {pageId:'xxxx',a:'bbb'});
+
+     */
+    app_send_ubt_metrics:function(metricsName, numValue, tags) {
+        if (!Internal.isSupportAPIWithVersion("6.1")) {
+            return;
+        }
+        var params = {};
+        params.tags = tags;
+        params.metricsName = metricsName;
+        params.numValue = numValue;
+
+        var paramString = Internal.makeParamString("Business", "sendUBTMetrics", params, "send_ubt_metrics");
+        if (Internal.isIOS) {
+            var url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            window.Business_a.sendUBTMetrics(paramString);
         } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
