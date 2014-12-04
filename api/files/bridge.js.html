@@ -3820,7 +3820,7 @@ var CtripBusiness = {
         var params = {};
         params.tags = tags;
         params.traceName = traceName;
-        
+
         var paramString = Internal.makeParamString(&quot;Business&quot;, &quot;sendUBTTrace&quot;, params, &quot;send_ubt_trace&quot;);
         if (Internal.isIOS) {
             var url = Internal.makeURLWithParam(paramString);
@@ -3835,7 +3835,7 @@ var CtripBusiness = {
      /**
      * @description 使用native统计UBT metrics日志，metrics日志是有个double的数字的
      * @brief 使用native统计UBT metrics日志
-     * @method send_ubt_metrics
+     * @method app_send_ubt_metrics
      * @param {String} metricsName 需要纪录metrics名
      * @param {double} numValue 需要纪录的metrics的数值
      * @param {JSON} tags 页面带的配置信息，可自定义，会传到UBT server，由BI分析
@@ -4134,6 +4134,8 @@ var CtripPage = {
         Copy--------------复制
         OSMore------------系统更多分享
 
+        Default-----------不是一种shareType，参考下面的demo，分享到多个平台的时候，可以只指定其中1-2个特殊定义，其他都是默认。
+        
         2.分享error_code定义
         (-201)分享失败
         (-202)分享被取消
@@ -4218,7 +4220,7 @@ var CtripShare = {
      * @description 分享默认内容到各个平台，此API 为Javascript简化包装app_call_custom_share
      * @brief 分享默认内容到各个平台(JS 二次包装)
      * @method wrap_call_default_share
-     * @param{String} imageUrl 分享图片的imageUrl
+     * @param{String} imageUrl 分享图片的imageUrl，图片下载失败后，继续分享，不带图片
      * @param{String} title 分享的标题
      * @param{String} text 分享的内容
      * @param{String} linkUrl 分享的链接
@@ -4273,7 +4275,7 @@ var CtripShare = {
                 linkUrl:&quot;http://csdn.net/w&quot;
             },
             {
-                shareType:&quot;Default&quot;,
+                shareType:&quot;Default&quot;, //表示其他未指定的平台，都适用该分享内容
                 imageUrl:&quot;http://share.csdn.net/uploads/24bd27fd3ad6a559873c4aff3bd64a60/24bd27fd3ad6a559873c4aff3bd64a60_thumb.jpg&quot;,
                 title:&quot;通用分享图书&quot;,
                 text:&quot;这本书的简介是为其他分享定制的&quot;,
@@ -4325,7 +4327,7 @@ var CtripShare = {
      * @brief 指定内容，分享到特定平台
      * @method app_call_one_share
      * @param{String} shareType 分享的平台类型
-     * @param{String} imageUrl 分享图片的imageUrl
+     * @param{String} imageUrl 分享图片的imageUrl，图片下载失败后，继续分享，不带图片
      * @param{String} title 分享的标题
      * @param{String} text 分享的内容
      * @param{String} linkUrl 分享的链接

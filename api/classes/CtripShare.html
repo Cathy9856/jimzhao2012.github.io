@@ -143,6 +143,8 @@
    Copy--------------复制
    OSMore------------系统更多分享
 
+   Default-----------不是一种shareType，参考下面的demo，分享到多个平台的时候，可以只指定其中1-2个特殊定义，其他都是默认。
+
    2.分享error_code定义
    (-201)分享失败
    (-202)分享被取消
@@ -308,7 +310,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l4133"><code>bridge.js:4133</code></a>
+        <a href="../files/bridge.js.html#l4135"><code>bridge.js:4135</code></a>
         
         </p>
 
@@ -390,7 +392,7 @@
            linkUrl:&quot;http://csdn.net/w&quot;
        },
        {
-           shareType:&quot;Default&quot;,
+           shareType:&quot;Default&quot;, //表示其他未指定的平台，都适用该分享内容
            imageUrl:&quot;http://share.csdn.net/uploads/24bd27fd3ad6a559873c4aff3bd64a60/24bd27fd3ad6a559873c4aff3bd64a60_thumb.jpg&quot;,
            title:&quot;通用分享图书&quot;,
            text:&quot;这本书的简介是为其他分享定制的&quot;,
@@ -495,7 +497,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l4207"><code>bridge.js:4207</code></a>
+        <a href="../files/bridge.js.html#l4209"><code>bridge.js:4209</code></a>
         
         </p>
 
@@ -543,7 +545,7 @@
                     
 
                     <div class="param-description">
-                        <p>分享图片的imageUrl</p>
+                        <p>分享图片的imageUrl，图片下载失败后，继续分享，不带图片</p>
 
                     </div>
 
@@ -708,7 +710,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l4062"><code>bridge.js:4062</code></a>
+        <a href="../files/bridge.js.html#l4064"><code>bridge.js:4064</code></a>
         
         </p>
 
@@ -880,7 +882,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l4101"><code>bridge.js:4101</code></a>
+        <a href="../files/bridge.js.html#l4103"><code>bridge.js:4103</code></a>
         
         </p>
 
@@ -912,7 +914,7 @@
                     
 
                     <div class="param-description">
-                        <p>分享图片的imageUrl</p>
+                        <p>分享图片的imageUrl，图片下载失败后，继续分享，不带图片</p>
 
                     </div>
 

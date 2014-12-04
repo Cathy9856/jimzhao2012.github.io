@@ -186,13 +186,13 @@
                     
                     <tr><td>hybrid统计页面流量</td><td><a href="#method_app_send_ubt_log">app_send_ubt_log</a></td></tr>
                     
+                    <tr><td>使用native统计UBT metrics日志</td><td><a href="#method_app_send_ubt_metrics">app_send_ubt_metrics</a></td></tr>
+                    
                     <tr><td>使用native统计UBT trace日志</td><td><a href="#method_app_send_ubt_trace">app_send_ubt_trace</a></td></tr>
                     
                     <tr><td>查看最新版本功能介绍</td><td><a href="#method_app_show_newest_introduction">app_show_newest_introduction</a></td></tr>
                     
                     <tr><td>进入语音搜索</td><td><a href="#method_app_show_voice_search">app_show_voice_search</a></td></tr>
-                    
-                    <tr><td>使用native统计UBT metrics日志</td><td><a href="#method_send_ubt_metrics">send_ubt_metrics</a></td></tr>
                                   
                     </table>
 
@@ -1619,6 +1619,151 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
 </div>
 
                 
+                    <div id="method_app_send_ubt_metrics" class="method item">
+    <h3 class="name"><code>app_send_ubt_metrics</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>metricsName</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>numValue</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>tags</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3719"><code>bridge.js:3719</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v6.1</p>
+        
+    </div>
+
+    <div class="description">
+        <p>使用native统计UBT metrics日志，metrics日志是有个double的数字的</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">metricsName</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要纪录metrics名</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">numValue</code>
+                        <span class="type">Double</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要纪录的metrics的数值</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">tags</code>
+                        <span class="type">JSON</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>页面带的配置信息，可自定义，会传到UBT server，由BI分析</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   //调用API
+   CtripBusiness.app_send_ubt_metrics(&#39;metrics_name_here&#39;, 10.2, {pageId:&#39;xxxx&#39;,a:&#39;bbb&#39;});</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
                     <div id="method_app_send_ubt_trace" class="method item">
     <h3 class="name"><code>app_send_ubt_trace</code></h3>
 
@@ -1910,151 +2055,6 @@ H5页面调用该函数，需要将增加的event_name告知native，native需�
    }
 
    app.callback(json_obj);</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
-                    <div id="method_send_ubt_metrics" class="method item">
-    <h3 class="name"><code>send_ubt_metrics</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>metricsName</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>numValue</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>tags</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                定义在
-                
-            
-        
-        
-        <a href="../files/bridge.js.html#l3719"><code>bridge.js:3719</code></a>
-        
-        </p>
-
-
-        
-
-        
-            <p>可用版本 v6.1</p>
-        
-    </div>
-
-    <div class="description">
-        <p>使用native统计UBT metrics日志，metrics日志是有个double的数字的</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>参数:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">metricsName</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>需要纪录metrics名</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">numValue</code>
-                        <span class="type">Double</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>需要纪录的metrics的数值</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">tags</code>
-                        <span class="type">JSON</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>页面带的配置信息，可自定义，会传到UBT server，由BI分析</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-        <div class="example">
-            <h4>举例:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>   //调用API
-   CtripBusiness.app_send_ubt_metrics(&#39;metrics_name_here&#39;, 10.2, {pageId:&#39;xxxx&#39;,a:&#39;bbb&#39;});</code></pre>
 
             </div>
         </div>
