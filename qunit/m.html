@@ -112,7 +112,7 @@ function fnErrorTrap(sMsg,sUrl,sLine){
       icount++;
 
       var jsonStr = JSON.stringify(nav_bar_config_json);
-      CtripUtil.app_refresh_nav_bar(jsonStr);
+      CtripBar.app_refresh_nav_bar(jsonStr);
     }
 
    var icountd = 0;
@@ -134,7 +134,7 @@ function fnErrorTrap(sMsg,sUrl,sLine){
       icountd++;
 
       var jsonStr = JSON.stringify(nav_bar_config_json);
-      CtripUtil.app_refresh_nav_bar(jsonStr);
+      CtripBar.app_refresh_nav_bar(jsonStr);
     }
 
 
@@ -171,7 +171,7 @@ function fnErrorTrap(sMsg,sUrl,sLine){
         ];
 
         var jsonStr = JSON.stringify(nav_bar_config_json);
-        CtripUtil.app_refresh_nav_bar(jsonStr);
+        CtripBar.app_refresh_nav_bar(jsonStr);
     }
 
     var bflag = false;
@@ -430,7 +430,7 @@ var showPOIIndex = 0;
   <br/>
    <li class="li2"><a onclick="javascript:doubleAction()">JSLib自动化测试</a></li>
   <br/>
-   <li class="li2"><a onclick="javascript:CtripUtil.app_refresh_native_page('AUTO_TEST_PAGE_ID', '')">刷新自动化测试页面</a></li>
+   <li class="li2"><a onclick="javascript:CtripBar.app_refresh_native_page('AUTO_TEST_PAGE_ID', '')">刷新自动化测试页面</a></li>
   <br/>
    <li class="li2"><a onclick="javascript:doubleAction()">Double click LB</a></li>
   <br/>
