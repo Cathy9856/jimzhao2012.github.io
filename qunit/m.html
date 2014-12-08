@@ -123,12 +123,13 @@ function fnErrorTrap(sMsg,sUrl,sLine){
 
       if (icountd == 0) {
         nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试C"}], "right":[{"tagname":"share"}, {"tagname":"favorite"}]};
-      } else if (icountd%2==0){
-        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试B"}], "right":[{"tagname":"something","value":"doSome","imagePath":"wallet/package/webapp/wallet/dest/res/res/img/bank/bank_nbbank.png","pressedImagePath":"wallet/package/webapp/wallet/dest/res/res/img/bank/bank_sdb.png"}]};     
       } else if (icountd%3==0) {
         nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试C"}], "right":[{"tagname":"share"}, {"tagname":"favorited"}]};
       } else if (icountd%4==0) {
-        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试A"}], 
+        nav_bar_config_json ={"center":[
+                              {"tagname":"title", 
+                              "value":"右侧图片按钮测试A"}
+                              ], 
                               "right":[
                                {"tagname":"something",
                                 "value":"doSome",
@@ -141,6 +142,9 @@ function fnErrorTrap(sMsg,sUrl,sLine){
                                 "pressedImagePath":"wallet/package/webapp/wallet/dest/res/res/img/bank/bank_bjbank.png"
                               }]};
 
+      }  
+      else if (icountd%2==0){
+        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试B"}], "right":[{"tagname":"something","value":"doSome","imagePath":"wallet/package/webapp/wallet/dest/res/res/img/bank/bank_nbbank.png","pressedImagePath":"wallet/package/webapp/wallet/dest/res/res/img/bank/bank_sdb.png"}]};     
       } else {
         nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试A"}], "right":[{"tagname":"something","value":"doSome","imagePath":"wallet/package/webapp/wallet/dest/res/res/img/bank/bank_nxbank.png","pressedImagePath":"wallet/package/webapp/wallet/dest/res/res/img/bank/bank_shrcb.png"}, {"tagname":"favorited"}]};
       }
