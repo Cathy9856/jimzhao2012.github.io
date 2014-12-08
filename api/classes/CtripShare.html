@@ -179,7 +179,12 @@
    复制分享：
    1. 分享的图片不起作用;
    2. 分享的title不起作用;
-   3. 如果有linkUrl，分享的text后面会自动添加linkUrl;</code></pre>
+   3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
+
+   QQ分享说明：
+   1. 图片分享，只能分享图片，所传的文字，title都无效；
+   2. 链接分享，所传的图片为分享网页的缩略图，title有效；
+   3. 纯文本分享，只能分享text，title无效；</code></pre>
 
 </div>
 
@@ -310,7 +315,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l4135"><code>bridge.js:4135</code></a>
+        <a href="../files/bridge.js.html#l4140"><code>bridge.js:4140</code></a>
         
         </p>
 
@@ -376,7 +381,7 @@
             <h4>举例:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>   var dataList = {
+                <pre class="code prettyprint"><code>   var dataList = [
        {
            shareType:&quot;QQ&quot;,
            imageUrl:&quot;http://share.csdn.net/uploads/24bd27fd3ad6a559873c4aff3bd64a60/24bd27fd3ad6a559873c4aff3bd64a60_thumb.jpg&quot;,
@@ -398,7 +403,7 @@
            text:&quot;这本书的简介是为其他分享定制的&quot;,
            linkUrl:&quot;http://csdn.net/common_test&quot;
        }  
-   }
+   ];
 
    CtripShare.app_call_custom_share(dataList);
 
@@ -497,7 +502,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l4209"><code>bridge.js:4209</code></a>
+        <a href="../files/bridge.js.html#l4214"><code>bridge.js:4214</code></a>
         
         </p>
 
@@ -710,7 +715,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l4064"><code>bridge.js:4064</code></a>
+        <a href="../files/bridge.js.html#l4069"><code>bridge.js:4069</code></a>
         
         </p>
 
@@ -882,7 +887,7 @@
             
         
         
-        <a href="../files/bridge.js.html#l4103"><code>bridge.js:4103</code></a>
+        <a href="../files/bridge.js.html#l4108"><code>bridge.js:4108</code></a>
         
         </p>
 

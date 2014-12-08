@@ -4056,6 +4056,11 @@ var CtripPage = {
         2. 分享的title不起作用;
         3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
 
+        QQ分享说明：
+        1. 图片分享，只能分享图片，所传的文字，title都无效；
+        2. 链接分享，所传的图片为分享网页的缩略图，title有效；
+        3. 纯文本分享，只能分享text，title无效；
+
 
  * @brief 第三方分享 
 */
@@ -4143,7 +4148,7 @@ var CtripShare = {
      * @since v6.1
      * @example
 
-        var dataList = {
+        var dataList = [
             {
                 shareType:"QQ",
                 imageUrl:"http://share.csdn.net/uploads/24bd27fd3ad6a559873c4aff3bd64a60/24bd27fd3ad6a559873c4aff3bd64a60_thumb.jpg",
@@ -4165,7 +4170,7 @@ var CtripShare = {
                 text:"这本书的简介是为其他分享定制的",
                 linkUrl:"http://csdn.net/common_test"
             }  
-        }
+        ];
 
         CtripShare.app_call_custom_share(dataList);
 
