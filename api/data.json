@@ -2296,7 +2296,7 @@
                 {
                     "name": "dataList",
                     "description": "分享的内容，格式参考下面的example",
-                    "type": "JSON"
+                    "type": "Array"
                 },
                 {
                     "name": "businessCode",

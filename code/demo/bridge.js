@@ -4150,7 +4150,7 @@ var CtripShare = {
      * @description 自定义分享，各个平台可以分享不同的内容
      * @brief 自定义分享内容到第三方平台
      * @method app_call_custom_share
-     * @param{JSON} dataList 分享的内容，格式参考下面的example
+     * @param{Array} dataList 分享的内容，格式参考下面的example
      * @param{String} businessCode 分享的业务ID，可以为空，设置后，方便BI统计数据
      * @callback call_custom_share
      * @author jimzhao
