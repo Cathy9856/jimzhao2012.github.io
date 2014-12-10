@@ -4066,7 +4066,9 @@ var CtripPage = {
          c. 如果没有linkUrl，没有图片，当作纯文本分享；
 
         QQ空间分享
-         只能分享新闻类消息，该消息必须要带URL，如果没有的情况下，默认使用m.ctrip.com
+         只支持分享新闻类消息，该消息必须要带链接(linkUrl)和图片(imageUrl/imageRelativePath)。
+         1. 如果没有链接的情况下，默认使用m.ctrip.com;
+         2. 如果没有图片的情况下，默认使用app的icon;
 
 
  * @brief 第三方分享 
