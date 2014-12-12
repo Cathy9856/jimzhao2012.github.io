@@ -94,9 +94,9 @@ function fnErrorTrap(sMsg,sUrl,sLine){
    var icount = 0;
 
     function doButtonTest() {
-      var ua = navigator.userAgent;
+        var ua = navigator.userAgent;
 
-      console.log(ua);
+        alert(ua);
       var nav_bar_config_json = {};
 
       if (icount == 0) {
@@ -112,7 +112,7 @@ function fnErrorTrap(sMsg,sUrl,sLine){
       icount++;
 
       var jsonStr = JSON.stringify(nav_bar_config_json);
-      CtripBar.app_refresh_nav_bar(jsonStr);
+      CtripUtil.app_refresh_nav_bar(jsonStr);
     }
 
    var icountd = 0;
@@ -123,36 +123,18 @@ function fnErrorTrap(sMsg,sUrl,sLine){
 
       if (icountd == 0) {
         nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试C"}], "right":[{"tagname":"share"}, {"tagname":"favorite"}]};
+      } else if (icountd%2==0){
+        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试B"}], "right":[{"tagname":"something","value":"doSome","imagePath":"wallet/res/img/bank/BANK_CDRCB.png","pressedImagePath":"wallet/res/img/bank/BANK_CITIC.png"}]};     
       } else if (icountd%3==0) {
         nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试C"}], "right":[{"tagname":"share"}, {"tagname":"favorited"}]};
-      } else if (icountd%4==0) {
-        nav_bar_config_json ={"center":[
-                              {"tagname":"title", 
-                              "value":"右侧图片按钮测试A"}
-                              ], 
-                              "right":[
-                               {"tagname":"something",
-                                "value":"doSome",
-                                "imagePath":"wallet/package/webapp/wallet/dest/res/res/img/bank/bank_nxbank.png",
-                                "pressedImagePath":"wallet/package/webapp/wallet/dest/res/res/img/bank/bank_shrcb.png"
-                              }, 
-                               {"tagname":"somethingB",
-                                "value":"doSome",
-                                "imagePath":"wallet/package/webapp/wallet/dest/res/res/img/bank/bank_tccb.png",
-                                "pressedImagePath":"wallet/package/webapp/wallet/dest/res/res/img/bank/bank_bjbank.png"
-                              }]};
-
-      }  
-      else if (icountd%2==0){
-        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试B"}], "right":[{"tagname":"something","value":"doSome","imagePath":"wallet/package/webapp/wallet/dest/res/res/img/bank/bank_nbbank.png","pressedImagePath":"wallet/package/webapp/wallet/dest/res/res/img/bank/bank_sdb.png"}]};     
       } else {
-        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试A"}], "right":[{"tagname":"something","value":"doSome","imagePath":"wallet/package/webapp/wallet/dest/res/res/img/bank/bank_nxbank.png","pressedImagePath":"wallet/package/webapp/wallet/dest/res/res/img/bank/bank_shrcb.png"}, {"tagname":"favorited"}]};
+        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试A"}], "right":[{"tagname":"something","value":"doSome","imagePath":"wallet/res/img/bank/BANK_BOD.png","pressedImagePath":"wallet/res/img/bank/BANK_ABC.png"}, {"tagname":"favorited"}]};
       }
       
       icountd++;
 
       var jsonStr = JSON.stringify(nav_bar_config_json);
-      CtripBar.app_refresh_nav_bar(jsonStr);
+      CtripUtil.app_refresh_nav_bar(jsonStr);
     }
 
 
@@ -161,7 +143,7 @@ function fnErrorTrap(sMsg,sUrl,sLine){
 
         var nav_bar_config_json = {};
        
-        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试B"}], "right":[{"tagname":"something","value":"doSome","imagePath":"wallet/package/webapp/wallet/dest/res/res/img/bank/BANK_CDRCB.png","pressedImagePath":"wallet/package/webapp/wallet/dest/res/res/img/bank/BANK_CITIC.png"},{"tagname":"more"}]}; 
+        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试B"}], "right":[{"tagname":"something","value":"doSome","imagePath":"wallet/res/img/bank/BANK_CDRCB.png","pressedImagePath":"wallet/res/img/bank/BANK_CITIC.png"},{"tagname":"more"}]}; 
 
         nav_bar_config_json.moreMenus = [
           {
@@ -189,7 +171,7 @@ function fnErrorTrap(sMsg,sUrl,sLine){
         ];
 
         var jsonStr = JSON.stringify(nav_bar_config_json);
-        CtripBar.app_refresh_nav_bar(jsonStr);
+        CtripUtil.app_refresh_nav_bar(jsonStr);
     }
 
     var bflag = false;
@@ -364,6 +346,32 @@ var showPOIIndex = 0;
       CtripShare.app_call_one_share("QQ", "http://e.hiphotos.baidu.com/image/w%3D230/sign=6642e33179f40ad115e4c0e0672c1151/1b4c510fd9f9d72a0c60c414d62a2834349bbbb7.jpg", "分享美女到QQTitle",null,null,"wx_code_business--2222"); 
   }
 
+  function doCustomImageShare() {
+  console.log("do custom image share");
+
+    var dataList = [
+            {
+                shareType:"QQ",
+                imageUrl:"http://share.csdn.net/uploads/24bd27fd3ad6a559873c4aff3bd64a60/24bd27fd3ad6a559873c4aff3bd64a60_thumb.jpg",
+                title:"分享图书--没有linkUrl QQ",
+                text:"这本书的简介大概是这样",
+            },
+            {
+                shareType:"WeiXin",
+                imageUrl:"http://a.hiphotos.baidu.com/image/w%3D230/sign=2ae8d7050fd79123e0e093779d355917/b58f8c5494eef01fda419fc8e3fe9925bc317d62.jpg",
+                title:"百度－微信图片分享--没有linkUrl Weixin",
+            },
+            {
+                shareType:"Default",
+                imageUrl:"http://f.hiphotos.baidu.com/image/pic/item/0e2442a7d933c895e41c1f76d21373f082020058.jpg",
+                title:"百度图片美女分享－－－没有linkURL",
+                text:"百度图片美女分享－内容，这本书的简介是为其他分享定制的",
+            }  
+        ];
+
+      CtripShare.app_call_custom_share(dataList, "c_custom_share_business_code--1111");
+  }
+
   function doCustomShare() {
     console.log("do custom share start");
 
@@ -392,7 +400,6 @@ var showPOIIndex = 0;
 
     CtripShare.app_call_custom_share(dataList, "c_custom_share_business_code--1111");
 
-
   }
 
   </script>
@@ -410,6 +417,8 @@ var showPOIIndex = 0;
 <li class="li2"><a onclick='javascript:doOneShare()'>分享6.1_分享到指定平台</a></li>
   <br/>
 <li class="li2"><a onclick='javascript:doCustomShare()'>分享6.1_分享到所有平台</a></li>
+  <br/>
+  <li class="li2"><a onclick='javascript:doCustomImageShare()'>分享6.1_图片_分享到平台</a></li>
   <br/>
    <li class="li2"><a onclick='javascript:CtripMap.app_locate(12,true, true, "33333333")'>定位5.10_CtripCityF</a></li>
   <br/>
@@ -448,7 +457,7 @@ var showPOIIndex = 0;
   <br/>
    <li class="li2"><a onclick="javascript:doubleAction()">JSLib自动化测试</a></li>
   <br/>
-   <li class="li2"><a onclick="javascript:CtripBar.app_refresh_native_page('AUTO_TEST_PAGE_ID', '')">刷新自动化测试页面</a></li>
+   <li class="li2"><a onclick="javascript:CtripUtil.app_refresh_native_page('AUTO_TEST_PAGE_ID', '')">刷新自动化测试页面</a></li>
   <br/>
    <li class="li2"><a onclick="javascript:doubleAction()">Double click LB</a></li>
   <br/>
