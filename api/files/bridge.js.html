@@ -4122,69 +4122,88 @@ var CtripPage = {
  * @class CtripShare
  * @description 调用native的第三方分享
 
-        通用参数，
-        1. 分享平台(shareType)定义
-        WeixinFriend------微信好友
-        WeixinCircle----微信朋友圈
-        SinaWeibo---------新浪微博
-        QQ----------------QQ
-        QQZone------------QQ空间
-        SMS---------------短信
-        Email-------------邮件
-        Copy--------------复制
-        OSMore------------系统更多分享
+ 通用参数，
+ 1. 分享平台(shareType)定义
+ 
+ WeixinFriend------微信好友
+ WeixinCircle----微信朋友圈
+ SinaWeibo---------新浪微博
+ QQ----------------QQ
+ QQZone------------QQ空间
+ SMS---------------短信
+ Email-------------邮件
+ Copy--------------复制
+ OSMore------------系统更多分享
+ 
+ 
+ 2.分享error_code定义
+ // (-201)分享失败
+ // (-202)分享被取消
+ // (-203)分享参数有错误
+ 
+ 3. 分享类型说明
+ 分享类型总共分为3中
+ a. 链接分享——————QQ好友、QQ空间、微信好友、微信朋友圈
+ b. 图片分享——————QQ好友、微信好友、微信朋友圈、微博、邮件
+ c. 文本分享——————所有平台均支持
+ d.分享优先级  链接分享&gt;图片分享&gt;纯文本分享
+ 
+ 4. 分享参数说明
+ 分享参数总共4个，linkUrl，imageUrl(native为imagePath或者image对象), title, text;
+ a.linkUrl， 分享链接的URL，有该参数时，分享控件定义为链接分享；
+ b. imageUrl，  分享图片的URL，没有linkUrl的，有imageUrl参数的时候，当做图片分享；
+ c.title，分享的标题
+ d.text 分享的内容
+ 
+ 4. 分享规则
+ 
 
-        Default-----------不是一种shareType，参考下面的demo，分享到多个平台的时候，可以只指定其中1-2个特殊定义，其他都是默认。
-        
-        2.分享error_code定义
-        (-201)分享失败
-        (-202)分享被取消
-        (-203)分享参数有错误
-
-        3. 分享规则
-
-        微信(微信朋友/微信朋友圈)分享说明：
-        1. 图片分享，只能分享图片，所传的文字，title都无效；
-        2. 链接分享，所传的图片为分享网页的缩略图，title有效；
-        3. 纯文本分享，只能分享text，title无效；
-        4. 优先级 链接分享&gt;图片分享&gt;纯文本分享。
-           a. 如果有linkUrl，会被当作网页分享，图片作为缩略图；
-           b. 如果没有linkUrl，有图片，当作图片分享，text,title无效;
-           c. 如果没有linkUrl，没有图片，当作纯文本分享；
-        
-        微博分享：
-        1. 图片为所分享的图片；
-        2. 分享title不起作用；
-        3. 如果linkUrl有， 分享的text后面会自动添加linkUrl
-    
-        Email分享：
-        1. 图片为所分享的图片；
-        2. 分享title作为Email标题；
-        3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
-
-        短信分享：
-        1. 图片为所分享的图片；注：iOS7.0之后才支持；
-        2. 分享title不起作用；
-        3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
-
-        复制分享：
-        1. 分享的图片不起作用;
-        2. 分享的title不起作用;
-        3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
-
-        QQ分享说明：
-         1. 图片分享，只能分享图片，所传的文字，title都无效；
-         2. 链接分享，所传的图片为分享网页的缩略图，title有效；
-         3. 纯文本分享，只能分享text，title无效；
-         4. 优先级 链接分享&gt;图片分享&gt;纯文本分享。
-         a. 如果有linkUrl，会被当作网页分享，图片作为缩略图；
-         b. 如果没有linkUrl，有图片，当作图片分享，text,title无效;
-         c. 如果没有linkUrl，没有图片，当作纯文本分享；
-
-        QQ空间分享
-         只支持分享新闻类消息，该消息必须要带链接(linkUrl)和图片(imageUrl/imageRelativePath)。
-         1. 如果没有链接的情况下，默认使用m.ctrip.com;
-         2. 如果没有图片的情况下，默认使用app的icon;
+ 微信(微信朋友/微信朋友圈) 分享说明：（第三方接口支持：链接分享、图片分享、文本分享）（最低要求title，text：title长度不能超过512字节  text长度不能超过1K image大小不能超过32K）
+ 
+ 如果有linkUrl，会被当作链接分享
+ 如果没有linkUrl，有图片，当作图片分享
+ 如果没有linkUrl，没有图片，当作纯文本分享；
+ 
+ 1. 链接分享，如果未传图片，则使用携程App Icon做分享链接的缩略图；image，linkUrl，titie，text有效；
+ 2. 图片分享，image，title，text有效；
+ 3. 纯文本分享，title和text有效；
+ 注意：当链接分享时候，如果BU没提供本地image而是提供了imageURL，我们会去下载，最多10秒，如果超时或者失败使用默认图片
+ 
+ QQ好友 分享说明：（第三方接口支持：链接分享、图片分享、文本分享）（最低要求title，text）
+ 
+ 如果有linkUrl，会被当作链接分享
+ 如果没有linkUrl，有图片，当作图片分享
+ 如果没有linkUrl，没有图片，当作纯文本分享；
+ 
+ 1. 链接分享，如果未传图片，则使用携程App Icon做分享链接的缩略图；image，linkUrl，titie，text有效；
+ 2. 图片分享，image，title，text有效；
+ 3. 纯文本分享，title和text有效；
+ 注意：当图片分享时候，如果BU没提供本地image而是提供了imageURL，我们会去下载，最多10秒，如果超时或者失败降级为纯文本分享
+ 
+ QQ空间  分享说明:（第三方接口支持：链接分享）（最低要求title，message，webpageUrl 必须传值）
+ 只能链接分享,链接分享消息必须附带linkUrl（如果没有会默认m.ctrip.com）。有图片（image、image path、imageurl）会传递图片做缩略图，没有会使用默认图片做缩略图，image，linkUrl，titie，text有效；
+ 
+ 微博分享：（第三方接口支持：文本+图片）（最低要求message  message和linkUrl合起来不能大于139个汉字，如果只有message不能超过140个汉字）
+ 1. 如果有本地image会作为分享图片，如果没有本地image有imageURL会下载imageURL作为图片，如果都没有会不发送图片；
+ 2. 分享title不起作用；
+ 3. 如果linkUrl有， 分享的message后面会自动添加linkUrl
+ 注意：当下载图片的时候最多10秒，失败或者超时不会发送图片
+ 
+ 
+ Email分享：（最低要求message）image，linkUrl，titie，text有效；
+ 1. 图片为所分享的图片；
+ 2. 分享title作为Email标题；
+ 3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
+ 
+ 短信分享：（最低要求message）linkUrl，text有效；
+ 1. 任何图片资源不起作用
+ 2. 分享title不起作用；
+ 3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
+ 
+ 复制分享：（最低要求message）linkUrl，text有效；
+ 1. 任何图片资源不起作用
+ 2. 分享的title不起作用;
+ 3. 如果有linkUrl，分享的text后面会自动添加linkUrl;
 
 
  * @brief 第三方分享 
