@@ -372,6 +372,19 @@ var showPOIIndex = 0;
       CtripShare.app_call_custom_share(dataList, "c_custom_share_business_code--1111");
   }
 
+  function doTuanShare() {
+    console.log("do tuan share");
+    var contentList = [
+        {
+          shareType:"Default",
+          imageUrl:"http://images4.c-ctrip.com/target/tuangou/105/928/665/6497324b971f46dab08fce4dad0558db_300_225_m6.jpg",
+          text:"仅售118元！为波（上海16店通用）（大床/标1111，评价3.9分，江宁路777号","title":"为波宾馆（上海江宁店）",
+          linkUrl:"http://m.ctrip.com/webapp/tuan/detail/22222.html?cityid=2"
+        }];
+        
+      CtripShare.app_call_custom_share(contentList,"ccccode");
+  }
+
   function doCustomShare() {
     console.log("do custom share start");
 
@@ -420,6 +433,8 @@ var showPOIIndex = 0;
   <br/>
   <li class="li2"><a onclick='javascript:doCustomImageShare()'>分享6.1_图片_分享到平台</a></li>
   <br/>
+    <li class="li2"><a onclick='javascript:doTuanShare()'>分享6.1_图片_分享团购</a></li>
+<br/>
    <li class="li2"><a onclick='javascript:CtripMap.app_locate(12,true, true, "33333333")'>定位5.10_CtripCityF</a></li>
   <br/>
   <li class="li2"><a onclick='javascript:CtripMap.app_locate(12,true, true, "22222222")'>定位5.10_获取经纬度后stopD</a></li>
