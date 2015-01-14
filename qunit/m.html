@@ -415,6 +415,16 @@ var showPOIIndex = 0;
 
   }
 
+
+  
+  function testJSONParse {
+    va="%7B%22tagname%22%3A%22send_h5_pipe_request%22%2C%22param%22%3A%7B%22resultHead%22%3A%22%7B%5C%22auth%5C%22%3Anull%2C%5C%22errcode%5C%22%3A0%7D%22%2C%22result%22%3A0%2C%22resultBody%22%3A%22%7B%5C%22max%5C%22%3A5%2C%5C%22left%5C%22%3A0%2C%5C%22rc%5C%22%3A301%2C%5C%22rsmsg%5C%22%3A%5C%22%E8%AF%A5%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E5%8F%91%E9%80%81%E9%AA%8C%E8%AF%81%E7%A0%81%E8%B6%85%E8%BF%87%E6%AC%A1%E6%95%B0%E9%99%90%E5%88%B6%5C%22%7D%22%2C%22sequenceId%22%3A%221421210137819%22%2C%22resultMessage%22%3A%22%22%7D%7D";
+    vb=decodeURIComponent(vad);
+    console.log(vb);
+    vc=JSON.parse(vb);
+    console.log(vc);
+  }
+
   </script>
 
 
@@ -427,6 +437,8 @@ var showPOIIndex = 0;
 <p class="p1"><br></p>
 <p class="p1"><br></p>
 <ul class="ul1">
+<li class="li2"><a onclick='javascript:testJSONParse()'>testJSONParse</a></li>
+  <br/>
 <li class="li2"><a onclick='javascript:doOneShare()'>分享6.1_分享到指定平台</a></li>
   <br/>
 <li class="li2"><a onclick='javascript:doCustomShare()'>分享6.1_分享到所有平台</a></li>
