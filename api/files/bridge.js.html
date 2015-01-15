@@ -603,6 +603,7 @@ function __bridge_callback(param) {
     var jsonObj = JSON.parse(param);
 
     if (jsonObj != null) {
+        Internal.isIOS = true;
         if (jsonObj.param != null &amp;&amp; jsonObj.param.hasOwnProperty(&quot;platform&quot;)) {
             var ua = navigator.userAgent;
             if (ua.indexOf(&quot;Youth_CtripWireless&quot;) &gt; 0) { 
@@ -611,7 +612,7 @@ function __bridge_callback(param) {
             
             platform = jsonObj.param.platform;
             var typePf = typeof platform;
-
+            console.log(&quot;xxxxxx==&quot;+typePf);
             if (typePf == &quot;number&quot;) { //iOS
                 if (platform == 1 || platform == 2 || platform == 3) {
                     Internal.isIOS = (platform == 1);
