@@ -436,7 +436,7 @@ function __bridge_callback(param) {
     var jsonObj = JSON.parse(param);
 
     if (jsonObj != null) {
-        Internal.isIOS = true;
+
         if (jsonObj.param != null &amp;&amp; jsonObj.param.hasOwnProperty(&quot;platform&quot;)) {
             var ua = navigator.userAgent;
             if (ua.indexOf(&quot;Youth_CtripWireless&quot;) &gt; 0) { 
@@ -4467,8 +4467,6 @@ var CtripShare = {
         params.businessCode = businessCode;
 
         var paramString = Internal.makeParamString(&quot;Share&quot;, &quot;callCustomShare&quot;, params, &quot;call_custom_share&quot;);
-        Internal.isIOS = true;
-        //TODO:zxg
         if (Internal.isIOS) {
             url = Internal.makeURLWithParam(paramString);
             Internal.loadURL(url);
