@@ -2314,7 +2314,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 4470,
+            "line": 4471,
             "description": "指定内容，分享到特定平台",
             "brief": "指定内容，分享到特定平台",
             "itemtype": "method",
@@ -2976,11 +2976,11 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:4470"
+            "line": " bridge.js:4471"
         },
         {
             "message": "unknown tag: callback",
-            "line": " bridge.js:4470"
+            "line": " bridge.js:4471"
         },
         {
             "message": "unknown tag: brief",
