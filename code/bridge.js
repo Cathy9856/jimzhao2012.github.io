@@ -360,7 +360,7 @@ var Internal = {
             paramString = "";
         }
 
-        paramString = encodeURIComponent(paramString);
+        paramString = Base64.encode(paramString);
         if (Internal.isYouthApp) {
             return __CTRIP_YOUTH_URL_PLUGIN + paramString;
         } else {
