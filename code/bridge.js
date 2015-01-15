@@ -351,7 +351,6 @@ var CtripConsole = {
  * @author jimzhao
  */
 function __bridge_callback(param) {
-    console.log("in bridge callback:"+param);
     param = decodeURIComponent(param);
     
     var jsonObj = JSON.parse(param);
