@@ -483,16 +483,7 @@ var CtripConsole = {
  * @author jimzhao
  */
 function __bridge_callback(param) {
-
-    console.log("param in bridge callback:"+param);
-    vc=Base64.encode(param);
-    console.log("vc==["+vc+"]");
-    vd=Base64.decode(vc);
-    console.log("vd==["+vd+"]");
-
     param = Base64.decode(param);
-    console.log("xxx param in bridge callback:"+param);
-
     var jsonObj = JSON.parse(param);
 
     if (jsonObj != null) {
