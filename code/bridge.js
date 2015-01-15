@@ -486,12 +486,13 @@ function __bridge_callback(param) {
 
     console.log("param in bridge callback:"+param);
     vc=Base64.encode(param);
-    console.log("vc=="+vc);
+    console.log("vc==["+vc+"]");
     vd=Base64.decode(vc);
-    console.log("vd=="+vd);
+    console.log("vd==["+vd+"]");
 
-    param = decodeURIComponent(param);
-    
+    param = Base64.encode(param);
+    console.log("xxx param in bridge callback:"+param);
+
     var jsonObj = JSON.parse(param);
 
     if (jsonObj != null) {
