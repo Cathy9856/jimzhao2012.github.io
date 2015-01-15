@@ -119,6 +119,138 @@ var __CTRIP_JS_PARAM = &quot;?jsparam=&quot;
 var __CTRIP_URL_PLUGIN = &quot;ctrip://h5/plugin&quot; + __CTRIP_JS_PARAM;
 var __CTRIP_YOUTH_URL_PLUGIN = &quot;ctripyouth://h5/plugin&quot; + __CTRIP_JS_PARAM;
 
+
+
+var Base64 = ( function( ) {
+  
+  var _PADCHAR = &quot;=&quot;,
+    _ALPHA = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;,
+    _VERSION = &quot;1.0&quot;;
+
+
+  function _getbyte64( s, i ) {
+    // This is oddly fast, except on Chrome/V8.
+    // Minimal or no improvement in performance by using a
+    // object with properties mapping chars to value (eg. &#x27;A&#x27;: 0)
+
+    var idx = _ALPHA.indexOf( s.charAt( i ) );
+
+    if ( idx === -1 ) {
+      throw &quot;Cannot decode base64&quot;;
+    }
+
+    return idx;
+  }
+  
+  
+  function _decode( s ) {
+    var pads = 0,
+      i,
+      b10,
+      imax = s.length,
+      x = [];
+
+    s = String( s );
+    
+    if ( imax === 0 ) {
+      return s;
+    }
+
+    if ( imax % 4 !== 0 ) {
+      throw &quot;Cannot decode base64&quot;;
+    }
+
+    if ( s.charAt( imax - 1 ) === _PADCHAR ) {
+      pads = 1;
+
+      if ( s.charAt( imax - 2 ) === _PADCHAR ) {
+        pads = 2;
+      }
+
+      // either way, we want to ignore this last block
+      imax -= 4;
+    }
+
+    for ( i = 0; i &lt; imax; i += 4 ) {
+      b10 = ( _getbyte64( s, i ) &lt;&lt; 18 ) | ( _getbyte64( s, i + 1 ) &lt;&lt; 12 ) | ( _getbyte64( s, i + 2 ) &lt;&lt; 6 ) | _getbyte64( s, i + 3 );
+      x.push( String.fromCharCode( b10 &gt;&gt; 16, ( b10 &gt;&gt; 8 ) &amp; 0xff, b10 &amp; 0xff ) );
+    }
+
+    switch ( pads ) {
+      case 1:
+        b10 = ( _getbyte64( s, i ) &lt;&lt; 18 ) | ( _getbyte64( s, i + 1 ) &lt;&lt; 12 ) | ( _getbyte64( s, i + 2 ) &lt;&lt; 6 );
+        x.push( String.fromCharCode( b10 &gt;&gt; 16, ( b10 &gt;&gt; 8 ) &amp; 0xff ) );
+        break;
+
+      case 2:
+        b10 = ( _getbyte64( s, i ) &lt;&lt; 18) | ( _getbyte64( s, i + 1 ) &lt;&lt; 12 );
+        x.push( String.fromCharCode( b10 &gt;&gt; 16 ) );
+        break;
+    }
+
+    return x.join( &quot;&quot; );
+  }
+  
+  
+  function _getbyte( s, i ) {
+    var x = s.charCodeAt( i );
+
+    if ( x &gt; 255 ) {
+      throw &quot;INVALID_CHARACTER_ERR: DOM Exception 5&quot;;
+    }
+    
+    return x;
+  }
+
+
+  function _encode( s ) {
+    if ( arguments.length !== 1 ) {
+      throw &quot;SyntaxError: exactly one argument required&quot;;
+    }
+
+    s = String( s );
+
+    var i,
+      b10,
+      x = [],
+      imax = s.length - s.length % 3;
+
+    if ( s.length === 0 ) {
+      return s;
+    }
+
+    for ( i = 0; i &lt; imax; i += 3 ) {
+      b10 = ( _getbyte( s, i ) &lt;&lt; 16 ) | ( _getbyte( s, i + 1 ) &lt;&lt; 8 ) | _getbyte( s, i + 2 );
+      x.push( _ALPHA.charAt( b10 &gt;&gt; 18 ) );
+      x.push( _ALPHA.charAt( ( b10 &gt;&gt; 12 ) &amp; 0x3F ) );
+      x.push( _ALPHA.charAt( ( b10 &gt;&gt; 6 ) &amp; 0x3f ) );
+      x.push( _ALPHA.charAt( b10 &amp; 0x3f ) );
+    }
+
+    switch ( s.length - imax ) {
+      case 1:
+        b10 = _getbyte( s, i ) &lt;&lt; 16;
+        x.push( _ALPHA.charAt( b10 &gt;&gt; 18 ) + _ALPHA.charAt( ( b10 &gt;&gt; 12 ) &amp; 0x3F ) + _PADCHAR + _PADCHAR );
+        break;
+
+      case 2:
+        b10 = ( _getbyte( s, i ) &lt;&lt; 16 ) | ( _getbyte( s, i + 1 ) &lt;&lt; 8 );
+        x.push( _ALPHA.charAt( b10 &gt;&gt; 18 ) + _ALPHA.charAt( ( b10 &gt;&gt; 12 ) &amp; 0x3F ) + _ALPHA.charAt( ( b10 &gt;&gt; 6 ) &amp; 0x3f ) + _PADCHAR );
+        break;
+    }
+
+    return x.join( &quot;&quot; );
+  }
+
+
+  return {
+    decode: _decode,
+    encode: _encode,
+    VERSION: _VERSION
+  };
+      
+}( ) );
+
 /**
 * @class Internal
 * @description bridge.js内部使用的工具类
@@ -467,6 +599,13 @@ var CtripConsole = {
  * @author jimzhao
  */
 function __bridge_callback(param) {
+
+    console.log(&quot;param in bridge callback:&quot;+param);
+    vc=Base64.encode(param);
+    console.log(&quot;vc==&quot;+vc);
+    vd=Base64.decode(vc);
+    console.log(&quot;vd==&quot;+vd);
+
     param = decodeURIComponent(param);
     
     var jsonObj = JSON.parse(param);
