@@ -581,6 +581,8 @@ var CtripConsole = {
  */
 function __bridge_callback(param) {
     param = xxdecode(param);
+    //TODO:zxg
+    console.log("callback param::["+param+"]");
     var jsonObj = JSON.parse(param);
 
     if (jsonObj != null) {
