@@ -606,7 +606,7 @@ function __bridge_callback(param) {
     vd=Base64.decode(vc);
     console.log(&quot;vd==[&quot;+vd+&quot;]&quot;);
 
-    param = Base64.encode(param);
+    param = Base64.decode(param);
     console.log(&quot;xxx param in bridge callback:&quot;+param);
 
     var jsonObj = JSON.parse(param);
