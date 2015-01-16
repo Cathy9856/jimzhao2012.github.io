@@ -617,20 +617,21 @@ var CtripTool = {
 
  ctripParamDecode:function(param) {
     if (Internal.isAppVersionAfter62()) {
-        param = decodeURIComponent(param);
+        param = CtripTool.base64Decode(param);        
+
     } 
     else {
-        param = CtripTool.base64Decode(param);        
+        param = decodeURIComponent(param);
     }    
     return param;
  },
 
  ctripParamEncode:function(param) {
     if (Internal.isAppVersionAfter62()) {
-        param = encodeURI(param);
+        param = CtripTool.base64Encode(param); 
     } 
     else {
-        param = CtripTool.base64Encode(param);        
+        param = encodeURI(param);       
     }    
     return param;
  }
