@@ -104,15 +104,15 @@ var Internal = {
      /**
      * @brief 是否是6.2之前版本
      * @description 是否是6.2之前版本，6.2之前版本，hybrid参数Encode方式为URLEncode，6.2之后为Base64Encode
-     * @method isAppVersionBefore62
+     * @method isAppVersionAfter62
      * @return {Bool} 是否是6.2之前版本
      * @since v6.2
      * @example
      
-     * var isLarger = isAppVersionBefore62(); <br />
+     * var isLarger = isAppVersionAfter62(); <br />
      * alert(isLarger); // depends
      */
-    isAppVersionBefore62:function() {
+    isAppVersionAfter62:function() {
        if (__IS_BASE64_ENCODE_VERSION) {
             return __IS_BASE64_ENCODE_VERSION;
        }
@@ -616,7 +616,7 @@ var CtripTool = {
  },
 
  ctripParamDecode:function(param) {
-    if (Internal.isAppVersionBefore62()) {
+    if (Internal.isAppVersionAfter62()) {
         param = decodeURIComponent(param);
     } 
     else {
@@ -626,7 +626,7 @@ var CtripTool = {
  },
 
  ctripParamEncode:function(param) {
-    if (Internal.isAppVersionBefore62()) {
+    if (Internal.isAppVersionAfter62()) {
         param = encodeURI(param);
     } 
     else {

@@ -334,14 +334,14 @@
             "brief": "是否是6.2之前版本",
             "description": "是否是6.2之前版本，6.2之前版本，hybrid参数Encode方式为URLEncode，6.2之后为Base64Encode",
             "itemtype": "method",
-            "name": "isAppVersionBefore62",
+            "name": "isAppVersionAfter62",
             "return": {
                 "description": "是否是6.2之前版本",
                 "type": "Bool"
             },
             "since": "v6.2",
             "example": [
-                "\n    \nvar isLarger = isAppVersionBefore62(); <br />\nalert(isLarger); // depends"
+                "\n    \nvar isLarger = isAppVersionAfter62(); <br />\nalert(isLarger); // depends"
             ],
             "class": "Internal"
         },
