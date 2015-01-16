@@ -217,6 +217,17 @@ var Internal = {
         return false;
     },
 
+     /**
+     * @brief 是否是6.2之前版本
+     * @description 是否是6.2之前版本，6.2之前版本，hybrid参数Encode方式为URLEncode，6.2之后为Base64Encode
+     * @method isAppVersionBefore62
+     * @return {Bool} 是否是6.2之前版本
+     * @since v6.2
+     * @example
+     
+     * var isLarger = isAppVersionBefore62(); &lt;br /&gt;
+     * alert(isLarger); // depends
+     */
     isAppVersionBefore62:function() {
        if (__Is_Base64_Encode_Version) {
             return __Is_Base64_Encode_Version;
@@ -233,14 +244,12 @@ var Internal = {
                 verStr += ua.substr(firstDotIndex+1, 1);
             }
            var intVer = parseInt(verStr);
-           if (intVer &lt; 62) {
-                return true;
-           }
+           __Is_Base64_Encode_Version = (intVer &lt; 62) ;
        }
 
-       return false;
+       return __Is_Base64_Encode_Version;
     },
-    
+
      /**
      * @brief 判断API是否支持
      * @description 判断API是否支持当前版本
@@ -371,8 +380,9 @@ var Internal = {
         if (paramString == null) {
             paramString = &quot;&quot;;
         }
+        
+        paramString = CtripTool.ctripParamEncode(paramString);
 
-        paramString = CtripTool.base64Encode(paramString);
         if (Internal.isYouthApp) {
             return __CTRIP_YOUTH_URL_PLUGIN + paramString;
         } else {
@@ -454,7 +464,7 @@ var CtripConsole = {
  * @author jimzhao
  */
 function __bridge_callback(param) {
-    param = CtripTool.base64Decode(param);
+    param = CtripTool.ctripParamDecode(param);
 //    console.log(&quot;callback param::[&quot;+param+&quot;]&quot;);
     var jsonObj = JSON.parse(param);
 
@@ -721,6 +731,24 @@ var CtripTool = {
      */
  base64Decode:function(src) {
     return this._utf8to16(this._base64decode(src));
+ },
+
+ ctripParamDecode:function(src) {
+    if (Internal.isAppVersionBefore62) {
+        param = decodeURIComponent(param);
+    } 
+    else {
+        param = CtripTool.base64Decode(param);        
+    }    
+ },
+
+ ctripParamEncode:function(src) {
+    if (Internal.isAppVersionBefore62) {
+        param = encodeURI(param);
+    } 
+    else {
+        param = CtripTool.base64Encode(param);        
+    }    
  }
 
 };
