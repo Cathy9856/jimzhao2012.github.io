@@ -622,6 +622,7 @@ var CtripTool = {
     else {
         param = CtripTool.base64Decode(param);        
     }    
+    return param;
  },
 
  ctripParamEncode:function(param) {
@@ -631,6 +632,7 @@ var CtripTool = {
     else {
         param = CtripTool.base64Encode(param);        
     }    
+    return param;
  }
 
 };
