@@ -619,9 +619,13 @@ var CtripTool = {
 
  ctripParamDecode:function(src) {
     if (Internal.isAppVersionBefore62()) {
+        console.log("decode uri before 62 version");
+        alert("xxxxx");
         param = decodeURIComponent(param);
     } 
     else {
+                alert("bbbb");
+        console.log("base64 uri after 62 version");
         param = CtripTool.base64Decode(param);        
     }    
  },
