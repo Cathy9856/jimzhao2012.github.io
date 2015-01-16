@@ -466,9 +466,7 @@ var CtripConsole = {
 function __bridge_callback(param) {
     param = CtripTool.ctripParamDecode(param);
 //    console.log(&quot;callback param::[&quot;+param+&quot;]&quot;);
-    alert(param);
     var jsonObj = JSON.parse(param);
-    alert(jsonObj.param);
     if (jsonObj != null) {
 
         if (jsonObj.param != null &amp;&amp; jsonObj.param.hasOwnProperty(&quot;platform&quot;)) {
@@ -733,20 +731,16 @@ var CtripTool = {
     return this._utf8to16(this._base64decode(src));
  },
 
- ctripParamDecode:function(src) {
+ ctripParamDecode:function(param) {
     if (Internal.isAppVersionBefore62()) {
-        console.log(&quot;decode uri before 62 version&quot;);
-        alert(&quot;xxxxx&quot;);
         param = decodeURIComponent(param);
     } 
     else {
-        //        # alert(&quot;bbbb&quot;);
-        // console.log(&quot;base64 uri after 62 version&quot;);
         param = CtripTool.base64Decode(param);        
     }    
  },
 
- ctripParamEncode:function(src) {
+ ctripParamEncode:function(param) {
     if (Internal.isAppVersionBefore62()) {
         param = encodeURI(param);
     } 
