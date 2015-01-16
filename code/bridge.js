@@ -5,6 +5,7 @@ var __CTRIP_YOUTH_URL_PLUGIN = "ctripyouth://h5/plugin" + __CTRIP_JS_PARAM;
 var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 var base64DecodeChars = new Array(-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1, -1,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1);
 var __Is_Base64_Encode_Version = false;
+var __USER_AGENT_FLAG = "CtripWireless_";
 
 /**
 * @class Internal
@@ -100,6 +101,30 @@ var Internal = {
         return false;
     },
 
+    isAppVersionBefore62:function() {
+       if (__Is_Base64_Encode_Version) {
+            return __Is_Base64_Encode_Version;
+       }
+        
+       var ua = navigator.userAgent;
+       var uaFlagIndex = ua.indexOf(__USER_AGENT_FLAG);
+       //Ctrip_CtripWireless_6.1
+       if (uaFlagIndex >= 0) {
+            ua = ua.substr(uaFlagIndex+__USER_AGENT_FLAG.length);
+            var firstDotIndex = ua.indexOf(".");
+            var verStr = ua.substr(0,firstDotIndex);
+            if (firstDotIndex <= ua.length-1) {
+                verStr += ua.substr(firstDotIndex+1, 1);
+            }
+           var intVer = parseInt(verStr);
+           if (intVer < 62) {
+                return true;
+           }
+       }
+
+       return false;
+    },
+    
      /**
      * @brief 判断API是否支持
      * @description 判断API是否支持当前版本
@@ -414,7 +439,7 @@ var CtripTool = {
         var isInCtripApp = false;
 
          var ua = navigator.userAgent;
-         if (ua.indexOf("CtripWireless")>0) {
+         if (ua.indexOf(__USER_AGENT_FLAG)>0) {
             isInCtripApp = true;
          }
         
