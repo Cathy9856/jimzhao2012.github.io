@@ -120,7 +120,7 @@ var __CTRIP_URL_PLUGIN = &quot;ctrip://h5/plugin&quot; + __CTRIP_JS_PARAM;
 var __CTRIP_YOUTH_URL_PLUGIN = &quot;ctripyouth://h5/plugin&quot; + __CTRIP_JS_PARAM;
 var base64EncodeChars = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;;
 var base64DecodeChars = new Array(-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1, -1,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1);
-var __Is_Base64_Encode_Version = false;
+var __IS_BASE64_ENCODE_VERSION = false;
 var __USER_AGENT_FLAG = &quot;CtripWireless_&quot;;
 
 /**
@@ -229,8 +229,8 @@ var Internal = {
      * alert(isLarger); // depends
      */
     isAppVersionBefore62:function() {
-       if (__Is_Base64_Encode_Version) {
-            return __Is_Base64_Encode_Version;
+       if (__IS_BASE64_ENCODE_VERSION) {
+            return __IS_BASE64_ENCODE_VERSION;
        }
         
        var ua = navigator.userAgent;
@@ -244,10 +244,10 @@ var Internal = {
                 verStr += ua.substr(firstDotIndex+1, 1);
             }
            var intVer = parseInt(verStr);
-           __Is_Base64_Encode_Version = (intVer &lt; 62) ;
+           __IS_BASE64_ENCODE_VERSION = (intVer &gt;= 62) ;
        }
 
-       return __Is_Base64_Encode_Version;
+       return __IS_BASE64_ENCODE_VERSION;
     },
 
      /**
