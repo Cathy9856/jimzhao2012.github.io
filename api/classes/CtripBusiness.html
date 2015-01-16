@@ -172,6 +172,8 @@
                     
                     <tr><td>hybrid调用Native业务通用接口</td><td><a href="#method_app_do_business_job">app_do_business_job</a></td></tr>
                     
+                    <tr><td>获取安装包渠道信息</td><td><a href="#method_app_get_channel_info">app_get_channel_info</a></td></tr>
+                    
                     <tr><td>获取设备相关信息，相关部门需要</td><td><a href="#method_app_get_device_info">app_get_device_info</a></td></tr>
                     
                     <tr><td>收集ActionLog</td><td><a href="#method_app_log_event">app_log_event</a></td></tr>
@@ -198,6 +200,12 @@
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -982,6 +990,85 @@
    // (-204)＋其它业务自定义错误
 
     app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_get_channel_info" class="method item">
+    <h3 class="name"><code>app_get_channel_info</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l3992"><code>bridge.js:3992</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v6.2</p>
+        
+    </div>
+
+    <div class="description">
+        <p>获取安装包渠道信息</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   //调用API
+   CtripBusiness.app_get_channel_info();
+
+   //回调数据
+   var json_obj = {
+       tagname:&quot;get_channel_info&quot;,
+       param:{
+           alianceId:&quot;1111111&quot;,
+           ouId:&quot;xxxxx&quot;, 
+           sourceId:&quot;32232332&quot;,
+           telephone:&quot;40088888888&quot;,
+           sId:&quot;32232332&quot;
+       }
+    };</code></pre>
 
             </div>
         </div>

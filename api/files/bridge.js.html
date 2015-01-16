@@ -4103,6 +4103,46 @@ var CtripBusiness = {
         } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
+    },
+
+     /**
+     * @description 获取安装包渠道信息
+     * @brief  获取安装包渠道信息
+     * @method app_get_channel_info
+     * @callback get_channel_info
+     * @author jimzhao
+     * @since v6.2
+     * @example
+     *
+     * 
+        //调用API
+        CtripBusiness.app_get_channel_info();
+
+        //回调数据
+        var json_obj = {
+            tagname:&quot;get_channel_info&quot;,
+            param:{
+                alianceId:&quot;1111111&quot;,
+                ouId:&quot;xxxxx&quot;, 
+                sourceId:&quot;32232332&quot;,
+                telephone:&quot;40088888888&quot;,
+                sId:&quot;32232332&quot;
+            }
+         };
+    */
+    app_get_channel_info:function() {
+        if (!Internal.isSupportAPIWithVersion(&quot;6.2&quot;)) {
+            return;
+        }
+        var paramString = Internal.makeParamString(&quot;Business&quot;, &quot;getChannelInfo&quot;, null, &quot;get_channel_info&quot;);
+        if (Internal.isIOS) {
+            var url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            window.Business_a.getChannelInfo(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     }
 };
 

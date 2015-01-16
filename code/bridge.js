@@ -3987,6 +3987,46 @@ var CtripBusiness = {
         } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
+    },
+
+     /**
+     * @description 获取安装包渠道信息
+     * @brief  获取安装包渠道信息
+     * @method app_get_channel_info
+     * @callback get_channel_info
+     * @author jimzhao
+     * @since v6.2
+     * @example
+     *
+     * 
+        //调用API
+        CtripBusiness.app_get_channel_info();
+
+        //回调数据
+        var json_obj = {
+            tagname:"get_channel_info",
+            param:{
+                alianceId:"1111111",
+                ouId:"xxxxx", 
+                sourceId:"32232332",
+                telephone:"40088888888",
+                sId:"32232332"
+            }
+         };
+    */
+    app_get_channel_info:function() {
+        if (!Internal.isSupportAPIWithVersion("6.2")) {
+            return;
+        }
+        var paramString = Internal.makeParamString("Business", "getChannelInfo", null, "get_channel_info");
+        if (Internal.isIOS) {
+            var url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            window.Business_a.getChannelInfo(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     }
 };
 
