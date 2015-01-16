@@ -618,7 +618,7 @@ var CtripTool = {
  },
 
  ctripParamDecode:function(src) {
-    if (Internal.isAppVersionBefore62) {
+    if (Internal.isAppVersionBefore62()) {
         param = decodeURIComponent(param);
     } 
     else {
@@ -627,7 +627,7 @@ var CtripTool = {
  },
 
  ctripParamEncode:function(src) {
-    if (Internal.isAppVersionBefore62) {
+    if (Internal.isAppVersionBefore62()) {
         param = encodeURI(param);
     } 
     else {
