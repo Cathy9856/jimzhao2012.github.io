@@ -350,8 +350,9 @@ var CtripConsole = {
 function __bridge_callback(param) {
     param = CtripTool.ctripParamDecode(param);
 //    console.log("callback param::["+param+"]");
+    alert(param);
     var jsonObj = JSON.parse(param);
-
+    alert(jsonObj.param);
     if (jsonObj != null) {
 
         if (jsonObj.param != null && jsonObj.param.hasOwnProperty("platform")) {
@@ -362,7 +363,6 @@ function __bridge_callback(param) {
             
             platform = jsonObj.param.platform;
             var typePf = typeof platform;
-            console.log("xxxxxx=="+typePf);
             if (typePf == "number") { //iOS
                 if (platform == 1 || platform == 2 || platform == 3) {
                     Internal.isIOS = (platform == 1);
@@ -624,8 +624,8 @@ var CtripTool = {
         param = decodeURIComponent(param);
     } 
     else {
-                alert("bbbb");
-        console.log("base64 uri after 62 version");
+        //        # alert("bbbb");
+        // console.log("base64 uri after 62 version");
         param = CtripTool.base64Decode(param);        
     }    
  },
