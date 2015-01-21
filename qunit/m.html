@@ -427,11 +427,16 @@ var showPOIIndex = 0;
 
 
 function doCallPayTest() {
-  CtripPay.callPay("xxxxxxx")
+  console.log("start A");
+  CtripPay.app_call_pay("xxxxxxx")
+  console.log("end A");
 }
 
 function doCheckPayAppTest() {
+  console.log("start B");
   CtripPay.app_check_pay_app_install_status();
+  console.log("end B");
+
 }
 
   </script>
@@ -447,7 +452,7 @@ function doCheckPayAppTest() {
 <ul class="ul1">
 <li class="li2"><a onclick='javascript:doCallPayTest()'>CtripPay.callPay</a></li>
   <br/>
-  <li class="li2"><a onclick='javascript:doCheckPayAppTest'>CtripPay.app_check_pay_app_install_status</a></li>
+  <li class="li2"><a onclick='javascript:doCheckPayAppTest()'>CtripPay.app_check_pay_app_install_status</a></li>
   <br/>
 <li class="li2"><a onclick='javascript:testJSONParse()'>testJSONParse</a></li>
   <br/>
