@@ -822,6 +822,7 @@ var CtripUtil = {
      * @param {String} title @optional 当targetMode＝2时候，新打开的H5页面的title
      * @param {String} pageName @optional 当targetMode＝0、2、4时候，本页面，或者新打开的H5页面，此时pageName有效，pageName当作H5页面唯一标识，可用于刷新页面；5.6版本加入
      * @param {boolean} isShowLoadingPage  @optional 开启新的webview的时候，是否加载app的loading 
+     * @param {JSON} meta, 页面跳转的一些配置参数,现在支持isHideNavBar字段，boolean类型，v6.2加入
      * @method app_open_url
      * @since v5.2
      * @author jimzhao
@@ -832,14 +833,14 @@ var CtripUtil = {
      //进入App的酒店详情页
      CtripUtil.app_open_url("ctrip://wireless/hotel?id=1234", 1);
      //开启新的H5页面，进入m.ctrip.com
-     CtripUtil.app_open_url("http://m.ctrip.com", 2, "Ctrip H5首页", "ctrip_home_page_id");
+     CtripUtil.app_open_url("http://m.ctrip.com", 2, "Ctrip H5首页", "ctrip_home_page_id", true, {isHideNavBar:true});
      //开启新的H5页面，进入webapp/car/index.html
      CtripUtil.app_open_url("car/index.html", 4, "用车首页", "car_index_page_id");
      //当前H5页面，跨包跳转进入webapp/car/index.html
      CtripUtil.app_open_url("car/index.html", 5, "用车首页", null);
 
      */
-     app_open_url:function(openUrl, targetMode, title, pageName, isShowLoadingPage) {
+     app_open_url:function(openUrl, targetMode, title, pageName, isShowLoadingPage, meta) {
         var params = {};
         if(!openUrl) {
             openUrl = "";
@@ -856,6 +857,7 @@ var CtripUtil = {
         params.targetMode = targetMode;
         params.pageName = pageName;
         params.isShowLoadingPage = isShowLoadingPage;
+        params.meta = meta;
         var paramString = Internal.makeParamString("Util", "openUrl", params, "open_url");
         
         if (Internal.appVersion) { //有AppVersion，为5.3及之后版本，或者5.2本地H5页面

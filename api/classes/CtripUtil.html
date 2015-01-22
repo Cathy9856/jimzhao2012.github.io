@@ -702,7 +702,7 @@ CtripUtil.app_call_phone();</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l983"><code>bridge.js:983</code></a>
+        <a href="../files/bridge.js.html#l985"><code>bridge.js:985</code></a>
         
         </p>
 
@@ -817,7 +817,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l948"><code>bridge.js:948</code></a>
+        <a href="../files/bridge.js.html#l950"><code>bridge.js:950</code></a>
         
         </p>
 
@@ -915,7 +915,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1348"><code>bridge.js:1348</code></a>
+        <a href="../files/bridge.js.html#l1350"><code>bridge.js:1350</code></a>
         
         </p>
 
@@ -1072,7 +1072,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1138"><code>bridge.js:1138</code></a>
+        <a href="../files/bridge.js.html#l1140"><code>bridge.js:1140</code></a>
         
         </p>
 
@@ -1178,7 +1178,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l909"><code>bridge.js:909</code></a>
+        <a href="../files/bridge.js.html#l911"><code>bridge.js:911</code></a>
         
         </p>
 
@@ -1307,7 +1307,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1210"><code>bridge.js:1210</code></a>
+        <a href="../files/bridge.js.html#l1212"><code>bridge.js:1212</code></a>
         
         </p>
 
@@ -1439,7 +1439,7 @@ app.callback(json_obj);</code></pre>
             
         
         
-        <a href="../files/bridge.js.html#l1472"><code>bridge.js:1472</code></a>
+        <a href="../files/bridge.js.html#l1474"><code>bridge.js:1474</code></a>
         
         </p>
 
@@ -1626,7 +1626,7 @@ H5接收到web_view_did_finished_load的回调之后，调用该函数，初始�
             
         
         
-        <a href="../files/bridge.js.html#l1312"><code>bridge.js:1312</code></a>
+        <a href="../files/bridge.js.html#l1314"><code>bridge.js:1314</code></a>
         
         </p>
 
@@ -1754,7 +1754,7 @@ H5接收到web_view_did_finished_load的回调之后，调用该函数，初始�
             
         
         
-        <a href="../files/bridge.js.html#l1263"><code>bridge.js:1263</code></a>
+        <a href="../files/bridge.js.html#l1265"><code>bridge.js:1265</code></a>
         
         </p>
 
@@ -1882,6 +1882,12 @@ H5接收到web_view_did_finished_load的回调之后，调用该函数，初始�
                 <li class="arg">
                     
                         <code>isShowLoadingPage</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>meta,</code>
                     
                 </li>
             
@@ -2023,6 +2029,22 @@ H5接收到web_view_did_finished_load的回调之后，调用该函数，初始�
                     
                 </li>
             
+                <li class="param">
+                    
+                        <code class="param-name">meta,</code>
+                        <span class="type">JSON</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>页面跳转的一些配置参数,现在支持isHideNavBar字段，boolean类型，v6.2加入</p>
+
+                    </div>
+
+                    
+                </li>
+            
             </ul>
         </div>
     
@@ -2039,7 +2061,7 @@ CtripUtil.app_open_url(&quot;http://www.ctrip.com&quot;, 0);
 //进入App的酒店详情页
 CtripUtil.app_open_url(&quot;ctrip://wireless/hotel?id=1234&quot;, 1);
 //开启新的H5页面，进入m.ctrip.com
-CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&quot;, &quot;ctrip_home_page_id&quot;);
+CtripUtil.app_open_url(&quot;http://m.ctrip.com&quot;, 2, &quot;Ctrip H5首页&quot;, &quot;ctrip_home_page_id&quot;, true, {isHideNavBar:true});
 //开启新的H5页面，进入webapp/car/index.html
 CtripUtil.app_open_url(&quot;car/index.html&quot;, 4, &quot;用车首页&quot;, &quot;car_index_page_id&quot;);
 //当前H5页面，跨包跳转进入webapp/car/index.html
@@ -2083,7 +2105,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l1171"><code>bridge.js:1171</code></a>
+        <a href="../files/bridge.js.html#l1173"><code>bridge.js:1173</code></a>
         
         </p>
 
@@ -2174,7 +2196,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l1028"><code>bridge.js:1028</code></a>
+        <a href="../files/bridge.js.html#l1030"><code>bridge.js:1030</code></a>
         
         </p>
 
@@ -2374,7 +2396,7 @@ CtripUtil.app_open_url(&quot;car/index.html&quot;, 5, &quot;用车首页&quot;, 
             
         
         
-        <a href="../files/bridge.js.html#l1410"><code>bridge.js:1410</code></a>
+        <a href="../files/bridge.js.html#l1412"><code>bridge.js:1412</code></a>
         
         </p>
 
