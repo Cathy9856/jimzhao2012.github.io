@@ -631,7 +631,7 @@ var CtripTool = {
         param = CtripTool.base64Encode(param); 
     } 
     else {
-        param = encodeURI(param);       
+        param = encodeURIComponent(param);       
     }    
     return param;
  }
