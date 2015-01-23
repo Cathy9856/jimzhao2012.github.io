@@ -1617,7 +1617,7 @@ var CtripUser = {
 
         var json_obj =
         {
-            tagname:"member_login",
+            tagname:"non_member_login",
             param:userInfo,
         }
         app.callback(json_obj);
@@ -1680,7 +1680,7 @@ var CtripUser = {
 
         var json_obj =
         {
-            tagname:"member_login",
+            tagname:"member_auto_login",
             param:userInfo,
         }
         app.callback(json_obj);
@@ -1743,7 +1743,7 @@ var CtripUser = {
 
         var json_obj =
         {
-            tagname:"member_login",
+            tagname:"member_register",
             param:userInfo,
         }
         app.callback(json_obj);
