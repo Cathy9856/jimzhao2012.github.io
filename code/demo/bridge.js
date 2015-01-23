@@ -686,8 +686,12 @@ var CtripUtil = {
                 networkStatus:"4G", //5.9加入，返回当前网络状态 2G/3G/4G/WIFI/None
                 isSaveFlow:true, //是否是省流量模式，since 6.0
                 isAppNeedUpdate:false, //5.10加入
-                idfa:"guid_xxxx_3333_16字节",// iOS设备的IDFA，android设备无此字段，since 6.1
                 deviceToken:"guid_xxxx_3333_32字节",// iOS设备的push deviceToken，android设备无此字段，since 6.1
+                isPad:false, //是否是Pad设备，6.2加入
+                idfa:"guid_xxxx_3333_16字节",// 仅支持iOS，设备的IDFA，类似于设备唯一号，since 6.1
+                imei:"xxxx_imei_xxx",//仅支持android，设备IMEI，since 6.2
+                mac:"00:cc:dd:3a:35",//仅支持android，设备mac地址，类似于设备唯一号，since 6.2
+                imsi:"42900000000000", //仅支持android，设备IMSI，since 6.2
                 userInfo={USERINFO},//USERINFO内部结构参考CtripUser.app_member_login();    
             }
          }
