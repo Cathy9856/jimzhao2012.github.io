@@ -635,6 +635,8 @@ var CtripTool = {
     }    
     return param;
  }
+ 
+}
 
 /**
  * @class CtripUtil
