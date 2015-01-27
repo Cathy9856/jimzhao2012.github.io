@@ -123,176 +123,6 @@ var base64DecodeChars = new Array(-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1
 var __IS_BASE64_ENCODE_VERSION = false;
 var __USER_AGENT_FLAG = &quot;CtripWireless_&quot;;
 
-
-function b64ToUint6 (nChr) {
-
-  return nChr &gt; 64 &amp;&amp; nChr &lt; 91 ?
-      nChr - 65
-    : nChr &gt; 96 &amp;&amp; nChr &lt; 123 ?
-      nChr - 71
-    : nChr &gt; 47 &amp;&amp; nChr &lt; 58 ?
-      nChr + 4
-    : nChr === 43 ?
-      62
-    : nChr === 47 ?
-      63
-    :
-      0;
-
-}
-
-function base64DecToArr (sBase64, nBlocksSize) {
-
-  var
-    sB64Enc = sBase64.replace(/[^A-Za-z0-9\+\/]/g, &quot;&quot;), nInLen = sB64Enc.length,
-    nOutLen = nBlocksSize ? Math.ceil((nInLen * 3 + 1 &gt;&gt; 2) / nBlocksSize) * nBlocksSize : nInLen * 3 + 1 &gt;&gt; 2, taBytes = new Uint8Array(nOutLen);
-
-  for (var nMod3, nMod4, nUint24 = 0, nOutIdx = 0, nInIdx = 0; nInIdx &lt; nInLen; nInIdx++) {
-    nMod4 = nInIdx &amp; 3;
-    nUint24 |= b64ToUint6(sB64Enc.charCodeAt(nInIdx)) &lt;&lt; 18 - 6 * nMod4;
-    if (nMod4 === 3 || nInLen - nInIdx === 1) {
-      for (nMod3 = 0; nMod3 &lt; 3 &amp;&amp; nOutIdx &lt; nOutLen; nMod3++, nOutIdx++) {
-        taBytes[nOutIdx] = nUint24 &gt;&gt;&gt; (16 &gt;&gt;&gt; nMod3 &amp; 24) &amp; 255;
-      }
-      nUint24 = 0;
-
-    }
-  }
-
-  return taBytes;
-}
-
-/* Base64 string to array encoding */
-
-function uint6ToB64 (nUint6) {
-
-  return nUint6 &lt; 26 ?
-      nUint6 + 65
-    : nUint6 &lt; 52 ?
-      nUint6 + 71
-    : nUint6 &lt; 62 ?
-      nUint6 - 4
-    : nUint6 === 62 ?
-      43
-    : nUint6 === 63 ?
-      47
-    :
-      65;
-
-}
-
-function base64EncArr (aBytes) {
-
-  var nMod3 = 2, sB64Enc = &quot;&quot;;
-
-  for (var nLen = aBytes.length, nUint24 = 0, nIdx = 0; nIdx &lt; nLen; nIdx++) {
-    nMod3 = nIdx % 3;
-    if (nIdx &gt; 0 &amp;&amp; (nIdx * 4 / 3) % 76 === 0) { sB64Enc += &quot;\r\n&quot;; }
-    nUint24 |= aBytes[nIdx] &lt;&lt; (16 &gt;&gt;&gt; nMod3 &amp; 24);
-    if (nMod3 === 2 || aBytes.length - nIdx === 1) {
-      sB64Enc += String.fromCharCode(uint6ToB64(nUint24 &gt;&gt;&gt; 18 &amp; 63), uint6ToB64(nUint24 &gt;&gt;&gt; 12 &amp; 63), uint6ToB64(nUint24 &gt;&gt;&gt; 6 &amp; 63), uint6ToB64(nUint24 &amp; 63));
-      nUint24 = 0;
-    }
-  }
-
-  return sB64Enc.substr(0, sB64Enc.length - 2 + nMod3) + (nMod3 === 2 ? &#x27;&#x27; : nMod3 === 1 ? &#x27;=&#x27; : &#x27;==&#x27;);
-
-}
-
-/* UTF-8 array to DOMString and vice versa */
-
-function UTF8ArrToStr (aBytes) {
-
-  var sView = &quot;&quot;;
-
-  for (var nPart, nLen = aBytes.length, nIdx = 0; nIdx &lt; nLen; nIdx++) {
-    nPart = aBytes[nIdx];
-    sView += String.fromCharCode(
-      nPart &gt; 251 &amp;&amp; nPart &lt; 254 &amp;&amp; nIdx + 5 &lt; nLen ? /* six bytes */
-        /* (nPart - 252 &lt;&lt; 30) may be not so safe in ECMAScript! So...: */
-        (nPart - 252) * 1073741824 + (aBytes[++nIdx] - 128 &lt;&lt; 24) + (aBytes[++nIdx] - 128 &lt;&lt; 18) + (aBytes[++nIdx] - 128 &lt;&lt; 12) + (aBytes[++nIdx] - 128 &lt;&lt; 6) + aBytes[++nIdx] - 128
-      : nPart &gt; 247 &amp;&amp; nPart &lt; 252 &amp;&amp; nIdx + 4 &lt; nLen ? /* five bytes */
-        (nPart - 248 &lt;&lt; 24) + (aBytes[++nIdx] - 128 &lt;&lt; 18) + (aBytes[++nIdx] - 128 &lt;&lt; 12) + (aBytes[++nIdx] - 128 &lt;&lt; 6) + aBytes[++nIdx] - 128
-      : nPart &gt; 239 &amp;&amp; nPart &lt; 248 &amp;&amp; nIdx + 3 &lt; nLen ? /* four bytes */
-        (nPart - 240 &lt;&lt; 18) + (aBytes[++nIdx] - 128 &lt;&lt; 12) + (aBytes[++nIdx] - 128 &lt;&lt; 6) + aBytes[++nIdx] - 128
-      : nPart &gt; 223 &amp;&amp; nPart &lt; 240 &amp;&amp; nIdx + 2 &lt; nLen ? /* three bytes */
-        (nPart - 224 &lt;&lt; 12) + (aBytes[++nIdx] - 128 &lt;&lt; 6) + aBytes[++nIdx] - 128
-      : nPart &gt; 191 &amp;&amp; nPart &lt; 224 &amp;&amp; nIdx + 1 &lt; nLen ? /* two bytes */
-        (nPart - 192 &lt;&lt; 6) + aBytes[++nIdx] - 128
-      : /* nPart &lt; 127 ? */ /* one byte */
-        nPart
-    );
-  }
-
-  return sView;
-
-}
-
-function strToUTF8Arr (sDOMStr) {
-
-  var aBytes, nChr, nStrLen = sDOMStr.length, nArrLen = 0;
-
-  /* mapping... */
-
-  for (var nMapIdx = 0; nMapIdx &lt; nStrLen; nMapIdx++) {
-    nChr = sDOMStr.charCodeAt(nMapIdx);
-    nArrLen += nChr &lt; 0x80 ? 1 : nChr &lt; 0x800 ? 2 : nChr &lt; 0x10000 ? 3 : nChr &lt; 0x200000 ? 4 : nChr &lt; 0x4000000 ? 5 : 6;
-  }
-
-  aBytes = new Uint8Array(nArrLen);
-
-  /* transcription... */
-
-  for (var nIdx = 0, nChrIdx = 0; nIdx &lt; nArrLen; nChrIdx++) {
-    nChr = sDOMStr.charCodeAt(nChrIdx);
-    if (nChr &lt; 128) {
-      /* one byte */
-      aBytes[nIdx++] = nChr;
-    } else if (nChr &lt; 0x800) {
-      /* two bytes */
-      aBytes[nIdx++] = 192 + (nChr &gt;&gt;&gt; 6);
-      aBytes[nIdx++] = 128 + (nChr &amp; 63);
-    } else if (nChr &lt; 0x10000) {
-      /* three bytes */
-      aBytes[nIdx++] = 224 + (nChr &gt;&gt;&gt; 12);
-      aBytes[nIdx++] = 128 + (nChr &gt;&gt;&gt; 6 &amp; 63);
-      aBytes[nIdx++] = 128 + (nChr &amp; 63);
-    } else if (nChr &lt; 0x200000) {
-      /* four bytes */
-      aBytes[nIdx++] = 240 + (nChr &gt;&gt;&gt; 18);
-      aBytes[nIdx++] = 128 + (nChr &gt;&gt;&gt; 12 &amp; 63);
-      aBytes[nIdx++] = 128 + (nChr &gt;&gt;&gt; 6 &amp; 63);
-      aBytes[nIdx++] = 128 + (nChr &amp; 63);
-    } else if (nChr &lt; 0x4000000) {
-      /* five bytes */
-      aBytes[nIdx++] = 248 + (nChr &gt;&gt;&gt; 24);
-      aBytes[nIdx++] = 128 + (nChr &gt;&gt;&gt; 18 &amp; 63);
-      aBytes[nIdx++] = 128 + (nChr &gt;&gt;&gt; 12 &amp; 63);
-      aBytes[nIdx++] = 128 + (nChr &gt;&gt;&gt; 6 &amp; 63);
-      aBytes[nIdx++] = 128 + (nChr &amp; 63);
-    } else /* if (nChr &lt;= 0x7fffffff) */ {
-      /* six bytes */
-      aBytes[nIdx++] = 252 + (nChr &gt;&gt;&gt; 30);
-      aBytes[nIdx++] = 128 + (nChr &gt;&gt;&gt; 24 &amp; 63);
-      aBytes[nIdx++] = 128 + (nChr &gt;&gt;&gt; 18 &amp; 63);
-      aBytes[nIdx++] = 128 + (nChr &gt;&gt;&gt; 12 &amp; 63);
-      aBytes[nIdx++] = 128 + (nChr &gt;&gt;&gt; 6 &amp; 63);
-      aBytes[nIdx++] = 128 + (nChr &amp; 63);
-    }
-  }
-
-  return aBytes;
-
-}
-
-function utf8_to_b64( str ) {
-  return window.btoa(unescape(encodeURIComponent( str )));
-}
-
-function b64_to_utf8( str ) {
-  return decodeURIComponent(escape(window.atob( str )));
-}
-
 /**
 * @class Internal
 * @description bridge.js内部使用的工具类
@@ -903,7 +733,7 @@ var CtripTool = {
 
  ctripParamDecode:function(param) {
     if (Internal.isAppVersionAfter62()) {
-        param = base64DecToArr(param);// CtripTool.base64Decode(param);        
+        param = CtripTool.base64Decode(param);        
 
     } 
     else {
@@ -914,14 +744,13 @@ var CtripTool = {
 
  ctripParamEncode:function(param) {
     if (Internal.isAppVersionAfter62()) {
-        param = base64EncArr(param);// CtripTool.base64Encode(param); 
+        param = CtripTool.base64Encode(param); 
     } 
     else {
         param = encodeURIComponent(param);       
     }    
     return param;
  }
-};
 
 /**
  * @class CtripUtil
