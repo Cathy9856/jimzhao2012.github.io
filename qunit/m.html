@@ -130,11 +130,11 @@ function fnErrorTrap(sMsg,sUrl,sLine){
       if (icountd == 0) {
         nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试C"}], "right":[{"tagname":"share"}, {"tagname":"favorite"}]};
       } else if (icountd%2==0){
-        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试B"}], "right":[{"tagname":"something","value":"doSome","imagePath":"wallet/res/img/bank/BANK_CDRCB.png","pressedImagePath":"car/webresource/res/img/index1.jpg"}]};     
+        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试B"}], "right":[{"tagname":"something","value":"doSomeA","imagePath":"car/webresource/res/img/index4.jpg","pressedImagePath":"car/webresource/res/img/index1.jpg"}]};     
       } else if (icountd%3==0) {
         nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试C"}], "right":[{"tagname":"share"}, {"tagname":"favorited"}]};
       } else {
-        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试A"}], "right":[{"tagname":"something","value":"doSome","imagePath":"car/webresource/res/img/index3.jpg","pressedImagePath":"car/webresource/res/img/index2.jpg"}, {"tagname":"favorited"}]};
+        nav_bar_config_json = {"center":[{"tagname":"title", "value":"右侧图片按钮测试A"}], "right":[{"tagname":"something","value":"doSomeB","imagePath":"car/webresource/res/img/index3.jpg","pressedImagePath":"car/webresource/res/img/index2.jpg"}, {"tagname":"favorited"}]};
       }
       
       icountd++;
@@ -480,7 +480,7 @@ function doCheckPayAppTest() {
   <br/>
   <li class="li2"><a onclick="javascript:doButtonTest()">导航栏刷新测试DB</a></li> 
   <br/>
-    <li class="li2"><a onclick="javascript:doButtonTest2()">导航栏刷新测试DBImg</a></li> 
+    <li class="li2"><a onclick="javascript:doButtonTest2()">导航栏刷新测试DBI</a></li> 
   <br/>
   <li class="li2"><a onclick="javascript:doFinishRegister()">H5注册完成，调用Native</a></li> 
   <br/>
