@@ -202,7 +202,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 4040,
+            "line": 4089,
             "description": "页面跳转，导航，刷新相关API\n\n   通过CtripUtil.app_open_url(....)打开新的webview，可以给webview设置pageName <br/>\n   也可以调用CtripPage.app_set_page_name(...)给当前webview设置pageName；<br/>\n\n\n   页面跳转举例说明：<br/>\n\n   native-->a(na)-->b(nb)-->c(nc)-->d(nd)-->e(ne) //括号内na,nb,nc,nd,ne为页面pageName <br/>\n   1.native打开webview页面a，此时a的名字为设置，hybrid调用CtripPage.app_set_page_name(..), 设置当前页面名字为na；<br/>\n   2.在a页面用新的webview打开b页面，Ctrip.app_open_url(...),可以给b页面设置pageName为nb，或者调用CtripPage.app_set_page_name(..)，设置nb；<br/>\n   3.按照2的方式打开c(nc)，d(nd)，e(ne)；<br/>\n   4.如果需要从当前页面e(ne), 会退到c(nc), 调用CtripPage.app_back_to_page(\"nc\"); <br/>",
             "brief": "页面跳转，导航，刷新相关API"
         },
@@ -215,7 +215,7 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "bridge.js",
-            "line": 4231,
+            "line": 4280,
             "description": "调用native的第三方分享\n\n    通用参数，\n    1. 分享平台(shareType)定义\n    \n    WeixinFriend------微信好友\n    WeixinCircle----微信朋友圈\n    SinaWeibo---------新浪微博\n    QQ----------------QQ\n    QQZone------------QQ空间\n    SMS---------------短信\n    Email-------------邮件\n    Copy--------------复制\n    OSMore------------系统更多分享\n    \n    \n    2.分享error_code定义\n    // (-201)分享失败\n    // (-202)分享被取消\n    // (-203)分享参数有错误\n    \n    3. 分享类型说明\n    分享类型总共分为3中\n    a. 链接分享——————QQ好友、QQ空间、微信好友、微信朋友圈\n    b. 图片分享——————QQ好友、微信好友、微信朋友圈、微博、邮件\n    c. 文本分享——————所有平台均支持\n    d.分享优先级  链接分享>图片分享>纯文本分享\n    \n    4. 分享参数说明\n    分享参数总共4个，linkUrl，imageUrl(native为imagePath或者image对象), title, text;\n    a.linkUrl， 分享链接的URL，有该参数时，分享控件定义为链接分享；\n    b. imageUrl，  分享图片的URL，没有linkUrl的，有imageUrl参数的时候，当做图片分享；\n    c.title，分享的标题\n    d.text 分享的内容\n    \n    4. 分享规则\n\n    微信(微信朋友/微信朋友圈) 分享说明：（第三方接口支持：链接分享、图片分享、文本分享）（最低要求title，text：title长度不能超过512字节  text长度不能超过1K image大小不能超过32K）\n    \n    如果有linkUrl，会被当作链接分享\n    如果没有linkUrl，有图片，当作图片分享\n    如果没有linkUrl，没有图片，当作纯文本分享；\n    \n    1. 链接分享，如果未传图片，则使用携程App Icon做分享链接的缩略图；image，linkUrl，titie，text有效；\n    2. 图片分享，image，title，text有效；\n    3. 纯文本分享，title和text有效；\n    注意：当链接分享时候，如果BU没提供本地image而是提供了imageURL，我们会去下载，最多10秒，如果超时或者失败使用默认图片\n    \n    QQ好友 分享说明：（第三方接口支持：链接分享、图片分享、文本分享）（最低要求title，text）\n    \n    如果有linkUrl，会被当作链接分享\n    如果没有linkUrl，有图片，当作图片分享\n    如果没有linkUrl，没有图片，当作纯文本分享；\n    \n    1. 链接分享，如果未传图片，则使用携程App Icon做分享链接的缩略图；image，linkUrl，titie，text有效；\n    2. 图片分享，image，title，text有效；\n    3. 纯文本分享，title和text有效；\n    注意：当图片分享时候，如果BU没提供本地image而是提供了imageURL，我们会去下载，最多10秒，如果超时或者失败降级为纯文本分享\n    \n    QQ空间  分享说明:（第三方接口支持：链接分享）（最低要求title，message，webpageUrl 必须传值）\n    只能链接分享,链接分享消息必须附带linkUrl（如果没有会默认m.ctrip.com）。有图片（image、image path、imageurl）会传递图片做缩略图，没有会使用默认图片做缩略图，image，linkUrl，titie，text有效；\n    \n    微博分享：（第三方接口支持：文本+图片）（最低要求message  message和linkUrl合起来不能大于139个汉字，如果只有message不能超过140个汉字）\n    1. 如果有本地image会作为分享图片，如果没有本地image有imageURL会下载imageURL作为图片，如果都没有会不发送图片；\n    2. 分享title不起作用；\n    3. 如果linkUrl有， 分享的message后面会自动添加linkUrl\n    注意：当下载图片的时候最多10秒，失败或者超时不会发送图片\n    \n    \n    Email分享：（最低要求message）image，linkUrl，titie，text有效；\n    1. 图片为所分享的图片；\n    2. 分享title作为Email标题；\n    3. 如果有linkUrl，分享的text后面会自动添加linkUrl;\n    \n    短信分享：（最低要求message）linkUrl，text有效；\n    1. 任何图片资源不起作用\n    2. 分享title不起作用；\n    3. 如果有linkUrl，分享的text后面会自动添加linkUrl;\n    \n    复制分享：（最低要求message）linkUrl，text有效；\n    1. 任何图片资源不起作用\n    2. 分享的title不起作用;\n    3. 如果有linkUrl，分享的text后面会自动添加linkUrl;",
             "brief": "第三方分享"
         },
@@ -2189,7 +2189,34 @@
         },
         {
             "file": "bridge.js",
-            "line": 4060,
+            "line": 4039,
+            "description": "获取ABTesting信息",
+            "brief": "根据实验号，获取ABTesting信息",
+            "itemtype": "method",
+            "name": "app_get_abtesting_info",
+            "callback": "get_abtesting_info",
+            "params": [
+                {
+                    "name": "expCode",
+                    "description": "实验编号",
+                    "type": "String"
+                },
+                {
+                    "name": "statisticsMeta",
+                    "description": "需要落地到UBT的附加信息，成功获取到ABTesting结果之后，app会记录一次UBT数据",
+                    "type": "JSON"
+                }
+            ],
+            "author": "jimzhao",
+            "since": "v6.3",
+            "example": [
+                "\n\n\n       //调用API\n       CtripBusiness.app_get_abtesting_info(\"hotel_detail_page_expId001\",{orderId:'bb_value'});\n\n       //回调数据\n       var json_obj = {\n           tagname:\"get_abtesting_info\",\n           param:{\n               ExpCode：\"hotel_detail_page_expId001\",\n               BeginTime：\"实验开始时间\",\n               EndTime：\"实验结束时间\",\n               ExpVersion：\"ABTest计算出的实验版本,A或者B\",\n               ExpDefaultVersion：\"实验默认版本\",\n               State：\"调用ABTest服务是否成功，true：成功，false：失败，如果失败，app显示默认的实验版本\",\n               Attrs：\"实验配置数据，Key/Value格式。 json字符串\",\n               ExpResult：\"传给UBT的实验结果\"\n           }\n        };"
+            ],
+            "class": "CtripBusiness"
+        },
+        {
+            "file": "bridge.js",
+            "line": 4109,
             "description": "设置当前页面名，可用于页面导航，刷新",
             "brief": "设置当前页面名，可用于页面导航，刷新",
             "params": [
@@ -2210,7 +2237,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 4096,
+            "line": 4145,
             "description": "多webview app，回退到指定的webview页面",
             "brief": "回退到指定的webview页面",
             "params": [
@@ -2232,7 +2259,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 4142,
+            "line": 4191,
             "description": "显示native的loading界面",
             "brief": "显示native的loading界面",
             "itemtype": "method",
@@ -2246,7 +2273,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 4171,
+            "line": 4220,
             "description": "隐藏native的loading界面",
             "brief": "隐藏native的loading界面",
             "itemtype": "method",
@@ -2260,7 +2287,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 4200,
+            "line": 4249,
             "description": "打开/关闭app的拖动手势，默认是关闭的",
             "brief": "打开/关闭app的拖动手势",
             "itemtype": "method",
@@ -2274,7 +2301,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 4322,
+            "line": 4371,
             "description": "调用App的分享-兼容老的分享，调用之后，无回调信息，6.1之后不建议使用该API",
             "brief": "调用App的分享－兼容6.1之前版本",
             "params": [
@@ -2310,7 +2337,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 4361,
+            "line": 4410,
             "description": "分享默认内容到各个平台，此API 为Javascript简化包装app_call_custom_share",
             "brief": "分享默认内容到各个平台(JS 二次包装)",
             "itemtype": "method",
@@ -2352,7 +2379,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 4393,
+            "line": 4442,
             "description": "自定义分享，各个平台可以分享不同的内容",
             "brief": "自定义分享内容到第三方平台",
             "itemtype": "method",
@@ -2379,7 +2406,7 @@
         },
         {
             "file": "bridge.js",
-            "line": 4466,
+            "line": 4515,
             "description": "指定内容，分享到特定平台",
             "brief": "指定内容，分享到特定平台",
             "itemtype": "method",
@@ -3009,63 +3036,71 @@
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:4040"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:4060"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:4096"
+            "line": " bridge.js:4039"
         },
         {
             "message": "unknown tag: callback",
-            "line": " bridge.js:4096"
+            "line": " bridge.js:4039"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:4142"
+            "line": " bridge.js:4089"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:4171"
+            "line": " bridge.js:4109"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:4200"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:4231"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:4322"
-        },
-        {
-            "message": "unknown tag: brief",
-            "line": " bridge.js:4361"
+            "line": " bridge.js:4145"
         },
         {
             "message": "unknown tag: callback",
-            "line": " bridge.js:4361"
+            "line": " bridge.js:4145"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:4393"
-        },
-        {
-            "message": "unknown tag: callback",
-            "line": " bridge.js:4393"
+            "line": " bridge.js:4191"
         },
         {
             "message": "unknown tag: brief",
-            "line": " bridge.js:4466"
+            "line": " bridge.js:4220"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:4249"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:4280"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:4371"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:4410"
         },
         {
             "message": "unknown tag: callback",
-            "line": " bridge.js:4466"
+            "line": " bridge.js:4410"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:4442"
+        },
+        {
+            "message": "unknown tag: callback",
+            "line": " bridge.js:4442"
+        },
+        {
+            "message": "unknown tag: brief",
+            "line": " bridge.js:4515"
+        },
+        {
+            "message": "unknown tag: callback",
+            "line": " bridge.js:4515"
         },
         {
             "message": "unknown tag: brief",

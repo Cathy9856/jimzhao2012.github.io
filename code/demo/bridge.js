@@ -4034,6 +4034,55 @@ var CtripBusiness = {
         } else if (Internal.isWinOS) {
             Internal.callWin8App(paramString);
         }
+    },
+
+     /**
+     * @description 获取ABTesting信息
+     * @brief  根据实验号，获取ABTesting信息
+     * @method app_get_abtesting_info
+     * @callback get_abtesting_info
+     * @param {String} expCode 实验编号
+     * @param {JSON} statisticsMeta 需要落地到UBT的附加信息，成功获取到ABTesting结果之后，app会记录一次UBT数据
+     * @author jimzhao
+     * @since v6.3
+     * @example
+     *
+     * 
+        //调用API
+        CtripBusiness.app_get_abtesting_info("hotel_detail_page_expId001",{orderId:'bb_value'});
+
+        //回调数据
+        var json_obj = {
+            tagname:"get_abtesting_info",
+            param:{
+                ExpCode："hotel_detail_page_expId001",
+                BeginTime："实验开始时间",
+                EndTime："实验结束时间",
+                ExpVersion："ABTest计算出的实验版本,A或者B",
+                ExpDefaultVersion："实验默认版本",
+                State："调用ABTest服务是否成功，true：成功，false：失败，如果失败，app显示默认的实验版本",
+                Attrs："实验配置数据，Key/Value格式。 json字符串",
+                ExpResult："传给UBT的实验结果"
+            }
+         };
+    */
+    app_get_abtesting_info:function(expCode, statisticsMeta) {
+        if (!Internal.isSupportAPIWithVersion("6.2")) {
+            return;
+        }
+        var params = {};
+        params.expCode = expCode;
+        params.statisticsMeta = statisticsMeta;
+
+        var paramString = Internal.makeParamString("Business", "getABTestingInfo", params, "get_abtesting_info");
+        if (Internal.isIOS) {
+            var url = Internal.makeURLWithParam(paramString);
+            Internal.loadURL(url);
+        } else if (Internal.isAndroid) {
+            window.Business_a.getABTestingInfo(paramString);
+        } else if (Internal.isWinOS) {
+            Internal.callWin8App(paramString);
+        }
     }
 };
 

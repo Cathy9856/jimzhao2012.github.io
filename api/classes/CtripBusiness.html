@@ -172,6 +172,8 @@
                     
                     <tr><td>hybrid调用Native业务通用接口</td><td><a href="#method_app_do_business_job">app_do_business_job</a></td></tr>
                     
+                    <tr><td>根据实验号，获取ABTesting信息</td><td><a href="#method_app_get_abtesting_info">app_get_abtesting_info</a></td></tr>
+                    
                     <tr><td>获取安装包渠道信息</td><td><a href="#method_app_get_channel_info">app_get_channel_info</a></td></tr>
                     
                     <tr><td>获取设备相关信息，相关部门需要</td><td><a href="#method_app_get_device_info">app_get_device_info</a></td></tr>
@@ -200,6 +202,12 @@
 
 
                     <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+
+                                
+                                
+                            </li>
                         
                             <li class="index-item method">
 
@@ -990,6 +998,144 @@
    // (-204)＋其它业务自定义错误
 
     app.callback(json_obj);</code></pre>
+
+            </div>
+        </div>
+    
+</div>
+
+                
+                    <div id="method_app_get_abtesting_info" class="method item">
+    <h3 class="name"><code>app_get_abtesting_info</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>expCode</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>statisticsMeta</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                定义在
+                
+            
+        
+        
+        <a href="../files/bridge.js.html#l4039"><code>bridge.js:4039</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>可用版本 v6.3</p>
+        
+    </div>
+
+    <div class="description">
+        <p>获取ABTesting信息</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>参数:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">expCode</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>实验编号</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">statisticsMeta</code>
+                        <span class="type">JSON</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>需要落地到UBT的附加信息，成功获取到ABTesting结果之后，app会记录一次UBT数据</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+        <div class="example">
+            <h4>举例:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>   //调用API
+   CtripBusiness.app_get_abtesting_info(&quot;hotel_detail_page_expId001&quot;,{orderId:&#39;bb_value&#39;});
+
+   //回调数据
+   var json_obj = {
+       tagname:&quot;get_abtesting_info&quot;,
+       param:{
+           ExpCode：&quot;hotel_detail_page_expId001&quot;,
+           BeginTime：&quot;实验开始时间&quot;,
+           EndTime：&quot;实验结束时间&quot;,
+           ExpVersion：&quot;ABTest计算出的实验版本,A或者B&quot;,
+           ExpDefaultVersion：&quot;实验默认版本&quot;,
+           State：&quot;调用ABTest服务是否成功，true：成功，false：失败，如果失败，app显示默认的实验版本&quot;,
+           Attrs：&quot;实验配置数据，Key/Value格式。 json字符串&quot;,
+           ExpResult：&quot;传给UBT的实验结果&quot;
+       }
+    };</code></pre>
 
             </div>
         </div>
