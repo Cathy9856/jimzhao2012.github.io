@@ -361,24 +361,30 @@ function __bridge_callback(param) {
             
             platform = jsonObj.param.platform;
             var typePf = typeof platform;
+            var isInitPlatform = false;
+            
             if (typePf == "number") { //iOS
                 if (platform == 1 || platform == 2 || platform == 3) {
                     Internal.isIOS = (platform == 1);
                     Internal.isAndroid = (platform == 2);
                     Internal.isWinOS = (platform == 3);
+                    isInitPlatform = true;
                 }
             }
             else if (typePf == "string") { //Android
                 if (platform == "1" || platform == "2" || platform == "3") {
                     Internal.isIOS = (platform == "1");
                     Internal.isAndroid = (platform == "2");
-                    Internal.isWinOS = (platform == "3");     
+                    Internal.isWinOS = (platform == "3");  
+                    isInitPlatform = true;   
                 }
             }
 
-            Internal.isInApp = true;
-            Internal.appVersion = jsonObj.param.version;
-            Internal.osVersion = jsonObj.param.osVersion;
+            if (isInitPlatform) {
+                Internal.isInApp = true;
+                Internal.appVersion = jsonObj.param.version;
+                Internal.osVersion = jsonObj.param.osVersion;
+            }
 
             if (Internal.isWinOS) {
                 window.navigator.userAgent.winPhoneUserAgent = window.navigator.userAgent+"_CtripWireless_"+Internal.appVersion; 
