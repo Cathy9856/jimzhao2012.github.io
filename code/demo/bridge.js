@@ -349,11 +349,10 @@ var CtripConsole = {
  */
 function __bridge_callback(param) {
     param = CtripTool.ctripParamDecode(param);
-//    console.log("callback param::["+param+"]");
     var jsonObj = JSON.parse(param);
-    if (jsonObj != null) {
 
-        if (jsonObj.param != null && jsonObj.param.hasOwnProperty("platform")) {
+    if (jsonObj != null) {
+        if (jsonObj.param  && jsonObj.tagname && jsonObj.tagname == "web_view_finished_load" && jsonObj.param.platform ) {
             var ua = navigator.userAgent;
             if (ua.indexOf("Youth_CtripWireless") > 0) { 
                 Internal.isYouthApp = true;
@@ -361,14 +360,12 @@ function __bridge_callback(param) {
             
             platform = jsonObj.param.platform;
             var typePf = typeof platform;
-            var isInitPlatform = false;
             
             if (typePf == "number") { //iOS
                 if (platform == 1 || platform == 2 || platform == 3) {
                     Internal.isIOS = (platform == 1);
                     Internal.isAndroid = (platform == 2);
                     Internal.isWinOS = (platform == 3);
-                    isInitPlatform = true;
                 }
             }
             else if (typePf == "string") { //Android
@@ -376,15 +373,12 @@ function __bridge_callback(param) {
                     Internal.isIOS = (platform == "1");
                     Internal.isAndroid = (platform == "2");
                     Internal.isWinOS = (platform == "3");  
-                    isInitPlatform = true;   
                 }
             }
-
-            if (isInitPlatform) {
-                Internal.isInApp = true;
-                Internal.appVersion = jsonObj.param.version;
-                Internal.osVersion = jsonObj.param.osVersion;
-            }
+            
+            Internal.isInApp = true;
+            Internal.appVersion = jsonObj.param.version;
+            Internal.osVersion = jsonObj.param.osVersion;
 
             if (Internal.isWinOS) {
                 window.navigator.userAgent.winPhoneUserAgent = window.navigator.userAgent+"_CtripWireless_"+Internal.appVersion; 
